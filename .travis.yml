@@ -3,7 +3,7 @@ rvm:
 - 2.3.3
 script: 
  - "gem install jekyll bundler" 
- - "jekyll build"
+ - "jekyll serve"
 
 notifications:
   email: false
