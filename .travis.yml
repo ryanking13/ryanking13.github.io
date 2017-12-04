@@ -1,7 +1,9 @@
 language: ruby
 rvm:
 - 2.3.3
-script: " gem install jekyll bundler type-on-strap & jekyll build"
+script: 
+ - "gem install jekyll bundler" 
+ - "jekyll build"
 
 notifications:
   email: false
