@@ -2,7 +2,8 @@ language: ruby
 rvm:
 - 2.3.3
 script: 
- - "gem install jekyll bundler" 
+ - "gem install jekyll bundler"
+ - "gem install type-on-strap"
  - "jekyll serve"
 
 notifications:
