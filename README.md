@@ -1,6 +1,17 @@
 ## Type-on-Strap on Gem :gem:
 
-Here is a simple example on how to use the template as a gem. You only need to add your content:
+
+Here is a simple example on how to use the template as a gem. 
+
+### Pre-requisite
+
+Make sure you have Jekyll installed
+```
+gem install jekyll bundler
+```
+If you have any trouble, check [#1](https://github.com/Sylhare/Type-on-Strap/issues/1)
+
+You need to add your content:
   - Pictures in `assets\img`
   - Posts in `_posts` with the correct Jeyll format
   - Your project pages in `_portfolio`
@@ -9,7 +20,20 @@ Here is a simple example on how to use the template as a gem. You only need to a
   - The `index.html` page that will be the home of your website
   
 All the rest is already within the Gem and you don't need to tale care of it.
+  
+### Start your website  
 
+To use type-on-strap as a gem, you first need to install the gem:
+  
+  - Directly with `gem install type-on-trap`
+  - Using gemfile `Bundle install` 
+  
+Then you can start your website using:
+```
+jekyll serve
+```
+
+### Warning
 
 > **:warning: Does not work in Github page as a Gem.**
 >

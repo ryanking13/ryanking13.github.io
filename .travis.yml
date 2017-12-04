@@ -2,9 +2,8 @@ language: ruby
 rvm:
 - 2.3.3
 script: 
- - "gem install jekyll bundler"
- - "gem install type-on-strap"
- - "jekyll serve"
+ - "gem install jekyll bundler & bundle install"
+ - "timeout 25 jekyll serve"
 
 notifications:
   email: false
