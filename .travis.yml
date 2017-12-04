@@ -2,8 +2,7 @@ language: ruby
 rvm:
 - 2.3.3
 script: 
- - "gem install jekyll bundler & bundle install"
- - "timeout 25 jekyll serve"
+ - "gem install jekyll bundler & bundle install & timeout 25 jekyll serve"
 
 notifications:
   email: false
