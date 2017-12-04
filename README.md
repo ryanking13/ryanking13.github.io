@@ -1,4 +1,4 @@
-## Type-on-Strap on Gem :gem:
+## Type-on-Strap on Gem :gem: [![Build Status](https://travis-ci.org/Sylhare/Type-on-Strap.svg?branch=gem-demo)](https://travis-ci.org/Sylhare/Type-on-Strap)
 
 
 Here is a simple example on how to use the template as a gem. 
