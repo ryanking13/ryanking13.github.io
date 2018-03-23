@@ -1,8 +1,8 @@
 # SITE CONFIGURATION
-baseurl: "/"
+baseurl: ""
 url: "https://ryanking13.github.io"
 title: Morgenrøde # site's title
-description: "Computer science tech blog" # used by search engines
+description: "" # used by search engines
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -14,8 +14,8 @@ theme_settings:
 
   # Header and footer text
   header_text: > #two or three lines to describe your site
-     <p>Computer Science<br>Technology<br>Security</p>
-  header_text_feature_image: assets/img/pexels/triangular.jpeg
+     <p>Morgenrøde<br><small>Development / Technology / Security</small></p>
+  header_text_feature_image: assets/img/unsplash/flat.jpg
   footer_text: >
    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
@@ -48,7 +48,7 @@ theme_settings:
   google_analytics: # Tracking ID, e.g. "UA-000000-01"
   disqus_shortname:
   katex: true # Enable if using math markup
-  portfolio: true
+  portfolio: false
   search: true
   tags: true
   
