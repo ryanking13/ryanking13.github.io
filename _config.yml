@@ -2,7 +2,7 @@
 baseurl: ""
 url: "https://ryanking13.github.io"
 title: Morgenrøde # site's title
-description: "" # used by search engines
+description: "Morgenrøde" # used by search engines
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -14,7 +14,7 @@ theme_settings:
 
   # Header and footer text
   header_text: > #two or three lines to describe your site
-     <p>Morgenrøde<br><small>Development / Technology / Security</small></p>
+     <p>Morgenrøde<br><small>Programming / Technology / Security</small></p>
   header_text_feature_image: assets/img/unsplash/flat.jpg
   footer_text: >
    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
@@ -45,7 +45,7 @@ theme_settings:
   youtube:
 
   # Scripts / Features 
-  google_analytics: # Tracking ID, e.g. "UA-000000-01"
+  google_analytics: "UA-117186743-1"
   disqus_shortname: sihadan-blog
   katex: true # Enable if using math markup
   portfolio: false
