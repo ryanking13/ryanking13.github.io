@@ -20,17 +20,17 @@ layout: default
       {% endif %}
       <span>
           <header>
-            <h1>
+            <h3>
               <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
                 {{ post.title }}
               </a>
-            </h1>
+            </h3>
             <p class="meta">
               {{ post.date | date: "%B %-d, %Y" }}
             </p>
           </header>
           <div class="excerpt">
-            {{ post.content | strip_html | truncate: "100" }}
+            {{ post.content | strip_html | truncate: "80" }}
             <!--<a class="button" href="{{ post.url | prepend: site.baseurl }}">
               {{ site.theme_settings.str_continue_reading }}
             </a>-->
