@@ -12,11 +12,11 @@ tags: [Network]
 
 아마 실제로는 캐싱도 해서 효율을 높이고 있을 것 같긴 한데, 어쨌거나 기본적인 동작은 압축이다.
 
-![](./images/without_data_saver.PNG)
+![](../../../assets/post_images/without_data_saver.PNG)
 
 __데이터 세이버를 껐을 때__
 
-![](./images/data_saver.PNG)
+![](../../../assets/post_images/data_saver.PNG)
 
 __데이터 세이버를 켰을 때__
 
