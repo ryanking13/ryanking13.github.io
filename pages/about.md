@@ -34,3 +34,5 @@ tags: [About]
 ### Other Activities
 
 - 과학기술전문사관(ROND) 4기 후보생
+- [Why Am I Dead At Sea](http://www.whyamideadatsea.com/) unofficial translator ([link](https://github.com/ryanking13/WAIDAS)) 
+- [Minor contribution](https://github.com/Sylhare/Type-on-Strap/pull/59) on this blog theme :)
