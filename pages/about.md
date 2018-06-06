@@ -62,8 +62,8 @@ tags: [About]
 
 #### Security
 
-- 2017 Samsung CTF Qualifier 59th Place (Total 585 participants)
-- 2017 Samsung CTF Final 31th Place (Total 78 participants)
+- 2017 Samsung CTF Final 31st
+- 2018 [Sunshine CTF](https://sunshinectf.org/scoreboard) 7th (Team Guardian)
 
 ## Skills
 
