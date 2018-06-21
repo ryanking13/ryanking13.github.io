@@ -33,13 +33,10 @@ tags: [About]
 		- with 삼성전자 생산기술연구소
 	- [Final Report](https://drive.google.com/file/d/0B_7q1ARHbNOsajY1Z1c4eWlDT2c/view)
 <br /><br />
-- 코드 이미지 표현 (HCI) (2016 Fall)
-	- [Dive](https://github.com/ryanking13/dive)
-		- [서울대학교 영상매체예술 연합전공 2016-2 과제전](http://www.snumediaart.ac.kr/2016p.html) 출품
-<br /><br />
 - [소프트웨어 개발의 원리와 실제](https://github.com/snu-sf-class/swpp201801) (Web Development) (2018 Spring)
 	- [SNUwagon](https://github.com/SNUWagon)
 		- Django + React-Redux
+		- [Demo](https://youtu.be/v5Ibj2jYNFw)
 
 #### Club Activity
 
@@ -69,19 +66,24 @@ tags: [About]
 
 #### Programming
 
-- Python (My favorite 👍)
-	- Django
+- Python (favorite 👍)
+	- Django, Django Rest framework
 	- Tensorflow
-- C/C++, Javascript, C#
-- Git, Sqlite, Unity, Processing
+- C/C++
+- Javascript
+  - React, Redux
+- C#
+  - Unity
+- Processing
+- Git
 
 #### Language
 
 - Korean <small>(Native)</small>
-- English <small>~ TOEIC 945 (2015.08)</small>
+- English <small>~ TOEIC 945 (2015.08 - expired)</small>
 
 ## Other Activities
 
 - [Research Officers for National Defense](http://rond.or.kr) (과학기술전문사관) 4기
 - [Why Am I Dead At Sea](http://www.whyamideadatsea.com/) unofficial korean translator ([link](https://github.com/ryanking13/WAIDAS))
-- [Minor contribution](https://github.com/Sylhare/Type-on-Strap/pull/59) on this blog theme :)
+- Minor contributions on this blog theme :) [#59](https://github.com/Sylhare/Type-on-Strap/pull/59) [#92](https://github.com/Sylhare/Type-on-Strap/issues/92)
