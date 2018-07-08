@@ -14,7 +14,12 @@ tags: [About]
 - ✉️ def6488@gmail.com
 - 💬 [sihadan](https://www.slideshare.net/sihadan)
 
+## Career
 
+- Intern, [Network Convergence & Security Lab](http://mmlab.snu.ac.kr/) <span style="color:grey"><small>2018.03 ~ 2018.06</small></span>
+	- [Middlebox Aware TLS](https://github.com/hw5773/matls) client side (Chromium / BoringSSL) developer
+
+- Intern, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2018.07 ~ now</small></span>
 
 ## Campus Activities
 
@@ -22,8 +27,6 @@ tags: [About]
 - Teaching Assistant, [Programming Practice](http://mrl.snu.ac.kr/courses/CourseProgrammingPractice/PP_2017fall.htm)  <span style="color:grey"><small>2017.09 ~ 2017.12</small></span>
 	- Server administrator
 	- [Github](https://github.com/ryanking13/2017f-PP-solution)
-- Intern, [Network Convergence & Security Lab](http://mmlab.snu.ac.kr/) <span style="color:grey"><small>2018.03 ~ 2018.06</small></span>
-	- [Middlebox Aware TLS](https://github.com/hw5773/matls) client side (Chromium / BoringSSL) developer
 
 
 #### Featured Courses
