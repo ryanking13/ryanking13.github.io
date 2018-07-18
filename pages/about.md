@@ -96,7 +96,7 @@ tags: [About]
 - Python (favorite 👍)
 	- Django, Django Rest framework
 	- Tensorflow
-- C/C++
+- C
 - Javascript
   - React, Redux
 - C#
