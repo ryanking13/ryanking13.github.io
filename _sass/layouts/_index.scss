@@ -43,8 +43,9 @@
         width: 100%;
         margin-bottom: 0;
         display: inline-block;
+        // text-align: center;
         background-size: $feature-image-size;
-        border-bottom: 1px solid $border-color;
+        // border-bottom: 1px solid $border-color;
         p a {
             @extend .body-link;
         }
@@ -88,7 +89,16 @@
         }
     }
     .excerpt {
+        color: rgba($text-color, .6);
+        font-size: 0.85em;
         margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+    .post-header {
+        margin-left: 1em;
+        margin-right: 1em;
     }
 }
 

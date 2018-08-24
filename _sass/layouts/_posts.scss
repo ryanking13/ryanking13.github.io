@@ -45,7 +45,7 @@ header {
 
 .meta {
     color: rgba($text-color, .5);
-    font-size: 0.9em;
+    font-size: 0.8em;
     letter-spacing: 0.1em;
     margin: 0;
     text-transform: uppercase;
@@ -69,7 +69,7 @@ header {
     }
     .post-content {
         @extend %padding-regular;
-        padding-bottom: 0;
+        padding-bottom: 10;
     }
     footer {
         @extend %padding-regular;
