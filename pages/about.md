@@ -2,7 +2,6 @@
 layout: page
 title: About
 permalink: /about/
-feature-img: "assets/img/unsplash/pen.jpg"
 tags: [About]
 ---
 
