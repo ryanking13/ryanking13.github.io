@@ -85,8 +85,9 @@ tags: [About]
 
 #### Security
 
-- 2017 Samsung CTF Final 31st
+- 2017 Samsung CTF Final
 - 2018 [Sunshine CTF](https://sunshinectf.org/scoreboard) 7th (Team Guardian)
+- 2018 Samsung CTF Final
 
 ## Skills
 
@@ -100,6 +101,7 @@ tags: [About]
   - React, Redux
 - C#
   - Unity
+- Go
 - Processing
 - Git
 
