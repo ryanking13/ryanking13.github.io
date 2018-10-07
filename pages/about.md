@@ -72,6 +72,7 @@ tags: [About]
 
 - 2013 KOI Silver Medal (Busan), Participation Prize (Korea)
 - 2016 ACM-ICPC Daejeon regional 11th Place
+- 2018 Internet Problem Solving Contest(IPSC) 24th Place
 
 #### Security
 
