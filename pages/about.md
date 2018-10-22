@@ -71,8 +71,8 @@ tags: [About]
 #### Competitive Programming
 
 - 2013 KOI Silver Medal (Busan), Participation Prize (Korea)
-- 2016 ACM-ICPC Daejeon regional 11th Place
-- 2018 Internet Problem Solving Contest(IPSC) 24th Place
+- 2016 ACM-ICPC Daejeon regional 11th Place (Team Flareon)
+- 2018 Internet Problem Solving Contest(IPSC) 24th Place (Team JambalayaSeasoning)
 
 #### Security
 
