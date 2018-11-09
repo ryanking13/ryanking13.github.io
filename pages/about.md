@@ -16,9 +16,9 @@ tags: [About]
 ## Career
 
 - Intern, [Network Convergence & Security Lab](http://mmlab.snu.ac.kr/) <span style="color:grey"><small>2018.03 ~ 2018.06</small></span>
-	- [Middlebox Aware TLS](https://github.com/hw5773/matls) client side (Chromium / BoringSSL) developer
+	- Hyunwoo Lee, Zachary Smith, Junghwan Lim, **Gyeongjae Choi**, Selin Chun, and Ted "Taekyoung" Kwon, "maTLS: How to Make TLS middlebox-aware?", accepted in Proceedings of the Network and Distributed System Security Symposium (NDSS '19), San Diego, USA, February 2019.
 
-- Intern, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2018.07 ~ now</small></span>
+- Intern, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2018.07 ~ 2018.10 </small></span>
 
 #### Club Activity
 
