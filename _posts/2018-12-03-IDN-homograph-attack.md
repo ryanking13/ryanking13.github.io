@@ -1,6 +1,6 @@
 ---
 layout: post
-title: IDN Homograph attack 이란
+title: IDN Homograph attack 정리
 tags: [Security]
 ---
 
