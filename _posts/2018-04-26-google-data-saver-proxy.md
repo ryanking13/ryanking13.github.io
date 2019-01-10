@@ -4,6 +4,10 @@ title: 크롬 데이터 세이버를 크롬 없이 사용하기
 tags: [Network]
 ---
 
+> UPDATE(2019/01/10)
+> 데이터 세이버 프로그램이 업데이트 되면서 인증 방식이 많이 바뀌었습니다. (protobuf + signature)
+> 따라서 아래 글의 방식은 더이상 동작하지 않습니다.
+
 [데이터 세이버](https://chrome.google.com/webstore/detail/data-saver/pfmgfdlgomnbgkofeojodiodmgpgmkac?hl=ko)는 구글에서 제작한 크롬 브라우저의 확장 프로그램으로 크롬 웹 스토어에서는 다음과 같이 소개하고 있다.
 
 > Google 서버를 통해 방문하는 페이지를 최적화하여 데이터 사용량을 줄이세요.
