@@ -61,6 +61,11 @@ tags: [About]
 	- Django + React-Redux
 	- [Demo](https://youtu.be/v5Ibj2jYNFw)
 
+- WMC Test ![private](https://badgen.net/badge//private/orange)
+	- 작업기억 검사 프로그램
+	- VueJS + Electron
+	- [Download executable](https://drive.google.com/open?id=18RbjSjnl39pmnup2fN7Sr97mAuvva5I9)
+
 
 #### Other
 
@@ -92,7 +97,7 @@ tags: [About]
 	- Django, Django Rest framework
 - C++
 - Node.js
-  - ReactJS, Redux, VueJS
+  - ReactJS, Redux, VueJS, Electron
 - C#
 - Processing
 
@@ -105,6 +110,7 @@ tags: [About]
 
 - Git
 - AWS
+- Azure
 - Unity
 
 ## Other Activities
