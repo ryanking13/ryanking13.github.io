@@ -31,12 +31,16 @@ tags: [About]
 	- Vice president <span style="color:grey"><small>2016.12 ~ 2017.12</small></span>
 	- [Malware Analysis Study](https://github.com/GuardianSNUMalwareLab) manager <span style="color:grey"><small>2017.09 ~ 2018.06</small></span>
 
-## Toy Projects
+## Personal Projects
 
 #### Reverse Engineering
 
-- ~~[Chrome Data Saver  Python](https://github.com/ryanking13/chrome-data-saver-python)~~ (Not Working)
-  - Google chrome data saver extension python wrapper
+<br/>
+<div style="display: flex;">
+<div><img src="/assets/img/about/burgerking.jpg" width="250"/></div>
+<div><img src="/assets/img/about/srt.png" width="250"/></div>
+</div>
+<br/>
 
 - [BurgerQueen](https://ryanking13.github.io/burgerqueen)
   - Burgerking App coupon web viewer
@@ -86,11 +90,10 @@ tags: [About]
 
 - Python (favorite 👍)
 	- Django, Django Rest framework
-- C
+- C++
 - Node.js
   - ReactJS, Redux, VueJS
 - C#
-- Go
 - Processing
 
 #### Database
