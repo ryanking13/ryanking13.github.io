@@ -7,6 +7,15 @@ tags: [About]
 
 ## Profile
 
+<br/>
+<div style="text-align: center;">
+<div><img src="/assets/img/about/me-cherryblossom.png" width="500"/></div>
+<div><span style="color:grey"><small><i>Photo by <a href="https://ialy1595.github.io/about/">@ialy1595</a></i></small></span></div>
+</div>
+<br/>
+
+
+
 > __최경재 (Gyeongjae Choi)__
 - [Seoul Nat'l University CSE](https://cse.snu.ac.kr/en) (2015.03 ~ now)
 - [Github](https://github.com/ryanking13)
@@ -61,7 +70,7 @@ tags: [About]
 	- Django + React-Redux
 	- [Demo](https://youtu.be/v5Ibj2jYNFw)
 
-- WMC Test ![private](https://badgen.net/badge//private/orange)
+- WMC Test <span style="color:grey"><small><i>private</i></small></span>
 	- 작업기억 검사 프로그램
 	- VueJS + Electron
 	- [Download executable](https://drive.google.com/open?id=18RbjSjnl39pmnup2fN7Sr97mAuvva5I9)
