@@ -20,7 +20,15 @@ layout: default
 <!-- Disqus -->
 {% if site.theme_settings.disqus_shortname %}
 <div class="comments">
-  {% include disqus.html %}
+  <!-- {% include disqus.html %} -->
+  <script src="https://utteranc.es/client.js"
+        repo="ryanking13/ryanking13.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+  </script>
 </div>
 {% endif %}
 
