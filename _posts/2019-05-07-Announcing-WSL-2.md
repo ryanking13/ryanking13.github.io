@@ -1,6 +1,7 @@
 ---
 layout: post
 title: (번역) WSL 2를 공개하며
+description: (번역) WSL 2를 공개하며
 tags: [Windows]
 ---
 
