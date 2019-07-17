@@ -125,5 +125,9 @@ tags: [About]
 ## Other Activities
 
 - [Research Officers for National Defense](http://rond.or.kr) (과학기술전문사관) 4기
-- [Why Am I Dead At Sea](http://www.whyamideadatsea.com/) unofficial korean translator ([link](https://github.com/ryanking13/WAIDAS))
 - Minor contributions on this blog theme :) [#59](https://github.com/Sylhare/Type-on-Strap/pull/59) [#92](https://github.com/Sylhare/Type-on-Strap/issues/92)
+
+#### Localizations
+
+- [Why Am I Dead At Sea](http://www.whyamideadatsea.com/) unofficial korean localization ([link](https://github.com/ryanking13/WAIDAS))
+- [The Station](http://thestationgame.com/) unofficial korean localization ([link](https://github.com/ryanking13/the-station-kor))
