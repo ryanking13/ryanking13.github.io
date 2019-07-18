@@ -31,14 +31,10 @@ tags: [About]
 
 #### Club Activity
 
-- [UPnL](https://cse.snu.ac.kr/en/student-club/upnl-0) (game development club) <span style="color:grey"><small>2015.09 ~ 2017.08</small></span>
-	- [Romeo and Juliet and Me](https://github.com/ryanking13/romeo-juliet-me) - [_Demo_](https://www.youtube.com/watch?v=2J083-kDJTk)
-	- [Papillon](https://github.com/MKRoughDiamond/papillon)  - [_Demo_](https://youtu.be/tkc113lpk5w)
-<br />
-<br />
 - [Guardian](https://cse.snu.ac.kr/en/student-club/guardian) (computer security research club) <span style="color:grey"><small>2016.07 ~ now</small></span>
 	- Vice president <span style="color:grey"><small>2016.12 ~ 2017.12</small></span>
 	- [Malware Analysis Study](https://github.com/GuardianSNUMalwareLab) manager <span style="color:grey"><small>2017.09 ~ 2018.06</small></span>
+	- [GuardianCTF 2018](https://github.com/Guardian-SNU/ctf2018-writeups) staff
 
 ## Personal Projects
 
@@ -109,6 +105,7 @@ tags: [About]
   - ReactJS, Redux, VueJS, Electron
 - C#
 - Processing
+- Go
 
 #### Database
 
