@@ -87,6 +87,7 @@ tags: [About]
 - 2013 KOI Silver Medal (Busan), Participation Prize (Korea)
 - 2016 ACM-ICPC Daejeon regional 11th Place (Team Flareon)
 - 2018 Internet Problem Solving Contest(IPSC) 24th Place (Team JambalayaSeasoning)
+- 2019 UCPC 5th Place (Team 대충 재미있는 팀명)
 
 #### Security
 
