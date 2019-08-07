@@ -29,6 +29,8 @@ tags: [About]
 
 - Intern, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2018.07 ~ 2018.10 </small></span>
 
+- [Multicampus](http://www.multicampus.com/) <span style="color:grey"><small>2019.08 ~ </small></span>
+
 #### Club Activity
 
 - [Guardian](https://cse.snu.ac.kr/en/student-club/guardian) (computer security research club) <span style="color:grey"><small>2016.07 ~ now</small></span>
