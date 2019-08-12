@@ -29,7 +29,7 @@ tags: [About]
 
 - Intern, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2018.07 ~ 2018.10 </small></span>
 
-- [Multicampus](http://www.multicampus.com/) <span style="color:grey"><small>2019.08 ~ </small></span>
+- SSAFY Research Assistant Team, [Multicampus](http://www.multicampus.com/) <span style="color:grey"><small>2019.08 ~ </small></span>
 
 #### Club Activity
 
