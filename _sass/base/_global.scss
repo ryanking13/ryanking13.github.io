@@ -67,8 +67,8 @@ blockquote {
     border-left: 2px solid darken($blockquote-color, 20%);
     margin: 1em 1em;
     padding: 0.75em 1em;
-    background-color: $blockquote-color;
-    box-shadow: 0 2px 2px $border-color;
+    // background-color: $blockquote-color;
+    // box-shadow: 0 2px 2px $border-color;
 }
 
 blockquote p:last-child,
@@ -149,7 +149,7 @@ hr {
 
 a {
     color: $link-color;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 iframe,
