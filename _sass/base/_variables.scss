@@ -2,10 +2,11 @@
 @import url('//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 
-$font-family-main: 'Noto Sans KR', Helvetica, Arial, sans-serif;
-$font-family-headings: 'Noto Sans KR', Helvetica, Arial, sans-serif;
-$font-size: 1.25em;
+$font-family-main: 'Spoqa Han Sans', 'Noto Sans KR', Helvetica, Arial, sans-serif;
+$font-family-headings: 'Spoqa Han Sans', 'Noto Sans KR', Helvetica, Arial, sans-serif;
+$font-size: 1.15em;
 
 
 // Padding
