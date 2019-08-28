@@ -26,6 +26,7 @@ tags: [About]
 
 - Intern, [Network Convergence & Security Lab](http://mmlab.snu.ac.kr/) <span style="color:grey"><small>2018.03 ~ 2018.06</small></span>
 	- Hyunwoo Lee, Zachary Smith, Junghwan Lim, **Gyeongjae Choi**, Selin Chun, and Ted "Taekyoung" Kwon, "[maTLS: How to Make TLS middlebox-aware?](../assets/else/lee-2019-tls.pdf)", accepted in Proceedings of the Network and Distributed System Security Symposium (NDSS '19), San Diego, USA, February 2019.
+	- 2019 Samsung Security Tech Forum 2019, "Toward Trustworthy Middlebox-aware Secure Architecture", Open Tech Talk _Best Research Prize_, Hyunwoo Lee, Junghwan Lim, **Gyeongjae Choi**, Selin Chun. 
 
 - Intern, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2018.07 ~ 2018.10 </small></span>
 
