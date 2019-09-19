@@ -60,12 +60,9 @@ mypy와 같은 타입 체커는 타입을 정의하는 문법을 제공하고, �
 
 ## mypy가 탄생하기까지
 
-mypy는 제가 드롭박스에 들어오기 몇년전, 영국 캠브릿지 대학에서 시작되었습니다. 저는 박사과정에서 정적 타입 언어와 동적 타입 언어를 합치는 연구를 하고 있었습니다. Siek과 Taha의 [gradual typing]() 과 [Typed Racket]()의 영향을 받아, 하나의 프로그래밍 언어를 작은 스크립트에서 수백만줄의 코드베이스에서도 
+mypy는 제가 드롭박스에 들어오기 몇년 전, 영국 캠브릿지 대학에서 시작되었습니다. 저는 박사과정에서 정적 타입 언어와 동적 타입 언어를 합치는 연구를 하고 있었습니다. Siek과 Taha의 [gradual typing](http://homes.sice.indiana.edu/jsiek/what-is-gradual-typing/)과 [Typed Racket](https://docs.racket-lang.org/ts-guide/)의 영향을 받아, 하나의 프로그래밍 언어를 아주 작은 스크립트를 작성하는 데에도 쓸 수 있고, 수백만 줄의 코드베이스에서도 쓸 수 있도록 하고자 했죠. 이 아이디어의 핵심적인 부분은 초기에는 타입이 명확하지 않은 프로토타입에서 시작하여, 점차 실제 환경에서 사용할 수 있는 정적 타입의 결과물을 만들어낼 수 있도록 하는 것이었습니다. 현재에 와서는 이러한 아이디어가 꽤 널리 받아들여지고 있지만, 2010년 당시에만 해도 이는 활발하게 연구되는 주제가 아니었습니다.
 
-The story of mypy begins in Cambridge, UK, several years before I joined Dropbox. I was looking at somehow unifying statically typed and dynamic languages as part of my PhD research. Inspired by work such as Siek and Taha’s gradual typing and Typed Racket, I was trying to find ways to make it possible to use the same programming language for projects ranging from tiny scripts to multi-million line sprawling codebases, without compromising too much at any point in the continuum. An important part of this was the idea of gradual growth from an untyped prototype to a battle-tested, statically typed product. To a large extent, these ideas are now taken for granted, but it was an active research problem back in 2010.
-
-타입 검사에 대한 제 초기 연구는 파이썬을 타겟으로 한 것이 아니었습니다. 대신 제가 직접 만든 `Alore`라는 언어를 사용했습니다. 
-My initial work on type checking didn’t target Python. Instead I used a home-grown, small language called Alore. Here is an example to give you an idea of what it looked like (the type annotations are optional):
+타입 검사에 대한 제 초기 연구는 파이썬을 타겟으로 한 것이 아니었습니다. 대신 제가 직접 만든 `Alore`라는 언어를 사용했습니다. 아래는 Alore가 어떻게 생긴 언어인지 보여주는 예시입니다 (타입 어노테이면 문법은 선택적입니다.)
 
 ```
 def Fib(n as Int) as Int
@@ -77,11 +74,16 @@ def Fib(n as Int) as Int
 end
 ```
 
-Using a simplified, custom language is a common research approach, not least since it makes it quick to perform experiments, and various concerns not essential for research can be conveniently ignored. Production-quality languages tend to be large and have complicated implementations, making experimentation slow. However, any results based on a non-mainstream language are a bit suspect, since practicality may have been sacrificed along the way.
+단순화된 커스텀 언어를 사용하는 것은 빠르게 실험을 수행하고, 중요하지 않은 (문제점)을 무시하기 위해 연구에서 흔히 사용하는 방식입니다. 
+현업에서 사용되는 언어들은 굉장히 크고 복잡한 구현체이기 때문에, 실험이 slow.
+그러나 주류 언어가 아닌 언어를 통해서 나온 결과에는 bit suspect, 왜냐하면 실용성을 sacrificed.
 
-My type checker for Alore looked pretty promising, but I wanted to validate it by running experiments with real-world code, which didn’t quite exist for Alore. Luckily, Alore was heavily inspired by Python. It was easy enough to modify the checker to target Python syntax and semantics, making it possible to try type checking open source Python code. I also wrote a source-to-source translator from Alore to Python, and used it to translate the type checker. Now I had a type checker, written in Python, that supported a Python subset! (Certain design decisions that made sense for Alore were a poor fit for Python, which is still visible in parts of the mypy codebase.)
+저는 Alore를 사용하여 만든 타입 체커에서 큰 가능성을 보았고, 이를 실제 환경에서 돌아가는 코드에서 실험하고 싶었습니다.
+운이 좋게도, Alore는 파이썬에 큰 영향을 받은 언어였습니다. 그래서 체커를 파이썬 문법에 맞추어 수정함으로써 오픈 소스 파이썬 코드를 검사하도록 하는 것은 어려운 일이 아니었습니다.
+또한 저는 Alore 코드를 파이썬 코드로 변환하는 도구를 만들었고, 이를 통해서 타입 체커를 Alore 코드에서 파이썬 코드로 변환했습니다. 이를 통해 파이썬 코드를 검사할 수 있는 파이썬으로 만들어진 타입 체커가 완성되었습니다!
+(Alore에서 사용한 일부 디자인은 파이썬에는 잘 맞지 않았습니다, 이는 mypy 코드베이스에서 지금도 확인이 가능합니다.)
 
-Actually, the language wasn’t quite Python at that point: it was a Python variant, because of certain limitations of the Python 3 type annotation syntax. It looked like a mixture of Java and Python:
+솔직하게 말하면, 아직 이 언어는 파이썬이라고 부를 수 있는 상태는 아니었습니다. 파이썬 3의 타입 어노테이션 문법의 한계로 인해서, 자바와 파이썬의 융합체같아 보이는 형태였죠.
 
 ```
 int fib(int n):
@@ -91,9 +93,10 @@ int fib(int n):
         return fib(n - 1) + fib(n - 2)
 ```
 
-One of my ideas at the time was to also use type annotations to improve performance, by compiling the Python variant to C, or perhaps JVM bytecode. I got as far as building a prototype compiler, but I gave up on that, since type checking seemed useful enough by itself.
+당시 제가 가지고 있던 아이디어 중 한 가지는, 타입 어노테이션 문법을 사용하여 파이썬 코드를 C나 JVM 바이트코드로 컴파일할 수 있게 하여 성능을 향상시키는 것이었습니다. 그러나 그 아이디어는 곧 포기했는데, 타입 검사 자체로도 충분히 의미가 있다고 판단하였기 때문입니다.
 
-I eventually presented my project at the PyCon 2013 conference in Santa Clara, and I chatted about it with Guido van Rossum, the BDFL of Python. He convinced me to drop the custom syntax and stick to straight Python 3 syntax. Python 3 supports function annotations, so the example could be written like this, as a valid Python program:
+이러한 프로젝트 결과를 산타클라라에서 열린 파이콘 2013에서 발표를 했고, 파이썬의 BDFL인 Guido와 대화를 나눌 기회가 있었습니다. 그는 제게 독자적인 문법을 버리고 파이썬 3의 문법에 충실할 것을 설득했습니다.
+파이썬 3은 함수 어노테이션을 제공하므로, 아래와 같은 식으로 파이썬 프로그램을 작성할 수 있습니다.
 
 ```python
 def fib(n: int) -> int:
@@ -103,13 +106,16 @@ def fib(n: int) -> int:
         return fib(n - 1) + fib(n - 2)
 ```
 
-Some compromises were necessary (this is why I invented my own syntax in the first place). In particular, Python 3.3, the latest at that point, didn’t have variable annotations. I chatted about various syntax possibilities over email with Guido. We decided to use type comments for variables, which does the job, but is a bit clunky (Python 3.6 gave us a much nicer syntax):
+일부 기능은 포기해야만 했습니다 (제가 독자적인 문법을 사용한 이유가 이 때문이었습니다.).
+구체적으로, 당시 최신 버전이었던 파이썬 3.3에서는 변수 어노테이션 문법이 없었습니다.
+저는 Guido와 이메일로 여러 가능성이 있는 문법들에 대해서 논의했습니다. 우리는 변수에 대해서는 타입 코멘트를 다는 방식을 사용하기로 결정했습니다.
+기능적으로는 충분했지만, 다소 보기에 어정쩡해보이는 방식이었죠. (파이썬 3.6에서는 훨씬 더 좋은 문법이 만들어졌습니다.)
 
 ```python
 products = []  # type: List[str]  # Eww
 ```
 
-Type comments were also handy for Python 2 support, which has no built-in notion of type annotations:
+타입 코멘트는 별도의 타입 어노테이션 문법이 없는 파이썬 2에서 사용하기에는 적합한 방식이었습니다.
 
 ```python
 def fib(n):
@@ -120,38 +126,68 @@ def fib(n):
         return fib(n - 1) + fib(n - 2)
 ```
 
-It turned out that these (and other) compromises didn’t really matter too much—the benefits of static typing made users quickly forget the not-quite-ideal syntax. Since type checked Python now had no special syntax, existing Python tools and workflows continued to work, which made adoption much easier.
+결과적으로는 이러한 compromise들이 정적 타이핑을 통해서 얻는 이점에 비해서 굉장히 사소한 문제라고 여겨지고, 유저들은 썩 이상적이지 않은 문법들을 개의치 않게 되었습니다.
+파이썬 타입 체킹을 위해서 추가적인 문법이 사용되지 않으므로, 기존에 사용하던 모든 파이썬 도구나 워크플로우가 그대로 사용될 수 있고, 이는 타입 검사를 도입하는 것을 쉽게 만들었습니다.
 
-Guido also convinced me to join Dropbox after finishing my PhD, and there begins the core of this story.
+또한 Guido는 제게 박사 졸업 후 드롭박스로 오라고 말했습니다. 여기서 이 이야기의 핵심적인 부분이 시작됩니다.
 
-## Making types official (PEP 484)
+## 표준으로 인정받은 타이핑 (PEP 484)
 
+mypy를 본격적으로 실험한 것은 드롭박스 Hack Week 2014에서 였습니다. Hack Week는 드롭박스에서 일주일동안 아무 일이나 하고싶은 것을 할 수 있도록 하는 주간입니다. 드롭박스의 많은 멋진 기능들의 역사를 따라가보면 Hack Week에서 시작된 경우가 많습니다. Hack Week에서의 실험 결과, 우리는 mypy의 가능성을 높게봤지만, 아직 널리 쓰이기에는 부족한 부분이 있다고 판단했습니다.
 
-We did the first serious experiments with mypy at Dropbox during Hack Week 2014. Hack Week is a Dropbox institution—a week when you can work on anything you want! Some of the most famous Dropbox engineering projects can trace their history back to a Hack Week. Our take-away was that using mypy looked promising, though it wasn’t quite ready for wider adoption yet.
+이 아이디어는 파이썬의 타입 힌트 문법이 표준화되기까지 표류했습니다. 위에서 언급한 것처럼, 파이썬 3.0부터 함수 타입 어노테이션이 가능했습니다, 그러나 이들은 단순히 임의의 expression이었고, 명확하게 정해진 문법이 없었습니다. 런타임에는 대부분 무시되었죠.
+Hack Week가 끝난 이후, 우리는 문법을 표준화하는 작업을 시작했고, 그 결과 PEP 484가 탄생했습니다(Guido, Łukasz Langa, 그리고 제가 함께 작성했습니다).
+PEP 484의 목적은 두 가지였습니다.
+첫째, 모든 파이썬 생태계가 각기 다르고 호환되지 않는 방식 대신 공통된 타입 힌트(파이썬에서의 표현으로는 타입 어노테이션) 문법을 사용하는 것.
+둘째, 우리만의 주장으로 이를 ~ 아니라 더 많은 파이썬 커뮤니티와 타입 힌트를 어떻게 활용할 지 논의하고 ~.
+파이썬은 "덕 타이핑(duck typing)"으로 유명한 동적 타이핑 언어이기 때문에, 적정 타이핑을 도입하는 것에 대해서 커뮤니티의 다양한 의심 ~, 그러나 이러한 의견들은 타입 힌트가 선택적인 기능으로 남을 것이라는 것이 명확해진 뒤로는 사그라들었습니다. (물론 사람들이 이 타입 힌트가 유할 것이라는 점을 이해하기도 했구요.) 
 
-An idea was floated around that time to standardize the type hinting syntax in Python. As I mentioned above, starting from Python 3.0, it has been possible to write function type annotations in Python, but they were just arbitrary expressions, with no designated syntax or semantics. They are mostly ignored at runtime. After Hack Week, we started work on standardizing the semantics, and it eventually resulted in PEP 484 (co-written by Guido, Łukasz Langa, and myself). The motivation was twofold. First, we hoped that the entire Python ecosystem would embrace a common approach for type hinting (Python term for type annotations), instead of risking multiple, mutually incompatible approaches. Second, we wanted to openly discuss how to do type hinting with the wider Python community, in part to avoid being branded heretics. As a dynamic language that is famous for “duck typing”, there was certainly some initial suspicion about static typing in the community, but it eventually subsided when it became clear that it’s going to stay optional (and after people understood that it’s actually useful).
+결과적으로 완성된 타입 힌트 문법은 mypy가 최초에 지원했던 것과 상당히 유사한 형태가 되었습니다.
+PEP 484는 2015년에 파이썬 3.5와 함게 배포되었고, 파이썬은 이제 동적 타이핑 언어 이상의 것이 되었습니다.
+저는 이것이 파이썬의 큰 마일스톤이라고 생각합니다.
 
-The eventually accepted type hinting syntax was quite similar to what mypy supported at the time. PEP 484 shipped with Python 3.5 in 2015, and Python was no longer (just) a dynamic language. I like to think of this as a big milestone for Python.
+## 마이그레이션 시작
 
-## The migration begins
+2015년 말에 드롭박스에서는 mypy 개발을 위하여 Guido, Greg Price, 그리고 David Fisher의 3명으로 구성된 팀을 만들었습니다.
+그 이후로 모든 것이 굉장히 빠르게 움직였습니다. mypy의 시급한 걸림돌은 성능이었습니다.
+초기의 목표는 mypy 구현체를 C로 컴파일 하는 것이었는데, 이 아이디어는 포기되었습니다(적어도 지금은요).
+CPython 인터프리터의 성능은 mypy를 돌리기에는 만족스럽지 않았습니다. (PyPy의 경우도 도움이 되지 않았습니다.)
 
-We set up a 3-person team at Dropbox to work on mypy in late 2015, which included Guido, Greg Price, and David Fisher. From there on, things started moving pretty rapidly. An immediate obstacle to growing mypy use was performance. As I implied above, an early goal was to compile the mypy implementation to C, but this idea was scrapped (for now). We were stuck with running on the CPython interpreter, which is not very fast for tools like mypy. (PyPy, an alternative Python implementation with a JIT compiler, also didn’t help.)
+다행히도, 알고리즘적인 개선이 이루어졌습니다. 처음으로 만든 메이저한 성능 향상은 점진적인 검사를 도입한 것이었습니다. 아이디어는 간단합니다. 만약 모듈의 모든 디펜던시가 이전의 mypy 실행시와 똑같다면, 이미 캐싱된 데이터를 그대로 사용할 수 있으므로 수정된 파일과 해당 파일의 디펜던시만 검사하면 되는 것입니다.
+mypy는 거기서 한발짝 더 나아갔는데요. 만약 모듈의 외부 인터페이스가 바뀌지 않았다면, mypy는 이 모듈을 임포트하는 다른 모듈도 다시 검사하지 않습니다.
 
-Luckily, there were algorithmic improvements to be had. The first big major speedup we implemented was incremental checking. The idea is simple: if all dependencies of a module are unchanged from the previous mypy run, we can use data cached from the previous run for the dependencies, and we only need to type check modified files and their dependencies. Mypy goes a bit further than that: if the external interface of a module hasn’t changed, mypy knows that other modules that import the module don’t need to be re-checked.
+점직전인 검사 방식은 거대한 코드 프로젝트를 검사할 때에 매우 많은 도움이 되었습니다. 이러한 프로젝트는 수많은 mypy run이 이루어지고, 타입이 점진적으로 추가되고 바뀌기 때문이죠.
+그렇지만 여전히 최초의 mypy 실행은 여전히 많은 디펜던시를 검사하는 데에 오랜 시간이 걸립니다.
+이를 개선하기 위해, 우리는 remote 캐싱을 구현했습니다. mypy는 local cache가 만료되면, 중앙 레포지토리에서 최근의 캐시 스냅샷을 다운로드 합니다. 그리고 다운로드된 캐시 위에서 다시 점진적인 빌드를 수행합니다.
+이를 통해 또 한번 큰 성능 향상을 이룰 수 있었습니다.
 
-Incremental checking really helps when annotating existing code in bulk, as this typically involves numerous iterative mypy runs, as types are gradually inserted and refined. The initial mypy run would still be pretty slow, since many dependencies would need to be processed. To help with that, we implemented remote caching. If mypy detects that your local cache is likely to be out of date, mypy downloads a recent cache snapshot for the whole codebase from a centralized repository. It then performs an incremental build on top of the downloaded cache. This gave another nice performance bump.
+이 시점부터 드롭박스에서 mypy를 적극적으로 도입하기 시작했습니다. 2016년 말에는, 42만 줄의 파이썬 코드에 타입이 명시되었습니다. 많은 유저들은 타입 체킹에 굉장한 만족감을 나타냈고, 드롭박스 내에서도 mypy를 사용하는 팀이 빠르게 늘어가고 있었습니다.
 
-This was a period of quick organic adoption at Dropbox. By the end of 2016, we were at about 420,000 lines of type-annotated Python. Many users were enthusiastic about type checking. The use of mypy was spreading quickly across teams at Dropbox.
+많은 것들이 잘 되어가고 있었지만, 여전히 해야할 일이 많았습니다.
+우리는 정기적으로 내부 서베이를 수행하여, 불편한 부분이나 우전적으로 개발되어야 할 부분을 조사했습니다.
+(이러한 방식은 현재까지도 지속되고 있습니다.)
+크게 두 가지 핵심적인 요구사항이 있었습니다. 더 많은 타입 지원과, 더 빠른 실행 속도였죠.
+아직 더 개선할 사항이 있다는게 명백해졌으므로, 우리는 일에 더 박차를 가했습니다.
 
-Things were looking good, but there was still a lot of work to be done. We started running periodic internal user surveys to find pain points and to figure out what work to prioritize (a habit that continues to this day). Two requests were clearly at the top: more type checking coverage, and faster mypy runs. Clearly our performance and adoption growth work was not yet done. We doubled down on these tasks.
+## 더 빠른 성능!
 
-## More performance!
+점진적인 빌드 방식은 mypy를 빠르게 만들었지만, 여전히 충분히 빠르지는 않았습니다. 여전히 한 번의 실행이 1분 가량 소모되었습니다. 이것의 원인은 거대한 파이썬 코드베이스를 다뤄본 사람이라면 익숙한 문제일 것인데요, 바로 순환참조입니다.
+수백개의 모듈이 서로를 직간접적으로 참조하는 상황. 이러한 사이클에서 단 하나의 파일만 바뀌어도, mypy는 전체 사이클에 있는 모든 파일을 검사하여야 하고, 이 사이클에 있는 모듈을 import하는 다른 모듈도 검사하여야 했습니다.
 
-Incremental builds made mypy faster, but it still wasn’t quite fast. Many incremental runs took about a minute. The cause is perhaps not surprising to anybody who has worked on a large Python codebase: cyclic imports. We had sets of hundreds of modules that each indirectly import each other. If any file in an import cycle got changed, mypy would have to process all the files in the cycle, and often also any modules that imported modules from this cycle. One of these cycles was the infamous “tangle” that has caused much grief at Dropbox. At one point it contained several hundred modules, and many tests and product features imported it, directly or indirectly.
+이러한 사이클 중의 하나는 드롭박스의 수많은 사람들을 눈물나게 한 악명높은 "꼬임"도 있었습니다.
+어느 한 시점에는 수백개의 모듈이 서로를 임포트하고 다시 이를 임포트하는 테스트 함수와 제품 코드가 섞인 상태였습니다.
 
-We looked at breaking the tangled dependencies, but we didn’t have the resources to do that. There was just too much code we weren’t familiar with. We came up with an alternative approach—we were going to make mypy fast even in the presence of tangles. We achieved this through the mypy daemon. The daemon is a server process that does two interesting things. First, it keeps information about the whole codebase in memory, so that each mypy run doesn’t need to load cache data corresponding to thousands of import dependencies. Second, it tracks fine-grained dependencies between functions and other constructs. For example, if function foo calls function bar, there is a dependency from bar to foo. When a file gets changed, the daemon first processes just the changed file in isolation. It then looks for externally visible changes in that file, such as a changed function signature. The daemon uses the fine-grained dependencies to only recheck those functions that actually use the changed function. Usually this is a small number of functions.
+우리는 이렇게 꼬인 의존성을 풀려고 시도해보았습니다만, 그럴만한 충분한 시간과 능력이 없었습니다.
+익숙하지 않은 코드도 너무나 많았구요.
+대신 우리는 다른 방식의 접근을 시도했습니다. 그러한 꼬임이 존재하더라도 괜찮게끔 mypy를 빠르게 만들자는 것이었습니다.
+이를 우리는 mypy 데몬을 통해서 달성했습니다. mypy 데몬은 두 가지 흥미로운 작업을 하는 서버 프로세스입니다.
+첫째로, 전체 코드베이스에 대한 정보를 메모리에 저장하고 있고, 이를 통해 각 mypy 실행시에 수천개의 전체 디펜던시를 다 로드하지 않아도 되도록 합니다.
+둘째로, 함수와 기타 구조에 대한 find-grained 디펜던시를 추적합니다.
+예를 들어, foo 함수가 bar 함수를 호출한다면, bar에서 foo로의 의존성이 있습니다.
+만약 파일이 수정되면, 데몬은 먼저 수정된 파일을 검사하고, 그 후 해당 파일의 변화를 확인할 수 있는 외부 파일을 검사합니다, 예를 들면 파일 시그니쳐가 바뀌었던가 하는 것 말이죠. 데몬은 fine-grained 디펜던시를 사용해서 변화된 함수를 사용하는 함수들만 다시 검사합니다. 이는 대체로 적은 수의 함수입니다.
 
-Implementing all this was a challenge, since the original implementation was heavily geared towards processing things a file at a time. We had to deal with numerous edge cases around what needs to be reprocessed when various thing change, such as when a class gets a new base class. After a lot of painstaking work and sweating the details, we were able to get most incremental runs down to a few seconds, which felt like a great victory.
+기존의 구현은 한 파일 전체를 검사하는 방식으로 이루어졌기 때문에, 이러한 새로운 기능을 구현하는 것은 굉장히 도전적인 일이었습니다. 우리는 수많은 어떤 함수들이 검사되어야 하는지 수 많은 edge case와 싸워야했죠.
+수많은 땀과 노력 끝에 우리는 대부분의 점진적 실행을 단 몇초안에 끝낼 수 있도록 만드는데에 성공했습니다.
 
 ## Even more performance!
 
@@ -211,13 +247,12 @@ In the end, most of the code was manually annotated by code owners. We provide r
 
 Import cycles. Previously I mentioned that import cycles (the “tangle”) made it hard to make mypy fast. We also had to work hard to make mypy support all kinds of idioms arising from import cycles. We recently finished a major redesign project that finally fixes most import cycle issues. The issues actually stem from the very early days of Alore, the research language mypy originally targeted. Alore had syntax that made dealing with import cycles easy, and we inherited some limitations from the simple-minded implementation (that was just fine for Alore). Python makes dealing with import cycles not easy, mainly because statements can mean multiple things. An assignment might actually define a type alias, for example, and mypy can’t always detect that until most of an import cycle has been processed. Alore did not have this kind of ambiguity. Early design decisions can cause you pain still many years later!
 
-## To 5 million lines and beyond
+## 5백만 줄 그리고 그 너머로
 
-It has been a long journey from the early prototypes to type checking 4 million lines in production. Along the way we’ve standardized type hinting in Python, and there is now a burgeoning ecosystem around Python type checking, with IDE and editor support for type hints, multiple type checkers with different tradeoffs, and library support.
+초기 프로토타입에서 시작해서 4백만 줄을 검사하기에 이르기까지, 아주 긴 여정이었습니다.
+파이썬의 타입 힌트 문법을 표준화했고, IDE와 에디터의 도움으로 파이썬 생태계에서 타입 검사 ~가 싹 텄고, 서로 다른 장단점을 가진 다양한 타임 체커가 만들어졌고, 라이브러리들도 지원하기 시작했죠.
 
-Even though type checking is already taken for granted at Dropbox, I believe that we are still in early days of Python type checking in the community, and things will continue to grow and get better. If you aren’t using type checking in your large-scale Python project, now is a good time to get started—nobody who has made the jump I’ve talked to has regretted it. It really makes Python a much better language for large projects.
-
-Are you interested in working on Developer Infrastructure at scale? We’re hiring!
+비록 드롭박스 내에서는 타입 검사가 충분히 받아들여지고 있지만, 제 생각에 파이썬 커뮤니티에서 아직은 타입 검사는 초기단계라고 생각되고, 앞으로 더 나아지고 퍼져나갈 것이라고 생각합니다. 아직 거대한 파이썬 프로젝트에서 타입 검사를 써보지 않았다면, 지금이 바로 시작할 때라고 생각합니다 (아무도 저에게 타입 검사 도입 후에 후회한다고 말한 적이 없어요!). 타입 검사는 큰 프로젝트에서 파이썬을 더 나은 언어로 만들어주는 방법이라고 자신있게 말할 수 있습니다.
 
 ---
 
