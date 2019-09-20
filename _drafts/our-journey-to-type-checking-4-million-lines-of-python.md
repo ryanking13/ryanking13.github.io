@@ -189,11 +189,19 @@ mypy는 거기서 한발짝 더 나아갔는데요. 만약 모듈의 외부 인�
 기존의 구현은 한 파일 전체를 검사하는 방식으로 이루어졌기 때문에, 이러한 새로운 기능을 구현하는 것은 굉장히 도전적인 일이었습니다. 우리는 수많은 어떤 함수들이 검사되어야 하는지 수 많은 edge case와 싸워야했죠.
 수많은 땀과 노력 끝에 우리는 대부분의 점진적 실행을 단 몇초안에 끝낼 수 있도록 만드는데에 성공했습니다.
 
-## Even more performance!
+## 더욱 너 나은 성능!
 
-Together with remote caching that I discussed above, mypy daemon pretty much solved the incremental use case, where an engineer iterates on changes to a small number of files. However, worst-case performance was still far from optimal. Doing a clean mypy build would take over 15 minutes, which was much slower than we were happy with. This was getting worse every week, as engineers kept writing new code and adding type annotations to existing code. Our users were still hungry for more performance, and we were happy to comply.
+앞서 언급한 원격 캐싱을 도입한 결과, mypy 데몬은 몇개 되지 않는 파일만 변경된 점진적 사용 시에 만족스러운 성능을 보였습니다.
+그러나 여전히 최악의 경우에서의 성능은 갈 길이 멀었습니다. 제일 처음 실행하는 mypy 빌드는 15분 가량 걸렸고, 이는 우리가 만족할 수 있는 속도가 아니었습니다.
+더욱이 이는 매주 엔지니어들이 코드에 타입을 추가하면서 점점 악화되었습니다.
+여전히 드롭박스의 사용자들은 성능 향상을 원하고 있었습니다. 우리는 그 기대에 부합해야했습니다.
 
-We decided to get back to one of the early ideas behind mypy—compiling Python to C. Experimenting with Cython (an existing Python to C compiler) didn’t give any visible speed-up, so we decided to revive the idea of writing our own compiler. Since the mypy codebase (which is written in Python) was already fully type annotated, it seemed worth trying to use these type annotations to speed things up. I implemented a quick proof-of-concept prototype that gave performance improvement of over 10x in various micro-benchmarks. The idea was to compile Python modules to CPython C extension modules, and to turn type annotations into runtime type checks (normally type annotations are ignored at runtime and only used by type checkers). We effectively were planning to migrate the mypy implementation from Python to a bona fide statically typed language, which just happens to look (and mostly behave) exactly like Python. (This sort of cross-language migration was becoming a habit—the mypy implementation was originally written in Alore, and later a custom Java/Python syntax hybrid.)
+우리는 mypy를 파이썬에서 C로 컴파일하는 초기의 아이디어로 돌아갔습니다. 기존에 존재하는 파이썬 to C 컴파일러인 Cython을 이용하는 것은 뚜렷한 속도 향상을 보이지 않았고, 따라서 우리는 자체적인 컴파일러를 개발하기로 했습니다. 파이썬으로 작성된 mypy 코드베이스는 이미 전체 코드에 타입 어노테이션이 작성된 상태였기 때문에, 이 타입 어노테이션을 이용해서 속도를 향상시켜보기로 했습니다.
+저는 간단한 POC 프로토타입을 만들어서 여러 마이크로 벤치마크에서 10배 이상의 성능 향상을 보이는 것을 확인했습니다.
+아이디어는 파이썬 모듈을 CPython의 C 익스텐션 모듈로 컴파일하고, 런타임에 타입 어노테이션을 검사하는 것이었습니다 (일반적으로 타입 어노테이션은 런타임에는 무시되고 타입 체커에 의해서만 사용됩니다.).
+우리는 
+
+proof-of-concept prototype that gave performance improvement of over 10x in various micro-benchmarks. The idea was to compile Python modules to CPython C extension modules, and to turn type annotations into runtime type checks (normally type annotations are ignored at runtime and only used by type checkers). We effectively were planning to migrate the mypy implementation from Python to a bona fide statically typed language, which just happens to look (and mostly behave) exactly like Python. (This sort of cross-language migration was becoming a habit—the mypy implementation was originally written in Alore, and later a custom Java/Python syntax hybrid.)
 
 Targeting the CPython extension API was key to keeping the scope of the project manageable. We didn’t need to implement a VM or any libraries needed by mypy. Also, all of the Python ecosystem and tools (such as pytest) would still be available for us, and we could continue to use interpreted Python during development, allowing a very fast edit-test cycle without having to wait for compiles. This sounded like both having your cake and eating it, which we quite liked!
 
@@ -231,21 +239,41 @@ _Performance_. We improved mypy performance through mypy daemon and mypyc (p75 g
 
 _Editor integrations_. We provided integrations for running mypy for editors popular at Dropbox, including PyCharm, Vim, and VS Code. These make it much easier to iterate on annotations, which happens a lot when annotating legacy code.
 
-_Static analysis. We wrote a tool to infer signatures of functions using static analysis. It can only deal with sufficiently simple cases, but it helped us increase coverage without too much effort.
+_Static analysis_. We wrote a tool to infer signatures of functions using static analysis. It can only deal with sufficiently simple cases, but it helped us increase coverage without too much effort.
 
-_Third party library support. A lot of our code uses SQLAlchemy, which uses dynamic Python features that PEP 484 types can’t directly model. We made a PEP 561 stub file package and wrote a mypy plugin to better support it (it’s available as open source).
+_Third party library support_. A lot of our code uses SQLAlchemy, which uses dynamic Python features that PEP 484 types can’t directly model. We made a PEP 561 stub file package and wrote a mypy plugin to better support it (it’s available as open source).
 
 ## Challenges along the way
 
-Getting to 4M lines wasn’t always easy and we had a few bumps and made some mistakes along the way. Here are some that will hopefully prevent a few others from making the same mistakes.
+4백만 줄에 이르는 것은 당연히 쉬운 일이 아니었고, 그 과정에서 여러 실수와 문제들이 있었습니다.
+아래는 다른 사람들이 우리와 같은 실수를 하지 않기를 바라는 마음에서 적은 내용들입니다.
 
-Missing files. We started with only a small number of files in the mypy build. Everything outside the build was not checked. Files were implicitly added to the build when the first annotations were added. If you imported anything from a module outside the build, you’d get values with the Any type, which are not checked at all. This resulted in a major loss of typing precision, especially early in the migration. This still worked surprisingly well, though it was a typical experience that adding a file to the build exposed issues in other parts of the codebase. In the worst case, two isolated islands of type checked code were being merged, and it turned out that the types weren’t compatible between the two islands, necessitating numerous changes to annotations! In retrospect, we should have added basic library modules to the mypy build much earlier to make things smoother.
+__빠진 파일들__. mypy를 이용한 우리의 첫 빌드는 아주 적은 수의 파일을 대상으로 이루어졌습니다.
+이 빌드밖에 있는 파일들을 검사 대상 외였죠. 어떤 파일에 어노테이션이 추가되면 빌드에 추가되는 방식입니다.
+그래서 만약 빌드 밖에 있는 파일을 임포트하면, 전혀 검사되지 않은 Any 타입의 값을 받게됩니다.
+이는 타입 정확도를 현저하게 떨어뜨립니다 (특히 초기의 마이그레이션에서요.).
+최악의 경우는 두 개의 서로 다른 타입 검사가 완료된 코드베이스를 머지하면 두 코드베이스가 호환되지 않는다는 것을 발견하고,
+수 많은 어노테이션의 수정이 필요하기도 했죠!
+돌이켜 생각해보면 mypy 빌드 시에 기본적인 라이브러리 모듈을 포함시켜서 좀더 make things smmother하게 만들어야 했습니다.
 
-Annotating legacy code. When we started, we had over 4 million lines of existing Python code. It was clear that annotating all of that would be non-trivial. We implemented a tool called PyAnnotate that can collect types at runtime when running tests and insert type annotations based on these types—but it didn’t see much adoption. Collecting the types was slow, and generated types often required a lot of manual polish. We thought about running it automatically on every test build and/or collecting types from a small fraction of live network requests, but decided against it as either approach is too risky.
+__레거시 코드에 어노테이션 추가하기__. 처음 시작했을 때, 우리에게는 4백만줄의 파이썬 코드가 있었습니다.
+이 코드 전체에 어노테이션을 추가하는 것은 non-trivial 함이 당연했죠.
+그래서 우리는 PyAnnotate라는 도구를 만들어서 런타임에 타입을 수집하고 이렇게 수집된 타입을 토대로 타입 어노테이션을 삽입하고자 했습니다. 그러나 이는 큰 효용이 없었습니다. 타입을 수집하는 것이 느렸고, 나온 결과물도 대체로 수작업으로 일일히 수정해야 하는 것이었죠.
+매번 테스트 빌드를 할 때마다 small fraction of network requests에서 타입을 수집하는 것도 고려해보았습니다만,
+결과적으로는 이것이 너무 risky하다고 판단했습니다.
 
-In the end, most of the code was manually annotated by code owners. We provide reports of highest-value modules and functions to annotate to streamline the process. A library module that is used in hundreds of places is important to annotate; a legacy service that is being replaced much less so. We are also experimenting with using static analysis to generate type annotations for legacy code.
+최종적으로는, 대부분의 코드가 코드 작성자에 의해 수작업으로 어노테이션 되었습니다.
+우리는 highest-value 모듈과 함수들에 대한 report를 제공하여 주요한 어노테이션 작업이 더 원활하게 이루어지도록 했습니다. 수백군데에서 쓰이는 라이브러리 모듈은 우선적으로 어노테이션이 이루어져야하고, 반대로 곧 대체될 레거시 서비스는 어노테이션의 중요함이 훨씬 덜합니다.
+또한 정적 분석 도구를 이용해서 레거시코드에 타입 어노테이션을 붙이는 실험도 했습니다.
 
-Import cycles. Previously I mentioned that import cycles (the “tangle”) made it hard to make mypy fast. We also had to work hard to make mypy support all kinds of idioms arising from import cycles. We recently finished a major redesign project that finally fixes most import cycle issues. The issues actually stem from the very early days of Alore, the research language mypy originally targeted. Alore had syntax that made dealing with import cycles easy, and we inherited some limitations from the simple-minded implementation (that was just fine for Alore). Python makes dealing with import cycles not easy, mainly because statements can mean multiple things. An assignment might actually define a type alias, for example, and mypy can’t always detect that until most of an import cycle has been processed. Alore did not have this kind of ambiguity. Early design decisions can cause you pain still many years later!
+
+__임포트 cycle__. 앞서도 임포트 cycle ("꼬임")이 mypy를 빠르게 하는 것을 어렵게 한다고 언급한 바 있습니다.
+또한 모든 종류의 import cycle을 지우너하지 위해서 많은 노력이 필요했죠.
+우리는 최근에 메이저한 redesign 프로젝트를 끝냈고, 마침애 대부분의 import cycle 이슈를 해결하였습니다.
+이러한 이슈들은 초기 Alore 때에서 stem 했는데요.
+Alore에는 이러한 import cycle을 쉽게 다룰 수 있는 문법이 존재했지만, 파이썬에서는 import cycle을 다루는 것이 쉽지 않았습니다. 왜냐하면 statements can mean mulitple things.
+예를 들어, assignment가 type alias를 정의할 수 있고, mypy는 이를 대부분의 import cycle이 처리되기 전까지는 인식할 수가 없었습니다. Alore는 이러한 모호성이 없었습니다. 초기의 design decision이 몇년 후까지 pain을 주는 경우라고 할 수 있죠!
+
 
 ## 5백만 줄 그리고 그 너머로
 
