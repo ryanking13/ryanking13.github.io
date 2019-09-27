@@ -197,27 +197,42 @@ mypy는 거기서 한발짝 더 나아갔는데요. 만약 모듈의 외부 인�
 여전히 드롭박스의 사용자들은 성능 향상을 원하고 있었습니다. 우리는 그 기대에 부합해야했습니다.
 
 우리는 mypy를 파이썬에서 C로 컴파일하는 초기의 아이디어로 돌아갔습니다. 기존에 존재하는 파이썬 to C 컴파일러인 Cython을 이용하는 것은 뚜렷한 속도 향상을 보이지 않았고, 따라서 우리는 자체적인 컴파일러를 개발하기로 했습니다. 파이썬으로 작성된 mypy 코드베이스는 이미 전체 코드에 타입 어노테이션이 작성된 상태였기 때문에, 이 타입 어노테이션을 이용해서 속도를 향상시켜보기로 했습니다.
-저는 간단한 POC 프로토타입을 만들어서 여러 마이크로 벤치마크에서 10배 이상의 성능 향상을 보이는 것을 확인했습니다.
+저는 간단한 프로토타입 POC(proof-of-concept)를 만들어서 여러 마이크로 벤치마크에서 10배 이상의 성능 향상을 보이는 것을 확인했습니다.
 아이디어는 파이썬 모듈을 CPython의 C 익스텐션 모듈로 컴파일하고, 런타임에 타입 어노테이션을 검사하는 것이었습니다 (일반적으로 타입 어노테이션은 런타임에는 무시되고 타입 체커에 의해서만 사용됩니다.).
-우리는 
+우리가 하고자 한 것은 mypy를 파이썬에서 파이썬 같아 보이는 (그리고 파이썬 같이 행동하는) 완전 정적 타입 언어로 바꾸는 것이었습니다. (이런 식의 언어간 마이그레이션을 자주 활용했습니다. mypy는 처음에는 Alore로 만들어졌다가 이후에는 커스텀한 자바/파이썬이 혼재된 문법으로 바뀌었었죠.)
 
-proof-of-concept prototype that gave performance improvement of over 10x in various micro-benchmarks. The idea was to compile Python modules to CPython C extension modules, and to turn type annotations into runtime type checks (normally type annotations are ignored at runtime and only used by type checkers). We effectively were planning to migrate the mypy implementation from Python to a bona fide statically typed language, which just happens to look (and mostly behave) exactly like Python. (This sort of cross-language migration was becoming a habit—the mypy implementation was originally written in Alore, and later a custom Java/Python syntax hybrid.)
+CPython 익스텐션 API를 활용하는 것이 이 프로젝트가 지속될 수 있게하는 핵심적인 요소였습니다. mypy를 위해서 VM이나 새로운 라이브러리를 만들 필요가 없으니까요.
+또한 모든 파이썬 생태계와 도구 (e.g. pytest)를 그대로 활용할 수 있고, 개발 도중에 인터프리터 환경에서 파이썬 코드를 실행해 볼 수 있어서, 긴 시간 컴파일 되는 것을 기다릴 필요가 없어서 고치고 테스트하는 사이클의 속도가 굉장히 빨랐습니다.
+마치 두 마리 토끼를 다 잡는 것 같은 것이죠, which we quite liked!
 
-Targeting the CPython extension API was key to keeping the scope of the project manageable. We didn’t need to implement a VM or any libraries needed by mypy. Also, all of the Python ecosystem and tools (such as pytest) would still be available for us, and we could continue to use interpreted Python during development, allowing a very fast edit-test cycle without having to wait for compiles. This sounded like both having your cake and eating it, which we quite liked!
+우리가 mypyc라고 명명한 컴파일러(프론트엔드에서 타입 분석을 위해서 mypy를 사용하기 때문에 이런 이름이 붙었습니다.)는 굉장히 성공적이었습니다. 캐싱된 것이 없는 처음 mypy 실행에서 전체적으로 4배의 속도 향상을 보였습니다. Michael Sullivan, Ivan Levkivskyi, Hugh Han, 그리고 저로 구성된 작은 팀에서 mypyc 프로젝트의 핵심적인 부분을 개발하는 데에는 4개월 정도가 걸렸습니다.
+이는 mypy 전체를 C++이나 Go로 다시 작성하는 것에 비해서 훨씬 적고 덜 귀찮은 일이었지요. 우리는 언젠가 드롭박스의 다른 엔지니어들 역시 mypyc를 써서 코드를 빠르게 할 수 있게 되는 것을 기대하고 있습니다.
 
-The compiler, which we called mypyc (since it uses mypy as the front end to perform type analysis), was very successful. Overall we achieved around 4x speedup for clean mypy runs with no caching. The core of the mypyc project took about 4 calendar months with a small team, which included Michael Sullivan, Ivan Levkivskyi, Hugh Han, and myself. This was much less work than what it would have taken to rewrite mypy in C++ or Go, for example, and much less disruptive. We also hope to make mypyc eventually available for Dropbox engineers for compiling and speeding up their code.
+이 정도 수준의 성능에 이르기까지 꽤 흥미로운 기술적 요소들이 있었는데요. 컴파일러가 여러 명령어를 빠르게 하기 위해서 fast, low-level C constructs를 사용합니다.
+예를 들어, 컴파일된 함수는 C 함수 콜 방식을 사용하여 interpreted funcion call 보다 훨씬 빠릅니다.
+디렉토리 lookup과 같은 연산은 여전히 CPython의 C API call을 사용하여 컴파일해도 아주 약간의 성능 향상만을 보입니다.
+우리는 interpretation overhead를 완전히 없애지는 못하고, 이러한 연산에 대해서는 약간의 스피드업만 달성했습니다.
 
-There was some interesting performance engineering involved in reaching this level of performance. The compiler can speed up many operations by using fast, low-level C constructs. For example, calling a compiled function gets translated into a C function call, which is a lot faster than an interpreted function call. Some operations, such as dictionary lookups, still fall back to general CPython C API calls, which are only marginally faster when compiled. We can get rid of the interpretation overhead, but that only gives a minor speed win for these operations.
+우리는 이러한 "느린 연산들"을 찾기 위해 프로파일링을 수행하였는데요.
+이 프로파일링 데이터를 바탕으로, 해당 연산에 대해서 더 빠른 코드를 생성하게끔 mypyc를 최적화 한다던가,
+동일한 파이썬 코드를 더 빠른 연사능로 바꾸는(물론 이게 언제나 가능한 것은 아니었습니다.) 작업을 수행했습니다.
+후자의 경우가 변환은 컴파일러를 통해서 자동화하는 것보다 훨씬 간단한 경우가 많았습니다.
+장기적으로는 이러한 변환들을 자동화하려고 하지만, 현재는 mypy를 최소한의 노력으로 빠르게 하고, 일부의 특수 케이스만 고치는 방식을 쓰고 있습니다.
 
-We did some profiling to find the most common of these “slow operations”. Armed with this data, we tried to either tweak mypyc to generate faster C code for these operations, or to rewrite the relevant Python code using faster operations (and sometimes there was nothing we could easily do). The latter was often much easier than implementing the same transformation automatically in the compiler. Longer term we’d like to automate many of these transformations, but at this point we were focused on making mypy faster with minimal effort, and at times we cut a few corners.
+## 4백만 줄을 달성하다
 
-## Reaching 4 million lines
+또 다른 중요한 도전과제 (mypy 유저 서베이에서 두번째로 많은 요청이기도 했던 것)는, 드롭박스의 타입 커버리지를 높이는 것이었습니다.
+우리는 여러 가지 시도를 했는데요, 자연스럽게 사람들이 타입을 붙이도록 하는 것에서, mypy 팀이 직접 나서서 타입을 붙이는 것, 나아가 자동으로 타입을 추론하는 것까지 시도하였습니다.
+최종적으로 어떤 한 전략이 특히 잘 먹혀들거나 하지는 않았지만, 여러 전략을 통해서 빠르게 드롭박스의 코드베이스에 타입 어노테이션을 추가할 수 있었습니다. 
 
-Another important challenge (and the second most popular request in mypy user surveys) was increasing type checking coverage at Dropbox. We tried several approaches to get there: from organic growth, to focused manual efforts of the mypy team, to static and dynamic automated type inference. In the end, it looks like there is no simple winning strategy here, but we were able to reach fast annotation growth in our codebases by combining many approaches.
+결과적으로, 세계적으로 가장 거대한 백엔드 파이썬 레포지토리인 드롭박스의 코드베이스에는 3년만에 4백만 줄에 가까운 코드가 타이핑 되었습니다.
+mypy는 다양한 커버리지 레포트를 제공하여 진행상황을 알 수 있도록 해줍니다.
+예를 들어, Any 타입을 사용하거나, 타입 어노테이션이 없는 서드파티 라이브러리를 사용할 때는 부정확한 타입임을 알려줍니다.
+드롭박스의 타입 검사 정확도를 향상시키는 과정에서, 우리는 여러 오픈 소스 라이브러리와 파이썬 typeshed 레포지토리의 타입 정의에도 기여했습니다.
 
-As a result, our annotated line count in the biggest Python repository (for back-end code) grew to almost 4 million lines of statically typed code in about three years. Mypy now supports various kinds of coverage reports that makes it easy to track our progress. In particular, we report sources of type imprecision, such as using explicit, unchecked Any types in annotations, or importing 3rd party libraries that that don’t have type annotations. As part of our effort to improve type checking precision at Dropbox, we also contributed improved type definitions (a.k.a. stub files) for some popular open-source libraries to the centralized Python typeshed repository.
-
-We implemented (and standardized in subsequent PEPs) new type system features that enable more precise types for certain idiomatic Python patterns. A notable example is TypedDict, which provides types for JSON-like dictionaries that have a fixed set of string keys, each with a distinct value type. We will continue to extend the type system, and improving support for the Python numeric stack is one of the likely next steps.
+우리는 새로운 타입 시스템 기능을 만들고 특정 파이썬 패턴에 대해서 더 정확한 타입을 사용할 수 있도록 하는 것에도 노력하고 있습니다. (표준 PEP를 만드는 것도 물론 하고 있구요.)
+주목할만한 예로는 고정된 문자열 키와 distinct value type를 가진 JSON-like 딕셔너리 타입인 `TypedDict`가 있습니다.
+우리는 계속 타입 시스템을 확장해나가고 있으며, 파이썬의 numeric stack을 지원하는 것이 likely next steps.
 
 ![server](https://dropboxtechblog.files.wordpress.com/2019/09/01-s_be3065586f8fa9c15d8db9d64833f16b5a48ee3941b26d6e4f9f37a6c6aecfbc_1565865178872_serverblog2a.png?w=768&h=576)
 
@@ -225,21 +240,25 @@ We implemented (and standardized in subsequent PEPs) new type system features th
 
 ![combined](https://dropboxtechblog.files.wordpress.com/2019/09/03-s_be3065586f8fa9c15d8db9d64833f16b5a48ee3941b26d6e4f9f37a6c6aecfbc_1565876815034_combinedblog2a.png?w=768&h=576)
 
-Here are highlights of the things we’ve done to increase annotation coverage at Dropbox:
+아래는 드롭박스의 어노테이션 커버리지를 향상시키기 위해서 우리가 했던 일들입니다.
 
-_Strictness_. We gradually increased strictness requirements for new code. We started with advice from linters asking to write annotations in files that already had some. We now require type annotations in new Python files and most existing files.
+_엄격함_. 우리는 점진적으로 새로운 코드에 요구하는 수준을 높였습니다. 처음에는 linter가 이미 일부 어노테이션이 작성된 파일에 남은 어노테이션을 작성하도록 권고하는 것에서 시작하여, 지금은 대부분의 새로운 파일 및 기존 파일에 타입 어노테이션을 요구하고 있습니다.
 
-_Coverage reporting_. We send weekly email reports to teams highlighting their annotation coverage and suggesting the highest-value things to annotate.
+_커버리지 리포팅_. 우리는 매주 이메일 레포트를 각 팀에 발송하여, 어노테이션 커버리지를 알려주고, 어노테이션이 필요한 중요 파일을 알려줍니다. 
 
-_Outreach_. We gave talks about mypy and chatted with teams to help them get started.
+_지원 활동_. 우리는 mypy에 대해 꾸준히 발표하고, 각 팀들이 mypy를 사용할 수 있도록 대화하고 도왔습니다.
 
-_Surveys_. We run periodic user surveys to find the top pain points and we go to great lengths to address them (as far as inventing a new language to make mypy faster!).
+_서베이_. 우리는 정기적인 서베이를 수행하여 문제점을 파악하고 고칠 수 있도록 했습니다.
 
-_Performance_. We improved mypy performance through mypy daemon and mypyc (p75 got 44x faster!) to reduce friction in annotation workflows and to allow scaling the size of the type checked codebase.
+_성능_. 우리는 mypy의 성능을 향상시키기 위해서 데몬와 mypyc를 만들어 (p75가 44x faster!) 어노테이션의 부하를 줄이고,
+더 큰 코드베이스에서도 사용할 수 있도록 했습니다.
 
-_Editor integrations_. We provided integrations for running mypy for editors popular at Dropbox, including PyCharm, Vim, and VS Code. These make it much easier to iterate on annotations, which happens a lot when annotating legacy code.
+_에디터 intergrations_. 우리는 드롭박스에서 많이 사용되는 PyCharm, Vim, 그리고 VSCode에 대한 에디터 integration을 제공하여 어노테이션이 훨씬 수월하게 이루어지도록 했씁니다. 
 
-_Static analysis_. We wrote a tool to infer signatures of functions using static analysis. It can only deal with sufficiently simple cases, but it helped us increase coverage without too much effort.
+_정적 분석_. 우리는 함수의 타입을 추론하기 위한 정적 분석을 수행했습니다. 이는 아주 단순한 케이스에서만 제대로 동작했지만,
+큰 노력 없이 커버리지를 높이는데에 도움을 주었습니다.
+
+_서드파티 라이브러리 지원_. 우리의 많은 코드가 SQLAlchemy를 사용하고, 이 라이브러리를 PEP 484의 타입을 바로 적용할 수 없는 파이썬의 dynamic feature를 사용합니다. 우리는 PEP 561 stub file package를 만들고 mypy plugin을 작성하여 to better support it (이는 오픈소스로 공개되어있습니다.)
 
 _Third party library support_. A lot of our code uses SQLAlchemy, which uses dynamic Python features that PEP 484 types can’t directly model. We made a PEP 561 stub file package and wrote a mypy plugin to better support it (it’s available as open source).
 
