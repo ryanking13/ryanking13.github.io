@@ -17,7 +17,7 @@ tags: [About]
 
 
 > __최경재 (Gyeongjae Choi)__
-- [Seoul Nat'l University CSE](https://cse.snu.ac.kr/en) (2015.03 ~ now)
+- [Seoul Nat'l University CSE](https://cse.snu.ac.kr/en) (2015.03 ~ 2019.08)
 - [Github](https://github.com/ryanking13)
 - ✉️ def6488@gmail.com
 - 💬 [sihadan](https://www.slideshare.net/sihadan)
