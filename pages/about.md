@@ -30,7 +30,9 @@ tags: [About]
 
 - Intern, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2018.07 ~ 2018.10 </small></span>
 
-- SSAFY Research Assistant Team, [Multicampus](http://www.multicampus.com/) <span style="color:grey"><small>2019.08 ~ </small></span>
+- Research Engineer, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2019.08 ~ </small></span>
+
+- SSAFY(삼성 청년 SW 아카데미) Research Assistant Team, [Multicampus](http://www.multicampus.com/) <span style="color:grey"><small>2019.08 ~ </small></span>
 
 #### Club Activity
 
@@ -126,7 +128,12 @@ tags: [About]
 ## Other Activities
 
 - [Research Officers for National Defense](http://rond.or.kr) (과학기술전문사관) 4기
+
+#### Open Source
+
+- Pandas [#29566](https://github.com/pandas-dev/pandas/pull/29566)
 - Minor contributions on this blog theme :) [#59](https://github.com/Sylhare/Type-on-Strap/pull/59) [#92](https://github.com/Sylhare/Type-on-Strap/issues/92)
+
 
 #### Localizations
 
