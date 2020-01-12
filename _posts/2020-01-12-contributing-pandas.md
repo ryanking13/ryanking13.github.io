@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 오픈소스 버그 고치다가 CPython까지 뜯어보기
-description: 오픈소스 버그 고치다가 CPython까지 뜯어보기
+title: 오픈소스 버그 고치다가 CPython까지 뜯어본 후기
+description: 오픈소스 버그 고치다가 CPython까지 뜯어본 후기
 tags: [Python]
 ---
 
