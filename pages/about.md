@@ -25,8 +25,8 @@ tags: [About]
 ## Career
 
 - Intern, [Network Convergence & Security Lab](http://mmlab.snu.ac.kr/) <span style="color:grey"><small>2018.03 ~ 2018.06</small></span>
-	- Hyunwoo Lee, Zachary Smith, Junghwan Lim, **Gyeongjae Choi**, Selin Chun, and Ted "Taekyoung" Kwon, "[maTLS: How to Make TLS middlebox-aware?](../assets/else/lee-2019-tls.pdf)", accepted in Proceedings of the Network and Distributed System Security Symposium (NDSS '19), San Diego, USA, February 2019.
-	- 2019 Samsung Security Tech Forum 2019, "Toward Trustworthy Middlebox-aware Secure Architecture", Open Tech Talk _Best Research Prize_, Hyunwoo Lee, Junghwan Lim, **Gyeongjae Choi**, Selin Chun. 
+	- <small>Hyunwoo Lee, Zachary Smith, Junghwan Lim, **Gyeongjae Choi**, Selin Chun, and Ted "Taekyoung" Kwon, "[maTLS: How to Make TLS middlebox-aware?](../assets/else/lee-2019-tls.pdf)", accepted in Proceedings of the Network and Distributed System Security Symposium (NDSS '19), San Diego, USA, February 2019.</small>
+	- <small>2019 Samsung Security Tech Forum 2019, "Toward Trustworthy Middlebox-aware Secure Architecture", Open Tech Talk _Best Research Prize_, Hyunwoo Lee, Junghwan Lim, **Gyeongjae Choi**, Selin Chun.</small> 
 
 - Intern, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2018.07 ~ 2018.10 </small></span>
 
@@ -47,16 +47,21 @@ tags: [About]
 
 <br/>
 <div style="display: flex;">
-<div><img src="/assets/img/about/burgerking.jpg" width="250"/></div>
 <div><img src="/assets/img/about/srt.png" width="250"/></div>
+<div><img src="/assets/img/about/burgerking.jpg" width="250"/></div>
+<div><img src="/assets/img/about/welstory.jpg" width="250"/></div>
 </div>
 <br/>
+
+- [SRT](https://github.com/ryanking13/SRT)
+  - SRT(Super Rapid Train) wrapper for python
+
 
 - [BurgerQueen](https://ryanking13.github.io/burgerqueen)
   - Burgerking App coupon web viewer
 
-- [SRT](https://github.com/ryanking13/SRT)
-  - SRT(Super Rapid Train) wrapper for python
+- [Welstory](https://ryanking13.github.io/welstory)
+  - Samsung Welstory menu viewer
 
 #### Forensics
 
