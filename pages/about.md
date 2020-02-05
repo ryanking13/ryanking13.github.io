@@ -76,11 +76,10 @@ tags: [About]
 	- Django + React-Redux
 	- [Demo](https://youtu.be/v5Ibj2jYNFw)
 
-- WMC Test <span style="color:grey"><small><i>private</i></small></span>
-	- 작업기억 검사 프로그램
+- (Outsourcing) 작업기억용량(working memory capacity) 검사 <span style="color:grey"><small><i>private</i></small></span>
 	- VueJS + Electron
 	- [Download executable](https://drive.google.com/open?id=18RbjSjnl39pmnup2fN7Sr97mAuvva5I9)
-
+	- 이새별, [작업기억 검사의 타당화와 경계선급 지능 아동의 작업기억 특성 분석](../assets/else/D20153202이새별.pdf), 박사학위논문
 
 #### Other
 
