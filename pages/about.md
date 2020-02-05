@@ -30,7 +30,7 @@ tags: [About]
 
 - Intern, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2018.07 ~ 2018.10 </small></span>
 
-- Research Engineer, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2019.08 ~ </small></span>
+- Research Engineer, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2019.08 ~ 2020.01</small></span>
 
 - SSAFY(삼성 청년 SW 아카데미) Research Assistant Team, [Multicampus](http://www.multicampus.com/) <span style="color:grey"><small>2019.08 ~ </small></span>
 
