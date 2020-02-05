@@ -60,7 +60,7 @@ tags: [About]
 - [BurgerQueen](https://ryanking13.github.io/burgerqueen)
   - Burgerking App coupon web viewer
 
-- [Welstory](https://ryanking13.github.io/welstory)
+- [Welstory](https://github.com/ryanking13/welstory)
   - Samsung Welstory menu viewer
 
 #### Forensics
