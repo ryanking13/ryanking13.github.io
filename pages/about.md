@@ -25,7 +25,7 @@ tags: [About]
 ## Career
 
 - Intern, [Network Convergence & Security Lab](http://mmlab.snu.ac.kr/) <span style="color:grey"><small>2018.03 ~ 2018.06</small></span>
-	- <small>Hyunwoo Lee, Zachary Smith, Junghwan Lim, **Gyeongjae Choi**, Selin Chun, and Ted "Taekyoung" Kwon, "[maTLS: How to Make TLS middlebox-aware?](../assets/else/lee-2019-tls.pdf)", accepted in Proceedings of the Network and Distributed System Security Symposium (NDSS '19), San Diego, USA, February 2019.</small>
+	- <small>Hyunwoo Lee, Zachary Smith, Junghwan Lim, **Gyeongjae Choi**, Selin Chun, and Ted "Taekyoung" Kwon, "[maTLS: How to Make TLS middlebox-aware?](https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_01B-6_Lee_paper.pdf)", accepted in Proceedings of the Network and Distributed System Security Symposium (NDSS '19), San Diego, USA, February 2019.</small>
 	- <small>2019 Samsung Security Tech Forum 2019, "Toward Trustworthy Middlebox-aware Secure Architecture", Open Tech Talk _Best Research Prize_, Hyunwoo Lee, Junghwan Lim, **Gyeongjae Choi**, Selin Chun.</small> 
 
 - Intern, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2018.07 ~ 2018.10 </small></span>
@@ -55,6 +55,7 @@ tags: [About]
 
 - [SRT](https://github.com/ryanking13/SRT)
   - SRT(Super Rapid Train) wrapper for python
+  - [go-SRT](https://github.com/ryanking13/go-SRT): golang wrapper of SRT
 
 
 - [BurgerQueen](https://ryanking13.github.io/burgerqueen)
@@ -79,7 +80,7 @@ tags: [About]
 - (Outsourcing) 작업기억용량(working memory capacity) 검사 <span style="color:grey"><small><i>private</i></small></span>
 	- VueJS + Electron
 	- [Download executable](https://drive.google.com/open?id=18RbjSjnl39pmnup2fN7Sr97mAuvva5I9)
-	- 이새별, [작업기억 검사의 타당화와 경계선급 지능 아동의 작업기억 특성 분석](../assets/else/D20153202이새별.pdf), 박사학위논문
+	- 이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 작업기억 특성 분석"](../assets/else/D20153202이새별.pdf), 박사학위논문
 
 #### Other
 
