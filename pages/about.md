@@ -32,7 +32,9 @@ tags: [About]
 
 - Research Engineer, [Soteria Systems](http://soteriasystemsllc.com) <span style="color:grey"><small>2019.08 ~ 2020.01</small></span>
 
-- SSAFY(삼성 청년 SW 아카데미) Research Assistant Team, [Multicampus](http://www.multicampus.com/) <span style="color:grey"><small>2019.08 ~ </small></span>
+- SSAFY(삼성 청년 SW 아카데미) Research Assistant Team, [Multicampus](http://www.multicampus.com/) <span style="color:grey"><small>2019.08 ~ 2020.02</small></span>
+
+- 과학기술전문사관(소위), [Agency for Defense Development(국방과학연구소)](http://www.add.re.kr/) <span style="color:grey"><small>2020.06 ~ </small></span>
 
 #### Club Activity
 
