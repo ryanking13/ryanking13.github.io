@@ -17,13 +17,14 @@ tags: [About]
 
 
 > __최경재 (Gyeongjae Choi)__
-- [Seoul Nat'l University CSE](https://cse.snu.ac.kr/en) (2015.03 ~ 2019.08)
 - [Github](https://github.com/ryanking13)
 - [Linkedin](https://www.linkedin.com/in/gyeongjae-choi-b259b0163)
 - ✉️ def6488@gmail.com
 - 💬 [sihadan](https://www.slideshare.net/sihadan)
 
 ## Career
+
+- Undergraduate, [Seoul Nat'l University CSE](https://cse.snu.ac.kr/en) <span style="color:grey"><small>2015.03 ~ 2019.08</small></span>
 
 - Intern, [Network Convergence & Security Lab](http://mmlab.snu.ac.kr/) <span style="color:grey"><small>2018.03 ~ 2018.06</small></span>
 	- <small>Hyunwoo Lee, Zachary Smith, Junghwan Lim, **Gyeongjae Choi**, Selin Chun, and Ted "Taekyoung" Kwon, "[maTLS: How to Make TLS middlebox-aware?](https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_01B-6_Lee_paper.pdf)", accepted in Proceedings of the Network and Distributed System Security Symposium (NDSS '19), San Diego, USA, February 2019.</small>
