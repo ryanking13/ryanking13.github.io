@@ -11,10 +11,10 @@ tags: [About]
 <div style="text-align: center;">
 <div><img src="/assets/img/about/me-cherryblossom.png" width="500"/></div>
 <div><span style="color:grey"><small><i>Photo by <a href="https://ialy1595.github.io/about/">@ialy1595</a></i></small></span></div>
+<br/>
+<div><img href="http://hits.dwyl.io/ryanking13/ryanking13.github.io" src="http://hits.dwyl.com/ryanking13/ryanking13.github.io.svg"></div>
 </div>
 <br/>
-
-
 
 > __최경재 (Gyeongjae Choi)__
 - [Github](https://github.com/ryanking13)
