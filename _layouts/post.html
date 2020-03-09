@@ -1,43 +1,40 @@
 ---
 layout: default
 ---
-<article {% if page.feature-img %}class="feature-image"{% endif %}>
+<article {% if page.feature-img %}class="feature-image" {% endif %}>
   <header id="main" style="background-image: url('{{ site.baseurl }}/{{ page.feature-img }}')">
     <h2 id="{{ page.title | cgi_escape }}" class="title">{{ page.title }}</h2>
     <p class="meta">
-    {{ page.date | date: "%B %-d, %Y" }}
-    {% if page.author %} - {{ page.author }}{% endif %}
+      {{ page.date | date: "%B %-d, %Y" }}
+      {% if page.author %} - {{ page.author }}{% endif %}
     </p>
   </header>
   <div style="text-align: center;">
-	<a href="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}/{{ page.url | remove_first: '/' | replace: '/', '-' }}" target="_blank">
-	  <img src="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}/{{ page.url | remove_first: '/' | replace: '/', '-' }}.svg" />
-	</a>
-  </div> 
+    <a href="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}"
+      target="_blank">
+      <img
+        src="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}.svg" />
+    </a>
+  </div>
   <section class="post-content">{{ content }}</section>
-   
-   <!-- Tag list -->
+
+  <!-- Tag list -->
   {% capture tag_list %}{{ page.tags | join: "|"}}{% endcapture %}
   {% include tags_list.html tags=tag_list %}
-    
+
 </article>
 
 <!-- Disqus -->
 {% if site.theme_settings.disqus_shortname %}
 <div class="comments">
   <!-- {% include disqus.html %} -->
-  <script src="https://utteranc.es/client.js"
-        repo="ryanking13/ryanking13.github.io"
-        issue-term="pathname"
-        label="comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-  </script>
+  <script src="https://utteranc.es/client.js" repo="ryanking13/ryanking13.github.io" issue-term="pathname"
+    label="comment" theme="github-light" crossorigin="anonymous" async>
+    </script>
 </div>
 {% endif %}
 
 <!-- Post navigation -->
 {% if site.theme_settings.post_navigation %}
-  {% include post_nav.html %}
+{% include post_nav.html %}
 {% endif %}
