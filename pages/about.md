@@ -5,8 +5,6 @@ permalink: /about/
 tags: [About]
 ---
 
-<script src="/assets/js/all.js"></script>
-
 <div style="text-align: center;">
 	<div><img src="/assets/img/about/me-cherryblossom.png" width="500"/></div>
 	<br/>
@@ -357,5 +355,5 @@ _이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 
 - [The Station](http://thestationgame.com/) unofficial korean localization ([link](https://github.com/ryanking13/the-station-kor))
 
 <div style="text-align: center;">
-<!-- <div><img href="http://hits.dwyl.io/ryanking13/ryanking13.github.io" src="http://hits.dwyl.com/ryanking13/ryanking13.github.io.svg"></div> -->
+<div><img href="http://hits.dwyl.io/ryanking13/ryanking13.github.io" src="http://hits.dwyl.com/ryanking13/ryanking13.github.io.svg"></div>
 </div>
