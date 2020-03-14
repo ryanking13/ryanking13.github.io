@@ -2,7 +2,7 @@
 layout: post
 title: Github Actions를 이용하여 서버 없이 알림 봇 만들기
 description: Github Actions를 이용하여 서버 없이 알림 봇 만들기
-tags: [Python, Github]
+tags: [Python, Cloud]
 ---
 
 __TL;DR__
