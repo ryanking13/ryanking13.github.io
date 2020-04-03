@@ -67,7 +67,7 @@ IHDR 청크의 데이터 길이는 언제나 13바이트이다.
 
 - Bit depth & Color type
 
-Color type은 PNG 이미지의 색상을 어떻게 구성할 것인지를 정하고, Bit depth 하나의 채널(channel)이 몇 비트로 구성될 지를 정한다. 이미지의 한 픽셀(pixel)은 하나 또는 여러개의 채널로 구성될 수 있다. 예를 들어 RGB Color type 이라면 한 픽셀은 3개의 채널 (R, G, B)를 갖는다.
+Color type은 PNG 이미지의 색상을 어떻게 구성할 것인지를 정하고, Bit depth는 하나의 채널(channel)이 몇 비트로 구성될 지를 정한다. 이미지의 한 픽셀(pixel)은 하나 또는 여러개의 채널로 구성될 수 있다. 예를 들어 RGB Color type 이라면 한 픽셀은 3개의 채널 (R, G, B)를 갖는다.
 
 | PNG image type     | Color type     | Allowed bit depths | Interpretation |
 | :------------- | :------------- | :------------- | :------------- |
@@ -77,7 +77,7 @@ Color type은 PNG 이미지의 색상을 어떻게 구성할 것인지를 정하
 | Grayscale with alpha       | 4       | 8, 16       | 그레이 스케일 + alpha 값을 갖는다       |
 | Truecolor with alpha       | 6       | 8, 16       | RGB + alpha 값을 갖는다       |
 
-예를 들어, 흔히 웹에서 볼 수 있는 투명도가 있는 RGBA 이미지 (`#FFFFFF00` 꼴로 색상을 나타내는) 의 경우, Color type은 6, Bit depth는 16이 된다.
+예를 들어, 흔히 웹에서 볼 수 있는 투명도가 있는 RGBA 이미지 (`#FFFFFF00` 꼴로 색상을 나타내는) 의 경우, Color type은 6, Bit depth는 8이 된다.
 
 Indexed-color의 경우는 추가로 파일에 `PLTE` 청크가 존재하여야 한다. 해당 청크에서 사용할 팔레트를 지정한다.
 
