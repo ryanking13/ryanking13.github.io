@@ -43,9 +43,9 @@ tags: [About]
 ---
 
 - **[Agency for Defense Development(국방과학연구소)](http://www.add.re.kr/)** <span style="color:grey"><small>2020.06 ~ </small></span>
-	- 과학기술전문사관(소위)
+	- Research Officer
 
-- **[Multicampus](http://www.multicampus.com/)** <span style="color:grey"><small>2019.08 ~ 2020.02</small></span>
+- **[Multicampus](http://www.multicampus.com/)** <span style="color:grey"><small>2019 ~ 2020</small></span>
 	- SSAFY(삼성 청년 SW 아카데미) Research Assistant Team
 
 - **[Soteria Systems](http://www.soteria-sys.com/)** <span style="color:grey"><small>2018 ~ 2020</small></span>
@@ -65,8 +65,8 @@ tags: [About]
 - **[Seoul Nat'l University CSE](https://cse.snu.ac.kr/en)** <span style="color:grey"><small>2015 ~ 2019</small></span>
 	- Undergraduate
 	- [Guardian](https://cse.snu.ac.kr/en/student-club/guardian) (Computer Security Forum)
-		- Vice president <span style="color:grey"><small>2016.12 ~ 2017.12</small></span>
-		- [Malware Analysis Study](https://github.com/GuardianSNUMalwareLab) manager <span style="color:grey"><small>2017.09 ~ 2018.06</small></span>
+		- Vice president <span style="color:grey"><small>2016 ~ 2017</small></span>
+		- [Malware Analysis Study](https://github.com/GuardianSNUMalwareLab) manager <span style="color:grey"><small>2017 ~ 2018</small></span>
 		- [GuardianCTF 2018](https://github.com/Guardian-SNU/ctf2018-writeups) Web hacking course manager
 
 <br/>
@@ -325,11 +325,9 @@ _이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 
 
 - Python (favorite 👍)
 	- Django, Django Rest framework
-- C++
-- Node.js
+- Javascript
   - ReactJS, Redux, VueJS, Electron
-- C#
-- Processing
+- C++
 - Go
 
 #### Other
@@ -338,6 +336,7 @@ _이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 
 - AWS
 - Azure
 - Unity
+- Processing
 
 ## Other Activities
 
