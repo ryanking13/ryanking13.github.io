@@ -1,6 +1,6 @@
 - https capturing with android phone (>= 6)
-- CLI 도구 소개
 - cloud run
 - cloudflare workers
 - new chrome data saver
 - CMS
+- algo with oracle cloud 
