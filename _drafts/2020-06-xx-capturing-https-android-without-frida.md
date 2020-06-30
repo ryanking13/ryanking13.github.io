@@ -42,7 +42,7 @@ Frida는,
 
 SSL-Pinning을 우회하는 다른 방법은,
 
-직접 앱을 언패키징(Unpack)하고 사용자 루트 인증서를 신뢰하도록(_안드로이드 <= 6.0 버전을 타겟으로 하도록_) 설정을 변경한 뒤 다시 리패키징(Repack)해주는 방법입니다.
+직접 앱을 언패키징(Unpack)하고 사용자 루트 인증서를 신뢰하도록 설정을 변경한 뒤 다시 리패키징(Repack)해주는 방법입니다.
 
 예시를 통해서 살펴보겠습니다.
 
@@ -50,7 +50,7 @@ SSL-Pinning을 우회하는 다른 방법은,
 
 (아래 예시는 [investing.com](https://play.google.com/store/apps/details?id=com.fusionmedia.investing&hl=en_US) 앱을 사용하였고, Android 10 및 Windows 환경에서 작업하였습니다.)
 
-![android_trust_anchors](../../../assets/post_images/android_https02.jpg)
+![ssl-pinning](../../../assets/post_images/android_https02.jpg)
 
 [Packet Capture](https://play.google.com/store/apps/details?id=app.greyshirts.sslcapture&hl=ko)
 도구를 사용하여 앱의 패킹 스니핑을 시도하면, SSL 암호화된 패킷이 복호화되지 않는 상태입니다.
@@ -59,11 +59,13 @@ SSL-Pinning을 우회하는 다른 방법은,
 
 ```
 1. 애플리케이션 언패키징
-2. 빌드 버전 변경
+2. 보안 설정 변경
 3. 애플리케이션 리패키징
 4. 애플리케이션 서명
 5. Profit!
 ```
+
+아래 과정에 필요한 모든 도구는 [https://github.com/ryanking13/android-SSL-unpinning](https://github.com/ryanking13/android-SSL-unpinning)에 있습니다.
 
 #### 1. 애플리케이션 언패키징
 
@@ -85,29 +87,88 @@ I: Copying unknown files...
 I: Copying original files...
 ```
 
-#### 2. 빌드 버전 변경
+#### 2. 보안 설정 변경
 
-언패키징된 앱의 `AndroidManifest.xml`파일에서,
-`platformBuildVersionCode` 파라미터와 `platformBuildVersionCode` 파라미터를 수정합니다.
-
+언패키징된 앱의 `AndroidManifest.xml`파일의 `application` 항목에 `android:networkSecurityConfig="@xml/network_security_config"` 파라미터를 추가합니다. (이미 해당 값이 있다면 그대로 둡니다.)
 
 ```xml
-<!-- Before -->
-<manifest [..] platformBuildVersionCode="29" platformBuildVersionName="10">
-
-<!-- After -->
-<!-- API 버전 23 == 안드로이드 6.0 -->
-<manifest [..] platformBuildVersionCode="23" platformBuildVersionName="6">
+<application [...] android:networkSecurityConfig="@xml/network_security_config">
 ```
+
+`res/xml/network_security_config.xml` 파일을 생성하고 (마찬가지로 이미 있다면 그대로 사용합니다.),
+아래의 내용을 삽입합니다.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+			<certificates src="user" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
+```
+
+이중 핵심은 아래 부분입니다.
+
+```xml
+        <trust-anchors>
+            <certificates src="system" />
+			<certificates src="user" />
+        </trust-anchors>
+```
+
+`trust-anchors` 항목에 사용자(user)가 설치한 루트 인증서를 신뢰하도록 합니다.
+
+이제 이 설정을 사용하여 앱을 리패키징하면 됩니다. [^1]
+
+
+[^1]: 더 간단한 방법으로는 `AndroidManifest.xml` 파일에서 안드로이드 6 이하를 타겟으로 하도록 빌드 버전을 수정해주는 방법이 있습니다. ([참고](https://blog.netspi.com/four-ways-bypass-android-ssl-verification-certificate-pinning/)). 다만 `networkSecurityConfig` 값이 지정되어 있다면 먹히지 않습니다.
 
 #### 3. 애플리케이션 리패키징
 
 다시 Apktool을 사용하여 앱을 리패키징합니다.
-리패키징 된 앱은 패키지 폴더 내부의 dist 폴더에 생성됩니다.
 
 ```sh
-$ java -jar apktool.jar b com.fusionmedia.investing
+$ java -jar apktool.jar b com.fusionmedia.investing -o com.fusionmedia.investing.repack.apk
 ```
+
+`com.fusionmedia.investing.repack.apk` 라는 이름으로 리패키징 된 앱이 생성됩니다.
+
+#### 4. 애플리케이션 서명
+
+안드로이드 앱은 패키징 후에 서명을 해야만 설치가 가능합니다.
+[Android SDK에서 서명을 위한 툴을 제공](https://developer.android.com/studio/command-line/apksigner)하지만, 우리는 안드로이드 개발자가 아니니까 번거롭게 SDK 전체를 설치하는 대신,
+테스트용 인증서로 서명을 하는 [간단한 도구](https://github.com/ryanking13/android-SSL-unpinning/blob/master/sign.jar)를 사용하기로 합시다.
+
+```sh
+java -jar sign.jar com.fusionmedia.investing.repack.apk
+```
+
+실행하면 서명된 `com.fusionmedia.investing.repack.s.apk` APK 파일이 생성됩니다. 완성입니다.
+
+#### 5. Profit!
+
+리패키징하고 서명까지 완료된 APK 파일을 다시 디바이스에 설치하고,
+Packet Capture도구를 사용하여 HTTPS 패킹을 스니핑 해보면,
+
+![ssl-unpinning](../../../assets/post_images/android_https03.jpg)
+
+HTTPS 패킷이 복호화 된 것을 확인할 수 있습니다. 이제 분석만 하면 되겠네요 :)
+
+## 결론
+
+위의 일련의 과정을 [https://github.com/ryanking13/android-SSL-unpinning](https://github.com/ryanking13/android-SSL-unpinning)에서 쉽게 수행할 수 있도록 파이썬 스크립트로 작성해두었습니다.
+
+언뜻 보면 Frida를 쓰는 것보다 복잡한 과정을 거쳐야했지만,
+이렇게 한 번 패치해둔 애플리케이션은 심심할 때(?) 언제든 사용할 수 있다는 장점이 있으니
+앞으로는 이 방법을 사용해보시는 건 어떨까요.
 
 ### References
 
