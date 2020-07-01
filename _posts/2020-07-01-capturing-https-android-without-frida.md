@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 안드로이드 앱 리패키징을 통한 SSL-Pinning 우회 (without Frida)
-description: 안드로이드 앱 리패키징을 통한 SSL-Pinning 우회 (without Frida)
+title: 안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법
+description: 안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법
 tags: [Network]
 ---
 
@@ -16,7 +16,7 @@ CTF나 버그 바운티 등을 하다보면 안드로이드 앱의 패킷을 뜯
 이 때문에 안드로이드 7.0 이상에서 가짜 루트 인증서를 디바이스에 설치하고 패킷 스니핑을 시도하면,
 인증서 검증에 문제가 생겨서 앱이 제대로 동작하지 않습니다.
 
-## ✔️ 1. Frida를 이용한 우회법
+## ✔️ Frida를 이용한 우회
 
 이러한 SSL-Pinning 옵션을 우회하는 방법으로 잘 알려진 것은 [Frida](https://github.com/frida/frida)를 이용해서,
 앱의 인증서 검증 과정을 후킹하는 방법입니다.
@@ -31,31 +31,16 @@ Frida는,
 - 👍 SSL-Pinning 우회 외에도 다양한 용도로 사용할 수 있고,
 - 👍 안드로이드 뿐만 아니라 iOS 등의 환경에서도 사용할 수 있다는 장점이 있습니다.
 
-그렇지만,
+그렇지만 한편으로는,
 
 - 👎 매번 adb에서 Frida 서버를 실행하고 컴퓨터와 통신해야 한다는 점과, 
 - 👎 루팅된 디바이스가 필요해서 에뮬레이터를 사용하지 않으면 번거롭다는 단점이 있습니다.
 
 그래서 이 글에서는 다른 방법을 소개하려고 합니다.
 
-## 💡 2. 애플리케이션 리패키징을 통한 우회법
+## 💡 애플리케이션 리패키징을 통한 우회법
 
-SSL-Pinning을 우회하는 다른 방법은,
-
-직접 앱을 언패키징(Unpack)하고 사용자 루트 인증서를 신뢰하도록 설정을 변경한 뒤 다시 리패키징(Repack)해주는 방법입니다.
-
-예시를 통해서 살펴보겠습니다.
-
-> [이 포스트](https://go-madhat.github.io/Android-Analysis/)에서도 언패키징/리패키징 과정이 설명되어 있습니다.
-
-(아래 예시는 [investing.com](https://play.google.com/store/apps/details?id=com.fusionmedia.investing&hl=en_US) 앱을 사용하였고, Android 10 및 Windows 환경에서 작업하였습니다.)
-
-![ssl-pinning](../../../assets/post_images/android_https02.jpg)
-
-[Packet Capture](https://play.google.com/store/apps/details?id=app.greyshirts.sslcapture&hl=ko)
-도구를 사용하여 앱의 패킹 스니핑을 시도하면, SSL 암호화된 패킷이 복호화되지 않는 상태입니다.
-
-패킷 스니핑을 하기 위해 필요한 과정은 다음과 같습니다.
+SSL-Pinning을 우회하는 다른 방법은, 직접 앱을 언패키징(Unpack)하고 사용자 루트 인증서를 신뢰하도록 설정을 변경한 뒤 다시 리패키징(Repack)해주는 방법입니다. 구체적인 단계는 다음과 같습니다.
 
 ```
 1. 애플리케이션 언패키징
@@ -65,7 +50,22 @@ SSL-Pinning을 우회하는 다른 방법은,
 5. Profit!
 ```
 
-아래 과정에 필요한 모든 도구는 [https://github.com/ryanking13/android-SSL-unpinning](https://github.com/ryanking13/android-SSL-unpinning)에 있습니다.
+예시를 통해서 살펴보겠습니다.
+
+> [이 포스트](https://go-madhat.github.io/Android-Analysis/)에서도 언패키징/리패키징 과정이 설명되어 있습니다.
+
+<small>(아래 예시는 [investing.com](https://play.google.com/store/apps/details?id=com.fusionmedia.investing&hl=en_US) 앱을 사용하였고, Android 10 및 Windows 환경에서 작업하였습니다.)</small>
+
+---
+
+![ssl-pinning](../../../assets/post_images/android_https02.jpg)
+
+구글 플레이에서 설치한 investing.com 앱에 대해, [Packet Capture](https://play.google.com/store/apps/details?id=app.greyshirts.sslcapture&hl=ko)
+도구를 사용하여 앱의 패킹 스니핑을 시도해보면, SSL 암호화된 패킷이 복호화되지 않는 상태입니다.
+
+이 앱을 패킷 스니핑이 가능하도록 리패키징해봅시다.
+
+> _이하의 과정에 필요한 모든 도구는 [여기](https://github.com/ryanking13/android-SSL-unpinning)에 있습니다._
 
 #### 1. 애플리케이션 언패키징
 
@@ -95,7 +95,7 @@ I: Copying original files...
 <application [...] android:networkSecurityConfig="@xml/network_security_config">
 ```
 
-`res/xml/network_security_config.xml` 파일을 생성하고 (마찬가지로 이미 있다면 그대로 사용합니다.),
+`res/xml/network_security_config.xml` 파일을 생성하고 (이미 있다면 그대로 사용합니다),
 아래의 내용을 삽입합니다.
 
 ```xml
@@ -109,7 +109,7 @@ I: Copying original files...
     <base-config cleartextTrafficPermitted="true">
         <trust-anchors>
             <certificates src="system" />
-			<certificates src="user" />
+            <certificates src="user" />
         </trust-anchors>
     </base-config>
 </network-security-config>
@@ -120,7 +120,7 @@ I: Copying original files...
 ```xml
         <trust-anchors>
             <certificates src="system" />
-			<certificates src="user" />
+            <certificates src="user" />
         </trust-anchors>
 ```
 
@@ -144,6 +144,7 @@ $ java -jar apktool.jar b com.fusionmedia.investing -o com.fusionmedia.investing
 #### 4. 애플리케이션 서명
 
 안드로이드 앱은 패키징 후에 서명을 해야만 설치가 가능합니다.
+
 [Android SDK에서 서명을 위한 툴을 제공](https://developer.android.com/studio/command-line/apksigner)하지만, 우리는 안드로이드 개발자가 아니니까 번거롭게 SDK 전체를 설치하는 대신,
 테스트용 인증서로 서명을 하는 [간단한 도구](https://github.com/ryanking13/android-SSL-unpinning/blob/master/sign.jar)를 사용하기로 합시다.
 
@@ -151,12 +152,14 @@ $ java -jar apktool.jar b com.fusionmedia.investing -o com.fusionmedia.investing
 java -jar sign.jar com.fusionmedia.investing.repack.apk
 ```
 
-실행하면 서명된 `com.fusionmedia.investing.repack.s.apk` APK 파일이 생성됩니다. 완성입니다.
+실행하면 서명된 `com.fusionmedia.investing.repack.s.apk` APK 파일이 생성됩니다.
+
+완성입니다.
 
 #### 5. Profit!
 
 리패키징하고 서명까지 완료된 APK 파일을 다시 디바이스에 설치하고,
-Packet Capture도구를 사용하여 HTTPS 패킹을 스니핑 해보면,
+Packet Capture 도구를 사용하여 HTTPS 패킹을 스니핑 해보면,
 
 ![ssl-unpinning](../../../assets/post_images/android_https03.jpg)
 
@@ -164,14 +167,13 @@ HTTPS 패킷이 복호화 된 것을 확인할 수 있습니다. 이제 분석�
 
 ## 결론
 
-위의 일련의 과정을 [https://github.com/ryanking13/android-SSL-unpinning](https://github.com/ryanking13/android-SSL-unpinning)에서 쉽게 수행할 수 있도록 파이썬 스크립트로 작성해두었습니다.
+앱을 언패키징/리패키징하는 일련의 과정을 일일이 수작업으로 하는 대신 쉽게 수행할 수 있도록 [여기](https://github.com/ryanking13/android-SSL-unpinning)에 파이썬 스크립트로 작성해두었습니다.
 
 언뜻 보면 Frida를 쓰는 것보다 복잡한 과정을 거쳐야했지만,
-이렇게 한 번 패치해둔 애플리케이션은 심심할 때(?) 언제든 사용할 수 있다는 장점이 있으니
-앞으로는 이 방법을 사용해보시는 건 어떨까요.
+이렇게 한 번 패치해둔 애플리케이션은 심심할 때(?) 언제든 사용할 수 있다는 장점이 있습니다.
 
 ### References
 
-- https://goodtogreate.tistory.com/entry/APK-바이너리-수정후-리패키징repack
-- https://gist.github.com/unoexperto/80694ccaed6dadc304ad5b8196cbbd2c
-- https://github.com/appium/sign
+- [APK-바이너리-수정후-리패키징repack](https://goodtogreate.tistory.com/entry/APK-바이너리-수정후-리패키징repack)
+- [How to patch Android app to sniff its HTTPS traffic with self-signed certificate](https://gist.github.com/unoexperto/80694ccaed6dadc304ad5b8196cbbd2c)
+- [appium/sign](https://github.com/appium/sign)
