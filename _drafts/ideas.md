@@ -1,5 +1,3 @@
-- https capturing with android phone (>= 6)
-- cloud run
 - cloudflare workers
 - new chrome data saver
 - CMS
