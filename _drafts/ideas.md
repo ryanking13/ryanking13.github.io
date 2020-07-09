@@ -1,5 +1,4 @@
 - cloudflare workers
-- new chrome data saver
 - CMS
 - algo with oracle cloud 
 - pycon US featured videos
