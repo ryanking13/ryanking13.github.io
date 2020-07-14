@@ -160,26 +160,6 @@ Oneshot Docker Deployment for [CMS](http://cms-dev.github.io/)
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
-		<a href="https://github.com/ryanking13/welstory" target="_blank">
-			Welstory
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
-		</a>
-	</h4>
-</div>
-
-<span style="color:grey"><small><i>
-<i class="fas fa-cogs"></i> Reverse Engineering &nbsp;
-<i class="fab fa-chrome"></i> Web Development &nbsp;
-<i class="fab fa-vuejs"></i> Vue.js &nbsp;
-<i class="fab fa-python"></i> Python &nbsp;
-<i class="fas fa-cloud"></i> Serverless &nbsp;
-</i></small></span>
-
-Samsung Welstory menu viewer
-<br/>
-
-<div style="display: inline;">
-	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/bellorin" target="_blank">
 			Bellorin
 			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
@@ -211,6 +191,39 @@ Multi-threaded Social Media Crawler
 Cloudflare workers based CORS proxy
 <br/>
 
+<div style="display: inline;">
+	<h4 style="display: inline;">
+		<a href="https://github.com/ryanking13/twitter-lyric-bot" target="_blank">
+			Random Lyric Bot
+			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+		</a>
+	</h4>
+</div>
+
+<span style="color:grey"><small><i>
+<i class="fab fa-twitter"></i> Twitter Bot &nbsp;
+<i class="fab fa-python"></i> Python &nbsp;
+</i></small></span>
+
+Twitter Bot which posts random lyrics
+<br/>
+
+<div style="display: inline;">
+	<h4 style="display: inline;">
+		<a href="https://github.com/ryanking13/twitter-lyric-bot" target="_blank">
+			android-SSL-unpinning
+			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+		</a>
+	</h4>
+</div>
+
+<span style="color:grey"><small><i>
+<i class="fas fa-search"></i> Forensics &nbsp;
+<i class="fab fa-python"></i> Python &nbsp;
+</i></small></span>
+
+Android SSL-unpinning tool
+<br/>
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
@@ -248,26 +261,8 @@ Image fingerprinting tool
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
-		<a href="https://github.com/SNUWagon" target="_blank">
-			SNUwagon
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
-		</a>
-	</h4>
-</div>
-
-<span style="color:grey"><small><i>
-<i class="fab fa-chrome"></i> Web Development &nbsp;
-<i class="fab fa-react"></i> React.js &nbsp;
-<i class="fab fa-python"></i> Python &nbsp;
-</i></small></span>
-
-Simple Social Media (_Collage Project_) - [Demo](https://youtu.be/v5Ibj2jYNFw)
-<br/>
-
-<div style="display: inline;">
-	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/WMCtest" target="_blank">
-			WMC(Working Memory Capacity) Tester
+			Working Memory Capacity Test
 			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
 		</a>
 	</h4>
@@ -282,23 +277,6 @@ Simple Social Media (_Collage Project_) - [Demo](https://youtu.be/v5Ibj2jYNFw)
 작업기억용량 검사 테스트 (_Outsourcing_)
 
 _이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 작업기억 특성 분석"](../assets/else/D20153202이새별.pdf), 박사학위논문_
-<br/>
-
-<div style="display: inline;">
-	<h4 style="display: inline;">
-		<a href="https://github.com/ryanking13/twitter-lyric-bot" target="_blank">
-			Random Lyric Bot
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
-		</a>
-	</h4>
-</div>
-
-<span style="color:grey"><small><i>
-<i class="fab fa-twitter"></i> Twitter Bot &nbsp;
-<i class="fab fa-python"></i> Python &nbsp;
-</i></small></span>
-
-랜덤 가사 포스팅 트위터 봇
 
 <br/>
 
