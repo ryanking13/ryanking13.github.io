@@ -1,0 +1,70 @@
+---
+layout: post
+title: Cloudflare Workers 소개
+description: Cloudflare Workers 소개
+tags: [Cloud]
+---
+
+![Workers Logo](/assets/post_images/cloudflare_workers_logo.jpg)
+
+최근 _(이라고 하기에는 꽤 된 것 같지만...)_ 마이크로서비스 아키텍처 중심으로 소프트웨어 개발 기법이 변화하면서,
+FaaS (Function as a Service) 방식의 서버리스 컴퓨팅이 각광을 받고 있습니다.
+
+[AWS Lambda](https://aws.amazon.com/ko/lambda/), [Azure Functions](https://azure.microsoft.com/ko-kr/services/functions/), [Google Cloud Functions](https://cloud.google.com/functions) 등 대표적인 클라우드 플랫폼에서
+모두 FaaS 서비스를 제공하고 있고,
+Google Cloud의 경우는 [Cloud Run](https://cloud.google.com/run?hl=ko)이라는 컨테이너 기반의 흥미로운 솔루션도 제공합니다.
+
+아마 FaaS 방식의 서비스를 프로젝트에 도입하고자 한다면 대부분 위의 플랫폼들을 고려하실텐데요.
+이 글에서는 기존의 플랫폼 대신, 다소 낯선 플랫폼을 소개하려 합니다.
+바로 CDN(Content delivery network) 서비스로 유명한 Cloudflare의 [workers](https://workers.cloudflare.com/) 입니다.
+
+## 🏷️ Workers의 특징
+
+FaaS 클라우드 플랫폼이 제공하는게 다 고만고만하지 않나,
+하는 생각이 들 수 있는데 Workers 이 녀석은 꽤나 독특합니다.
+
+#### 1. V8 엔진 기반 런타임
+
+Cloudflare Workers의 가장 큰 특징은 [V8 엔진을 기반으로 한 Workers 런타임을 이용하여 각 함수 별로 독립된 샌드박스 환경을 제공한다는 것](https://developers.cloudflare.com/workers/about/how-it-works/)입니다. 타 서비스가 각 함수를 VM 또는 컨테이너를 이용해서 격리된 환경을 구성하는 것과 대비되는 부분입니다.
+
+![VM vs V8](https://developers.cloudflare.com/workers/about/media/isolates.png)
+
+이게 사용자 입장에서 어떤 차이를 가져오나면, 각 함수가 각각의 VM/컨테이너에서 실행되는 타 서비스에 비해서, __Workers는 가벼운 V8 엔진 기반 Workers 런타임 + 하나의 런타임이 수많은 함수를 실행할 수 있다는 점 덕분에 초기 실행속도가 어마어마하게 빨라집니다__.
+
+> Workers processes are able to run essentially limitless scripts with almost no individual overhead by creating an isolate for each Workers function call.
+
+즉, 다시 말하면 서버리스 컴퓨팅의 고질적인 [Cold Start](https://mikhail.io/serverless/coldstarts/big3/) 문제가 Workers 에서는 획기적으로 줄어듭니다.
+
+![Workers Logo](/assets/post_images/cloudflare_workers_cold_start.PNG)
+
+Workers 소개 페이지를 보면, 타 플랫폼 대비 50배 빠른 Cold Start 벤치마크를 보였으며, 유료 플랜에서는 5ms 이하의 Cold Start 시간을 보장한다고 되어 있습니다.
+
+#### 2. 리전: 지구 전체 🌎
+
+Cloudflare Workers는 특정 리전을 정해서 함수를 배포하지 않습니다.
+대신 Cloudflare의 방대한 CDN 네트워크를 활용하여 전 세계에 함수가 배포됩니다.
+
+즉, 세계 어디에서나 적은 레이턴시로 서비스를 요청하는 것이 가능합니다.
+
+이러한 Workers의 특징을 더 잘 활용하기 위해 Cloudflare에서는 글로벌 Key-Value 스토리지인 [KV](https://developers.cloudflare.com/workers/reference/storage)도 함께 제공합니다.
+
+#### 3. "무료"
+
+![Workers Logo](/assets/post_images/cloudflare_workers_pricing.PNG)
+
+Cloudflare Workers는 이 글을 작성하는 2020년 7월 기준, 일간 십만 회의 리퀘스트가 가능한 무료 플랜을 제공합니다.
+
+AWS Lambda나 Azure Functions의 가격표를 보신 분이라면, _"다른 곳도 한 달에 리퀘스트 백만번까지 무료던데?"_ 라고 생각하실 수도 있는데요.
+
+타 플랫폼은 리퀘스트 비용과는 별도로 스토리지, 네트워크 비용이 부과되기 때문에,
+무료 아니야? 하고서 간단한 프로젝트를 만들었다가 의외의 소소한 비용 청구를 당하는 경우가 있습니다.
+
+토이 프로젝트 ~.
+
+### References
+
+> https://blog.cloudflare.com/cloud-computing-without-containers/
+
+> https://mikhail.io/2018/08/serverless-cold-start-war/
+
+> https://www.cloudflare.com/learning/serverless/serverless-performance/
