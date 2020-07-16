@@ -2,3 +2,5 @@
 - CMS
 - algo with oracle cloud 
 - pycon US featured videos
+- WSL2 & torch
+- Captcha solver
