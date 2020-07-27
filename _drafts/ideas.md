@@ -1,4 +1,3 @@
-- cloudflare workers
 - CMS
 - algo with oracle cloud 
 - pycon US featured videos
