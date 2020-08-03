@@ -6,7 +6,7 @@ tags: [About]
 ---
 
 <div style="text-align: center;">
-	<div><img src="/assets/img/about/me-cherryblossom.png" width="500"/></div>
+	<div><img src="/assets/img/about/me-goodnight.jpeg" width="500"/></div>
 	<br/>
 	<div>
 		<strong>최경재 (Gyeongjae Choi)</strong>
