@@ -4,4 +4,3 @@
 - WSL2 & torch
 - Captcha solver
 - E-mail subscriptions
-- workers unbound
