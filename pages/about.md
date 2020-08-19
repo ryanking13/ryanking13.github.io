@@ -320,7 +320,7 @@ _이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 
 
 - [Research Officers for National Defense](http://rond.or.kr) (과학기술전문사관) 4기
 
-#### Open Source
+#### Open Source Contributions
 
 - Pandas [#29566](https://github.com/pandas-dev/pandas/pull/29566)
 - Minor contributions on this blog theme :) [#59](https://github.com/Sylhare/Type-on-Strap/pull/59) [#92](https://github.com/Sylhare/Type-on-Strap/issues/92)
@@ -328,6 +328,7 @@ _이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 
 
 #### Localizations
 
+- [rinthel/rust-lang-book-ko](https://github.com/rinthel/rust-lang-book-ko) contributor
 - [Why Am I Dead At Sea](http://www.whyamideadatsea.com/) unofficial korean localization ([link](https://github.com/ryanking13/WAIDAS))
 - [The Station](http://thestationgame.com/) unofficial korean localization ([link](https://github.com/ryanking13/the-station-kor))
 
