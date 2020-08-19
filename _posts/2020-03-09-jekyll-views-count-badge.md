@@ -22,6 +22,8 @@ __TL;DR__
 
 ## 들어가며
 
+> _Important: 현재(2020/07/29) [디스크 용량 문제](https://github.com/dwyl/hits/issues/101#issuecomment-659299610)로 제대로 HITS! 서비스가 제대로 동작하지 않는 상태입니다._
+
 [Jekyll](https://jekyllrb.com/)이나 [Hugo](https://gohugo.io/)과 같은 정적 사이트 생성기로 블로그를 운영하다보면,
 대표적으로 발생하는 불편함으로 블로그 방문자와의 상호작용을 기록할 수가 없다는 점이 있습니다.
 

@@ -90,6 +90,9 @@ Workers는 자바스크립트 엔진인 V8을 기반으로 하는 특성상 근�
 
 나는 자바스크립트가 너무 싫어! 같은 생각을 가진 분들이라면 WebAssembly의 발전에 희망을 걸어봐야 할 것 같네요.
 
+> __Update(20/07/29)__: Cloudflare에서 [Python, Scala, Kotlin 등 타 언어에 대한 Workers 지원을 발표](https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support/)했습니다.
+다만 해당 언어를 자바스크립트로 변환하는 서드파티 라이브러리에 의존하는 부분이 커서, 실제 프로덕션 코드에 사용이 가능할 지는 의문입니다.
+
 #### 2. 타 서비스간의 연계성
 
 AWS 같은 대형 클라우드 플랫폼들은 [일일이 나열하는 게 어려울 정도로 다양한 서비스](https://adayinthelifeof.nl/2020/05/20/aws.html)를 제공하고 있고,
