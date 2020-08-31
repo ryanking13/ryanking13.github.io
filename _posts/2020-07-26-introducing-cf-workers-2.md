@@ -216,6 +216,8 @@ Worker를 Cloudflare Workers에 배포하기 위해서는 Cloudflare 계정이 �
 
 ### 2. Account ID 확인 / API 토큰 생성
 
+> __UPDATE__: [wrangler 1.11.0](https://github.com/cloudflare/wrangler/releases/tag/v1.11.0)부터 `login` 명령어가 추가되어 일일이 홈페이지에서 API 토큰을 확인할 필요가 없게 되었다고 합니다.
+
 Workers 계정 설정을 완료하고 다시 [Cloudflare Workers](https://workers.cloudflare.com/)에 접속(로그인)하면,
 다음과 같은 Workers 대시보드 창이 나타납니다.
 
