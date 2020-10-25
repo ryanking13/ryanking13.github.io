@@ -329,6 +329,7 @@ _이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 
 #### Localizations
 
 - [rinthel/rust-lang-book-ko](https://github.com/rinthel/rust-lang-book-ko) contributor
+- [ohshitgit](https://ohshitgit.com/) korean localization
 - [Why Am I Dead At Sea](http://www.whyamideadatsea.com/) unofficial korean localization ([link](https://github.com/ryanking13/WAIDAS))
 - [The Station](http://thestationgame.com/) unofficial korean localization ([link](https://github.com/ryanking13/the-station-kor))
 
