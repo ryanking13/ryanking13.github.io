@@ -113,7 +113,7 @@ Cloudflare 측에서도 지속적으로 Workers를 발전시킬 야심찬 계획
 
 이어지는 글에서는 Workers를 이용하여 간단한 서비스를 개발해보도록 하겠습니다.
 
-> 다음 글 - [Cloudflare Workers로 서버리스 앱 개발하기]({% link _posts/2020-07-26-introducing-cf-workers-2.md %})
+> 다음 글 - [Cloudflare Workers로 서버리스 앱 개발하기]({{< ref "introducing-cf-workers-2.md" >}})
 
 ### References
 

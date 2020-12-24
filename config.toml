@@ -48,11 +48,6 @@ publishDir = "docs"
   weight = 30
   identifier = "tags"
   url = "/tags/"
-[[menu.main]]
-  name = "Categories"
-  weight = 40
-  identifier = "categories"
-  url = "/categories/"
 
 [params]
   version = "4.x"           # Used to give a friendly message when you have an incompatible update
@@ -142,8 +137,8 @@ publishDir = "docs"
     clientSecret = ""       # Your client secret
 
   [params.utterances]       # https://utteranc.es/
-    owner = ""              # Your GitHub ID
-    repo = ""               # The repo to store comments
+    owner = "ryanking13"              # Your GitHub ID
+    repo = "ryanking13.github.io"               # The repo to store comments
 
   [params.gitalk]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
     owner = ""              # Your GitHub ID

@@ -1,12 +1,12 @@
 ---
-date: "2020-07-27T00:00:00Z"
+date: "2020-07-26T01:00:00Z"
 description: Cloudflare Workers로 서버리스 앱 개발하기
 tags:
 - Cloud
 title: Cloudflare Workers로 서버리스 앱 개발하기
 ---
 
-> 이전 글 - [Cloudflare Workers 소개]({% link _posts/2020-07-26-introducing-cf-workers-1.md %})
+> 이전 글 - [Cloudflare Workers 소개]({{< ref "introducing-cf-workers-1.md" >}})
 
 ![Workers Logo](/assets/post_images/cloudflare_workers_logo.jpg)
 

@@ -12,7 +12,7 @@ title: (번역) 4백만 줄의 파이썬 타이핑을 위한 여정
 
 ---
 
-![dropbox annotated line count](https://dropboxtechblog.files.wordpress.com/2019/09/4m-lloc-highlight402x.png)
+![dropbox annotated line count](https://dropbox.tech/cms/content/dam/dropbox/tech-blog/en-us/2019/09/01-s_be3065586f8fa9c15d8db9d64833f16b5a48ee3941b26d6e4f9f37a6c6aecfbc_1565865178872_serverblog2a.png?w=650&h=488)
 
 드롭박스는 파이썬의 헤비 유저입니다. 드롭박스의 백엔드 서비스와 데스크톱 클라이언트 앱에서 가장 많이 사용되고 있는 언어가 파이썬입니다 (Go, Typescript, 그리고 Rust 역시도 많이 사용하고 있습니다). 그러나 수백만 줄의 파이썬 코드로 구성된 드롭박스 서비스의 거대한 크기를 고려하면, 파이썬의 동적 타이핑 방식은 코드를 이해하기 어렵게 만들고, 이는 생산성에 지대한 영향을 줍니다. 이러한 문제를 해결하기 위해여, 드롭박스는 가장 널리 알려진 파이썬 타입 체커인 mypy를 사용하여, 점진적으로 정적 타입 검사를 도입하기 시작했습니다. (mypy는 오픈소스 프로젝트이며, 핵심 개발팀이 드롭박스에 고용되어 있습니다.)
 

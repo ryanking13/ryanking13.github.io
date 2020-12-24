@@ -119,11 +119,11 @@ __둘째로__, 우리는 `libdropbox_bootstrap` 라이브러리를 사용하여 
 
 자동 테스팅을 통해서 어느 정도 안정성이 확보되고 나서, 우리는 파이썬 3을 사용한 버전을 실제 유저들에게 배포하기 시작했습니다. 처음에는 여러가지 이슈를 빠르게 잡아내고 고치기 위해서 드롭박스 직원들에게 배포했습니다. 그 이후에는 베타테스팅에 참여하는 유저들로 대상을 확대했습니다. 베타테스팅에 참여하는 유저에게 배포했다 함은, 아주 다양한 OS 버전에 대해서 테스트가 이루어진다는 뜻입니다. 최종적으로는 일반 유저들에게도 배포했습니다. 이러한 과정은 총 7개월에 걸쳐서 이루어졌습니다. 애플리케이션이 최대한 안정적으로 동작하게 하기 위해, 우리는 발견된 모든 버그를 반드시 완전히 분석해서 해결하고 난 뒤에 배포 대상 유저를 확대하도록 하였습니다.
 
-![Gradual rollout on the Beta channel](https://dropboxtechblog.files.wordpress.com/2018/09/01-python-rollout-beta.png?w=768&h=398)
+![Gradual rollout on the Beta channel](https://dropbox.tech/cms/content/dam/dropbox/tech-blog/en-us/application/01-python-rollout-beta.png)
 
 _베타 유저 파이썬 2, 파이썬 3 사용률 변화_
 
-![Gradual rollout on the Stable channel](https://dropboxtechblog.files.wordpress.com/2018/09/02-python-rollout-stable.png?w=768&h=398)
+![Gradual rollout on the Stable channel](https://dropbox.tech/cms/content/dam/dropbox/tech-blog/en-us/2018/09/02-python-rollout-stable.png)
 
 _일반 유저 파이썬 2, 파이썬 3 사용률 변화_
 
