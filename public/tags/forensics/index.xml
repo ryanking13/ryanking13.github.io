@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Forensics on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/forensics/</link>
+    <description>Recent content in Forensics on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 24 Mar 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/forensics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PNG 파일 구조</title>
+      <link>http://localhost:1313/post/2018-03-24-png-structure/</link>
+      <pubDate>Sat, 24 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2018-03-24-png-structure/</guid>
+      <description>최근 GoN 2018 신입생 리쿠르팅 문제나, pragyan CTF등의 대회에서 PNG 파일 구조를 조작해둔 포렌식 문제를 종종 봤는데, 그러한 문제들을 푸는 과정에서 공부한 PNG 파일 구조를 정</description>
+    </item>
+    
+  </channel>
+</rss>

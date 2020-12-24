@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Miscellaneous on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/miscellaneous/</link>
+    <description>Recent content in Miscellaneous on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 09 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/miscellaneous/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HITS!를 이용하여 Jekyll 블로그에 조회수 배지 달기</title>
+      <link>http://localhost:1313/post/2020-03-09-jekyll-views-count-badge/</link>
+      <pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2020-03-09-jekyll-views-count-badge/</guid>
+      <description>TL;DR _layouts/post.html에 아래 구문을 삽입합니다. {% raw %} 1 2 3 4 5 &amp;lt;div style=&amp;#34;text-align: center;&amp;#34;&amp;gt; &amp;lt;a href=&amp;#34;http://hits.dwyl.com/{{ site.url | remove_first: &amp;#39;https://&amp;#39; | remove_first: &amp;#39;http://&amp;#39; }}/{{ page.url | remove_first: &amp;#39;/&amp;#39; | replace: &amp;#39;/&amp;#39;, &amp;#39;-&amp;#39; }}&amp;#34; target=&amp;#34;_blank&amp;#34;&amp;gt; &amp;lt;img src=&amp;#34;http://hits.dwyl.com/{{ site.url | remove_first: &amp;#39;https://&amp;#39; | remove_first:</description>
+    </item>
+    
+  </channel>
+</rss>

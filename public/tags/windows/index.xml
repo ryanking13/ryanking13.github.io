@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/windows/</link>
+    <description>Recent content in Windows on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 07 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>(번역) WSL 2를 공개하며</title>
+      <link>http://localhost:1313/post/2019-05-07-announcing-wsl-2/</link>
+      <pubDate>Tue, 07 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2019-05-07-announcing-wsl-2/</guid>
+      <description>원문 : Announcing WSL 2 마이크로소프트가 Build 2019에서 공개한 Windows Subsystem for Linux (WSL)의 새버전 WSL 2을 소개하는 글입니다. WSL 2에 대한 제 생각은 본문 아래에 서술합니다. Windows</description>
+    </item>
+    
+    <item>
+      <title>Windows cp949 인코딩 자동 변경하기</title>
+      <link>http://localhost:1313/post/2018-09-03-cmd-deafult-command/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2018-09-03-cmd-deafult-command/</guid>
+      <description>한글 Windows를 사용하다보면 종종 불편한 것이 기본 시스템 인코딩이 cp949로 설정되어 있다는 것이다. 이 때문에 파일을 읽고 쓰거나, 웹 크롤링을 할 때에</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/python/</link>
+    <description>Recent content in Python on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 12 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>오픈소스 버그 고치다가 CPython까지 뜯어본 후기</title>
+      <link>http://localhost:1313/post/2020-01-12-contributing-pandas/</link>
+      <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2020-01-12-contributing-pandas/</guid>
+      <description>TL;DR 파이썬 Pandas 라이브러리에서 발견한 버그를 수정하는 과정에서, cpython의 코드베이스까지 뜯어보게 된 이야기입니다. 이 글은 오픈 소스 컨트리뷰션 가이드가</description>
+    </item>
+    
+    <item>
+      <title>Github Actions를 이용하여 서버 없이 알림 봇 만들기</title>
+      <link>http://localhost:1313/post/2019-12-29-twitter-bot-without-server/</link>
+      <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2019-12-29-twitter-bot-without-server/</guid>
+      <description>TL;DR Github의 Issue와 Actions를 활용하여, 주기적 알림 트위터 봇을 개인 서버 없이 구축해보기 도입 약 2년 전부터 랜덤 가사 봇 이라는 이름의 트위터</description>
+    </item>
+    
+    <item>
+      <title>(번역) 4백만 줄의 파이썬 타이핑을 위한 여정</title>
+      <link>http://localhost:1313/post/2019-10-03-our-journey-to-type-checking-4-million-lines-of-python/</link>
+      <pubDate>Thu, 03 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2019-10-03-our-journey-to-type-checking-4-million-lines-of-python/</guid>
+      <description>원문 : Our journey to type checking 4 million lines of Python 파이썬 정적 타입 체커인 mypy의 개발자이자 현재는 드롭박스 소속인 Jukka Lehtosalo가 mypy의 개발 과정을 담은 글입니다</description>
+    </item>
+    
+    <item>
+      <title>(번역) 드롭박스의 파이썬3 이식 이야기 Part 1</title>
+      <link>http://localhost:1313/post/2018-10-02-dropbox-python3-migration/</link>
+      <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2018-10-02-dropbox-python3-migration/</guid>
+      <description>원문 링크: Dropbox Tech Blog - How we rolled out one of the largest Python 3 migrations ever 드롭박스는 세계에서 가장 유명한 데스크탑 애플리케이션 중 하나입니다. 윈도우즈, macOS, 그리고 몇몇 리눅스 배포판에</description>
+    </item>
+    
+    <item>
+      <title>파이썬 3.7의 새로운 기능들</title>
+      <link>http://localhost:1313/post/2018-07-12-python-37-whats-new/</link>
+      <pubDate>Thu, 12 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2018-07-12-python-37-whats-new/</guid>
+      <description>Python 3.7.0 is released! Bring out the celebratory libations. Thanks @baybryj and a cast of thousands on python-dev and GitHub. https://t.co/wEG4vO76Rd &amp;mdash; Guido van Rossum (@gvanrossum) 2018년 6월 28일 파이썬 3.7이 2018년 6월 27일에 정식 릴리즈 되었습니다. 여러가지 흥</description>
+    </item>
+    
+    <item>
+      <title>파이썬 pathlib 사용하기 - NO MORE os.path.join()</title>
+      <link>http://localhost:1313/post/2018-05-22-pathlib/</link>
+      <pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2018-05-22-pathlib/</guid>
+      <description>서론이 좀 기니 조각 코드만을 보러 온거라면 여기를 클릭 지난 4월 26일 파이썬 웹 프레임워크인 flask가 1.0 버전 릴리즈를 발표했다. 나는 flask 사용자는 아니지만 발</description>
+    </item>
+    
+    <item>
+      <title>파이썬에서의 Truthy Falsy</title>
+      <link>http://localhost:1313/post/2018-04-05-python-truthy-falsey/</link>
+      <pubDate>Thu, 05 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2018-04-05-python-truthy-falsey/</guid>
+      <description>다른 강타입 언어들과 비교하여 파이썬이 갖는 재밌는 특징은, 어떤 타입의 오브젝트던 인스턴스 자체를 if문의 조건으로 사용할 수 있으며, 논리 연산의 피연산자로 사</description>
+    </item>
+    
+  </channel>
+</rss>

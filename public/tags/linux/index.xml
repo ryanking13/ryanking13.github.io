@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/linux/</link>
+    <description>Recent content in Linux on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>(번역) 초소형 ELF 바이너리 만들기</title>
+      <link>http://localhost:1313/post/2018-11-05-a-whirlwind-tutorial-on-creating-really-teensy-elf-executables-for-linux/</link>
+      <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2018-11-05-a-whirlwind-tutorial-on-creating-really-teensy-elf-executables-for-linux/</guid>
+      <description>원문 링크: A Whirlwind Tutorial on Creating Really Teensy ELF Executables for Linux 2005년도에 올라온 벌써 10년도 넘은 글. gcc 컴파일 결과 나오는 ELF 바이너리의 크기가 과도하게 크다고 느낀 저자가 한계까지</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/javascript/</link>
+    <description>Recent content in Javascript on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 05 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>(번역) Javascript - The Curious Case of Null &gt;= 0</title>
+      <link>http://localhost:1313/post/2018-06-05-javascript-null-0/</link>
+      <pubDate>Tue, 05 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2018-06-05-javascript-null-0/</guid>
+      <description>원문 링크: Abinav Seelan - Javascript : The Curious Case of Null &amp;gt;= 0 Why it’s important to read the Javascript Spec 예상치못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글이다. 얼마 전 자바스크</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>크롬 데이터 세이버를 크롬 없이 사용하기 - Even - A super concise theme for Hugo</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="olOwOlo" /><meta name="description" content="UPDATE(2019/01/10) 데이터 세이버 프로그램이 업데이트 되면서 인증 방식이 많이 바뀌었습니다. (protobuf &#43; signature) 따라서 아래 글의 방식은 더이상 동작하지 않습니다. 데이터 세이버는 구글에서 제" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/2018-04-26-google-data-saver-proxy/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="크롬 데이터 세이버를 크롬 없이 사용하기" />
+<meta property="og:description" content="UPDATE(2019/01/10) 데이터 세이버 프로그램이 업데이트 되면서 인증 방식이 많이 바뀌었습니다. (protobuf &#43; signature) 따라서 아래 글의 방식은 더이상 동작하지 않습니다. 데이터 세이버는 구글에서 제" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/2018-04-26-google-data-saver-proxy/" />
+<meta property="article:published_time" content="2018-04-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-04-26T00:00:00+00:00" />
+<meta itemprop="name" content="크롬 데이터 세이버를 크롬 없이 사용하기">
+<meta itemprop="description" content="UPDATE(2019/01/10) 데이터 세이버 프로그램이 업데이트 되면서 인증 방식이 많이 바뀌었습니다. (protobuf &#43; signature) 따라서 아래 글의 방식은 더이상 동작하지 않습니다. 데이터 세이버는 구글에서 제">
+<meta itemprop="datePublished" content="2018-04-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-04-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1479">
+
+
+
+<meta itemprop="keywords" content="Network," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="크롬 데이터 세이버를 크롬 없이 사용하기"/>
+<meta name="twitter:description" content="UPDATE(2019/01/10) 데이터 세이버 프로그램이 업데이트 되면서 인증 방식이 많이 바뀌었습니다. (protobuf &#43; signature) 따라서 아래 글의 방식은 더이상 동작하지 않습니다. 데이터 세이버는 구글에서 제"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">크롬 데이터 세이버를 크롬 없이 사용하기</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-26 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#구글-압축-서버에-직접-연결하기">구글 압축 서버에 직접 연결하기</a></li>
+            <li><a href="#다른-활용-방법">다른 활용 방법</a></li>
+            <li><a href="#reference">Reference</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>UPDATE(2019/01/10)
+데이터 세이버 프로그램이 업데이트 되면서 인증 방식이 많이 바뀌었습니다. (protobuf + signature)
+따라서 아래 글의 방식은 더이상 동작하지 않습니다.</p>
+</blockquote>
+<p><a href="https://chrome.google.com/webstore/detail/data-saver/pfmgfdlgomnbgkofeojodiodmgpgmkac?hl=ko">데이터 세이버</a>는 구글에서 제작한 크롬 브라우저의 확장 프로그램으로 크롬 웹 스토어에서는 다음과 같이 소개하고 있다.</p>
+<blockquote>
+<p>Google 서버를 통해 방문하는 페이지를 최적화하여 데이터 사용량을 줄이세요.</p>
+</blockquote>
+<p>데이터 세이버의 기본 동작은 아주 단순한데, 구글 압축 서버(Google compress server)가 프록시(proxy)가 되어 서버가 보낸 데이터(주로 이미지)를 중간에서 압축하여 유저에게 보내는 방식이다.</p>
+<p>아마 실제로는 캐싱도 해서 효율을 높이고 있을 것 같긴 한데, 어쨌거나 기본적인 동작은 압축이다.</p>
+<p><img src="../../../assets/post_images/without_data_saver.PNG" alt=""></p>
+<p><strong>데이터 세이버를 껐을 때</strong></p>
+<p><img src="../../../assets/post_images/data_saver.PNG" alt=""></p>
+<p><strong>데이터 세이버를 켰을 때</strong></p>
+<p>데이터 세이버를 켜고 ssl을 사용하지 않는 사이트로 접속해보면 Remote Address가 달라져 있는 것을 확인할 수 있다.</p>
+<hr>
+<h3 id="구글-압축-서버에-직접-연결하기">구글 압축 서버에 직접 연결하기</h3>
+<p>데이버 세이버의 동작 방식이 단순히 구글 서버를 프록시로 사용하는 것이기 때문에, 우리는 굳이 데이터 세이버에 의존할 필요가 없다. 크롬 외의 다른 브라우저에서도 쉽게 같은 효과를 얻을 수 있고, 또는 브라우저 없이도 사용할 수 있다.</p>
+<p>실제로 Firefox의 addon으로 일반 유저가 제작한 <a href="https://addons.mozilla.org/ko/firefox/addon/google_datasaver_for_firefox/">Data saver proxy for Firefox</a>가 있다.</p>
+<p>그렇다면 우리도 직접 연결을 해보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ ping compress.googlezip.net
+PING compress.googlezip.net (172.217.161.44) 56(84) bytes of data.
+</code></pre></td></tr></table>
+</div>
+</div><p>데이터 세이버를 켰을 때의 Remote Address인 172.217.161.44는 compress.googlezip.net이라는 도메인을 가진다.</p>
+<p>해당 도메인을 프록시로 사용하여 리퀘스트를 보내보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">proxies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;http&#39;</span><span class="p">:</span> <span class="s1">&#39;compress.googlezip.net&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https&#39;</span><span class="p">:</span> <span class="s1">&#39;compress.googlezip.net&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.bbc.com/&#39;</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># 502</span>
+<span class="c1"># ...(omitted)...This page cannot be loaded using Chrome Data Saver. Try reloading the page...(omitted)...</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>단순히 프록시로 달기만 하는 것으로는 안되는 것 같다. 어떻게 동작하는 지 알아낼 필요가 있다.</p>
+<p>구글 코드 아카이브를 찾아보면 <a href="https://code.google.com/archive/p/datacompressionproxy/">datacompressionproxy</a>라는 것을 찾을 수 있다. compress.googlezip.net 서버가 이것을 사용할 것이라고 추정할 수 있다.</p>
+<p>좀 더 찾아보면 이미 똑똑한 누군가가 이미 datacompressionproxy를 분석해서 standalone으로 활용할 수 있는 구현체를 만들어뒀다. (개이득!)</p>
+<p><a href="https://github.com/cnbeining/Chrome-Data-Compression-Proxy-Standalone-Python">Chrome-Data-Compression-Proxy-Standalone-Python</a></p>
+<p>위 레포에서 코드를 살펴보면, <code>Chrome-Proxy</code>라는 헤더에 고정된 <code>authvalue</code>의 해시값을 포함한 특정 값을 심어서 보내야 한다는 것을 알 수 있다. 아래 코드는 위 레포에서 가져왔다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">md5</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="c1"># code from https://github.com/cnbeining/Chrome-Data-Compression-Proxy-Standalone-Python/blob/master/google.py</span>
+<span class="k">def</span> <span class="nf">get_long_int</span><span class="p">():</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100000000</span><span class="p">,</span> <span class="mi">999999999</span><span class="p">))</span>
+
+
+<span class="c1"># code from https://github.com/cnbeining/Chrome-Data-Compression-Proxy-Standalone-Python/blob/master/google.py</span>
+<span class="k">def</span> <span class="nf">get_google_header</span><span class="p">():</span>
+    <span class="n">authValue</span> <span class="o">=</span> <span class="s1">&#39;ac4500dd3b7579186c1b0620614fdb1f7d61f944&#39;</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="s1">&#39;ps=&#39;</span> <span class="o">+</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">get_long_int</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">get_long_int</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">get_long_int</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;, sid=&#39;</span> <span class="o">+</span> <span class="n">md5</span><span class="p">((</span><span class="n">timestamp</span> <span class="o">+</span> <span class="n">authValue</span> <span class="o">+</span> <span class="n">timestamp</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;, b=2403, p=61, c=win&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>이제 다시 리퀘스트를 보내보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="n">proxy_headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Chrome-Proxy&#39;</span><span class="p">:</span> <span class="n">get_google_header</span><span class="p">(),</span>
+    <span class="p">}</span>
+
+    <span class="c1"># ...omitted...</span>
+
+    <span class="n">path_idx</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+      <span class="n">host</span> <span class="o">=</span> <span class="n">url</span><span class="p">[:</span><span class="n">path_idx</span><span class="p">]</span>
+      <span class="n">path</span> <span class="o">=</span> <span class="n">url</span><span class="p">[</span><span class="n">path_idx</span><span class="p">:]</span>
+
+    <span class="n">proxy_headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;Host&#39;</span><span class="p">:</span> <span class="n">host</span><span class="p">})</span>
+
+    <span class="c1"># ...omitted...</span>
+
+    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://compress.googlezip.net:80{path}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">),</span>
+                        <span class="n">headers</span><span class="o">=</span><span class="n">proxy_headers</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>요청을 보내고자 하는 url의 Host부분을 헤더의 <code>Host</code> 값으로 적어주었다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">google_compression_proxy</span> <span class="kn">import</span> <span class="n">get</span> <span class="k">as</span> <span class="n">compress_get</span>
+
+<span class="n">http_image_url</span> <span class="o">=</span> <span class="s1">&#39;http://ichef.bbci.co.uk/wwfeatures/wm/live/624_351/images/live/p0/4v/jy/p04vjy8l.jpg&#39;</span>
+<span class="n">https_image_url</span> <span class="o">=</span> <span class="s1">&#39;https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Siberian_Tiger_by_Malene_Th.jpg/450px-Siberian_Tiger_by_Malene_Th.jpg&#39;</span>
+
+<span class="n">r1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">http_image_url</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">compress_get</span><span class="p">(</span><span class="n">http_image_url</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Original image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r1</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Compressed image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r2</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="c1"># Original image size: 63816</span>
+<span class="c1"># Compressed image size: 33361</span>
+
+<span class="n">r1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">https_image_url</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">compress_get</span><span class="p">(</span><span class="n">https_image_url</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Original image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r1</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Compressed image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r2</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="c1"># Original image size: 93198</span>
+<span class="c1"># Compressed image size: 93198</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>이미지 url에 대해서 리퀘스트를 보내본 결과다.</p>
+<p>http 요청에 대해서는 확실하게 이미지의 용량이 줄어든 것을 확인할 수 있다.</p>
+<p>https 요청에 대해서는 압축을 하지 못한다.</p>
+<p>샘플 코드를 포함한 전체 코드는 <a href="https://github.com/ryanking13/chrome-data-saver-python">여기</a>에서 볼 수 있다.</p>
+<hr>
+<h3 id="다른-활용-방법">다른 활용 방법</h3>
+<p>브라우저 없이 구글 압축 서버를 단순히 프록시 서버로 활용하는 방법도 있다.</p>
+<p>웹 크롤링을 할 때 IP 차단 등을 이유로 프록시의 도움이 필요할 때가 있는데,</p>
+<p>이를 위하여 <a href="https://free-proxy-list.net/">Free Proxy List</a>나 <a href="http://pubproxy.com/">PubProxy</a> 같은 좋은 사이트들이 있긴 하지만, 프록시들이 개개인의 선의로 제공되는 것이다보니 연결이 불안하거나 대역폭이 너무 작아서 쓰기 힘든 경우가 많다.</p>
+<p>이럴 때 구글 압축 서버를 프록시로 사용하는 것이 한가지 방법이 될 수 있다.</p>
+<p>다만 이것은 어뷰징으로 볼 여지가 있으니 선택은 개인의 몫에 맡긴다.</p>
+<hr>
+<h3 id="reference">Reference</h3>
+<blockquote>
+<p><a href="https://github.com/cnbeining/Chrome-Data-Compression-Proxy-Standalone-Python">https://github.com/cnbeining/Chrome-Data-Compression-Proxy-Standalone-Python</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://code.google.com/archive/p/datacompressionproxy/">https://code.google.com/archive/p/datacompressionproxy/</a></p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">olOwOlo</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-04-26
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/network/">Network</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2018-05-17-bashware/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">(번역) Beware of the Bashware</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/2018-04-05-python-truthy-falsey/">
+            <span class="next-text nav-default">파이썬에서의 Truthy Falsy</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>olOwOlo</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

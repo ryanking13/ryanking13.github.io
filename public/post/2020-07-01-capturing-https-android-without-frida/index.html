@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법 - Even - A super concise theme for Hugo</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="olOwOlo" /><meta name="description" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/2020-07-01-capturing-https-android-without-frida/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법" />
+<meta property="og:description" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/2020-07-01-capturing-https-android-without-frida/" />
+<meta property="article:published_time" content="2020-07-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-07-01T00:00:00+00:00" />
+<meta itemprop="name" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법">
+<meta itemprop="description" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법">
+<meta itemprop="datePublished" content="2020-07-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-07-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1731">
+
+
+
+<meta itemprop="keywords" content="Network," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법"/>
+<meta name="twitter:description" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-07-01 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-frida를-이용한-우회">✔️ Frida를 이용한 우회</a></li>
+        <li><a href="#-애플리케이션-리패키징을-통한-우회법">💡 애플리케이션 리패키징을 통한 우회법</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#결론">결론</a>
+          <ul>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>CTF나 버그 바운티 등을 하다보면 안드로이드 앱의 패킷을 뜯어봐야 하는 경우가 종종 있습니다.</p>
+<p>이 때 앱이 HTTPS를 사용하여 패킷을 암호화하고 있다면 가짜 루트 인증서를 설치해서 암호화된 패킷을 중간에서 <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM</a> 방식으로 가로채서 복호화하여야 합니다.</p>
+<p>문제는, 안드로이드 7.0인 Nougat부터는 시스템적으로 사용자가 설치한 루트 인증서를 신뢰하지 않도록 하는 옵션(SSL-Pinning)이 <a href="https://developer.android.com/training/articles/security-config#base-config">디폴트로 설정</a>되어 있습니다.</p>
+<p><img src="../../../assets/post_images/android_https01.PNG" alt="android_trust_anchors"></p>
+<p>이 때문에 안드로이드 7.0 이상에서 가짜 루트 인증서를 디바이스에 설치하고 패킷 스니핑을 시도하면,
+인증서 검증에 문제가 생겨서 앱이 제대로 동작하지 않습니다.</p>
+<h2 id="-frida를-이용한-우회">✔️ Frida를 이용한 우회</h2>
+<p>이러한 SSL-Pinning 옵션을 우회하는 방법으로 잘 알려진 것은 <a href="https://github.com/frida/frida">Frida</a>를 이용해서,
+앱의 인증서 검증 과정을 후킹하는 방법입니다.</p>
+<p>해당 방법에 대해서는 아래 포스트에 자세히 설명되어 있습니다.</p>
+<ul>
+<li><a href="https://securitynote.tistory.com/50">[Android] Frida를 이용한 SSL-Pinning 우회</a></li>
+<li><a href="https://securitygrind.com/bypassing-android-ssl-pinning-with-frida/">Bypassing Android SSL Pinning with FRIDA</a></li>
+</ul>
+<p>Frida는,</p>
+<ul>
+<li>👍 SSL-Pinning 우회 외에도 다양한 용도로 사용할 수 있고,</li>
+<li>👍 안드로이드 뿐만 아니라 iOS 등의 환경에서도 사용할 수 있다는 장점이 있습니다.</li>
+</ul>
+<p>그렇지만 한편으로는,</p>
+<ul>
+<li>👎 매번 adb에서 Frida 서버를 실행하고 컴퓨터와 통신해야 한다는 점과,</li>
+<li>👎 루팅된 디바이스가 필요해서 에뮬레이터를 사용하지 않으면 번거롭다는 단점이 있습니다.</li>
+</ul>
+<p>그래서 이 글에서는 다른 방법을 소개하려고 합니다.</p>
+<h2 id="-애플리케이션-리패키징을-통한-우회법">💡 애플리케이션 리패키징을 통한 우회법</h2>
+<p>SSL-Pinning을 우회하는 다른 방법은, 직접 앱을 언패키징(Unpack)하고 사용자 루트 인증서를 신뢰하도록 설정을 변경한 뒤 다시 리패키징(Repack)해주는 방법입니다. 구체적인 단계는 다음과 같습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">1. 애플리케이션 언패키징
+2. 보안 설정 변경
+3. 애플리케이션 리패키징
+4. 애플리케이션 서명
+5. Profit!
+</code></pre></td></tr></table>
+</div>
+</div><p>예시를 통해서 살펴보겠습니다.</p>
+<blockquote>
+<p><a href="https://go-madhat.github.io/Android-Analysis/">이 포스트</a>에서도 언패키징/리패키징 과정이 설명되어 있습니다.</p>
+</blockquote>
+<p><small>(아래 예시는 <a href="https://play.google.com/store/apps/details?id=com.fusionmedia.investing&amp;hl=en_US">investing.com</a> 앱을 사용하였고, Android 10 및 Windows 환경에서 작업하였습니다.)</small></p>
+<hr>
+<p><img src="../../../assets/post_images/android_https02.jpg" alt="ssl-pinning"></p>
+<p>구글 플레이에서 설치한 investing.com 앱에 대해, <a href="https://play.google.com/store/apps/details?id=app.greyshirts.sslcapture&amp;hl=ko">Packet Capture</a>
+도구를 사용하여 앱의 패킹 스니핑을 시도해보면, SSL 암호화된 패킷이 복호화되지 않는 상태입니다.</p>
+<p>이 앱을 패킷 스니핑이 가능하도록 리패키징해봅시다.</p>
+<blockquote>
+<p><em>이하의 과정에 필요한 모든 도구는 <a href="https://github.com/ryanking13/android-SSL-unpinning">여기</a>에 있습니다.</em></p>
+</blockquote>
+<h4 id="1-애플리케이션-언패키징">1. 애플리케이션 언패키징</h4>
+<p><a href="https://ibotpeaches.github.io/Apktool/install/">Apktool</a>을 사용하여 APK 파일을 언패키징합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ java -jar apktool.jar d com.fusionmedia.investing.apk
+I: Using Apktool 2.4.1 on com.fusionmedia.investing.apk
+I: Loading resource table...
+I: Decoding AndroidManifest.xml with resources...
+I: Loading resource table from file: <span class="o">[</span>...<span class="o">]</span>
+I: Regular manifest package...
+I: Decoding file-resources...
+I: Decoding values */* XMLs...
+I: Baksmaling classes.dex...
+I: Baksmaling classes2.dex...
+I: Copying assets and libs...
+I: Copying unknown files...
+I: Copying original files...
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="2-보안-설정-변경">2. 보안 설정 변경</h4>
+<p>언패키징된 앱의 <code>AndroidManifest.xml</code>파일의 <code>application</code> 항목에 <code>android:networkSecurityConfig=&quot;@xml/network_security_config&quot;</code> 파라미터를 추가합니다. (이미 해당 값이 있다면 그대로 둡니다.)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;application</span> <span class="err">[...]</span> <span class="na">android:networkSecurityConfig=</span><span class="s">&#34;@xml/network_security_config&#34;</span><span class="nt">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>res/xml/network_security_config.xml</code> 파일을 생성하고 (이미 있다면 그대로 사용합니다),
+아래의 내용을 삽입합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;network-security-config&gt;</span>
+    <span class="nt">&lt;debug-overrides&gt;</span>
+        <span class="nt">&lt;trust-anchors&gt;</span>
+            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;user&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/trust-anchors&gt;</span>
+    <span class="nt">&lt;/debug-overrides&gt;</span>
+    <span class="nt">&lt;base-config</span> <span class="na">cleartextTrafficPermitted=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;trust-anchors&gt;</span>
+            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;system&#34;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;user&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/trust-anchors&gt;</span>
+    <span class="nt">&lt;/base-config&gt;</span>
+<span class="nt">&lt;/network-security-config&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>이중 핵심은 아래 부분입니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">        <span class="nt">&lt;trust-anchors&gt;</span>
+            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;system&#34;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;user&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/trust-anchors&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>trust-anchors</code> 항목에 사용자(user)가 설치한 루트 인증서를 신뢰하도록 합니다.</p>
+<p>이제 이 설정을 사용하여 앱을 리패키징하면 됩니다. <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<h4 id="3-애플리케이션-리패키징">3. 애플리케이션 리패키징</h4>
+<p>다시 Apktool을 사용하여 앱을 리패키징합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ java -jar apktool.jar b com.fusionmedia.investing -o com.fusionmedia.investing.repack.apk
+</code></pre></td></tr></table>
+</div>
+</div><p><code>com.fusionmedia.investing.repack.apk</code> 라는 이름으로 리패키징 된 앱이 생성됩니다.</p>
+<h4 id="4-애플리케이션-서명">4. 애플리케이션 서명</h4>
+<p>안드로이드 앱은 패키징 후에 서명을 해야만 설치가 가능합니다.</p>
+<p><a href="https://developer.android.com/studio/command-line/apksigner">Android SDK에서 서명을 위한 툴을 제공</a>하지만, 우리는 안드로이드 개발자가 아니니까 번거롭게 SDK 전체를 설치하는 대신,
+테스트용 인증서로 서명을 하는 <a href="https://github.com/ryanking13/android-SSL-unpinning/blob/master/sign.jar">간단한 도구</a>를 사용하기로 합시다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">java -jar sign.jar com.fusionmedia.investing.repack.apk
+</code></pre></td></tr></table>
+</div>
+</div><p>실행하면 서명된 <code>com.fusionmedia.investing.repack.s.apk</code> APK 파일이 생성됩니다.</p>
+<p>완성입니다.</p>
+<h4 id="5-profit">5. Profit!</h4>
+<p>리패키징하고 서명까지 완료된 APK 파일을 다시 디바이스에 설치하고,
+Packet Capture 도구를 사용하여 HTTPS 패킹을 스니핑 해보면,</p>
+<p><img src="../../../assets/post_images/android_https03.jpg" alt="ssl-unpinning"></p>
+<p>HTTPS 패킷이 복호화 된 것을 확인할 수 있습니다. 이제 분석만 하면 되겠네요 :)</p>
+<h2 id="결론">결론</h2>
+<p>앱을 언패키징/리패키징하는 과정이 언뜻 보기에는 Frida를 쓰는 것보다 복잡할 수 있지만,
+이렇게 한 번 패치해둔 애플리케이션은 심심할 때(?) 언제든 사용할 수 있다는 장점이 있습니다.</p>
+<blockquote>
+<p>앱을 언패키징/리패키징하는 일련의 과정을 자동화하는 파이썬 스크립트를 <a href="https://github.com/ryanking13/android-SSL-unpinning">여기</a>에 작성해두었습니다.</p>
+</blockquote>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://goodtogreate.tistory.com/entry/APK-%EB%B0%94%EC%9D%B4%EB%84%88%EB%A6%AC-%EC%88%98%EC%A0%95%ED%9B%84-%EB%A6%AC%ED%8C%A8%ED%82%A4%EC%A7%95repack">APK-바이너리-수정후-리패키징repack</a></li>
+<li><a href="https://gist.github.com/unoexperto/80694ccaed6dadc304ad5b8196cbbd2c">How to patch Android app to sniff its HTTPS traffic with self-signed certificate</a></li>
+<li><a href="https://github.com/appium/sign">appium/sign</a></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>더 간단한 방법으로는 <code>AndroidManifest.xml</code> 파일에서 안드로이드 6 이하를 타겟으로 하도록 빌드 버전을 수정해주는 방법이 있습니다. (<a href="https://blog.netspi.com/four-ways-bypass-android-ssl-verification-certificate-pinning/">참고</a>). 다만 <code>networkSecurityConfig</code> 값이 지정되어 있다면 먹히지 않습니다. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">olOwOlo</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-07-01
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/network/">Network</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2020-07-26-introducing-cf-workers-2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cloudflare Workers로 서버리스 앱 개발하기</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/2020-03-09-jekyll-views-count-badge/">
+            <span class="next-text nav-default">HITS!를 이용하여 Jekyll 블로그에 조회수 배지 달기</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>olOwOlo</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

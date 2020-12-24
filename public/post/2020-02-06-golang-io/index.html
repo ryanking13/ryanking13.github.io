@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Go 프로그래밍 I/O 미세 팁 - Even - A super concise theme for Hugo</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="olOwOlo" /><meta name="description" content="Go 프로그래밍 I/O 미세 팁" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/2020-02-06-golang-io/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Go 프로그래밍 I/O 미세 팁" />
+<meta property="og:description" content="Go 프로그래밍 I/O 미세 팁" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/2020-02-06-golang-io/" />
+<meta property="article:published_time" content="2020-02-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-06T00:00:00+00:00" />
+<meta itemprop="name" content="Go 프로그래밍 I/O 미세 팁">
+<meta itemprop="description" content="Go 프로그래밍 I/O 미세 팁">
+<meta itemprop="datePublished" content="2020-02-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-02-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1584">
+
+
+
+<meta itemprop="keywords" content="Go," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Go 프로그래밍 I/O 미세 팁"/>
+<meta name="twitter:description" content="Go 프로그래밍 I/O 미세 팁"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Go 프로그래밍 I/O 미세 팁</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-02-06 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#input">Input</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#output">Output</a></li>
+        <li><a href="#결론">결론</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>TL;DR</strong></p>
+<blockquote>
+<p><code>fmt.Scanf</code> 보다는 <code>fmt.Scan</code> 보다는 <code>fmt.Fscan</code> <br>
+<code>fmt.Fprintf</code>는 <code>fmt.Printf</code>보다 느릴수도</p>
+</blockquote>
+<p>C 프로그래밍을 하다가 Golang을 하게 되면 <code>fmt.Printf</code>와 <code>fmt.Scanf</code>를 보고
+아무 생각 없이 C-like한 I/O 문법으로 코드를 작성하고는 합니다.</p>
+<p>Golang의 I/O는 분명 C와 닮아있지만, 아무 생각없이 C처럼 쓰다가는
+원하는 결과가 나오지 않거나 성능이 떨어지는 경우가 종종 있습니다.</p>
+<h2 id="input">Input</h2>
+<h4 id="golang의-scanf-계열은-newlinen을-whitespace로-취급하지-않는다">Golang의 <code>Scanf</code> 계열은 newline(<code>\n</code>)을 whitespace로 취급하지 않는다</h4>
+<blockquote>
+<p>The handling of spaces and newlines differs from that of C&rsquo;s scanf family: in C, newlines are treated as any other space, and it is never an error when a run of spaces in the format string finds no spaces to consume in the input. <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+</blockquote>
+<p>따라서 <code>fmt.Scanf</code>를 사용하여 여러 줄을 읽어들인다면 예상과 다른 동작을 할 가능성이 높습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span>
+	<span class="cm">/* [Input]
+</span><span class="cm">	1
+</span><span class="cm">	2
+</span><span class="cm">	*/</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Scanf</span><span class="p">(</span><span class="s">&#34;%d%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">b</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d %d\n&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>위와 같은 코드를 C에서 작성했다면, 아래와 같은 결과를 기대하겠지만,</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[Expected Output]
+1 2
+</code></pre></td></tr></table>
+</div>
+</div><p>실제로 나오는 결과는 다음과 같습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[Real Output]
+1 0
+</code></pre></td></tr></table>
+</div>
+</div><p><code>\n</code>을 무시하지 않고 읽어버려서 b에 값이 들어가지 않은 것입니다.</p>
+<h4 id="여러-줄을-읽을-때는-fmtscan을-쓰자">여러 줄을 읽을 때는 <code>fmt.Scan</code>을 쓰자</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span>
+	<span class="cm">/* [Input]
+</span><span class="cm">	1
+</span><span class="cm">	2
+</span><span class="cm">	*/</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">b</span><span class="p">)</span> 
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d %d\n&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+
+	<span class="cm">/* [Output]
+</span><span class="cm">	1
+</span><span class="cm">	2
+</span><span class="cm">	*/</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>fmt.Scanf</code> 대신 <code>fmt.Scan</code>을 쓰면,
+파라미터의 타입에 맞추어 <code>\n</code>을 포함한 whitespace 문자를 무시하고 파싱을 해줍니다.</p>
+<h4 id="대량의-입력을-받고자-한다면-fmtfscan을-쓰자">대량의 입력을 받고자 한다면 <code>fmt.Fscan</code>을 쓰자</h4>
+<p>한편, 많은 줄을 읽어들여야 하는 경우라면 <code>fmt.Scan</code>은 버퍼링을 하지 않아 느립니다.</p>
+<p>이 경우, <code>bufio</code> 패키지와 <code>fmt.Fscan</code>을 활용해주면 됩니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">r</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Fscan</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">v</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>fmt.Fscan</code>은 위와 같은 형태로 사용합니다.
+<code>NewReader</code>의 파라미터로 <code>os.Stdin</code>을 넣어주어 파일 대신 stdin에서 입력을 읽어오도록 하였습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;bufio&#34;</span>
+	<span class="s">&#34;fmt&#34;</span>
+	<span class="s">&#34;os&#34;</span>
+	<span class="s">&#34;time&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+    <span class="cm">/* [Input]
+</span><span class="cm">	1
+</span><span class="cm">    1
+</span><span class="cm">    ...
+</span><span class="cm">    1
+</span><span class="cm">	*/</span>
+	<span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;fmt.Scan: %v\n&#34;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">))</span>
+
+	<span class="nx">start</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+	<span class="nx">r</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Fscan</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;fmt.Fscan: %v\n&#34;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">fmt.Scan: 502.6522ms
+fmt.Fscan: 28.924ms
+</code></pre></td></tr></table>
+</div>
+</div><p>10만 줄을 읽을 때, 버퍼링 하지 않은 <code>fmt.Scan</code>과 버퍼링한 <code>fmt.Fscan</code> 사이에 15배가 넘는 속도 차이를 확인할 수 있습니다.</p>
+<h4 id="-한-줄-읽기">(+) 한 줄 읽기</h4>
+<p>스페이스를 구분자로 사용하지 않는 한 줄 읽기는 아래와 같이 할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;bufio&#34;</span>
+	<span class="s">&#34;fmt&#34;</span>
+	<span class="s">&#34;os&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">r</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
+	<span class="nx">s</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nf">ReadString</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="output">Output</h2>
+<p>출력도 입력과 같이 버퍼링을 이용하면 빠를까요?</p>
+<p>답은, <em>언제나 그렇지는 않다</em> 입니다.</p>
+<p>출력도 입력과 마찬가지로 <code>bufio</code>를 활용하여 출력을 버퍼링할 수 있습니다. (<code>fmt.Printf</code> 대신 <code>fmt.Fprintf</code>)</p>
+<p>그러나 newline(<code>\n</code>)이 많을 경우 flush 횟수가 많아져 오히려 <code>fmt.Fprintf</code>가 더 느릴 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;bufio&#34;</span>
+	<span class="s">&#34;fmt&#34;</span>
+	<span class="s">&#34;os&#34;</span>
+	<span class="s">&#34;time&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="nx">s1</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;1&#34;</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="nx">t1</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Since</span><span class="p">(</span><span class="nx">s1</span><span class="p">)</span>
+
+	<span class="nx">w</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewWriter</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">)</span>
+	<span class="nx">s2</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="s">&#34;1&#34;</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="nx">t2</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Since</span><span class="p">(</span><span class="nx">s2</span><span class="p">)</span>
+
+	<span class="nx">s3</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;1&#34;</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="nx">t3</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Since</span><span class="p">(</span><span class="nx">s3</span><span class="p">)</span>
+
+	<span class="nx">ww</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewWriter</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">)</span>
+	<span class="nx">s4</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintln</span><span class="p">(</span><span class="nx">ww</span><span class="p">,</span> <span class="s">&#34;1&#34;</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="nx">t4</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Since</span><span class="p">(</span><span class="nx">s4</span><span class="p">)</span>
+
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;fmt.Printf: %v\n&#34;</span><span class="p">,</span> <span class="nx">t1</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;fmt.Fprintf: %v\n&#34;</span><span class="p">,</span> <span class="nx">t2</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;fmt.Println: %v\n&#34;</span><span class="p">,</span> <span class="nx">t3</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;fmt.Fprintln: %v\n&#34;</span><span class="p">,</span> <span class="nx">t4</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>10만개의 문자 (\n 제외)를 출력하는 코드입니다.</p>
+<ol>
+<li><code>fmt.Printf</code> 사용, 한 줄</li>
+<li><code>fmt.Fprintf</code> 사용, 한 줄</li>
+<li><code>fmt.Printf</code> 사용, 10만 줄</li>
+<li><code>fmt.Fprintf</code> 사용, 10만 줄</li>
+</ol>
+<p>1, 2번은 한 줄에 10만 자를 모두 출력한 경우이고, 3, 4번은 한 글자를 출력할 때마다 <code>\n</code>을 넣어주었습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">1. fmt.Printf: 2.1709647s
+2. fmt.Fprintf: 33.0269ms
+3. fmt.Println: 3.0822985s
+4. fmt.Fprintln: 14.1889089s
+</code></pre></td></tr></table>
+</div>
+</div><p>한 줄에 모두 출력한 경우는 버퍼링을 활용한 <code>fmt.Fprintf</code>가 월등히 빠른 것을 확인할 수 있지만,
+줄 수가 늘어나는 경우는 오히려 <code>fmt.Printf</code>가 더 빠른 것을 확인할 수 있습니다.</p>
+<h2 id="결론">결론</h2>
+<p>Golang으로 다량의 파일 I/O를 한 번에 처리하는 경우가 아주 흔하지는 않겠습니다만,
+간단하면서도 성능에 큰 영향을 주는 부분이니 머리 한 구석에 기억해두면 좋을 것으로 생각됩니다.</p>
+<p>일상생활에서 알고리즘 문제를 풀 때에도 (Golang으로 문제를 푸는 사람이 얼마나 되겠습니까만은&hellip;) 생각해볼 수 있는 부분입니다.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://golang.org/pkg/fmt/#hdr-Scanning">https://golang.org/pkg/fmt/#hdr-Scanning</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">olOwOlo</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-02-06
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/go/">Go</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2020-03-09-jekyll-views-count-badge/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">HITS!를 이용하여 Jekyll 블로그에 조회수 배지 달기</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/2020-01-12-contributing-pandas/">
+            <span class="next-text nav-default">오픈소스 버그 고치다가 CPython까지 뜯어본 후기</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>olOwOlo</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

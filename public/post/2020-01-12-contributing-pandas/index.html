@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>오픈소스 버그 고치다가 CPython까지 뜯어본 후기 - Even - A super concise theme for Hugo</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="olOwOlo" /><meta name="description" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/2020-01-12-contributing-pandas/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기" />
+<meta property="og:description" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/2020-01-12-contributing-pandas/" />
+<meta property="article:published_time" content="2020-01-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-12T00:00:00+00:00" />
+<meta itemprop="name" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기">
+<meta itemprop="description" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기">
+<meta itemprop="datePublished" content="2020-01-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-01-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4303">
+
+
+
+<meta itemprop="keywords" content="Python," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기"/>
+<meta name="twitter:description" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">오픈소스 버그 고치다가 CPython까지 뜯어본 후기</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-12 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#도입">도입</a></li>
+        <li><a href="#-버그-원인-분석">🤔 버그 원인 분석</a></li>
+      </ul>
+    </li>
+    <li><a href="#-코드-톺아보기">🔎 코드 톺아보기</a>
+      <ul>
+        <li><a href="#-문제-해결">👨‍💻 문제 해결&hellip;?</a></li>
+        <li><a href="#-테스트를-짜자-절망편">💀 테스트를 짜자 (절망편)</a></li>
+        <li><a href="#-안녕-cpython">🖐 안녕 CPython</a></li>
+        <li><a href="#-테스트를-짜자-희망편">✨ 테스트를 짜자 (희망편)</a></li>
+        <li><a href="#-pr-보내기">🚀 PR 보내기</a></li>
+        <li><a href="#결론">결론</a>
+          <ul>
+            <li><a href="#reference">Reference</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>TL;DR</strong></p>
+<p>파이썬 Pandas 라이브러리에서 발견한 버그를 수정하는 과정에서,
+cpython의 코드베이스까지 뜯어보게 된 이야기입니다.</p>
+<blockquote>
+<p>이 글은 오픈 소스 컨트리뷰션 가이드가 아닙니다.</p>
+</blockquote>
+<h2 id="도입">도입</h2>
+<p>얼마 전, 파이썬 데이터 과학 라이브러리인 <a href="https://pandas.pydata.org/">Pandas</a>를 사용하다가 json 데이터를 읽어오는 <code>read_json</code> 함수가 의아한 동작을 하는 것을 발견했습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="c1"># utf-8 인코딩으로 파일을 저장하고</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{&#34;A&#34;: [&#34;가나다라마바사&#34;]}&#39;</span><span class="p">)</span>
+
+<span class="c1"># read_json() 함수로 읽어옵니다</span>
+<span class="n">dt2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dt2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">               A
+0  媛��굹�떎�씪留덈컮�궗
+</code></pre></td></tr></table>
+</div>
+</div><p><code>read_json</code> 함수는 json 파일을 읽어서 파싱해주는 역할을 하는데, utf-8로 저장한 파일을 읽어왔을 때 결과물이 깨지는 것입니다.</p>
+<p>파이썬의 인코딩 문제에 지긋지긋하게 당해본 분들이라면, 파이썬에서 인코딩이 깨지는 건 흔히 있는 일 아닌가? 라고 생각하실 수도 있지만,
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_json.html">공식 다큐먼트</a>에 따르면 <code>read_json</code>은 기본적으로 파일의 인코딩을 utf-8로 취급합니다.</p>
+<p><img src="../../../assets/post_images/pandas_read_json_encoding.PNG" alt="read_json_docs"></p>
+<p>그럼 파일의 인코딩을 utf-8로 명시해주면 어떨까요?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{&#34;A&#34;: [&#34;가나다라마바사&#34;]}&#39;</span><span class="p">)</span>
+<span class="n">dt2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>  <span class="c1"># encoding 파라미터 지정</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dt2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">         A
+0  가나다라마바사
+</code></pre></td></tr></table>
+</div>
+</div><p>제대로 깨지지 않고 파일을 읽어오는 것을 확인할 수 있습니다.</p>
+<p>즉, 코드가 공식 문서대로 동작하고 있지 않습니다. 버그입니다.</p>
+<h2 id="-버그-원인-분석">🤔 버그 원인 분석</h2>
+<p>버그를 발견했으니 먼저 이유를 분석해야 합니다.</p>
+<p>인코딩이 깨지는 것은 분명 제 개발환경이 한국어 윈도우즈라 cp949 인코딩을 사용하고 있기 때문일 것입니다. 확인해볼까요?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="c1"># 파일을 utf-8 대신 cp949 인코딩으로 저장</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;cp949&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{&#34;A&#34;: [&#34;가나다라마바사&#34;]}&#39;</span><span class="p">)</span>
+<span class="n">dt2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dt2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">         A
+0  가나다라마바사
+</code></pre></td></tr></table>
+</div>
+</div><p>예상대로 json 파일을 cp949 인코딩으로 저장하면 제대로 내용을 읽어오는 것을 확인할 수 있습니다.</p>
+<p>이제 Pandas 개발팀에 버그 리포트를 하고 끝내겠습니다. 수고하셨습니다.</p>
+<p>&hellip;라고 하고 싶지만 직접 문제의 원인을 파악하고 고쳐보기로 했습니다 (답답하니 내가 뛴다!).</p>
+<p>먼저 Pandas가 어디서 인코딩을 잘못 읽어오고 있는지 확인하여야 합니다. <a href="https://github.com/pandas-dev/pandas">Pandas 코드베이스</a>를 뜯어볼 시간입니다.</p>
+<h1 id="-코드-톺아보기">🔎 코드 톺아보기</h1>
+<p>먼저 <code>read_json</code> 함수를 찾아봅시다.</p>
+<p><code>read_json</code> 함수는 <a href="https://github.com/pandas-dev/pandas/blob/794a1c21cfcbadd7a36653d9c8184868442be35b/pandas/io/json/_json.py#L352">io/json/_json.py</a> 파일에 정의되어 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># https://github.com/pandas-dev/pandas/blob/794a1c21cfcbadd7a36653d9c8184868442be35b/pandas/io/json/_json.py#L352</span>
+<span class="k">def</span> <span class="nf">read_json</span><span class="p">(</span>
+    <span class="c1">#...</span>
+    <span class="n">encoding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+    <span class="c1">#...</span>
+<span class="p">):</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>인코딩의 기본 값은 <code>None</code>이네요. 더 따라가 봅시다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># https://github.com/pandas-dev/pandas/blob/794a1c21cfcbadd7a36653d9c8184868442be35b/pandas/io/json/_json.py#L586</span>
+    <span class="n">json_reader</span> <span class="o">=</span> <span class="n">JsonReader</span><span class="p">(</span>
+        <span class="c1">#...</span>
+        <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+        <span class="c1">#...</span>
+    <span class="p">)</span>
+
+    <span class="c1">#...</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">json_reader</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="c1">#...</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>read_json</code>함수는 <code>JsonReader</code> 라는 클래스 인스턴스를 생성하고 해당 인스턴스를 통해서 파일을 읽은 뒤 결과를 돌려주게 되어 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># https://github.com/pandas-dev/pandas/blob/794a1c21cfcbadd7a36653d9c8184868442be35b/pandas/io/json/_json.py#L613</span>
+<span class="k">class</span> <span class="nc">JsonReader</span><span class="p">(</span><span class="n">BaseIterator</span><span class="p">):</span>
+    <span class="c1">#...</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+        <span class="c1">#...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span>  <span class="c1"># 인코딩 지정</span>
+        <span class="c1">#...</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_data_from_filepath</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">)</span>  <span class="c1"># 파일을 읽어오는 것으로 추정되는 메소드</span>
+        <span class="c1">#...</span>
+
+    <span class="c1">#...</span>
+    <span class="k">def</span> <span class="nf">_get_data_from_filepath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath_or_buffer</span><span class="p">):</span>
+        <span class="c1">#...</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_get_handle</span><span class="p">(</span> <span class="c1"># 파일 포인터를 가져오는 것으로 추정되는 메소드</span>
+                <span class="n">filepath_or_buffer</span><span class="p">,</span>
+                <span class="s2">&#34;r&#34;</span><span class="p">,</span>
+                <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+                <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">compression</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="c1">#...</span>
+
+        <span class="k">return</span> <span class="n">data</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>JsonReader</code>는 <code>__init__ --&gt; _get_data_from_filepath</code>을 거쳐 <code>_get_handle</code> 메소드를 호출합니다.</p>
+<p>메소드의 이름으로 보건대 파일 포인터를 생성하는 것으로 보입니다.</p>
+<p><code>_get_handle</code>함수는 <a href="https://github.com/pandas-dev/pandas/blob/794a1c21cfcbadd7a36653d9c8184868442be35b/pandas/io/common.py#L367">io/common.py</a> 파일에 정의되어 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># https://github.com/pandas-dev/pandas/blob/794a1c21cfcbadd7a36653d9c8184868442be35b/pandas/io/common.py#L367</span>
+<span class="k">def</span> <span class="nf">_get_handle</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="c1">#...</span>
+            <span class="c1"># No explicit encoding</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_or_buf</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&#34;replace&#34;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+    <span class="c1">#...</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">,</span> <span class="n">handles</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>_get_handle</code> 함수에서 파일을 여는데, 인코딩이 명시되어 있지 않을 경우, <code>open</code> 함수의 인코딩 파라미터를 지정하지 않고 사용하네요.</p>
+<p>이 부분이 문제인 걸까요? 확인해봅시다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{&#34;A&#34;: [&#34;가나다라마바사&#34;]}&#39;</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&#34;replace&#34;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">{&#34;A&#34;: [&#34;媛��굹�떎�씪留덈컮�궗&#34;]}
+</code></pre></td></tr></table>
+</div>
+</div><p><code>_get_handle</code> 함수와 동일한 파라미터를 줘서 파일을 열고 읽어 출력해보니,
+앞서 <code>read_json</code>으로 읽었을 때와 동일하게 깨진 결과를 확인할 수 있습니다.</p>
+<p>그렇습니다. 문제는 <code>open</code>에서 시작되었습니다.</p>
+<p><code>open</code>의 동작이 문제라면 문제는 Pandas가 아니라 파이썬의 영역입니다.</p>
+<p><a href="https://docs.python.org/3.8/library/functions.html#open">파이썬 공식 문서</a>에서 <code>open</code> 함수에 대한 내용을 찾아보면,</p>
+<blockquote>
+<p>In text mode, if encoding is not specified the encoding used is platform dependent: <strong>locale.getpreferredencoding(False)</strong> is called to get the current locale encoding.</p>
+</blockquote>
+<p>인코딩이 지정되어 있지 않을 경우 <code>locale.getpreferredencoding(False)</code>의 실행 결과를 사용한다고 합니다.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">locale</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">locale</span><span class="o">.</span><span class="n">getpreferredencoding</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="s1">&#39;cp949&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>제 한국어 Windows10 환경에서 <code>locale.getpreferredencoding(False)</code>의 결과는 cp949인 것을 확인할 수 있습니다.</p>
+<h2 id="-문제-해결">👨‍💻 문제 해결&hellip;?</h2>
+<p>코드베이스를 깊이 들어가서야 발견한 문제의 원인에 비해서, 해결책은 아주 간단합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># https://github.com/pandas-dev/pandas/blob/fd7db9819b8c7dba86b2887bee33f670b2715afc/pandas/io/json/_json.py#L577</span>
+    <span class="k">if</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&#34;utf-8&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>인코딩이 지정되어 있지 않으면 utf-8로 강제해주는 것이죠.</p>
+<p>기존 Pandas 코드베이스에서도 명시되지 않은 인코딩을 강제한 케이스를 찾아볼 수 있었고 (<a href="https://github.com/pandas-dev/pandas/blob/fd7db9819b8c7dba86b2887bee33f670b2715afc/pandas/io/formats/format.py#L489-L490">예시1</a>, <a href="https://github.com/pandas-dev/pandas/blob/fd7db9819b8c7dba86b2887bee33f670b2715afc/pandas/io/formats/csvs.py#L77-L78">예시2</a>),
+동일한 방식을 적용했습니다.</p>
+<p>이것으로 끝일까요? 아닙니다. 테스트가 남았습니다.</p>
+<h2 id="-테스트를-짜자-절망편">💀 테스트를 짜자 (절망편)</h2>
+<p>Pandas는 코드 품질을 유지하기 위하여 코드 수정 PR에 테스트를 강제합니다.</p>
+<p>우리가 수정한 버그는, <code>read_json</code>이 utf-8이 아닌 잘못된 인코딩을 기본값으로 사용할 수 있다는 것이었으니,
+기존 코드에서는 에러가 발생하고, 수정한 코드에서는 에러가 발생하지 않는 테스트를 작성하여야 합니다.</p>
+<p>그런데 <code>locale.getpreferredencoding(False)</code>은 시스템에 따라 다른 값을 리턴합니다.
+윈도우즈라도 국가에 따라 다르고, 우분투나 맥에서는 utf-8로 고정되어 있습니다.
+즉, 제대로 테스트를 작성하려면 기본 인코딩이 utf-8이 아닌 환경을 시뮬레이션 해주어야 합니다.
+안 그러면 우분투에서는 성공하고 윈도우즈에서는 실패하는 테스트가 되어버릴 수도 있으니까요.</p>
+<p>파이썬 빌트인 모듈인 <code>unittest</code>의 <code>mock</code> 모듈을 이용해서 <code>locale.getpreferredencoding</code> 함수의 리턴 값을 패치해봅시다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">locale</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">mock</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;OS:&#34;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;Locale:&#34;</span><span class="p">,</span> <span class="n">locale</span><span class="o">.</span><span class="n">getpreferredencoding</span><span class="p">(</span><span class="bp">False</span><span class="p">))</span>
+
+<span class="c1"># 파일은 utf-8로 저장</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{&#34;A&#34;: [&#34;가나다라마바사&#34;]}&#39;</span><span class="p">)</span>
+
+<span class="c1"># unittest.mock 함수를 이용한 함수 패칭 (utf-8 --&gt; cp949)</span>
+<span class="k">with</span> <span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&#34;locale.getpreferredencoding&#34;</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=</span><span class="s2">&#34;cp949&#34;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Patched locale:&#34;</span><span class="p">,</span> <span class="n">locale</span><span class="o">.</span><span class="n">getpreferredencoding</span><span class="p">(</span><span class="bp">False</span><span class="p">))</span>
+    <span class="n">dt2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">)</span> <span class="c1"># cp949로 기본 인코딩을 바꾸었으니 깨져야 한다.</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">dt2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">OS: linux
+Locale: UTF-8
+Patched locale: cp949
+         A
+0  가나다라마바사
+</code></pre></td></tr></table>
+</div>
+</div><p>테스트는 기본 locale이 utf-8인 우분투 환경에서 진행했습니다.</p>
+<p>그런데 어라? <code>mock.patch</code>를 이용해서 <code>locale.getpreferredencoding</code>함수의 리턴값이 cp949로 바뀐 것을 확인했음에도,
+<code>read_json</code>은 정상적으로 utf-8 인코딩 파일을 읽어오고 있습니다.</p>
+<h2 id="-안녕-cpython">🖐 안녕 CPython</h2>
+<p>여기서 꽤 오랜 시간 제자리걸음을 했습니다. 대체 어디가 문제인 것일까요.</p>
+<p>그러다 문득 한 가지 가능성을 떠올렸습니다. 과연 파이썬 공식 문서는 100% 정확할까?</p>
+<blockquote>
+<p>정말로 <code>open</code> 함수가 <code>locale.getpreferredencoding(False)</code>의 결과를 사용하는 것일까?</p>
+</blockquote>
+<p>이 질문의 답은 문서에서는 확인할 수 없습니다. 직접 파이썬 코드베이스를 읽어봐야 합니다.</p>
+<p>cpython 레포지토리에서 <code>open</code> 함수를 확인해볼 수 있습니다. <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// https://github.com/python/cpython/blob/d0c92e81aa2171228a23cb2bed36f7dab975257d/Modules/_io/_iomodule.c#L228
+</span><span class="c1">// Cpython open() 함수 구현체
+</span><span class="c1"></span><span class="k">static</span> <span class="n">PyObject</span> <span class="o">*</span>
+<span class="nf">_io_open_impl</span><span class="p">(</span><span class="n">PyObject</span> <span class="o">*</span><span class="n">module</span><span class="p">,</span> <span class="n">PyObject</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">mode</span><span class="p">,</span>
+              <span class="kt">int</span> <span class="n">buffering</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">encoding</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">errors</span><span class="p">,</span>
+              <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">newline</span><span class="p">,</span> <span class="kt">int</span> <span class="n">closefd</span><span class="p">,</span> <span class="n">PyObject</span> <span class="o">*</span><span class="n">opener</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//...
+</span><span class="c1"></span>    <span class="cm">/* wraps into a TextIOWrapper */</span>
+    <span class="n">wrapper</span> <span class="o">=</span> <span class="n">PyObject_CallFunction</span><span class="p">((</span><span class="n">PyObject</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">PyTextIOWrapper_Type</span><span class="p">,</span> <span class="c1">// PyTextIOWrapper_Type 클래스를 사용합니다
+</span><span class="c1"></span>                                    <span class="s">&#34;OsssO&#34;</span><span class="p">,</span>
+                                    <span class="n">buffer</span><span class="p">,</span>
+                                    <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">newline</span><span class="p">,</span>
+                                    <span class="n">line_buffering</span> <span class="o">?</span> <span class="nl">Py_True</span> <span class="p">:</span> <span class="n">Py_False</span><span class="p">);</span>
+    <span class="c1">//...
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>open</code> 함수는 <code>PyTextIOWrapper_Type</code> 클래스를 이용하여 파일을 읽어들이고,</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// https://github.com/python/cpython/blob/d0c92e81aa2171228a23cb2bed36f7dab975257d/Modules/_io/textio.c#L1071
+</span><span class="c1">// PyTextIOWrapper_Type 클래스 생성자 구현체
+</span><span class="c1"></span><span class="k">static</span> <span class="kt">int</span>
+<span class="nf">_io_TextIOWrapper___init___impl</span><span class="p">(</span><span class="n">textio</span> <span class="o">*</span><span class="n">self</span><span class="p">,</span> <span class="n">PyObject</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">encoding</span><span class="p">,</span> <span class="n">PyObject</span> <span class="o">*</span><span class="n">errors</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">newline</span><span class="p">,</span> <span class="kt">int</span> <span class="n">line_buffering</span><span class="p">,</span>
+                                <span class="kt">int</span> <span class="n">write_through</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//...
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">encoding</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">self</span><span class="o">-&gt;</span><span class="n">encoding</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// _PyIO_get_locale_module로 모듈을 읽어와서
+</span><span class="c1"></span>        <span class="n">PyObject</span> <span class="o">*</span><span class="n">locale_module</span> <span class="o">=</span> <span class="n">_PyIO_get_locale_module</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">locale_module</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+            <span class="k">goto</span> <span class="n">catch_ImportError</span><span class="p">;</span>
+        <span class="n">self</span><span class="o">-&gt;</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">_PyObject_CallMethodIdOneArg</span><span class="p">(</span>
+            <span class="c1">// 모듈의 PyId_getpreferredencoding 함수를 호출하여 인코딩을 가져옵니다
+</span><span class="c1"></span>            <span class="n">locale_module</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">PyId_getpreferredencoding</span><span class="p">,</span> <span class="n">Py_False</span><span class="p">);</span>
+        <span class="c1">//...
+</span><span class="c1"></span>    <span class="p">}</span>
+    <span class="c1">//...
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>PyTextIOWrapper_Type</code>은 <code>_PyIO_get_locale_module</code>로 로케일 모듈을 가지고 와서,
+<code>PyId_getpreferredencoding</code>을 호출하여 인코딩을 가져옵니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// https://github.com/python/cpython/blob/d0c92e81aa2171228a23cb2bed36f7dab975257d/Modules/_io/_iomodule.c#L571
+</span><span class="c1"></span><span class="n">PyObject</span> <span class="o">*</span>
+<span class="nf">_PyIO_get_locale_module</span><span class="p">(</span><span class="n">_PyIO_State</span> <span class="o">*</span><span class="n">state</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//...
+</span><span class="c1"></span>    <span class="c1">// _booltlocale 이라는 이름의 모듈을 임포트해옵니다
+</span><span class="c1"></span>    <span class="n">mod</span> <span class="o">=</span> <span class="n">PyImport_ImportModule</span><span class="p">(</span><span class="s">&#34;_bootlocale&#34;</span><span class="p">);</span>
+    <span class="c1">//...
+</span><span class="c1"></span>    <span class="k">return</span> <span class="n">mod</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>_PyIO_get_locale_module</code>은 <code>_bootlocale</code>이라는 이름의 파이썬 모듈을 가지고 오네요.</p>
+<p>대체 <code>_bootlocale</code> 이녀석은 뭘까요? 사실 답은 파이썬 <code>locale</code> 모듈에서 찾을 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># https://github.com/python/cpython/blob/d0c92e81aa2171228a23cb2bed36f7dab975257d/Lib/locale.py#L622</span>
+    <span class="c1"># locale.getpreferredencoding() 구현체</span>
+    <span class="k">def</span> <span class="nf">getpreferredencoding</span><span class="p">(</span><span class="n">do_setlocale</span> <span class="o">=</span> <span class="bp">True</span><span class="p">):</span>
+        <span class="s2">&#34;&#34;&#34;Return the charset that the user is likely using.&#34;&#34;&#34;</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">utf8_mode</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;UTF-8&#39;</span>
+        <span class="kn">import</span> <span class="nn">_bootlocale</span>
+        <span class="k">return</span> <span class="n">_bootlocale</span><span class="o">.</span><span class="n">getpreferredencoding</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>사실 <code>locale.getpreferredencoding</code>은 <code>_bootlocale.getpreferredencoding</code>을 그대로 가져와 쓰고 있었을 뿐입니다! <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>그리고 <code>_bootlocale</code> 모듈에는 진짜 <code>getpreferredencoding</code>이 구현되어 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># https://github.com/python/cpython/blob/d0c92e81aa2171228a23cb2bed36f7dab975257d/Lib/_bootlocale.py</span>
+    <span class="k">def</span> <span class="nf">getpreferredencoding</span><span class="p">(</span><span class="n">do_setlocale</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">utf8_mode</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;UTF-8&#39;</span>
+        <span class="k">return</span> <span class="n">_locale</span><span class="o">.</span><span class="n">_getdefaultlocale</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1">#...</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>즉, 요약하면 다음과 같습니다.</p>
+<ol>
+<li>파이썬의 <code>locale.getpreferredencoding</code> 함수는 <code>_bootlocale.getpreferredencoding</code> 함수를 호출하여 로케일 값을 얻어온다.</li>
+<li>그러나 파이썬의 C로 구현된 빌트인 <code>open</code> 함수는 사실 <code>locale</code> 모듈을 거치지 않고 직접 <code>_bootlocale</code> 모듈을 임포트해온다.</li>
+<li>따라서 <code>locale.getpreferredencoding</code> 함수를 패치하는 것은 <code>open</code> 함수의 동작에 영향을 주지 않았다.</li>
+<li>그렇다면 <strong>_bootlocale</strong> 모듈을 바로 패치하면 <code>open</code>의 동작에 영향을 줄 수 있다!</li>
+</ol>
+<blockquote>
+<p>나중에 확인하기로, <a href="https://bugs.python.org/issue31565">파이썬 이슈 트래커에도 2017년에 해당 내용이 등록</a>된 바 있습니다. <br> 그렇지만 개발자들이 반응해주지 않았네요. 🙁</p>
+</blockquote>
+<h2 id="-테스트를-짜자-희망편">✨ 테스트를 짜자 (희망편)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">locale</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">mock</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;OS:&#34;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;Locale:&#34;</span><span class="p">,</span> <span class="n">locale</span><span class="o">.</span><span class="n">getpreferredencoding</span><span class="p">(</span><span class="bp">False</span><span class="p">))</span>
+
+<span class="c1"># 파일은 utf-8 인코딩으로 저장</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{&#34;A&#34;: [&#34;가나다라마바사&#34;]}&#39;</span><span class="p">)</span>
+
+<span class="c1"># locale.getpreferredencoding 대신 _bootlocale.getpreferredencoding 패치</span>
+<span class="k">with</span> <span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&#34;_bootlocale.getpreferredencoding&#34;</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=</span><span class="s2">&#34;cp949&#34;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Patched locale:&#34;</span><span class="p">,</span> <span class="n">locale</span><span class="o">.</span><span class="n">getpreferredencoding</span><span class="p">(</span><span class="bp">False</span><span class="p">))</span>
+    <span class="n">dt2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&#34;test.json&#34;</span><span class="p">)</span> <span class="c1"># cp949로 기본 인코딩을 바꾸었으니 깨져야 한다.</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">dt2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>기존 테스트 코드에서 패치하는 함수를 <code>_bootlocale.getpreferredencoding</code>로 바꾸었습니다.
+결과는 어떨까요?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">OS: linux
+Locale: UTF-8
+Patched locale: cp949
+               A
+0  媛��굹�떎�씪留덈컮�궗
+</code></pre></td></tr></table>
+</div>
+</div><p>원하던 결과대로 파일의 내용이 깨지는 것을 확인할 수 있습니다!</p>
+<h2 id="-pr-보내기">🚀 PR 보내기</h2>
+<p>이제 문제 원인, 해결책, 테스트까지 모두 완성했으니 PR을 보내봅시다.</p>
+<p><img src="../../../assets/post_images/pandas_issue.PNG" alt="issue"></p>
+<p>먼저 <a href="https://github.com/pandas-dev/pandas/issues/29565">이슈</a>를 작성해서 버그를 발견했음을 알리고,</p>
+<p><img src="../../../assets/post_images/pandas_pr.PNG" alt="PR"></p>
+<p>이슈를 수정하는 <a href="https://github.com/pandas-dev/pandas/pull/29566">PR</a>를 곧바로 날렸습니다.</p>
+<p>Pandas는 테스트로 <code>unittest</code> 대신 <code>pytest</code> 사용을 권장해서 테스트 코드를 약간 수정해주었구요.</p>
+<p>PR은 다음 날에 곧바로 머지되었습니다 :)</p>
+<p><img src="../../../assets/post_images/pandas_merge.PNG" alt="PR_merged"></p>
+<h2 id="결론">결론</h2>
+<p>처음 Pandas에서 버그를 발견했을 때만 해도 아주 간단하게 끝날 줄 알았던 문제가 꼬리에 꼬리를 물어 Cpython까지 가게 되었습니다.</p>
+<p>지금까지 몇 차례의 오픈소스 컨트리뷰션 경험은 있지만, Pandas 정도의 대형 레포지토리에 컨트리뷰션을 한 적은 처음이었는데요.</p>
+<p>많은 사람들이 사용하는 패키지인만큼 더 신중하게 정확한 원인을 찾기 위해 접근해야 했고,
+그 과정에서 Pandas를 넘어 CPython 코드까지 읽어보고 분석해볼 수 있는 기회가 되었습니다.</p>
+<hr>
+<h3 id="reference">Reference</h3>
+<blockquote>
+<p><a href="https://github.com/pandas-dev/pandas">https://github.com/pandas-dev/pandas</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://docs.python.org/3.8/library/functions.html">https://docs.python.org/3.8/library/functions.html</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/python/cpython">https://github.com/python/cpython</a></p>
+</blockquote>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>파이썬 인코딩 문제를 다뤄본 사람은 <code>sys.getdefaultencoding()</code>이 아니고? 라고 생각할 수 있는데, 이 부분은 <a href="https://books.google.co.kr/books?id=NJpIDwAAQBAJ&amp;pg=PA167&amp;lpg=PA167&amp;dq=locale.getpreferredencoding(false)+or+sys.getdefaultencoding()&amp;source=bl&amp;ots=elZ_lJKRZt&amp;sig=ACfU3U2auxeyVMh-6xeCC1qVW9xQOVRh7g&amp;hl=ko&amp;sa=X&amp;ved=2ahUKEwiMlaCi297mAhXyxosBHS54DqEQ6AEwB3oECAoQAQ#v=onepage&amp;q=locale.getpreferredencoding(false)%20or%20sys.getdefaultencoding()&amp;f=false">여기</a>에서 설명을 더 찾아볼 수 있습니다. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>cpython은 2.x 까지는 파이썬으로 구현한 I/O 함수를 사용하다가 이후부터 c 기반으로 새로 구현했습니다. 기존의 파이썬 구현은 <a href="https://github.com/python/cpython/blob/master/Lib/_pyio.py">_pyio</a> 모듈로 사용할 수 있습니다. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>사실 OS마다 조금씩 다르게 동작하도록 구현되어있지만, 기본적으로는 거의 동일합니다. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">olOwOlo</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-01-12
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">Python</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2020-02-06-golang-io/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Go 프로그래밍 I/O 미세 팁</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/2019-12-29-twitter-bot-without-server/">
+            <span class="next-text nav-default">Github Actions를 이용하여 서버 없이 알림 봇 만들기</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>olOwOlo</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

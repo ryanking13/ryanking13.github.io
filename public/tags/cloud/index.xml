@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/cloud/</link>
+    <description>Recent content in Cloud on Even - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 26 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloudflare Workers 소개</title>
+      <link>http://localhost:1313/post/2020-07-26-introducing-cf-workers-1/</link>
+      <pubDate>Sun, 26 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2020-07-26-introducing-cf-workers-1/</guid>
+      <description>최근 마이크로서비스 아키텍처 중심으로 소프트웨어 개발 기법이 변화하면서, FaaS (Function as a Service) 방식의 서버리스 컴퓨팅이 각광을 받고 있습니다. AWS Lambda, Azure Functions, Google Cloud Functions 등 대표적</description>
+    </item>
+    
+    <item>
+      <title>Cloudflare Workers로 서버리스 앱 개발하기</title>
+      <link>http://localhost:1313/post/2020-07-26-introducing-cf-workers-2/</link>
+      <pubDate>Sun, 26 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2020-07-26-introducing-cf-workers-2/</guid>
+      <description>이전 글 - [Cloudflare Workers 소개]({% link _posts/2020-07-26-introducing-cf-workers-1.md %}) 이 글에서는 Cloudflare Workers를 사용하여 JSON 데이터를 포매팅하는 간단한 앱을 만들어보도록 하겠습니다. 이 글에서 사용한 개발 환</description>
+    </item>
+    
+    <item>
+      <title>Github Actions를 이용하여 서버 없이 알림 봇 만들기</title>
+      <link>http://localhost:1313/post/2019-12-29-twitter-bot-without-server/</link>
+      <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2019-12-29-twitter-bot-without-server/</guid>
+      <description>TL;DR Github의 Issue와 Actions를 활용하여, 주기적 알림 트위터 봇을 개인 서버 없이 구축해보기 도입 약 2년 전부터 랜덤 가사 봇 이라는 이름의 트위터</description>
+    </item>
+    
+    <item>
+      <title>Azure Functions 시작하기 1</title>
+      <link>http://localhost:1313/post/2019-02-18-azure-function-apps-01/</link>
+      <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2019-02-18-azure-function-apps-01/</guid>
+      <description>그간 AWS나 Azure를 단순히 원격 서버용으로만 써오다가 최근 간단한 웹훅(Webhook)을 만들거나 주기적 작업을 해야 하는 일이 생겼다. 이 참에 Azu</description>
+    </item>
+    
+  </channel>
+</rss>
