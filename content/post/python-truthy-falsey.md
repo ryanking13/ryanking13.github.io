@@ -1,6 +1,6 @@
 ---
 date: "2018-04-05T00:00:00Z"
-tags:
+categories:
 - Python
 title: 파이썬에서의 Truthy Falsy
 summary: 파이썬의 Truthy와 Falsy 개념을 소개하는 글입니다.

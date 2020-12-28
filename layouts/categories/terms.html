@@ -1,0 +1,113 @@
+{{- define "title" }}{{ .Title }} · {{ .Site.Title }}{{ end -}}
+
+{{- define "content" }}
+{{- $paginator := .Paginate .Data.Pages .Site.Params.archivePaginate -}}
+
+<section id="archive" class="archive">
+  <!-- {{ if not $paginator.HasPrev -}}
+    {{ if eq .Data.Plural "categories" -}}
+      <div class="archive-title category">
+        <h2 class="archive-name">{{ .Title }}</h2>
+      </div>
+    {{- end }}
+  {{- end }} -->
+
+  <!-- {{ range $paginator.Pages -}}
+  <div class="archive-title category">
+    <span class="archive-post-title">
+      <h2 class="archive-name">{{ .Title }}</h2>
+    </span>
+  </div>
+  {{- end }} -->
+
+  {{ .Scratch.Delete "categories" }}
+  {{ range $.Site.RegularPages }}
+      {{ with .Param "categories" }}
+          {{ $.Scratch.Delete "category" }}
+          {{ range $index, $category := . }}
+              {{ $category := (printf `/%s` ($category | urlize)) }}
+              {{ $.Scratch.Add "category" $category }}
+              {{ $.Scratch.Add "categories" (slice ($.Scratch.Get "category")) }}
+          {{ end }}
+      {{ end }}
+  {{ end }}
+  {{ $categories := uniq (.Scratch.Get "categories") | sort }}
+
+      {{ range $index, $value := $categories }}
+          {{ $categoryTerms := (split (strings.TrimPrefix "/" .) "/") }}
+          {{ $depth := (len $categoryTerms) }}
+          {{ $lastTerm := (delimit (last 1 $categoryTerms) " ") }}
+          {{ $url := urls.Parse $lastTerm }}
+          {{ $path := $url.Path }}
+
+          {{ with $.Site.GetPage (printf `/categories/%s` $path) }}
+              {{ $linkTarget := . }}
+
+              {{ $depthPrev := 0 }}
+              {{ if ge $index 1 }}
+                  {{ $categoryPrev := index $categories (sub $index 1) }}
+                  {{ $depthPrev = len (split (strings.TrimPrefix "/" $categoryPrev) "/") }}
+              {{ end }}
+
+              {{ $depthNext := 0 }}
+              {{ if lt $index (sub (len $categories) 1) }}
+                  {{ $categoryNext := index $categories (add $index 1) }}
+                  {{ $depthNext = len (split (strings.TrimPrefix "/" $categoryNext) "/") }}
+              {{ end }}
+
+              <div class="archive-title category">
+                <span class="archive-post-title">
+                  <h2 class="archive-name">{{ .LinkTitle | default .Data.Term | default $path }}</h2>
+                  <!-- <span class="category-count">{{ printf "(%d)" (len .Data.category) }}</span> -->
+                </span>
+              </div>
+
+                  {{ $.Scratch.Delete "pages" }}
+                  {{ range $.Site.RegularPages }}
+                      {{ $page := . }}
+                      {{ with .Param "categories" }}
+                          {{ $.Scratch.Delete "category" }}
+                          {{ range . }}
+                              {{ $category := (printf `/%s` (. | urlize)) }}
+                              {{ $.Scratch.Add "category" $category }}
+                          {{ end }}
+                          {{ $category := $.Scratch.Get "category" }}
+                          {{ if eq $value $category }}
+                              {{ $.Scratch.Add "pages" (slice $page) }}
+                          {{ end }}
+                      {{ end }}
+                  {{ end }}
+                  {{ $pages := $.Scratch.Get "pages" }}
+                  {{ partial "utils/limit-tree-posts.html" (dict "$" $ "pages" $pages "linkTarget" $linkTarget) }}
+
+          {{ end }}
+      {{ end }}
+
+  <!-- {{ range $paginator.Pages -}}
+    <div class="archive-post">
+      <span class="archive-post-title">
+        <a href="{{ .RelPermalink }}" class="archive-post-link">
+          {{ .Title }}
+        </a>
+      </span>
+    </div>
+  {{- end }} -->
+</section>
+
+<!-- pagination -->
+<nav class="pagination">
+  {{ with $paginator.Prev -}}
+    <a class="prev" href="{{ .URL }}">
+      <i class="iconfont icon-left"></i>
+      <span class="prev-text">{{ T "prevPage" }}</span>
+    </a>
+  {{- end }}
+  {{ with $paginator.Next -}}
+    <a class="next" href="{{ .URL }}">
+      <span class="next-text">{{ T "nextPage" }}</span>
+      <i class="iconfont icon-right"></i>
+    </a>
+  {{- end }}
+</nav>
+{{- end }}
+

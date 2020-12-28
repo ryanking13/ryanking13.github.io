@@ -1,7 +1,7 @@
 ---
 date: "2019-10-03T00:00:00Z"
 description: Our journey to type checking 4 million lines of Python
-tags:
+categories:
 - Python
 title: (번역) 4백만 줄의 파이썬 타이핑을 위한 여정
 summary: Dropbox의 거대한 파이썬 코드베이스에 타이핑 도입했던 과정을 담은 글의 번역입니다.

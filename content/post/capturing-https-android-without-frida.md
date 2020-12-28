@@ -1,7 +1,7 @@
 ---
 date: "2020-07-01T00:00:00Z"
 description: 안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법
-tags:
+categories:
 - Network
 title: 안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법
 summary: HTTPS로 통신하는 안드로이드 앱의 패킷 스니핑 방법을 탐구해봅니다.

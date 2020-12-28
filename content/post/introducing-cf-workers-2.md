@@ -1,7 +1,7 @@
 ---
 date: "2020-07-26T01:00:00Z"
 description: Cloudflare Workers로 서버리스 앱 개발하기
-tags:
+categories:
 - Cloud
 title: Cloudflare Workers로 서버리스 앱 개발하기
 summary: Cloudflare Workers로 간단한 JSON 포매터를 만들어봅시다.

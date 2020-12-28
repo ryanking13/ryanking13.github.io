@@ -1,6 +1,6 @@
 ---
 date: "2018-12-03T00:00:00Z"
-tags:
+categories:
 - Security
 title: IDN Homograph attack 정리
 summary: IDN Homograph attack 간단 정리 글입니다.

@@ -1,6 +1,6 @@
 ---
 date: "2018-11-05T00:00:00Z"
-tags:
+categories:
 - Linux
 title: (번역) 초소형 ELF 바이너리 만들기
 summary: 컴파일러가 ELF 바이너리를 생성할때 붙이는 불필요한 부분을 최대한 제거하면서 ELF의 구조를 뜯어보는 글입니다.

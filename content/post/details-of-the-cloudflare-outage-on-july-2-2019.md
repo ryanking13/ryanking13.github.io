@@ -1,7 +1,7 @@
 ---
 date: "2019-07-18T00:00:00Z"
 description: Details of the Cloudflare outage on July 2, 2019
-tags:
+categories:
 - Network
 title: (번역) 2019년 7월 2일 Cloudflare 장애 보고서
 summary: Cloudflare에서 대규모로 발생한 장애의 발생 원인과 해결 과정을 상세히 담은 글입니다.

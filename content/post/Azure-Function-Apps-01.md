@@ -1,7 +1,7 @@
 ---
 date: "2019-02-18T00:00:00Z"
 description: Azure Functions 시작하기 1
-tags:
+categories:
 - Cloud
 title: Azure Functions 시작하기 1
 summary: Azure의 서버리스 프레임워크인 Functions를 소개하는 글입니다.

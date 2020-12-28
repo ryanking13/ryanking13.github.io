@@ -1,6 +1,6 @@
 ---
 date: "2018-03-24T00:00:00Z"
-tags:
+categories:
 - Forensics
 title: PNG 파일 구조
 summary: 대표적인 이미지 파일 포맷인 PNG의 구조를 뜯어보는 글입니다.

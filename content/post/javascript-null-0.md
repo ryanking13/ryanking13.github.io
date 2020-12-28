@@ -1,6 +1,6 @@
 ---
 date: "2018-06-05T00:00:00Z"
-tags:
+categories:
 - Javascript
 title: (번역) Javascript - The Curious Case of Null >= 0
 summary: 개발 과정에서 예상치 못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글입니다.

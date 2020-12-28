@@ -44,10 +44,11 @@ publishDir = "docs"
   identifier = "archives"
   url = "/post/"
 [[menu.main]]
-  name = "Tags"
+  name = "Categories"
   weight = 30
-  identifier = "tags"
-  url = "/tags/"
+  identifier = "categories"
+  url = "/categories/"
+
 
 [params]
   version = "4.x"           # Used to give a friendly message when you have an incompatible update

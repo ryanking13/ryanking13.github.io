@@ -1,6 +1,6 @@
 ---
 date: "2018-07-12T00:00:00Z"
-tags:
+categories:
 - Python
 title: 파이썬 3.7의 새로운 기능들
 summary: 파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니다.

@@ -1,6 +1,6 @@
 ---
 date: "2018-05-17T00:00:00Z"
-tags:
+categories:
 - Security
 title: (번역) Beware of the Bashware
 summary: WSL에서 발생하는 새로운 보안 위협인 bashware를 소개하는 글입니다.

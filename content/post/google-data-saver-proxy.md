@@ -1,6 +1,6 @@
 ---
 date: "2018-04-26T00:00:00Z"
-tags:
+categories:
 - Network
 title: 크롬 데이터 세이버를 크롬 없이 사용하기
 summary: 크롬 데이터 세이버의 동작을 뜯어보는 글입니다.

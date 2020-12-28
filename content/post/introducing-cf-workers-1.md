@@ -1,7 +1,7 @@
 ---
 date: "2020-07-26T00:00:00Z"
 description: Cloudflare Workers 소개
-tags:
+categories:
 - Cloud
 title: Cloudflare Workers 소개
 summary: Cloudflare에서 새로 나온 서버리스 플랫폼인 Workers를 소개합니다.
