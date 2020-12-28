@@ -16,22 +16,22 @@ weight: 50
 	<div style="display: flex; justify-content: center; font-size: 2rem;">
 		<div style="margin: 10px 3px;">
 			<a href="https://github.com/ryanking13" target="_blank">
-				<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+				<i class="iconfont icon-github"></i>
 			</a>
 		</div>
 		<div style="margin: 10px 3px;">
 			<a href="https://www.linkedin.com/in/gyeongjae-choi-b259b0163" target="_blank">
-				<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-linkedin"></i>
+				<i class="iconfont icon-linkedin"></i>
 			</a>
 		</div>
 		<div style="margin: 10px 3px;">
 			<a href="mailto:def6488@gmail.com" target="_blank">
-				<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fas fa-envelope-square"></i>
+				<i class="iconfont icon-email"></i>
 			</a>
 		</div>
 		<div style="margin: 10px 3px;">
 			<a href="https://www.slideshare.net/sihadan" target="_blank">
-				<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-slideshare"></i>
+				<i class="iconfont icon-link"></i>
 			</a>
 		</div>
 	</div>
@@ -87,16 +87,10 @@ weight: 50
 	<h3 style="display: inline;">
 		<a href="https://github.com/ryanking13/SRT" target="_blank">
 			SRT
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+			<i class="iconfont icon-github"></i>
 		</a>
 	</h3>
 </div>
-
-<span style="color:grey"><small><i>
-<i class="fas fa-cogs"></i> Reverse Engineering &nbsp;
-<i class="fab fa-python"></i> Python &nbsp;
-<i class="fab fa-google"></i> Golang &nbsp;
-</i></small></span>
 
 SRT(Super Rapid Train) wrapper for Python (+ [Golang](https://github.com/ryanking13/go-SRT))
 
@@ -110,18 +104,10 @@ SRT(Super Rapid Train) wrapper for Python (+ [Golang](https://github.com/ryankin
 	<h3 style="display: inline;">
 		<a href="https://github.com/ryanking13/burgerqueen" target="_blank">
 			Burgerqueen
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+			<i class="iconfont icon-github"></i>
 		</a>
 	</h3>
 </div>
-
-<span style="color:grey"><small><i>
-<i class="fas fa-cogs"></i> Reverse Engineering &nbsp;
-<i class="fab fa-chrome"></i> Web Development &nbsp;
-<i class="fab fa-vuejs"></i> Vue.js &nbsp;
-<i class="fab fa-python"></i> Python &nbsp;
-<i class="fas fa-cloud"></i> Serverless &nbsp;
-</i></small></span>
 
 Burgerking App coupon web viewer + [Azure Webhook](https://github.com/ryanking13/burgerqueen-webhook)
 
@@ -136,22 +122,16 @@ Burgerking App coupon web viewer + [Azure Webhook](https://github.com/ryanking13
 	<h3 style="display: inline;">
 		<a href="https://github.com/ryanking13/oneshot-cms-deploy" target="_blank">
 			Oneshot-cms-deploy
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+			<i class="iconfont icon-github"></i>
 		</a>
 	</h3>
 </div>
-
-<span style="color:grey"><small><i>
-<i class="fab fa-docker"></i> Docker &nbsp;
-<i class="fas fa-terminal"></i> Shell &nbsp;
-<i class="fab fa-python"></i> Python &nbsp;
-</i></small></span>
 
 Oneshot Docker Deployment for [CMS](http://cms-dev.github.io/)
 
 
 <div style="display: flex;">
-	<div><img style="border-radius: 30%;" src="http://cms-dev.github.io/cms.svg" width="250"/></div>
+	<div><img style="" src="http://cms-dev.github.io/cms.svg" width="250"/></div>
 </div>
 
 <br/>
@@ -164,117 +144,82 @@ Oneshot Docker Deployment for [CMS](http://cms-dev.github.io/)
 	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/bellorin" target="_blank">
 			Bellorin
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+			<i class="iconfont icon-github"></i>
 		</a>
 	</h4>
 </div>
 
-<span style="color:grey"><small><i>
-<i class="fab fa-python"></i> Python &nbsp;
-</i></small></span>
-
 Multi-threaded Social Media Crawler
-<br/>
+<br/><br/>
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/cors" target="_blank">
 			cors
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+			<i class="iconfont icon-github"></i>
 		</a>
 	</h4>
 </div>
 
-<span style="color:grey"><small><i>
-<i class="fab fa-js"></i> Javascript &nbsp;
-<i class="fas fa-cloud"></i> Serverless &nbsp;
-</i></small></span>
-
 Cloudflare workers based CORS proxy
-<br/>
+<br/><br/>
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/twitter-lyric-bot" target="_blank">
 			Random Lyric Bot
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+			<i class="iconfont icon-github"></i>
 		</a>
 	</h4>
 </div>
 
-<span style="color:grey"><small><i>
-<i class="fab fa-twitter"></i> Twitter Bot &nbsp;
-<i class="fab fa-python"></i> Python &nbsp;
-</i></small></span>
-
 Twitter Bot which posts random lyrics
-<br/>
+<br/><br/>
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/twitter-lyric-bot" target="_blank">
 			android-SSL-unpinning
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+			<i class="iconfont icon-github"></i>
 		</a>
 	</h4>
 </div>
 
-<span style="color:grey"><small><i>
-<i class="fas fa-search"></i> Forensics &nbsp;
-<i class="fab fa-python"></i> Python &nbsp;
-</i></small></span>
-
 Android SSL-unpinning tool
-<br/>
+<br/><br/>
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/png-unhide" target="_blank">
 			png-unhide
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+			<i class="iconfont icon-github"></i>
 		</a>
 	</h4>
 </div>
 
-<span style="color:grey"><small><i>
-<i class="fas fa-search"></i> Forensics &nbsp;
-<i class="fab fa-python"></i> Python &nbsp;
-</i></small></span>
-
 PNG sanity checker
-<br/>
+<br/><br/>
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/photoburn" target="_blank">
 			photoburn
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+			<i class="iconfont icon-github"></i>
 		</a>
 	</h4>
 </div>
 
-<span style="color:grey"><small><i>
-<i class="fas fa-search"></i> Forensics &nbsp;
-<i class="fab fa-python"></i> Python &nbsp;
-</i></small></span>
-
 Image fingerprinting tool
-<br/>
+<br/><br/>
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/WMCtest" target="_blank">
 			Working Memory Capacity Test
-			<i style="filter: invert(40%) sepia(59%) saturate(306%) hue-rotate(165deg) brightness(95%) contrast(87%);" class="fab fa-github"></i>
+			<i class="iconfont icon-github"></i>
 		</a>
 	</h4>
 </div>
-
-<span style="color:grey"><small><i>
-<i class="fab fa-chrome"></i> Web Development &nbsp;
-<i class="fas fa-atom"></i> Electron &nbsp;
-<i class="fab fa-vuejs"></i> Vue.js &nbsp;
-</i></small></span>
 
 작업기억용량 검사 테스트 (_Outsourcing_)
 
@@ -325,6 +270,7 @@ _이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 
 #### Open Source Contributions
 
 - Pandas [#29566](https://github.com/pandas-dev/pandas/pull/29566)
+- Tensorflow [#45075](https://github.com/tensorflow/tensorflow/pull/45075)
 - Minor contributions on this blog theme :) [#59](https://github.com/Sylhare/Type-on-Strap/pull/59) [#92](https://github.com/Sylhare/Type-on-Strap/issues/92)
 
 
