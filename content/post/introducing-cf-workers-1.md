@@ -4,6 +4,7 @@ description: Cloudflare Workers 소개
 tags:
 - Cloud
 title: Cloudflare Workers 소개
+summary: Cloudflare에서 새로 나온 서버리스 플랫폼인 Workers를 소개합니다.
 ---
 
 ![Workers Logo](/assets/post_images/cloudflare_workers_logo.jpg)

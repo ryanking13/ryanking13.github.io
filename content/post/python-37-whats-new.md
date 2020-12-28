@@ -3,6 +3,7 @@ date: "2018-07-12T00:00:00Z"
 tags:
 - Python
 title: 파이썬 3.7의 새로운 기능들
+summary: 파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니다.
 ---
 <div style="width: 100%; display: flex; justify-content: center;">
 <blockquote class="twitter-tweet" data-lang="ko"><p lang="en" dir="ltr">Python 3.7.0 is released! Bring out the celebratory libations. Thanks <a href="https://twitter.com/baybryj?ref_src=twsrc%5Etfw">@baybryj</a> and a cast of thousands on python-dev and GitHub. <a href="https://t.co/wEG4vO76Rd">https://t.co/wEG4vO76Rd</a></p>&mdash; Guido van Rossum (@gvanrossum) <a href="https://twitter.com/gvanrossum/status/1012144089452535809?ref_src=twsrc%5Etfw">2018년 6월 28일</a></blockquote>

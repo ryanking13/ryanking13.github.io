@@ -3,6 +3,7 @@ date: "2018-12-03T00:00:00Z"
 tags:
 - Security
 title: IDN Homograph attack 정리
+summary: IDN Homograph attack 간단 정리 글입니다.
 ---
 
 HackerOne의 보고서들을 읽던 중, 우연히 HackerOne 사이트의 IDN Homograph attack에서 대한 [보고서](https://hackerone.com/reports/29491)가 있어서, 대강 알고 있던 내용을 다시 정리해보는 글.

@@ -4,6 +4,7 @@ description: 오픈소스 버그 고치다가 CPython까지 뜯어본 후기
 tags:
 - Python
 title: 오픈소스 버그 고치다가 CPython까지 뜯어본 후기
+summary: 파이썬 Pandas 라이브러리에서 발견한 버그를 수정하는 과정을 담은 글입니다.
 ---
 
 __TL;DR__

@@ -5,6 +5,7 @@ tags:
 - Python
 - Cloud
 title: Github Actions를 이용하여 서버 없이 알림 봇 만들기
+summary: Github의 Issue와 Actions를 활용하여, 주기적 알림 트위터 봇을 개인 서버 없이 구축해봅니다.
 ---
 
 __TL;DR__

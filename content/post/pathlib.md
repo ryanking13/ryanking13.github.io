@@ -3,6 +3,7 @@ date: "2018-05-22T00:00:00Z"
 tags:
 - Python
 title: 파이썬 pathlib 사용하기 - NO MORE os.path.join()
+summary: 파이썬 3.4에서 등장한 pathlib 모듈을 살펴보는 글입니다.
 ---
 
  - 서론이 좀 기니 조각 코드만을 보러 온거라면 [여기](#usage)를 클릭

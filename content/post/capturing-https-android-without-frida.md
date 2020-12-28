@@ -4,6 +4,7 @@ description: 안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법
 tags:
 - Network
 title: 안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법
+summary: HTTPS로 통신하는 안드로이드 앱의 패킷 스니핑 방법을 탐구해봅니다.
 ---
 
 CTF나 버그 바운티 등을 하다보면 안드로이드 앱의 패킷을 뜯어봐야 하는 경우가 종종 있습니다.

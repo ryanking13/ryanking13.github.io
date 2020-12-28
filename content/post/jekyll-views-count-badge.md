@@ -4,6 +4,7 @@ description: HITS!를 이용하여 Jekyll 블로그에 조회수 배지 달기
 tags:
 - Miscellaneous
 title: HITS!를 이용하여 Jekyll 블로그에 조회수 배지 달기
+summary: Jekyll기반 static site에 방문 횟수를 셀 수 있는 서드파티 앱을 설치해봅니다.
 ---
 
 __TL;DR__

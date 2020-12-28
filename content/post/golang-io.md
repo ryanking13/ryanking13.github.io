@@ -4,6 +4,7 @@ description: Go 프로그래밍 I/O 미세 팁
 tags:
 - Go
 title: Go 프로그래밍 I/O 미세 팁
+summary: Golang에서 I/O 연산을 할 때에 참고할만한 사소한 팁을 소개합니다.
 ---
 
 __TL;DR__

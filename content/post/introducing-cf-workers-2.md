@@ -4,6 +4,7 @@ description: Cloudflare Workers로 서버리스 앱 개발하기
 tags:
 - Cloud
 title: Cloudflare Workers로 서버리스 앱 개발하기
+summary: Cloudflare Workers로 간단한 JSON 포매터를 만들어봅시다.
 ---
 
 > 이전 글 - [Cloudflare Workers 소개]({{< ref "introducing-cf-workers-1.md" >}})
