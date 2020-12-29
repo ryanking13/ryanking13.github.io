@@ -48,7 +48,7 @@ weight: 50
 	- Research Officer
 
 - **[Multicampus](http://www.multicampus.com/)** <span style="color:grey"><small>2019 ~ 2020</small></span>
-	- SSAFY(삼성 청년 SW 아카데미) Research Assistant Team
+	- SSAFY(삼성 청년 SW 아카데미) Research Assistant
 
 - **[Soteria Systems](http://www.soteria-sys.com/)** <span style="color:grey"><small>2018 ~ 2020</small></span>
 	- Research Engineer <span style="color:grey"><small>2019 ~ 2020</small></span>
@@ -75,12 +75,12 @@ weight: 50
 
 ## 👨‍💻 Personal Projects 
 
----
+<!-- ---
 
 <div style="text-align: center;">
 	<span style="color:grey">Open Source is ❤️</span>
 </div>
-
+-->
 ---
 
 <div style="display: inline;">
