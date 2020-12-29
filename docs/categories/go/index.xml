@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on Morgenrøde</title>
+    <link>https://ryanking13.github.io/categories/go/</link>
+    <description>Recent content in Go on Morgenrøde</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 06 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go 프로그래밍 I/O 미세 팁</title>
+      <link>https://ryanking13.github.io/2020/02/06/golang-io.html/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2020/02/06/golang-io.html/</guid>
+      <description>Golang에서 I/O 연산을 할 때에 참고할만한 사소한 팁을 소개합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

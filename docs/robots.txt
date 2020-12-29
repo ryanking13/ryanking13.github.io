@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://ryanking13.github.io/sitemap.xml

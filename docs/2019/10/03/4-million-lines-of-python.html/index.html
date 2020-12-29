@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>(번역) 4백만 줄의 파이썬 타이핑을 위한 여정 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="Our journey to type checking 4 million lines of Python" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2019/10/03/4-million-lines-of-python.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.cab45ac71980380f43b9a9c93f03ce1ee85500e92c0d1d2bc28f66eafe5687d8.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="(번역) 4백만 줄의 파이썬 타이핑을 위한 여정" />
+<meta property="og:description" content="Our journey to type checking 4 million lines of Python" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2019/10/03/4-million-lines-of-python.html/" />
+<meta property="article:published_time" content="2019-10-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-03T00:00:00+00:00" />
+<meta itemprop="name" content="(번역) 4백만 줄의 파이썬 타이핑을 위한 여정">
+<meta itemprop="description" content="Our journey to type checking 4 million lines of Python">
+<meta itemprop="datePublished" content="2019-10-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-10-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="10959">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="(번역) 4백만 줄의 파이썬 타이핑을 위한 여정"/>
+<meta name="twitter:description" content="Our journey to type checking 4 million lines of Python"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">(번역) 4백만 줄의 파이썬 타이핑을 위한 여정</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-10-03 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> Python </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#왜-타입-검사를-해야하는가">왜 타입 검사를 해야하는가?</a></li>
+        <li><a href="#mypy가-탄생하기까지">mypy가 탄생하기까지</a></li>
+        <li><a href="#표준으로-인정받은-타이핑-pep-484">표준으로 인정받은 타이핑 (PEP 484)</a></li>
+        <li><a href="#마이그레이션-시작">마이그레이션 시작</a></li>
+        <li><a href="#더-빠른-속도">더 빠른 속도!</a></li>
+        <li><a href="#더욱-더-빠른-속도">더욱 더 빠른 속도!</a></li>
+        <li><a href="#4백만-줄을-달성하다">4백만 줄을 달성하다</a></li>
+        <li><a href="#어려웠던-점들">어려웠던 점들</a></li>
+        <li><a href="#5백만-줄-그리고-그-너머로">5백만 줄 그리고 그 너머로</a>
+          <ul>
+            <li><a href="#reference">Reference</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>원문 : <a href="https://blogs.dropbox.com/tech/2019/09/our-journey-to-type-checking-4-million-lines-of-python/amp/">Our journey to type checking 4 million lines of Python</a></p>
+</blockquote>
+<p>파이썬 정적 타입 체커인 <a href="http://mypy-lang.org/">mypy</a>의 개발자이자 현재는 드롭박스 소속인 <a href="https://github.com/JukkaL">Jukka Lehtosalo</a>가 mypy의 개발 과정을 담은 글입니다.</p>
+<hr>
+<p><img src="https://dropbox.tech/cms/content/dam/dropbox/tech-blog/en-us/2019/09/01-s_be3065586f8fa9c15d8db9d64833f16b5a48ee3941b26d6e4f9f37a6c6aecfbc_1565865178872_serverblog2a.png?w=650&amp;h=488" alt="dropbox annotated line count"></p>
+<p>드롭박스는 파이썬의 헤비 유저입니다. 드롭박스의 백엔드 서비스와 데스크톱 클라이언트 앱에서 가장 많이 사용되고 있는 언어가 파이썬입니다 (Go, Typescript, 그리고 Rust 역시도 많이 사용하고 있습니다). 그러나 수백만 줄의 파이썬 코드로 구성된 드롭박스 서비스의 거대한 크기를 고려하면, 파이썬의 동적 타이핑 방식은 코드를 이해하기 어렵게 만들고, 이는 생산성에 지대한 영향을 줍니다. 이러한 문제를 해결하기 위해여, 드롭박스는 가장 널리 알려진 파이썬 타입 체커인 mypy를 사용하여, 점진적으로 정적 타입 검사를 도입하기 시작했습니다. (mypy는 오픈소스 프로젝트이며, 핵심 개발팀이 드롭박스에 고용되어 있습니다.)</p>
+<p>이 정도로 거대한 규모에서 파이썬에 정적 타입 검사를 도입한 것은 드롭박스가 거의 최초였습니다. 지금에서야 수천 개의 프로젝트들이 mypy를 사용하고 있으며, 충분히 실환경에서 검증된 상태입니다. 그러나 현재의 수준에 이르기까지는 수많은 문제와 실패가 있었습니다. 이 글은 제 대학 연구 프로젝트에서 시작한 파이썬 정적 타입 검사가, 이제는 파이썬 커뮤니티의 수많은 개발자들이 사용하는 자연스러운 기능이 되기까지의 여정을 다룹니다. 현재는 다양한 IDE 및 코드 분석 도구에서 파이썬 정적 타입 검사 기능을 지원하고 있습니다.</p>
+<h2 id="왜-타입-검사를-해야하는가">왜 타입 검사를 해야하는가?</h2>
+<p>만약 지금까지 동적 타이핑 방식으로만 파이썬을 이용해 온 분들이라면, 대체 정적 타이핑과 mypy에 대해서 왜 이렇게 야단을 떠는지 이해하지 못할 수도 있습니다. 혹은 당신이 파이썬을 좋아하는 이유가 바로 동적 타이핑 때문이라면, 이러한 상황을 아예 납득하지 못할 수도 있습니다.
+정적 타이핑의 필요성은 프로젝트가 커짐에 따라서 발생합니다. 프로젝트가 커질수록, 당신은 점점 정적 타이핑을 원하고, 나중에는 반드시 필요로 하게 됩니다.</p>
+<p>작은 프로젝트가 자라면서 수만 줄의 코드가 되고, 여러 명의 엔지니어들이 함께 작업을 하게 되면, 코드를 이해하는 것이 개발 생산성을 유지하기 위한 핵심적인 필요조건이라는 것을 우리는 이미 경험적으로 알고 있습니다.
+만약 파이썬에 타입 어노테이션 문법이 없다면, 코드를 이해하는 데에 가장 기본적인 부분인, 함수에 넘어가는 적절한 파라미터를 아는 것이나, 함수가 리턴하는 반환값의 타입을 아는 것마저도 어려운 문제가 됩니다. 아래는 타입 어노테이션을 사용하지 않을때 하게 되는 아주 흔한 질문들입니다.</p>
+<ul>
+<li>이 함수가 <code>None</code>을 리턴하는 경우가 있는가?</li>
+<li>이 <code>items</code>라는 파라미터는 대체 뭐여야 하지?</li>
+<li>이 <code>id</code> 속성의 타입이 뭐지? <code>int</code>, <code>str</code>, 아니면 다른 커스텀 타입인가?</li>
+<li>이 파라미터는 반드시 <code>list</code>여야할까? <code>tuple</code>이나 <code>set</code>을 넘겨주면 어떻게 되지?</li>
+</ul>
+<p>아래의 타입 어노테이션을 적용하면, 위와 같은 질문들은 아주 간단한 문제가 됩니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Resource</span><span class="p">:</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">bytes</span>
+    <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">read_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+                      <span class="n">items</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">MetadataItem</span><span class="p">]:</span>
+        <span class="o">...</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>read_metadata</code>의 리턴 타입이 <code>Optional[…]</code>이 아니기 때문에 <code>None</code>을 리턴할 일은 없습니다</li>
+<li><code>items</code> 파라미터는 문자열 시퀀스여야 하므로, 아무 iterable이나 넘겨줄 수 없습니다</li>
+<li><code>id</code> 속성은 바이트 문자열입니다</li>
+</ul>
+<p>이러한 부분들이 docstring 형태로 문서화되어있을 것이라고 기대한다면, 이는 너무 이상적인 생각입니다. 그렇게 잘 문서화되지 않은 경우가 더 많다는 것을 이미 알고 있을 것입니다. 설령 문서화가 되어 있더라도, 그것이 정확할 것이라고 확신할 수도 없습니다. docstring이 있더라도, 모호하거나 부정확한 경우가 많고, 이는 잘못된 이해를 야기합니다. 이러한 문제는 거대한 팀이나 코드베이스에서는 치명적인 문제로 작용할 수가 있습니다.</p>
+<p>비록 파이썬이 프로젝트의 초중기에 사용하기에 매우 좋은 언어라 할지라도, 파이썬 프로젝트가 특정 지점을 넘어서면 기업에서는 필연적으로 중요한 결정을 해야하는 때가 옵니다.</p>
+<blockquote>
+<p>&ldquo;파이썬을 버리고 전체 프로젝트를 정적 타입 언어로 다시 작성해야 할까?&rdquo;</p>
+</blockquote>
+<p>라는 결정을 말입니다.</p>
+<p>mypy와 같은 타입 체커는 타입을 정의하는 문법을 제공하고, 실제 타입이 해당 정의에 부합하는 지를 검사함으로써 이러한 문제를 해결합니다. 간단히 말하면, mypy는 <strong>검증된 문서화</strong> 를 제공합니다.</p>
+<p>이외에도 타입 체커를 사용하는 것에는 다양한 이점이 있습니다. 예를 들면,</p>
+<ul>
+<li>사소한 (또는 사소하지 않은) 버그들을 미리 잡아낼 수 있도록 해줍니다. 대표적인 예로는 <code>None</code> 값이나 기타 특수한 환경에서의 핸들링을 빠트리지 않도록 해줍니다.</li>
+<li>리팩토링이 쉬워집니다. 타입 체커가 어느 부분이 수정되어야 하는지 알려주기 때문입니다. 더이상 비효율적인 100% 테스트 커버리지에 목매지 않아도 됩니다. 문제의 원인을 찾기 위해서 긴 스택트레이스를 따라가야 할 필요도 없습니다.</li>
+<li>거대한 프로젝트에서도, mypy는 몇 초안에 전체 프로젝트를 검사하는 것이 가능합니다. 테스트를 수행하는 것이 수십 초 내지 몇 분이 걸리는 것과는 달리 말이죠. 타입 검사는 빠른 피드백을 제공하고 이는 개발 사이클을 매우 빠르게 합니다. 더 이상 부정확하고 유지보수하기 힘든 유닛 테스트에 의존할 필요가 없습니다.</li>
+<li>PyCharm이나 VSCode 같은 IDE와 에디터들이 타입 어노테이션을 이용하여 코드 자동완성, 하이라이팅의 정확도를 향상시키고, 이외에도 다양한 도움이 되는 기능을 만들어낼 수 있습니다. 일부 프로그래머들에게는 이것이 가장 도움이 되는 기능일 수도 있겠죠. 이러한 기능은 mypy와 같은 별도의 타입 체커를 필요로 하지도 않습니다. mypy가 타입 어노테이션이 실제 코드와 잘 맞는지를 검사하는 용도로는 쓰일 수 있겠지만요.</li>
+</ul>
+<h2 id="mypy가-탄생하기까지">mypy가 탄생하기까지</h2>
+<p>mypy는 제가 드롭박스에 들어오기 몇년 전, 영국 캠브릿지 대학에서 시작되었습니다. 저는 박사과정에서 정적 타입 언어와 동적 타입 언어를 합치는 연구를 하고 있었습니다. Siek과 Taha의 <a href="http://homes.sice.indiana.edu/jsiek/what-is-gradual-typing/">gradual typing</a>과 <a href="https://docs.racket-lang.org/ts-guide/">Typed Racket</a>의 영향을 받아, 하나의 프로그래밍 언어를 아주 작은 스크립트를 작성하는 데에도 쓸 수 있고, 수백만 줄의 코드베이스에서도 쓸 수 있도록 하고자 했죠. 이 아이디어의 핵심적인 부분은, ㅍ,프로그래머가 프로젝트 초기에는 동적 타입의 프로토타입을 작성하지만, 점차 실제 환경에서 사용할 수 있는 정적 타입의 결과물을 만들어낼 수 있도록 하는 것이었습니다. 현재에 와서는 이러한 아이디어가 꽤 널리 받아들여지고 있지만, 2010년 당시에만 해도 이는 활발하게 연구되는 주제가 아니었습니다.</p>
+<p>타입 검사에 대한 제 초기 연구는 파이썬을 타겟으로 한 것이 아니었습니다. 대신 제가 직접 만든 <code>Alore</code>라는 언어를 사용했습니다. 아래는 Alore가 어떻게 생긴 언어인지 보여주는 예시입니다 (타입 어노테이면 문법은 반드시 사용할 필요가 없는 선택적 문법입니다.)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">def Fib(n as Int) as Int
+  if n &lt;= 1
+    return n
+  else
+    return Fib(n - 1) + Fib(n - 2)
+  end
+end
+</code></pre></td></tr></table>
+</div>
+</div><p>단순화된 커스텀 언어를 사용하는 것은 빠르게 실험을 수행하고, 중요하지 않은 문제점을 무시하기 위해 연구에서 흔히 사용하는 방식입니다.
+현업에서 사용되는 언어들은 굉장히 크고 복잡한 구현체이기 때문에, 실험이 느릴 수밖에 없기 때문이죠.
+그러나 동시에 주류 언어가 아닌 언어를 통해서 나온 결과는 실용성을 담보할 수 없기 때문에 믿을 수 없기도 합니다.</p>
+<p>저는 Alore를 사용하여 만든 타입 체커에서 큰 가능성을 보았고, 이를 실제 환경에서 돌아가는 코드에서 실험하고 싶었습니다.
+운이 좋게도, Alore는 파이썬에 큰 영향을 받은 언어였습니다. 그래서 체커를 파이썬 문법에 맞추어 수정함으로써 오픈 소스 파이썬 코드를 검사하도록 하는 것은 어려운 일이 아니었습니다.
+또한 저는 Alore 코드를 파이썬 코드로 변환하는 도구를 만들었고, 이를 통해서 타입 체커를 Alore 코드에서 파이썬 코드로 변환했습니다. 이를 통해 파이썬 코드를 검사할 수 있는 파이썬으로 만들어진 타입 체커가 완성되었습니다!
+(Alore에서 사용한 일부 디자인은 파이썬에는 잘 맞지 않았습니다, 이는 mypy 코드베이스에서 지금도 확인이 가능합니다.)</p>
+<p>솔직하게 말하면, 아직 이 언어는 파이썬이라고 부를 수 있는 상태는 아니었습니다. 파이썬 3의 타입 어노테이션 문법의 한계로 인해서, 자바와 파이썬의 융합체같아 보이는 형태였죠.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">int fib(int n):
+    if n &lt;= 1:
+        return n
+    else:
+        return fib(n - 1) + fib(n - 2)
+</code></pre></td></tr></table>
+</div>
+</div><p>당시 제가 가지고 있던 아이디어 중 한 가지는, 타입 어노테이션 문법을 사용하여 파이썬 코드를 C나 JVM 바이트코드로 컴파일할 수 있게 하여 성능을 향상시키는 것이었습니다. 그러나 그 아이디어는 곧 포기했는데, 타입 검사 자체로도 충분히 의미가 있다고 판단하였기 때문입니다.</p>
+<p>이러한 프로젝트 결과를 산타클라라에서 열린 파이콘 2013에서 발표를 했고, 파이썬의 BDFL인 Guido와 대화를 나눌 기회가 있었습니다. 그는 제게 독자적인 문법을 버리고 파이썬 3의 문법에 충실하라고 말했습니다.
+파이썬 3은 함수 어노테이션을 제공하므로, 아래와 같은 식으로 파이썬 프로그램을 작성할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>파이썬 3의 문법을 사용하면 일부 기능은 포기해야만 했습니다 (제가 독자적인 문법을 사용한 이유가 이 때문이었습니다.).
+구체적으로, 당시 최신 버전이었던 파이썬 3.3에서는 변수 어노테이션 문법이 없었습니다.
+저는 Guido와 이메일로 여러 가능성이 있는 문법들에 대해서 논의했습니다. 우리는 변수에 대해서는 타입 코멘트를 다는 방식을 사용하기로 결정했습니다.
+기능적으로는 충분했지만, 다소 보기에 어정쩡해보이는 방식이었죠. (파이썬 3.6에서는 훨씬 더 좋은 문법이 만들어지만, 타입 코멘트는 별도의 타입 어노테이션 문법이 없는 파이썬 2에서는 여전히 잘 사용되고 있습니다.)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">products</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># type: List[str]  # Eww</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># type: (int) -&gt; int</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>다소 어정쩡한 문법이었습니다만, 결과적으로는 정적 타이핑을 통해서 얻는 이점에 비해서 이것이 굉장히 사소한 문제라고 여겨지게 되었고, 유저들은 썩 이상적이지 않은 문법들을 개의치 않게 되었습니다.
+파이썬 타입 체킹을 위해서 추가적인 문법이 사용되지 않으므로, 기존에 사용하던 모든 파이썬의 도구나 워크플로우가 그대로 사용될 수 있고, 이는 타입 검사를 도입하는 것을 쉽게 만들었습니다.</p>
+<p>Guido는 제게 박사 졸업 후 드롭박스로 오라고 말했습니다. 여기서 이 이야기의 핵심적인 부분이 시작됩니다.</p>
+<h2 id="표준으로-인정받은-타이핑-pep-484">표준으로 인정받은 타이핑 (PEP 484)</h2>
+<p>mypy를 본격적으로 실험한 것은 드롭박스 Hack Week 2014에서 였습니다. Hack Week는 드롭박스에서 일주일동안 아무 일이나 하고싶은 것을 할 수 있도록 하는 주간입니다. 드롭박스의 많은 멋진 기능들의 역사를 따라가보면 Hack Week에서 시작된 경우가 많습니다. Hack Week에서의 실험 결과, 우리는 mypy의 가능성을 높게봤지만, 아직 널리 쓰이기에는 부족한 부분이 있다고 판단했습니다.</p>
+<p>mypy의 아이디어는 파이썬의 타입 힌트 문법이 표준화되기까지 표류했습니다. 앞서 언급한 것처럼, 파이썬 3.0부터 함수 타입 어노테이션이 가능했습니다. 그러나 당시의 어노테이션 문법은 명확하게 정해진 방식이 없는 불명확한 표현법을 사용했고, 런타임에는 대부분 무시되었죠.
+Hack Week가 끝난 이후, 우리는 어노테이션 문법을 표준화하는 작업을 시작했고, 그 결과 PEP 484가 탄생했습니다 (Guido, Łukasz Langa, 그리고 제가 함께 작성했습니다).</p>
+<p>PEP 484의 목적은 두 가지였습니다.
+첫째, 모든 파이썬 생태계가 각기 다르고 호환되지 않는 방식 대신 공통된 타입 힌트 (파이썬에서의 표현으로는 타입 어노테이션) 문법을 사용하는 것.
+둘째, 우리만의 독단적인 생각으로 타입 어노테이션 문법을 정형화하는 것이 아니라 더 많은 파이썬 커뮤니티와 타입 힌트를 어떻게 활용할지 논의하는 것.
+파이썬은 &ldquo;덕 타이핑(duck typing)&ldquo;으로 유명한 동적 타이핑 언어이기 때문에, 초기에는 적정 타이핑을 도입하는 것에 대해서 커뮤니티의 반대 의견도 많았습니다. 그러나 이러한 의견들은 타입 힌트가 선택적인 기능으로 남을 것이라는 것이 명확해진 뒤로는 사그라들었습니다. (물론 사람들이 타입 힌트가 매우 유용하다 점을 이해하기도 했구요.)</p>
+<p>결과적으로 완성된 타입 힌트 문법은 mypy가 최초에 지원했던 것과 상당히 유사한 형태가 되었습니다.
+PEP 484는 2015년에 파이썬 3.5와 함게 배포되었고, 파이썬은 이제 동적 타이핑 언어 이상의 것이 되었습니다.
+저는 이것이 파이썬의 큰 마일스톤이라고 생각합니다.</p>
+<h2 id="마이그레이션-시작">마이그레이션 시작</h2>
+<p>2015년 말에 드롭박스에서는 mypy 개발을 위하여 Guido, Greg Price, 그리고 David Fisher의 3명으로 구성된 팀을 만들었습니다.
+그 이후로 모든 것이 굉장히 빠르게 움직였습니다. mypy의 시급한 걸림돌은 성능이었습니다.
+CPython 인터프리터의 성능은 mypy를 돌리기에는 만족스럽지 않았습니다. (PyPy의 경우도 도움이 되지 않았습니다.)
+앞서 언급한 것처럼 mypy 구현체를 C로 컴파일 하는 초기 아이디어가 있었으나, 이 아이디어는 (당시에는) 포기했었구요.</p>
+<p>다행히도, 알고리즘적인 개선이 이루어졌습니다. 우리는 점진적인 검사를 도입하여 주요한 성능 향상을 이루었습니다. 아이디어는 간단합니다. 만약 모듈의 모든 디펜던시가 이전의 mypy 실행 시점과 똑같다면, 이미 캐싱된 데이터를 그대로 사용할 수 있으므로 수정된 파일과 해당 파일의 디펜던시만 검사하면 되는 것입니다.
+mypy는 거기서 한발짝 더 나아갔는데요. 만약 모듈의 외부 인터페이스가 바뀌지 않았다면, mypy는 이 모듈을 임포트하는 다른 모듈도 다시 검사하지 않습니다. 점직전인 검사 방식은 거대한 코드 프로젝트를 검사할 때에 매우 많은 도움이 되었습니다. 이러한 프로젝트는 타입이 점진적으로 추가되고 바뀌면서 수없이 자주 mypy를 실행하기 때문입니다.</p>
+<p>그렇지만 여전히 최초에 mypy를 실행할 때는 많은 디펜던시를 검사하는 데에 오랜 시간이 걸렸습니다.
+이를 개선하기 위해, 우리는 원격 캐싱을 구현했습니다. mypy는 로컬 캐시가 만료되면, 중앙 저장소에서 최근의 캐시 스냅샷을 다운로드 합니다. 그리고 다운로드된 캐시를 사용하여 다시 점진적인 빌드를 수행합니다.
+이를 통해 mypy는 또 한번 큰 성능 향상을 이룰 수 있었습니다.</p>
+<p>이 시점부터 드롭박스에서 mypy를 적극적으로 도입하기 시작했습니다. 2016년 말에는, 42만 줄의 파이썬 코드에 타입이 명시되었습니다. 많은 유저들은 타입 체킹에 굉장한 만족감을 나타냈고, 드롭박스 내에서도 mypy를 사용하는 팀이 빠르게 늘어가고 있었습니다.</p>
+<p>많은 것들이 잘 되어가고 있었지만, 여전히 해야할 일이 많았습니다.
+우리는 정기적으로 내부 서베이를 수행하여, 불편한 부분이나 우전적으로 개발되어야 할 부분을 조사했습니다
+(이러한 방식은 현재까지도 지속되고 있습니다.).
+서베이 결과 크게 두 가지 핵심적인 요구사항이 있었습니다. 더 많은 타입을 지원하는 것, 그리고 더 빠른 실행 속도였죠.
+아직 더 개선할 사항이 있다는 것이 명백해졌으므로, 우리는 일에 더 박차를 가했습니다.</p>
+<h2 id="더-빠른-속도">더 빠른 속도!</h2>
+<p>점진적인 빌드 방식은 mypy를 빠르게 만들었지만, 여전히 충분히 빠르지는 않았습니다. 여전히 한 번 mypy를 실행할 때마다 1분 가량이 걸렸습니다. 느린 속도의 원인은 거대한 파이썬 코드베이스를 다뤄본 사람이라면 익숙한 문제일 텐데요. 바로 순환참조입니다.
+수백 개의 모듈이 서로를 직간접적으로 참조하는 상황. 이러한 사이클에서 단 하나의 파일만 바뀌어도, mypy는 전체 사이클에 있는 모든 파일을 검사하여야 하고, 이 사이클에 있는 모듈을 import하는 다른 모듈도 검사하여야 했습니다.</p>
+<p>이러한 사이클 중의 하나는 드롭박스의 수많은 사람들을 눈물나게 한 악명높은 &ldquo;꼬임&quot;도 있었습니다.
+어느 한 시점에는 수백개의 모듈이 서로를 임포트하고 다시 이를 임포트하는 테스트 함수와 제품 코드가 섞인 상태였습니다.</p>
+<p>우리는 이렇게 꼬인 의존성을 풀려고 시도해보았습니다만, 그럴만한 충분한 시간과 능력이 없었습니다.
+익숙하지 않은 코드도 너무나 많았구요.
+대신 우리는 다른 방식의 접근을 시도했습니다. 그러한 꼬임이 존재하더라도 괜찮게끔 mypy를 충분히 빠르게 만들자는 것이었습니다.
+이를 우리는 mypy 데몬을 통해서 달성했습니다. mypy 데몬은 두 가지 흥미로운 작업을 하는 서버 프로세스입니다.
+첫째로, 전체 코드베이스에 대한 정보를 메모리에 저장하고 있고, 이를 통해 각 mypy 실행시에 수천개의 전체 디펜던시를 다 로드하지 않아도 되도록 합니다.
+둘째로, 함수와 기타 구조에 대한 fine-grained 디펜던시를 추적합니다.
+예를 들어, foo 함수가 bar 함수를 호출한다면, bar에서 foo로의 의존성이 있습니다.
+만약 파일이 수정되면, 데몬은 먼저 수정된 파일을 검사하고, 그 후 해당 파일의 변화를 확인할 수 있는 외부 파일을 검사합니다, 예를 들면 파일 시그니쳐가 바뀌었던가 하는 것 말이죠. 데몬은 fine-grained 디펜던시를 사용해서 변화된 함수를 사용하는 함수들만 다시 검사합니다. 이는 대체로 적은 수의 함수입니다.</p>
+<p>기존의 구현은 한 파일 전체를 검사하는 방식으로 이루어졌기 때문에, 이와 같은 새로운 기능을 구현하는 것은 굉장히 도전적인 일이었습니다. 우리는 어떤 함수들이 검사되어야 하는 지를 정확히 파악하기 위해 수많은 예외 케이스와 싸워야했죠.
+수많은 땀과 노력 끝에 우리는 대부분의 점진적 실행을 단 몇 초안에 끝낼 수 있도록 만드는데에 성공했습니다.</p>
+<h2 id="더욱-더-빠른-속도">더욱 더 빠른 속도!</h2>
+<p>앞서 언급한 원격 캐싱을 도입한 결과, mypy 데몬은 몇 개의 파일만 변경된 점진적 실행의 경우 매우 만족스러운 성능을 보였습니다.
+그러나 여전히 최악의 경우에서의 성능은 갈 길이 멀었습니다. 제일 처음 실행하는 mypy 빌드는 15분 가량 걸렸고, 이는 우리가 만족할 수 있는 속도가 아니었습니다.
+더욱이 이는 매주 엔지니어들이 코드에 타입을 추가하면서 점점 악화되었습니다.
+여전히 드롭박스의 사용자들은 성능 향상을 원하고 있었습니다. 우리는 그 기대에 부합해야했습니다.</p>
+<p>우리는 mypy를 파이썬에서 C로 컴파일하는 초기의 아이디어로 돌아갔습니다. 기존에 존재하는 파이썬 to C 컴파일러인 Cython을 이용하는 것은 뚜렷한 속도 향상을 보이지 않았고, 따라서 우리는 자체적인 컴파일러를 개발하기로 했습니다. 파이썬으로 작성된 mypy 코드베이스는 이미 전체 코드에 타입 어노테이션이 작성된 상태였기 때문에, 이 타입 어노테이션을 이용해서 속도를 향상시켜보기로 했습니다.
+저는 간단한 프로토타입 POC(proof-of-concept)를 만들어서 여러 마이크로 벤치마크에서 10배 이상의 성능 향상을 보이는 것을 확인했습니다.
+아이디어는 파이썬 모듈을 CPython의 C 익스텐션 모듈로 컴파일하고, 런타임에 타입 어노테이션을 검사하는 것이었습니다 (일반적으로 타입 어노테이션은 런타임에는 무시되고 타입 체커에 의해서만 사용됩니다.).
+우리가 하고자 한 것은 mypy를 파이썬에서 파이썬 같아 보이는 (그리고 파이썬 같이 행동하는) 완전 정적 타입 언어로 바꾸는 것이었습니다. (이런 식의 언어간 마이그레이션을 자주 활용했습니다. mypy는 처음에는 Alore로 만들어졌다가 이후에는 커스텀한 자바/파이썬이 혼재된 문법으로 바뀌었었죠.)</p>
+<p>CPython 익스텐션 API를 활용하는 것이 이 프로젝트가 지속될 수 있게하는 핵심적인 요소였습니다. mypy를 위해서 VM이나 새로운 라이브러리를 만들 필요가 없으니까요.
+또한 모든 파이썬 생태계와 도구 (e.g. pytest)를 그대로 활용할 수 있고, 개발 도중에 인터프리터 환경에서 파이썬 코드를 실행해 볼 수 있기 때문에, 긴 시간 컴파일 되는 것을 기다릴 필요가 없어서 고치고 테스트하는 사이클의 속도가 굉장히 빨랐습니다.
+마치 두 마리 토끼를 다 잡는 것 같은 일이었습니다!</p>
+<p>우리가 mypyc라고 명명한 컴파일러 (프론트엔드에서 타입 분석을 위해서 mypy를 사용하기 때문에 이런 이름이 붙었습니다.)는 굉장히 성공적이었습니다. 캐싱된 것이 없는 처음의 mypy 실행에서 전체적으로 4배의 속도 향상을 보였습니다. Michael Sullivan, Ivan Levkivskyi, Hugh Han, 그리고 저로 구성된 작은 팀에서 mypyc 프로젝트의 핵심적인 부분을 개발하는 데에는 4개월 정도가 걸렸습니다.
+이는 mypy 전체를 C++이나 Go로 다시 작성하는 것에 비해서 훨씬 적고 덜 귀찮은 일이었습니다. 우리는 언젠가 드롭박스의 다른 엔지니어들 역시 mypyc를 써서 코드를 빠르게 할 수 있게 되는 것을 기대하고 있습니다.</p>
+<p>이 정도 수준의 성능에 이르기까지 꽤 흥미로운 기술적 요소들이 있었는데요. 컴파일러가 여러 명령어를 빠르게 하기 위해서 로우 레벨 C 문법을 사용합니다.
+예를 들어, 컴파일된 함수는 C 함수 호출 방식을 사용하여 파이썬의 함수 호출 방식보다 훨씬 빠릅니다.</p>
+<p>한편, 디렉토리 룩업과 같은 연산은 여전히 CPython의 C API 호출을 사용하여 컴파일해도 아주 약간의 성능 향상만을 달성했습니다.
+우리는 이러한 &ldquo;느린 연산들&quot;을 찾기 위해 프로파일링을 수행하였는데요.
+이 프로파일링 데이터를 바탕으로, 해당 연산에 대해서 더 빠른 코드를 생성하게끔 mypyc를 최적화 한다던가,
+동일한 파이썬 코드를 더 빠른 연산으로 바꾸는(물론 이게 언제나 가능한 것은 아니었습니다.) 작업을 수행했습니다.
+후자의 경우가 컴파일러를 통해서 변환을 자동화하는 것보다 훨씬 간단한 경우가 많았습니다.
+장기적으로는 이러한 변환들을 자동화하려고 하지만, 현재는 mypy를 최소한의 노력으로 빠르게 하기 위해 일부의 특수한 케이스만 고치는 방식을 쓰고 있습니다.</p>
+<h2 id="4백만-줄을-달성하다">4백만 줄을 달성하다</h2>
+<p>또 다른 중요한 도전과제 (mypy 유저 서베이에서 두번째로 많은 요청이기도 했던 것)는, 드롭박스의 타입 커버리지를 높이는 것이었습니다.
+우리는 여러 가지 시도를 했는데요. 자연스럽게 사람들이 타입을 붙이도록 하는 것에서, mypy 팀이 직접 나서서 타입을 붙이는 것, 나아가 자동으로 타입을 추론하는 것까지 시도하였습니다.
+결과적으로 어떤 한 전략이 특별히 잘 먹혀들거나 하지는 않았지만, 여러 전략을 통해서 빠르게 드롭박스의 코드베이스에 타입 어노테이션을 추가할 수 있었습니다.</p>
+<p>그러한 노력의 결과, 세계적으로 가장 거대한 백엔드 파이썬 레포지토리인 드롭박스의 코드베이스에는 3년 만에 4백만 줄에 가까운 코드가 타이핑 되었습니다.
+mypy는 다양한 커버리지 레포트를 제공하여 진행상황을 알 수 있도록 해줍니다.
+예를 들어, <code>Any</code> 타입을 사용하거나, 타입 어노테이션이 없는 서드파티 라이브러리를 사용할 때는 부정확한 타입임을 알려줍니다.
+드롭박스의 타입 검사 정확도를 향상시키는 과정에서, 우리는 여러 오픈 소스 라이브러리와 파이썬 <a href="https://github.com/python/typeshed">typeshed 레포지토리</a>의 타입 정의에도 기여했습니다.</p>
+<p>우리는 새로운 타입 시스템 기능을 만들고, 특정 파이썬 패턴에 대해서 더 정확한 타입을 사용할 수 있도록 하는 것에도 노력하고 있습니다. (표준 PEP를 만드는 것도 물론 하고 있구요.)
+주목할만한 예로는 고정된 문자열 키와 유니크한 타입 밸류를 가진 JSON-like 딕셔너리 타입인 <code>TypedDict</code>가 있습니다.
+우리는 계속 타입 시스템을 확장해나가고 있으며, 파이썬의 Numpy, Scipy와 같은 수치 라이브러리에도 이를 지원하는 것이 우리의 다음 목표입니다.</p>
+<p><img src="https://dropboxtechblog.files.wordpress.com/2019/09/01-s_be3065586f8fa9c15d8db9d64833f16b5a48ee3941b26d6e4f9f37a6c6aecfbc_1565865178872_serverblog2a.png?w=768&amp;h=576" alt="server"></p>
+<p><img src="https://dropboxtechblog.files.wordpress.com/2019/09/02-s_be3065586f8fa9c15d8db9d64833f16b5a48ee3941b26d6e4f9f37a6c6aecfbc_1565865190542_clientblog2a.png?w=768&amp;h=576" alt="client"></p>
+<p><img src="https://dropboxtechblog.files.wordpress.com/2019/09/03-s_be3065586f8fa9c15d8db9d64833f16b5a48ee3941b26d6e4f9f37a6c6aecfbc_1565876815034_combinedblog2a.png?w=768&amp;h=576" alt="combined"></p>
+<p>아래는 드롭박스의 어노테이션 커버리지를 향상시키기 위해서 우리가 했던 일들입니다.</p>
+<p><em>엄격함</em>. 우리는 점진적으로 새로운 코드에 요구하는 수준을 높였습니다. 처음에는 linter가 이미 일부 어노테이션이 작성된 파일에 남은 어노테이션을 작성하도록 권고하는 것에서 시작하여, 지금은 대부분의 새로운 파일 및 기존 파일에 타입 어노테이션을 요구하고 있습니다.</p>
+<p><em>커버리지 리포팅</em>. 우리는 매주 이메일 레포트를 각 팀에 발송하여, 어노테이션 커버리지를 알려주고, 어노테이션이 필요한 중요 파일을 알려줍니다.</p>
+<p><em>지원 활동</em>. 우리는 mypy에 대해 꾸준히 발표하고, 각 팀들이 mypy를 사용할 수 있도록 대화하고 도왔습니다.</p>
+<p><em>서베이</em>. 우리는 정기적인 서베이를 수행하여 문제점을 파악하고 고칠 수 있도록 했습니다.</p>
+<p><em>성능</em>. 우리는 mypy의 성능을 향상시키기 위해서 데몬와 mypyc를 만들어 어노테이션의 부하를 줄이고,
+더 큰 코드베이스에서도 사용할 수 있도록 했습니다.</p>
+<p><em>에디터와의 통합</em>. 우리는 드롭박스에서 많이 사용되는 PyCharm, Vim, 그리고 VSCode 에디터에 mypy 기능을 제공하여 어노테이션이 훨씬 수월하게 이루어지도록 했습니다.</p>
+<p><em>정적 분석</em>. 우리는 함수의 타입을 추론하기 위한 정적 분석을 수행했습니다. 이는 아주 단순한 케이스에서만 제대로 동작했지만,
+큰 노력 없이 커버리지를 높이는데에 도움을 주었습니다.</p>
+<p><em>서드파티 라이브러리 지원</em>. 우리의 많은 코드가 SQLAlchemy 라이브러리를 사용하는데, 이 라이브러리는 PEP 484의 타입을 바로 적용할 수 없는 파이썬의 동적 특성을 사용합니다. 우리는 PEP 561 stub 파일 패키지를 만들고 mypy 플러그인을 작성하여 타입 시스템을 잘 지원하도록 수정했습니다. (이는 오픈소스로 공개되어있습니다.)</p>
+<h2 id="어려웠던-점들">어려웠던 점들</h2>
+<p>4백만 줄에 이르는 것은 당연히 쉬운 일이 아니었고, 그 과정에서 여러 실수와 문제들이 있었습니다.
+아래는 다른 사람들이 우리와 같은 실수를 하지 않기를 바라는 마음에서 적은 내용입니다.</p>
+<p><strong>빠진 파일들</strong>. mypy를 이용한 우리의 첫 검사는 아주 적은 수의 파일을 대상으로 이루어졌습니다.
+이 빌드밖에 있는 파일들은 검사 대상 외였죠. 어떤 파일에 어노테이션이 추가되면 mypy의 검사 대상에 추가되는 방식입니다.
+그래서 만약 검사 대상밖에 있는 파일을 임포트하면, 전혀 검사되지 않은 Any 타입의 값을 받게되는데,
+이는 타입 정확도를 현저하게 떨어뜨립니다 (특히 초기의 마이그레이션에서요.).
+최악의 경우는 두 개의 서로 다른 타입 검사가 완료된 코드베이스를 머지하면 두 코드베이스가 호환되지 않는다는 것을 발견하고,
+수 많은 어노테이션의 수정이 필요하기도 했죠!
+돌이켜 생각해보면 처음 mypy 검사 시에 기본적인 라이브러리 모듈을 포함시켜서 좀 더 파일 간 연결이 수월하게 만들어야 했습니다.</p>
+<p><strong>레거시 코드에 어노테이션 추가하기</strong>. 처음 시작했을 때, 우리에게는 4백만 줄의 파이썬 코드가 있었습니다.
+이 코드 전체에 어노테이션을 추가하는 것은 쉽지 않은 일인 것이 당연했죠.
+그래서 우리는 PyAnnotate라는 도구를 만들어서 런타임에 타입을 수집하고 이렇게 수집된 타입을 토대로 타입 어노테이션을 자동으로 삽입하고자 했습니다.
+그러나 이는 큰 효용이 없었습니다. 타입을 수집하는 것이 느렸고, 나온 결과물도 대체로 수작업으로 일일히 수정해야 하는 것이었죠.
+매번 테스트 빌드를 할 때마다 타입을 수집하는 것도 고려해보았습니다만,
+결과적으로는 이것이 너무 위험하다고 판단했습니다.</p>
+<p>최종적으로는, 대부분의 코드가 코드 작성자에 의해 수작업으로 어노테이션 되었습니다.
+우리는 우선순위가 높은 모듈과 함수들에 대한 보고서를 제공하여 주요한 어노테이션 작업이 더 원활하게 이루어지도록 했습니다. 수백군데에서 쓰이는 라이브러리 모듈은 우선적으로 어노테이션이 이루어져야하고, 반대로 곧 대체될 레거시 서비스는 어노테이션의 중요함이 훨씬 덜합니다.
+또한 정적 분석 도구를 이용해서 레거시코드에 타입 어노테이션을 붙이는 실험도 했습니다.</p>
+<p><strong>임포트 cycle</strong>. 앞서도 임포트 cycle (&ldquo;꼬임&rdquo;)이 mypy를 빠르게 하는 것을 어렵게 한다고 언급한 바 있습니다.
+또한 모든 종류의 임포트 cycle을 지원하기 위해서 많은 노력이 필요했죠.
+우리는 최근에 mypy의 알고리즘을 재디자인하는 프로젝트를 끝냈고, 마침내 대부분의 임포트 cycle 이슈를 해결하였습니다.
+이러한 이슈들은 초기 Alore 때에서부터 발생했는데요.
+Alore에는 이러한 임포트 cycle을 쉽게 다룰 수 있는 문법이 존재했지만, 파이썬에서는 임포트 cycle을 다루는 것이 쉽지 않았습니다.
+왜냐하면 하나의 statement가 여러 개의 의미를 가질 수 있기 때문인데요.
+예를 들어, 파이썬에서는 assignment를 통해서 type alias를 정의할 수 있고, mypy는 이를 대부분의 임포트 cycle이 처리되기 전까지는 인식할 수가 없었습니다. Alore에서는 이러한 모호성이 없었습니다. 초기의 디자인 결정이 몇년 후까지 고통을 주는 경우라고 할 수 있죠!</p>
+<h2 id="5백만-줄-그리고-그-너머로">5백만 줄 그리고 그 너머로</h2>
+<p>초기 프로토타입에서 시작해서 4백만 줄을 검사하기에 이르기까지, 아주 긴 여정이었습니다.
+파이썬의 타입 힌트 문법을 표준화했고, IDE와 에디터의 도움으로 파이썬 생태계에서 타입 검사의 씨앗이 싹 텄고, 서로 다른 장단점을 가진 다양한 타임 체커가 만들어졌고, 라이브러리들도 지원하기 시작했죠.</p>
+<p>드롭박스 내에서는 타입 검사가 충분히 받아들여지고 있지만, 제 생각에 파이썬 커뮤니티에서 타입 검사는 아직 초기단계라고 생각되고, 앞으로 더 나아지고 퍼져나갈 것이라고 생각합니다. 아직 거대한 파이썬 프로젝트에서 타입 검사를 써보지 않았다면, 지금이 바로 시작할 때라고 생각합니다 (아무도 저에게 타입 검사 도입 후에 후회한다고 말한 적이 없어요!). 타입 검사는 큰 프로젝트에서 파이썬을 더 나은 언어로 만들어주는 방법이라고 자신있게 말할 수 있습니다.</p>
+<hr>
+<h3 id="reference">Reference</h3>
+<blockquote>
+<p><a href="https://blogs.dropbox.com/tech/2019/09/our-journey-to-type-checking-4-million-lines-of-python/amp/">https://blogs.dropbox.com/tech/2019/09/our-journey-to-type-checking-4-million-lines-of-python/amp/</a></p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-10-03
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/2019/12/29/twitter-bot-without-server.html/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Github Actions를 이용하여 서버 없이 알림 봇 만들기</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/2019/07/18/details-of-the-cloudflare-outage-on-july-2-2019.html/">
+            <span class="next-text nav-default">(번역) 2019년 7월 2일 Cloudflare 장애 보고서</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+  <a href="https://ryanking13.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

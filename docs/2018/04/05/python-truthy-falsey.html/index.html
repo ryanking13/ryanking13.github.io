@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>파이썬에서의 Truthy Falsy - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="파이썬의 Truthy와 Falsy 개념을 소개하는 글입니다." /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2018/04/05/python-truthy-falsey.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.cab45ac71980380f43b9a9c93f03ce1ee85500e92c0d1d2bc28f66eafe5687d8.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="파이썬에서의 Truthy Falsy" />
+<meta property="og:description" content="파이썬의 Truthy와 Falsy 개념을 소개하는 글입니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2018/04/05/python-truthy-falsey.html/" />
+<meta property="article:published_time" content="2018-04-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-04-05T00:00:00+00:00" />
+<meta itemprop="name" content="파이썬에서의 Truthy Falsy">
+<meta itemprop="description" content="파이썬의 Truthy와 Falsy 개념을 소개하는 글입니다.">
+<meta itemprop="datePublished" content="2018-04-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-04-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1883">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="파이썬에서의 Truthy Falsy"/>
+<meta name="twitter:description" content="파이썬의 Truthy와 Falsy 개념을 소개하는 글입니다."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">파이썬에서의 Truthy Falsy</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-05 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> Python </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#truthy--falsy">Truthy / Falsy</a></li>
+            <li><a href="#and--or-연산과-truthy--falsy">and / or 연산과 Truthy / Falsy</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#reference">Reference</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>다른 강타입 언어들과 비교하여 파이썬이 갖는 재밌는 특징은, 어떤 타입의 오브젝트던 인스턴스 자체를 if문의 조건으로 사용할 수 있으며, 논리 연산의 피연산자로 사용할 수 있다는 것이다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">obj</span> <span class="o">=</span> <span class="n">AnyObject</span><span class="p">()</span> <span class="c1"># int, string, array, tuple, dict, class ...</span>
+
+<span class="c1"># 이런 거라던가</span>
+<span class="k">if</span> <span class="n">obj</span><span class="p">:</span>
+  <span class="k">pass</span>
+
+<span class="c1"># 이런 것도 가능하다</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">obj</span> <span class="ow">or</span> <span class="n">obj2</span> <span class="ow">and</span> <span class="n">obj3</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="truthy--falsy">Truthy / Falsy</h3>
+<p>이러한 연산이 가능한 이유는 파이썬 오브젝트는 자신의 논리(boolean)값을 정할 수 있는 메소드를 가지기 때문이다.</p>
+<p>파이썬 오브젝트의 논리 값은 <code>bool(object)</code> 함수의 리턴 값과 동일하다. 즉, 아래의 두 식은 동등하다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="k">if</span> <span class="n">obj</span><span class="p">:</span>
+  <span class="k">pass</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+  <span class="k">pass</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>bool(object)</code>의 리턴 값은 다음과 같이 정의된다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">1. 오브젝트의 __bool__() 메소드가 정의되어 있는 경우
+  &gt; __bool__()의 리턴 값이 True이면 True, False이면 False
+
+2. __bool__()이 정의되어 있지 않고 __len__() 메소드가 정의되어 있는 경우
+  &gt; __len__()의 리턴 값이 nonzero면 True, 0이면 False
+
+3. 둘 다 정의되어 있지 않은 경우
+  &gt; True
+</code></pre></td></tr></table>
+</div>
+</div><p>이를 통하여 파이썬에서 임의의 오브젝트는 자신의 참/거짓을 정할 수 있게 된다. 이들은 논리 연산에서 True / False로 취급되지만, 엄밀한 True / False와는 구분 되어야 하므로, 참으로 취급 되는 값(Truthy), 거짓으로 취급되는 값(Falsy)라는 용어를 사용한다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">obj</span> <span class="o">=</span> <span class="n">SomeObject</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">obj</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Truthy&#34;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Falsy&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>파이썬의 기본(built-in) 오브젝트 중 Falsy 오브젝트는 아래와 같다.</p>
+<ul>
+<li>False</li>
+<li>None</li>
+<li>0, 0.0, 0L, 0j</li>
+<li>&quot;&quot;</li>
+<li>[]</li>
+<li>()</li>
+<li>{}</li>
+</ul>
+<p>이 외의 <strong>모든</strong> 기본 오브젝트는 Truthy 오브젝트다.</p>
+<hr>
+<h3 id="and--or-연산과-truthy--falsy">and / or 연산과 Truthy / Falsy</h3>
+<p>이러한 Truthy / Falsy 특성을 이용하여 파이썬은 흥미로운 문법을 만들었다.</p>
+<p>임의의 오브젝트가 참/거짓의 논리 값을 가지므로 and / or의 피연산자가 될 수 있다. and / or은 이러한 오브젝트를 피연산자로 받아 True / False를 반환하는 대신 피연산자 중 마지막으로 확인한 Truthy / Falsy 오브젝트를 반환한다.</p>
+<blockquote>
+<p>파이썬의 and / or 논리연산자는 연산 결과로 마지막으로 확인한 피연산자 Truthy / Falsy 오브젝트를 반환한다.</p>
+</blockquote>
+<p>여기서 <strong>마지막으로 확인한</strong> 이라는 것이 무슨 뜻인가 하면,</p>
+<p>and / or 의 두 피연산자를 각각 A, B라고 하자 (A or B, A and B)</p>
+<ul>
+<li>or
+<ul>
+<li>A가 Truthy이면 B를 확인하지 않으므로 A가 저장된다.</li>
+<li>A가 Falsy면 B를 확인하므로 B가 저장된다. (<em>B의 Truthy / Falsy 와 무관하다!</em>)</li>
+</ul>
+</li>
+<li>and
+<ul>
+<li>A가 Truthy면 B를 확인하므로 B가 저장된다. (<em>B의 Truthy / Falsy 와 무관하다!</em>)</li>
+<li>A가 Falsy면 B를 확인하지 않으므로 A가 저장된다.</li>
+</ul>
+</li>
+</ul>
+<p>가능한 모든 경우를 나타내면 아래와 같다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">a</span> <span class="o">=</span> <span class="n">Truthy1</span> <span class="ow">or</span> <span class="n">Truthy2</span>
+<span class="c1"># Truthy1</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">Truthy1</span> <span class="ow">or</span> <span class="n">Falsy2</span>
+<span class="c1"># Truthy1</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">Falsy1</span> <span class="ow">or</span> <span class="n">Truthy2</span>
+<span class="c1"># Truthy2</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">Falsy1</span> <span class="ow">or</span> <span class="n">Falsy2</span>
+<span class="c1"># Falsy2</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Truthy1</span> <span class="ow">and</span> <span class="n">Truthy2</span>
+<span class="c1"># Truthy2</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">Truthy1</span> <span class="ow">and</span> <span class="n">Falsy2</span>
+<span class="c1"># Falsy2</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">Falsy1</span> <span class="ow">and</span> <span class="n">Truthy2</span>
+<span class="c1"># Falsy1</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">Falsy1</span> <span class="ow">and</span> <span class="n">Falsy2</span>
+<span class="c1"># Falsy1</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>오브젝트를 리턴한다는 것이 이상해보일 수 있으나, 리턴 값(오브젝트)의 논리 값만 보면 정확하다.</p>
+<p>이런 독특한 and / or 연산을 잘 사용하면 간결하고 재미있는 코드를 작성할 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+  <span class="k">if</span> <span class="n">success</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">truthy_value</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">None</span> <span class="c1"># falsy</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>위와 같이 성공하면 Truthy한 리턴값, 실패하면 None을 반환하는 함수가 있다.</p>
+<p>함수가 None을 리턴하면 디폴트 값을 사용하고자 한다고 하자.</p>
+<p>타 언어의 방식을 따르면 흔히 아래와 같이 코드를 짜게 된다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">ret</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">ret</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+  <span class="n">ret</span> <span class="o">=</span> <span class="n">DEFAULT_VALUE</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>파이썬의 한 줄 짜리 if-else(Ternary Operator)를 사용하여 좀더 짧게 짜볼 수도 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">ret</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="k">if</span> <span class="n">ret</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">DEFAULT_VALUE</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>그러나 ret = ret 형태가 예뻐보이지 않고, if 절이 길어지면 가독성도 떨어질 수 있다.</p>
+<p>이를 or 연산을 이용하여 간단하게 고칠 수가 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">ret</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span> <span class="ow">or</span> <span class="n">DEFAULT_VALUE</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>function()이 리턴값이 Truthy면 그대로 대입하고, Falsy면 디폴트 값이 대입된다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">ret</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span> <span class="ow">or</span> <span class="n">function2</span><span class="p">()</span> <span class="ow">or</span> <span class="n">function3</span><span class="p">()</span> <span class="ow">or</span> <span class="n">DEFAULT_VALUE</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>중첩해서 사용하는 것 역시 가능하다.</p>
+<p>다른 재밌는 코드로, C에서 사용하는 conditional operator를 구현해보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="c1">// c
+</span><span class="c1"></span><span class="n">ret</span> <span class="o">=</span> <span class="n">condition</span> <span class="o">?</span> <span class="nl">a</span><span class="p">:</span> <span class="n">b</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Ternary Operator를 사용하면 아래와 같다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">ret</span> <span class="o">=</span> <span class="n">a</span> <span class="k">if</span> <span class="n">condition</span> <span class="k">else</span> <span class="n">b</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>심플한 구조지만 앞선 예제와 비슷하게 condition이 길어질 경우 a와 b가 떨어져서 가독성이 떨어질 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">ret</span> <span class="o">=</span> <span class="n">a</span> <span class="k">if</span> <span class="n">this_is_really_complicated_validation_function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">else</span> <span class="n">b</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>and / or을 사용하면 C의 형태와 구현할 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">ret</span> <span class="o">=</span> <span class="n">condition</span> <span class="ow">and</span> <span class="n">a</span> <span class="ow">or</span> <span class="n">b</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>condition이 Truthy면 a 리턴하고, Falsy면 b를 리턴한다.</p>
+<p>단, 이 문법은 a가 Falsy이면 올바르게 동작하지 않는다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;truthy&#39;</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">a</span> <span class="ow">or</span> <span class="n">b</span>
+<span class="c1"># truthy</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>에러 핸들링(?)을 하여 아래와 같은 기묘한 식을 사용할 수도 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;truthy&#39;</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="ow">and</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="ow">or</span> <span class="p">[</span><span class="n">b</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># 0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>물론 오히려 가독성이 엉망이 되었으니 사용할 이유가 없는 식이다.</p>
+<hr>
+<h3 id="conclusion">Conclusion</h3>
+<p>파이썬이 논리 값을 다루는 방법과 그것을 활용하는 예시는 상당히 흥미롭다. 파이썬이 덕 타이핑(duck typing)을 활용하는 방법을 보여주는 예라고도 할 수 있겠다.</p>
+<p>이런 파이썬의 방식은 결국 간결한 정답을 추구하는 파이써닉(pythonic) 스타일과 연결된다. 파이썬의 철학에 공감한다면 이러한 파이썬의 독특한 특징을 살펴보는 것도 좋을 것이다.</p>
+<hr>
+<h3 id="reference">Reference</h3>
+<blockquote>
+<p><a href="http://books.goalkicker.com/PythonBook/">http://books.goalkicker.com/PythonBook/</a></p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-04-05
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/2018/04/26/google-data-saver-proxy.html/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">크롬 데이터 세이버를 크롬 없이 사용하기</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/2018/03/24/png-structure.html/">
+            <span class="next-text nav-default">PNG 파일 구조</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+  <a href="https://ryanking13.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

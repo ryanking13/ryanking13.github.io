@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on Morgenrøde</title>
+    <link>https://ryanking13.github.io/categories/windows/</link>
+    <description>Recent content in Windows on Morgenrøde</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 07 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>(번역) WSL 2를 공개하며</title>
+      <link>https://ryanking13.github.io/2019/05/07/announcing-wsl-2.html/</link>
+      <pubDate>Tue, 07 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2019/05/07/announcing-wsl-2.html/</guid>
+      <description>마이크로소프트가 Build 2019에서 공개한 Windows Subsystem for Linux (WSL)의 새버전 WSL 2을 소개하는 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>Windows cp949 인코딩 자동 변경하기</title>
+      <link>https://ryanking13.github.io/2018/09/03/cmd-deafult-command.html/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/09/03/cmd-deafult-command.html/</guid>
+      <description>한국어 윈도우를 사용할 때 종종 발생하는 인코딩 관련 문제를 미연에 방지하지 위해 cmd 실행시에 인코딩이 자동으로 바뀌게 하는 방법에 대해서 설명하는 글입니다.</description>
+    </item>
+    
+  </channel>
+</rss>

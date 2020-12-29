@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Morgenrøde</title>
+    <link>https://ryanking13.github.io/</link>
+    <description>Recent content on Morgenrøde</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://ryanking13.github.io/about/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0900</pubDate>
+      
+      <guid>https://ryanking13.github.io/about/</guid>
+      <description>최경재 (Gyeongjae Choi) Photo by @joon1204 👔 Career Agency for Defense Development(국방과학연구소) 2020.06 ~ Research Officer Multicampus 2019 ~ 2020 SSAFY(삼성 청년 SW 아카데미) Research Assistant Team Soteria Systems 2018 ~ 2020 Research Engineer 2019 ~ 2020</description>
+    </item>
+    
+    <item>
+      <title>블로그 Jekyll to Hugo 마이그레이션 후기</title>
+      <link>https://ryanking13.github.io/2020/12/29/migrating-jekyll-to-hugo.html/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2020/12/29/migrating-jekyll-to-hugo.html/</guid>
+      <description>개발 블로그 프레임워크를 Jekyll에서 Hugo로 변경하는 과정을 담은 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>Cloudflare Workers로 서버리스 앱 개발하기</title>
+      <link>https://ryanking13.github.io/2020/07/26/introducing-cf-workers-2.html/</link>
+      <pubDate>Sun, 26 Jul 2020 01:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2020/07/26/introducing-cf-workers-2.html/</guid>
+      <description>Cloudflare Workers로 간단한 JSON 포매터를 만들어봅시다.</description>
+    </item>
+    
+    <item>
+      <title>Cloudflare Workers 소개</title>
+      <link>https://ryanking13.github.io/2020/07/26/introducing-cf-workers-1.html/</link>
+      <pubDate>Sun, 26 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2020/07/26/introducing-cf-workers-1.html/</guid>
+      <description>Cloudflare에서 새로 나온 서버리스 플랫폼인 Workers를 소개합니다.</description>
+    </item>
+    
+    <item>
+      <title>안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법</title>
+      <link>https://ryanking13.github.io/2020/07/01/capturing-https-android-without-frida.html/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2020/07/01/capturing-https-android-without-frida.html/</guid>
+      <description>HTTPS로 통신하는 안드로이드 앱의 패킷 스니핑 방법을 탐구해봅니다.</description>
+    </item>
+    
+    <item>
+      <title>HITS!를 이용하여 Jekyll 블로그에 조회수 배지 달기</title>
+      <link>https://ryanking13.github.io/2020/03/09/jekyll-views-count-badge.html/</link>
+      <pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2020/03/09/jekyll-views-count-badge.html/</guid>
+      <description>Jekyll기반 static site에 방문 횟수를 셀 수 있는 서드파티 앱을 설치해봅니다.</description>
+    </item>
+    
+    <item>
+      <title>Go 프로그래밍 I/O 미세 팁</title>
+      <link>https://ryanking13.github.io/2020/02/06/golang-io.html/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2020/02/06/golang-io.html/</guid>
+      <description>Golang에서 I/O 연산을 할 때에 참고할만한 사소한 팁을 소개합니다.</description>
+    </item>
+    
+    <item>
+      <title>오픈소스 버그 고치다가 CPython까지 뜯어본 후기</title>
+      <link>https://ryanking13.github.io/2020/01/12/contributing-pandas.html/</link>
+      <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2020/01/12/contributing-pandas.html/</guid>
+      <description>파이썬 Pandas 라이브러리에서 발견한 버그를 수정하는 과정을 담은 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>Github Actions를 이용하여 서버 없이 알림 봇 만들기</title>
+      <link>https://ryanking13.github.io/2019/12/29/twitter-bot-without-server.html/</link>
+      <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2019/12/29/twitter-bot-without-server.html/</guid>
+      <description>Github의 Issue와 Actions를 활용하여, 주기적 알림 트위터 봇을 개인 서버 없이 구축해봅니다.</description>
+    </item>
+    
+    <item>
+      <title>(번역) 4백만 줄의 파이썬 타이핑을 위한 여정</title>
+      <link>https://ryanking13.github.io/2019/10/03/4-million-lines-of-python.html/</link>
+      <pubDate>Thu, 03 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2019/10/03/4-million-lines-of-python.html/</guid>
+      <description>Dropbox의 거대한 파이썬 코드베이스에 타이핑 도입했던 과정을 담은 글의 번역입니다.</description>
+    </item>
+    
+    <item>
+      <title>(번역) 2019년 7월 2일 Cloudflare 장애 보고서</title>
+      <link>https://ryanking13.github.io/2019/07/18/details-of-the-cloudflare-outage-on-july-2-2019.html/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2019/07/18/details-of-the-cloudflare-outage-on-july-2-2019.html/</guid>
+      <description>Cloudflare에서 대규모로 발생한 장애의 발생 원인과 해결 과정을 상세히 담은 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>(번역) WSL 2를 공개하며</title>
+      <link>https://ryanking13.github.io/2019/05/07/announcing-wsl-2.html/</link>
+      <pubDate>Tue, 07 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2019/05/07/announcing-wsl-2.html/</guid>
+      <description>마이크로소프트가 Build 2019에서 공개한 Windows Subsystem for Linux (WSL)의 새버전 WSL 2을 소개하는 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>Azure Functions 시작하기 1</title>
+      <link>https://ryanking13.github.io/2019/02/18/azure-function-apps-01.html/</link>
+      <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2019/02/18/azure-function-apps-01.html/</guid>
+      <description>Azure의 서버리스 프레임워크인 Functions를 소개하는 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>IDN Homograph attack 정리</title>
+      <link>https://ryanking13.github.io/2018/12/03/idn-homograph-attack.html/</link>
+      <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/12/03/idn-homograph-attack.html/</guid>
+      <description>IDN Homograph attack 간단 정리 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>(번역) 초소형 ELF 바이너리 만들기</title>
+      <link>https://ryanking13.github.io/2018/11/05/a-whirlwind-tutorial-on-creating-really-teensy-elf-executables-for-linux.html/</link>
+      <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/11/05/a-whirlwind-tutorial-on-creating-really-teensy-elf-executables-for-linux.html/</guid>
+      <description>컴파일러가 ELF 바이너리를 생성할때 붙이는 불필요한 부분을 최대한 제거하면서 ELF의 구조를 뜯어보는 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>(번역) 드롭박스의 파이썬3 이식 이야기 Part 1</title>
+      <link>https://ryanking13.github.io/2018/10/02/dropbox-python3-migration.html/</link>
+      <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/10/02/dropbox-python3-migration.html/</guid>
+      <description>Dropbox가 파이썬 코드를 2에서 3으로 이식하는 과정을 담은 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>Windows cp949 인코딩 자동 변경하기</title>
+      <link>https://ryanking13.github.io/2018/09/03/cmd-deafult-command.html/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/09/03/cmd-deafult-command.html/</guid>
+      <description>한국어 윈도우를 사용할 때 종종 발생하는 인코딩 관련 문제를 미연에 방지하지 위해 cmd 실행시에 인코딩이 자동으로 바뀌게 하는 방법에 대해서 설명하는 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>파이썬 3.7의 새로운 기능들</title>
+      <link>https://ryanking13.github.io/2018/07/12/python-37-whats-new.html/</link>
+      <pubDate>Thu, 12 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/07/12/python-37-whats-new.html/</guid>
+      <description>파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>(번역) Javascript - The Curious Case of Null &gt;= 0</title>
+      <link>https://ryanking13.github.io/2018/06/05/javascript-null-0.html/</link>
+      <pubDate>Tue, 05 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/06/05/javascript-null-0.html/</guid>
+      <description>개발 과정에서 예상치 못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>파이썬 pathlib 사용하기 - NO MORE os.path.join()</title>
+      <link>https://ryanking13.github.io/2018/05/22/pathlib.html/</link>
+      <pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/05/22/pathlib.html/</guid>
+      <description>파이썬 3.4에서 등장한 pathlib 모듈을 살펴보는 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>(번역) Beware of the Bashware</title>
+      <link>https://ryanking13.github.io/2018/05/17/bashware.html/</link>
+      <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/05/17/bashware.html/</guid>
+      <description>WSL에서 발생하는 새로운 보안 위협인 bashware를 소개하는 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>크롬 데이터 세이버를 크롬 없이 사용하기</title>
+      <link>https://ryanking13.github.io/2018/04/26/google-data-saver-proxy.html/</link>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/04/26/google-data-saver-proxy.html/</guid>
+      <description>크롬 데이터 세이버의 동작을 뜯어보는 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>파이썬에서의 Truthy Falsy</title>
+      <link>https://ryanking13.github.io/2018/04/05/python-truthy-falsey.html/</link>
+      <pubDate>Thu, 05 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/04/05/python-truthy-falsey.html/</guid>
+      <description>파이썬의 Truthy와 Falsy 개념을 소개하는 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>PNG 파일 구조</title>
+      <link>https://ryanking13.github.io/2018/03/24/png-structure.html/</link>
+      <pubDate>Sat, 24 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2018/03/24/png-structure.html/</guid>
+      <description>대표적인 이미지 파일 포맷인 PNG의 구조를 뜯어보는 글입니다.</description>
+    </item>
+    
+  </channel>
+</rss>

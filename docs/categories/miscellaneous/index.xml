@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Miscellaneous on Morgenrøde</title>
+    <link>https://ryanking13.github.io/categories/miscellaneous/</link>
+    <description>Recent content in Miscellaneous on Morgenrøde</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/miscellaneous/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>블로그 Jekyll to Hugo 마이그레이션 후기</title>
+      <link>https://ryanking13.github.io/2020/12/29/migrating-jekyll-to-hugo.html/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2020/12/29/migrating-jekyll-to-hugo.html/</guid>
+      <description>개발 블로그 프레임워크를 Jekyll에서 Hugo로 변경하는 과정을 담은 글입니다.</description>
+    </item>
+    
+    <item>
+      <title>HITS!를 이용하여 Jekyll 블로그에 조회수 배지 달기</title>
+      <link>https://ryanking13.github.io/2020/03/09/jekyll-views-count-badge.html/</link>
+      <pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2020/03/09/jekyll-views-count-badge.html/</guid>
+      <description>Jekyll기반 static site에 방문 횟수를 셀 수 있는 서드파티 앱을 설치해봅니다.</description>
+    </item>
+    
+  </channel>
+</rss>
