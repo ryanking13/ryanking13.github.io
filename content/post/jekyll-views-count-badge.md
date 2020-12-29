@@ -11,7 +11,7 @@ __TL;DR__
 
 `_layouts/post.html`에 아래 구문을 삽입합니다.
 
-{% raw %}
+<!-- {% raw %} -->
 ```html
   <div style="text-align: center;">
 	<a href="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}/{{ page.url | remove_first: '/' | replace: '/', '-' }}" target="_blank">
@@ -19,7 +19,7 @@ __TL;DR__
 	</a>
   </div> 
 ```
-{% endraw %}
+<!-- {% endraw %} -->
 
 
 ## 들어가며
@@ -83,7 +83,7 @@ Jekyll 기준 게시글의 레이아웃을 지정하는 파일은 `_layout/post.
 
 제가 사용하는 [Type-on-Strap](https://github.com/sylhare/Type-on-Strap) 테마의 경우 `post.html`파일이 다음과 같이 되어있는데요.
 
-{% raw %}
+<!-- {% raw %} -->
 ```html
 ...
   <header id="main" style="">
@@ -98,14 +98,14 @@ Jekyll 기준 게시글의 레이아웃을 지정하는 파일은 `_layout/post.
 	  ...
   </section>
 ```
-{% endraw %}
+<!-- {% endraw %} -->
 
 Jekyll에서 사용하는 변수나, [Liquid](https://shopify.github.io/liquid/) 문법은 모르더라도,
 대략적으로 윗 부분이 제목, 아랫 부분이 본문이라는 것을 알 수 있습니다.
 
 이 사이에 배지를 넣어봅시다. 아래 코드를 복사해서 삽입합니다.
 
-{% raw %}
+<!-- {% raw %} -->
 ```html
   <div style="text-align: center;">
     <a href="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}"
@@ -115,7 +115,7 @@ Jekyll에서 사용하는 변수나, [Liquid](https://shopify.github.io/liquid/)
     </a>
   </div>
 ```
-{% endraw %}
+<!-- {% endraw %} -->
 
 
 [참고 예시](https://github.com/ryanking13/ryanking13.github.io/blob/7a67b1a957d91737b239e028501858068f7ad344/_layouts/post.html#L12-L18)
