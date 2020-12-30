@@ -105,7 +105,7 @@ Github에서 원하는 대로 텍스트를 올릴 수 있는 곳. 그렇다, __I
 
 `.github/workflows/tweet.yml` 파일을 생성하고 아래와 같이 작성하였다.
 
-{% raw %}
+<!-- {% raw %} -->
 ```yaml
 # https://github.com/ryanking13/twitter-lyric-bot/blob/master/.github/workflows/tweet.yml
 name: Post tweet
@@ -138,7 +138,7 @@ jobs:
       run: |
         python run.py
 ```
-{% endraw %}
+<!-- {% endraw %} -->
 
 - Github Actions는 UTC를 기준으로 하므로 9시간을 빼서 계산한다. 위 코드는 매일 8시, 15시, 22시에 실행된다.
 - 파이썬 환경 세팅은 Github에서 제공하는 [setup-python](https://github.com/actions/setup-python) action을 이용하면 된다.
