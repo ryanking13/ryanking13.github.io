@@ -52,7 +52,7 @@
 <meta itemprop="description" content="Github Actions를 이용하여 서버 없이 알림 봇 만들기">
 <meta itemprop="datePublished" content="2019-12-29T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-12-29T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2697">
+<meta itemprop="wordCount" content="2691">
 
 
 
@@ -224,7 +224,7 @@ Circle CI의 Cron Job 기능은 이 글을 작성하는 시점 기준으로 Nigh
 <p>트위터 API를 사용하여 트윗을 포스팅하는 파이썬 코드는 이미 작성되어 있다.</p>
 <p>그러므로, Github Actions로 주기적으로 해당 코드를 실행하도록 만들자.</p>
 <p><code>.github/workflows/tweet.yml</code> 파일을 생성하고 아래와 같이 작성하였다.</p>
-<p>{% raw %}</p>
+<!-- {% raw %} -->
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -291,7 +291,7 @@ Circle CI의 Cron Job 기능은 이 글을 작성하는 시점 기준으로 Nigh
 </span><span class="sd">        </span><span class="w">        </span><span class="l">python run.py</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p>{% endraw %}</p>
+</div><!-- {% endraw %} -->
 <ul>
 <li>Github Actions는 UTC를 기준으로 하므로 9시간을 빼서 계산한다. 위 코드는 매일 8시, 15시, 22시에 실행된다.</li>
 <li>파이썬 환경 세팅은 Github에서 제공하는 <a href="https://github.com/actions/setup-python">setup-python</a> action을 이용하면 된다.</li>
@@ -449,7 +449,7 @@ Circle CI의 Cron Job 기능은 이 글을 작성하는 시점 기준으로 Nigh
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
   </span>
 </div>
 
