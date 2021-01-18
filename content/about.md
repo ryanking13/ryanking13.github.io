@@ -178,7 +178,7 @@ Twitter Bot which posts random lyrics
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
-		<a href="https://github.com/ryanking13/twitter-lyric-bot" target="_blank">
+		<a href="https://github.com/ryanking13/android-SSL-unpinning" target="_blank">
 			android-SSL-unpinning
 			<i class="iconfont icon-github"></i>
 		</a>
@@ -202,19 +202,7 @@ PNG sanity checker
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
-		<a href="https://github.com/ryanking13/photoburn" target="_blank">
-			photoburn
-			<i class="iconfont icon-github"></i>
-		</a>
-	</h4>
-</div>
-
-Image fingerprinting tool
-<br/><br/>
-
-<div style="display: inline;">
-	<h4 style="display: inline;">
-		<a href="https://github.com/ryanking13/WMCtest" target="_blank">
+		<a href="https://github.com/ryanking13/WMC-test" target="_blank">
 			Working Memory Capacity Test
 			<i class="iconfont icon-github"></i>
 		</a>
