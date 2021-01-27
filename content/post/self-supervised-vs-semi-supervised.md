@@ -11,12 +11,12 @@ draft: true
 최근 머신 러닝 관련 아티클을 보다보면 `Self-Supervised Learning`, `Semi-Supervised Learning`, `Self-Training`
 등 언뜻 보기에 비슷한 용어가 많이 등장합니다.
 
-대충 뉘앙스로 받아들이고 넘어갔다가 전혀 글을 잘못 이해하게 되는 경우가 있어서 이 글을 통해 정리해보려고 합니다.
+대충 뉘앙스로 받아들이고 넘어갔다가 글을 완전히 잘못 이해하게 되는 경우가 있어서 이 글을 통해 용어를 정리해보려고 합니다.
 
 ## Supervised / Unsupervised Learning
 
 먼저, 이 글을 보는 분들이라면 이미 알고 계시겠지만 `Supervised Learning(지도 학습)`과 `Unsupervised Learning(비지도 학습)`부터
-정의하겠습니다.
+정의하고 넘어가겠습니다.
 
 - Supervised Learning: 레이블이 주어진 데이터를 사용해서 학습하는 것
 - Unsupervised Learning: 레이블이 주어지지 않은 데이터를 사용해서 학습하는 것
@@ -24,11 +24,26 @@ draft: true
 ## Self-Supervised Learning
 
 `Self-Supervised Learning(자기지도 학습)`은 Unsupervised Learning의 한 종류로,
-얀 르쿤(Yann LeCun) 교수님이 최근 굉장히 푸시(?)하고 있는 기법이기도 합니다.
+유명한 얀 르쿤(Yann LeCun) 교수님이 최근 굉장히 강조하고 있는 기법이기도 합니다.
 
-Self-Supervised Learning은 이름처럼, 레이블이 없는 데이터가 주어졌을 때, 이 데이터에서 스스로(self) supervision을 만들어내는 학습 방법을 가리킵니다.
+Self-Supervised Learning은 레이블이 없는 데이터로부터 스스로(self) supervision을 만들어내는 학습 방법을 가리킵니다.
 
-조금 풀어서 표현하면,
+정의만 들어서는 다소 모호하니 구체적인 예시를 들어 설명해보겠습니다.
+
+대표적인 이미지 분류기 모델인 AlexNet을 보면, CNN layer로 이루어진 앞단에서 이미지의 특징(feature)을 추출하고,
+추출한 특징을 뒷단의 FC layer에 통과시켜 최종적으로 우리가 풀고자 하는 문제인 이미지 분류를 수행합니다.
+
+그렇기에 여기서 앞단을 Feature Extractor, 뒷단을 Classfier라고 하죠.
+
+우리가 최종적으로 풀고싶은 문제는 Classification이고, 이는 (현재까지는) Supervised Learning으로만 풀 수 있습니다.
+
+그렇지만, 이미지의 특징을 학습하는 Feature Extractor 부분을 학습시키는 데에도 꼭 label이 필요할까요?
+
+
+
+
+
+얀 르쿤 교수님은 이를 input의 
 
 - 우리가 최종적으로 풀고 싶은 것 = downstream task = unlabeled 데이터만 주어진 downstream task(e.g. 이미지 분류) 대신,
 label을 데이터로부터 만들어낼 수 있는 intermediate task(a.k.a self-supervised task, pretext task)를 정의하여, 

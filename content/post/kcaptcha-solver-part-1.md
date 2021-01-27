@@ -7,7 +7,7 @@ tags:
 title: kcaptcha
 ---
 
-오픈소스 캡차 프로그램인 KCAPTCHA를 푸는 머신러닝 토이 프로젝트 개발기입니다.
+오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.
 
 **이런 내용에 대해 다룹니다**
 
@@ -37,14 +37,14 @@ title: kcaptcha
 
 ![](https://github.com/ryanking13/kcaptcha-generator/raw/master/samples/72_001048.png)
 
-KCAPTCHA는 언뜻봐도 굉장히 약해보이는(?) 캡차인데요.
+마지막으로 업데이트 된 것이 2011년도인 KCAPTCHA는 언뜻봐도 굉장히 약해보이는(?) 캡차인데요.
 
-실제로 간단한 머신러닝 모델로 어느 정도 수준으로 이 캡차를 파훼할 수 있을까하는 궁금증에 ~~(그리고 심심해서)~~
-그래서 이 토이 프로젝트를 시작했습니다.[^kakaoapi]  이 토이 프로젝트의 목표는 다음과 같습니다.
+간단한 머신러닝 모델로 이 캡차를 어느 정도 수준으로 파훼할 수 있을까하는 궁금증에 ~~(그리고 심심해서)~~
+이 토이 프로젝트를 시작했습니다.[^kakaoapi]  이 프로젝트의 목표는 다음과 같습니다.
 
 [^kakaoapi]: 이미 [상용 OCR API를 통해 KCAPTCHA를 파훼하려는 시도](https://studyforus.com/review/632853)도 존재합니다
 
-1. 길이 2의 캡챠에 대해 95% 이상의 성능을 내는 모델 학습
+1. 길이 2의 숫자 캡챠에 대해 95% 이상의 성능을 내는 모델 학습
 2. 학습한 모델을 자바스크립트로 변환하여 브라우저 환경에 배포
 
 프로젝트를 진행한 머신의 환경 및 스펙은 다음과 같습니다.
@@ -82,7 +82,7 @@ if($_REQUEST[session_name()]){
 ...
 ```
 
-KCAPTCHA 소스코드를 수정하여, 원하는 캡차 문자열 이미지를 생성할 수 있도록 수정하고,
+PHP로 작성된 KCAPTCHA 소스코드를 수정하여, 원하는 캡차 문자열 이미지를 생성할 수 있도록 수정하고,
 
 ```python
 ...
@@ -118,29 +118,51 @@ C는 캡차를 구성하는 것이 숫자(0-9)인지, 알파벳(a-z)인지 등�
 1. __C 길이의 1차원 벡터 L개__
 2. __C*L 길이의 1차원 벡터__
 
-전자의 경우는 머신 러닝을 처음 배울 때 다들 해봤을 MNIST 문제가 L개 있는 것이라고 생각할 수 있겠습니다.
-이 경우 모델의 전체 loss는 L개의 출력에 대해 각각의 loss를 더한 값이 되겠네요.
-
-후자는 C개 클래스에 대한 One-Hot Encoding을 길이 L만큼 반복한 형태입니다.
+전자의 경우는 MNIST 문제가 L개 있는 것이라고 생각할 수 있겠습니다(물론 입력 이미지는 한 개 이지만요).
+이 때 모델의 전체 loss는 L개의 출력에 대해 각각의 loss를 더한 값이 되겠네요.
 
 예를 들어 숫자 42의 경우 다음과 같이 임베딩됩니다.
 
-[
-    0, 0, 0, 0, 1.0, 0, 0, 0, 0, 0,
-    0, 0, 1.0, 0, 0, 0, 0, 0, 0, 0,
-]
+```
+pred0 = [0   0   0   0   1   0   0   0   0   0]
+pred1 = [0   0   1   0   0   0   0   0   0   0]
+total_loss = loss(pred0, label0) + loss(pred1, label1)
+```
 
-둘 중 하나가 정답이라고 할 것은 없는데요.
-저는 전자의 경우 Multi-Output 을 구현하는 것이 데이터 전처리 측면에서나 모델 구현 측면에서나 번거로운 부분이 있을 것이라고 판단해,
+
+
+
+후자는 C개 클래스에 대한 One-Hot Encoding을 길이 L만큼 반복한 형태입니다.
+
+숫자 42의 경우 다음과 같이 임베딩됩니다.
+
+```
+pred = [
+  0   0   0   0   1   0   0   0   0   0
+  0   0   1   0   0   0   0   0   0   0
+]
+total_loss = loss(pred)
+```
+
+임베딩은 정의하기 나름이니 정답은 없습니다만,
+저는 전자의 경우 Multi-Output을 구현하는 것이 여러 측면에서 번거로운 부분이 생길 것이라고 판단해,
 후자의 방식을 채택했습니다.
 
 ### Loss 함수 정의
 
-후자로 데이터 임베딩을 정한 것은 좋은데, 저런 출력의 경우 loss 함수를 어떻게 정의해야 할까요?
+```
+pred = [
+  0   0   0   0   1   0   0   0   0   0
+  0   0   1   0   0   0   0   0   0   0
+]
+total_loss = loss(pred)
+```
 
-보통 데이터를 C개의 클래스 중 하나의 클래스로 분류하는 `Multi-class classfication` 문제는
-모델의 끝단에 Softmax 함수를 붙여서 전체 출력의 합을 1
-Cross Entropy를 붙인 categorical cross entropy loss 함수를 사용하는데요.
+데이터 임베딩을 정한 것까지는 좋은데, 위와 같은 경우 loss 함수를 어떻게 정의해야 할까요?
+
+MNIST와 같이 데이터를 C개의 클래스 중 하나의 클래스로 분류하는 `Multi-class classfication` 문제는
+모델의 끝단에 Softmax 함수를 붙여서 전체 출력의 합을 1로 만들고
+Cross Entropy loss 함수를 사용하는데요.
 
 이 문제는 전체 벡터의 합이 1이 아닌 길이 L(위 경우는 2)이므로 알맞지 않습니다.
 
@@ -152,58 +174,126 @@ C*L개의 각각의 결과를 독립적으로 보고 binary한 분류 결과를 
 
 > 지금 생각해보니 이 문제는 label의 개수가 정해진 특수한 케이스이므로 categorical cross entropy로도 loss를 정의할 수 있을 듯 합니다?
 
-
-## 모델 / 학습 구현
-
-이제 실제로 모델을 구현할 차례입니다.
-모델은 tensorflow.keras.application의 model zoo에 구현되어 있는 모델 중
-
-> MobileNetV2
-> DenseNet
-
-두가지를 사용해보았습니다.
-
-선택 기준은 단순히 최종 브라우저 배포 환경을 고려하여 파라미터 수가 많지 않을 것 (용량이 적을 것) 입니다.
-
-텐서플로우에서 ImageNet으로 사전 학습된 모델을 제공하므로 해당 모델을 받아서 fine-tuning 하도록 하겠습니다.
-
-옵티마이저로는 Adam, 러닝 레이트는 1e-4를 사용합니다.
-
-```
-모델 코드
+```python
+def one_hot_encode(self, label):
+    """
+    e.g.) 17 ==> [0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0,
+                  0, 0, 0, 0, 0, 0, 0, 1.0, 0, 0,]
+    """
+    vector = np.zeros(self.available_chars_cnt * self.captcha_length, dtype=float)
+    for i, c in enumerate(label):
+        idx = i * self.available_chars_cnt + int(c)
+        vector[idx] = 1.0
+    return vector
 ```
 
-```
-학습 코드
+
+## 모델 선정 / 학습 구현
+
+이제 모델을 고르고 학습 파이프라인을 구현할 차례입니다.
+
+모델은 개발 편의상 [Keras Applications](https://keras.io/api/applications/)에 있는 모델을 사용했습니다. 실험해본 모델은 아래와 같습니다.
+
+- MobileNetV2
+- DenseNet
+
+최종 브라우저 배포 환경을 고려하여 파라미터 수가 많지 않은(용량이 작은) 모델들을 선정했습니다.
+
+Keras Applications에서는 ImageNet으로 사전 학습된 모델을 제공하므로 해당 모델을 받아서 학습해보겠습니다.
+
+```python
+self.net = DenseNet121(
+    input_shape=input_shape,
+    input_tensor=self.input_tensor,
+    include_top=False,
+    weights="imagenet",
+    pooling="max",
+)
 ```
 
-> 전체 코드는 여기
+```python
+opt = tf.keras.optimizers.Adam(learning_rate=1e-4)
+self.model.compile(
+    optimizer=opt,
+    loss="binary_crossentropy",
+    ...
+)
+```
+
+```python
+def train(self, trainset, valset, batch_size, epochs):
+    ...
+    self.model.fit(
+        x=trainset,
+        epochs=epochs,
+        validation_data=valset,
+        callbacks=callbacks,
+    )
+```
+
+대부분의 로직을 Keras API로 구현할 수 있어 굉장히 간견할 코드로 모델 구성과 학습 루프를 구성 할 수 있습니다.
+
+> 전체 코드는 [여기](https://github.com/ryanking13/kcaptcha-solver/tree/master/classification)
+
+### 학습 결과
+
+**MobileNetV2**
 
 ```
 결과
 ```
 
+**DenseNet121**
+
+```
+결과
+```
+
+MobileNetV2는 모델 크기 상 표현력에 한계가 있는지 학습 과정에서 Loss가 충분히 줄어들지 않는 모습을 보이네요. 한편 DenseNet은 97%가 훌쩍 넘는 정확도를 보입니다.
+
 ## 학습 과정에서의 이슈
+
+글로 쓸 때는 일련의 과정의 물 흐르듯 자연스럽게 이어진 것처럼 보이지만 사실은
+많은 트러블슈팅이 있었습니다.
+실제로 여러분이 소규모 머신러닝 프로젝트를 한다면 맞닥뜨릴 부분도 그런 부분이겠죠.
+이 문단에서는 글에서 적지 않은 이슈들을 정리해보려 합니다.
 
 1. 모델 선정
 
-처음에는 브라우저에 이식하기 위해 최대한 작은 모델인 MobileNet V2를 선택.
+다양한 모델로 실험하기 전, 처음에는 브라우저에 이식하기 위해 최대한 작은 모델인 MobileNet V2 만을 가지고 실험을 했습니다.
 
-그러나 validation loss가 충분히 떨어지지 않는 상황 발생.
+그러나 위에서 언급한 것처럼 validation loss가 충분히 떨어지지 않는 상황 발생했습니다. 학습 데이터의 수를 늘리는 것으로는 나아지지 않았구요.
 
-모델이 작아서 발생하는 근본적인 문제?
+이후에 더 발전되고 무거운 모델을 사용하니 성능이 급격하게 증가하는 것을 보고
+일단은 모델의 표현력 문제라고 결론지었지만, 사실은 그 외에도 여러가지 이유가 있을 수 있다고 생각합니다.
+
+실제 프로덕션 환경에서 모델의 크기가 크리티컬한 상황이라면 다양한 요소들을 더 고려해볼 수 있을 것 같네요.
 
 2. custom accuracy
 
-accuracy measure로 텐서플로우 기본 accuracy를 사용했는데, loss가 계속 떨어짐에도 불구하고 accuracy값은 0.5 근처에서 횡보하는 상황 목격. 이는 accuracy를 계산하는 방식(찾기)에 의함.
-실제로 캡차를 계산하는 custom accuracy metric를 넣어줘서 이를 해결함.
+Accuracy를 나타내는 metric으로 처음에는 텐서플로우에서 제공하는 기본 accuracy를 사용했는데요, 학습시 loss가 계속 떨어짐에도 불구하고 accuracy값은 0.5 근처에서 횡보하는 상황을 목격 했습니다.
 
-3. preprocessing
+처음에는 학습이 제대로 되고 있지 않은 것인가 생각했는데, 이는 사실 accuracy를 계산하는 방식(TODO)에 의한 것이었습니다.
 
-데이터셋의 노이즈 등을 제거해주는 preprocessing 과정을 학습 전에 수행해봤으나, 그렇게 하지 않아도 충분히 높은 accuracy가 나와서 큰 의미가 없어졌음.
-리얼타임으로 전처리를 하기는 어려우니 이러한 경우는 그대로 사용해도 될듯. 성능이 crutial하고 잘 나오지 않으면 고려해봐도 될 듯.
+```
+```
 
-## 해결하지 못하는 문제점
+이는 캡차에 맞는 accuracy를 계산하는 custom metric을 만들어서 넣어주는 방식으로 해결하였습니다.
+
+```python
+def _captcha_accuracy(self, captcha_length, classes):
+    def captcha_accuracy(y_true, y_pred):
+        sum_acc = 0
+        for i in range(captcha_length):
+            _y_true = tf.slice(y_true, [0, i * classes], [-1, classes])
+            _y_pred = tf.slice(y_pred, [0, i * classes], [-1, classes])
+            sum_acc += metrics.categorical_accuracy(_y_true, _y_pred)
+        return sum_acc / captcha_length
+
+    return captcha_accuracy
+```
+
+## 남아있는 문제점
 
 1. Data Distribution
 
@@ -216,6 +306,9 @@ kcaptcha의 생성 옵션을 바꿔서 distribution을 조금만 바꿔도 성�
 2. 고정 길이
 
 캡차의 길이가 고정되어 있음. 이에 대해서는 [Part 3]3에서 Object Detection 방식을 적용하여 해결
+
+---
+
 
 [이어지는 글]()에서는 구현한 모델을 js로 변환하여 브라우저에 배포하는 내용에 대해서 다룹니다.
 
