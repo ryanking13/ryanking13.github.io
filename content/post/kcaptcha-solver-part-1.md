@@ -1,13 +1,13 @@
 ---
-date: "2021-01-20T00:09:01Z"
-description: kcaptcha
+date: "2021-02-01T00:09:01Z"
+description: 그누보드 캡차 인식 프로젝트 개발기 - Part 1
 draft: true
 tags:
 - Machine Learning
-title: kcaptcha
+title: 그누보드 캡차 인식 프로젝트 개발기 - Part 1
 ---
 
-오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.
+그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.
 
 **이런 내용에 대해 다룹니다**
 
@@ -19,58 +19,80 @@ title: kcaptcha
 - 텐서플로우 기초 문법
 - 최신 머신러닝 모델 및 학습 기법
 
-## 0. 들어가며
+## 들어가며
 
-한국 웹사이트에 많이 사용되는 대표적인 설치형 인터넷 게시판 소프트웨어(CMS, Contents Management System)로 [그누보드](https://sir.kr/)가 있습니다.
+[그누보드](https://sir.kr/)는 한국의 웹사이트에 널리 사용되는 대표적인 설치형 인터넷 게시판 소프트웨어(CMS, Contents Management System)입니다.
 
-![]()
+![gnuboard theme](/assets/post_images/gnuboard_theme.PNG)
 
-(어디서 한 번은 봤을 법한 특유의 그누보드 UI)
+<div style="text-align: center;">
+	<div>
+		<span style="color:grey"><i>어딘가에서 한 번은 봤을 법한 그누보드의 대표적인 테마 <a href="http://amina.co.kr/nariya/">(출처)</a></i></span>
+	</div>
+</div>
 
-그누보드는 스팸 게시글이 등록되는 것을 방지하기 위해 러시아에서 개발된 [KCAPTCHA](http://www.captcha.ru/en/kcaptcha/)라는 캡차 프로그램을 사용합니다.[^recaptcha]
+그누보드는 스팸 게시글이 등록되는 것을 방지하기 위해 러시아에서 개발된 [KCAPTCHA](http://www.captcha.ru/en/kcaptcha/) 캡차 프로그램을 사용합니다.[^recaptcha]
 
-[^recaptcha]: 최신 그누보드는 구글의 리캡차(reCAPTCHA)를 디폴트로 사용하도록 바뀌었지만, 구글 API 연동의 번거로움 및 리캡차 자체의 불편함으로 인해서인지 여전히 KCAPTCHA를 사용하는 곳이 종종 보입니다.
+[^recaptcha]: 최신 그누보드는 구글의 리캡차(reCAPTCHA)를 디폴트로 사용하도록 바뀌었지만, 구글 API 연동의 번거로움 및 리캡차 자체의 불편함으로 인해서인지 여전히 KCAPTCHA를 사용하는 웹사이트가 종종 보입니다.
 
-**KCAPTCHA 예시**
+<div style="text-align: center;">
+	<div>
+    <div><img src="https://github.com/ryanking13/kcaptcha-generator/raw/master/samples/58_005205.png" width="30%"/></div>
+    <br/>
+    <div><img src="https://github.com/ryanking13/kcaptcha-generator/raw/master/samples/72_001048.png" width="30%"/></div>
+		<span style="color:grey"><i>KCAPTCHA 예시</i></span>
+	</div>
+</div>
 
-![](https://github.com/ryanking13/kcaptcha-generator/raw/master/samples/58_005205.png)
+KCAPTCHA는 마지막으로 업데이트 된 것이 2011년도인 굉장히 오래된 고전적인 캡차인데요.
 
-![](https://github.com/ryanking13/kcaptcha-generator/raw/master/samples/72_001048.png)
+최근의 캡차 트렌드가 머신러닝에 기반한 OCR 공격을 피하기 위해 글자 기반에서 벗어나거나[^newcaptcha],
+역으로 [머신러닝을 활용해서 강인한 캡차](https://www.semanticscholar.org/paper/Robust-CAPTCHA-Image-Generation-Enhanced-with-Kwon-Yoon/0159aea0ad53e84e82d915561180b7e95e71a407)를 만드는 것임을 고려하면,
+KCAPTCHA는 상당히 쉬운 캡차라고 할 수 있습니다. 그래서인지 [일반 OCR API를 사용해서 KCAPTCHA를 파훼하려 한](https://studyforus.com/review/632853) 시도도 있었구요.
 
-마지막으로 업데이트 된 것이 2011년도인 KCAPTCHA는 언뜻봐도 굉장히 약해보이는(?) 캡차인데요.
+[^newcaptcha]: 대표적으로 구글의 [reCAPTCHA](https://www.google.com/recaptcha/about/)나 클라우드플레어가 애용하는 [hcaptcha](https://www.hcaptcha.com/)가 있습니다.
 
-간단한 머신러닝 모델로 이 캡차를 어느 정도 수준으로 파훼할 수 있을까하는 궁금증에 ~~(그리고 심심해서)~~
-이 토이 프로젝트를 시작했습니다.[^kakaoapi]  이 프로젝트의 목표는 다음과 같습니다.
+그래서 KCAPTCHA를 위해서만 학습된 머신러닝 모델로는 어느 정도 인식 성능을 낼 수 있을까하는 궁금증에 ~~(그리고 심심해서)~~
+이 토이 프로젝트를 시작했습니다.
 
-[^kakaoapi]: 이미 [상용 OCR API를 통해 KCAPTCHA를 파훼하려는 시도](https://studyforus.com/review/632853)도 존재합니다
+프로젝트의 목표는 다음과 같습니다.
 
-1. 길이 2의 숫자 캡챠에 대해 95% 이상의 성능을 내는 모델 학습
+1. 길이 2의 숫자로 구성된 KCAPTCHA에 대해 95% 이상의 성능을 내는 모델 학습
 2. 학습한 모델을 자바스크립트로 변환하여 브라우저 환경에 배포
 
-프로젝트를 진행한 머신의 환경 및 스펙은 다음과 같습니다.
+프로젝트의 목표가 **아닌** 것은 다음과 같습니다.
 
-- OS: Windows10 x64
-- GPU: NVIDIA RTX 3070
-- Libraries: Tensorflow 2.4.0 / CUDA 11.0
+1. 다른 종류의 캡차에 일반화될 수 있는 모델 학습
 
-## 1. 개발 도구 선정
+> 프로젝트를 진행한 머신의 환경 및 스펙은 다음과 같습니다.
+> - OS: Windows10 x64
+> - GPU: NVIDIA RTX 3070
+> - Tools: Tensorflow 2.4.0 / CUDA 11.0
 
-이 프로젝트의 최종 목표는 학습된 모델을 외부에 배포하는 데에 있습니다.
+## ⚒️ 개발 프레임워크 선정
 
-GPU가 달린 서버를 운용하는 것은 비용적으로 부담이 되기 때문에,
-학습한 모델을 자바스크립트로 변환하여 서버 없이 브라우저 환경에 배포하는 것을 목표로 잡았습니다.
+프로젝트를 시작하기 전 Tensorflow와 PyTorch 중 어떤 프레임워크를 사용할 지 결정해야합니다.
 
-머신러닝 모델을 자바스크립트로 변환하는 것을 지원하는 것은 라이브러리는 Tensorflow.js밖에 없으므로, 필연적으로 개발 도구는 텐서플로우로 한정됩니다.
+원래라면 취향껏 프레임워크를 고르면 되는 부분이겠으나,
+이 프로젝트의 최종 목표가 학습된 모델을 외부에 배포하는 데에 있다는 점을 고려하여야 합니다.
 
-> Note: 시도해보지는 않았지만 PyTorch --> ONNX --> Tensorflow --> Tensorflow.js도 이론상 [가능](https://drsleep.github.io/tutorial/Tutorial-PyTorch-to-TensorFlow-JS/)하다고는 합니다.
+모델 배포를 위해 GPU가 달린 클라우드 서버를 운용하는 것은 비용적으로 부담이 되기 때문에,
+파이썬으로 학습한 모델을 자바스크립트로 변환하여 서버 없이 브라우저 환경에 배포하는 것을 목표로 잡았습니다.
 
-## 데이터셋 생성
+머신러닝 모델의 자바스크립트 변환을 지원하는 라이브러리는 Tensorflow.js밖에 없으므로,
+개발 도구는 Tensorflow로 정했습니다.
 
-실제 KCAPTCHA 프로그램을 사용하는 사이트에서 데이터를 수집하는 것이 제일 확실한 데이터 수집 방법이겠지만,
-법적 문제 소지가 있으므로, 직접 데이터를 생성해보기로 합시다.
+> **Note**: 시도해보지는 않았지만 PyTorch --> ONNX --> Tensorflow --> Tensorflow.js로의 변환도 [가능](https://drsleep.github.io/tutorial/Tutorial-PyTorch-to-TensorFlow-JS/)하다고 합니다🤔.
 
-PHP로 만들어진 KCAPTCHA는 오픈소스로 공개되어 있으므로 누구나 다운로드 받아 사용할 수 있으며,
-그누보드도 오픈소스이므로 그누보드에서 KCAPTCHA에 사용하는 디폴트 옵션도 그대로 적용할 수 있습니다.
+## 💾 데이터 수집
+
+다음으로 한 일은 학습에 사용할 데이터를 수집하는 일입니다.
+
+제일 정확한 데이터 수집 방법은 실제로 KCAPTCHA 프로그램을 사용 중인 다양한 웹사이트에서 캡차 이미지를 수집하는 것이겠지만,
+이는 아무래도 법적 문제 소지가 있으므로, 직접 데이터를 생성하기로 하였습니다.
+
+다행히 PHP로 만들어진 KCAPTCHA는 오픈소스로 공개되어 있으므로 누구나 다운로드 받아 사용할 수 있으며,
+또한 그누보드도 오픈소스이므로 [그누보드에서 KCAPTCHA에 사용하는 디폴트 옵션](https://github.com/gnuboard/gnuboard5/blob/master/plugin/kcaptcha/kcaptcha_config.php)도 똑같이 적용할 수 있습니다.
 
 ```php
 ...
@@ -82,7 +104,7 @@ if($_REQUEST[session_name()]){
 ...
 ```
 
-PHP로 작성된 KCAPTCHA 소스코드를 수정하여, 원하는 캡차 문자열 이미지를 생성할 수 있도록 수정하고,
+먼저 PHP로 작성된 KCAPTCHA 소스코드를 수정하여, 원하는 캡차 문자열 이미지를 생성할 수 있도록 하고,
 
 ```python
 ...
@@ -93,50 +115,51 @@ _, headers = urllib.request.urlretrieve(
 ...
 ```
 
-캡차 이미지 생성을 자동화하는 파이썬 스크립트를 작성하였습니다.
+캡차 이미지 생성을 자동화하는 파이썬 스크립트를 작성하여 수만장의 캡차 이미지를 생성하였습니다.
 
 > 전체 데이터셋 생성 코드는 [여기](https://github.com/ryanking13/kcaptcha-generator)서 볼 수 있습니다.
 
-## 2. 문제 정의
+## 📜 문제 정의 및 표현
 
-수집된 데이터로 학습을 하려면, 우리가 풀고자하는 문제가 정확히 어떤 것인지 정의할 필요가 있습니다.
+이제 데이터를 다 모았으니 모델을 만들어서 돌리면 끝...! 이라고 하고 싶지만,
+그전에 우리가 풀고자 하는 문제가 대체 무엇이며, 이를 어떻게 표현할 지 정의할 필요가 있습니다.
 
-캡차를 푸는 것을 다음과 같이 정의하겠습니다.
+**문제 정의**
 
-> C개의 클래스를 가진 길의 L의 문자열을 분류(classify)하는 문제
+먼저 `캡차를 푼다`라는 과제(Task)를 다음과 같이 정의하겠습니다.
 
-C는 캡차를 구성하는 것이 숫자(0-9)인지, 알파벳(a-z)인지 등에 따라 달라질 것이고, L은 캡차의 길이에 따라 정해질 것입니다.
+> `C`개의 클래스로 구성된 길이의 `L`의 문자열을 분류(classify)하는 과제
 
-저는 경험적으로 많이 본 형태인 숫자(0-9)만으로 구성된 길이 2의 캡차를 푸는 모델을 만들도록 하겠습니다. `(C=10, L=2)`
+`C`는 캡차를 구성하는 것이 숫자(0-9)인지, 알파벳(a-z)인지 등을 나타내고, `L`은 캡차의 길이를 나타냅니다.
 
-## 3. 데이터 임베딩
+이 글에서는 숫자(0-9)만으로 구성된 길이 2의 캡차를 푸는 문제를 다루도록 하겠습니다. `(C=10, L=2)`
 
-풀고자 하는 문제를 정의했으니, 이를 학습하기 위해서 데이터를 어떻게 임베딩할지를 살펴보도록 하겠습니다.
+**데이터 임베딩**
 
-제가 생각한 분류기의 출력은 크게 다음의 두 가지 중 하나입니다.
+다음으로는 이 문제에 맞게끔 데이터(label)를 어떻게 임베딩할지 정합니다.
+
+제가 생각했던 분류기의 출력은 크게 다음의 두 가지 중 하나입니다.
 
 1. __C 길이의 1차원 벡터 L개__
-2. __C*L 길이의 1차원 벡터__
+2. __C * L 길이의 1차원 벡터 1개__
 
-전자의 경우는 MNIST 문제가 L개 있는 것이라고 생각할 수 있겠습니다(물론 입력 이미지는 한 개 이지만요).
-이 때 모델의 전체 loss는 L개의 출력에 대해 각각의 loss를 더한 값이 되겠네요.
+전자는 MNIST 문제가 L개 있는 것이라고 생각할 수 있겠습니다(단, 입력 이미지는 한 개이지만요).
+이 경우 모델의 전체 loss는 L개의 출력에 대해 각각의 loss를 더한 값으로 정의할 수 있습니다.
 
-예를 들어 숫자 42의 경우 다음과 같이 임베딩됩니다.
+예를 들어 숫자 `42`는 다음과 같이 임베딩됩니다.
 
-```
+```python
 pred0 = [0   0   0   0   1   0   0   0   0   0]
 pred1 = [0   0   1   0   0   0   0   0   0   0]
 total_loss = loss(pred0, label0) + loss(pred1, label1)
 ```
 
+후자는 전자의 출력을 하나의 벡터에 모두 이어붙인 형태입니다.
+출력이 하나이므로 모델의 loss는 해당 출력의 loss만 계산하면 되겠네요.
 
+숫자 `42`는 다음과 같이 임베딩됩니다.
 
-
-후자는 C개 클래스에 대한 One-Hot Encoding을 길이 L만큼 반복한 형태입니다.
-
-숫자 42의 경우 다음과 같이 임베딩됩니다.
-
-```
+```python
 pred = [
   0   0   0   0   1   0   0   0   0   0
   0   0   1   0   0   0   0   0   0   0
@@ -144,35 +167,9 @@ pred = [
 total_loss = loss(pred)
 ```
 
-임베딩은 정의하기 나름이니 정답은 없습니다만,
-저는 전자의 경우 Multi-Output을 구현하는 것이 여러 측면에서 번거로운 부분이 생길 것이라고 판단해,
+둘 중 어느 방식을 사용하느냐는 선택하기 나름이겠습니다만,
+저는 전자의 경우 multi-output이 구현 측면에서 번거로운 점이 있을 것이라고 판단해,
 후자의 방식을 채택했습니다.
-
-### Loss 함수 정의
-
-```
-pred = [
-  0   0   0   0   1   0   0   0   0   0
-  0   0   1   0   0   0   0   0   0   0
-]
-total_loss = loss(pred)
-```
-
-데이터 임베딩을 정한 것까지는 좋은데, 위와 같은 경우 loss 함수를 어떻게 정의해야 할까요?
-
-MNIST와 같이 데이터를 C개의 클래스 중 하나의 클래스로 분류하는 `Multi-class classfication` 문제는
-모델의 끝단에 Softmax 함수를 붙여서 전체 출력의 합을 1로 만들고
-Cross Entropy loss 함수를 사용하는데요.
-
-이 문제는 전체 벡터의 합이 1이 아닌 길이 L(위 경우는 2)이므로 알맞지 않습니다.
-
-이와 같이 하나의 오브젝트가 여러개의 클래스를 가지는 문제는 multi-label classification.
-
-multi-label classification 문제의 loss 함수를 정의하는 방법 중 가장 간단한 것은 binary cross entropy를 사용하는 것입니다.
-
-C*L개의 각각의 결과를 독립적으로 보고 binary한 분류 결과를 loss로 사용하는 것이죠.
-
-> 지금 생각해보니 이 문제는 label의 개수가 정해진 특수한 케이스이므로 categorical cross entropy로도 loss를 정의할 수 있을 듯 합니다?
 
 ```python
 def one_hot_encode(self, label):
@@ -187,21 +184,50 @@ def one_hot_encode(self, label):
     return vector
 ```
 
+파이썬으로 구현한 데이터 임베딩 [코드](https://github.com/ryanking13/kcaptcha-solver/blob/d184912e9800abc0b6e6715167d41310d51b9e05/classification/dataset.py#L52-L61)는 위와 같습니다.
 
-## 모델 선정 / 학습 구현
+**loss 함수 정의**
 
-이제 모델을 고르고 학습 파이프라인을 구현할 차례입니다.
+```python
+pred = [
+  0   0   0   0   1   0   0   0   0   0
+  0   0   1   0   0   0   0   0   0   0
+]
+total_loss = loss(pred)
+```
 
-모델은 개발 편의상 [Keras Applications](https://keras.io/api/applications/)에 있는 모델을 사용했습니다. 실험해본 모델은 아래와 같습니다.
+데이터 임베딩을 정한 것까지는 좋은데, loss 함수는 어떻게 정의해야 할까요?
 
-- MobileNetV2
-- DenseNet
+MNIST와 같이 데이터를 C개의 클래스 중 하나의 클래스로 분류하는 `Multi-class classfication` 문제는
+모델의 출력에 Softmax 함수를 붙여서 전체 출력의 합을 1로 만들고
+Cross Entropy loss 함수를 사용하면 될텐데요.
+
+여기서는 전체 벡터의 합이 1이 아닌 길이 `L`(위 경우는 2)이므로 뭔가 딱 들어맞지 않아 보입니다.
+
+이 문제는 하나의 데이터가 여러 개의 클래스(십의 자리 숫자, 일의 자리 숫자)를 가지는 문제인 `Multi-Label classification`으로 보는 것이 맞아 보이는데요.
+
+Multi-Label classification 문제의 loss 함수를 정의하는 방법 중 가장 간단한 것은 [Binary Cross Entropy를 사용하는 것이라고 합니다.](https://wordbe.tistory.com/entry/ML-Cross-entropyCategorical-Binary%EC%9D%98-%EC%9D%B4%ED%95%B4) C * L개의 출력을 각각 독립적인 이진 분류 결과로 취급하는 것이죠.
+
+그 외에도 [Soft-F1 Loss](https://towardsdatascience.com/the-unknown-benefits-of-using-a-soft-f1-loss-in-classification-systems-753902c0105d) 등의 다른 loss 함수를 사용하는 방법도 있지만, 편의상 일단 **Binary Cross Entropy** 함수를 사용하도록 하겠습니다.
+
+> **추가**: 사실 이 문제는 캡차의 길이가 고정된(1인 label의 개수가 정해진) 특수한 케이스이므로 Cross Entropy로 loss를 정의하는 것도 가능하다고 생각됩니다.
+
+## 👨‍💻 모델 선정 / 학습 구현
+
+이제 실제로 학습 파이프라인을 구현할 차례입니다.
+
+모델은 구현의 편의상 [Keras Applications](https://keras.io/api/applications/)에 있는 모델을 사용했습니다. 실험해본 모델은 아래와 같습니다.
+
+- MobileNetV2 _(16MB)_
+- DenseNet121 _(33MB)_
+- EfficientNetB0 _(29MB)_
 
 최종 브라우저 배포 환경을 고려하여 파라미터 수가 많지 않은(용량이 작은) 모델들을 선정했습니다.
 
-Keras Applications에서는 ImageNet으로 사전 학습된 모델을 제공하므로 해당 모델을 받아서 학습해보겠습니다.
 
 ```python
+from tensorflow.keras.applications import DenseNet121
+
 self.net = DenseNet121(
     input_shape=input_shape,
     input_tensor=self.input_tensor,
@@ -209,7 +235,15 @@ self.net = DenseNet121(
     weights="imagenet",
     pooling="max",
 )
+fc1 = layers.Dense(1024, activation="relu")(self.net.output)
+fc2 = layers.Dense(self.prediction_length)(fc1)
+
+prediction = activations.sigmoid(fc2)
+
+self.model = models.Model(inputs=self.input_tensor, outputs=prediction)
 ```
+
+모델은 Keras Application에서 제공하는 ImageNet으로 사전 학습된 모델을 사용했습니다.
 
 ```python
 opt = tf.keras.optimizers.Adam(learning_rate=1e-4)
@@ -231,258 +265,82 @@ def train(self, trainset, valset, batch_size, epochs):
     )
 ```
 
-대부분의 로직을 Keras API로 구현할 수 있어 굉장히 간견할 코드로 모델 구성과 학습 루프를 구성 할 수 있습니다.
+학습 과정은 Keras API를 사용해서 구현했습니다.
 
-> 전체 코드는 [여기](https://github.com/ryanking13/kcaptcha-solver/tree/master/classification)
+> 전체 학습 코드는 [여기](https://github.com/ryanking13/kcaptcha-solver/tree/master/classification)에서 볼 수 있습니다.
 
-### 학습 결과
+## 📉 학습 결과
 
-**MobileNetV2**
+모델별 학습 결과는 다음과 같습니다.
+총 10000장의 캡차 이미지로 구성된 데이터셋을 사용했고,
+학습에 6401장, 검증에 1599장, 테스트에 2000장을 사용했습니다.
 
-```
-결과
-```
+| Model          | Train Accuracy | Test Accuracy |
+|----------------|----------------|---------------|
+| MobilenetV2    | 98.6%          | 25.7%         |
+| Densenet121    | 99.9%          | 99.6%         |
+| EfficientnetB0 | 99.3%          | 99.2%         |
 
-**DenseNet121**
+MobileNetV2는 완전히 학습 데이터셋에 오버피팅 된 결과를 보입니다.
+학습 정확도가 98%를 넘은 반면, 테스트 정확도는 25%에 불과했네요.
 
-```
-결과
-```
+<div style="text-align: center;">
+	<div>
+    <div><img src="/assets/post_images/kcaptcha_mobilenet_tensorboard.PNG" width="50%"/></div>
+		<span style="color:grey"><i>Mobilenet V2 학습 곡선</i></span>
+	</div>
+</div>
 
-MobileNetV2는 모델 크기 상 표현력에 한계가 있는지 학습 과정에서 Loss가 충분히 줄어들지 않는 모습을 보이네요. 한편 DenseNet은 97%가 훌쩍 넘는 정확도를 보입니다.
+학습 곡선으로 봐도 <span style="color:red">테스트 정확도</span>가 <span style="color:blue">학습 정확도</span>를 전혀 따라가지 못하는 모습을 보이네요.
 
-## 학습 과정에서의 이슈
+그에 비해 Densenet121과 EfficientnetB0는 학습 정확도와 테스트 정확도 모두 99% 수준의 만족스러운 결과를 보입니다.
 
-글로 쓸 때는 일련의 과정의 물 흐르듯 자연스럽게 이어진 것처럼 보이지만 사실은
-많은 트러블슈팅이 있었습니다.
-실제로 여러분이 소규모 머신러닝 프로젝트를 한다면 맞닥뜨릴 부분도 그런 부분이겠죠.
-이 문단에서는 글에서 적지 않은 이슈들을 정리해보려 합니다.
+<div style="text-align: center;">
+	<div>
+    <div><img src="/assets/post_images/kcaptcha_densenet_efficientnet_tensorboard.PNG" width="50%"/></div>
+		<span style="color:grey"><i>Densenet121과 EfficientnetB0 학습 곡선</i></span>
+	</div>
+</div>
 
-1. 모델 선정
+다만 학습 곡선으로 보면 두 모델의 차이를 느낄 수 있는데,
+Densenet121이 <span style="color:#cc3311">학습 정확도</span>와 <span style="color:#33bbee">테스트 정확도</span> 모두 굉장히 빠르게 수렴하는 모습을 보이는 것에 비해,
+EfficientnetB0는 <span style="color:#ee3377">학습 정확도</span>가 천천히 수렴하고, <span style="color:#009988">테스트 정확도</span>는 더욱 천천히 수렴하는 모습을 확인할 수 있었습니다.
 
-다양한 모델로 실험하기 전, 처음에는 브라우저에 이식하기 위해 최대한 작은 모델인 MobileNet V2 만을 가지고 실험을 했습니다.
+## 🚢 모델 배포
 
-그러나 위에서 언급한 것처럼 validation loss가 충분히 떨어지지 않는 상황 발생했습니다. 학습 데이터의 수를 늘리는 것으로는 나아지지 않았구요.
-
-이후에 더 발전되고 무거운 모델을 사용하니 성능이 급격하게 증가하는 것을 보고
-일단은 모델의 표현력 문제라고 결론지었지만, 사실은 그 외에도 여러가지 이유가 있을 수 있다고 생각합니다.
-
-실제 프로덕션 환경에서 모델의 크기가 크리티컬한 상황이라면 다양한 요소들을 더 고려해볼 수 있을 것 같네요.
-
-2. custom accuracy
-
-Accuracy를 나타내는 metric으로 처음에는 텐서플로우에서 제공하는 기본 accuracy를 사용했는데요, 학습시 loss가 계속 떨어짐에도 불구하고 accuracy값은 0.5 근처에서 횡보하는 상황을 목격 했습니다.
-
-처음에는 학습이 제대로 되고 있지 않은 것인가 생각했는데, 이는 사실 accuracy를 계산하는 방식(TODO)에 의한 것이었습니다.
-
-```
-```
-
-이는 캡차에 맞는 accuracy를 계산하는 custom metric을 만들어서 넣어주는 방식으로 해결하였습니다.
-
-```python
-def _captcha_accuracy(self, captcha_length, classes):
-    def captcha_accuracy(y_true, y_pred):
-        sum_acc = 0
-        for i in range(captcha_length):
-            _y_true = tf.slice(y_true, [0, i * classes], [-1, classes])
-            _y_pred = tf.slice(y_pred, [0, i * classes], [-1, classes])
-            sum_acc += metrics.categorical_accuracy(_y_true, _y_pred)
-        return sum_acc / captcha_length
-
-    return captcha_accuracy
-```
-
-## 남아있는 문제점
-
-1. Data Distribution
-
-kcaptcha의 생성 옵션을 바꿔서 distribution을 조금만 바꿔도 성능 확 떨어짐 (확인).
-
-본 실험에서는 실제로 사람들이 이러한 파라미터를 건드리지 않을 것이라고 가정하고 수행했으나, 더 현실적이고 하드한 컨디션을 고려하면 이를 개선해야 할듯.
-
-(augmentation, 데이터 확보)
-
-2. 고정 길이
-
-캡차의 길이가 고정되어 있음. 이에 대해서는 [Part 3]3에서 Object Detection 방식을 적용하여 해결
+[이어지는 글]({{< ref "kcaptcha-solver-part-2.md" >}})에서는 학습한 모델을 Tensorflow.js로 변환하여 배포하는 과정에 대해서 살펴보도록 하겠습니다.
 
 ---
 
+## ✅ 개선 가능한 부분들
 
-[이어지는 글]()에서는 구현한 모델을 js로 변환하여 브라우저에 배포하는 내용에 대해서 다룹니다.
+이 글에서는 목표한 대로 길이 2의 숫자 캡차에 대해 99% 이상의 정확도를 보이는 모델을 만들었지만,
+사실 이것이 굉장히 쉬운 문제였기 때문에 다양한 개선의 여지가 있습니다.
 
-## 
+1. **노이즈에 강인한 모델**
 
-[이전 글]()에서 ~ 다루었습니다.
+KCAPTCHA 캡차 이미지 생성 시에,
+생성 옵션을 살짝 조정하는 것으로, 여러 가지 노이즈가 추가된 데이터를 생성할 수 있습니다.
+이 경우 학습 데이터와 테스트 데이터의 분포가 달라지게 되므로 기존의 학습 데이터로 학습한 모델의 성능이 저하될텐데요.
 
-이번 글에서는 완성한 모델을 브라우저에 배포하여 서빙하기까지의 과정에서 발생한 이슈에 대해서 다룹니다.
+노이즈에 강인한 모델을 만들기 위해서는 크게 아래와 같은 방법을 사용할 수 있을 것 같습니다.
 
-## Tensorflow.js
+- 다양한 노이즈가 추가된 데이터를 학습 과정에 포함시키기
+- 데이터 증강(Augmentation) 기법 활용
 
-텐서플로우는 Tensorflow.js라는 이름의 자바스크립트 머신러닝 라이브러리를 제공합니다.
+2. **가변 길이 캡차**
 
-완성된 모델을 실행하는 것 뿐만 아니라, 새로 모델을 학습시키는 것 역시 지원. webgl을 통해 GPU를 지원하는 것은 덤이구요.
+이 글에서는 캡차의 길이가 정해져 있다고 가정했는데,
+현실에서는 사실 대부분 가변적인 길이의 캡차를 사용합니다.
 
-Tensorflow.js는 케라스가 사용하는 HDF5 포맷 또는, 텐서플로우에서 네이티브로 사용하는 SavedModel 등의 포맷을 자체 포맷으로 변환하는 `tensorflowjs_converter` 커맨드를 제공합니다.
+가변 길이 캡차를 풀기 위해서 시도해볼 수 있는 방법으로는 크게 두 가지가 있을 것 같습니다.
 
-앞서 Part1의 코드가 keras 모델을 사용했으므로 우리는 hdf5 형태로 모델을 export하고, 변환하도록 하겠습니다.
+- Classfication 모델 대신 Object Detection 모델 활용
+- Two Stage Classfication: 캡차 길이를 탐지 모델 + 정해진 길이의 캡차를 푸는 모델
 
-```
-저장 코드
-```
+이 글을 읽고 흥미로우셨다면 이러한 문제를 혼자서 혹은 저와 같이 풀어보시는 것도 재밌을 것이라고 생각합니다😁
 
-```
-변환 코드
-```
+__Links__
 
-에러가 발생하네요? 우리가 multi label 문제의 accuracy를 측정하기 위해 만든 custom metric을 변환할수가 없나봅니다.
-
-
-```
-TensorFlow.js 레이어는 현재 표준 Keras 구성을 사용하는 Keras 모델 만 지원합니다. 지원되지 않는 작업 또는 계층 (예 : 사용자 지정 계층, Lambda 계층, 사용자 지정 손실 또는 사용자 지정 지표)을 사용하는 모델은 JavaScript로 안정적으로 번역 할 수없는 Python 코드에 의존하기 때문에 자동으로 가져올 수 없습니다.
-```
-
-어떻게 하면 좋을까요?
-
-이를 깔끔하게 해결하는 방법이 있을 수도 있겠지만,
-저는 간단한 해결책을 사용했습니다. custom metric을 안쓰는 거죠.
-
-```
-코드
-```
-
-앞서 모델을 저장할 경우에는 커스텀 메트릭을 쓰지 않게 설정하였습니다. 어차피 loss는 네이티브한 것을 사용하니 학습에는 큰 문제가 없습니다.
-
-```
-다시 변환
-```
-
-다시 변환해보면 output으로 지정한 폴더에 metric.json과 함께 weight파일들이 생성됩니다.
-
-## js코드 작성
-
-이제 변환한 모델을 js에서 읽어서 사용해줄 차례입니다.
-
-```
-npm install @tensorflow/tfjs
-```
-
-```js
-    this.model = await tf.loadGraphModel(
-      location.href + "/models/l2_160_60/model.json"
-    );
-```
-
-`tf.loadGraphModel`을 이용하여 모델 파일을 읽어옵니다.
-
-```js
-    tfGetImage: function (imageId) {
-      // Get HTMLImageElement from the document
-      const imgElem = document.getElementById(imageId);
-      const img = tf.browser.fromPixels(imgElem);
-      return this.tfPreprocessImage(img);
-    },
-```
-
-HTML 문서에서 이미지를 읽어와서 `fromPixels`로 이미지로 변환합니다.
-
-```js
-    tfPreprocessImage: function (img) {
-      const mean = tf.tensor1d([0.485, 0.456, 0.406]);
-      const std = tf.tensor1d([0.229, 0.224, 0.225]);
-      const size = [60, 160, 3]; // [height, width, channel]
-      return img.reshape(size).toFloat().div(tf.scalar(255)).sub(mean).div(std);
-    },
-```
-
-파이썬에서 수행한 것과 똑같은 전처리 과정을 수행해주어야 합니다.
-
-ImageNet으로 사전 학습된 Keras DenseNet 구현체는 전체 데이터셋의 평균/표준편차를 이용해서 데이터를 표준화해주는 작업이 들어갑니다.
-
-```js
-    tfPredictCaptcha: function () {
-      const img = this.tfGetImage("captcha");
-      const imgBatch = img.expandDims(0);
-      // console.log(imgNormalizedBatch)
-      const result = this.model.predict(imgBatch);
-      this.captchaVal = this.tfDecodePrediction(result, 10, 2);
-    },
-    tfDecodePrediction: function (tensor, numCharSet) {
-      // tensor.print();
-      // slice tensor to each captcha character
-      var sliced = tensor.dataSync().reduce((resultArray, item, index) => {
-        const chunkIndex = Math.floor(index / numCharSet);
-        if (!resultArray[chunkIndex]) {
-          resultArray[chunkIndex] = []; // start a new chunk
-        }
-        resultArray[chunkIndex].push(item);
-        return resultArray;
-      }, []);
-      // extract predictions for each character
-      const argMax = (array) =>
-        array.map((x, i) => [x, i]).reduce((r, a) => (a[0] > r[0] ? a : r))[1];
-      const predicted = sliced.map(argMax).join("");
-      // console.log(predicted);
-      return predicted;
-    },
-  },
-```
-
-추론과 추론 결과를 디코딩하는 코드입니다.
-
-> 전체 코드는 여기서, Vue.js로 작성되었습니다.
-
-## 배포
-
-이제 완성된 코드를 정적 사이트로 빌드하여 Github Page를 통해 배포
-
-> https://ryanking13.github.io/kcaptcha
-
-```
-GIF
-```
-
-## Part 3
-
-앞서 문제 정의, 데이터 수집, 모델 구현, 변환 및 배포까지 일련의 프로세스를 다루어 보았습니다.
-
-이번 글에서는 기존 모델의 문제점을 개선하고 .
-
-기존 모델의 문제는 길이가 고정되어야 있어야 한다는 점.
-길이가 다양한 캡차를 풀 수 없다는 점.
-
-이는 classification 으로 문제를 정의했기 때문,
-문제 정의를 바꾸지 않고 이를 해결하는 방법은
-
-1. 최대 길이에 맞춰서 output을 뽑고 결과를 해석하는 방식을 조정
-
-2. 길이 별로 모델을 따로 학습시키고, 추가로 길이를 판단하는 모델을 학습
-
-1번 방법은 학습이나 추론이 까다로워 보이고, 2번은 간단하지만 redundancy가 너무 많은 것으로 생각된다.
-
-그러므로 문제 정의를 바꾸자. classification 문제가 아니라 object detection 문제로
-
-## 데이터셋 재확보
-
-classification과 object detection에 사용하는 데이터셋은 전혀 다르므로 학습할 데이터셋부터 다시 만들어야 한다.
-
-kcaptcha 생성 코드에서 bounding box를 추출하는 부분을 추가하였다
-
-```
-코드
-```
-
-## 모델 구현
-
-텐서플로우의 공식적인 Object Detection 모델은 Tensorflow Object Detection API를 통해서 주로 제공된다.
-
-그러나 복잡한 프레임워크에 맞추기는 번거롭기 때문에 대신 tf2-yolo3 구현체를 사용하기로 함.
-
-## dataloader 작성
-
-## 학습
-
-## 변환
-
-## 배포
+- [kcaptcha-solver](https://github.com/ryanking13/kcaptcha-solver/tree/master/classification)
+- [kcaptcha-generator](https://github.com/ryanking13/kcaptcha-generator)
