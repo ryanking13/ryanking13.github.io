@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>그누보드 캡차 인식 프로젝트 개발기 - Part 1 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-1.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.cab45ac71980380f43b9a9c93f03ce1ee85500e92c0d1d2bc28f66eafe5687d8.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1" />
+<meta property="og:description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-1.html/" />
+<meta property="article:published_time" content="2021-02-01T19:00:00+09:00" />
+<meta property="article:modified_time" content="2021-02-01T19:00:00+09:00" />
+<meta itemprop="name" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1">
+<meta itemprop="description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1">
+<meta itemprop="datePublished" content="2021-02-01T19:00:00+09:00" />
+<meta itemprop="dateModified" content="2021-02-01T19:00:00+09:00" />
+<meta itemprop="wordCount" content="4149">
+
+
+
+<meta itemprop="keywords" content="Machine Learning," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1"/>
+<meta name="twitter:description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">그누보드 캡차 인식 프로젝트 개발기 - Part 1</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-02-01 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#들어가며">들어가며</a></li>
+        <li><a href="#-개발-프레임워크-선정">⚒️ 개발 프레임워크 선정</a></li>
+        <li><a href="#-데이터-수집">💾 데이터 수집</a></li>
+        <li><a href="#-문제-정의">📜 문제 정의</a></li>
+        <li><a href="#-모델-선정--학습-구현">👨‍💻 모델 선정 / 학습 구현</a></li>
+        <li><a href="#-학습-결과">📉 학습 결과</a></li>
+        <li><a href="#-모델-배포">🚢 모델 배포</a></li>
+        <li><a href="#-개선-가능한-부분들">✅ 개선 가능한 부분들</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.</p>
+<p><strong>이런 내용에 대해 다룹니다</strong></p>
+<ul>
+<li>데이터 수집 - 모델 구현 - 학습 - 모델 배포 파이프라인</li>
+<li>개발 과정에서 발생한 이슈와 해결책</li>
+</ul>
+<p><strong>이런 내용을 다루지 않습니다</strong></p>
+<ul>
+<li>텐서플로우 기초 문법</li>
+<li>최신 머신러닝 모델 및 학습 기법</li>
+</ul>
+<h2 id="들어가며">들어가며</h2>
+<p><a href="https://sir.kr/">그누보드</a>는 한국의 웹사이트에 널리 사용되는 대표적인 설치형 인터넷 게시판 소프트웨어(CMS, Contents Management System)입니다.</p>
+<p><img src="/assets/post_images/gnuboard_theme.PNG" alt="gnuboard theme"></p>
+<div style="text-align: center;">
+	<div>
+		<span style="color:grey"><i>어딘가에서 한 번은 봤을 법한 그누보드의 대표적인 테마 <a href="http://amina.co.kr/nariya/">(출처)</a></i></span>
+	</div>
+</div>
+<p>그누보드는 스팸 게시글이 등록되는 것을 방지하기 위해 러시아에서 개발된 <a href="http://www.captcha.ru/en/kcaptcha/">KCAPTCHA</a> 캡차 프로그램을 사용합니다.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<div style="text-align: center;">
+	<div>
+    <div><img src="https://github.com/ryanking13/kcaptcha-generator/raw/master/samples/58_005205.png" width="30%"/></div>
+    <br/>
+    <div><img src="https://github.com/ryanking13/kcaptcha-generator/raw/master/samples/72_001048.png" width="30%"/></div>
+		<span style="color:grey"><i>KCAPTCHA 예시</i></span>
+	</div>
+</div>
+<p>KCAPTCHA는 마지막으로 업데이트 된 것이 2011년도인 굉장히 고전적인 캡차인데요.</p>
+<p>최근의 캡차 트렌드가 머신러닝 기반 OCR 공격을 피하기 위해 글자 방식에서 벗어나거나<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>,
+역으로 <a href="https://www.semanticscholar.org/paper/Robust-CAPTCHA-Image-Generation-Enhanced-with-Kwon-Yoon/0159aea0ad53e84e82d915561180b7e95e71a407">머신러닝을 활용해서 강인한 캡차</a>를 만드는 것임을 고려하면,
+KCAPTCHA는 상당히 쉬운 캡차라고 할 수 있습니다. 그래서인지 <a href="https://studyforus.com/review/632853">일반 OCR API를 사용해서 KCAPTCHA를 파훼하려 한</a> 시도도 있었구요.</p>
+<p>그래서 KCAPTCHA를 타겟으로 학습된 머신러닝 모델로는 어느 정도 인식 성능을 낼 수 있을까하는 궁금증에 <del>(그리고 심심해서)</del>
+이 토이 프로젝트를 시작했습니다.</p>
+<p>프로젝트의 목표는 다음과 같습니다.</p>
+<ol>
+<li>길이 2의 숫자로 구성된 KCAPTCHA에 대해 95% 이상의 성능을 내는 모델 학습</li>
+<li>학습한 모델을 자바스크립트로 변환하여 브라우저 환경에 배포</li>
+</ol>
+<p>프로젝트의 목표가 <strong>아닌</strong> 것은 다음과 같습니다.</p>
+<ol>
+<li>다른 종류의 캡차에 일반화될 수 있는 캡차 인식 모델 학습</li>
+</ol>
+<blockquote>
+<p>프로젝트를 진행한 머신의 환경 및 스펙은 다음과 같습니다.</p>
+<ul>
+<li>OS: Windows10 x64</li>
+<li>GPU: NVIDIA RTX 3070</li>
+<li>Tools: Tensorflow 2.4.0 / CUDA 11.0</li>
+</ul>
+</blockquote>
+<h2 id="-개발-프레임워크-선정">⚒️ 개발 프레임워크 선정</h2>
+<p>개발을 시작하기 전 가장 먼저 한 일은 Tensorflow와 PyTorch 중 어떤 프레임워크를 사용할 지를 결정하는 것이었습니다.
+저는 PyTorch를 선호하는 편이지만,
+이 프로젝트의 최종 목표가 학습된 모델을 외부에 배포하는 데에 있다는 점을 고려하여야 합니다.</p>
+<p>모델 배포를 위해 GPU가 달린 클라우드 서버를 운용하는 것은 비용적으로 부담이 되기 때문에,
+파이썬으로 학습한 모델을 자바스크립트로 변환하여 서버 없이 브라우저 환경에 배포하는 것을 목표로 잡았습니다.
+머신러닝 모델의 자바스크립트 변환을 지원하는 라이브러리는 Tensorflow.js밖에 없으므로,
+개발 도구는 Tensorflow로 자연스럽게 정해졌습니다.</p>
+<blockquote>
+<p><strong>Note</strong>: 시도해보지는 않았지만 PyTorch &ndash;&gt; ONNX &ndash;&gt; Tensorflow &ndash;&gt; Tensorflow.js로의 변환도 <a href="https://drsleep.github.io/tutorial/Tutorial-PyTorch-to-TensorFlow-JS/">가능</a>하다고 합니다.</p>
+</blockquote>
+<h2 id="-데이터-수집">💾 데이터 수집</h2>
+<p>다음으로는 데이터가 없으면 아무 것도 할 수 없으므로 학습에 사용할 데이터를 수집하였습니다.</p>
+<p>제일 확실한 데이터 수집 방법은 실제 KCAPTCHA 프로그램을 운용 중인 다양한 그누보드 웹사이트에서 캡차 이미지를 수집하는 것이겠지만,
+이는 법적 문제 소지가 있으므로, 직접 데이터를 생성하기로 하였습니다.</p>
+<p>다행히 PHP로 만들어진 KCAPTCHA는 오픈소스로 공개되어 있으므로 누구나 다운로드 받아 사용할 수 있으며,
+또한 그누보드도 오픈소스이므로 <a href="https://github.com/gnuboard/gnuboard5/blob/master/plugin/kcaptcha/kcaptcha_config.php">그누보드에서 KCAPTCHA에 사용하는 디폴트 옵션</a>도 똑같이 적용할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">...</span>
+<span class="nv">$captcha</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">KCAPTCHA</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">[</span><span class="nx">session_name</span><span class="p">()]){</span>
+	<span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;captcha_keystring&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$captcha</span><span class="o">-&gt;</span><span class="na">getKeyString</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="o">...</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>먼저 PHP로 작성된 KCAPTCHA 소스코드를 수정하여, 원하는 캡차 문자열 이미지를 생성할 수 있도록 하고,</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">...</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span>
+    <span class="s2">&#34;http://localhost:</span><span class="si">%d</span><span class="s2">?string=</span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">target</span><span class="p">),</span>
+    <span class="n">filename</span><span class="o">=</span><span class="n">save_path</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="o">...</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>캡차 이미지 생성을 자동화하는 파이썬 스크립트를 작성하여 수만장의 캡차 이미지를 생성하였습니다.</p>
+<blockquote>
+<p>전체 데이터셋 생성 코드는 <a href="https://github.com/ryanking13/kcaptcha-generator">여기</a>서 볼 수 있습니다.</p>
+</blockquote>
+<h2 id="-문제-정의">📜 문제 정의</h2>
+<p>이제 데이터를 다 모았으니 모델을 만들어서 돌리면 끝&hellip;! 이라고 하고 싶지만,
+그전에 우리가 풀고자 하는 문제가 대체 무엇이며, 이를 어떻게 데이터로 표현할 지 정의할 필요가 있습니다.</p>
+<p><strong>문제 정의</strong></p>
+<p>먼저 <code>캡차를 푼다</code>라는 과제(task)를 다음과 같이 정의하겠습니다.</p>
+<blockquote>
+<p><code>C</code>개의 클래스로 구성된 길이의 <code>L</code>의 문자열을 분류(classify)하는 과제</p>
+</blockquote>
+<p><code>C</code>는 캡차를 구성하는 것이 숫자(0-9)인지, 알파벳(a-z)인지 등을 나타내고, <code>L</code>은 캡차의 길이를 나타냅니다.</p>
+<p>이 글에서는 기본적으로 숫자(0-9)만으로 구성된 길이 2의 캡차를 푸는 문제를 다루도록 하겠습니다. <code>(C=10, L=2)</code></p>
+<p><strong>데이터 임베딩</strong></p>
+<p>다음으로는 이 문제에 맞게끔 데이터(label)를 어떻게 임베딩할지 정합니다.</p>
+<p>제가 고려해본 분류기의 출력은 크게 다음의 두 가지입니다.</p>
+<ol>
+<li><strong>C 길이의 1차원 벡터 L개</strong></li>
+<li><strong>C * L 길이의 1차원 벡터 1개</strong></li>
+</ol>
+<p>전자는 MNIST 문제가 L개 있는 것이라고 생각할 수 있겠습니다(단, 입력 이미지는 한 개이지만요).
+이 경우 모델의 전체 loss는 L개의 출력에 대해 각각의 loss를 더한 값으로 정의할 수 있습니다.</p>
+<p>예를 들어 숫자 <code>42</code>는 다음과 같이 임베딩됩니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">pred0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span><span class="p">]</span>
+<span class="n">pred1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span><span class="p">]</span>
+<span class="n">total_loss</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred0</span><span class="p">,</span> <span class="n">label0</span><span class="p">)</span> <span class="o">+</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred1</span><span class="p">,</span> <span class="n">label1</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>한편, 후자는 전자의 출력을 하나의 벡터에 모두 이어붙인 형태입니다.
+출력이 하나이므로 모델의 loss는 해당 출력의 loss만 계산하면 됩니다.</p>
+<p>후자의 경우 숫자 <code>42</code>는 다음과 같이 임베딩됩니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">pred</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+<span class="p">]</span>
+<span class="n">total_loss</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>둘 중 어느 방식을 사용하느냐는 선택하기 나름이겠습니다만,
+저는 전자의 경우 multi-output이 구현 측면에서 번거로운 점이 있을 것이라고 판단해,
+후자의 방식을 채택했습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">one_hot_encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="s2">&#34;&#34;&#34;
+</span><span class="s2">    e.g.) 17 ==&gt; [0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0,
+</span><span class="s2">                  0, 0, 0, 0, 0, 0, 0, 1.0, 0, 0,]
+</span><span class="s2">    &#34;&#34;&#34;</span>
+    <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">available_chars_cnt</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">captcha_length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_chars_cnt</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">vector</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="k">return</span> <span class="n">vector</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>파이썬으로 구현한 데이터 임베딩 <a href="https://github.com/ryanking13/kcaptcha-solver/blob/d184912e9800abc0b6e6715167d41310d51b9e05/classification/dataset.py#L52-L61">코드</a>는 위와 같습니다.</p>
+<p><strong>loss 함수 정의</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">pred</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+<span class="p">]</span>
+<span class="n">total_loss</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>데이터 임베딩을 정한 것까지는 좋은데, loss 함수는 어떻게 정의해야 할까요?</p>
+<p>MNIST와 같이 데이터를 C개의 클래스 중 하나의 클래스로 분류하는 <code>Multi-class classfication</code> 문제는
+모델의 출력에 Softmax 함수를 붙여서 전체 출력의 합을 1로 만들고
+Cross Entropy 함수를 loss 함수로 사용하면 됩니다.</p>
+<p>그런데 여기서는 전체 벡터의 합이 1이 아닌 길이 <code>L</code>(위 경우는 2)이므로 뭔가 딱 들어맞지 않아 보입니다.</p>
+<p>이 문제는 하나의 데이터가 여러 개의 클래스(십의 자리 숫자와 일의 자리 숫자)를 가지는 문제로,
+<code>Multi-Label classification</code>에 속한다고 보는 것이 적합해 보이는데요. Multi-Label classification 문제의 loss 함수를 정의하는 방법 중 가장 간단한 것은 Binary Cross Entropy를 사용하는 것입니다. C * L개의 출력을 각각 독립적인 이진 분류 결과로 취급하는 것입니다 (<a href="https://wordbe.tistory.com/entry/ML-Cross-entropyCategorical-Binary%EC%9D%98-%EC%9D%B4%ED%95%B4">참고</a>).</p>
+<p>그 외에도 <a href="https://towardsdatascience.com/the-unknown-benefits-of-using-a-soft-f1-loss-in-classification-systems-753902c0105d">Soft-F1 Loss</a> 등의 다른 loss 함수를 사용하는 방법도 있지만, 편의상 여기서는 <strong>Binary Cross Entropy</strong> 함수를 사용하도록 하겠습니다.</p>
+<blockquote>
+<p><strong>추가</strong>: 사실 이 문제는 캡차의 길이가 고정된(1인 label의 개수가 정해진) 특수한 케이스이므로 Cross Entropy를 잘 써서 loss를 정의하는 것도 충분히 가능하다고 생각됩니다.</p>
+</blockquote>
+<h2 id="-모델-선정--학습-구현">👨‍💻 모델 선정 / 학습 구현</h2>
+<p>이제 실제로 학습 파이프라인을 구현할 차례입니다.</p>
+<p>모델은 <a href="https://keras.io/api/applications/">Keras에서 공식적으로 지원하는 모델</a>을 사용했습니다.
+Keras는 다양한 모델을 지원하지만, 최종 브라우저 배포 환경을 고려하여 파라미터 수가 많지 않은(용량이 작은) 아래의 모델들을 선정했습니다.</p>
+<ul>
+<li>MobileNetV2 <em>(16MB)</em></li>
+<li>DenseNet121 <em>(33MB)</em></li>
+<li>EfficientNetB0 <em>(29MB)</em></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">tensorflow.keras.applications</span> <span class="kn">import</span> <span class="n">DenseNet121</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">DenseNet121</span><span class="p">(</span>
+    <span class="n">input_shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">,</span>
+    <span class="n">input_tensor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_tensor</span><span class="p">,</span>
+    <span class="n">include_top</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">weights</span><span class="o">=</span><span class="s2">&#34;imagenet&#34;</span><span class="p">,</span>
+    <span class="n">pooling</span><span class="o">=</span><span class="s2">&#34;max&#34;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fc1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&#34;relu&#34;</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+<span class="n">fc2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_length</span><span class="p">)(</span><span class="n">fc1</span><span class="p">)</span>
+
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">activations</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">fc2</span><span class="p">)</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">prediction</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>ImageNet으로 사전 학습된 모델을 사용했습니다. 작은 프로젝트에서는 Keras를 쓰면 구현이 참 편리합니다. 😏</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">opt</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span>
+    <span class="n">loss</span><span class="o">=</span><span class="s2">&#34;binary_crossentropy&#34;</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_captcha_accuracy</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">,</span> <span class="n">char_classes</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trainset</span><span class="p">,</span> <span class="n">valset</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">trainset</span><span class="p">,</span>
+        <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+        <span class="n">validation_data</span><span class="o">=</span><span class="n">valset</span><span class="p">,</span>
+        <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>학습 과정도 Keras API를 활용하여 간단히 구현하였습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">_captcha_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">captcha_length</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">captcha_accuracy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+        <span class="n">sum_acc</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">):</span>
+            <span class="n">_y_true</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
+            <span class="n">_y_pred</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
+            <span class="n">sum_acc</span> <span class="o">+=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">categorical_accuracy</span><span class="p">(</span><span class="n">_y_true</span><span class="p">,</span> <span class="n">_y_pred</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sum_acc</span> <span class="o">/</span> <span class="n">captcha_length</span>
+
+    <span class="k">return</span> <span class="n">captcha_accuracy</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>한 가지 포인트가 되는 부분은,
+모델의 출력이 일반적인 문제와 다르기 때문에,
+모델의 정확도를 측정하는 커스텀 metric을 작성하여 넣어주었습니다.</p>
+<blockquote>
+<p>전체 학습 코드는 <a href="https://github.com/ryanking13/kcaptcha-solver/tree/master/classification">여기</a>에서 볼 수 있습니다.</p>
+</blockquote>
+<h2 id="-학습-결과">📉 학습 결과</h2>
+<p>각 모델별 학습 결과는 다음과 같습니다.</p>
+<p>총 10000장의 캡차 이미지로 구성된 데이터셋을 사용했고,
+학습에 6401장, 검증에 1599장, 테스트에 2000장을 사용했습니다.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Train Accuracy</th>
+<th>Test Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MobilenetV2</td>
+<td>98.6%</td>
+<td>25.7%</td>
+</tr>
+<tr>
+<td>Densenet121</td>
+<td>99.9%</td>
+<td>99.6%</td>
+</tr>
+<tr>
+<td>EfficientnetB0</td>
+<td>99.3%</td>
+<td>99.2%</td>
+</tr>
+</tbody>
+</table>
+<p>MobileNetV2는 완전히 학습 데이터셋에 오버피팅 된 결과를 보입니다.
+학습 정확도가 98%를 넘은 반면, 테스트 정확도는 25%에 불과했네요.</p>
+<div style="text-align: center;">
+	<div>
+    <div><img src="/assets/post_images/kcaptcha_mobilenet_tensorboard.PNG" width="50%"/></div>
+		<span style="color:grey"><i>Mobilenet V2 학습 곡선</i></span>
+	</div>
+</div>
+<p>학습 곡선으로 봐도 <span style="color:red">테스트 정확도</span>가 <span style="color:blue">학습 정확도</span>를 전혀 따라가지 못하는 모습을 보이네요.</p>
+<p>그에 비해 Densenet121과 EfficientnetB0는 학습 정확도와 테스트 정확도 모두 99% 수준의 만족스러운 결과를 보입니다.</p>
+<div style="text-align: center;">
+	<div>
+    <div><img src="/assets/post_images/kcaptcha_densenet_efficientnet_tensorboard.PNG" width="50%"/></div>
+		<span style="color:grey"><i>Densenet121과 EfficientnetB0 학습 곡선</i></span>
+	</div>
+</div>
+<p>다만 학습 곡선으로 보면 두 모델의 차이를 느낄 수 있는데,
+Densenet121이 <span style="color:#cc3311">학습 정확도</span>와 <span style="color:#33bbee">테스트 정확도</span> 모두 굉장히 빠르게 수렴하는 모습을 보이는 것에 비해,
+EfficientnetB0는 <span style="color:#ee3377">학습 정확도</span>가 천천히 수렴하고, <span style="color:#009988">테스트 정확도</span>는 더욱 천천히 수렴하는 모습을 확인할 수 있습니다.</p>
+<p>잘 학습된 모델을 만드는데 성공했으니, 이제 다음은 모델을 배포할 차례입니다.</p>
+<h2 id="-모델-배포">🚢 모델 배포</h2>
+<p><a href="https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/">이어지는 글</a>에서는 학습한 모델을 Tensorflow.js로 변환하여 배포하는 과정에 대해서 살펴보도록 하겠습니다.</p>
+<hr>
+<h2 id="-개선-가능한-부분들">✅ 개선 가능한 부분들</h2>
+<p>처음 목표한 대로 길이 2의 숫자 캡차에 대해 95% 이상의 정확도를 보이는 모델을 만들었지만,
+사실 이 글에서는 굉장히 쉬운 상황을 가정하였기 때문에 현실 세계에 적용하기 위해서는 다양한 개선이 필요합니다.</p>
+<ol>
+<li><strong>노이즈에 강인한 모델</strong></li>
+</ol>
+<p>KCAPTCHA 캡차 이미지 생성 시에,
+생성 옵션을 살짝 조정하는 것으로, 여러 가지 노이즈가 추가된 데이터를 생성할 수 있습니다.
+이 경우 학습 데이터와 테스트 데이터의 분포가 달라지게 되므로 기존의 학습 데이터로 학습한 모델의 성능이 저하될텐데요.</p>
+<p>노이즈에 강인한 모델을 만들기 위해서는 크게 아래와 같은 방법을 사용할 수 있습니다.</p>
+<ul>
+<li>다양한 노이즈가 추가된 데이터를 학습 과정에 포함시키기</li>
+<li>적절한 데이터 증강(Augmentation) 기법 활용</li>
+</ul>
+<ol start="2">
+<li><strong>가변 길이 캡차</strong></li>
+</ol>
+<p>이 글에서는 캡차의 길이가 정해져 있다고 가정했는데,
+사실 현실에서는 대부분 가변적인 길이의 캡차를 사용합니다.</p>
+<p>가변 길이 캡차를 풀기 위해서 시도해볼 수 있는 방법으로는 크게 두 가지가 있을 것 같습니다.</p>
+<ul>
+<li>Classfication 모델이 아닌 Object Detection 모델 활용</li>
+<li>Two Stage Classfication: 캡차 길이를 탐지 모델 + 정해진 길이의 캡차를 푸는 모델</li>
+</ul>
+<p>이 글을 읽고 흥미로우셨다면 이러한 문제를 같이 풀어보시는 것도 재밌을 것이라고 생각합니다😁</p>
+<p><strong>Links</strong></p>
+<ul>
+<li><a href="https://github.com/ryanking13/kcaptcha-solver/tree/master/classification">kcaptcha-solver</a></li>
+<li><a href="https://github.com/ryanking13/kcaptcha-generator">kcaptcha-generator</a></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>최신 그누보드는 구글의 리캡차(reCAPTCHA)를 디폴트로 사용하도록 바뀌었지만, 구글 API 연동의 번거로움 및 리캡차 자체의 불편함으로 인해서인지 여전히 KCAPTCHA를 사용하는 웹사이트가 종종 보입니다. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>대표적으로 구글의 <a href="https://www.google.com/recaptcha/about/">reCAPTCHA</a>나 클라우드플레어가 애용하는 <a href="https://www.hcaptcha.com/">hcaptcha</a>가 있습니다. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-02-01
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/machine-learning/">Machine Learning</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2021/02/01/kcaptcha-solver-part-2.html/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">그누보드 캡차 인식 프로젝트 개발기 - Part 2</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/2020/12/29/migrating-jekyll-to-hugo.html/">
+            <span class="next-text nav-default">블로그 Jekyll to Hugo 마이그레이션 후기</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+  <a href="https://ryanking13.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

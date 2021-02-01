@@ -1,7 +1,7 @@
 ---
-date: "2021-02-02T00:09:01Z"
+date: "2021-02-01T20:00:00+09:00"
 description: 그누보드 캡차 인식 프로젝트 개발기 - Part 2
-draft: true
+draft: false
 tags:
 - Machine Learning
 title: 그누보드 캡차 인식 프로젝트 개발기 - Part 2
@@ -16,13 +16,16 @@ title: 그누보드 캡차 인식 프로젝트 개발기 - Part 2
 [Tensorflow.js](https://www.tensorflow.org/js?hl=ko)는 Tensorflow 팀에서 공식 개발하는 자바스크립트 머신러닝 라이브러리입니다.
 
 Tensorflow.js를 사용하면 Node.js나 브라우저 환경에서 완성된 머신러닝 모델을 실행하거나,
-새로 모델을 학습시킬 수 있습니다. [WebGL](https://developer.mozilla.org/ko/docs/Web/API/WebGL_API)을 통해 GPU 연산 역시 지원하구요.
+새로 모델을 학습시킬 수 있습니다. [WebGL](https://developer.mozilla.org/ko/docs/Web/API/WebGL_API)을 통하여 GPU 자원 또한 활용할 수 있습니다.
 
 ## 🔛 모델 변환
 
 Tensorflow.js는 Keras가 사용하는 HDF5 포맷과, Tensorflow가 네이티브로 사용하는 SavedModel 등의 포맷을 Tensorflow.js 레이어로 변환하는 `tensorflowjs_converter` 커맨드를 제공합니다.
 
 이전 글에서 사용한 모델을 HDF5 포맷으로 저장한 뒤, Tensorflow.js 레이어로 변환하도록 하겠습니다.
+
+[Keras 모델은 `model.save(...)`로 저장](https://www.tensorflow.org/guide/keras/save_and_serialize?hl=ko)할 수 있습니다.
+다만 저는 학습 과정에서 자동으로 Callback 함수를 사용하여 가장 Loss가 작은 모델이 저장되도록 구현하였습니다.
 
 ```python
 ...
@@ -43,8 +46,8 @@ self.model.fit(
 ...
 ```
 
-[Keras 모델은 `model.save(...)`로 저장](https://www.tensorflow.org/guide/keras/save_and_serialize?hl=ko)할 수 있습니다.
-다만 저는 ModelCheckpoint Callback을 사용하여 학습 과정에서 자동으로 Best Accuracy 모델이 저장되도록 구현하였습니다.
+Validation Loss가 가장 작은 모델을 `save_path`에 저장합니다.
+
 
 ```bash
 pip install tensorflowjs
@@ -61,8 +64,45 @@ group1-shard1of8.bin  group1-shard3of8.bin  group1-shard5of8.bin  group1-shard7o
 group1-shard2of8.bin  group1-shard4of8.bin  group1-shard6of8.bin  group1-shard8of8.bin
 ```
 
-> **Note**: Tensorflow.js 레이어로 모델을 변환할 때, [사용자 정의 레이어, 손실 함수 등을 사용했다면 변환이 되지 않습니다](https://tensorflow.google.cn/js/tutorials/conversion/import_keras?hl=ko#%EC%A7%80%EC%9B%90%EB%90%98%EB%8A%94_%ED%8A%B9%EC%84%B1).
 
+- **🙋‍♀️저는 에러가 나는데요?**
+
+Tensorflow.js 레이어로 모델을 변환할 시 주의할 점으로, [사용자 정의 레이어, 손실 함수 등을 사용했다면 변환이 되지 않습니다](https://tensorflow.google.cn/js/tutorials/conversion/import_keras?hl=ko#%EC%A7%80%EC%9B%90%EB%90%98%EB%8A%94_%ED%8A%B9%EC%84%B1).
+
+이 문제를 해결하는 (정확한) 방법은 파이썬 모델을 변환하는 대신 자바스크립트로 똑같은 모델을 작성해준 뒤,
+weight만 옮겨서 사용하는 것일텐데요.
+
+저의 경우는 약간의 꼼수를 써서 이걸 해결했습니다.
+제 코드에서 문제가 되는 부분은 커스텀 accuracy metric을 사용한 것이었는데,
+이 부분은 사실 학습 결과에는 영향을 주지 않는 값이었습니다. Loss만 잘 정의되어 있으면 학습에는 문제가 없으니까요.
+
+```python
+# 문제가 된 함수
+def _captcha_accuracy(self, captcha_length, classes):
+    def captcha_accuracy(y_true, y_pred):
+        sum_acc = 0
+        for i in range(captcha_length):
+            _y_true = tf.slice(y_true, [0, i * classes], [-1, classes])
+            _y_pred = tf.slice(y_pred, [0, i * classes], [-1, classes])
+            sum_acc += metrics.categorical_accuracy(_y_true, _y_pred)
+        return sum_acc / captcha_length
+
+    return captcha_accuracy
+```
+
+```python
+self.model.compile(
+    optimizer=opt,
+    loss="binary_crossentropy",
+    metrics=[
+        self._captcha_accuracy(captcha_length, char_classes)
+        if self.save_path is None
+        else "accuracy"  # if model needs to be saved, do not use custom metric for portability
+    ],
+)
+```
+
+그래서 모델을 저장하는 경우에는 일반 accuracy metric을 사용하게끔 바꾸어서 변환이 가능하도록 바꾸었습니다.
 
 ## 👩‍💻 JS 코드 작성
 
@@ -112,7 +152,7 @@ tfPreprocessImage: function (img) {
 데이터 전처리 과정은 (당연하게도) 변환된 모델에 포함되어 있지 않으므로 별도로 자바스크립트 코드를 작성해주어야 합니다.
 
 위의 코드는 ImageNet의 평균/표준편차를 이용해서 데이터를 표준화해주는 작업입니다.
-기존 파이썬 코드와 똑같은 동작을 하는 전처리 코드를 작성해주어야 합니다.
+기존 [파이썬 코드와 똑같은 동작](https://github.com/keras-team/keras-applications/blob/bc89834ed36935ab4a4994446e34ff81c0d8e1b7/keras_applications/imagenet_utils.py#L121-L149)을 하는 전처리 코드를 작성해주어야 합니다.
 
 ```js
 tfPredictCaptcha: function () {
@@ -149,7 +189,7 @@ tfDecodePrediction: function (tensor, numCharSet) {
 },
 ```
 
-모델의 출력을 원하는 포맷으로 변환하는 코드도 필요하다면 자바스크립트로 따로 작성해주면 됩니다.
+모델의 출력을 원하는 포맷으로 변환하는 코드도 자바스크립트로 따로 작성해주면 됩니다.
 위의 코드는 인코딩된 모델 출력 결과를 숫자로 변환하는 함수입니다.
 
 ## 🚢 배포

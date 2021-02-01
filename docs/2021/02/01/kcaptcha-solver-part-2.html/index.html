@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>그누보드 캡차 인식 프로젝트 개발기 - Part 2 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.cab45ac71980380f43b9a9c93f03ce1ee85500e92c0d1d2bc28f66eafe5687d8.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2" />
+<meta property="og:description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/" />
+<meta property="article:published_time" content="2021-02-01T20:00:00+09:00" />
+<meta property="article:modified_time" content="2021-02-01T20:00:00+09:00" />
+<meta itemprop="name" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2">
+<meta itemprop="description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2">
+<meta itemprop="datePublished" content="2021-02-01T20:00:00+09:00" />
+<meta itemprop="dateModified" content="2021-02-01T20:00:00+09:00" />
+<meta itemprop="wordCount" content="1820">
+
+
+
+<meta itemprop="keywords" content="Machine Learning," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2"/>
+<meta name="twitter:description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">그누보드 캡차 인식 프로젝트 개발기 - Part 2</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-02-01 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-tensorflowjs란">🌐 Tensorflow.js란?</a></li>
+        <li><a href="#-모델-변환">🔛 모델 변환</a></li>
+        <li><a href="#-js-코드-작성">👩‍💻 JS 코드 작성</a></li>
+        <li><a href="#-배포">🚢 배포</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><a href="https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-1.html/">이전 글</a>에서는 KCAPTCHA 캡차 프로그램을 깨는 Tensorflow 모델을 개발하는 과정을 다루었습니다.</p>
+<p>이번 글에서는 완성된 파이썬 Tensorflow 모델을 Tensorflow.js 레이어로 변환하여 브라우저에 배포하여 서빙하기까지의 과정, 그리고 그 과정에서 발생한 이슈에 대해서 살펴보도록 하겠습니다.</p>
+<h2 id="-tensorflowjs란">🌐 Tensorflow.js란?</h2>
+<p><a href="https://www.tensorflow.org/js?hl=ko">Tensorflow.js</a>는 Tensorflow 팀에서 공식 개발하는 자바스크립트 머신러닝 라이브러리입니다.</p>
+<p>Tensorflow.js를 사용하면 Node.js나 브라우저 환경에서 완성된 머신러닝 모델을 실행하거나,
+새로 모델을 학습시킬 수 있습니다. <a href="https://developer.mozilla.org/ko/docs/Web/API/WebGL_API">WebGL</a>을 통하여 GPU 자원 또한 활용할 수 있습니다.</p>
+<h2 id="-모델-변환">🔛 모델 변환</h2>
+<p>Tensorflow.js는 Keras가 사용하는 HDF5 포맷과, Tensorflow가 네이티브로 사용하는 SavedModel 등의 포맷을 Tensorflow.js 레이어로 변환하는 <code>tensorflowjs_converter</code> 커맨드를 제공합니다.</p>
+<p>이전 글에서 사용한 모델을 HDF5 포맷으로 저장한 뒤, Tensorflow.js 레이어로 변환하도록 하겠습니다.</p>
+<p><a href="https://www.tensorflow.org/guide/keras/save_and_serialize?hl=ko">Keras 모델은 <code>model.save(...)</code>로 저장</a>할 수 있습니다.
+다만 저는 학습 과정에서 자동으로 Callback 함수를 사용하여 가장 Loss가 작은 모델이 저장되도록 구현하였습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">...</span>
+<span class="n">checkpoint_callback</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span>
+    <span class="n">monitor</span><span class="o">=</span><span class="s2">&#34;val_loss&#34;</span><span class="p">,</span>
+    <span class="n">save_best_only</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">checkpoint_callback</span><span class="p">)</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">trainset</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="o">=</span><span class="n">valset</span><span class="p">,</span>
+    <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="o">...</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Validation Loss가 가장 작은 모델을 <code>save_path</code>에 저장합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">pip install tensorflowjs
+tensorflowjs_converter --input_format keras --output_format<span class="o">=</span>tfjs_graph_model model.h5 model_tfjs/
+</code></pre></td></tr></table>
+</div>
+</div><p>위 커맨드는 <code>model.h5</code>라는 이름으로 저장된 케라스 모델을 Tensorflow.js 레이어로 변환하여 <code>model_tfjs</code> 폴더에 저장합니다.</p>
+<p>커맨드 실행 후 <code>model_tfjs</code> 폴더를 살펴보면 model.json 파일과 weight 파일들이 생성된 것을 확인할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ ls model_tfjs
+group1-shard1of8.bin  group1-shard3of8.bin  group1-shard5of8.bin  group1-shard7of8.bin  model.json
+group1-shard2of8.bin  group1-shard4of8.bin  group1-shard6of8.bin  group1-shard8of8.bin
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>🙋‍♀️저는 에러가 나는데요?</strong></li>
+</ul>
+<p>Tensorflow.js 레이어로 모델을 변환할 시 주의할 점으로, <a href="https://tensorflow.google.cn/js/tutorials/conversion/import_keras?hl=ko#%EC%A7%80%EC%9B%90%EB%90%98%EB%8A%94_%ED%8A%B9%EC%84%B1">사용자 정의 레이어, 손실 함수 등을 사용했다면 변환이 되지 않습니다</a>.</p>
+<p>이 문제를 해결하는 (정확한) 방법은 파이썬 모델을 변환하는 대신 자바스크립트로 똑같은 모델을 작성해준 뒤,
+weight만 옮겨서 사용하는 것일텐데요.</p>
+<p>저의 경우는 약간의 꼼수를 써서 이걸 해결했습니다.
+제 코드에서 문제가 되는 부분은 커스텀 accuracy metric을 사용한 것이었는데,
+이 부분은 사실 학습 결과에는 영향을 주지 않는 값이었습니다. Loss만 잘 정의되어 있으면 학습에는 문제가 없으니까요.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 문제가 된 함수</span>
+<span class="k">def</span> <span class="nf">_captcha_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">captcha_length</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">captcha_accuracy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+        <span class="n">sum_acc</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">):</span>
+            <span class="n">_y_true</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
+            <span class="n">_y_pred</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
+            <span class="n">sum_acc</span> <span class="o">+=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">categorical_accuracy</span><span class="p">(</span><span class="n">_y_true</span><span class="p">,</span> <span class="n">_y_pred</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sum_acc</span> <span class="o">/</span> <span class="n">captcha_length</span>
+
+    <span class="k">return</span> <span class="n">captcha_accuracy</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span>
+    <span class="n">loss</span><span class="o">=</span><span class="s2">&#34;binary_crossentropy&#34;</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_captcha_accuracy</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">,</span> <span class="n">char_classes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span> <span class="ow">is</span> <span class="bp">None</span>
+        <span class="k">else</span> <span class="s2">&#34;accuracy&#34;</span>  <span class="c1"># if model needs to be saved, do not use custom metric for portability</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>그래서 모델을 저장하는 경우에는 일반 accuracy metric을 사용하게끔 바꾸어서 변환이 가능하도록 바꾸었습니다.</p>
+<h2 id="-js-코드-작성">👩‍💻 JS 코드 작성</h2>
+<p>이제 변환한 모델을 자바스크립트 환경에서 사용할 수 있도록 코드를 작성합니다.</p>
+<blockquote>
+<p>전체 코드는 <a href="https://github.com/ryanking13/kcaptcha">여기</a>서 볼 수 있습니다. Vue.js를 이용해서 작성되었습니다.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">npm install @tensorflow/tfjs
+</code></pre></td></tr></table>
+</div>
+</div><p>npm 또는 yarn을 이용하여 <code>@tensorflow/tfjs</code>를 설치합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">tf</span> <span class="nx">from</span> <span class="s2">&#34;@tensorflow/tfjs&#34;</span><span class="p">;</span>
+
+<span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">loadGraphModel</span><span class="p">(</span>
+  <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">+</span> <span class="s2">&#34;/model_tfjs/model.json&#34;</span>
+<span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>tf.loadGraphModel()</code> 함수를 이용해서 모델을 읽어옵니다.
+앞서 변환 결과 생성된 <code>model.json</code> 파일의 URL을 인자로 넣어주면 됩니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">tfGetImage</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">imageId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Get HTMLImageElement from the document
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">imgElem</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">imageId</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">img</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">fromPixels</span><span class="p">(</span><span class="nx">imgElem</span><span class="p">);</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">tfPreprocessImage</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+<span class="p">},</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>tf.browser.fromPixels()</code> 함수는 이미지를 모델이 입력으로 받을 수 있는 텐서로 변환합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">tfPreprocessImage</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">mean</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">tensor1d</span><span class="p">([</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">]);</span>
+  <span class="kr">const</span> <span class="nx">std</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">tensor1d</span><span class="p">([</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">]);</span>
+  <span class="kr">const</span> <span class="nx">size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span> <span class="c1">// [height, width, channel]
+</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">img</span><span class="p">.</span><span class="nx">reshape</span><span class="p">(</span><span class="nx">size</span><span class="p">).</span><span class="nx">toFloat</span><span class="p">().</span><span class="nx">div</span><span class="p">(</span><span class="nx">tf</span><span class="p">.</span><span class="nx">scalar</span><span class="p">(</span><span class="mi">255</span><span class="p">)).</span><span class="nx">sub</span><span class="p">(</span><span class="nx">mean</span><span class="p">).</span><span class="nx">div</span><span class="p">(</span><span class="nx">std</span><span class="p">);</span>
+<span class="p">},</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>놓치기 쉬운 부분으로,
+데이터 전처리 과정은 (당연하게도) 변환된 모델에 포함되어 있지 않으므로 별도로 자바스크립트 코드를 작성해주어야 합니다.</p>
+<p>위의 코드는 ImageNet의 평균/표준편차를 이용해서 데이터를 표준화해주는 작업입니다.
+기존 <a href="https://github.com/keras-team/keras-applications/blob/bc89834ed36935ab4a4994446e34ff81c0d8e1b7/keras_applications/imagenet_utils.py#L121-L149">파이썬 코드와 똑같은 동작</a>을 하는 전처리 코드를 작성해주어야 합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">tfPredictCaptcha</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">img</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tfGetImage</span><span class="p">(</span><span class="s2">&#34;captcha&#34;</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">imgBatch</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">expandDims</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">predict</span><span class="p">(</span><span class="nx">imgBatch</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">captchaVal</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tfDecodePrediction</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">},</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>전처리까지 마친 데이터를 batch 단위로 변환해준 뒤 모델의 <code>predict()</code> 메소드에 입력으로 넣어주면,
+모델의 예측 결과를 얻을 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="cm">/*
+</span><span class="cm">  [
+</span><span class="cm">    0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+</span><span class="cm">    1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+</span><span class="cm">  ] ==&gt; &#34;20&#34;
+</span><span class="cm">*/</span>
+<span class="nx">tfDecodePrediction</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tensor</span><span class="p">,</span> <span class="nx">numCharSet</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">sliced</span> <span class="o">=</span> <span class="nx">tensor</span><span class="p">.</span><span class="nx">dataSync</span><span class="p">().</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">resultArray</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">chunkIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">index</span> <span class="o">/</span> <span class="nx">numCharSet</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">resultArray</span><span class="p">[</span><span class="nx">chunkIndex</span><span class="p">])</span> <span class="p">{</span>
+      <span class="nx">resultArray</span><span class="p">[</span><span class="nx">chunkIndex</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="p">}</span>
+    <span class="nx">resultArray</span><span class="p">[</span><span class="nx">chunkIndex</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">resultArray</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+  <span class="kr">const</span> <span class="nx">argMax</span> <span class="o">=</span> <span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">=&gt;</span>
+    <span class="nx">array</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">x</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">i</span><span class="p">]).</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">r</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">?</span> <span class="nx">a</span> <span class="o">:</span> <span class="nx">r</span><span class="p">))[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="kr">const</span> <span class="nx">predicted</span> <span class="o">=</span> <span class="nx">sliced</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">argMax</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">predicted</span><span class="p">;</span>
+<span class="p">},</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>모델의 출력을 원하는 포맷으로 변환하는 코드도 자바스크립트로 따로 작성해주면 됩니다.
+위의 코드는 인코딩된 모델 출력 결과를 숫자로 변환하는 함수입니다.</p>
+<h2 id="-배포">🚢 배포</h2>
+<p>Tensorflow.js 추론에 필요한 코드는 이것으로 끝입니다.
+이 외에 모델 학습 등 Tensorflow.js의 다양한 기능을 활용해보고 싶으시다면 <a href="https://js.tensorflow.org/api/latest/">공식 API</a> 문서를 참고해주세요.</p>
+<p>이제 나머지 살을 붙여서 웹 사이트로 빌드하여 배포하면 됩니다.</p>
+<blockquote>
+<p><a href="https://ryanking13.github.io/kcaptcha">https://ryanking13.github.io/kcaptcha</a> 에서 배포된 웹 사이트를 볼 수 있습니다</p>
+</blockquote>
+<div style="text-align: center;">
+  <video controls width="80%">
+      <source src="/assets/post_images/kcaptcha_js.mp4"
+              type="video/mp4">
+  </video>
+</div>
+<p>초기에 모델을 읽어오는 시간이 오래 걸리는 편이지만,
+실시간으로 추론 되는 모습을 확인할 수 있습니다.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-02-01
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/machine-learning/">Machine Learning</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/2021/02/01/kcaptcha-solver-part-1.html/">
+            <span class="next-text nav-default">그누보드 캡차 인식 프로젝트 개발기 - Part 1</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+  <a href="https://ryanking13.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
