@@ -2,7 +2,7 @@
 date: "2021-02-01T20:00:00+09:00"
 description: 그누보드 캡차 인식 프로젝트 개발기 - Part 2
 draft: false
-tags:
+categories:
 - Machine Learning
 title: 그누보드 캡차 인식 프로젝트 개발기 - Part 2
 ---
