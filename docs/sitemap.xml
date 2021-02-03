@@ -9,7 +9,14 @@
   </url>
   
   <url>
-    <loc>https://ryanking13.github.io/tags/machine-learning/</loc>
+    <loc>https://ryanking13.github.io/categories/</loc>
+    <lastmod>2021-02-01T20:00:00+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanking13.github.io/categories/machine-learning/</loc>
     <lastmod>2021-02-01T20:00:00+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -30,13 +37,6 @@
   </url>
   
   <url>
-    <loc>https://ryanking13.github.io/tags/</loc>
-    <lastmod>2021-02-01T20:00:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/</loc>
     <lastmod>2021-02-01T20:00:00+09:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -46,13 +46,6 @@
   <url>
     <loc>https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-1.html/</loc>
     <lastmod>2021-02-01T19:00:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/categories/</loc>
-    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -284,6 +277,12 @@
   <url>
     <loc>https://ryanking13.github.io/2018/03/24/png-structure.html/</loc>
     <lastmod>2018-03-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanking13.github.io/tags/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
