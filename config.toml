@@ -48,6 +48,11 @@ publishDir = "docs"
   weight = 30
   identifier = "categories"
   url = "/categories/"
+[[menu.main]]
+  name = "Search"
+  weight = 30
+  identifier = "search"
+  url = "/search/"
 
 
 [params]
