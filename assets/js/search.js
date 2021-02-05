@@ -5,39 +5,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchResultElement = searchWrapper.querySelector(".search-results");
     const searchInput = searchWrapper.querySelector("input");
 
-    function toggleSearch(searchWrapper, searchInput) {
-        if (searchWrapper.classList.contains("active")) {
-            searchWrapper.classList.add("visible");
-            setTimeout(function () {
-                searchWrapper.classList.remove("visible");
-            }, 300);
-            searchWrapper.classList.remove("active");
-        } else {
-            searchWrapper.classList.add("active");
-            searchInput.focus();
-        }
-    }
-
-    document.querySelectorAll(".toggle-search").forEach(function (el) {
-        el.addEventListener("click", function (e) {
-            toggleSearch(searchWrapper, searchInput);
-        });
-    });
-
-    window.addEventListener("keydown", function (e) {
-        // dismiss search on  ESC
-        if (e.keyCode == 27 && searchWrapper.classList.contains("active")) {
-            e.preventDefault();
-            toggleSearch(searchWrapper, searchInput);
-        }
-
-        // open search on CTRL+F
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 70 && !searchWrapper.classList.contains("active")) {
-            e.preventDefault();
-            toggleSearch(searchWrapper, searchInput);
-        }
-    });
-
+    function trimmerEnKo(token) {
+        return token.update(function (str, metadata) {
+            return str
+                .replace(/^[^\w가-힣]+/, '')
+                .replace(/[^\w가-힣]+$/, '');
+        })
+    };
+    
     function categories(categories, searchString) {
         let tagHTML = (categories.split(" ; ") || [])
             .filter(function (i) {
@@ -79,11 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(function (result) {
             const searchContent = result.data;
             const searchIndex = lunr(function () {
+                this.pipeline.reset();
+                this.pipeline.add(
+                    trimmerEnKo,
+                    lunr.stopWordFilter,
+                    lunr.stemmer
+                );
                 this.ref("id")
                 this.field("content");
                 this.field("categories");
                 this.field("title");
-                this.field("url");
 
                 Array.from(result.data).forEach(function (doc) {
                     this.add(doc)
