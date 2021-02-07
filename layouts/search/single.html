@@ -24,7 +24,7 @@
         </ul>
     </aside>
     <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
-    <script src="https://unpkg.com/lunr/lunr.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
     {{ $script := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
     <script src="{{ $script.RelPermalink }}" charset="utf-8"></script>
 </body>
