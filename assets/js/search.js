@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         includeMatches: true,
         ignoreLocation: true,
         tokenize: true,
-        threshold: 0,
+        threshold: 0.1,
         minMatchCharLength: 1,
         keys: [
             { name: "title", weight: 1 },
