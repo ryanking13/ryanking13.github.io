@@ -8,17 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
     var fuseOptions = {
         shouldSort: true,
         includeMatches: true,
-        threshold: 0.0,
+        ignoreLocation: true,
         tokenize: true,
-        location: 0,
-        distance: 100,
-        maxPatternLength: 32,
+        threshold: 0,
         minMatchCharLength: 1,
         keys: [
-            { name: "title", weight: 0.8 },
-            { name: "contents", weight: 0.5 },
-            { name: "tags", weight: 0.3 },
-            { name: "categories", weight: 0.3 }
+            { name: "title", weight: 1 },
+            { name: "categories", weight: 0.2 }
         ]
     };
 
