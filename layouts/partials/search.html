@@ -1,0 +1,34 @@
+<div class="show-search">
+    <a class="toggle-search" title="search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="612.056" height="612.057" viewbox="0 0 613 613">
+            <path
+                d="M595.2 513.908L493.775 412.482c26.707-41.727 42.685-91.041 42.685-144.263C536.459 120.085 416.375 0 268.24 0 120.106 0 .021 120.085.021 268.219c0 148.134 120.085 268.22 268.219 268.22 53.222 0 102.537-15.979 144.225-42.686l101.426 101.463c22.454 22.453 58.854 22.453 81.271 0 22.492-22.491 22.492-58.855.038-81.308zm-326.96-54.103c-105.793 0-191.585-85.793-191.585-191.585 0-105.793 85.792-191.585 191.585-191.585s191.585 85.792 191.585 191.585c.001 105.792-85.791 191.585-191.585 191.585z" />
+        </svg>
+    </a>
+</div>
+<aside role="search">
+    <div class="close toggle-search">
+        <svg height="512" width="512" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M443.6 387.1L312.4 255.4l131.5-130c5.4-5.4 5.4-14.2 0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4-3.7 0-7.2 1.5-9.8 4L256 197.8 124.9 68.3c-2.6-2.6-6.1-4-9.8-4-3.7 0-7.2 1.5-9.8 4L68 105.9c-5.4 5.4-5.4 14.2 0 19.6l131.5 130L68.4 387.1c-2.6 2.6-4.1 6.1-4.1 9.8 0 3.7 1.4 7.2 4.1 9.8l37.4 37.6c2.7 2.7 6.2 4.1 9.8 4.1 3.5 0 7.1-1.3 9.8-4.1L256 313.1l130.7 131.1c2.7 2.7 6.2 4.1 9.8 4.1 3.5 0 7.1-1.3 9.8-4.1l37.4-37.6c2.6-2.6 4.1-6.1 4.1-9.8-.1-3.6-1.6-7.1-4.2-9.7z" />
+        </svg>
+    </div>
+    <div class="search-wrapper">
+        <form class="search" method="get">
+            <input type="search" placeholder="search..." disabled="disabled" />
+            <div class="search-documentation" style="display: flex; justify-content: space-between;">
+                <span>ESC to dissmiss</span>
+                <span>
+                    <a href="https://lunrjs.com/guides/searching.html">Read more on how to search</a> on the <a
+                        href="https://lunrjs.com">lunrjs</a> page
+                </span>
+            </div>
+        </form>
+    </div>
+    <ul class="search-results">
+        <li>
+        </li>
+    </ul>
+</aside>
+{{ $script := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $script.RelPermalink }}"></script>

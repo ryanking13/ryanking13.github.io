@@ -4,9 +4,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchWrapper = document.querySelector("aside[role=search]");
     const searchResultElement = searchWrapper.querySelector(".search-results");
     const searchInput = searchWrapper.querySelector("input");
+
+    function toggleSearch(searchWrapper, searchInput) {
+        if (searchWrapper.classList.contains("active")) {
+            searchWrapper.classList.add("visible");
+            setTimeout(function () {
+                searchWrapper.classList.remove("visible");
+            }, 300);
+            searchWrapper.classList.remove("active");
+        } else {
+            searchWrapper.classList.add("active");
+            searchInput.focus();
+        }
+    }
+
+    document.querySelectorAll(".toggle-search").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+            toggleSearch(searchWrapper, searchInput);
+        });
+    });
+
+    window.addEventListener("keydown", function (e) {
+        // dismiss search on  ESC
+        if (e.keyCode == 27 && searchWrapper.classList.contains("active")) {
+            e.preventDefault();
+            toggleSearch(searchWrapper, searchInput);
+        }
+
+        // open search on CTRL+F
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 70 && !searchWrapper.classList.contains("active")) {
+            e.preventDefault();
+            toggleSearch(searchWrapper, searchInput);
+        }
+    });
+
+
     
     var fuseOptions = {
-        shouldSort: true,
         includeMatches: true,
         ignoreLocation: true,
         tokenize: true,

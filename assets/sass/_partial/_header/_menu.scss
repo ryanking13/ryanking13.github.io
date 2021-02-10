@@ -1,0 +1,38 @@
+// ==============================
+// Menu
+// =============================
+
+.menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  
+  .site-navbar {
+
+    .menu {
+      float: right;
+      padding-left: 0;
+      padding-right: 25px;
+      font-family: $global-serif-font-family;
+
+      .menu-item {
+        display: inline-block;
+
+        & + .menu-item {
+          margin-left: $menu-item-margin-left;;
+        }
+
+        @include underline-from-center;
+      }
+
+      .menu-item-link {
+        font-size: $menu-link-font-size;
+      }
+    }
+  }
+
+  @include max-screen() {
+    .site-navbar {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,211 @@
+.show-search {
+    margin-top: 10px;
+
+    a {
+        float: right;
+        padding-right: 25px;
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 10px;
+            cursor: pointer;
+
+            path {
+                fill: #c05b4d;
+            }
+        }
+    }
+}
+
+aside[role="search"] {
+    $placeholder-color: #d3d3d3;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: #282e37;
+    width: 100vw;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto;
+    transition: opacity 0.3s linear;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &.visible {
+        visibility: visible;
+    }
+
+    .toggle-search {
+        cursor: pointer;
+    }
+
+    .type {
+        &:before {
+            content: "Type";
+            margin-right: 0.2rem;
+            font-family: monospace;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            opacity: 0.6;
+        }
+    }
+
+    .close {
+        position: fixed;
+        top: 9px;
+        right: 20px;
+        width: 2rem;
+        height: 2rem;
+        z-index: 9;
+
+        @media screen and (max-width: 57rem) {
+            right: 10px;
+        }
+
+        svg {
+            width: 2rem;
+            height: 2rem;
+
+            path {
+                fill: #67eba2;
+            }
+        }
+    }
+
+    .search-wrapper {
+        position: fixed;
+        width: 100%;
+        background-image:
+            linear-gradient(
+              to bottom,
+              #282e37, #282e37, #282e37, #282e37, transparent, transparent
+            );
+
+        padding: 3rem 1.5rem 4.5rem;
+
+        @media screen and (max-width: 36rem) {
+            padding: 3rem 0.5rem 4.5rem;
+        }
+
+        input[type="search"] {
+            border: 3px solid lighten(#67eba2, 10%);
+            color: rgba(0, 0, 0, 0.2);
+            line-height: 2rem;
+            font-family: monospace;
+            font-size: 2rem;
+            border-radius: 5px;
+            padding: 8px 15px;
+            max-width: 100%;
+            width: 100%;
+
+            &::-webkit-input-placeholder {
+                color: $placeholder-color;
+                opacity: 1;
+            }
+
+            &::-moz-placeholder {
+                color: $placeholder-color;
+                opacity: 1;
+            }
+
+            &::-ms-input-placeholder {
+                color: $placeholder-color;
+                opacity: 1;
+            }
+
+            &::placeholder {
+                color: $placeholder-color;
+                opacity: 1;
+            }
+
+
+            &:focus {
+                border: 3px solid #67eba2;
+                outline: none;
+                color: #3d434c;
+                box-shadow: 0 0 18px #67eba2;
+            }
+
+            &::-webkit-search-decoration,
+            &::-webkit-search-cancel-button,
+            &::-webkit-search-results-button,
+            &::-webkit-search-results-decoration {
+                -webkit-appearance: none;
+                background-size: contain;
+                height: 1.2rem;
+                width: 1.2rem;
+            }
+
+            &::-ms-clear {
+            }
+
+            &::-ms-reveal {
+            }
+        }
+    }
+
+    ul.search-results {
+        padding: 11rem 1.5rem 1rem;
+
+        @media screen and (max-width: 36rem) {
+            padding: 11rem 0.5rem 1rem;
+        }
+
+        li {
+            list-style-type: none;
+
+            h4 {
+                font-family: monospace;
+                color: #67eba2;
+                font-size: 1.8rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+
+                a {
+                    border-bottom: none;
+                }
+            }
+
+            .tags {
+                .tag {
+                    color: #67eba2;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    &:hover {
+                        color: #67eba2;
+                        background: rgba(255,255,255,.1);
+                    }
+                }
+            }
+
+            .purpose {
+                span {
+                    font-weight: 700;
+                    margin-right: 0.5rem;
+                    font-family: monospace;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+    .search-documentation {
+        text-align: right;
+        padding-right: 3px;
+        margin-top: 2px;
+        font-size: 0.8rem;
+    }
+}
