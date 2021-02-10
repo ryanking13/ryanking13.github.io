@@ -1,7 +1,7 @@
 //from https://www.forsure.dev/-/2019/09/03/add-search-functionality-to-your-hugo-static-site/
 document.addEventListener("DOMContentLoaded", function () {
     let searchResults = [];
-    const searchWrapper = document.querySelector("aside[role=search]");
+    const searchWrapper = document.querySelector(".input-wrapper");
     const searchResultElement = searchWrapper.querySelector(".search-results");
     const searchInput = searchWrapper.querySelector("input");
 
@@ -27,12 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("keydown", function (e) {
         // dismiss search on  ESC
         if (e.keyCode == 27 && searchWrapper.classList.contains("active")) {
-            e.preventDefault();
-            toggleSearch(searchWrapper, searchInput);
-        }
-
-        // open search on CTRL+F
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 70 && !searchWrapper.classList.contains("active")) {
             e.preventDefault();
             toggleSearch(searchWrapper, searchInput);
         }
