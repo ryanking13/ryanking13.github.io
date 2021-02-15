@@ -3,20 +3,20 @@
 {{ range $index, $page := $.Site.RegularPages }}
     {{ with .Param "categories" }}
         {{ $.Scratch.Set "pageData" "" }}
-        {{ $.Scratch.Set "pageContent" "" }}
         {{ $.Scratch.Set "pageURL" "" }}
         {{ $.Scratch.Set "pageDate" "" }}
+        {{ $.Scratch.Set "pageSummary" ""}}
 
 
         {{ if gt (len $page.Content) 0 }}
-            {{ $.Scratch.Set "pageContent" $page.Plain }}
             {{ $.Scratch.Set "pageURL" $page.Permalink }}
             {{ if (isset $page.Params "categories") }}
             {{ $.Scratch.Set "categories" (delimit $page.Params.categories " ; ") }}
-            {{ $.Scratch.Set "pageDate" ($page.Date.Format (default "2006-01-02"))}}
+            {{ $.Scratch.Set "pageDate" ($page.Date.Format ("2006-01-02"))}}
+            {{ $.Scratch.Set "pageSummary" $page.Summary}}
         {{ end }}  
 
-            {{ $.Scratch.Set "pageData" (dict "id" $index "title" $page.Title "url" ($.Scratch.Get "pageURL") "content" ($.Scratch.Get "pageContent") "categories" ($.Scratch.Get "categories") "date" ($.Scratch.Get "pageDate")) }}
+            {{ $.Scratch.Set "pageData" (dict "id" $index "title" $page.Title "url" ($.Scratch.Get "pageURL") "summary" ($.Scratch.Get "pageSummary") "categories" ($.Scratch.Get "categories") "date" ($.Scratch.Get "pageDate") ) }}
 
             {{ $.Scratch.Add "index" ($.Scratch.Get "pageData") }}
         {{ end }}
