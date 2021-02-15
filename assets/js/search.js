@@ -2,18 +2,22 @@
 document.addEventListener("DOMContentLoaded", function () {
     let searchResults = [];
     const searchWrapper = document.querySelector(".input-wrapper");
-    const searchResultElement = searchWrapper.querySelector(".search-results");
+    const contentWrapper = document.querySelector(".content-wrapper");
     const searchInput = searchWrapper.querySelector("input");
+    const searchResultElement = contentWrapper.querySelector(".search-results");
+    var searchResultTemplate = searchResultElement.querySelector("template").innerHTML;
 
     function toggleSearch(searchWrapper, searchInput) {
         if (searchWrapper.classList.contains("active")) {
             searchWrapper.classList.add("visible");
+            contentWrapper.querySelector(".content").style.display = "block";
             setTimeout(function () {
                 searchWrapper.classList.remove("visible");
             }, 300);
             searchWrapper.classList.remove("active");
         } else {
             searchWrapper.classList.add("active");
+            contentWrapper.querySelector(".content").style.display = "none";
             searchInput.focus();
         }
     }
@@ -47,17 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ]
     };
 
-    function categories(categories, searchString) {
-        let tagHTML = (categories.split(" ; ") || [])
-            .filter(function (i) {
-                return i && i.length > 0;
-            })
-            .map(function (i) {
-                return "<span class='tag'>" + mark(i, searchString) + "</span>";
-            })
-        return tagHTML.join("");
-    }
-
     function mark(content, search) {
         if (search) {
             let re = new RegExp(search, "i");
@@ -68,7 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return content;
     }
 
-        return content;
+    function urlize(string) {
+        return string.toLowerCase().replace(" ", "-")
     }
 
     axios.get("/search-data")
@@ -90,17 +84,16 @@ document.addEventListener("DOMContentLoaded", function () {
                             return e.id == parseInt(match.item.id);
                         });
                         
-                        return "<li>" +
-                            "<h4 title='field: title'><a href='" + item.url + "'>" + mark(item.title, searchString) + "</a></h4>" +
-                            "<p class='summary' title='field: content'>" +
-                            mark((item.content.length > 200 ? (item.content.substring(0, 200) + "...") : item.content), searchString) +
-                            "</p>" +
-                            "<p class='tags' title='field: tag'>" + categories(item.categories, searchString) + "</p>" +
-                            "<a href='" + item.url + "' title='field: url'>" + item.url + "</a>" +
-                            "</li>";
+                        return searchResultTemplate
+                            .replace("{title}", mark(item.title, searchString))
+                            .replace("{url}", item.url)
+                            .replace("{date}", item.date)
+                            .replace("{category}", mark(item.category, searchString))
+                            .replace("{categoryUrl}", window.location.href + "/categories/" + urlize(item.category))
+                            .replace("{summary}", item.summary)
                     }).join("");
                 } else {
-                    searchResultElement.innerHTML = "<li><p class='no-result'>No results found</p></li>";
+                    searchResultElement.innerHTML = "<p class='no-result'>No results found</p>";
                 }
             });
         })
