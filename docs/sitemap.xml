@@ -282,6 +282,12 @@
   </url>
   
   <url>
+    <loc>https://ryanking13.github.io/search-data/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://ryanking13.github.io/tags/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
