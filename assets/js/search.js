@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // dismiss search on  ESC
         if (e.keyCode == 27 && searchWrapper.classList.contains("active")) {
             e.preventDefault();
+            searchInput.value = "";
             toggleSearch(searchWrapper, searchInput);
         }
     });
