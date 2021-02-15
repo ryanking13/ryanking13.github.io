@@ -27,7 +27,9 @@
         <div id="content" class="content">
           {{ block "content" . }}{{ end }}
         </div>
-        {{ partial "comments.html" . }}
+        <div id="comments" class="comments">
+            {{ partial "comments.html" . }}
+        </div>
 
         <div id="search-results" class="search-results">
             {{partial "resultTemplate.html"}}

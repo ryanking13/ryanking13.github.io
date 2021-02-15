@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (searchWrapper.classList.contains("active")) {
             searchWrapper.classList.add("visible");
             contentWrapper.querySelector(".content").style.display = "block";
+            contentWrapper.querySelector(".comments").style.display = "block";
             setTimeout(function () {
                 searchWrapper.classList.remove("visible");
             }, 300);
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             searchWrapper.classList.add("active");
             contentWrapper.querySelector(".content").style.display = "none";
+            contentWrapper.querySelector(".comments").style.display = "none";
             searchInput.focus();
         }
     }
@@ -90,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             .replace("{url}", item.url)
                             .replace("{date}", item.date)
                             .replace("{category}", mark(item.category, searchString))
-                            .replace("{categoryUrl}", window.location.href + "/categories/" + urlize(item.category))
+                            .replace("{categoryUrl}", window.location.origin + "/categories/" + urlize(item.category))
                             .replace("{summary}", item.summary)
                     }).join("");
                 } else {
