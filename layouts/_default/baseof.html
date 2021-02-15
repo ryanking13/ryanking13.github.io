@@ -28,6 +28,10 @@
           {{ block "content" . }}{{ end }}
         </div>
         {{ partial "comments.html" . }}
+
+        <div id="search-results" class="search-results">
+            {{partial "resultTemplate.html"}}
+        </div>
       </div>
     </main>
 
