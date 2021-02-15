@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         minMatchCharLength: 1,
         keys: [
             { name: "title", weight: 1 },
-            { name: "categories", weight: 0.2 }
+            { name: "category", weight: 0.2 }
         ]
     };
 
