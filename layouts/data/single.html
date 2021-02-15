@@ -5,7 +5,7 @@
         {{ $.Scratch.Set "pageData" "" }}
         {{ $.Scratch.Set "pageContent" "" }}
         {{ $.Scratch.Set "pageURL" "" }}
-        {{ $.Scratch.Set "pageTag" "" }}
+        {{ $.Scratch.Set "pageDate" "" }}
 
 
         {{ if gt (len $page.Content) 0 }}
@@ -13,9 +13,10 @@
             {{ $.Scratch.Set "pageURL" $page.Permalink }}
             {{ if (isset $page.Params "categories") }}
             {{ $.Scratch.Set "categories" (delimit $page.Params.categories " ; ") }}
+            {{ $.Scratch.Set "pageDate" ($page.Date.Format (default "2006-01-02"))}}
         {{ end }}  
 
-            {{ $.Scratch.Set "pageData" (dict "id" $index "title" $page.Title "url" ($.Scratch.Get "pageURL") "content" ($.Scratch.Get "pageContent") "categories" ($.Scratch.Get "categories")) }}
+            {{ $.Scratch.Set "pageData" (dict "id" $index "title" $page.Title "url" ($.Scratch.Get "pageURL") "content" ($.Scratch.Get "pageContent") "categories" ($.Scratch.Get "categories") "date" ($.Scratch.Get "pageDate")) }}
 
             {{ $.Scratch.Add "index" ($.Scratch.Get "pageData") }}
         {{ end }}
