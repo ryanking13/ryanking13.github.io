@@ -1,4 +1,4 @@
-{{ $.Scratch.Add "index" slice }}
+{{ $.Scratch.Set "index" slice }}
 
 {{ range $index, $page := $.Site.RegularPages }}
     {{ with .Param "categories" }}
