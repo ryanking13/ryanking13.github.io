@@ -1,0 +1,26 @@
+{{ $.Scratch.Set "index" slice }}
+
+{{ range $index, $page := $.Site.RegularPages }}
+    {{ with .Param "categories" }}
+        {{ $.Scratch.Set "pageData" "" }}
+        {{ $.Scratch.Set "pageURL" "" }}
+        {{ $.Scratch.Set "pageDate" "" }}
+        {{ $.Scratch.Set "pageSummary" ""}}
+        {{ $.Scratch.Set "category" ""}}
+
+
+        {{ if gt (len $page.Content) 0 }}
+            {{ $.Scratch.Set "pageURL" $page.Permalink }}
+            {{ $.Scratch.Set "pageDate" ($page.Date.Format ("2006-01-02"))}}
+            {{ $.Scratch.Set "pageSummary" $page.Summary}}
+            {{ if (isset $page.Params "categories") }}
+            {{ $.Scratch.Set "category" (delimit $page.Params.categories " ; ") }}
+        {{ end }}  
+
+            {{ $.Scratch.Set "pageData" (dict "id" $index "title" $page.Title "url" ($.Scratch.Get "pageURL") "summary" ($.Scratch.Get "pageSummary") "category" ($.Scratch.Get "category") "date" ($.Scratch.Get "pageDate") ) }}
+            {{ $.Scratch.Add "index" ($.Scratch.Get "pageData") }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ $.Scratch.Get "index" | jsonify }}

@@ -1,0 +1,33 @@
+.search-wrapper {
+    .show-search {
+        margin-top: 10px;
+
+        a {
+            padding-top: 2px;
+            float: right;
+            padding-right: 25px;
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                margin-right: 10px;
+                cursor: pointer;
+
+                path {
+                    fill: #c05b4d;
+                }
+            }
+        }
+    }
+
+    .input-wrapper {
+        margin-right: 10px;
+        float: right;
+        visibility: hidden;
+
+        &.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    }
+}
