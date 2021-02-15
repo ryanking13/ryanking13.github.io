@@ -60,26 +60,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function mark(content, search) {
         if (search) {
-            let pattern = /^[a-zA-Z0-9]*:/i;
-            search.split(" ").forEach(function (s) {
-                if (pattern.test(s)) {
-                    s = s.replace(pattern, "");
-                }
-                if (s && s.startsWith("+")) {
-                    s = s.substring(1);
-                }
-                if (s && s.indexOf("~") > 0 && s.length > s.indexOf("~") && parseInt(s.substring(s.indexOf("~") + 1)) == s.substring(s.indexOf("~") + 1)) {
-                    s = s.substring(0, s.indexOf("~"));
-                }
-                if (!s || s.startsWith("-")) {
-                    return;
-                }
-                let re = new RegExp(s, "i");
-                content = content.replace(re, function (m) {
-                    return "<mark>" + m + "</mark>";
-                });
+            let re = new RegExp(search, "i");
+            content = content.replace(re, function (m) {
+                return "<mark>" + m + "</mark>";
             });
-        }
+        }   
+        return content;
+    }
 
         return content;
     }
