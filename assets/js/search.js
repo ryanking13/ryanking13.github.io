@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (e.keyCode == 27 && searchWrapper.classList.contains("active")) {
             e.preventDefault();
             searchInput.value = "";
+            searchResultElement.innerHTML = "";
             toggleSearch(searchWrapper, searchInput);
         }
     });
