@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                         return searchResultTemplate
                             .replace("{title}", mark(item.title, searchString))
-                            .replace("{url}", item.url)
+                            .replaceAll("{url}", item.url)
                             .replace("{date}", item.date)
                             .replace("{category}", mark(item.category, searchString))
                             .replace("{categoryUrl}", window.location.origin + "/categories/" + urlize(item.category))
