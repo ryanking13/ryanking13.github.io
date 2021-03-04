@@ -1,11 +1,11 @@
 ---
-date: "2021-03-01T20:00:00+09:00"
+date: "2021-03-04T20:00:00+09:00"
 title: 파이썬의 패턴 매칭 도입
 categories:
 - Python
 description: 파이썬의 패턴 매칭 도입
 summary: 파이썬에 새로 추가되는 패턴 매칭에 대한 이야기입니다.
-draft: true
+draft: false
 ---
 
 > **Note**: 이 글은 파이썬 패턴 매칭 문법에 대한 역사적 배경과 여러 가지 생각들을 다룹니다. 파이썬 패턴 매칭 문법을 공부하기 위해 방문하셨다면 [PEP 636을 참고해주세요.](https://www.python.org/dev/peps/pep-0636/)

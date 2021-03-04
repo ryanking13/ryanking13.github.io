@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Morgenrøde</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 01 Feb 2021 20:00:00 +0900</lastBuildDate><atom:link href="https://ryanking13.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Mar 2021 20:00:00 +0900</lastBuildDate><atom:link href="https://ryanking13.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>파이썬의 패턴 매칭 도입</title>
+      <link>https://ryanking13.github.io/2021/03/04/python-patma.html/</link>
+      <pubDate>Thu, 04 Mar 2021 20:00:00 +0900</pubDate>
+      
+      <guid>https://ryanking13.github.io/2021/03/04/python-patma.html/</guid>
+      <description>파이썬에 새로 추가되는 패턴 매칭에 대한 이야기입니다.</description>
+    </item>
+    
     <item>
       <title>그누보드 캡차 인식 프로젝트 개발기 - Part 2</title>
       <link>https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/</link>
