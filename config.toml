@@ -218,3 +218,15 @@ publishDir = "docs"
 #  section = ["HTML", "RSS"]
 #  taxonomy = ["HTML", "RSS"]
 #  taxonomyTerm = ["HTML"]
+
+[outputs]
+home = ["HTML", "FEED"]
+
+[mediaTypes]
+[mediaTypes."application/rss"]
+suffixes = ["xml"]
+
+[outputFormats]
+[outputFormats.FEED]
+mediatype = "application/rss"
+baseName = "feed"
