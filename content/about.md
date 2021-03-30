@@ -40,7 +40,7 @@ weight: 50
 	</div>
 </div>
 
-## 👔 Career
+## 👔 Work Experience
 
 ---
 
@@ -229,31 +229,7 @@ _이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 
 #### Security
 
 - 2017 Samsung CTF Final
-- 2018 [Sunshine CTF](https://sunshinectf.org/scoreboard) 7th (Team Guardian)
 - 2018 Samsung CTF Final
-
-## ⚒️ Skills
-
-#### Language
-
-- Python (favorite 👍)
-	- Django, Django Rest framework
-- Javascript
-  - ReactJS, Redux, VueJS, Electron
-- C++
-- Go
-
-#### Other
-
-- Git
-- AWS
-- Azure
-- Unity
-- Processing
-
-## Other Activities
-
-- [Research Officers for National Defense](http://rond.or.kr) (과학기술전문사관) 4기
 
 #### Open Source Contributions
 
