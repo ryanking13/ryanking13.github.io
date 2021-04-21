@@ -9,11 +9,14 @@ summary: 한 달간 재밌게 읽은 글이나 흥미로운 기술 등을 소개
 
 ## 좋은 글
 
-- 퇴사 부검 (https://woowabros.github.io/experience/2021/04/18/autopsy.html) 
+- 퇴사 부검 (https://woowabros.github.io/experience/2021/04/18/autopsy.html)
+- https://raimonster.com/scripting-field-guide/
+- https://tanelp.github.io/posts/a-bug-that-plagues-thousands-of-open-source-ml-projects/
 
 ## 기술 뉴스
 
 - cuda python (https://developer.nvidia.com/cuda-python)
+- rust linux
 
 ## 프로젝트
 
@@ -21,3 +24,4 @@ summary: 한 달간 재밌게 읽은 글이나 흥미로운 기술 등을 소개
 - up (https://github.com/akavel/up)
 - awesome-korean-newsletters (https://github.com/ryanking13/awesome-korean-newsletters)
 - disquiet (https://disquiet.io/)
+- git-worktree
