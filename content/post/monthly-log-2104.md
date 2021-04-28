@@ -104,7 +104,38 @@ Slack의 설치형 대체재인 Mattermost로 유명한 Mattermost 사에서 이
 [up을 소개하는 해커 뉴스의 스레드](https://news.ycombinator.com/item?id=26644110)를 보면,
 굳이 up을 쓰지 않더라도 비슷한 기능을 할 수 있는 트릭이 몇가지 소개되어 있으니 이 쪽을 참고해보는 것도 좋을 듯.
 
+### [awesome-korean-newsletters](https://github.com/ryanking13/awesome-korean-newsletters)
 
-- awesome-korean-newsletters (https://github.com/ryanking13/awesome-korean-newsletters)
-- disquiet (https://disquiet.io/)
-- git-worktree
+Self promotion ^^...
+
+Substack으로 대표되는 구독형 뉴스레터 시장이 어마어마하게 커지고 있다.
+
+구독 경제가 워낙 활성화되다보니 이제 정보도 찾아보는게 아니라 큐레이션 받아 취사선택하는 시대가 되었다.
+국내에도 개인 단체 기업 할 것 없이 다양한 주체들이 뉴스레터를 발행하고 있는데,
+필자가 구독하는 뉴스레터를 정리하다가 좋은 레터들을 소개하면 어떨까 싶어 한국어로 발행되는 뉴스테러만 정리하는 레포를 만들었다.
+
+### [DISQUIET*](https://disquiet.io/)
+
+a.k.a 한국판 Product Hunt
+
+다양한 서비스를 홍보할 수 있는 사이트, 비정기적으로 서비스를 홍보하는 뉴스레터도 발행하는 것으로 보인다.
+
+아직 업로드가 아주 활발하지는 않은데, 유명해지면 꽤나 유용한 서비스가 되지 않을까?
+
+### [git-worktree](https://git-scm.com/docs/git-worktree)
+
+git에서 그때그때 일시적인 작업 (e.g. bugfix) 을 해야할 때에
+기존에 하고 있던 작업을 보존하기 위하여 stash를 하거나 새로 레포지토리를 clone해오는 방식을 많이 사용하는데,
+`worktree` 커맨드를 사용하면 더 간단하게 그러한 일을 처리할 수 있다.
+
+`worktree` 명령어를 처음 들어봤다면 지금부터라도 알아두면 분명 유용하게 쓸 수 있을 것.
+기회가 된다면 구체적인 사용 용도를 이 블로그에 정리해볼 생각이다.
+
+### [resolv](https://rysolv.com/)
+
+오픈 소스를 위한 크라우드 펀딩 사이트
+
+오픈 소스에 달린 특정한 이슈를 해결하면 그에 맞는 보상을 주는 형태로 구성되어 있다.
+
+오픈 소스 메인테이너뿐만 아니라 참여자들에게도 노력에 따른 정당한 보상이 돌아가게끔하는 구조인데,
+기존의 스폰서 방식 말고도 이런 식의 오픈 소스 기여 활성화 아이디어는 눈여겨볼 필요가 있을 듯.
