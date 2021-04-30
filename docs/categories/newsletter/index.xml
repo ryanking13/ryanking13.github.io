@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Newsletter on Morgenrøde</title>
+    <link>https://ryanking13.github.io/categories/newsletter/</link>
+    <description>Recent content in Newsletter on Morgenrøde</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 30 Apr 2021 01:01:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/newsletter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>월간 기술 스크랩 21/04</title>
+      <link>https://ryanking13.github.io/2021/04/30/monthly-log-2104.html/</link>
+      <pubDate>Fri, 30 Apr 2021 01:01:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2021/04/30/monthly-log-2104.html/</guid>
+      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 4월)</description>
+    </item>
+    
+  </channel>
+</rss>
