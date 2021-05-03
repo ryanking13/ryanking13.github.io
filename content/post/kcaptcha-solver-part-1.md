@@ -1,10 +1,11 @@
 ---
 date: "2021-02-01T19:00:00+09:00"
+title: 그누보드 캡차 인식 프로젝트 개발기 - Part 1
 description: 그누보드 캡차 인식 프로젝트 개발기 - Part 1
+summary: 그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.
 draft: false
 categories:
 - Machine Learning
-title: 그누보드 캡차 인식 프로젝트 개발기 - Part 1
 ---
 
 그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.
