@@ -25,6 +25,15 @@ CPU 마다 BTB(Branch Target Buffer)의 구현이 다르고, 컴파일러 영향
 클라우드플레어는 예전부터 블로그에 굉장히 흥미로운 주제의 글들을 많이 올리고 있으니,
 관심이 있다면 시간 날 때마다 들러서 확인해봐도 좋을 듯 싶습니다.
 
+### [My current HTML boilerplate](https://www.matuzo.at/blog/html-boilerplate/)
+
+13년차 웹 개발자가 웹 프로젝트를 할 때 자신이 사용하는 HTML 보일러플레이트 코드를 소개한 글입니다.
+
+HTML의 head에 들어가는 다양한 태그들의 역할을 소개하고 있어, 저같이 필요할 때마다 야매로 웹 개발을 하는 사람들이 참고하기 좋은 듯 합니다.
+이 글을 소개한 [해커뉴스 스레드](https://news.ycombinator.com/item?id=26952557)에도 사람들이 다양한 팁을 소개하고 있습니다.
+
+추가로, [htmlhead.dev](https://htmlhead.dev/)에서 이 글에서 소개하는 것 외에도 다양한 태그를 소개하고 있습니다.
+
 ## 📌 북마크
  
 
