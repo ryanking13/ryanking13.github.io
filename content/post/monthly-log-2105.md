@@ -40,6 +40,8 @@ GPT-3을 이용하여 만들어진 텍스트 어드벤쳐 게임.
 
 하다보면 가끔 이상한 문장들이 튀어나오기는 하지만, 전체적으로는 굉장히 자연스러워서 자연어 처리 기술의 발전을 느낄 수 있는 게임입니다.
 
+다만 최근에는 [유저들이 성적인 발언을 학습시킨다던가, 그것을 검열한다던가](https://www.techspot.com/news/89571-machine-learning-text-adventure-ai-dungeon-now-censored.html)하는 이슈로 곤혹을 치르고 있는 듯 하빈다.
+
 ### [Coding Escape](https://escape.codingame.com/)
 
 코딩으로 하는 방탈출 게임.

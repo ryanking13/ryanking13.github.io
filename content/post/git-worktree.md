@@ -10,8 +10,9 @@ categories:
 
 __TL;DR__
 
-> - git worktree add \<path>
-> - git worktree ~
+> - 새로운 작업트리: git worktree add \<path>
+> - 작업트리 목록: git worktree list
+> - 작업트리 삭제: git worktree remove \<worktree>
 
 
 
@@ -30,11 +31,7 @@ git 레포지토리에서 어떠한 작업을 하는 중에,
 
 그렇다면 다른 방법으로, 주 작업용 레포지토리는 따로 놔두고, 버그 픽스용으로 같은 레포지토리를 추가로 clone해서 사용하는 방법은 어떨까요. 이렇게 하면 각 디렉토리에서 작업중인 파일은 그대로 유지가 되겠지만, 여러 개의 레포지토리를 유지하다가 헷갈리기라도 하는 순간에는 분명 귀찮은 실수가 발생할겁니다.
 
-이러한 상황에서 유용하게 사용할 수 있는 커맨드가 `git worktree`입니다. 이 글에서는 한 번 기억해두면 아주 쏠쏠하게 써먹을 수 있다고 장답하는 `git worktree`를 소개합니다.
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Why did I not know before about &quot;git worktree&quot;? :-( <a href="https://t.co/wBM6uO2DX8">https://t.co/wBM6uO2DX8</a></p>&mdash; Guido van Rossum (@gvanrossum) <a href="https://twitter.com/gvanrossum/status/1379893622145871873?ref_src=twsrc%5Etfw">April 7, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-_파이썬의 아버지 Guido도 최근 Git worktree를 알게되었나봅니다😂_
+이러한 상황에서 유용하게 사용할 수 있는 커맨드가 `git worktree`입니다. 이 글에서는 한 번 기억해두면 종종 쏠쏠하게 써먹을 수 있는 `git worktree`를 소개합니다.
 
 ## `git worktree`?
 
@@ -43,7 +40,7 @@ git worktree는 한 레포지토리에서 여러 개의 작업트리를 관리�
 작업트리라는 단어가 낯설텐데요. 일반적인 경우에서는 한 레포지토리 안에 있는 여러 브랜치를 각각의 작업트리라고 생각할 수 있습니다. [^1]
 
 한 레포지토리의 각 브랜치는 보통 특정한 기능 구현이나 버그 수정과 같은 **작업**을 기준으로 나누게 되는데요.
-이러한 각 작업 단위(브랜치)를 동시에 보고 관리할 수 있게 해주는 명령어가 바로 `git worktree`입니다.
+이러한 각 작업 단위(브랜치)를 동시에 보고 관리할 수 있게 해주는 명령어가 git worktree입니다.
 
 [^1]: 이해를 돕기 위한 설명으로 엄밀하게는 worktree != branch 입니다. 자세한 내용은 [git-worktree 공식 문서](https://git-scm.com/docs/git-worktree)를 참고하세요.
 
@@ -55,7 +52,7 @@ git worktree는 한 레포지토리에서 여러 개의 작업트리를 관리�
 
 `git worktree add <path>` 는 path의 위치에 최근 커밋(HEAD) 내용으로 새로운 작업트리를 생성합니다.
 
-예를 들어 보겠습니다. 디렉토리 구조는 아래와 같습니다.
+예를 들면서 살펴보겠습니다. 현재 디렉토리 구조는 아래와 같습니다.
 
 ```sh
 # 디렉토리 구조
@@ -65,7 +62,7 @@ git worktree는 한 레포지토리에서 여러 개의 작업트리를 관리�
  ┗ ┗ 📜 file1 (CONTENT: new)
 ```
 
-`project` 디렉토리안에 `main` 이라는 레포지토리를 clone하여 작업 하고 있습니다.
+`project` 디렉토리안에 `main` 이라는 레포지토리를 clone하여 작업하고 있습니다.
 
 ```sh
 /project/main$ git status
