@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Morgenrøde</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 30 Apr 2021 01:01:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 May 2021 00:00:01 +0900</lastBuildDate><atom:link href="https://ryanking13.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git worktree 소개</title>
+      <link>https://ryanking13.github.io/2021/05/10/git-worktree.html/</link>
+      <pubDate>Mon, 10 May 2021 00:00:01 +0900</pubDate>
+      
+      <guid>https://ryanking13.github.io/2021/05/10/git-worktree.html/</guid>
+      <description>Git worktree 명령어를 소개합니다.</description>
+    </item>
+    
     <item>
       <title>월간 기술 스크랩 21/04</title>
       <link>https://ryanking13.github.io/2021/04/30/monthly-log-2104.html/</link>
@@ -31,7 +40,7 @@
       <pubDate>Mon, 01 Feb 2021 20:00:00 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/</guid>
-      <description>이전 글에서는 KCAPTCHA 캡차 프로그램을 깨는 Tensorflow 모델을 개발하는 과정을 다루었습니다. 이번 글에서는 완성된 파이썬 Tensorflow 모델을 Tensorflow.js 레이어로 변환하여 브라우저에 배포하여 서빙</description>
+      <description>그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.</description>
     </item>
     
     <item>
@@ -40,7 +49,7 @@
       <pubDate>Mon, 01 Feb 2021 19:00:00 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-1.html/</guid>
-      <description>그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다. 이런 내용에 대해 다룹니다 데이터 수집 - 모델 구현</description>
+      <description>그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.</description>
     </item>
     
     <item>

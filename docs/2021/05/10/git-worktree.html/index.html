@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Git worktree 소개 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="Git worktree 명령어를 소개합니다." /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2021/05/10/git-worktree.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Git worktree 소개" />
+<meta property="og:description" content="Git worktree 명령어를 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/05/10/git-worktree.html/" />
+<meta property="article:published_time" content="2021-05-10T00:00:01+09:00" />
+<meta property="article:modified_time" content="2021-05-10T00:00:01+09:00" />
+<meta itemprop="name" content="Git worktree 소개">
+<meta itemprop="description" content="Git worktree 명령어를 소개합니다.">
+<meta itemprop="datePublished" content="2021-05-10T00:00:01+09:00" />
+<meta itemprop="dateModified" content="2021-05-10T00:00:01+09:00" />
+<meta itemprop="wordCount" content="2740">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Git worktree 소개"/>
+<meta name="twitter:description" content="Git worktree 명령어를 소개합니다."/>
+<script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+
+
+
+
+<div class="menu-wrapper">
+  <nav class="site-navbar">
+    <ul id="menu" class="menu">
+      <li class="menu-item">
+          <a class="menu-item-link" href="/">Home</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/post/">Archives</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/categories/">Categories</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/about/">About</a>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="search-wrapper">
+    <div class="show-search">
+        <a class="toggle-search" title="search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="612.056" height="612.057" viewbox="0 0 613 613">
+                <path
+                    d="M595.2 513.908L493.775 412.482c26.707-41.727 42.685-91.041 42.685-144.263C536.459 120.085 416.375 0 268.24 0 120.106 0 .021 120.085.021 268.219c0 148.134 120.085 268.22 268.219 268.22 53.222 0 102.537-15.979 144.225-42.686l101.426 101.463c22.454 22.453 58.854 22.453 81.271 0 22.492-22.491 22.492-58.855.038-81.308zm-326.96-54.103c-105.793 0-191.585-85.793-191.585-191.585 0-105.793 85.792-191.585 191.585-191.585s191.585 85.792 191.585 191.585c.001 105.792-85.791 191.585-191.585 191.585z" />
+            </svg>
+        </a>
+    </div>
+    <div class="input-wrapper">
+        <input type="search" placeholder="검색어 입력" disabled="disabled" />
+    </div>
+</div>
+
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+</div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Git worktree 소개</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-05-10 </span>
+        <div class="post-category">
+            <a href="/categories/miscellaneous/"> Miscellaneous </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#들어가며">들어가며</a></li>
+        <li><a href="#git-worktree">git worktree?</a></li>
+        <li><a href="#git-worktree-명령어">git worktree 명령어</a>
+          <ul>
+            <li><a href="#add">add</a></li>
+            <li><a href="#list">list</a></li>
+            <li><a href="#remove">remove</a></li>
+          </ul>
+        </li>
+        <li><a href="#git-worktree-활용-용도">git worktree 활용 용도</a></li>
+        <li><a href="#추가-명령어">추가 명령어</a></li>
+        <li><a href="#알아두면-쓸데-있을지도-모르는-것들">알아두면 쓸데 있을지도 모르는 것들</a>
+          <ul>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>TL;DR</strong></p>
+<blockquote>
+<ul>
+<li>작업트리 생성: git worktree add &lt;path&gt;</li>
+<li>작업트리 목록: git worktree list</li>
+<li>작업트리 삭제: git worktree remove &lt;worktree&gt;</li>
+</ul>
+</blockquote>
+<h2 id="들어가며">들어가며</h2>
+<p>git 레포지토리에서 어떠한 작업을 하는 중에,
+급한 버그를 잡는 것과 같은 먼저 처리해야 할 다른 일이 생기는 경우가 있습니다.
+이 때 하고 있던 작업이 완료되었다면 완료된 내용을 커밋하고 다른 작업을 하면 되겠지만,
+아직 한창 작업하는 중이었다면 다소 애매할 때가 많습니다.</p>
+<p>이러한 경우에 흔히 사용하는 해결책은 <code>git stash</code> 커맨드를 이용해서
+현재 작업중이던 내용을 임시 공간에 push하고 나중에 다시 가져와서 사용하는 것입니다.</p>
+<p>그러나 버그가 발생하는 경우가 너무 잦아서 매일 수차례 <code>stash</code>를 하게 된다면?
+나아가서는 한 버그를 잡다가 더 급한 다른 버그를 고치기 위해 다시 <code>stash</code>를 반복하게 된다면?
+작업 환경이 엉망이 될 수도 있겠죠.</p>
+<p>그렇다면 다른 방법으로, 주 작업용 레포지토리와 별개로,
+버그 픽스용으로 같은 레포지토리를 추가로 clone해서 사용하는 방법은 어떨까요?
+이렇게 하면 작업 중이던 파일을 stash 해야하는 일은 없어지겠지만,
+같은 레포지토리 clone을 여러 개 유지하다가 실수가 발생할 수도 있습니다.</p>
+<p>이 글에서는 이러한 상황에서 유용하게 사용할 수 있는 커맨드인 <code>git worktree</code>를 소개합니다.</p>
+<h2 id="git-worktree">git worktree?</h2>
+<p><code>git worktree</code>는 한 레포지토리에서 여러 개의 작업트리를 관리하기 위해서 사용하는 명령어입니다.</p>
+<p>작업트리라는 단어가 낯설 수도 있을텐데요. 일반적인 경우 한 레포지토리 안에 있는 여러 브랜치를 각각 하나의 작업트리라고 생각할 수 있습니다. <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>레포지토리의 각 브랜치는 보통 특정한 기능 구현이나 버그 수정과 같은 <strong>작업</strong>을 기준으로 나누게 되는데요.
+이러한 각 작업 단위를 동시에 관리할 수 있게 해주는 명령어가 git worktree입니다.</p>
+<h2 id="git-worktree-명령어">git worktree 명령어</h2>
+<blockquote>
+<p>대표적인 명렁어만을 소개합니다. 더 자세한 사용법은 <a href="https://git-scm.com/docs/git-worktree">공식 문서</a>를 참고하세요.</p>
+</blockquote>
+<h3 id="add">add</h3>
+<p><code>git worktree add &lt;path&gt;</code> 는 path의 위치에 최근 커밋(HEAD) 내용으로 새로운 작업트리를 생성합니다.</p>
+<p>예를 들어 살펴보겠습니다. 현재 작업중인 디렉토리 구조는 아래와 같습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 디렉토리 구조</span>
+📂 project
+ ┣ 📂 main
+ ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
+ ┗ ┗ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>project</code> 디렉토리안에 <code>main</code> 이라는 레포지토리를 clone하여 작업하고 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">/project/main$ git status
+On branch master
+Changes not staged <span class="k">for</span> commit:
+        ...
+        modified:   file1
+
+/project/main$ cat file1
+new
+
+/project/main$ git diff file1
+...
+-old
++new
+
+/project/main$ git branch -l
+* master
+</code></pre></td></tr></table>
+</div>
+</div><p>현재는 <em>master</em> 브랜치에서 작업중이고, file1이 수정(<code>old --&gt; new</code>)되었지만 아직 커밋은 하지 않은 상태입니다.
+master외에 다른 브랜치는 없습니다.</p>
+<p>이 상태에서 버그 수정을 해야할 일이 생겼다고 합시다. 작업 중인 내용이 있으므로, 지금 작업을 보존한 상태로 버그를 수정하기 위해 새로운 작업트리를 만들어보겠습니다. <code>git worktree add ../bugfix</code> 를 실행하여 상위 디렉토리에 bugfix라는 작업트리를 만들어보겠습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">/project/main$ git worktree add ../bugfix
+Preparing worktree <span class="o">(</span>checking out <span class="s1">&#39;bugfix&#39;</span><span class="o">)</span>
+HEAD is now at <span class="m">6796293</span> Initial commit
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">📂 project
+ ┣ 📂 main
+ ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
+ ┃ ┗ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
+ ┣ 📂 bugfix
+ ┃ ┣ 📜 .git <span class="o">(</span>HEAD: bugfix<span class="o">)</span>
+ ┗ ┗ 📜 file1 <span class="o">(</span>CONTENT: old<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>디렉토리 구조를 보시면, 현재 작업 중인 내용은 유지된 채로 상위 디렉토리에 bugfix 폴더가 생성되었습니다.
+bugfix 폴더의 내용물을 살펴봅시다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">/project/bugfix$ ls
+file1
+
+/project/bugfix$ cat file1
+old
+</code></pre></td></tr></table>
+</div>
+</div><p>file1이 최근 커밋(<code>old</code>)의 내용을 가지고 있는 것을 확인할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">/project/bugfix$ git status
+On branch bugfix
+nothing to commit, working tree clean
+
+/project/bugfix$ git branch -l
+* bugfix
+* master
+</code></pre></td></tr></table>
+</div>
+</div><p>bugfix 폴더의 HEAD는 <code>bugfix</code> 브랜치를 가리키고 있고, <code>master</code> 와 <code>bugfix</code> 두개의 브랜치가 존재하는 것도 확인할 수 있습니다.
+즉, <code>git worktree add &lt;path&gt;</code> 명령어로 새로 브랜치(작업트리)를 생성하고 path 위치에서 해당 브랜치를 작업할 수 있게 되었습니다.</p>
+<p>이렇게 새로 작업 트리를 생성함으로서 두 개의 브랜치를 따로 따로 작업할 수 있게 되었습니다🎉!
+당연히 각 브랜치에서의 작업이 서로 영향을 주는 일도 없구요.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">/project/bugfix$ <span class="nb">echo</span> aaaa &gt; fix <span class="o">&amp;&amp;</span> git add fix <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;fix&#34;</span>
+<span class="o">[</span>bugfix e35561a<span class="o">]</span> fix
+ <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+ create mode <span class="m">100644</span> fix
+
+/project/bugfix$ <span class="nb">cd</span> ../main <span class="o">&amp;&amp;</span> git merge bugfix
+Updating b6b873a..e35561a
+Fast-forward
+ fix <span class="p">|</span> <span class="m">1</span> +
+ <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+ create mode <span class="m">100644</span> fix
+</code></pre></td></tr></table>
+</div>
+</div><p>bugfix 폴더에서 새로 파일을 생성하여 bugfix 브랜치에 커밋한 뒤,
+bugfix 브랜치를 master 브랜치에 머지하였습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">📂 project
+ ┣ 📂 main
+ ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
+ ┃ ┃ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
+ ┃ ┗ 📜 fix <span class="o">(</span>CONTENT: aaaa<span class="o">)</span>
+ ┣ 📂 bugfix
+ ┃ ┣ 📜 .git <span class="o">(</span>HEAD: bugfix<span class="o">)</span>
+ ┃ ┃ 📜 file1 <span class="o">(</span>CONTENT: old<span class="o">)</span>
+ ┗ ┗ 📜 fix <span class="o">(</span>CONTENT: aaaa<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>일련의 작업이 끝난 후의 상태는 위와 같습니다. master에서 작업하던 file1의 내용은 건드리지 않은 채로 버그를 수정하고 머지할 수 있었습니다.</p>
+<h3 id="list">list</h3>
+<p><code>git worktree list</code>로 현 레포지토리에 존재하는 작업트리 목록을 볼 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">/project/main$ git worktree list
+<span class="o">[</span>...<span class="o">]</span>/project/main    e35561a <span class="o">[</span>master<span class="o">]</span>
+<span class="o">[</span>...<span class="o">]</span>/project/bugfix  e35561a <span class="o">[</span>bugfix<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>각 작업트리가 어떤 커밋과 브랜치를 가리키고 있는지도 나타납니다.
+위의 예에서는 master에 bugfix를 머지한 직후의 상황이라 두 작업트리 모두 같은 커밋을 가리키고 있고, 브랜치는 다른 것을 확인할 수 있습니다.</p>
+<h3 id="remove">remove</h3>
+<p><code>git worktree remove &lt;name&gt;</code>으로 필요없어진 작업트리를 삭제할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">/project/main$ git worktree remove bugfix
+
+/project/main$ ls ..
+main
+</code></pre></td></tr></table>
+</div>
+</div><p>이제 필요 없어진 bugfix 브랜치를 삭제했습니다. 생성되었던 bugfix 폴더가 삭제된 것을 확인할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">📂 project
+ ┣ 📂 main
+ ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
+ ┃ ┃ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
+ ┗ ┗ 📜 fix <span class="o">(</span>CONTENT: aaaa<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="git-worktree-활용-용도">git worktree 활용 용도</h2>
+<p><code>git worktree</code>의 대표적인 활용 용도는 글 초반부에서 언급한 것처럼 여러 개의 작업트리(브랜치)를 병렬로 운용하면서,
+상황에 맞춰서 적절한 작업트리에서 개발을 하는 것입니다.
+이러한 작업방식에 익숙해지면 <code>git stash</code>나 <code>git checkout -b</code>를 거의 쓰지 않고도 웬만한 상황에 대응할 수 있습니다.</p>
+<p>다른 활용 용도로,
+한 <a href="https://twitter.com/VictorStinner/status/1379941702513922048">파이썬 코어 개발자</a>는 파이썬의 소스 코드을 버전 별로 관리하고 업데이트하기 위해
+작업트리를 사용하고 있다고 밝혔습니다.</p>
+<p>또는, 실제로 해보지는 않았지만 원격 저장소를 사용할 수 없는 특수한 개발 환경에서 레포지토리를 공유하는데에도 활용할 수 있지 않을까 하는 생각이 듭니다. <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<h2 id="추가-명령어">추가 명령어</h2>
+<p>추가적으로, 기본적인 add, list, remove 명령어 외에 유용할 수 있는 worktree 명령어를 간단히 몇가지 더 소개합니다.</p>
+<ul>
+<li><code>git worktree add &lt;path&gt; -b &lt;branch&gt;</code>
+<ul>
+<li>생성될 작업트리 브랜치 이름을 <code>-b &lt;branch&gt;</code> 옵션으로 지정할 수 있습니다.</li>
+</ul>
+</li>
+<li><code>git worktree add &lt;path&gt; &lt;commit-ish&gt;</code>
+<ul>
+<li>현재 커밋이 아니라 <code>&lt;commit-ish&gt;</code>에 해당하는 커밋으로 작업트리를 checkout합니다.</li>
+</ul>
+</li>
+<li><code>git worktree add &lt;path&gt; &lt;commit-ish&gt; --detach</code>
+<ul>
+<li>브랜치를 생성하지 않고 현재 브랜치에서 <code>detached HEAD</code>를 만들어 checkout합니다.</li>
+</ul>
+</li>
+<li><code>git worktree move &lt;worktree&gt; &lt;newpath&gt;</code>
+<ul>
+<li>존재하는 작업트리의 위치를 <code>&lt;newpath&gt;</code>로 이동시킵니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="알아두면-쓸데-있을지도-모르는-것들">알아두면 쓸데 있을지도 모르는 것들</h2>
+<ul>
+<li>같은 브랜치를 가리키는 복수의 작업트리를 두는 것은 불가능</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ git checkout -b branch1
+$ git worktree add ../branch2
+$ <span class="nb">cd</span> ../branch2
+$ git checkout branch1
+fatal: <span class="s1">&#39;branch1&#39;</span> is already checked out at <span class="s1">&#39;...&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>다른 작업트리에서 보고 있는 브랜치로는 checkout하는 것이 차단되어 있어서, 여러 작업트리가 같은 브랜치에서 작업하는 실수를 방지할 수 있습니다.</p>
+<ul>
+<li>작업트리 디렉토리의 <code>.git</code> 파일 내용</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">/project/main$ git worktree add ../bugfix
+/project/main$ cat ../bugfix/.git
+gitdir: <span class="o">[</span>...<span class="o">]</span>/project/main/.git/worktrees/bugfix
+
+/project/main$ ls .git/worktrees/bugfix
+HEAD  ORIG_HEAD  commondir  gitdir  index  logs
+</code></pre></td></tr></table>
+</div>
+</div><p>생성한 작업트리 디렉토리에 있는 <code>.git</code> 파일에는 메인 작업트리 디렉토리를 가리키는 경로가 적혀있습니다.</p>
+<p>메인 작업트리안의 <code>.git/worktrees</code> 폴더에는 작업트리 별로 HEAD 등의 파일이 저장되어 있습니다.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://git-scm.com/docs/git-worktree">https://git-scm.com/docs/git-worktree</a></li>
+<li><a href="https://levelup.gitconnected.com/git-worktrees-the-best-git-feature-youve-never-heard-of-9cd21df67baf">https://levelup.gitconnected.com/git-worktrees-the-best-git-feature-youve-never-heard-of-9cd21df67baf</a></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>이해를 돕기 위한 설명으로 엄밀하게는 worktree != branch 입니다. 자세한 내용은 <a href="https://git-scm.com/docs/git-worktree">git-worktree 공식 문서</a>를 참고하세요. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>작업트리를 네트워크나 usb와 같은 이동식 저장장치를 통해서 공유하는 데에 활용할 수 있는 <code>lock</code>과 같은 서브커맨드가 존재합니다. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-05-10
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <ins class="kakao_ad_area" style="display:none;" 
+    data-ad-unit    = "DAN-jwL3LOjV3XjlrVc4" 
+    data-ad-width   = "320" 
+    data-ad-height  = "100"></ins> 
+   <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/2021/04/30/monthly-log-2104.html/">
+            <span class="next-text nav-default">월간 기술 스크랩 21/04</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="comments" class="comments">
+            
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+        </div>
+
+        <div id="search-results" class="search-results">
+            <template>
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title"><a class="post-link" href="{url}">{title}</a></h1>
+            <div class="post-meta">
+                <span class="post-time"> {date} </span>
+                <div class="post-category">
+                    <a href="{categoryUrl}"> {category} </a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <div class="post-summary">
+                {summary}
+            </div>
+            <div class="read-more">
+                <a href="{url}" class="read-more-link">Read more...</a>
+            </div>
+        </div>
+    </article>
+</template>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+    <a href="https://ryanking13.github.io/feed.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
