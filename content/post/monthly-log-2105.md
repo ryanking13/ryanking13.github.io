@@ -68,6 +68,18 @@ GPT-3을 이용하여 만들어진 텍스트 어드벤쳐 게임.
 
 굳이 방탈출 게임을 코딩으로 해야하나 싶긴 합니다만😂
 
+### [Qovery](https://www.qovery.com/)
+
+흔히 얘기하는 CI/CD에서 Continuous Deployment(CD) 기능을 제공해주는 서비스.
+
+자신의 AWS 계정을 등록해놓으면, 깃헙에 코드를 푸시했을 때 알아서 클라우드상에 배포해주는 서비스입니다.
+
+Hashicorp의 [Terraform](https://www.terraform.io/)이 클라우드 리소스를 관리해주는 IaaS 도구라면, Qovery는 거기에 소프트웨어 배포 프로세스를 얹은 서비스라고 할 수 있을 듯 합니다.
+
+정확히 무엇에 비유하면 좋을지는 모르겠는데, Qovery는 자신들이 백엔드 계의 Netlify다라는 표현을 사용합니다.
+
+2020년에 공개되어 1년 정도된 서비스인데, 배포 프로세스를 구축하기 번거로운 작은 팀에서 사용해보면 좋을 듯 합니다.
+
 ## 📙 책 / 강의
 
 ### [A Philosophy of Software Design](https://www.amazon.com/Philosophy-Software-Design-John-Ousterhout/dp/1732102201)
