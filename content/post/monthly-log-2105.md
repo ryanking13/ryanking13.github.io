@@ -125,6 +125,37 @@ Rust의 알려지지 않은  초기 기여자인 [Dave Herman](https://github.co
 
 오픈소스로 먹고 사는 부분, 국가간 급여 차이에 대한 부분 등 여러 가지 고찰해볼 거리가 많은 글인 듯 합니다.
 
+### [Parse, don’t validate](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)
+
+Type-driven development 방법론을 파싱을 예로 들어 소개하는 글입니다.
+
+Type-driven development는 어떤 기능을 구현하기 위한 타입을 우선적으로 정의하는 방법론인데요.
+이에 대한 예시로 이 글은 리스트의 첫 요소를 반환하는 `head` 함수를 얘기합니다.
+
+head 함수는 비어있지 않은 리스트에 대해서는 정상적으로 작동하지만,
+비어있는 리스트가 입력으로 들어왔다면 실패합니다.
+
+하스켈을 기준으로 생각하면, head 함수는 실패할 수도 있는 `Maybe` 타입을 반환해야 하고,
+이를 검사하는 것은 head 함수의 Caller 역할이 되는데요.
+
+```haskell
+head :: [a] -> Maybe a
+head (x:_) = Just x
+head []    = Nothing
+```
+
+이 글에서는 그러한 리턴값을 완화하는 방식(`weakening the type of result`)보다는,
+함수의 입력 타입을 강화하는 방식(`strengthening the type of the argument`)이 좋다고 제안합니다.
+
+즉, head 함수의 입력 타입을 모든 리스트가 아니라 비어있지 않은 리스트로 정의해주면 된다는 것이지요.
+
+여기서 한 걸음 더 나아가서,
+이 글은 입력이 들어왔을 때의 파싱과 검증으로 이루어지는 일반적인 2단계의 과정을,
+Type-driven development를 이용해 파싱 과정에서 엄격한 타입 검사를 하는 방식으로 1단계로 줄일 수 있다고 얘기합니다.
+그리고 초기 단계에 타입 검사를 마침으로서 후에 발생할 수 있는 오류로 방지하고 퍼포먼스도 향상시킬 수 있다고 말합니다.
+
+함수형 언어가 아닌 다른 언어에도 이러한 패러다임을 쉽게 적용할 수 있을지는 잘 모르겠습니다만, 전문을 읽어보시는 걸 추천하는 글입니다.
+
 ## 📌 북마크
 
 ### [Rust 입문용 치트시트](https://happygrammer.github.io/rust/cheat-seat/)
