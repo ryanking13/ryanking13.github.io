@@ -173,6 +173,17 @@ Rust를 처음 배우는 사람들을 위한 짧은 치트시트입니다.
 
 네이버에서는 월간 영입도 그렇고, 최근 직원들에게 주식을 나눠주는 것도 그렇고, 다양한 방식으로 인재를 모집하고 지키려는 모양새인데, 개발자로서 이런 풍토가 지속되었으면 하는 바람입니다😂
 
+### [Faster CPython](https://github.com/faster-cpython/ideas/blob/main/FasterCPythonDark.pdf)
+
+얼마 전 은퇴를 번복하고 마이크로소프트에 입사한
+파이썬의 아버지 Guido가 Cpython을 5년간 5배 더 빨라지게 만들겠다는 프로젝트를 공개했습니다.
+
+사실 서드파티에서도 파이썬의 퍼포먼스를 개선하기 위한 프로젝트가 여럿 있었는데요.
+대표적으로는 인스타그램의 [Cinder](https://github.com/facebookincubator/cinder)나,
+개발이 중단되었다 최근 개발을 재개한 [Pyston](https://github.com/pyston/pyston) 등이 있습니다.
+
+수년 뒤의 파이썬은 어떤 모습일지 기대가 됩니다.
+
 ## ⚙️ 소프트웨어 / 프로젝트
 
 ### [AI Dungeon](https://play.aidungeon.io/main/landing)
