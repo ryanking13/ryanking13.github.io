@@ -253,3 +253,12 @@ BufferedReader bufferedReader = new BufferedReader(reader);
 
 테스트 주도 개발은 테스트의 단위가 되는 개별적인 기능을 개발하는 것에 집중하게 하고,
 전체 소프트웨어의 최적의 디자인을 찾는 것은 뒷전으로 만들기 때문에 좋아하지 않는다고 말합니다.
+
+### [Learn Rust With Entirely Too Many Linked Lists](https://rust-unofficial.github.io/too-many-lists/index.html)
+
+다양한 링크드 리스트를 만들면서 러스트 문법 배우기.
+
+최근 몇가지 러스트 강의를 살펴봤는데, 그 중에서 가장 러스트를 학습하기에 좋다고 느껴지는 강의입니다.
+
+단순히 잘 되는 코드를 보여주는 것이 아니고,
+수많은 러스트의 컴파일 에러와 싸워가면서 점진적으로 코드를 완성해나가는 내용이 인상적입니다.
