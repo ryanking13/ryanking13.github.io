@@ -216,6 +216,19 @@ Hashicorp의 [Terraform](https://www.terraform.io/)이 클라우드 리소스를
 
 2020년에 공개되어 1년 정도된 서비스인데, 배포 프로세스를 구축하기 번거로운 작은 팀에서 사용해보면 좋을 듯 합니다.
 
+### [readme.so](https://readme.so/)
+
+리드미에 넣을 내용을 섹션별로 작성하게 도와주는 온라인 에디터.
+
+리드미 파일을 본격적으로 쓰려다보면 무엇을 넣으면 좋을지 고민하다
+다른 레포지토리를 참고하여 쓰게 되는 경우가 많은데,
+그런 경우에 간단히 쓰기에 좋은 서비스일 듯 합니다.
+
+깃헙에 올라온 서비스 코드를 살펴보면 사이드 프로젝트로 3일만에 뚝딱 만들어낸 듯한데,
+이런 일상의 소소한 불편함을 캐치해서 서비스로 만들어내는 것도 훌륭한 능력인 듯 합니다.
+
+[깃헙 공식 트위터](https://twitter.com/github/status/1385549049596686336)에서도 이 서비스를 소개했네요.
+
 ## 📙 책 / 강의
 
 ### [A Philosophy of Software Design](https://www.amazon.com/Philosophy-Software-Design-John-Ousterhout/dp/1732102201)
