@@ -46,73 +46,118 @@ if __name__ == "__main__":
 
 ## 유용한 도구
 
+**웹 서버 실행**
+
 - `python -m http.server`
-  - 대체 내장 커맨드: 없음
-  - 대체 커맨드: `php -S 127.0.0.1:8000`
 
 현재 폴더를 웹으로 서빙합니다. 간단하게 웹페이지를 실행하거나 작은 파일을 주고받을 때 사용할 수 있습니다.
 
 `-p` 옵션으로 포트를 지정하거나, `-d` 옵션으로 디렉토리를 지정할 수 있습니다.
 
+**JSON 파일 포맷팅**
+
 - `python -m json.tool <json_file>`
-  - 대체 내장 커맨드: 없음
-  - 대체 커맨드: `jq`
 
 JSON 파일을 검증하고 포맷팅해서 출력합니다.
 
 ```sh
-echo {"a": 1} | python -m json.tool
+$ echo '{"a": 1}' | python -m json.tool
+{
+    "a": 1
+}
 ```
 
-## 대체 가능한 도구
+## 플랫폼에 따라 쓸만한 도구
 
-Linux 플랫폼에서는 내장 커맨드로 대체가 가능한 도구들입니다.
+Linux에서는 내장 도구로 대체가 가능하나,
+Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우입니다.
+
+**BASE64**
 
 - `python -m base64`
-  - 대체 내장 커맨드: `base64`
+  - 대체 도구 (Linux): `base64`
 
 BASE64 인코딩 디코딩을 수행합니다.
 
+```sh
+$ echo dGVzdAo= | python -m base64 -d
+test
+```
+
+**파일 분석**
+
 - `python -m imghdr`
-  - 대체 내장 커맨드: `file`
+  - 대체 도구 (Linux): `file`
 
 이미지 파일의 헤더를 보고 파일 타입을 유추합니다.
 
 - `python -m sndhdr`
-  - 대체 내장 커맨드: `file`
+  - 대체 도구 (Linux): `file`
 
 음성 파일 헤더를 보고 파일 타입을 유추합니다.
 
+**압축**
 
+- `python -m gzip`
+- `python -m tarfile`
+- `python -m zipapp`
+- `python -m zipfile`
 
-
-
-## 재미있는 도구
-
-calendar
+locale
+platform
+telnetlib
 
 ## 파이썬 한정 도구
 
-inspect
-locale
-platform
+파이썬 내부 디버깅, 테스트 등에 쓸 수 있는 도구들입니다.
+
+- `python -m inspect`
+
+특정 모듈의 내용물을 보고싶거나, 모듈의 위치를 확인할 수 있습니다.
+
+```sh
+$ python -m inspect json
+$ python -m inspect -d json
+```
+
+- `python -m py_compile`
+
+파이썬 파일을 컴파일한 pyc 파일을 생성합니다.
+
+```
+```
+
+- `python -m sysconfig`
+
+파이썬을 빌드할 때 사용한 환경 변수 등을 볼 수 있습니다.
+
+```
+```
+
+- `python -m timeit`
+
+특정 파이썬 코드가 실행되는 시간을 측정합니다.
+
+```
+```
+
+- `python -m venv`
+
+가상 환경을 생성합니다. 기존의 `virtualenv` 가 했던 기능을 대체합니다.
+
+```
+```
+
+- `python -m pydoc`
+
+레퍼런스 문서를 생성합니다.
+
 profile
-py_compile
 pyclbr
-pydoc
-gzip
 pickle
 picklefile
-sysconfig
-tarfile
-telnetlib
-timeit
-uu
 webbrowser
-zipapp
-zipfile
 trace
-venv
 
 ### References
 
