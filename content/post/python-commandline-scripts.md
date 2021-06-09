@@ -2,7 +2,7 @@
 date: "2021-05-30T00:00:01+09:00"
 title: 알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트
 description: 알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트
-summary: 파이썬 기본 라이브러리에 내장된 몇가지 스크립트를 소개합니다.
+summary: 파이썬 기본 라이브러리에 내장된 스크립트를 소개합니다.
 draft: true
 categories:
 - Python
@@ -29,22 +29,23 @@ categories:
 
 ## 파이썬 커맨드라인 스크립트 동작 원리
 
-파이썬은 `python -m <module>` 옵션을 통해서 특정 모듈을 스크립트처럼 실행시킬 수 있습니다.
+파이썬 모듈은 일반적으로 `import <module>`을 통해서 임포트하여 사용되지만,
+`python -m <module>`과 같이 `-m` 옵션을 통해서 특정 모듈을 스크립트처럼 실행시키는 것이 가능합니다.
 
-`import <module>` 이 된다면, `python -m <module>` 도 되는 것이지요.
-
-이때, 파이썬은 모듈이 import 되었을 때와, 실행되었을 때를 구분하기 위해서 `__name__` 파라미터를 사용합니다.
-
-해당 모듈이 import 되었다면 `__name__` 값은 해당 모듈의 이름이 되지만, 실행되었다면 `__name__`의 값은 `__main__`이 됩니다.
+이 때, 해당 모듈이 임포트가 아닌 실행되었을 때만 특정한 기능을 하게끔 코드가 구성되어 있는 경우가 있는데요.
 
 ```python
+# 이 부분은 import 되었을 때는 실행되지 않습니다.
 if __name__ == "__main__":
     print("I'm not printed if this module is imported!")
 ```
 
-따라서 이 부분에 특정한 코드를 넣어두었다면 ~.
+보통은 모듈을 간단히 테스트하기 위해 이런 코드를 삽입합니다.
 
-## 유용한 도구
+파이썬 기본 모듈에도 종종 테스트 목적 등으로 실행할 수 있는 코드가 삽입되어 있는 경우가 있는데요.
+이 글에서는 그 중 몇가지를 소개합니다.
+
+## 알아두면 쓸모있는 도구
 
 **웹 서버 실행**
 
@@ -67,12 +68,15 @@ $ echo '{"a": 1}' | python -m json.tool
 }
 ```
 
-## 플랫폼에 따라 쓸만한 도구
+## 비상시에 쓸 수 있는 도구
 
-Linux에서는 내장 도구로 대체가 가능하나,
+대부분의 경우 더 나은 대체재가 있으나,
+비상시(?) 에 쓸 수 있을 지도 모르는 도구들입니다.
+
+보통 Linux에서는 잘 알려진 내장 도구들로 대체가 가능하나,
 Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우입니다.
 
-**BASE64**
+**인코딩/디코딩**
 
 - `python -m base64`
   - 대체 도구 (Linux): `base64`
@@ -91,21 +95,66 @@ test
 
 이미지 파일의 헤더를 보고 파일 타입을 유추합니다.
 
+```sh
+$ python -m imghdr image.png
+image.png: png
+```
+
 - `python -m sndhdr`
   - 대체 도구 (Linux): `file`
 
 음성 파일 헤더를 보고 파일 타입을 유추합니다.
 
+```sh
+$ python -m sndhdr sound.mp3
+...
+```
+
 **압축**
 
-- `python -m gzip`
 - `python -m tarfile`
-- `python -m zipapp`
-- `python -m zipfile`
+  - 대체 도구 (Linux): `tar`
 
-locale
-platform
-telnetlib
+TAR 파일을 압축, 압축 해체합니다.
+
+```sh
+$ python -m tarfile a.tar
+...(extract)...
+```
+
+- `python -m gzip`
+  - 대체 도구 (Linux): `gunzip`
+
+GUNZIP 파일을 압축, 압축 해제합니다.
+
+```sh
+$ python -m gzip -d a.tar.gz
+...(decompress)...
+```
+
+- `python -m zipfile`
+  - 대체 도구 (Linux): `zip, unzip`
+
+ZIP 파일을 압축, 압축 해제합니다.
+
+```sh
+$ python -m zipfile -e a.zip dir
+...(extracted to dir)...
+```
+
+- `python -m zipapp`
+
+**시스템**
+
+- `python -m locale`
+  - 대체 도구 (Linux): `locale`
+
+현재 시스템 로캐일 정보를 출력합니다.
+
+- `python -m platform`
+  - 대체 도구 (Linux): `uname`
+
+현재 실행중인 OS/플랫폼 정보를 출력합니다.
 
 ## 파이썬 한정 도구
 
@@ -118,6 +167,7 @@ telnetlib
 ```sh
 $ python -m inspect json
 $ python -m inspect -d json
+...
 ```
 
 - `python -m py_compile`
@@ -125,6 +175,8 @@ $ python -m inspect -d json
 파이썬 파일을 컴파일한 pyc 파일을 생성합니다.
 
 ```
+$ python -m py_compile a.py && ls
+a.py a.pyc
 ```
 
 - `python -m sysconfig`
@@ -152,12 +204,34 @@ $ python -m inspect -d json
 
 레퍼런스 문서를 생성합니다.
 
-profile
-pyclbr
-pickle
-picklefile
-webbrowser
-trace
+- `python -m profile`
+
+파이썬 코드를 프로파일링합니다.
+
+```
+
+```
+
+- `python -m  pyclbr`
+
+파이썬 모듈을 브라우징합니다.
+
+```
+```
+
+- `python -m webbrowser`
+
+웹브라우저를 제어합니다.
+
+```
+```
+
+- `python -m trace`
+
+파이썬 호출 스택을 트레이싱합니다.
+
+```
+```
 
 ### References
 
