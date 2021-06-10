@@ -6,7 +6,16 @@
     <description>Recent content in Python on Morgenrøde</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 04 Mar 2021 20:00:00 +0900</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Jun 2021 00:00:01 +0900</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트</title>
+      <link>https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:01 +0900</pubDate>
+      
+      <guid>https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/</guid>
+      <description>파이썬 기본 모듈에 내장된 스크립트를 소개합니다.</description>
+    </item>
+    
     <item>
       <title>파이썬의 패턴 매칭 도입에 얽힌 이야기</title>
       <link>https://ryanking13.github.io/2021/03/04/python-patma.html/</link>

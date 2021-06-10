@@ -3,7 +3,7 @@ date: "2021-06-10T00:00:01+09:00"
 title: 알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트
 description: 알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트
 summary: 파이썬 기본 모듈에 내장된 스크립트를 소개합니다.
-draft: true
+draft: false
 categories:
 - Python
 ---

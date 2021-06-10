@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트" />
+<meta property="og:description" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/" />
+<meta property="article:published_time" content="2021-06-10T00:00:01+09:00" />
+<meta property="article:modified_time" content="2021-06-10T00:00:01+09:00" />
+<meta itemprop="name" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트">
+<meta itemprop="description" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트">
+<meta itemprop="datePublished" content="2021-06-10T00:00:01+09:00" />
+<meta itemprop="dateModified" content="2021-06-10T00:00:01+09:00" />
+<meta itemprop="wordCount" content="2037">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트"/>
+<meta name="twitter:description" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트"/>
+<script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+
+
+
+
+<div class="menu-wrapper">
+  <nav class="site-navbar">
+    <ul id="menu" class="menu">
+      <li class="menu-item">
+          <a class="menu-item-link" href="/">Home</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/post/">Archives</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/categories/">Categories</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/about/">About</a>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="search-wrapper">
+    <div class="show-search">
+        <a class="toggle-search" title="search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="612.056" height="612.057" viewbox="0 0 613 613">
+                <path
+                    d="M595.2 513.908L493.775 412.482c26.707-41.727 42.685-91.041 42.685-144.263C536.459 120.085 416.375 0 268.24 0 120.106 0 .021 120.085.021 268.219c0 148.134 120.085 268.22 268.219 268.22 53.222 0 102.537-15.979 144.225-42.686l101.426 101.463c22.454 22.453 58.854 22.453 81.271 0 22.492-22.491 22.492-58.855.038-81.308zm-326.96-54.103c-105.793 0-191.585-85.793-191.585-191.585 0-105.793 85.792-191.585 191.585-191.585s191.585 85.792 191.585 191.585c.001 105.792-85.791 191.585-191.585 191.585z" />
+            </svg>
+        </a>
+    </div>
+    <div class="input-wrapper">
+        <input type="search" placeholder="검색어 입력" disabled="disabled" />
+    </div>
+</div>
+
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+</div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-06-10 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> Python </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-이-글을-읽으면-어디다-써먹을-수-있나요">🤔 이 글을 읽으면 어디다 써먹을 수 있나요?</a></li>
+        <li><a href="#파이썬-커맨드라인-스크립트-동작-원리">파이썬 커맨드라인 스크립트 동작 원리</a></li>
+        <li><a href="#-알아두면-쓸모있는-도구">⚒️ 알아두면 쓸모있는 도구</a>
+          <ul>
+            <li><a href="#웹-서버-실행">웹 서버 실행</a></li>
+            <li><a href="#json-포맷팅">JSON 포맷팅</a></li>
+          </ul>
+        </li>
+        <li><a href="#-비상시에-쓸-수-있는-도구">🧯 비상시에 쓸 수 있는 도구</a>
+          <ul>
+            <li><a href="#인코딩--디코딩">인코딩 / 디코딩</a></li>
+            <li><a href="#파일-타입-분석">파일 타입 분석</a></li>
+            <li><a href="#압축">압축</a></li>
+            <li><a href="#시스템-정보">시스템 정보</a></li>
+          </ul>
+        </li>
+        <li><a href="#-파이썬-한정-도구">🐍 파이썬 한정 도구</a>
+          <ul>
+            <li><a href="#마무리">마무리</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>파이썬의 대표적인 특징 중 하나는 기본 모듈(라이브러리)이 아주 방대하다는 점입니다.</p>
+<p>커뮤니티 기반 언어인 파이썬은 누구나 PEP(Python Enhancement Proposal)를 통해 새로운 기능을 파이썬에 제안할 수 있고,
+이 덕분에 파이썬은 다양한 써드파티 모듈을 기본 모듈로 받아들이게 되었습니다.</p>
+<blockquote>
+<p>써드파티 모듈이 기본 모듈에 포함된 대표적인 예로 <a href="https://www.python.org/dev/peps/pep-0428/">PEP 428: pathlib</a>, <a href="https://www.python.org/dev/peps/pep-0506/">PEP-506: secrets</a>가 있습니다.</p>
+</blockquote>
+<p>그렇다보니 파이썬은 추가 모듈을 전혀 설치하지 않고,
+기본 모듈만 가지고도 꽤나 다양한 작업을 손쉽게 할 수 있는데요.</p>
+<p>이 글에서는 파이썬 기본 모듈을 활용하여,
+코딩을 하지 않고 간단한 리눅스 커맨드를 사용하듯이 쓸 수 있는 파이썬 커맨드라인 스크립트들을 몇 가지 소개하고자 합니다.</p>
+<blockquote>
+<p><strong>DISCLAIMER</strong>: 이 글에서 소개하는 도구들은 대부분 파이썬 공식 문서에 적혀있지 않고, 언제든지 deprecated 될 수 있습니다.</p>
+</blockquote>
+<h2 id="-이-글을-읽으면-어디다-써먹을-수-있나요">🤔 이 글을 읽으면 어디다 써먹을 수 있나요?</h2>
+<ol>
+<li>파이썬만 설치되어 있다면 OS를 가리지 않고 어디서나 쓸 수 있는 커맨드를 배울 수 있습니다.</li>
+<li><del>주변 사람들한테 아는 척 할 수 있습니다.</del></li>
+<li><del>재밌습니다.</del></li>
+</ol>
+<h2 id="파이썬-커맨드라인-스크립트-동작-원리">파이썬 커맨드라인 스크립트 동작 원리</h2>
+<p>파이썬 모듈은 <code>import &lt;module&gt;</code> 구문을 통해서 임포트하여 사용되는 것이 일반적이지만,
+<code>-m</code> 옵션을 통해서 <code>python -m &lt;module&gt;</code>과 같이 특정 모듈을 스크립트처럼 실행시키는 것이 가능합니다.</p>
+<p>대부분의 모듈은 실행시켜도 아무런 기능을 하지 않지만,
+일부 모듈은 임포트되지 않고 실행되었을 때만 특정한 기능을 하게끔 코드가 구성되어 있는 경우가 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 아래 부분은 모듈이 import 되었을 때는 실행되지 않습니다.</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;I&#39;m not printed if this module is imported!&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>보통은 모듈을 간단히 테스트하기 위해 이런 코드를 삽입하곤 합니다.
+이 글에서 소개하는 도구들은 모두 이처럼 <code>-m</code> 옵션을 이용해 모듈을 실행하는 식으로 사용하는 도구들입니다.</p>
+<h2 id="-알아두면-쓸모있는-도구">⚒️ 알아두면 쓸모있는 도구</h2>
+<h3 id="웹-서버-실행">웹 서버 실행</h3>
+<ul>
+<li><code>python -m http.server &lt;port&gt;</code></li>
+</ul>
+<p>현재 폴더를 웹으로 서빙합니다. 간단하게 웹페이지를 실행하거나 작은 파일을 주고받을 때 사용할 수 있습니다.
+<code>-d</code> 옵션으로 디렉토리를 지정할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m http.server <span class="m">8080</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="json-포맷팅">JSON 포맷팅</h3>
+<ul>
+<li><code>python -m json.tool &lt;json_file&gt;</code></li>
+</ul>
+<p>JSON 파일을 검증하고 포맷팅합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ <span class="nb">echo</span> <span class="s1">&#39;{&#34;a&#34;: 1}&#39;</span> <span class="p">|</span> python -m json.tool
+<span class="o">{</span>
+    <span class="s2">&#34;a&#34;</span>: <span class="m">1</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="-비상시에-쓸-수-있는-도구">🧯 비상시에 쓸 수 있는 도구</h2>
+<blockquote>
+<p>대부분의 상황에서는 대체 도구가 있어 쓸모 없으나,
+비상시(?) 에 쓸 수 있을 지도 모르는 도구들입니다.</p>
+</blockquote>
+<blockquote>
+<p>예시) Linux에서는 잘 알려진 내장 도구들로 대체가 가능하나,
+Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
+</blockquote>
+<h3 id="인코딩--디코딩">인코딩 / 디코딩</h3>
+<ul>
+<li><code>python -m base64</code></li>
+</ul>
+<p>BASE64 인코딩 / 디코딩을 수행합니다. Linux에서는 <code>base64</code> 커맨드로 대체 가능합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ <span class="nb">echo</span> <span class="nv">dGVzdAo</span><span class="o">=</span> <span class="p">|</span> python -m base64 -d
+<span class="nb">test</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="파일-타입-분석">파일 타입 분석</h3>
+<ul>
+<li><code>python -m imghdr</code></li>
+</ul>
+<p>이미지 파일의 헤더를 보고 파일 타입을 유추합니다. Linux에서는 <code>file</code> 커맨드로 대체 가능합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m imghdr image.png
+image.png: png
+</code></pre></td></tr></table>
+</div>
+</div><br/>
+<ul>
+<li><code>python -m sndhdr</code></li>
+</ul>
+<p>음성 파일 헤더를 보고 파일 타입을 유추합니다. Linux에서는 <code>file</code> 커맨드로 대체 가능합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m sndhdr sound.wav
+soun.wav: SndHeaders<span class="o">(</span><span class="nv">filetype</span><span class="o">=</span><span class="s1">&#39;wav&#39;</span>, ...<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="압축">압축</h3>
+<ul>
+<li><code>python -m tarfile</code></li>
+</ul>
+<p>TAR 파일을 압축, 압축 해체합니다. Linux에서는 <code>tar</code> 커맨드로 대체 가능합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m tarfile a.tar
+...<span class="o">(</span>extract<span class="o">)</span>...
+</code></pre></td></tr></table>
+</div>
+</div><br/>
+<ul>
+<li><code>python -m gzip</code></li>
+</ul>
+<p>GZIP 파일을 압축, 압축 해제합니다. Linux에서는 <code>gzip</code> 커맨드로 대체 가능합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m gzip -d a.tar.gz
+...<span class="o">(</span>decompress<span class="o">)</span>...
+</code></pre></td></tr></table>
+</div>
+</div><br/>
+<ul>
+<li><code>python -m zipfile</code></li>
+</ul>
+<p>ZIP 파일을 압축, 압축 해제합니다. Linux에서는 <code>zip, unzip</code> 커맨드로 대체 가능합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m zipfile -e a.zip dir
+...<span class="o">(</span>extracted to dir<span class="o">)</span>...
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="시스템-정보">시스템 정보</h3>
+<ul>
+<li><code>python -m locale</code></li>
+</ul>
+<p>현재 시스템 로캐일 정보를 출력합니다. Linux에서는 <code>locale</code> 커맨드로 대체 가능합니다.</p>
+<br/>
+<ul>
+<li><code>python -m platform</code></li>
+</ul>
+<p>현재 실행중인 OS/플랫폼 정보를 출력합니다. Linux에서는 <code>uname</code> 커맨드로 대체 가능합니다.</p>
+<h2 id="-파이썬-한정-도구">🐍 파이썬 한정 도구</h2>
+<blockquote>
+<p>파이썬 디버깅, 테스트 등에 쓸 수 있는 도구들입니다.</p>
+</blockquote>
+<ul>
+<li><code>python -m inspect</code></li>
+</ul>
+<p>특정 파이썬 모듈의 내용물을 보고싶거나, 모듈의 위치를 확인할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># os 모듈 코드를 볼 수 있습니다</span>
+$ python -m inspect os
+
+<span class="c1"># os 모듈의 위치를 볼 수 있습니다.</span>
+$ python -m inspect -d json
+</code></pre></td></tr></table>
+</div>
+</div><br/>
+<ul>
+<li><code>python -m py_compile</code></li>
+</ul>
+<p>파이썬 파일을 컴파일한 pyc 파일을 생성합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python -m py_compile a.py &amp;&amp; ls
+a.py a.pyc
+</code></pre></td></tr></table>
+</div>
+</div><br/>
+<ul>
+<li><code>python -m sysconfig</code></li>
+</ul>
+<p>파이썬을 빌드할 때 사용한 환경 변수 등을 볼 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python -m sysconfig
+Platform: &#34;win-amd64&#34;
+Python version: &#34;3.8&#34;
+...
+</code></pre></td></tr></table>
+</div>
+</div><br/>
+<ul>
+<li><code>python -m timeit</code></li>
+</ul>
+<p>특정 파이썬 코드가 실행되는 시간을 측정합니다.</p>
+<p>Jupyter Notebook을 써보신 분이라면 익숙한 커맨드실 것 같네요.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python -m timeit &#34;str(1)&#34;
+2000000 loops, best of 5: 107 nsec per loop
+</code></pre></td></tr></table>
+</div>
+</div><br/>
+<ul>
+<li><code>python -m venv &lt;virtual environment path&gt;</code></li>
+</ul>
+<p>가상 환경을 생성합니다. 기존의 <code>virtualenv</code> 가 했던 기능을 대체합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python -m venv venv &amp;&amp; ls venv
+Include  Lib  Scripts  pyvenv.cfg
+</code></pre></td></tr></table>
+</div>
+</div><br/>
+<ul>
+<li><code>python -m pydoc</code></li>
+</ul>
+<p>파이썬 레퍼런스 문서를 생성합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 특정 모듈에 대한 레퍼런스를 콘솔에서 보거나</span>
+$ python -m pydoc os
+Help on module os:
+
+NAME
+    os - OS routines <span class="k">for</span> NT or Posix depending on what system we<span class="err">&#39;</span>re on.
+...
+<span class="c1"># 전체 레퍼런스 문서를 웹 페이지에서 보는 것도 가능합니다.</span>
+$ python -m pydoc -b
+</code></pre></td></tr></table>
+</div>
+</div><br/>
+<ul>
+<li><code>python -m profile</code></li>
+</ul>
+<p>파이썬 코드를 프로파일링합니다. 각 함수가 몇번이나 실행되었고, 얼마나 시간이 걸렸는지를 측정할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m profile test.py
+         <span class="m">39721</span> <span class="k">function</span> calls <span class="o">(</span><span class="m">38908</span> primitive calls<span class="o">)</span> in 0.141 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno<span class="o">(</span><span class="k">function</span><span class="o">)</span>
+  215/214    0.000    0.000    0.047    0.000 :0<span class="o">(</span>__build_class__<span class="o">)</span>
+       <span class="m">84</span>    0.000    0.000    0.000    0.000 :0<span class="o">(</span>__contains__<span class="o">)</span>
+        <span class="m">1</span>    0.000    0.000    0.000    0.000 :0<span class="o">(</span>__enter__<span class="o">)</span>
+...
+</code></pre></td></tr></table>
+</div>
+</div><br/>
+<ul>
+<li><code>python -m trace</code></li>
+</ul>
+<p>파이썬 호출 스택을 트레이싱합니다. 코드 실행 경로를 파악할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python -m trace --trace test.py
+ --- modulename: test, funcname: &lt;module&gt;
+test.py(1): import asyncio
+ --- modulename: _bootstrap, funcname: _find_and_load
+&lt;frozen importlib._bootstrap&gt;(988):  --- modulename: _bootstrap, funcname: __init__
+...
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="마무리">마무리</h3>
+<p>이 글에서 소개하는 스크립트들의 기능은 당연히 해당 모듈을 직접 임포트해서 쉽게 구현할 수 있습니다.
+그 편이 더 복잡한 로직을 구현하기도 수월할 테구요. 😂</p>
+<p>반쯤은 재미로, 반쯤은 특수한 상황에서 한번쯤 써먹어볼 법한 기술(?)로 기억 한 구석에 남겨두시면 좋을 것 같습니다.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/python/cpython/tree/main/Lib">https://github.com/python/cpython/tree/main/Lib</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-06-10
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <ins class="kakao_ad_area" style="display:none;" 
+    data-ad-unit    = "DAN-jwL3LOjV3XjlrVc4" 
+    data-ad-width   = "320" 
+    data-ad-height  = "100"></ins> 
+   <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/2021/05/31/monthly-log-2105.html/">
+            <span class="next-text nav-default">월간 기술 스크랩 21/05</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="comments" class="comments">
+            
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+        </div>
+
+        <div id="search-results" class="search-results">
+            <template>
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title"><a class="post-link" href="{url}">{title}</a></h1>
+            <div class="post-meta">
+                <span class="post-time"> {date} </span>
+                <div class="post-category">
+                    <a href="{categoryUrl}"> {category} </a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <div class="post-summary">
+                {summary}
+            </div>
+            <div class="read-more">
+                <a href="{url}" class="read-more-link">Read more...</a>
+            </div>
+        </div>
+    </article>
+</template>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+    <a href="https://ryanking13.github.io/feed.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

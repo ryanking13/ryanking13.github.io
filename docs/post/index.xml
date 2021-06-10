@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Morgenrøde</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 31 May 2021 01:01:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Jun 2021 00:00:01 +0900</lastBuildDate><atom:link href="https://ryanking13.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트</title>
+      <link>https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:01 +0900</pubDate>
+      
+      <guid>https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/</guid>
+      <description>파이썬 기본 모듈에 내장된 스크립트를 소개합니다.</description>
+    </item>
+    
     <item>
       <title>월간 기술 스크랩 21/05</title>
       <link>https://ryanking13.github.io/2021/05/31/monthly-log-2105.html/</link>
