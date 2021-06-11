@@ -130,6 +130,19 @@ nnn은 C로 만들어졌고, 각종 플러그인들을 직접 설치해야 하�
 개인적으로는 터미널 환경에서 파일 매니저의 필요를 느낀 적이 없어서 많이 써보지는 않았는데,
 콘솔 환경에서의 작업을 좋아하는 분들이라면 가지고 놀기에는 이만한 도구가 없는 듯 합니다.
 
+### [WebContainer](https://blog.stackblitz.com/posts/introducing-webcontainers/)
+
+브라우저에서 구동되는 Node.js.
+
+WebAssembly의 등장으로 브라우저에서 할 수 있는 작업이 폭발적으로 늘어나고 있는데요.
+이번에는 StackBlitz라는 회사에서 Node.js를 브라우저에서 구동하는 서비스를 공개했습니다.
+
+클라우드 서버를 이용하는 일반 원격 개발환경과는 다르게 브라우저상에서 Node.js 개발환경을 만들어냈다는 것인데,
+어떻게 만들었는지 참 궁금합니다.
+
+소스코드는 공개되어 있지 않고, StackBlitz 홈페이지에서 베타 버전 서비스를 이용해볼 수 있습니다.
+
+
 ## 📙 책 / 강의 / 영상
 
 ### [rustlings](https://github.com/rust-lang/rustlings)
