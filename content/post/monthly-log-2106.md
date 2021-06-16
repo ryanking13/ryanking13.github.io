@@ -142,6 +142,17 @@ WebAssembly의 등장으로 브라우저에서 할 수 있는 작업이 폭발�
 
 소스코드는 공개되어 있지 않고, StackBlitz 홈페이지에서 베타 버전 서비스를 이용해볼 수 있습니다.
 
+### [Pyodide](https://blog.stackblitz.com/posts/introducing-webcontainers/)
+
+브라우저에서 구동되는 파이썬.
+
+이 프로젝트도 WebContainer처럼 WebAssembly를 기반으로 합니다.
+모질라에서 시작한 프로젝트인데, 지금은 모질라가 주도적으로 개발하고 있지는 않은 듯합니다.
+
+로드맵을 살펴보면 아직 갈 길이 멀어보이기는 하는데, 이 역시 흥미로운 프로젝트인 것은 분명하네요.
+
+웹 [REPL](https://pyodide.org/en/stable/console.html) 콘솔을 통해서 체험해볼 수 있습니다.
+
 
 ## 📙 책 / 강의 / 영상
 
