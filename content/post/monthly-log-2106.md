@@ -167,7 +167,7 @@ WebAssembly의 등장으로 브라우저에서 할 수 있는 작업이 폭발�
 
 소스코드는 공개되어 있지 않고, StackBlitz 홈페이지에서 베타 버전 서비스를 이용해볼 수 있습니다.
 
-### [Pyodide](https://blog.stackblitz.com/posts/introducing-webcontainers/)
+### [Pyodide](https://github.com/pyodide/pyodide)
 
 브라우저에서 구동되는 파이썬.
 
@@ -177,6 +177,19 @@ WebAssembly의 등장으로 브라우저에서 할 수 있는 작업이 폭발�
 로드맵을 살펴보면 아직 갈 길이 멀어보이기는 하는데, 이 역시 흥미로운 프로젝트인 것은 분명하네요.
 
 웹 [REPL](https://pyodide.org/en/stable/console.html) 콘솔을 통해서 체험해볼 수 있습니다.
+
+### [Open Source Insights](https://deps.dev/)
+
+구글에서 실험 프로젝트로 공개한 오픈소스 프로젝트의 의존성 검색 도구.
+
+현재는 JavaScript(npm), Java(Maven), Go, 그리고 Rust(Cargo)를 지원합니다.
+
+특정 오픈소스 프로젝트가 어떤 라이브러리에 직접/간접적으로 의존하는지,
+해당 라이브러리의 라이센스는 무엇인지를 알 수 있는데요.
+
+기업에서 특정한 오픈소스를 도입하고자 할때 기술 스택을 파악하고 라이센스를 검사할 때 사용해보면 좋을 듯 합니다.
+
+다만 구글이 만든 프로젝트는 언제 소리소문없이 사라질지 모른다는 점이 걱정이긴하네요.
 
 
 ## 📙 책 / 강의 / 영상
