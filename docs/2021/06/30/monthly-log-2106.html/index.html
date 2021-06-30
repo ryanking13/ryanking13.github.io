@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>월간 기술 스크랩 21/06 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 6월)" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+<script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2021/06/30/monthly-log-2106.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="월간 기술 스크랩 21/06" />
+<meta property="og:description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 6월)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/06/30/monthly-log-2106.html/" />
+<meta property="article:published_time" content="2021-06-30T01:01:00+00:00" />
+<meta property="article:modified_time" content="2021-06-30T01:01:00+00:00" />
+<meta itemprop="name" content="월간 기술 스크랩 21/06">
+<meta itemprop="description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 6월)">
+<meta itemprop="datePublished" content="2021-06-30T01:01:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-30T01:01:00+00:00" />
+<meta itemprop="wordCount" content="4843">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="월간 기술 스크랩 21/06"/>
+<meta name="twitter:description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 6월)"/>
+<script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+
+
+
+
+<div class="menu-wrapper">
+  <nav class="site-navbar">
+    <ul id="menu" class="menu">
+      <li class="menu-item">
+          <a class="menu-item-link" href="/">Home</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/post/">Archives</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/categories/">Categories</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/about/">About</a>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="search-wrapper">
+    <div class="show-search">
+        <a class="toggle-search" title="search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="612.056" height="612.057" viewbox="0 0 613 613">
+                <path
+                    d="M595.2 513.908L493.775 412.482c26.707-41.727 42.685-91.041 42.685-144.263C536.459 120.085 416.375 0 268.24 0 120.106 0 .021 120.085.021 268.219c0 148.134 120.085 268.22 268.219 268.22 53.222 0 102.537-15.979 144.225-42.686l101.426 101.463c22.454 22.453 58.854 22.453 81.271 0 22.492-22.491 22.492-58.855.038-81.308zm-326.96-54.103c-105.793 0-191.585-85.793-191.585-191.585 0-105.793 85.792-191.585 191.585-191.585s191.585 85.792 191.585 191.585c.001 105.792-85.791 191.585-191.585 191.585z" />
+            </svg>
+        </a>
+    </div>
+    <div class="input-wrapper">
+        <input type="search" placeholder="검색어 입력" disabled="disabled" />
+    </div>
+</div>
+
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+</div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">월간 기술 스크랩 21/06</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-06-30 </span>
+        <div class="post-category">
+            <a href="/categories/newsletter/"> Newsletter </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-글">✍️ 글</a>
+          <ul>
+            <li><a href="#리눅스-30주년-맞이-리누스-토발즈-인터뷰-번역httpssjp38githubiokoposttorvalds_interview_for_30th_anniversary_of_linux_kernel_part1"><a href="https://sjp38.github.io/ko/post/torvalds_interview_for_30th_anniversary_of_linux_kernel_part1/">리눅스 30주년 맞이 리누스 토발즈 인터뷰 번역</a></a></li>
+            <li><a href="#monetizing-open-source-is-problematichttpsmarakcomblog2021-04-25-monetizing-open-source-is-problematic"><a href="https://marak.com/blog/2021-04-25-monetizing-open-source-is-problematic">Monetizing open-source is problematic</a></a></li>
+            <li><a href="#잘못-구현한-다익스트라-알고리즘-저격하기httpwwwsecmemorgblog20190109wrong-dijkstra"><a href="http://www.secmem.org/blog/2019/01/09/wrong-dijkstra/">잘못 구현한 다익스트라 알고리즘 저격하기</a></a></li>
+            <li><a href="#sorry-everybody-i-failed-with-youhttpsgithubcompedronauckdoczissues1634"><a href="https://github.com/pedronauck/docz/issues/1634">Sorry everybody, I failed with you</a></a></li>
+            <li><a href="#the-top-ranking-html-editor-on-google-is-an-seo-scamhttpscasparwredeblogseo-scam"><a href="https://casparwre.de/blog/seo-scam/">The top-ranking HTML editor on Google is an SEO scam</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-기술-뉴스">📰 기술 뉴스</a>
+          <ul>
+            <li><a href="#stack-overflow-sold-to-tech-giant-prosus-for-18-billionhttpswwwwsjcomarticlessoftware-developer-community-stack-overflow-sold-to-tech-giant-prosus-for-1-8-billion-11622648400"><a href="https://www.wsj.com/articles/software-developer-community-stack-overflow-sold-to-tech-giant-prosus-for-1-8-billion-11622648400">Stack Overflow Sold to Tech Giant Prosus for $1.8 Billion</a></a></li>
+            <li><a href="#fastly-outagehttpsnewsycombinatorcomitemid27432408"><a href="https://news.ycombinator.com/item?id=27432408">Fastly Outage</a></a></li>
+            <li><a href="#토스뱅크-출범httpsbylinenetwork20210609-48cttrss_email_campaignmc_cid406a337d6fmc_eid5797d4df7e"><a href="https://byline.network/2021/06/09-48/?ct=t(RSS_EMAIL_CAMPAIGN)&amp;mc_cid=406a337d6f&amp;mc_eid=5797d4df7e">토스뱅크 출범</a></a></li>
+            <li><a href="#windows-11httpsblogswindowscomwindowsexperience20210624introducing-windows-11"><a href="https://blogs.windows.com/windowsexperience/2021/06/24/introducing-windows-11/">Windows 11</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-소프트웨어--프로젝트">⚙️ 소프트웨어 / 프로젝트</a>
+          <ul>
+            <li><a href="#devbookhttpsusedevbookcom"><a href="https://usedevbook.com/">DevBook</a></a></li>
+            <li><a href="#flat-datahttpsoctogithubcomprojectsflat-data"><a href="https://octo.github.com/projects/flat-data">Flat Data</a></a></li>
+            <li><a href="#nnnhttpsgithubcomjarunnnn"><a href="https://github.com/jarun/nnn">nnn</a></a></li>
+            <li><a href="#webcontainerhttpsblogstackblitzcompostsintroducing-webcontainers"><a href="https://blog.stackblitz.com/posts/introducing-webcontainers/">WebContainer</a></a></li>
+            <li><a href="#pyodidehttpsgithubcompyodidepyodide"><a href="https://github.com/pyodide/pyodide">Pyodide</a></a></li>
+            <li><a href="#open-source-insightshttpsdepsdev"><a href="https://deps.dev/">Open Source Insights</a></a></li>
+            <li><a href="#new-github-issueshttpsgithubcomfeaturesissues"><a href="https://github.com/features/issues">New Github Issues</a></a></li>
+            <li><a href="#github-copilothttpscopilotgithubcom"><a href="https://copilot.github.com/">Github Copilot</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-책--강의--영상">📙 책 / 강의 / 영상</a>
+          <ul>
+            <li><a href="#rustlingshttpsgithubcomrust-langrustlings"><a href="https://github.com/rust-lang/rustlings">rustlings</a></a></li>
+            <li><a href="#스타트업을-만나다httpswwwyoutubecomwatchappdesktopvii5uuq7sarefeatureyoutube"><a href="https://www.youtube.com/watch?app=desktop&amp;v=II5uUQ7sARE&amp;feature=youtu.be">스타트업을 만나다</a></a></li>
+            <li><a href="#pycon-us-2021httpswwwyoutubecomplaylistlistpl2uw4_hvxqvyk1y5p8kryoyd83l_0uk5k"><a href="https://www.youtube.com/playlist?list=PL2Uw4_HvXqvYk1Y5P8kryoyd83L_0Uk5K">Pycon US 2021</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="-글">✍️ 글</h2>
+<h3 id="리눅스-30주년-맞이-리누스-토발즈-인터뷰-번역httpssjp38githubiokoposttorvalds_interview_for_30th_anniversary_of_linux_kernel_part1"><a href="https://sjp38.github.io/ko/post/torvalds_interview_for_30th_anniversary_of_linux_kernel_part1/">리눅스 30주년 맞이 리누스 토발즈 인터뷰 번역</a></h3>
+<p>리눅스 탄생 30주년을 맞아 리누스 토르발즈와 진행한 인터뷰.
+리눅스와 오픈소스에 대한 토르발즈의 많은 생각을 엿볼 수 있는 글입니다.</p>
+<p>개인적으로 흥미로웠던 내용은,
+토르발즈가 버전 관리 시스템 git을 만든 이유가 단순히 자신이 필요해서라는 점이었고,
+그렇다보니 프로젝트를 오래 관리할 생각이 없어서 git을 만든 다음 해에 바로 메인테이너를 넘겨줘버렸다고 하는 것입니다.</p>
+<p>또한 리눅스 라이센스를 정했던 내용과 git에 담긴 철학 등을 살펴보면,
+토르발즈가 누구나 자유롭게 코드를 개발할 수 있고, 누구에게나 배타적이지 않은 개발 생태계를 구성하는 것을 굉장히 중요시 여긴다는 점을 알 수 있었습니다.
+(근데 왜 그렇게 말은 거칠게 하는지&hellip;)</p>
+<p>한국어 번역이 매우 잘 되어있어서 전문을 읽어보시는 것을 추천드립니다.</p>
+<h3 id="monetizing-open-source-is-problematichttpsmarakcomblog2021-04-25-monetizing-open-source-is-problematic"><a href="https://marak.com/blog/2021-04-25-monetizing-open-source-is-problematic">Monetizing open-source is problematic</a></h3>
+<p>오픈소스 라이브러리인 Faker.js의 개발자가 라이브러리를 유지하는 데에 금전적인 문제를 겪고 있었고,
+이를 해결하기 위해 Faker.js에 도네이션을 하고 있던 Retool에 프로젝트를 매각하려다 실패한 이야기.</p>
+<p>전체 내용을 요약하면 위와 같은데, 본문의 뉘앙스는 좀 많이 다르니 본문을 읽어보시는게 좋습니다.</p>
+<p>오픈소스로 돈을 버는 문제가 점점 이슈가 되고 있는데요.
+과거에는 좋은 프로덕트를 만들면 사용하는 사람들이 그에 대한 충분한 보상을 해줄 것이다라는 믿음이 있었다면,
+요즘은 클라우드 제공자들이 오픈소스를 가져와 프로덕트화 하면서
+자신들이 만든 것처럼 돈을 주고 파는 상황이 빈번해지고 있는데요.
+그러다보니 <a href="https://www.elastic.co/kr/pricing/faq/licensing">Elastic</a>이나
+<a href="https://www.zdnet.co.kr/view/?no=20181018170528">MongoDB</a>에서는
+클라우드 제공자들이 자신들의 프로적트를 SaaS로 제공하는 것을 라이센스 변경으로 제한하기도 했죠.</p>
+<p>오픈소스 개발자들이 노력한만큼의 합당한 보상을 받을 수 있는 시대가 올까요?</p>
+<p>+) Faker.js의 개발자 Marak은 지난 해 자신이 살던 집이 불타서 금전적 어려움을 겪으면서
+<a href="https://github.com/Marak/faker.js/issues/1046">더 이상 무료로 Faker.js 개발을 하지 않겠다</a>라고 말해 유명해지기도 했습니다.</p>
+<h3 id="잘못-구현한-다익스트라-알고리즘-저격하기httpwwwsecmemorgblog20190109wrong-dijkstra"><a href="http://www.secmem.org/blog/2019/01/09/wrong-dijkstra/">잘못 구현한 다익스트라 알고리즘 저격하기</a></h3>
+<p>한 개의 정점에서 다른 모든 정점으로 가는 최단 거리를 구하는 다익스트라 알고리즘은
+프로그래밍 문제에 단골로 등장하는 대표적인 알고리즘 중 하나입니다.</p>
+<p>그러나 실제로 구현하다보면 잦은 실수가 발생하는 알고리즘이기도 한데,
+그런 실수가 어떤 worst case에서 시간복잡도에 문제를 발생시키고,
+출제자의 입장에서 이러한 실수를 잡아내기 위해서 어떤 테스트 케이스를 의도적으로 만들어야하는 지를 다룬 글입니다.</p>
+<p>추가로, 다익스트라 알고리즘을 가르칠 때 어떠한 방식으로 접근하면 좋을 지를 다룬
+<a href="https://mobile.twitter.com/Gravekper/status/1397547634626232321">트위터 글타래</a>도 함께 읽어보시면 좋습니다.</p>
+<h3 id="sorry-everybody-i-failed-with-youhttpsgithubcompedronauckdoczissues1634"><a href="https://github.com/pedronauck/docz/issues/1634">Sorry everybody, I failed with you</a></h3>
+<p>2만개가 넘는 Star를 받은 문서 생성 도구인 <a href="https://github.com/pedronauck/docz">docz</a>가 작년 거의 유지보수가 이루어지지 않았는데,
+이에 대해서 프로젝트 메인테이너가 남기는 사과의 글.</p>
+<p>메인테이너는 이 프로젝트를 개발하기 위해 3시간 일찍 일어나고 3시간 늦게 자는 생활을 반복해왔다고 하는데,
+이러한 과도한 스케쥴 때문에 번아웃이 와서 한해동안 자신의 육체적/정신적 건강을 위해서 개발을 하지 않았다고 합니다.</p>
+<p>오픈소스는 결국 개발자들의 자발적인 재능 기부로 이루어지는 것이니만큼,
+번아웃이 오지 않게 하기 위해서는 동기부여가 중요할텐데요.
+이 글에 달린 댓글에는 개발자를 위한 금전적인 지원도 물론 좋지만,
+오픈소스 개발자들에게 간단하고도 쉽게 동기부여를 할 수 있는 방법은 자신들이 이 프로젝트를 쓰고 있다는 사실을 말해주는 것이라고 합니다.</p>
+<p>우리들이 이 프로젝트를 쓰고있고, 당신들인 시간과 노력이 우리들에게 큰 도움이 되고 있다고 말이지요.</p>
+<h3 id="the-top-ranking-html-editor-on-google-is-an-seo-scamhttpscasparwredeblogseo-scam"><a href="https://casparwre.de/blog/seo-scam/">The top-ranking HTML editor on Google is an SEO scam</a></h3>
+<p>다수의 유명한 HTML 포맷팅 도구들이, 유저 몰래 특정 사이트로의 하이퍼링크를 HTML에 삽입해서,
+해당 사이트의 구글 검색 순위를 올리는 SEO 스캠 행위를 하고 있다고 고발하는 글.</p>
+<p>글 작성자는 유명한 스코어보드 웹 서비스를 만드는 개발자인데,
+자신의 서비스가 구글 검색 순위에서 늘 두번째에 위치하는 것을 보고
+대체 첫번째 서비스가 뭘까, 하고 알아보다가 이런 사실을 발견하게 되었다고 합니다.</p>
+<!-- ## 📌 북마크 -->
+<h2 id="-기술-뉴스">📰 기술 뉴스</h2>
+<h3 id="stack-overflow-sold-to-tech-giant-prosus-for-18-billionhttpswwwwsjcomarticlessoftware-developer-community-stack-overflow-sold-to-tech-giant-prosus-for-1-8-billion-11622648400"><a href="https://www.wsj.com/articles/software-developer-community-stack-overflow-sold-to-tech-giant-prosus-for-1-8-billion-11622648400">Stack Overflow Sold to Tech Giant Prosus for $1.8 Billion</a></h3>
+<p>개발자들의 영원한 친구 스택 오버플로우가 유럽의 거대 기술 투자사인 <a href="https://www.prosus.com/">Prosus</a>에 매각되었습니다.</p>
+<p>Prosus는 텐센트의 최대 주주로 유명하고, Udemy나 Codeacademy 같은 기술 교육 업체에도 많은 지분을 가지고 있는 것으로 알려져 있는데요.</p>
+<p>앞으로도 스택 오버플로우가 독립적으로 잘 운영될 수 있을지,
+혹은 많은 변화를 겪게될 지 궁금해지는 상황입니다.</p>
+<h3 id="fastly-outagehttpsnewsycombinatorcomitemid27432408"><a href="https://news.ycombinator.com/item?id=27432408">Fastly Outage</a></h3>
+<p>우리나라 시각으로 6월 8일, 세계적으로 많은 사이트(스택오버플로우, 레딧, 영국 정부, &hellip;)가 동시다발적으로 다운 되는 사태가 발생했는데요.
+그 원인으로 CDN 업체인 Fastly에서 문제가 발생했다는 것이 밝혀졌습니다.
+다만 상세한 내용은 공개되지 않은 상태입니다.</p>
+<p>2019년에 있었던 <a href="https://ryanking13.github.io/2019/07/18/details-of-the-cloudflare-outage-on-july-2-2019.html">Cloudflare 사태</a>도 그렇고,
+글로벌하게 네트워크 인프라를 제공하는 회사에 문제가 생겼을 때 얼마나 큰 영향이 발생하는 지 알 수 있었던 상황이었습니다.</p>
+<p>흥미롭게도 미국에 상장된 Fastly의 주가는 이슈가 발생한 당일, 문제가 해결되고 나서 18%넘게 오르고 마감했는데요.
+문제가 발생했다는 사실 그 자체보다는,
+B2B 사업을 위주로 하는 Fastly가 생각보다 엄청 글로벌한 기업들에 서비스를 제공하고 있었구나라는 걸 사람들이 알게되어서가 아닐까 하고 조심스레 추측해봅니다. 🤔</p>
+<h3 id="토스뱅크-출범httpsbylinenetwork20210609-48cttrss_email_campaignmc_cid406a337d6fmc_eid5797d4df7e"><a href="https://byline.network/2021/06/09-48/?ct=t(RSS_EMAIL_CAMPAIGN)&amp;mc_cid=406a337d6f&amp;mc_eid=5797d4df7e">토스뱅크 출범</a></h3>
+<p>토스에서 케이뱅크, 카카오뱅크 다음으로 우리나라 세번째 인터넷은행인 토스뱅크를 출범합니다.
+초대 대표인 홍민택 대표는 삼성에서 삼성페이 사업을 담당하셨던 분이라고 합니다.</p>
+<p>보험에, 증권에, 이제 은행까지 말그대로 올인원 앱을 지향하는 토스의 행보가 얼마나 성공할 수 있을지 기대반 걱정반인 상태인데요.
+아무래도 토스의 가장 큰 경쟁자는 여러 핵심 사업에서 맞부딫히는 카카오가 될텐데, 토스가 얼마나 시장의 파이를 차지할 수 있을지 흥미롭게 지켜볼 수 있을 것 같습니다.</p>
+<h3 id="windows-11httpsblogswindowscomwindowsexperience20210624introducing-windows-11"><a href="https://blogs.windows.com/windowsexperience/2021/06/24/introducing-windows-11/">Windows 11</a></h3>
+<p>마이크로소프트의 새로운 Windows OS인 Windows 11이 공개되었습니다.</p>
+<p>전체적으로 디자인이 동글동글해지고 깔끔해진 모습인데요.
+모바일과 PC 환경을 통합하려는 마이크로소프트의 의도가 느껴지는 부분인 것 같습니다.</p>
+<p>한 가지 흥미로운 기능으로는 윈도우즈에서 안드로이드 앱을 네이티브로 지원하는 WSA(Windows Subsystems for Android)인데요.
+WSL을 성공적으로 안착시킨 윈도우즈가 안드로이드에도 손을 뻗치는 모습이네요.
+얼마나 성공적인 기능이 될 지 지켜볼 가치가 있을 듯 합니다.</p>
+<h2 id="-소프트웨어--프로젝트">⚙️ 소프트웨어 / 프로젝트</h2>
+<h3 id="devbookhttpsusedevbookcom"><a href="https://usedevbook.com/">DevBook</a></h3>
+<p>스택 오버플로우나 공식 문서를 빠르게 검색할 수 있게 해주는 데스크탑 애플리케이션.</p>
+<p>단축키로 껐다 켤 수 있고 굉장히 빠르고 가볍습니다.</p>
+<p>이런 식의 아이디어는 굉장히 여럿 봐왔는데 그 중에서 가장 깔끔하고 사용하기 좋게 만들어진 듯 합니다.</p>
+<p>다만 이런 프로그램의 한계는 결국 복잡한 정보를 찾고 비교하려면 웹 브라우저를 써야한다는 것인데,
+실제 개발환경에서 얼마나 유용하게 사용할 수 있을지는 다소 의문스러운 부분입니다.</p>
+<h3 id="flat-datahttpsoctogithubcomprojectsflat-data"><a href="https://octo.github.com/projects/flat-data">Flat Data</a></h3>
+<p>깃헙에서 공개한 데이터 ETL 도구.</p>
+<p>간단한 수준에서 주기적으로 데이터를 수집하고 저장해야할 필요가 있을 때,
+Cron 형태로 동작하는 CI 도구와 깃헙은 꽤나 유용한 조합인데요.
+깃헙에서 이러한 작업을 쉽게 개발할 수 있게 해주는 도구셋을 공개했습니다.</p>
+<ol>
+<li>정해진 API에서 데이터를 읽어오고 후처리한 후 깃헙에 업로드해주는 Github Actions</li>
+<li>업로드된 데이터를 브라우저상에서 볼 수 있게 해주는 도구</li>
+</ol>
+<p>해당 도구를 공개한 Github OCTO는 깃헙 CTO인 Jason Warner를 중심으로
+개발자들을 위한 도구를 개발하는 팀이라고 하는데요.</p>
+<p>Flat Data를 시작으로 앞으로도 다양한 프로젝트가 공개될 듯한데 기대가 됩니다.</p>
+<h3 id="nnnhttpsgithubcomjarunnnn"><a href="https://github.com/jarun/nnn">nnn</a></h3>
+<p>터미널 기반 파일 매니저.</p>
+<p>비슷한 대용품으로는 <a href="https://github.com/ranger/ranger">ranger</a>가 있습니다.</p>
+<p>ranger는 파이썬으로 짜여있고, 기본 설치만 해도 많은 것들이 포함되어 무거운 것에 비해,
+nnn은 C로 만들어졌고, 각종 플러그인들을 직접 설치해야 하지만 아주 가볍습니다.</p>
+<p>개인적으로는 터미널 환경에서 파일 매니저의 필요를 느낀 적이 없어서 많이 써보지는 않았는데,
+콘솔 환경에서의 작업을 좋아하는 분들이라면 가지고 놀기에는 이만한 도구가 없는 듯 합니다.</p>
+<h3 id="webcontainerhttpsblogstackblitzcompostsintroducing-webcontainers"><a href="https://blog.stackblitz.com/posts/introducing-webcontainers/">WebContainer</a></h3>
+<p>브라우저에서 구동되는 Node.js.</p>
+<p>WebAssembly의 등장으로 브라우저에서 할 수 있는 작업이 폭발적으로 늘어나고 있는데요.
+이번에는 StackBlitz라는 회사에서 Node.js를 브라우저에서 구동하는 서비스를 공개했습니다.
+클라우드 서버를 이용하는 일반 원격 개발환경과는 다르게 브라우저상에서 Node.js 개발 환경을 제공합니다.</p>
+<p>소스코드는 공개되어 있지 않고, StackBlitz 홈페이지에서 베타 버전 서비스를 이용해볼 수 있습니다.</p>
+<h3 id="pyodidehttpsgithubcompyodidepyodide"><a href="https://github.com/pyodide/pyodide">Pyodide</a></h3>
+<p>브라우저에서 구동되는 파이썬.</p>
+<p>이 프로젝트도 WebContainer처럼 WebAssembly를 기반으로 합니다.
+모질라에서 시작한 프로젝트인데, 지금은 모질라가 주도적으로 개발하고 있지는 않은 듯합니다.</p>
+<p>로드맵을 살펴보면 아직 갈 길이 멀어보이기는 하는데, 이 역시 흥미로운 프로젝트인 것은 분명하네요.</p>
+<p>웹 <a href="https://pyodide.org/en/stable/console.html">REPL</a> 콘솔을 통해서 체험해볼 수 있습니다.</p>
+<h3 id="open-source-insightshttpsdepsdev"><a href="https://deps.dev/">Open Source Insights</a></h3>
+<p>구글에서 실험적 프로젝트로 공개한 오픈소스 프로젝트 의존성 검색 도구.</p>
+<p>현재는 JavaScript(npm), Java(Maven), Go, 그리고 Rust(Cargo)를 지원합니다.</p>
+<p>특정 오픈소스 프로젝트가 어떤 라이브러리에 직접/간접적으로 의존하는지,
+해당 라이브러리의 라이센스는 무엇인지를 알 수 있는데요.
+기업에서 특정한 오픈소스를 도입하고자 할때 기술 스택을 파악하고 라이센스를 검사할 때 사용해보면 좋을 듯 합니다.</p>
+<p>구글이 만든 프로젝트는 언제 소리소문없이 사라질지 모른다는 특징이 있긴 합니다만&hellip;
+앞으로도 열심히 발전해서 유용한 도구가 되었으면 하는 바람입니다.</p>
+<h3 id="new-github-issueshttpsgithubcomfeaturesissues"><a href="https://github.com/features/issues">New Github Issues</a></h3>
+<p>깃헙이 새로운 형태의 Issues 베타 버전을 공개했습니다.</p>
+<p>마치 스프레드시트를 사용하는 것처럼 사용할 수 있는 모델인데요.
+기존 Issues가 누구나 쉽게 사용할 수 있는 형태의 디자인이었다면,
+새로 공개된 Issues는 복잡하지만 더 많은 걸 할 수 있는 디자인을 지향하는 것으로 보입니다.</p>
+<p>지금까지 깃헙의 행보를 보면 다른 서드파티가 지원하는 기능들을 다 통합한 올인원 개발 플랫폼이 되겠다고 하는 의지가 뚜렷한데요.
+깃헙이 추구하는 대통합이 과연 가능할지 지켜보는 것도 흥미로울 것 같습니다.</p>
+<h3 id="github-copilothttpscopilotgithubcom"><a href="https://copilot.github.com/">Github Copilot</a></h3>
+<p>깃헙에서 OpenAI와 협업해서 만든 머신러닝 기반 코드 자동완성 도구.</p>
+<p>기존에도 <a href="https://www.kite.com/">Kite</a>처럼 머신러닝을 이용해 간단한 자동완성을 지원하는 도구들은 더러 있었지만,
+Copilot은 단순한 자동완성 수준이 아니라 완전한 함수 수준의 코드를 생성해준다는 것이 특징인데요.</p>
+<p>예를 들어, &ldquo;이 함수는 이런이런 기능을 하는 함수야&quot;라고 주석을 작성하면,
+해당 주석의 내용을 바탕으로 완전한 함수 전체를 생성해준다는 것이죠.</p>
+<p>알파 테스트를 통해 2주간 Copilot을 사용해본 <a href="https://news.ycombinator.com/item?id=27676266">사람들의 반응</a>을 살펴보면,
+아주 대중적이고, 복잡하지 않은 케이스, 대표적으로는 React나 Angular의 컴포넌트를 작성하는 등의 작업을 할 때의 적중률이 높았다고 합니다.
+그리고 적중률의 높낮이와는 별개로, 도구의 이름처럼 AI와 페어 프로그래밍을 하는 느낌을 많이들 받았다고 합니다.</p>
+<p>한편으로는 법적 문제를 걱정하는 의견들도 꽤 보였는데요.
+깃헙에 공개된 코드를 바탕으로 학습한 모델이다보니,
+생성된 코드의 라이센스 문제, 생성된 코드가 다른 코드와 표절 시비에 걸렸을 때의 법적 문제 등을 걱정하는 의견들이 있었습니다.
+이 또한 앞으로 흥미로운 논의거리가 될 것 같습니다.</p>
+<h2 id="-책--강의--영상">📙 책 / 강의 / 영상</h2>
+<h3 id="rustlingshttpsgithubcomrust-langrustlings"><a href="https://github.com/rust-lang/rustlings">rustlings</a></h3>
+<p>컴파일 에러를 고쳐가며 배우는 러스트.</p>
+<p>단순히 튜토리얼을 읽는 것보다 몰입감있게 러스트를 배울 수 있습니다.</p>
+<h3 id="스타트업을-만나다httpswwwyoutubecomwatchappdesktopvii5uuq7sarefeatureyoutube"><a href="https://www.youtube.com/watch?app=desktop&amp;v=II5uUQ7sARE&amp;feature=youtu.be">스타트업을 만나다</a></h3>
+<p>지난 5월 <a href="https://www.facebook.com/groups/ossdevforum">OSS개발자포럼</a>에서 진행한 온라인 행사.</p>
+<p>Backend.AI를 만드는 래블업의 CTO 김준기님, 강남언니를 만드는 힐링페이퍼의 CTO 이규원님 등,
+스타트업계에서 굵직한 경력을 가진 CTO급 임원 분들이 자신의 경험과 생각을 이야기해주는 영상입니다.</p>
+<p>조직을 이끌어나가는 입장에 계신 분들이, 회사에서는 어떠한 사람을 원하고,
+어떤 문화를 만들어나가고 싶어하는지를 들을 수 있는 유익한 내용입니다.</p>
+<p>덤으로 각각의 발표자분들이 자신의 회사에 들어온 이력서를 평가하면서,
+이력서의 어떠한 부분을 좋게 보았고, 어떠한 부분은 부족하다고 생각하는지도 들을 수 있어서,
+이력서를 작성하는 주니어 개발자들도 한번쯤 들어보시면 좋을 것 같습니다.</p>
+<h3 id="pycon-us-2021httpswwwyoutubecomplaylistlistpl2uw4_hvxqvyk1y5p8kryoyd83l_0uk5k"><a href="https://www.youtube.com/playlist?list=PL2Uw4_HvXqvYk1Y5P8kryoyd83L_0Uk5K">Pycon US 2021</a></h3>
+<p>지난 5월 14일부터 18일까지 온라인으로 개최된 Pycon US 2021 영상이 공개되었습니다.</p>
+<p>도합 80개가 넘는 키노트, 강연, 튜토리얼 영상들이 있습니다.</p>
+<p>제목만 살펴봐도 아주 유익해보이는 영상들이 많은데요.
+기회가 되면 몇가지를 큐레이션해서 정리할 예정입니다.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-06-30
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/2021/06/10/python-commandline-scripts.html/">
+            <span class="next-text nav-default">알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="comments" class="comments">
+            
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+        </div>
+
+        <div id="search-results" class="search-results">
+            <template>
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title"><a class="post-link" href="{url}">{title}</a></h1>
+            <div class="post-meta">
+                <span class="post-time"> {date} </span>
+                <div class="post-category">
+                    <a href="{categoryUrl}"> {category} </a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <div class="post-summary">
+                {summary}
+            </div>
+            <div class="read-more">
+                <a href="{url}" class="read-more-link">Read more...</a>
+            </div>
+        </div>
+    </article>
+</template>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+    <a href="https://ryanking13.github.io/feed.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
