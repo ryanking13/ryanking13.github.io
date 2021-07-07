@@ -16,6 +16,17 @@ draft: true
 
 ## ⚙️ 소프트웨어 / 프로젝트
 
+### [Akamai EdgeWorkers](https://developer.akamai.com/akamai-edgeworkers-overview)
+
+세계 최대 CDN 업체인 Akamai에서 엣지 컴퓨팅 기반 FaaS 서비스인 EdgeWorkers를 공개했습니다.
+
+V8 엔진을 기반으로 동작한다는 점, 엣지 서버를 이용해서 사용자와 가까운 서버에서 동작한다는 점 등
+Cloudflare의 Workers와 거의 동일한 서비스인 것으로 보입니다.
+
+최근 CDN 업계에서 Cloudflare나 Fastly가 빠르게 성장하면서 많은 주목을 받고 있는 것에 비해
+Akamai는 상대적으로 개인에게는 크게 인기가 없었다고 생각되는데요.
+이번에 공개된 EdgeWorkers를 계기로 Akamai가 새로운 변화를 꾀할 수 있을 지 주목해보시는 것도 좋을 듯합니다.
+
 ## 📙 책 / 강의 / 영상
 
 ### [Andrej Karpathy (Tesla): CVPR 2021 Workshop on Autonomous Vehicles](https://youtu.be/g6bOwQdCJrc)
