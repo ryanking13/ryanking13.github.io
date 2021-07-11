@@ -49,7 +49,7 @@ weight: 50
 > 종종 알리고 싶은 주제에 대해 글을 씁니다. 또 흥미로운 글을 가끔 번역합니다.
 > 
 
-## 👔 Work Experience
+<!-- ## 👔 Work Experience
 
 ---
 
@@ -80,7 +80,7 @@ weight: 50
 		- [Malware Analysis Study](https://github.com/GuardianSNUMalwareLab) manager <span style="color:grey"><small>2017 ~ 2018</small></span>
 		- [GuardianCTF 2018](https://github.com/Guardian-SNU/ctf2018-writeups) Web hacking course manager
 
-<br/>
+<br/> -->
 
 ## 👨‍💻 Personal Projects 
 
@@ -243,6 +243,18 @@ Twitter Bot which posts random lyrics
 </div>
 
 PNG Metadata sanity checker
+<br/><br/>
+
+<div style="display: inline;">
+	<h4 style="display: inline;">
+		<a href="https://github.com/ryanking13/lglivephoto" target="_blank">
+			lglivephoto
+			<i class="iconfont icon-github"></i>
+		</a>
+	</h4>
+</div>
+
+LG Live Photo unpacker/repacker
 <br/><br/>
 
 ---
