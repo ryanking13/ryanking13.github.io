@@ -6,7 +6,16 @@
     <description>Recent content in Python on Morgenrøde</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 10 Jun 2021 00:00:01 +0900</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Jul 2021 00:00:01 +0900</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>파이썬 패키징의 과거, 현재, 그리고 미래</title>
+      <link>https://ryanking13.github.io/2021/07/11/python-packaging.html/</link>
+      <pubDate>Sun, 11 Jul 2021 00:00:01 +0900</pubDate>
+      
+      <guid>https://ryanking13.github.io/2021/07/11/python-packaging.html/</guid>
+      <description>파이썬 패키징의 역사 및 최근 동향을 소개합니다.</description>
+    </item>
+    
     <item>
       <title>알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트</title>
       <link>https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/</link>

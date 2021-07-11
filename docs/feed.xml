@@ -6,7 +6,7 @@
     <description>Recent content on Morgenrøde</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 30 Jun 2021 01:01:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 11 Jul 2021 00:00:01 +0900</lastBuildDate>
     <item>
       <title>About</title>
       <link>https://ryanking13.github.io/about/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://ryanking13.github.io/about/</guid>
       <description>최경재 (Gyeongjae Choi) Photo by @joon1204 👋 About me 대한민국 국방과학연구소에서 연구장교로 병역의 의무를 이행하고 있습니다. 다양한 기술을 배우고 익히는 것을 좋아하고, 지식을 나누는 것</description>
+    </item>
+    
+    <item>
+      <title>파이썬 패키징의 과거, 현재, 그리고 미래</title>
+      <link>https://ryanking13.github.io/2021/07/11/python-packaging.html/</link>
+      <pubDate>Sun, 11 Jul 2021 00:00:01 +0900</pubDate>
+      
+      <guid>https://ryanking13.github.io/2021/07/11/python-packaging.html/</guid>
+      <description>파이썬 패키징의 역사 및 최근 동향을 소개합니다.</description>
     </item>
     
     <item>
