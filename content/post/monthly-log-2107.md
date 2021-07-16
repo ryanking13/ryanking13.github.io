@@ -28,6 +28,15 @@ Windows11이 Mac과 같은 다른 OS의 디자인 철학을 따라하기만 했�
 
 ## 📰 기술 뉴스
 
+### [Goodbye, Fleets](https://blog.twitter.com/en_us/topics/product/2021/goodbye-fleets)
+
+트위터가 작년 말에 런칭한, 일정 시간이 지나면 사라지는 트윗 기능인 Fleets를 중단한다고 발표했습니다.
+인스타그램의 스토리 기능을 따라하고자 했지만, 좋은 결과를 얻지 못한 모습이네요.
+
+아무래도 인스타그램보다는 트위터가 그 자체로 휘발성이 강한 미디어라서 그랬던 것일까요?
+최근 틱톡같은 신흥 SNS 강자들이 등장하면서 기존의 대형 SNS 미디어들이 신흥 미디어의 여러 요소들을 벤치마킹하는 모습을 많이 보여주는데,
+각자의 유저층이 원하는 기능이 무엇인지 정확한 니즈를 파악하는 것이 중요하다고 느껴지는 뉴스입니다.
+
 ## ⚙️ 소프트웨어 / 프로젝트
 
 ### [Akamai EdgeWorkers](https://developer.akamai.com/akamai-edgeworkers-overview)
