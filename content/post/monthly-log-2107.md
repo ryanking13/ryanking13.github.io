@@ -81,6 +81,17 @@ NVIDIA에서 공개한 머신러닝 기반 배경 이미지 생성 도구.
 단순히 NVIDIA의 기술력을 보여주는 도구라기에는 psd 익스포트도 가능한 등 완성도가 꽤나 높은데요.
 간단한 프로토타입 이미지 등을 만드는 데에 유용하게 사용할 수 있을 듯 싶습니다.
 
+### [mobileConsole](https://www.hnldesign.nl/work/code/mobileconsole-javascript-console-for-mobile-devices/)
+
+웹 페이지에 유사 개발자 도구 콘솔을 띄워주는 자바스크립트 코드.
+
+PC 환경이라면 그냥 브라우저 개발자 도구를 켜면 되겠지만,
+모바일 환경에서는 아무래도 브라우저의 기능에 제약이 많습니다.
+
+최근에는 상황에 따라 태블릿을 이용해서 개발하는 것이 꽤 흔해졌고,
+심지어는 안드로이드 데스크탑 또는 삼성 DeX를 이용해서 스마트폰으로 개발을 하는 경우도 종종 있다보니,
+급할 때 이런 도구를 써먹을 수 있을 것 같네요.
+
 ## 📙 책 / 강의 / 영상
 
 ### [Andrej Karpathy (Tesla): CVPR 2021 Workshop on Autonomous Vehicles](https://youtu.be/g6bOwQdCJrc)
