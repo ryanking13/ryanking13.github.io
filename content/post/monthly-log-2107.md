@@ -92,6 +92,14 @@ PC 환경이라면 그냥 브라우저 개발자 도구를 켜면 되겠지만,
 심지어는 안드로이드 데스크탑 또는 삼성 DeX를 이용해서 스마트폰으로 개발을 하는 경우도 종종 있다보니,
 급할 때 이런 도구를 써먹을 수 있을 것 같네요.
 
+### [WIFI Card](https://wificard.io/)
+
+와이파이 연결 정보를 QR Code로 생성해주는 사이트.
+
+카페 운영하시는 분들이 출력해서 쓰셔도 좋을 것 같고,
+집에 하나 출력해서 붙여놓고 손님이 왔을 때 보여주기에도 좋을 것 같네요.
+
+
 ## 📙 책 / 강의 / 영상
 
 ### [Andrej Karpathy (Tesla): CVPR 2021 Workshop on Autonomous Vehicles](https://youtu.be/g6bOwQdCJrc)
