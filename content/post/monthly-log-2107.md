@@ -145,3 +145,12 @@ Python, Node.js, Rails, Homebrew 등 굵직한 거대 오픈소스 프로젝트 
 
 오픈소스 프로젝트를 운영하고 있거나, 운영할 계획이라면 도움이 될만한 영상들이 많습니다.
 
+### [Effective Python: 90 Specific Ways to Write Better Python](https://www.amazon.com/Effective-Python-Specific-Software-Development/dp/0134853989)
+
+파이썬을 "잘" 쓰기 위한 90가지 방법들.
+
+파이썬은 알면 알수록 더 잘 쓸 수 있는 언어인데요 (어떤 언어든 안 그렇겠습니까만은).
+기본적인 문법에서부터 테스트, 프로파일링에 이르기까지 파이썬의 Best Practive를 배우기에는 이 책이 가장 좋지 않을까 싶습니다.
+
+취미삼아 파이썬을 배우는 분들이 읽어도 좋은 책이지만,
+특정 프로젝트에 파이썬을 새로 도입하고자 하는 조직에서 읽어보시면 더 좋은 책이 아닐까 싶습니다.
