@@ -24,6 +24,16 @@ Windows11이 Mac과 같은 다른 OS의 디자인 철학을 따라하기만 했�
 사실상 크로미움이 독점적인 브라우저가 된다는 점에서 기술의 다양한 발전을 막는 요소가 되지 않을까 하는
 우려의 목소리들이 존재했던 것처럼요.
 
+### [Firecracker: Lightweight Virtualization for Serverless Applications](https://www.micahlerner.com/2021/06/17/firecracker-lightweight-virtualization-for-serverless-applications.html)
+
+AWS 서버리스 플랫폼(Lambda)에서 사용되는 Firecracker "MicroVM"을 소개하는 글.
+
+기존에는 유저 별로 EC2 인스턴스를 할당하고 그 위에서 Lambda Function을 돌렸는데,
+이렇게 했을 때 EC2 VM의 유휴 자원이 낭비 되다보니, 여러 유저의 Lambda Function을 한 EC2 VM 위에 올리기 위한
+Firecracker 기술을 개발하였다고 합니다.
+
+Firecracker 기술에 대해서 더 자세히 알고 싶으신 분은 NSDI'20에 공개된 [원 논문](https://www.usenix.org/conference/nsdi20/presentation/agache)을 참고하시면 되겠습니다.
+
 <!-- ## 📌 북마크 -->
 
 ## 📰 기술 뉴스
