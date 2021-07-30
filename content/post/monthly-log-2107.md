@@ -34,7 +34,13 @@ Firecracker 기술을 개발하였다고 합니다.
 
 Firecracker 기술에 대해서 더 자세히 알고 싶으신 분은 NSDI'20에 공개된 [원 논문](https://www.usenix.org/conference/nsdi20/presentation/agache)을 참고하시면 되겠습니다.
 
-<!-- ## 📌 북마크 -->
+## 📌 북마크
+
+### [CoRecursive](https://corecursive.com/)
+
+개발자를 초청해서 기술에 대한 깊은 이야기를 전하는 팟캐스트.
+
+얼마 전 이곳에서 진행한 [SQLite 탄생에 관한 뒷 얘기](https://corecursive.com/066-sqlite-with-richard-hipp/)가 화제가 되기도 했습니다.
 
 ## 📰 기술 뉴스
 
