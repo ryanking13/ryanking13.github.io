@@ -10,21 +10,35 @@
   
   <url>
     <loc>https://ryanking13.github.io/categories/</loc>
-    <lastmod>2021-07-11T00:00:01+09:00</lastmod>
+    <lastmod>2021-08-01T01:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ryanking13.github.io/</loc>
-    <lastmod>2021-07-11T00:00:01+09:00</lastmod>
+    <lastmod>2021-08-01T01:01:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanking13.github.io/categories/newsletter/</loc>
+    <lastmod>2021-08-01T01:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ryanking13.github.io/post/</loc>
-    <lastmod>2021-07-11T00:00:01+09:00</lastmod>
+    <lastmod>2021-08-01T01:01:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanking13.github.io/2021/08/01/monthly-log-2107.html/</loc>
+    <lastmod>2021-08-01T01:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -39,13 +53,6 @@
   <url>
     <loc>https://ryanking13.github.io/2021/07/11/python-packaging.html/</loc>
     <lastmod>2021-07-11T00:00:01+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/categories/newsletter/</loc>
-    <lastmod>2021-06-30T01:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
