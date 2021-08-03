@@ -25,4 +25,17 @@ The Verge에서 마크 주커버그 페이스북 CEO와 진행한 인터뷰의 �
 
 ## ⚙️ 소프트웨어 / 프로젝트
 
+### [Brython](https://github.com/brython-dev/brython)
+
+Browser Python. 파이썬을 브라우저 환경에서 실행시키는 프로젝트.
+
+비슷한 프로젝트로 이전에 [pyodide](https://github.com/pyodide/pyodide)를 소개 한 적이 있는데요.
+두 프로젝트의 목표는 비슷하지만 방식은 다릅니다.
+
+pyodide는 CPython 인터프리터를 Wasm으로 컴파일해서 파이썬 코드를 실행하는 방식이라면,
+brython은 파이썬 코드를 js로 트랜스컴파일하는 방식을 사용합니다.
+
+스타 수로 봤을 때 두 프로젝트의 인기도는 비슷한데,
+확장성 측면에서는 pyodide의 손을 들어주고 싶네요.
+
 ## 📙 책 / 강의 / 영상
