@@ -23,6 +23,15 @@ The Verge에서 마크 주커버그 페이스북 CEO와 진행한 인터뷰의 �
 
 ## 📰 기술 뉴스
 
+### [스택 오버플로우 2021년 개발자 설문조사](https://stackoverflow.blog/2021/08/02/2021-stack-overflow-developer-survey-results/)
+
+매년 진행하는 스택 오버플로우 개발자 설문조사.
+
+코로나의 여파로 온라인을 이용하여 개발을 배우는 사람이 많이 늘어난듯한 모습이네요.
+
+한가지 흥미로운 건 웹 프레임워크에서 Svelte와 FastAPI의 인기가 굉장히 높았다는 점인데요.
+실제 업무에 많이 사용되는지와는 별개로 "힙"한 프레임워크를 사람들이 많이 좋아하는 현상이라고 볼 수 있지 않을까 싶습니다.
+
 ## ⚙️ 소프트웨어 / 프로젝트
 
 ### [Brython](https://github.com/brython-dev/brython)
