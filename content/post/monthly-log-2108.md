@@ -33,6 +33,10 @@ NPM에서 `-`라는 이름의 내용 없는 패키지가 70만번이나 다운�
 
 ## 📌 북마크
 
+### [WebRTC에 대해서 당신이 알고싶어할 모든 것](https://blog.openreplay.com/everything-you-ever-wanted-to-know-about-webrtc)
+
+클라이언트간 실시간 통신이 가능하게 해주는 WebRTC 기술의 주요 API를 소개해주는 문서입니다.
+
 ## 📰 기술 뉴스
 
 ### [스택 오버플로우 2021년 개발자 설문조사](https://stackoverflow.blog/2021/08/02/2021-stack-overflow-developer-survey-results/)
