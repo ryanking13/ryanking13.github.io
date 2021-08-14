@@ -31,6 +31,21 @@ NPM에서 `-`라는 이름의 내용 없는 패키지가 70만번이나 다운�
 누구나 자유롭게 패키지 업로드가 가능한 NPM이나 PyPI에서 악성코드가 발견되는 경우가 심심찮게 발생하고 있는 상황에서,
 사람들의 실수로 발생할 수 있는 이번 경우와 같은 케이스를 예방하는 기능이 필요하지 않을까 싶기도 하네요.
 
+### [Git switch and restore](https://www.banterly.net/2021/07/31/new-in-git-switch-and-restore/)
+
+Git 2.23에서 생긴 커맨드인 `git switch`와 `git restore`를 소개하는 글.
+
+`git switch`는 브랜치를 전환하는 기능, `git restore`는 파일을 복원하는 기능을 합니다.
+기존에는 두 기능 모두 `git checkout`을 이용해서 수행했었는데요.
+
+`git checkout` 커맨드는 git의 원리를 잘 이해하는 사람에게 있어서는 문제가 없었으나,
+처음 git을 배우는 사람에게는 대체 왜 이 커맨드가 때로는 브랜치를 생성하고, 때로는 파일을 복원하는지
+이해하기 어려운 측면이 있었습니다.
+
+아직 많은 git 튜토리얼에서 checkout을 많이 사용하는데요.
+git 2.23이 공개된지 벌써 2년이 넘었으니, 이제는 checkout대신 switch와 restore를 많이 사용해보시면 어떨까 싶네요.
+
+
 ## 📌 북마크
 
 ### [WebRTC에 대해서 당신이 알고싶어 할 모든 것](https://blog.openreplay.com/everything-you-ever-wanted-to-know-about-webrtc)
