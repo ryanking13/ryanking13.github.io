@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>개발자를 위한 좋은 문서 작성법 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="개발자를 위한 좋은 문서 작성법" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+<script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2021/08/16/writing-a-good-documentation.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="개발자를 위한 좋은 문서 작성법" />
+<meta property="og:description" content="개발자를 위한 좋은 문서 작성법" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/08/16/writing-a-good-documentation.html/" />
+<meta property="article:published_time" content="2021-08-16T01:01:00+00:00" />
+<meta property="article:modified_time" content="2021-08-16T01:01:00+00:00" />
+<meta itemprop="name" content="개발자를 위한 좋은 문서 작성법">
+<meta itemprop="description" content="개발자를 위한 좋은 문서 작성법">
+<meta itemprop="datePublished" content="2021-08-16T01:01:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-16T01:01:00+00:00" />
+<meta itemprop="wordCount" content="5355">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="개발자를 위한 좋은 문서 작성법"/>
+<meta name="twitter:description" content="개발자를 위한 좋은 문서 작성법"/>
+<script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+
+
+
+
+<div class="menu-wrapper">
+  <nav class="site-navbar">
+    <ul id="menu" class="menu">
+      <li class="menu-item">
+          <a class="menu-item-link" href="/">Home</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/post/">Archives</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/categories/">Categories</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/about/">About</a>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="search-wrapper">
+    <div class="show-search">
+        <a class="toggle-search" title="search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="612.056" height="612.057" viewbox="0 0 613 613">
+                <path
+                    d="M595.2 513.908L493.775 412.482c26.707-41.727 42.685-91.041 42.685-144.263C536.459 120.085 416.375 0 268.24 0 120.106 0 .021 120.085.021 268.219c0 148.134 120.085 268.22 268.219 268.22 53.222 0 102.537-15.979 144.225-42.686l101.426 101.463c22.454 22.453 58.854 22.453 81.271 0 22.492-22.491 22.492-58.855.038-81.308zm-326.96-54.103c-105.793 0-191.585-85.793-191.585-191.585 0-105.793 85.792-191.585 191.585-191.585s191.585 85.792 191.585 191.585c.001 105.792-85.791 191.585-191.585 191.585z" />
+            </svg>
+        </a>
+    </div>
+    <div class="input-wrapper">
+        <input type="search" placeholder="검색어 입력" disabled="disabled" />
+    </div>
+</div>
+
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+</div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">개발자를 위한 좋은 문서 작성법</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-08-16 </span>
+        <div class="post-category">
+            <a href="/categories/development/"> Development </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#들어가며">들어가며</a></li>
+        <li><a href="#문서는-마케팅-수단이다">&ldquo;문서는 마케팅 수단이다&rdquo;</a></li>
+        <li><a href="#문서가-가장-먼저-알려줘야-하는-것">문서가 가장 먼저 알려줘야 하는 것</a></li>
+        <li><a href="#개발자용-문서의-종류">개발자용 문서의 종류</a></li>
+        <li><a href="#레퍼런스-문서와-api-문서">레퍼런스 문서와 API 문서</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#문서를-연결하는-방법">문서를 연결하는 방법</a></li>
+        <li><a href="#피드백-받기">피드백 받기</a></li>
+        <li><a href="#결론">결론</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="들어가며">들어가며</h2>
+<p>아무리 좋은 도구가 있어도,
+그 도구를 소개하는 좋은 문서가 없다면
+사람들은 도구의 가치를 알기 어렵습니다.
+이 글에서는 &ldquo;개발자를 위한&rdquo; 도구를 만들 때,
+어떻게 해야 좋은 문서를 작성할 수 있는지 소개합니다.</p>
+<blockquote>
+<p><strong>Note:</strong> 이 글은 <a href="https://youtu.be/eWaWvUhpseM">PyCon US 2021: Writing Good Documentation for Developers</a>의 내용을 정리한 글입니다.
+이 글이 마음에 드셨다면 원본 영상도 꼭 보시는 것을 권장드립니다.</p>
+</blockquote>
+<h2 id="문서는-마케팅-수단이다">&ldquo;문서는 마케팅 수단이다&rdquo;</h2>
+<p>여러분은 방금 정말 복잡한 문제를 해결할 수 있는 멋진 도구(e.g. 라이브러리)를 만들었습니다.
+여러분은 이 도구가 너무나 중요하고 유용하다는 것을 알고 있지만,
+아직 세상의 많은 개발자(유저)들은 이 도구의 유용성을 알지 못합니다.
+사실 그들은 이 도구가 존재한다는 사실조차도 모르고 있습니다.</p>
+<p>이 상황에서 이 멋진 도구의 창조자인 여러분이 바라는 것은 다음과 같습니다.</p>
+<ol>
+<li>다른 개발자들이 이 도구의 존재를 <strong>찾고</strong></li>
+<li>그들이 이 도구가 유용하다고 <strong>판단하고</strong></li>
+<li>그들이 이 도구의 사용법을 <strong>배우고</strong></li>
+<li>그들이 이 도구를 사용해 문제를 <strong>푸는 것</strong></li>
+</ol>
+<p>위와 같은 일련의 과정에서 <strong>문서</strong>의 역할은 어디까지일까요?</p>
+<p>보통은 여기서 3번과 4번을 문서의 역할이라고 생각하는 경우가 많습니다.
+개발자들로 하여금 도구를 사용해
+그들의 문제를 풀 수 있도록 돕는 것까지가 문서의 역할이라는 생각이지요.
+그러나 사실 문서는 문제를 해결하는 것을 돕는 역할뿐만 아니라,
+이 도구가 문제를 풀 수 있다는 사실을 &ldquo;알리는&rdquo; 역할도 해야 합니다.
+즉 1번에서 4번에 이르는 모든 과정이 문서가 해야 하는 역할입니다.</p>
+<p>다시 말해서, 문서는 그 자체로 여러분의 도구를 마케팅하는 하나의 수단이 되어야 합니다.</p>
+<h2 id="문서가-가장-먼저-알려줘야-하는-것">문서가 가장 먼저 알려줘야 하는 것</h2>
+<p>문서가 도구를 알리는 마케팅 수단이라면,
+구체적으로 문서가 알려줘야 하는 내용은 무엇일까요?</p>
+<p>개발자들은 어떤 문제를 풀고 싶어합니다.
+문제를 푸는 방법을 찾기 위해 그들은 검색을 하거나,
+주변 동료들에게 물어보거나, 인터넷 포럼에 질문을 합니다.
+이윽고 그들은 다양한 경로를 통해
+여러분이 만든 도구의 존재를 알게 됩니다.</p>
+<p>아직 그들은 이 도구가 어떤 것인지,
+자신의 문제를 해결할 수 있는 적합한 도구인지 알지 못합니다.</p>
+<p>이때 그들이 처음 마주하게 되는 것이 바로 도구를 설명하는 문서입니다.
+따라서 여러분은 문서를 통해 이러한 개발자들의 물음을 해결해주어야 합니다.
+즉, 문서는 먼저 여러분의 도구가 무엇인지를 <strong>정의</strong>하는 역할을 하여야 합니다.</p>
+<p>도구를 정의한다는 것은 다음과 같은 사항들을 의미합니다.</p>
+<ul>
+<li>이 도구가 대체 무엇인지</li>
+<li>이 도구의 장점은 무엇인지</li>
+<li>이 도구에는 어떤 기능들이 있는지</li>
+<li>이 도구의 한계점은 무엇인지</li>
+</ul>
+<p>이러한 정보를 통해 개발자들은 이 도구가 무엇이며,
+그들의 문제를 푸는데 적합한지를 판단할 수 있게 됩니다.</p>
+<h2 id="개발자용-문서의-종류">개발자용 문서의 종류</h2>
+<p>앞선 문단들에서 문서의 역할이
+개발자들이 도구를 찾고, 이해하고,
+그리고 최종적으로 문제를 풀 수 있도록 돕는 것이라는 점을 살펴보았습니다.</p>
+<p>바꾸어 말하면, 문서의 역할은 매우 다양한데요.
+단 하나의 문서가 이 모든 역할을 수행할 수는 없습니다.
+문서가 수행하는 역할에 따라서 문서의 종류를 나누어야 합니다.</p>
+<p>Django의 코어 개발자인 <a href="https://mobile.twitter.com/evildmp">Daniele Procida</a>는
+문서의 종류를 다음과 같이 네 가지 카테고리로 나누었습니다.</p>
+<div style="text-align: center;">
+<img src="/assets/post_images/documentation/categories.PNG" width="70%">
+<div>
+    <span style="color:grey"><small><i>Image from: PyCon US 2021 - Writing Good Documentation for Developers</i></small></span>
+</div>
+</div>
+<ul>
+<li>튜토리얼(Tutorials): 도구에 대한 Step-by-Step 가이드</li>
+<li>설명서(Explanation): 이 도구가 무엇을 하고, 어떻게 동작하고, 그리고 왜 그렇게 동작하는지</li>
+<li>안내 책자(How-to Guide): 실제 문제를 풀기 위해서 이 도구를 어떻게 사용해야 하는지</li>
+<li>레퍼런스(Reference): 이 도구가 할 수 있는 모든 것에 대한 객관적이고 자세한 설명</li>
+</ul>
+<p>이 네 카테고리는 사용 목적과 활용도를 기준으로 다음과 같이 구분할 수 있습니다.</p>
+<ul>
+<li>배울 때 / 실용적인 용도로: 튜토리얼</li>
+<li>배울 때 / 이론적인 용도로: 설명서</li>
+<li>일할 때 / 실용적인 용도로: 안내 책자</li>
+<li>일할 때 / 이론적인 용도로: 레퍼런스</li>
+</ul>
+<h2 id="레퍼런스-문서와-api-문서">레퍼런스 문서와 API 문서</h2>
+<p>위에서 소개한 네 가지 카테고리의 문서 분류법은 아주 깔끔해서 이해하기 쉬운데요.
+그럼에도 한 가지 한계점을 가지고 있습니다.
+바로, 레퍼런스 문서의 역할이 다소 모호하다는 점입니다.</p>
+<p>위 분류 방법을 소개한 Daniele는 레퍼런스 문서를 다음과 같이 정의합니다.</p>
+<blockquote>
+<p><strong>&ldquo;레퍼런스는 도구가 동작하는 방식에 대한 기술적인 설명이다&rdquo;</strong> <br/>
+<em>&ldquo;Reference guides are technical descriptions of the machinery and how to operate it.&quot;</em></p>
+</blockquote>
+<p>한편으로 그는 동시에 레퍼런스 문서를 다음과 같은 문장으로 표현하기도 합니다.</p>
+<blockquote>
+<p><strong>&ldquo;레퍼런스는 API, 클래스, 그리고 함수와 같이 소프트웨어를 구성하는 요소들을 사용하는 방법을 설명한다.&quot;</strong> <br/>
+<em>&ldquo;Reference guides describe the software itself - APIs, classes, functions and so on - and how to use them&rdquo;</em></p>
+</blockquote>
+<p>위 두 문장은 닮은 것 같지만 사실 서로 다른 얘기를 하고 있습니다.
+두 문장에서 설명하는 내용 모두 우리가 문서에서 얻고자 하는 정보임은 분명합니다.
+그러나 한 가지 문서가 이 두 가지 내용을 동시에 설명하는 것은 어렵습니다.</p>
+<p>왜 그럴까요? 설명에 앞서 이 글에서는 전자는 레퍼런스 문서, 후자는 API 문서라고 구분하겠습니다.
+레퍼런스 문서와 API 문서가 어떤 점에서 다른지 예를 들어 살펴보겠습니다.</p>
+<h4 id="예시-1-테스팅-라이브러리">예시 1) 테스팅 라이브러리</h4>
+<p>여러분은 테스트를 수행할 수 있는 라이브러리 L를 만들었습니다.
+이제부터 L에 대한 문서를 작성하려고 합니다.</p>
+<p>L는 테스트 수행 전, 중, 후에 특정 동작을 수행하도록 하는 함수들을 포함하고 있습니다.
+예를 들면,
+테스트가 수행되기 전에(<code>setup</code>) 테스트용 클래스 인스턴스를 준비하고,
+테스트 중에(<code>test</code>) 해당 인스턴스를 사용한 뒤,
+마지막으로 테스트가 끝나면(<code>teardown</code>) 해당 인스턴스를 삭제하는 것과 같이 말이죠.
+테스트를 작성해본 분들이라면 언어나 프레임워크에 관계없이 많이 겪어보셨을 과정일 것입니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="nd">@L.setup</span>
+<span class="k">def</span> <span class="nf">set_it_up</span><span class="p">():</span>
+    <span class="c1"># 테스트 전에 수행됩니다.</span>
+<span class="nd">@L.test</span>
+<span class="k">def</span> <span class="nf">test_1</span><span class="p">():</span>
+    <span class="c1"># 테스트 중에 수행됩니다.</span>
+<span class="nd">@L.teardown</span>
+<span class="k">def</span> <span class="nf">tear_it_down</span><span class="p">():</span>
+    <span class="c1"># 테스트 후에 수행됩니다.</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>이 때, 테스트 전, 중, 후에 사용하는 함수는 각각 다르지만,
+일련의 과정은 독립적이지 않습니다.
+그렇다면 L를 설명하는 문서에는 일련의 과정을 수행하기 위해,
+이 동작들이 어떠한 순서로 일어나는 지를 알려주어야 합니다.</p>
+<p>즉, 도구를 사용하는 방식에 대한 스토리텔링(Storytelling)을 담은 문서가 필요합니다.
+문서가 스토리텔링을 하지 못한다면, 도구를 사용하는 사람은 개발자의 의도대로 도구를 사용하기 어렵습니다.
+이러한 역할을 하는 문서가 바로 레퍼런스 문서입니다.</p>
+<p>한편, API 문서는 코드 그 자체를 설명합니다.
+API 문서에 담긴 내용은 함수나 클래스처럼 코드 그 자체와 관련한 것이여야 합니다.</p>
+<p>앞선 예에서, 레퍼런스 문서는 <code>setup</code>, <code>test</code>, <code>teardown</code> 함수가 어떻게 연관되어 있고,
+어떤 순서로 사용되어야 하는 지를 알려주어야 한다면,
+API 문서는 각 함수가 어떤 기능을 하는지 상세하게 알려주는 역할을 하여야 합니다.</p>
+<h4 id="예시-2-javadoc-문제">예시 2) javadoc 문제</h4>
+<p>앞선 예에서 레퍼런스 문서와 API 문서의 역할 차이에 대해서 살펴보았습니다.</p>
+<p>레퍼런스 문서는 도구를 사용하는 &ldquo;스토리텔링&quot;을 설명해주는 역할을 하는 반면,
+API 문서에는 스토리텔링이 등장할 구석이 없습니다.
+이는 바꾸어 말하면,
+만약 레퍼런스 문서 없이 API 문서만 존재하면
+라이브러리를 사용하는 &ldquo;스토리&quot;를 설명할 수 없다는 문제를 뜻합니다.</p>
+<p>이를 잘 설명해주는 예시가 <a href="https://en.wikipedia.org/wiki/Javadoc">javadoc</a> 문제입니다.</p>
+<p>Java 프로젝트의 문서를 자동으로 생성하는 대표적인 도구인
+javadoc은 다음과 같이 주석을 이용해 문서를 자동으로 생성합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * Frob the foobar.
+</span><span class="cm"> * This method always returns immediately.
+</span><span class="cm"> *
+</span><span class="cm"> * @param fb A foobar object
+</span><span class="cm"> * @param direction The direction in which to frob it.
+</span><span class="cm"> *
+</span><span class="cm"> * @return true if the object was frobbed successfully.
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">frob</span><span class="o">(</span><span class="n">FooBar</span> <span class="n">fb</span><span class="o">,</span> <span class="n">String</span> <span class="n">direction</span><span class="o">)</span> <span class="o">{</span>
+ <span class="c1">// ...
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>문서 작성자는 각 함수나 클래스 코드 위에
+해당 코드의 설명과 파라미터, 리턴 값 등을 명시하고,
+이렇게 표준화된 구조를 바탕으로 javadoc은 자동으로 정형화된 문서를 생성합니다.</p>
+<p>이와 같은 javadoc의 방식은 아주 쉽게 표준화된 문서를 생성할 수 있습니다.
+각각의 코드 근처에 해당 코드의 설명이 위치함으로써
+코드 변화에 맞추어 문서를 관리하는 것도 아주 편리합니다.
+그렇기 때문에 javadoc은 크게 성공할 수 있었고,
+현재도 많은 Java 라이브러리들이 javadoc을 사용해서 문서화되어 있습니다.</p>
+<p>javadoc을 이용해서 문서화된 사이트는 대부분 아래와 같이 생겼는데요.</p>
+<div style="text-align: center;">
+<img src="/assets/post_images/documentation/javadoc_cli.PNG" width="80%">
+<div>
+    <span style="color:grey"><small><i>javadoc으로 만들어진 문서</i></small></span>
+</div>
+</div>
+<p>라이브러리 개발자가 성실하게 주석을 작성했다면,
+모든 클래스와 각 클래스를 구성하는 메소드에 대산 정보를 완벽하게 살펴볼 수 있습니다.</p>
+<p>그렇지만, 문제는 이 문서에서 수많은 클래스들이
+어떻게 상호작용하는 지에 대한 정보는 알 수가 없습니다.</p>
+<p>사실 위 사진에 나타난 라이브러리(<a href="https://commons.apache.org/proper/commons-cli/javadocs/api-release/index.html">Apache Commons CLI</a>)
+는 굉장히 잘 구조화된 라이브러리입니다.
+이 라이브러리를 사용하고자 하는 유저는
+단 한 가지 클래스(Option)만 사용하면
+이 라이브러리가 제공하는 기능을 대부분 활용할 수 있습니다.</p>
+<p>그러나 이 &ldquo;API 문서&quot;에서는 그 클래스가 무엇인지를 쉽게 알 수가 없습니다.</p>
+<br/>
+<p>위의 두 예에서 살펴볼 수 있듯이,
+레퍼런스 문서와 API 문서는 서로 구분되어야 하는 문서입니다.</p>
+<blockquote>
+<p>레퍼런스 문서는 <strong>시스템</strong>을 설명하지만, API 문서는 <strong>코드</strong>를 설명하고 <br/>
+레퍼런스 문서는 여러 요소를 <strong>연결하는 이야기</strong>를 설명하지만, API 문서는 <strong>각각의 요소들을 단독</strong>으로 설명하고 <br/>
+레퍼런스 문서는 <strong>논리적 흐름</strong>에 따라 배치되어야 한다면, API 문서는 <strong>자동화된 규칙</strong>에 따라 생성되어야 합니다.</p>
+</blockquote>
+<div style="text-align: center;">
+<img src="/assets/post_images/documentation/5_categories.PNG" width="70%">
+<div>
+    <span style="color:grey"><small><i>Image from: PyCon US 2021 - Writing Good Documentation for Developers</i></small></span>
+</div>
+</div>
+<h2 id="문서를-연결하는-방법">문서를 연결하는 방법</h2>
+<p>앞선 내용을 통해 우리는 문서를 5개의 분류로 나눌 수 있음을 살펴보았습니다.
+이 문서들은 서로 독립적으로 존재하는 것이 아니라,
+각각 용도에 따라 서로를 보완하는 역할을 합니다.
+그렇다면 어떻게 이 다양한 분류의 문서들을 함께 사용할 수 있을까요?</p>
+<p>가장 먼저 명심해야 할 점은, <strong>유저는 작성자가 의도한 대로 문서를 읽지 않는다</strong>는 점입니다.
+유저들은 문서를 처음부터 끝까지 읽지 않습니다.
+복잡한 API 문서는 물론이고,
+짧은 튜토리얼조차도 자신이 필요하다고 생각하는 부분까지만 읽죠.
+당연히 문서를 읽을 때의 순서도 작성자가 의도한 순서를 따르지 않습니다.</p>
+<p>유저들은 자기만의 &ldquo;여정&quot;을 하면서 문서를 읽습니다.
+따라서 문서를 작성하는 우리가 해야 할 것은 유저의 여정을 상상해보는 것입니다.
+유저가 우리의 도구를 찾고 사용하기까지의 여정을 말입니다.</p>
+<p>유저가 여러분의 도구를 발견하고 사용하게 되는 흔한 절차는 다음과 같습니다.</p>
+<ol>
+<li>어떤 문제를 풀기 위해 구글링을 하다가,
+여러분의 도구를 소개한 튜토리얼 블로그 글을 발견합니다.</li>
+<li>튜토리얼을 읽은 유저는 도구에 흥미가 생깁니다.
+그래서 이 도구를 자신의 문제에 적용하는 방법을 담은 안내 책자(How-to) 문서를 읽기 시작합니다.</li>
+<li>자신의 문제에 이 도구를 적용하기로 판단한 유저는 문제에 대한 구체적인 해결책,
+즉 클래스와 함수 사용법을 알기 위해서 API 문서를 찾아보기 시작합니다.</li>
+</ol>
+<p>위 예는 포괄적인 문서(튜토리얼)에서 시작해서,
+상세한 문서(API 문서)로 점점 줌인(Zoom-In)하듯이
+유저가 문서에 접근하게 되는 경우입니다.
+문서를 작성하는 입장에서는 가장 이상적인 여정이라고도 볼 수 있겠네요.</p>
+<p>또 다른 여정을 살펴볼까요?</p>
+<ol>
+<li>문제를 풀기 위해 구글링을 하다가,
+도구에 대한 안내 책자(How-to) 문서를 발견합니다.</li>
+<li>이게 대체 어떻게 작동하는 거지? 하고 유저는 흥미를 느끼면서
+해당 도구의 개념와 사용법을 담은 레퍼런스 문서를 찾아봅니다.</li>
+<li>레퍼런스를 적당히 훑어본 유저는
+이 도구가 자신의 문제를 풀기에 적합하다고 판단하고,
+다시 처음부터 사용법을 배우기 위해 차근차근 튜토리얼을 살펴봅니다.</li>
+</ol>
+<p>이 예시에서 유저는 자신의 필요에 따라
+자세한 레퍼런스 문서를 봤다가, 다시 기초적인 튜토리얼로 돌아가는 등
+줌인과 줌아웃을 번갈아가면서 수행했습니다.</p>
+<p>이외에도 유저가 문서를 통해 도구를 배우게 되는 여정의 종류는 아주 다양합니다.
+따라서 문서를 작성하는 사람의 역할은
+이러한 다양한 유저의 여정을 인도해주는 것입니다.
+그러나 각 유저가 어떤 여정을 할 지는 예측할 수 없습니다.
+그렇기 때문에 가장 쉬운 방법은 문서 간 연결고리를 만드는 것입니다.</p>
+<p>예를 들어, 튜토리얼에서 특정한 기능을 사용했다면,
+해당 기능을 더 알고 싶은 사람을 위해 레퍼런스 문서로 가는 연결고리를 만드세요.
+여기서 연결고리는 꼭 직접적인 하이퍼링크가 아니어도 됩니다.
+물리적으로 가까운 위치에 관련 문서를 배치시키는 것또한 방법입니다.
+순서상으로 튜토리얼 다음에 레퍼런스를 배치한다거나 하는 식으로 말이죠.</p>
+<h2 id="피드백-받기">피드백 받기</h2>
+<p>처음부터 좋은 문서를 쓰기란 어렵습니다.
+유저는 언제나 여러분이 예상하지 못한 여정을 하고,
+여러분이 상상하는 것과 다른 이유와 방식으로 도구를 사용할 것입니다.
+그러므로 가장 좋은 방법은 실제로 도구를 사용하는 유저의 의견을 듣는 것입니다.</p>
+<p>유저들의 의견을 듣는 방법은 아주 다양합니다.
+가장 직접적이고 확실한 방법은 오프라인 행사에서
+도구의 튜토리얼 워크샵을 진행하는 방법이 있죠.
+도구를 처음 사용하는 유저들이 어떤 부분에서 어려움을 겪는지 알 수 있습니다.</p>
+<p>온라인에서는 도구의 Q&amp;A 채널을 만들면 됩니다.
+직접 Q&amp;A가 가능한 포럼을 만들어도 좋지만,
+번거롭다면 스택 오버플로우나 깃헙 이슈에 올라오는 질문을
+모니터링하고 답하는 것으로도 충분합니다.</p>
+<blockquote>
+<p><strong>Question:</strong> Q&amp;A를 위한 슬랙이나 디스코드를 운영하는 것은 어떤가요? <br/> <br/>
+많은 오픈소스 도구들이 슬랙을 통한 소통 채널을 운영하지만,
+사실 이는 굉장히 안 좋은 방식입니다.
+왜냐하면 사람들이 채널을 통해 무엇인가를 물어본다는 것은 일종의 버그리포트고,
+개발자들이 그에 답하는 것은 그 자체가 일종의 패치입니다.
+이러한 질답-버그리포트와 패치-이 쌓이면 그 자체로 검색 가능한 문서가 됩니다.
+그러나 슬랙과 디스코드처럼 비공개 채널에서 발생하는 대화는
+검색이 되지 않기에 질답이 누적되는 효과가 적습니다.</p>
+</blockquote>
+<h2 id="결론">결론</h2>
+<p>문서는 유저가 처음으로 여러분의 도구를 접하게 되는 곳이자,
+도구를 홍보하는 마케팅 수단이자,
+그 자체로 도구를 정의하는 물건입니다.
+이러한 사실을 인지하고 유저의 입장에서 많이 고민해봐야만
+좋은 문서가 탄생할 수 있습니다.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-08-16
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/2021/08/01/monthly-log-2107.html/">
+            <span class="next-text nav-default">월간 기술 스크랩 21/07</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="comments" class="comments">
+            
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+        </div>
+
+        <div id="search-results" class="search-results">
+            <template>
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title"><a class="post-link" href="{url}">{title}</a></h1>
+            <div class="post-meta">
+                <span class="post-time"> {date} </span>
+                <div class="post-category">
+                    <a href="{categoryUrl}"> {category} </a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <div class="post-summary">
+                {summary}
+            </div>
+            <div class="read-more">
+                <a href="{url}" class="read-more-link">Read more...</a>
+            </div>
+        </div>
+    </article>
+</template>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+    <a href="https://ryanking13.github.io/feed.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
