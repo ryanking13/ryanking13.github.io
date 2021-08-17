@@ -79,6 +79,18 @@ git 2.23이 공개된지 벌써 2년이 넘었으니, 이제는 checkout대신 s
 윤초와 같이 인간이 전혀 예상할 수 없는 사건을 처리하는 것이 개발자 입장에서 참 고역이겠구나 하는 것과,
 지구온난화가 정말 생활 곳곳에 영향을 미칠 수 있구나 하는 것입니다.
 
+### [Vue.js가 위키미디어 재단의 새 프레임워크로 선택되다](https://lists.wikimedia.org/hyperkitty/list/wikitech-l@lists.wikimedia.org/thread/SOZREBYR36PUNFZXMIUBVAIOQI4N7PDU/)
+
+Vue.js가 위키미디어 재단의 차세대 프레임워크로 선택되었습니다.
+몇년 뒤면 Vue.js로 만들어진 위키피디아를 볼 수 있겠네요.
+
+프레임워크 선택에 관해서 논의한 [RFC를 보면](https://phabricator.wikimedia.org/T241180),
+React와 비교해서 Vue를 선택한 이유를 살펴볼 수 있는데요.
+
+특정 회사(Facebook)의 목표에 따라 굉장히 빠르게 Best practice가 변하고, breaking changes도 잦은 React는,
+아주 천천히 진행될 위키미디어 재단의 프로젝트 속도와는 맞지 않는 면이 있다고 합니다.
+
+
 ## ⚙️ 소프트웨어 / 프로젝트
 
 ### [Brython](https://github.com/brython-dev/brython)
