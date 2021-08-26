@@ -79,6 +79,10 @@ Mac용 스크립트를 리눅스 환경에 맞추어 포팅하고,
 
 클라이언트간 실시간 통신이 가능하게 해주는 WebRTC 기술의 주요 API를 소개해주는 문서입니다.
 
+### [Relate SaaS 리스트](https://saas.relate.kr/)
+
+스타트업에서 유용하게 사용할 수 있는 SaaS 리스트입니다.
+
 ## 📰 기술 뉴스
 
 ### [스택 오버플로우 2021년 개발자 설문조사](https://stackoverflow.blog/2021/08/02/2021-stack-overflow-developer-survey-results/)
