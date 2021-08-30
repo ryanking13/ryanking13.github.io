@@ -5,7 +5,7 @@ categories:
 - Newsletter
 description: 흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 8월)
 summary: 흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 8월)
-draft: true
+draft: false
 ---
 
 ## ✍️ 글
@@ -17,7 +17,7 @@ The Verge에서 마크 주커버그 페이스북 CEO와 진행한 인터뷰의 �
 페이스북에서 VR/AR 관련 사업을 하는 직원의 수가 30% 가까이 된다는 글을 얼핏 본적이 있는데,
 페이스북이 무엇보다 메타버스와 VR 사업에 진심임을 알 수 있는 주커버그의 인터뷰입니다.
 
-2010년대가 스마트폰의 시대였다면, 2020년대, 혹은 2030년대는 VR의 시대가 될까요?
+2010년대가 스마트폰의 시대였다면, 2020년대는 VR의 시대가 될지도 모르겠네요.
 
 ### [70만번 다운로드 된 NPM 패키지: `-`](https://www.bleepingcomputer.com/news/software/empty-npm-package-has-over-700-000-downloads-heres-why/)
 
@@ -117,7 +117,6 @@ Vue.js가 위키미디어 재단의 차세대 프레임워크로 선택되었습
 
 프레임워크 선택에 관해서 논의한 [RFC를 보면](https://phabricator.wikimedia.org/T241180),
 React와 비교해서 Vue를 선택한 이유를 살펴볼 수 있는데요.
-
 특정 회사(Facebook)의 목표에 따라 굉장히 빠르게 Best practice가 변하고, breaking changes도 잦은 React는,
 아주 천천히 진행될 위키미디어 재단의 프로젝트 속도와는 맞지 않는 면이 있다고 합니다.
 
