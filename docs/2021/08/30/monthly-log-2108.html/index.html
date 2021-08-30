@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>월간 기술 스크랩 21/08 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 8월)" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+<script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2021/08/30/monthly-log-2108.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="월간 기술 스크랩 21/08" />
+<meta property="og:description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 8월)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/08/30/monthly-log-2108.html/" />
+<meta property="article:published_time" content="2021-08-30T01:01:00+00:00" />
+<meta property="article:modified_time" content="2021-08-30T01:01:00+00:00" />
+<meta itemprop="name" content="월간 기술 스크랩 21/08">
+<meta itemprop="description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 8월)">
+<meta itemprop="datePublished" content="2021-08-30T01:01:00+00:00" />
+<meta itemprop="dateModified" content="2021-08-30T01:01:00+00:00" />
+<meta itemprop="wordCount" content="3315">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="월간 기술 스크랩 21/08"/>
+<meta name="twitter:description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 8월)"/>
+<script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+
+
+
+
+<div class="menu-wrapper">
+  <nav class="site-navbar">
+    <ul id="menu" class="menu">
+      <li class="menu-item">
+          <a class="menu-item-link" href="/">Home</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/post/">Archives</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/categories/">Categories</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/about/">About</a>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="search-wrapper">
+    <div class="show-search">
+        <a class="toggle-search" title="search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="612.056" height="612.057" viewbox="0 0 613 613">
+                <path
+                    d="M595.2 513.908L493.775 412.482c26.707-41.727 42.685-91.041 42.685-144.263C536.459 120.085 416.375 0 268.24 0 120.106 0 .021 120.085.021 268.219c0 148.134 120.085 268.22 268.219 268.22 53.222 0 102.537-15.979 144.225-42.686l101.426 101.463c22.454 22.453 58.854 22.453 81.271 0 22.492-22.491 22.492-58.855.038-81.308zm-326.96-54.103c-105.793 0-191.585-85.793-191.585-191.585 0-105.793 85.792-191.585 191.585-191.585s191.585 85.792 191.585 191.585c.001 105.792-85.791 191.585-191.585 191.585z" />
+            </svg>
+        </a>
+    </div>
+    <div class="input-wrapper">
+        <input type="search" placeholder="검색어 입력" disabled="disabled" />
+    </div>
+</div>
+
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+</div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">월간 기술 스크랩 21/08</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-08-30 </span>
+        <div class="post-category">
+            <a href="/categories/newsletter/"> Newsletter </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-글">✍️ 글</a>
+          <ul>
+            <li><a href="#페이스북은-이제-메타버스-기업httpsc-rocketnetfacebook_mark_zuckerberg_metaverse_the_verge"><a href="https://c-rocket.net/facebook_mark_zuckerberg_metaverse_the_verge/">페이스북은 이제 메타버스 기업</a></a></li>
+            <li><a href="#70만번-다운로드-된-npm-패키지--httpswwwbleepingcomputercomnewssoftwareempty-npm-package-has-over-700-000-downloads-heres-why"><a href="https://www.bleepingcomputer.com/news/software/empty-npm-package-has-over-700-000-downloads-heres-why/">70만번 다운로드 된 NPM 패키지: <code>-</code></a></a></li>
+            <li><a href="#git-switch-and-restorehttpswwwbanterlynet20210731new-in-git-switch-and-restore"><a href="https://www.banterly.net/2021/07/31/new-in-git-switch-and-restore/">Git switch and restore</a></a></li>
+            <li><a href="#깃헙-엔지니어링-팀은-이제-codespaces를-이용해-개발합니다httpsgithubblog2021-08-11-githubs-engineering-team-moved-codespaces"><a href="https://github.blog/2021-08-11-githubs-engineering-team-moved-codespaces/">깃헙 엔지니어링 팀은 이제 Codespaces를 이용해 개발합니다</a></a></li>
+            <li><a href="#스카이림의-수레와-벌-여우와-보물httpsimseongkangwordpresscom20210822skylimdevstory"><a href="https://imseongkang.wordpress.com/2021/08/22/skylimdevstory/">스카이림의 수레와 벌, 여우와 보물</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-북마크">📌 북마크</a>
+          <ul>
+            <li><a href="#webrtc에-대해서-당신이-알고싶어-할-모든-것httpsblogopenreplaycomeverything-you-ever-wanted-to-know-about-webrtc"><a href="https://blog.openreplay.com/everything-you-ever-wanted-to-know-about-webrtc">WebRTC에 대해서 당신이 알고싶어 할 모든 것</a></a></li>
+            <li><a href="#relate-saas-리스트httpssaasrelatekr"><a href="https://saas.relate.kr/">Relate SaaS 리스트</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-기술-뉴스">📰 기술 뉴스</a>
+          <ul>
+            <li><a href="#스택-오버플로우-2021년-개발자-설문조사httpsstackoverflowblog202108022021-stack-overflow-developer-survey-results"><a href="https://stackoverflow.blog/2021/08/02/2021-stack-overflow-developer-survey-results/">스택 오버플로우 2021년 개발자 설문조사</a></a></li>
+            <li><a href="#지구온난화가-gps를-마비시킬-수도-있다httpsmobiletwittercomariadneconillstatus1422163289518313474"><a href="https://mobile.twitter.com/ariadneconill/status/1422163289518313474">지구온난화가 GPS를 마비시킬 수도 있다</a></a></li>
+            <li><a href="#vuejs가-위키미디어-재단의-새-프레임워크로-선택되다httpslistswikimediaorghyperkittylistwikitech-llistswikimediaorgthreadsozrebyr36punfzxmiubvaioqi4n7pdu"><a href="https://lists.wikimedia.org/hyperkitty/list/wikitech-l@lists.wikimedia.org/thread/SOZREBYR36PUNFZXMIUBVAIOQI4N7PDU/">Vue.js가 위키미디어 재단의 새 프레임워크로 선택되다</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-소프트웨어--프로젝트">⚙️ 소프트웨어 / 프로젝트</a>
+          <ul>
+            <li><a href="#brythonhttpsgithubcombrython-devbrython"><a href="https://github.com/brython-dev/brython">Brython</a></a></li>
+            <li><a href="#stackoverflow-importerhttpsgithubcomdrathierstack-overflow-import"><a href="https://github.com/drathier/stack-overflow-import">StackOverflow Importer</a></a></li>
+            <li><a href="#earthlyhttpsgithubcomearthlyearthly"><a href="https://github.com/earthly/earthly">Earthly</a></a></li>
+            <li><a href="#neverinstallhttpsneverinstallcom"><a href="https://neverinstall.com/">neverinstall</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-책--강의--영상">📙 책 / 강의 / 영상</a>
+          <ul>
+            <li><a href="#how-to-avoid-machine-learning-pitfalls-a-guide-for-academic-researchershttpspaperslabmlaipaper210802497"><a href="https://papers.labml.ai/paper/2108.02497">How to avoid machine learning pitfalls: a guide for academic researchers</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="-글">✍️ 글</h2>
+<h3 id="페이스북은-이제-메타버스-기업httpsc-rocketnetfacebook_mark_zuckerberg_metaverse_the_verge"><a href="https://c-rocket.net/facebook_mark_zuckerberg_metaverse_the_verge/">페이스북은 이제 메타버스 기업</a></h3>
+<p>The Verge에서 마크 주커버그 페이스북 CEO와 진행한 인터뷰의 한국어 번역본.</p>
+<p>페이스북에서 VR/AR 관련 사업을 하는 직원의 수가 30% 가까이 된다는 글을 얼핏 본적이 있는데,
+페이스북이 무엇보다 메타버스와 VR 사업에 진심임을 알 수 있는 주커버그의 인터뷰입니다.</p>
+<p>2010년대가 스마트폰의 시대였다면, 2020년대는 VR의 시대가 될지도 모르겠네요.</p>
+<h3 id="70만번-다운로드-된-npm-패키지--httpswwwbleepingcomputercomnewssoftwareempty-npm-package-has-over-700-000-downloads-heres-why"><a href="https://www.bleepingcomputer.com/news/software/empty-npm-package-has-over-700-000-downloads-heres-why/">70만번 다운로드 된 NPM 패키지: <code>-</code></a></h3>
+<p>NPM에서 <code>-</code>라는 이름의 내용 없는 패키지가 70만번이나 다운로드 되었는데,
+그 원인을 살펴보는 아티클.</p>
+<p>원인은 단순히 사람들이 패키지를 설치하는 과정에서
+플래그를 지정하다가 실수로 띄어쓰기를 삽입해서 (<code>-P</code> &ndash;&gt; <code>- P</code>) 발생했을 것이라고 하는데요.
+해당 패키지의 개발자는 NPM의 패키지 명명 규칙을 확인하는 차원에서 <code>-</code> 패키지를 업로드했었다고 합니다.</p>
+<p>누구나 자유롭게 패키지 업로드가 가능한 NPM이나 PyPI에서 악성코드가 발견되는 경우가 심심찮게 발생하고 있는 상황에서,
+사람들의 실수로 발생할 수 있는 이번 경우와 같은 케이스를 예방하는 기능이 필요하지 않을까 싶기도 하네요.</p>
+<h3 id="git-switch-and-restorehttpswwwbanterlynet20210731new-in-git-switch-and-restore"><a href="https://www.banterly.net/2021/07/31/new-in-git-switch-and-restore/">Git switch and restore</a></h3>
+<p>Git 2.23에서 생긴 커맨드인 <code>git switch</code>와 <code>git restore</code>를 소개하는 글.</p>
+<p><code>git switch</code>는 브랜치를 전환하는 기능, <code>git restore</code>는 파일을 복원하는 기능을 합니다.
+기존에는 두 기능 모두 <code>git checkout</code>을 이용해서 수행했었는데요.</p>
+<p><code>git checkout</code> 커맨드는 git의 원리를 잘 이해하는 사람에게 있어서는 문제가 없었으나,
+처음 git을 배우는 사람에게는 대체 왜 이 커맨드가 때로는 브랜치를 생성하고, 때로는 파일을 복원하는지
+이해하기 어려운 측면이 있었습니다.</p>
+<p>아직 많은 git 튜토리얼에서 checkout을 많이 사용하는데요.
+git 2.23이 공개된지 벌써 2년이 넘었으니, 이제는 checkout대신 switch와 restore를 많이 사용해보시면 어떨까 싶네요.</p>
+<h3 id="깃헙-엔지니어링-팀은-이제-codespaces를-이용해-개발합니다httpsgithubblog2021-08-11-githubs-engineering-team-moved-codespaces"><a href="https://github.blog/2021-08-11-githubs-engineering-team-moved-codespaces/">깃헙 엔지니어링 팀은 이제 Codespaces를 이용해 개발합니다</a></h3>
+<p>깃헙 Codespaces 정식 런칭과 함께 공개된 깃헙 블로그 아티클.</p>
+<p>깃헙 엔지니어링 팀이 Mac 노트북에서 로컬로 개발하다,
+깃헙에서 제공하는 클라우드 개발환경인 Codespaces로 옮겨갔다는 이야기입니다.</p>
+<p>전체적인 글 내용은 클라우드 환경으로 옮기면서,
+Mac용 스크립트를 리눅스 환경에 맞추어 포팅하고,
+빠른 초기화를 위해서 여러가지 기법들을 활용했다는 이야기인데요.</p>
+<p>내용 자체보다는 앞으로 이렇게 클라우드를 사용해서 개발을 하는 일이 굉장히 흔해지지 않을까 하는 생각이 들어 글을 가져와봤습니다.
+작은 프로덕트를 만드는 작은 기업에서야 굳이 클라우드 개발 환경을 쓸 필요가 없겠지만,
+계속 엔지니어가 들어오고 나가고,
+프로덕트의 크기도 커서 개발 환경 구축에 이슈가 자주 발생하는 큰 프로젝트라면,
+클라우드 기반의 접근법이 굉장히 유효할 것 같네요.</p>
+<p>여담으로, 개인적으로 Codespaces를 아주 잘 쓰고 있었는데
+이제 엔터프라이즈를 대상으로 유료로 운영한다고 하니 아쉽습니다 ㅎㅎ..</p>
+<h3 id="스카이림의-수레와-벌-여우와-보물httpsimseongkangwordpresscom20210822skylimdevstory"><a href="https://imseongkang.wordpress.com/2021/08/22/skylimdevstory/">스카이림의 수레와 벌, 여우와 보물</a></h3>
+<p>명작 RPG 게임 스카이림 개발 과정에서 있었던 흥미로운 사실들에 대한 개발자들의 뒷 얘기.</p>
+<p>&ldquo;도망치는 여우를 따라가면 보물이 나온다&quot;라는 플레이어들 사이에서의 팁이 있었는데,
+이는 개발자들의 의도한 것이 아니라 NPC의 이동 AI 로직에 따라 발생한 특수한 현상이었다고 합니다.</p>
+<h2 id="-북마크">📌 북마크</h2>
+<h3 id="webrtc에-대해서-당신이-알고싶어-할-모든-것httpsblogopenreplaycomeverything-you-ever-wanted-to-know-about-webrtc"><a href="https://blog.openreplay.com/everything-you-ever-wanted-to-know-about-webrtc">WebRTC에 대해서 당신이 알고싶어 할 모든 것</a></h3>
+<p>클라이언트간 실시간 통신이 가능하게 해주는 WebRTC 기술의 주요 API를 소개해주는 문서입니다.</p>
+<h3 id="relate-saas-리스트httpssaasrelatekr"><a href="https://saas.relate.kr/">Relate SaaS 리스트</a></h3>
+<p>스타트업에서 유용하게 사용할 수 있는 SaaS 리스트입니다.</p>
+<h2 id="-기술-뉴스">📰 기술 뉴스</h2>
+<h3 id="스택-오버플로우-2021년-개발자-설문조사httpsstackoverflowblog202108022021-stack-overflow-developer-survey-results"><a href="https://stackoverflow.blog/2021/08/02/2021-stack-overflow-developer-survey-results/">스택 오버플로우 2021년 개발자 설문조사</a></h3>
+<p>매년 진행하는 스택 오버플로우 개발자 설문조사.</p>
+<p>코로나의 여파로 온라인을 이용하여 개발을 배우는 사람이 많이 늘어난듯한 모습이네요.</p>
+<p>한가지 흥미로운 건 웹 프레임워크에서 Svelte와 FastAPI의 인기가 굉장히 높았다는 점인데요.
+실제 업무에 많이 사용되는지와는 별개로 &ldquo;힙&quot;한 프레임워크를 사람들이 많이 좋아하는 현상이라고 볼 수 있지 않을까 싶습니다.</p>
+<h3 id="지구온난화가-gps를-마비시킬-수도-있다httpsmobiletwittercomariadneconillstatus1422163289518313474"><a href="https://mobile.twitter.com/ariadneconill/status/1422163289518313474">지구온난화가 GPS를 마비시킬 수도 있다</a></h3>
+<p>지구의 자전속도는 일정하지 않고 점진적으로 느려지는 것으로 알려져 있는데요.
+이 때문에 종종 자전속도의 변화에 맞춰 일초를 추가하는 윤초를 삽입하고는 합니다.</p>
+<p>지난 십수년동안에는 평균적으로 1년에 한번 정도 윤초가 발생했고,
+그래서 GPS 소프트웨어가 &ldquo;2021년도에는 윤초가 대략 몇개 이상 쌓였을 거고, 그렇지 않으면 버그니까 시간을 초기화하자&rdquo;,
+라는 로직을 가지고 있었다고 하는데요.</p>
+<p>문제는 지구온난화가 지구의 자전을 가속시켜 최근에는 윤초가 발생하지 않았고, 오히려 마이너스 윤초를 발생시킬 수도 있는 상황이라고 합니다.
+이 때문에 GPS의 해당 로직이 오작동해서 큰 버그를 발생시킬 수도 있다는 소식입니다.</p>
+<p>이 소식을 보고 드는 생각은 두 가지인데,
+윤초와 같이 인간이 전혀 예상할 수 없는 사건을 처리하는 것이 개발자 입장에서 참 고역이겠구나 하는 것과,
+지구온난화가 정말 생활 곳곳에 영향을 미칠 수 있구나 하는 것입니다.</p>
+<h3 id="vuejs가-위키미디어-재단의-새-프레임워크로-선택되다httpslistswikimediaorghyperkittylistwikitech-llistswikimediaorgthreadsozrebyr36punfzxmiubvaioqi4n7pdu"><a href="https://lists.wikimedia.org/hyperkitty/list/wikitech-l@lists.wikimedia.org/thread/SOZREBYR36PUNFZXMIUBVAIOQI4N7PDU/">Vue.js가 위키미디어 재단의 새 프레임워크로 선택되다</a></h3>
+<p>Vue.js가 위키미디어 재단의 차세대 프레임워크로 선택되었습니다.
+몇년 뒤면 Vue.js로 만들어진 위키피디아를 볼 수 있겠네요.</p>
+<p>프레임워크 선택에 관해서 논의한 <a href="https://phabricator.wikimedia.org/T241180">RFC를 보면</a>,
+React와 비교해서 Vue를 선택한 이유를 살펴볼 수 있는데요.
+특정 회사(Facebook)의 목표에 따라 굉장히 빠르게 Best practice가 변하고, breaking changes도 잦은 React는,
+아주 천천히 진행될 위키미디어 재단의 프로젝트 속도와는 맞지 않는 면이 있다고 합니다.</p>
+<h2 id="-소프트웨어--프로젝트">⚙️ 소프트웨어 / 프로젝트</h2>
+<h3 id="brythonhttpsgithubcombrython-devbrython"><a href="https://github.com/brython-dev/brython">Brython</a></h3>
+<p>Browser Python. 파이썬을 브라우저 환경에서 실행시키는 프로젝트.</p>
+<p>비슷한 프로젝트로 이전에 <a href="https://github.com/pyodide/pyodide">pyodide</a>를 소개 한 적이 있는데요.
+두 프로젝트의 목표는 비슷하지만 방식은 다릅니다.</p>
+<p>pyodide는 CPython 인터프리터를 Wasm으로 컴파일해서 파이썬 코드를 실행하는 방식이라면,
+brython은 파이썬 코드를 js로 트랜스컴파일하는 방식을 사용합니다.</p>
+<p>스타 수로 봤을 때 두 프로젝트의 인기도는 비슷한데,
+확장성 측면에서는 pyodide의 손을 들어주고 싶네요.</p>
+<h3 id="stackoverflow-importerhttpsgithubcomdrathierstack-overflow-import"><a href="https://github.com/drathier/stack-overflow-import">StackOverflow Importer</a></h3>
+<p>파이썬 import 시스템을 오버라이딩하여, 스택 오버플로우에서 코드를 검색해서 임포트 해주는 파이썬 라이브러리.
+당연히 실사용 용도는 아니고, 재미로 만든 프로젝트.</p>
+<p>import 시스템을 이런 식으로 변형할 수 있다는 점도 흥미롭고, 아이디어가 참 재밌습니다.</p>
+<h3 id="earthlyhttpsgithubcomearthlyearthly"><a href="https://github.com/earthly/earthly">Earthly</a></h3>
+<p>컨테이너 시대의 빌드 자동화 도구라고 자신을 소개하는 프로젝트.</p>
+<p>Makefile과 Dockerfile이 결혼해서 아이를 낳았다(?) 라고도 자신을 표현하는데,
+직관적으로 이해하기에는 이 표현이 꽤나 적절합니다.</p>
+<p>빌드하기 위해서 복잡한 디펜던시가 필요한 프로젝트의 경우,
+빌드에 필요한 디펜던시를 설치한 컨테이너 개발 환경을 만들고,
+그 안에서 빌드를 하는 방식을 종종 사용합니다.
+즉, 이 경우에는 컨테이너 개발 환경 구성에 필요한 Dockerfile과, 빌드에 필요한 Makefile 두 개가 필요하게 되죠.</p>
+<p>Earthly는 이 둘을 합친 Earthfile을 제시합니다.
+문법만 살펴봐도 Dockerfile과 Makefile을 합쳐놓은 듯한 느낌이 물씬 풍깁니다.</p>
+<p>이렇게 하면 언제 어디서나 Earthfile 하나로 똑같은 환경에서 빌드할 수 있고,
+더 CI friendly 하다는 것이 요지입니다.</p>
+<p>아직 1년 조금 넘은 굉장히 젊은 프로젝트인데, 앞으로 더 발전할 수 있을지 지켜볼만한 프로젝트인듯 합니다.</p>
+<h3 id="neverinstallhttpsneverinstallcom"><a href="https://neverinstall.com/">neverinstall</a></h3>
+<p>크롬, VS Code와 같은 데스크톱 앱을 브라우저 상에서 실행해주는 서비스.</p>
+<p>간단히 생각하면 한 가지 프로그램만 사용 가능한 크롬 원격 데스크탑을 띄우는 느낌입니다.
+서버가 미국에 있어서 인지 한국에서 실행하면 다소 레이턴시가 느려서 답답한 느낌이 있습니다.</p>
+<p>ProductHunt에서 인기를 끌었는데, 아무래도 이런 서비스는 보안이나 개인정보가 꽤 중요한 요소라
+이런 작은 서비스를 쓰는 건 좀 꺼려지는 부분이 있는데요.
+무료로 제공하는 인스턴스가 있으니 가끔 필요할 때는 사용해봄직 합니다.</p>
+<h2 id="-책--강의--영상">📙 책 / 강의 / 영상</h2>
+<h3 id="how-to-avoid-machine-learning-pitfalls-a-guide-for-academic-researchershttpspaperslabmlaipaper210802497"><a href="https://papers.labml.ai/paper/2108.02497">How to avoid machine learning pitfalls: a guide for academic researchers</a></h3>
+<p>학술계에서 머신 러닝 연구를 하는 연구자들을 위한, 함정에 빠지지 않는 법.</p>
+<p>머신 러닝을 실제 업무에 적용하는 경우에야 사실 결과 지표만 잘나오면 괜찮지만,
+연구를 한다면 정확하고 엄밀한 결과를 리포팅하기 위해 고려해야하는 요소들이 참 많습니다.
+머신 러닝 연구를 하면서 발생할 수 있는 다양한 실수(함정)들을 방지하는 방법을 알려주는 페이퍼인데요.
+머신 러닝 연구를 처음 시작하는 학생, 대학원생들이 참고해보면 좋을 듯 합니다.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-08-30
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/2021/08/16/writing-a-good-documentation.html/">
+            <span class="next-text nav-default">개발자를 위한 좋은 문서 작성법</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="comments" class="comments">
+            
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+        </div>
+
+        <div id="search-results" class="search-results">
+            <template>
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title"><a class="post-link" href="{url}">{title}</a></h1>
+            <div class="post-meta">
+                <span class="post-time"> {date} </span>
+                <div class="post-category">
+                    <a href="{categoryUrl}"> {category} </a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <div class="post-summary">
+                {summary}
+            </div>
+            <div class="read-more">
+                <a href="{url}" class="read-more-link">Read more...</a>
+            </div>
+        </div>
+    </article>
+</template>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+    <a href="https://ryanking13.github.io/feed.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

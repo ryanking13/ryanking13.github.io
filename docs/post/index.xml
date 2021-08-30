@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Morgenrøde</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Aug 2021 01:01:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Aug 2021 01:01:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>월간 기술 스크랩 21/08</title>
+      <link>https://ryanking13.github.io/2021/08/30/monthly-log-2108.html/</link>
+      <pubDate>Mon, 30 Aug 2021 01:01:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2021/08/30/monthly-log-2108.html/</guid>
+      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 8월)</description>
+    </item>
+    
     <item>
       <title>개발자를 위한 좋은 문서 작성법</title>
       <link>https://ryanking13.github.io/2021/08/16/writing-a-good-documentation.html/</link>
