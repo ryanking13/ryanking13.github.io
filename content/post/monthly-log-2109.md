@@ -12,6 +12,11 @@ draft: true
 
 ## 📌 북마크
 
+### [git bisect](https://thoughtbot.com/blog/git-bisect)
+
+이분 탐색을 이용하여 git 프로젝트에서 문제가 발생한 부분을 찾는 네이티브 도구 git bisect를 소개합니다.
+git은 알면 알수록 흥미로운 도구들이 많네요.
+
 ## 📰 기술 뉴스
 
 ## ⚙️ 소프트웨어 / 프로젝트
