@@ -15,7 +15,6 @@ draft: true
 ### [git bisect](https://thoughtbot.com/blog/git-bisect)
 
 이분 탐색을 이용하여 git 프로젝트에서 문제가 발생한 부분을 찾는 네이티브 도구 git bisect를 소개합니다.
-git은 알면 알수록 흥미로운 도구들이 많네요.
 
 ## 📰 기술 뉴스
 
@@ -23,3 +22,8 @@ git은 알면 알수록 흥미로운 도구들이 많네요.
 
 ## 📙 책 / 강의 / 영상
 
+### [A cartoon intro to WebAssembly](https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/)
+
+일러스트와 함께 살펴보는 WebAssembly 개념 강의
+
+다소 오래된(2017년) 내용이지만, WebAssembly에 대한 기초 개념을 잡기에 좋은 강의입니다.
