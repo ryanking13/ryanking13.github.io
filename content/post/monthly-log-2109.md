@@ -68,6 +68,15 @@ draft: true
 
 ## 📰 기술 뉴스
 
+### [Native Rust support on Cloudflare Workers](https://blog.cloudflare.com/workers-rust-sdk/)
+
+V8 엔진을 이용한 Cloudflare의 서버리스 플랫폼인 Workers에서 JavaScript 글루코드 없이
+Rust로만 앱을 만들 수 있도록 SDK를 지원하게 되었다는 소식.
+
+SDK가 오픈 소스로 공개되어 있으니,
+Rust로 WebAssembly 도구를 만들고자 하는 사람이라면 내부 구현을 한 번 뜯어보면 큰 도움이 되지 않을까 싶습니다.
+
+
 ## ⚙️ 소프트웨어 / 프로젝트
 
 ## [식탁보 프로젝트](https://github.com/yourtablecloth/TableCloth)
