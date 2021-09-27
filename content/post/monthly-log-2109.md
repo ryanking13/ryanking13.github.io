@@ -79,7 +79,7 @@ Rust로 WebAssembly 도구를 만들고자 하는 사람이라면 내부 구현�
 
 ## ⚙️ 소프트웨어 / 프로젝트
 
-## [식탁보 프로젝트](https://github.com/yourtablecloth/TableCloth)
+### [식탁보 프로젝트](https://github.com/yourtablecloth/TableCloth)
 
 윈도우 10 1909버전에 추가된 윈도우 샌드박스 (1회성 VM) 기능을 이용하여,
 인터넷뱅킹 환경을 구축하는 프로젝트.
@@ -91,6 +91,16 @@ Rust로 WebAssembly 도구를 만들고자 하는 사람이라면 내부 구현�
 쉽게 쓸 수 있도록 잘 나오면 유용하게 사용할 것 같습니다.
 
 제작자는 페이스북에서 WSL 커뮤니티를 운영하시는 남정현님.
+
+### [WSLg : Windows Subsystem for Linux GUI](https://github.com/microsoft/wslg)
+
+WSL에서 GUI 애플리케이션 실행을 지원하고자 하는 프로젝트.
+
+현재는 Windows 10 인사이더 빌드에서만 사용이 가능한데요.
+아마 곧 출시될 Windows 11에 공식적으로 적용이 될 것 같습니다.
+
+WSL을 아주 잘 사용하고 있는 입장에서 매우 환영할만한 업데이트인데요.
+얼마나 네이티브에 가까운 성능을 보여주는 지가 관건일 것 같습니다.
 
 ## 📙 책 / 강의 / 영상
 
