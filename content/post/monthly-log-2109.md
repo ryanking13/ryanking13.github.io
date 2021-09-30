@@ -102,6 +102,13 @@ Rust로만 앱을 만들 수 있도록 SDK를 지원하게 되었다는 소식.
 SDK가 오픈 소스로 공개되어 있으니,
 Rust로 WebAssembly 도구를 만들고자 하는 사람이라면 내부 구현을 한 번 뜯어보면 큰 도움이 되지 않을까 싶습니다.
 
+### [PASS: Pictures without humAns for Self-Supervised Pretraining](https://github.com/yukimasano/PASS)
+
+옥스퍼드 대학 VGG 그룹에서 공개한 ImageNet을 대체 데이터셋.
+
+라이센스 문제에서 자유롭고 사람이 포함되어 있지 않아 개인정보 문제가 없는 이미지 1.4M개로 구성되어 있습니다.
+다만 레이블이 없다보니 Self-supervision 기반의 사전학습을 위해서만 주로 사용할 수 있다는 한계점이 있기는 합니다.
+
 
 ## ⚙️ 소프트웨어 / 프로젝트
 
