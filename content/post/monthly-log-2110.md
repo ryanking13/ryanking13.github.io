@@ -14,6 +14,14 @@ draft: false
 
 ## 📰 기술 뉴스
 
+### [Python 3.10 Release](https://www.python.org/downloads/release/python-3100/)
+
+파이썬 3.10이 공식 릴리즈되었습니다.
+
+이번 버전의 가장 큰 특징은 패턴 매칭 문법의 도입입니다.
+파이썬 패턴 매칭 도입은 [여러 가지 말이 많은]({{< ref "python-patma.md" >}}) 사항이라,
+얼마나 널리 쓰일 지는 지켜봐야 할 것 같습니다.
+
 ## ⚙️ 소프트웨어 / 프로젝트
 
 ### [Dropbox Capture](https://www.dropbox.com/capture)
