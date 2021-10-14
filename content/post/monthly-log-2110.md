@@ -75,3 +75,11 @@ Contextual 로그가 발생한 상황(특히 에러)에 대한 내용을 알 수
 Capture가 대체재가 되어줄 수 있을 지 지켜봐야할 것 같습니다.
 
 ## 📙 책 / 강의 / 영상
+
+### [Software at Scale](https://www.softwareatscale.dev/archive)
+
+Substack으로 발간되는 소프트웨어 팟캐스트.
+
+현업에서 대규모 소프트웨어를 개발하는 유명한 개발자들을 초청해서 얘기를 나누는데,
+Sentry의 CTO, Dropbox의 전 CTO, 파이썬 창시자 Guido 등 게스트의 면면이 꽤 화려합니다.
+대규모 빅 테크 기업에서 어떤 문제에 관심을 가지고 어떤 식으로 개발이 이루어지는 지를 알고 싶다면 청취해볼만 합니다.
