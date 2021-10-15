@@ -2,7 +2,7 @@
 date: "2021-09-11T01:01:00Z"
 title: 머신러닝 연구자들을 위한 제언 (번역)
 categories:
-- Development
+- Machine Learning
 description: 머신러닝 연구자들을 위한 제언
 summary: 머신러닝 연구를 시작하려는 연구자들이 알아야하는 팁을 소개합니다.
 draft: False
