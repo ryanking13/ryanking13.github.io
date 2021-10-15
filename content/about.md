@@ -280,7 +280,6 @@ LG Live Photo unpacker/repacker
 
 ## 🚀 Contributions (curated)
 
-- Tensorflow [#45075](https://github.com/tensorflow/tensorflow/pull/45075)
 - Pandas [#29566](https://github.com/pandas-dev/pandas/pull/29566)
 - Pytorch-Lightning [#5835 #7402 #7674](https://github.com/PyTorchLightning/pytorch-lightning/pulls?q=author%3Aryanking13+)
 
