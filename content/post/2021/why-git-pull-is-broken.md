@@ -10,7 +10,7 @@ categories:
 
 > 원문: [_"Why is git pull broken?"_ (Felipe Contreras)](https://felipec.wordpress.com/2021/07/13/why-is-git-pull-broken/)
 
-이 글의 원작자인 Felipe Contreras는 한 때 git의 코어 개발자였으나 git 메인테이너인 Junio와의 갈등으로
+이 글의 원작자인 Felipe Contreras는 한 때 git의 코어 개발자였으나 메인테이너인 Junio와의 갈등으로
 현재는 git 메인 레포지토리에 기여하지 않는 개발자입니다.
 그의 블로그에는 git 개발과 관련된 흥미로운 뒷얘기들이 몇 가지 있는데요.
 그 중 짧고 재미있는 글을 하나 소개합니다.
@@ -19,7 +19,7 @@ categories:
 이 글의 긴 버전이자 git pull과 관련한 13년간의 논의를 담은 글인
 [git update: the odyssey for a sensible git pull](https://felipec.wordpress.com/2021/07/05/git-update/)을 읽어보시는 것을 추천합니다.
 
-> **Note**: 이 글은 원문의 뉘앙스를 살리기 위해 명령조로 작성되었습니다.
+> **Note**: 이 글은 원문의 뉘앙스를 살리기 위해 가벼운 문체로 작성되었습니다.
 
 ## 들어가며
 
@@ -55,11 +55,7 @@ git pull은 메인테이너들을 위해서 만들어졌습니다.
 이 글은 그러한 메인테이너가 아닌 독자들을 대상으로 쓰여졌습니다.
 (유감스럽게도 그러한 사람들이 대부분이죠.)
 
-
-## git pull의 문제점
-
-
-### 문제 1: git pull은 머지 커밋을 만듭니다
+## 문제 1: git pull은 머지 커밋을 만듭니다
 
 여러분이 git pull을 사용하는 주된 이유는
 로컬 브랜치(e.g. master)의 상태를 대응되는
@@ -93,61 +89,74 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 안타깝게도 [틀렸습니다.](https://lore.kernel.org/git/7vpr8hlow9.fsf@alter.siamese.dyndns.org/)
 
 git pull은 처음부터 그런 용도로 만들어지지 않았습니다.
-git push의 거울상을 원한다고요? git pull이 아닌 git fetch입니다.
-git fetch는 원격 브랜치의 변경사항을 단순히 가져오는(fetch) 기능을 하며,
-그것을 로컬 브랜치에 통합할지 말지는 여러분의 선택으로 남겨둡니다.
+git push의 거울상을 원한다고요? git pull이 아닌 git fetch를 사용해야 합니다.
+git fetch는 원격 브랜치의 변경사항을 로컬로 단순히 가져오는 기능을 하며,
+그것을 로컬 브랜치에 통합할지 말지는 여러분의 선택으로 남겨둡니다. [^mercurial]
+한편, git pull은 원격 브랜치의 변경사항을 로컬로 가져올 뿐만 아니라,
+이를 로컬 브랜치에 머지해버리죠.
 
->  git과는 다른 버전 관리 소프트웨어인 Mercurial에서는 `hg pull` 명령어가 git fetch와 동등합니다. 
+[^mercurial]: 참고로, git과는 다른 버전 관리 소프트웨어인 Mercurial에서는 `hg pull` 명령어가 git fetch와 동등합니다. 
  즉 Mercurial에서는 hg push와 hg pull이 대칭적인데요. git은 그렇지 않습니다.
 
-궁금해하실까봐 말씀드리면,
-한 때 git pull을 git push와 대칭적인 명령어로 만들려는 움직임이 있었습니다.
-그러나 git 프로젝트의 메인테이너가 이를 ["멍청한 정신적 자위행위"](https://lore.kernel.org/git/7vpr8hlow9.fsf@alter.siamese.dyndns.org/)라고 
- 일갈해버렸습니다.
- 그러니 앞으로도 git pull이 git push와 대칭적인 명령어가 될 일은 없을 것입니다.
+왜 그렇게 혼동되게 만들었지? 하고 궁금해하실 수 있습니다.
+사족으로 말씀드리면, 분명 한 때는 git pull을 git push와 대칭적인 명령어로 만들려는 움직임이 있었습니다.
+그러나 git 프로젝트의 메인테이너가 이를
+["멍청한 정신적 자위행위"](https://lore.kernel.org/git/7vpr8hlow9.fsf@alter.siamese.dyndns.org/)라고 
+일축해버렸습니다.
+그러니 앞으로도 git pull이 git push와 대칭적인 명령어가 될 일은 없을 것입니다.
  
- 다시 돌아와서, git fetch를 통해서 원격 브랜치에서 변경사항을 가져온 뒤,
- 로컬 브랜치와 원격 브랜치를 통합할 때는 두 가지 경우의 수가 있습니다.
- fast-forward와 diverging입니다.
+다시 본론으로 돌아와서,
+git fetch를 통해서 원격 브랜치에서 변경사항을 로컬로 가져온 뒤,
+로컬 브랜치와 원격 브랜치를 통합할 때는 두 가지 경우의 수가 있습니다.
+fast-forward와 diverging입니다.
  
 ### fast-forward
  
- fast-forward는 아주 간단합니다. 로컬 브랜치와 원격 브랜치의 커밋이 갈라지지 않은 경우죠.
- 여러분이 로컬 브랜치에 새로 커밋을 하지 않은 상태에서 원격 브랜치가 다른 사람에 의해 수정되었다면 이에 해당합니다.
+ fast-forward는 아주 간단합니다.
+ 로컬 브랜치와 원격 브랜치의 커밋이 갈라지지 않은 경우죠.
+ 여러분이 로컬 브랜치에 새로 커밋을 하지 않은 상태에서
+ 원격 브랜치가 다른 사람에 의해 수정되었다면 fast-forward가 가능합니다.
 
 <div style="text-align: center;">
-<img src="https://media.giphy.com/media/KEkOcB5DJ4E4bhou9T/giphy.gif">
-<div>
-    <span style="color:grey"><small><i>RIP easy_install (GIPHY)</i></small></span>
-</div>
+<img src="https://felipec.files.wordpress.com/2021/07/ff_0-2.png">
 </div>
 
-![fast-forward git pull before](https://felipec.files.wordpress.com/2021/07/ff_0-2.png)
-
-![fast-forward git pull after](https://felipec.files.wordpress.com/2021/07/ff_1-2.png)
+<div style="text-align: center;">
+<img src="https://felipec.files.wordpress.com/2021/07/ff_1-2.png">
+</div>
  
  이 경우에는 단순히 로컬 브랜치를 원격 브랜치가 가리키는 위치로 업데이트 하게 됩니다.
- 위의 예에서는, 로컬 브랜치인 "master" (A)가 원격 브랜치가 가리키는 "origin/master" (C) 위치로 fast-forward 됩니다.
+ 위의 예에서는, 로컬 브랜치인 "master" (A)가
+ 원격 브랜치가 가리키는 "origin/master" (C) 위치로 fast-forward 되는 것을 확인할 수 있습니다.
  
 ### diverging
 
- ![merge git pull before](https://felipec.files.wordpress.com/2021/07/merge_0.png)
+<div style="text-align: center;">
+<img src="https://felipec.files.wordpress.com/2021/07/merge_0.png">
+</div>
 
-fast-forward는 간단했습니다. 그러나 브랜치가 서로 다른 커밋으로 가지를 뻗어나간 경우(diverging)라면,
+fast-forward는 아주 간단했습니다.
+그러나 브랜치가 서로 다른 커밋으로 가지를 뻗어나간(diverging) 경우라면,
 문제가 조금 복잡해집니다.
 
-위의 경우 로컬 브랜치인 "master" (D)와 원격 브랜치인"origin/master" (C)가 (A)라는 부모 커밋에서 서로 갈라져 나온 상태입니다. 이 두 브랜치를 통합하는 데에 있어 선택지가 생깁니다. merge와 rebase입니다.
+위의 경우 로컬 브랜치인 "master" (D)와 원격 브랜치인"origin/master" (C)가
+(A)라는 부모 커밋에서 서로 갈라져 나온 상태입니다.
+이 두 브랜치를 통합하는 데에 있어 선택지가 생깁니다. merge와 rebase입니다.
  
-### merge
+#### merge
 
- ![merge git pull after](https://felipec.files.wordpress.com/2021/07/merge_1.png)
+<div style="text-align: center;">
+<img src="https://felipec.files.wordpress.com/2021/07/merge_1.png">
+</div>
  
  merge 방식은 (C)와 (D)를 함께 부모로 하는, 새로운 머지 커밋 (E)를 만들고
  두 브랜치를 (E)로 일치시키는 방식입니다.
  
-### rebase
+#### rebase
 
- ![merge git pull after](https://felipec.files.wordpress.com/2021/07/rebase_1.png)
+<div style="text-align: center;">
+<img src="https://felipec.files.wordpress.com/2021/07/rebase_1.png">
+</div>
  
  rebase 방식은 두 브랜치가 갈라져나온 문제를 해결하기 위해
  새로운 커밋을 만들어 커밋 히스토리를 재작성합니다.
@@ -155,44 +164,53 @@ fast-forward는 간단했습니다. 그러나 브랜치가 서로 다른 커밋�
  위 사진에서 볼 수 있듯이 로컬 브랜치 "master" (D)의 커밋을
  원격 브랜치 "origin/master" (C) 위에 재작성 (D')하여,
  커밋 히스토리를 선형적으로 바꾸었습니다.
- (마치 처음부터 브랜치가 갈라지지 않고 로컬 브랜치가 (C)에서 만들어진 것처럼 보이죠).
+ (이 경우 마치 처음부터 브랜치가 갈라지지 않고 로컬 브랜치가 (C)에서 만들어진 것처럼 보이게 됩니다)
  
-## 선택
+### 두 가지 선택지
 
   자, 앞선 예에서 볼 수 있듯이 두 브랜치의 커밋이 갈라졌을 경우
-  우리에게는 merge와 rebase의 두 가지 옵션이 있습니다. 
-  우리는 이 둘 중 어떤 것을 골라야 할까요? 정답은  "그때 그때 다릅니다".
+  우리에게는 merge와 rebase의 두 가지 선택지가 있습니다. 
+  우리는 이 둘 중 어떤 것을 골라야 할까요? 정답은 _"그때 그때 다릅니다"_.
   
   어떤 프로젝트는 선형적인 커밋 히스토리를 선호합니다. 이 때는 반드시 rebase를 해야합니다.
   다른 프로젝트는 히스토리를 있는 그대로 남기고 싶어할 수 있습니다. 이 때는 merge를 해야합니다.
   대부분의 전문가들은 rebase를 선호합니다. 그러나 당신이 git 초심자라면 merge가 더 쉽습니다.
   
-  아직 통일도니 답은 없습니다. 그런데 사람들은 보통 정해진 답이 없을 때 어떻게 하나요? 아무것도 안합니다.
-  기본적으로 git pull은 merge를 합니다. 그러므로 대부분의 사람들은 무심결에 merge를 하게 됩니다. 그게 옳은 것이 아닐 때도요.
+  아직 통일된 답은 없습니다. 그러니 상황에 맞추어 선택을 해야 합니다.
+  그런데 사람들은 보통 정해진 답이 없을 때 어떻게 하나요? _**아무것도 안합니다**_.
+
+  여기서 문제가 발생합니다. 기본적으로 git pull은 merge를 합니다.
+  그러므로 대부분의 사람들은 무엇이 옳은 선택지인지 모른 채 무심결에 merge를 하게 됩니다.
+  그게 옳은 것이 아닐 때도요.
+  올바른 방식은 git pull 대신 git fetch를 사용하고
+  merge를 할 지 rebase를 할 지를 직접 정하는 것입니다.
   
-  첫 번째 문제점입니다. git pull은 기본적으로 merge commit을 만듭니다. 그래서는 안될 때도요.
-  git fetch를 대신 사용하고 merge를 할 지 rebase를 할 지 정하는 것이 올바른 방법입니다.
-  
-## 머지 순서의 문제
+## 문제 2: 잘못된 머지 순서
  
  여기까지 글을 읽으신 분들은 다음과 같이 질문하실 수 있습니다.
  
- > 제가 참여하는 프로젝트는 rebase대신 merge를 해도 된다고 합니다. 그럼 그냥 git pull을 해서 merge를 해도 되는 거 아닌가요?
+ > "제가 참여하는 프로젝트는 rebase대신 merge를 해도 된다고 합니다.
+ 그럼 그냥 git pull을 해서 merge를 해도 되는 거 아닌가요?"
  
-정답은? 틀렸습니다.
+아니요. 틀렸습니다.
  
-![merge order](https://felipec.files.wordpress.com/2021/07/merge_1.png)
+<div style="text-align: center;">
+<img src="https://felipec.files.wordpress.com/2021/07/merge_1.png">
+</div>
  
- 위의 그림이 git pull 이 기본적으로 머지 커밋을 만드는 방식입니다.
- 그런데 보시면 원격 브랜치인 "origin/master" (C) 를 로컬 브랜치인 "master" (D)
- 에 머지하고 있는 것을 확인할 수 있습니다.
- 분명 원격 레포지토리가 중심이 되어야 할텐데요.
+아까 보여드렸던 위의 그림이 git pull 이 기본적으로 머지 커밋을 만드는 방식입니다.
+그런데 보시면 원격 브랜치인 "origin/master" (C) 를 로컬 브랜치인 "master" (D)
+에 머지하고 있는 것을 확인할 수 있습니다.
+잘 생각해보시면, 분명 개발의 중심 가지가 되는 것은 원격 브랜치 쪽입니다.
+그런데 마치 로컬 브랜치가 중심인 것처럼 동작하고 있네요.
  
  네, 순서가 잘못됐습니다.
  
- ![correct merge order](https://felipec.files.wordpress.com/2021/07/merge_good_1-1.png)
+<div style="text-align: center;">
+<img src="https://felipec.files.wordpress.com/2021/07/merge_good_1-1.png">
+</div>
  
- 이 그림이 올바른 머지입니다. 로컬 "master" (D) 가 원격 "origin/master" (C)에 머지되어야 합니다.
+ 이 그림이 올바른 머지 순서입니다. 로컬 "master" (D) 가 원격 "origin/master" (C)에 머지되어야 합니다.
  여러분이 로컬에서 임시 브랜치를 만들고, master 브랜치에 머지했을 때 일어나는 일을 생각해보시면
  이해가 쉬울 겁니다.
  
@@ -202,33 +220,39 @@ fast-forward는 간단했습니다. 그러나 브랜치가 서로 다른 커밋�
  
 ### 올바른 히스토리
  
- 누가 첫번째 부모인지가 그렇게 중요한 문제냐고요? 물론 그렇습니다.
- 
- ![merge orders](https://felipec.files.wordpress.com/2021/07/topics.png)
- 
- 왼쪽부터 올바른 머지 순서와 잘못된 머지 순서입니다.
- 
- 올바른 머지 히스토리에서는 서로 다른 토픽 브랜치들이 갈라져나와서
- "master" (파란색) 로 통합되는 것이 명백합니다.
- 
- gitk와 같은 시각화 도구는 그런 히스토리를 아주 예쁘게 잘 보여주죠.
- 또한 git log --first-parent와 같은 명령어를 사용하면 메인 커밋만 순회할 수 있습니다.
- 
- 그러나 잘못된 히스토리(오른쪽) 에서는 머지 결과가 엉망이 됩니다.
- 무엇이 어디로 머지되었는지도 불명확하고, 시각화 도구로 보여지는 결과로 이상하겠죠.
- git log --first-parent 결과는 잘못된 커밋을 따라가게 될 것입니다 (초록색)
- 
- ### Better conflict resolution
- 
- 아직 설득력이 부족하다면,  컨플릭트를 해소할 때를 생각해보세요.
- 여러분의 변경사항을 upstream ("origin/master")에 통합하는 것이 반대방향보다 논리적으로 적합합니다.
-meld와 같은 머지도구를 사용한다면 이 과정을 올바르게 다를 수있습니다. right to the middle
+이제 여러분은 이것을 질문하셔야 합니다.
+"누가 첫번째 부모인지가 그렇게 중요한 문제인가요?"
 
-## 동의하는 사람들
+물론 그렇습니다.
 
-이 글의 초기버전에는 사실만을 나열하는데 집중하고, 다른 개발자들의 의견을 적지 않았는데요.
-많은 사람들의 팩트를 무시하고 제 말(judgement) 을 믿지(distrust) 못하는 것 같아 git pull이 잘못된 행동을 하고 있다는 것에 
-동의하는다른 개발자들의 리스트를 가지고 왔습니다.
+<div style="text-align: center;">
+<img src="https://felipec.files.wordpress.com/2021/07/topics.png">
+</div>
+ 
+ 왼쪽은 올바른 머지 순서, 오른쪽은 잘못된 머지 순서입니다.
+ 
+ 올바른 머지 히스토리에서는 서로 다른 토픽 브랜치들이
+ 중심이 되는 "master"(파란색) 브랜치에서 갈라져나와서
+ 다시 "master" 로 통합되는 것이 명백합니다.
+ 
+ [gitk](https://git-scm.com/docs/gitk/)와 같은 시각화 도구는
+ 그런 히스토리를 아주 예쁘게 잘 보여주죠.
+ 또한 `git log --first-parent`와 같은 명령어를 사용하면 메인 커밋만 순회할 수 있습니다.
+ 
+ 그러나 잘못된 머지 히스토리에서는 머지 결과가 엉망이 됩니다.
+ 무엇이 어디로 머지되었는지도 불명확하고,
+ 시각화 도구로 보여지는 결과로 이상합니다.
+ `git log --first-parent`의 결과는 잘못된 커밋(초록색)을 따라가게 될 것입니다.
+ 
+아직도 설득력이 부족하다면, 머지 충돌(conflict)을 해결할 때를 생각해보세요.
+여러분의 로컬 변경사항을 원격 브랜치("origin/master")에
+통합하는 것이 반대 방향보다 논리적으로 적합합니다.
+
+## 의견에 동의하는 사람들
+
+많은 사람들의 팩트를 무시하고 제 의견을 믿지 못하는 것 같아
+git pull이 잘못된 행동을 하고 있다는 것에 
+동의하는 다른 개발자들의 목록을 가지고 왔습니다.
 
 - [Linus Torvalds](https://lore.kernel.org/git/CA+55aFz2Uvq4vmyjJPao5tS-uuVvKm6mbP7Uz8sdq1VMxMGJCw@mail.gmail.com/)
 - [Junio C Hamano](https://lore.kernel.org/git/7vli74baym.fsf@alter.siamese.dyndns.org/)
@@ -238,16 +262,19 @@ meld와 같은 머지도구를 사용한다면 이 과정을 올바르게 다를
 - [Elijah Newren](https://lore.kernel.org/git/CABPp-BGrwNf9p6Ayu=A4CF9ydww8tQfvzFqFO1rNm-QG55yG6w@mail.gmail.com/)
 - [Alex Henrie](https://lore.kernel.org/git/20200228215833.319691-1-alexhenrie24@gmail.com/)
  
-  ## 결론
+## 결론
   
-  여러분이 git pull로 merge를 하고 있다면, 잘못되었습니다.
-  git pull을 올바르게 하는 방법은 "언제나" rebase를 하도록 하는 것입니다.
-  그러나 많은 git 초심자들은 rebase가 무엇인지 모르니,  모두가 만족하는 해결책은 아닙니다.
+여러분이 git pull로 merge를 하고 있다면, 지금 잘못하고 있습니다.
+git pull을 올바르게 하는 방법은 *언제나* rebase를 하도록 하는 것입니다.
+그러나 많은 git 초심자들은 rebase가 무엇인지 모르니,
+git pull이 rebase를 하게 한다고 해서 모두가 만족하지는 못할 것입니다.
   
-  더 적절한 해결책은 [제가 제시한 git update 명령어] 입니다. 머지 커밋을 올바른 순서로 만들고,
-  문제가 없을 때는 fast-forward를 하고, 제대로 설정이 가능한 명령어죠.
+더 적절한 해결책은 [제가 제시한 git update 명령어](https://felipec.wordpress.com/2021/07/05/git-update/) 입니다.
+머지 커밋을 올바른 순서로 만들고, 문제가 없을 때는 fast-forward를 하고,
+제대로 옵션 설정이 가능한 명령어죠.
   
-  이제 여러분은 git pull이 완전히 망가져있고 써서는 안 된다는 걸 아셨을 겁니다.
-  git pull은 일반 사용자가 아닌 메인테이너가 사용하기 위해서 만들어졌습니다.
+이 글을 읽은 여러분은 git pull이 완전히 망가져있고
+잘 모른 채 써서는 안 된다는 걸 아셨을 겁니다.
+git pull은 일반 사용자가 아닌 메인테이너가 사용하기 위해서 만들어졌습니다.
   
-  git fetch를 사용하고, 어떻게 통합할지는 나중에 결정하세요.
+git fetch를 사용하고, 어떻게 통합할지는 나중에 결정하세요.
