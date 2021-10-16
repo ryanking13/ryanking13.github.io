@@ -6,7 +6,16 @@
     <description>Recent content in Machine Learning on Morgenrøde</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 01 Feb 2021 20:00:00 +0900</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Sep 2021 01:01:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>머신러닝 연구자들을 위한 제언 (번역)</title>
+      <link>https://ryanking13.github.io/2021/09/11/how-to-avoid-ml-pitfalls.html/</link>
+      <pubDate>Sat, 11 Sep 2021 01:01:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2021/09/11/how-to-avoid-ml-pitfalls.html/</guid>
+      <description>머신러닝 연구를 시작하려는 연구자들이 알아야하는 팁을 소개합니다.</description>
+    </item>
+    
     <item>
       <title>그누보드 캡차 인식 프로젝트 개발기 - Part 2</title>
       <link>https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/</link>
