@@ -14,6 +14,21 @@ draft: false
 
 ## 📰 기술 뉴스
 
+### [Thank you, Github](https://news.ycombinator.com/item?id=29095747)
+
+Microsoft가 Github을 인수하고서부터 3년간 Github의 CEO로 일해왔던 Nat Friedman이 CEO직에서 사임했습니다.
+
+Github이 인수되고서부터 엄청난 변화들이 있었는데요.
+Actions, Codespaces, Copilot, Sponsors 같은 굵직한 변화들만 헤아려봐도 상당한 숫자입니다.
+그 모든 것을 꽤나 잘하고 있다는 것도 특징이구요.
+새로운 CEO는 어떤 방식으로 Github을 이끌어나갈지도 기대되는 부분입니다.
+
+또 Github의 기능적인 발전과는 별개로, [Hacker News](https://news.ycombinator.com/item?id=29095747)를 보면
+많은 사람들이 Nat이 Github에 미친 긍정적인 영향들을 얘기하고 있는데요.
+대표적으로는 [이란 개발자들이 Github을 사용할 수 있도록 노력한 부분](https://github.blog/2021-01-05-advancing-developer-freedom-github-is-fully-available-in-iran/)이나,
+[youtube-dl의 저작권 사태](https://mobile.twitter.com/natfriedman/status/1328365679473426432)와 같은 부분을 잘 해결한 것을
+긍정적으로 평가하고 있는 것을 확인할 수 있습니다.
+
 ## ⚙️ 소프트웨어 / 프로젝트
 
 ## 📙 책 / 강의 / 영상
