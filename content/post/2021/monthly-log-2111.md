@@ -10,6 +10,15 @@ draft: false
 
 ## ✍️ 글
 
+## [Why you shouldn't invoke setup.py directly](https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html)
+
+파이썬 패키징 도구인 setuptools 개발팀에서 더 이상 setuptools를 커맨드라인에서 실행 (e.g. `python setup.py install`)하지
+말아달라고 호소(?)하는 글.
+
+setuptools는 계속 개발될 것이지만, 이제는 라이브러리로만 남을 것이고, 직접적으로 setup.py를 실행하는 방식은 deprecated될 것이라는 글입니다.
+이제는 [PEP517](https://www.python.org/dev/peps/pep-0517/)의 등장으로 setuptools에 의존하지 않고도 패키지를 빌드할 수 있게 되었고,
+pip나 build와 같은 도구가 setuptools가 하던 기능의 일부를 대체하고 있으므로, 굳이 setup.py를 실행할 필요가 없다는 점을 이야기 합니다.
+
 ## 📌 북마크
 
 ### [개발자 면접 시 짚고 넘어가야 할 질문들](https://hunj.dev/interview-questions/amp/)
