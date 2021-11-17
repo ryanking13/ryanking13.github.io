@@ -19,6 +19,18 @@ setuptools는 계속 개발될 것이지만, 이제는 라이브러리로만 남
 이제는 [PEP517](https://www.python.org/dev/peps/pep-0517/)의 등장으로 setuptools에 의존하지 않고도 패키지를 빌드할 수 있게 되었고,
 pip나 build와 같은 도구가 setuptools가 하던 기능의 일부를 대체하고 있으므로, 굳이 setup.py를 실행할 필요가 없다는 점을 이야기 합니다.
 
+## [A 16 Year History Of The Git Init Command](https://initialcommit.com/blog/history-git-init-command)
+
+깃 커밋 히스토리로 살펴보는 `git init` 커맨드의 역사.
+
+`git init` 커맨드가 처음에는 `init-db` 명령어였고,
+`.git` 디렉토리가 처음에는 `.dircache`라는 이름이었다는 사실 등
+흥미로운 역사를 알 수 있습니다.
+
+또한 이런저런 디테일이 바뀌기는 했어도 핵심적인 아이디어는 계속 유지되었다는 사실도 알 수 있습니다.
+Linux도 그렇고, git도 그렇고, 초기 디자인과 현재의 디자인이 핵심적인 측면에서 크게 다르지 않다는 점은
+리누스의 대단함이 느껴지는 부분이네요.
+
 ## 📌 북마크
 
 ### [개발자 면접 시 짚고 넘어가야 할 질문들](https://hunj.dev/interview-questions/amp/)
