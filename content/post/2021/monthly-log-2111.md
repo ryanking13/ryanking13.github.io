@@ -29,6 +29,29 @@ Actions, Codespaces, Copilot, Sponsors 같은 굵직한 변화들만 헤아려�
 [youtube-dl의 저작권 사태](https://mobile.twitter.com/natfriedman/status/1328365679473426432)와 같은 부분을 잘 해결한 것을
 긍정적으로 평가하고 있는 것을 확인할 수 있습니다.
 
+### [Python GIL Removal](https://lukasz.langa.pl/5d044f91-49c1-4170-aed1-62b6763e6ad0/)
+
+얼마 전 파이썬 코어 개발자들이 모이는 Python Language Summit에서
+파이썬의 GIL(Global Interpreter Lock)을 제거하는 것에 대한 발전된 논의가 있었습니다.
+
+파이썬에서 GIL을 제거하는 것은 기존에도 수없이 논의되었던 논제이지만,
+대부분 큰 성능 저하 없이는 불가능해서 아이디어에 그쳤다고 알려져 있는데요.
+최근 페이스북의 개발자인 Sam Gross가 [nogil](https://github.com/colesbury/nogil)이라는
+이름의 GIL을 제거한 파이썬 구현체를 공개했고,
+이를 바탕으로 한 GIL 제거 논의가 긍정적으로 검토되었다고 합니다.
+
+파이썬에서 GIL이 필요한 주된 이유는 파이썬이
+레퍼런스 카운팅 방식의 가비지 컬렉션 기법을 사용하고 있고,
+이 때문에 서로 다른 스레드에서 같은 오브젝트를 동시에 사용할 때
+레퍼런스 카운트에 문제가 생기는 것을 방지하기 위함인데요.
+
+Sam Gross의 구현체에서는 서로 다른 스레드가 각각의 인터프리터를 가지는 식으로 이를 해결했다고 합니다.
+사실 상세한 내용은 이해하지 못했는데, 나중에 공식적인 PEP가 나오면 제대로 살펴보려고 합니다.
+
+이와 관련해서 [CPython 커미터인 나동희 개발자님 인터뷰](https://www.youtube.com/watch?app=desktop&v=V18ceQO_JkM&feature=youtu.be)를
+살펴보시면 이해에 도움이 될 듯 합니다.
+
+
 ## ⚙️ 소프트웨어 / 프로젝트
 
 ## 📙 책 / 강의 / 영상
