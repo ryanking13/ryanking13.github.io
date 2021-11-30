@@ -6,7 +6,16 @@
     <description>Recent content in Newsletter on Morgenrøde</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 31 Oct 2021 00:01:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/newsletter/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Nov 2021 00:01:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/newsletter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>월간 기술 스크랩 21/11</title>
+      <link>https://ryanking13.github.io/2021/11/30/monthly-log-2111.html/</link>
+      <pubDate>Tue, 30 Nov 2021 00:01:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2021/11/30/monthly-log-2111.html/</guid>
+      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 11월)</description>
+    </item>
+    
     <item>
       <title>월간 기술 스크랩 21/10</title>
       <link>https://ryanking13.github.io/2021/10/31/monthly-log-2110.html/</link>
