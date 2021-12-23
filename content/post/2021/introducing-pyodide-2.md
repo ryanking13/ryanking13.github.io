@@ -1,41 +1,19 @@
 ---
-date: "2021-12-19T00:00:01+09:00"
-title: Pyodide를 소개합니다
-description: Pyodide를 소개합니다
+date: "2021-12-25T00:00:01+09:00"
+title: Pyodide를 소개합니다 - 2
+description: Pyodide를 소개합니다 - 2
 summary: 브라우저에서 파이썬을 구동하고자 하는 프로젝트인 Pyodide를 소개합니다.
 draft: true
 categories:
 - Pyodide
 ---
 
-이 글에서는 브라우저에서 파이썬을 구동하고자 하는 프로젝트인 Pyodide를 소개합니다.
+## Pyodide를 구성하는 기술
 
-> **Note**: 이 글의 필자는 Pyodide 프로젝트에 구성원으로 참여하고 있습니다. 따라서 다소 편향된 의견이 있을 수 있습니다.
+앞선 절에서 Pyodide에 흥미를 느끼셨기를 바랍니다.
+이번 절에서는 Pyodide를 구성하는 기술을 소개합니다.
 
-## Pyodide란?
-
-[Pyodide](https://pyodide.org)는 브라우저 상에서 파이썬을 구동하는 프로젝트로,
-2019년 모질라의 소규모 프로젝트로 시작되었습니다. 
-정확하게는 Pyodide는 브라우저 상에서 데이터를 분석하고 시각화하고자 하는
-프로젝트인 [iodide](https://alpha.iodide.io/)의 일부였는데요.
-2021년도에 모질라에서 iodide 프로젝트를 중단하면서, Pyodide만 커뮤니티 기반의 오픈소스로 남게 되었습니다.
-
-## Pyodide 사용해보기
-
-Pyodide를 가장 쉽게 사용해 볼 수 있는 방법은 공식적으로 제공하는 [REPL]()을 이용하는 것입니다.
-마치 로컬 환경에서 파이썬을 실행한 것과 같은 느낌을 받으실 수 있는데요. 실제로는 모든 과정이 브라우저 상에서 이루어지고 있습니다.
-
-```
-
-```
-
-아래의 링크는 파이썬 포매터인 Black을 Pyodide를 이용하여 브라우저에서 구현한 서비스입니다. 코드는 [이곳]()에서 보실 수 있습니다.
-
-## Pyodide의 원리
-
-Pyodide에 흥미를 느끼셨나요? 이번 절에서는 Pyodide의 작동 원리를 소개합니다.
-
-### WebAssembly
+### WebAssembly / Emscripten
 
 Pyodide의 작동 원리를 이해하기 위해서는 먼저 WebAssembly에 대해서 짚고 넘어가야합니다.
 WebAssembly는 ~. (상세한 사항은 [이곳]을 참고하세요.)
