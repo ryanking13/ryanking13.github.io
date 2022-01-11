@@ -30,6 +30,17 @@ DeepMind의 CEO인 데미스 하사비스, 머신러닝 분야 석학인 제프�
 1번에는 테슬라의 AI 헤드인 안드레아 카파시,
 2번에는 LLVM의 창시자인 크리스 라트너 정도가 있지 않을까 생각합니다.
 
+### [2022년의 PyTorch vs Tensorflow](https://www.assemblyai.com/blog/pytorch-vs-tensorflow-in-2022/)
+
+2022년이 된 시점에서 대표적인 두 딥러닝 프레임워크인 PyTorch와 Tensorflow를 비교하는 글.
+
+최근 몇년간 학계를 중심으로 PyTorch가 크게 성장했다는 것이 피부로 체감되는데,
+최신 인기 모델들은 PyTorch 구현체는 거의 100% 존재하지만 Tensorflow 모델들은 없는 경우도 꽤 있다고 하고,
+Tensorflow 구현체만 존재하는 경우는 Top 30 중에서는 아예 없었다고 합니다.
+
+다만 배포 측면에서 봤을 때는 Tensorflow가 제공하는 다양한 도구들과 에코시스템이 아직까지는 압도적이기에
+PyTorch가 열심히 따라오고는 있지만 아직은 멀었다는 느낌이네요.
+
 <!-- ## 📌 북마크 -->
 
 ## 📰 기술 뉴스
