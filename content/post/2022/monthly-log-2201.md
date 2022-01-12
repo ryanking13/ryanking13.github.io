@@ -41,6 +41,14 @@ Tensorflow 구현체만 존재하는 경우는 Top 30 중에서는 아예 없었
 다만 배포 측면에서 봤을 때는 Tensorflow가 제공하는 다양한 도구들과 에코시스템이 아직까지는 압도적이기에
 PyTorch가 열심히 따라오고는 있지만 아직은 멀었다는 느낌이네요.
 
+### [Github Code Search의 역사](https://github.blog/2021-12-15-a-brief-history-of-code-search-at-github/)
+
+Github이 최근 새로운 [코드 서치 기능](https://cs.github.com)을 소개했는데요.
+이와 관련하여 Github의 검색 기능 역사를 다룬 블로그 글이 나와서 소개합니다.
+
+사실 가볍게 읽기에는 꽤나 딥한 내용인데요. 코드 검색이 일반 검색과 어떻게 다르고,
+어떤 문제들이 있어왔고 그것을 Github이 어떻게 해결해왔는지를 알 수 있는 흥미로운 글입니다.
+
 <!-- ## 📌 북마크 -->
 
 ## 📰 기술 뉴스
