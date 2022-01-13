@@ -49,6 +49,15 @@ Github이 최근 새로운 [코드 서치 기능](https://cs.github.com)을 소�
 사실 가볍게 읽기에는 꽤나 딥한 내용인데요. 코드 검색이 일반 검색과 어떻게 다르고,
 어떤 문제들이 있어왔고 그것을 Github이 어떻게 해결해왔는지를 알 수 있는 흥미로운 글입니다.
 
+### [Docker exec vs attach](https://iximiuz.com/en/posts/containers-101-attach-vs-exec/)
+
+Docker `exec` 과 `attach` 명령어의 차이를 설명한 글.
+
+Docker `exec`의 설명을 보면 `Run a command in a running container`라고 적혀있는데,
+Docker가 프로세스 가상화라는 점을 생각하면 어떻게 한 프로세스 안에서 새 프로세스를 실행하는 거지?
+라는 생각이 들 수 있는데요.
+사실은 `exec`이 특정 컨테이너와 동일한 isolation boundary를 가진 새로운 컨테이너를 실행하는 명령어라는 점을 알 수 있습니다.
+
 <!-- ## 📌 북마크 -->
 
 ## 📰 기술 뉴스
