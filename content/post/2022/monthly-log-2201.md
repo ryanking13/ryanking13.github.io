@@ -80,5 +80,16 @@ Windows용 통합 검색 유틸리티.
 지금껏 Windows에서 사용할 수 있는 몇몇 도구를 써봐도 만족스럽지 못했는데요.
 굉장히 가벼우면서 빨라서 매력적인 검색 유틸리티를 알게 되어서 소개합니다.
 
+### [GitUI](https://github.com/extrawurst/gitui)
+
+Rust로 작성된 터미널 기반 Git UI 클라이언트.
+
+비슷한 프로젝트로 [tig](https://github.com/jonas/tig)와 [lazygit](https://github.com/jesseduffield/lazygit)
+이 있는데, 두 프로젝트에 비해서 상대적으로 젊습니다.
+프로젝트 README에는 두 프로젝트에 비해서 더 빠르고 안정적이라고 써져있는데, 직접 써봐야 알 수 있을 것 같네요.
+
+사실 저는 묘하게 써드파티 Git 클라이언트는 손이 잘 안갔었는데,
+이 기회에 여러가지 프로덕트를 프로덕트를 비교해보고 사용해보려고 합니다.
+
 
 ## 📙 책 / 강의 / 영상
