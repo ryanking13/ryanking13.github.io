@@ -58,6 +58,15 @@ Docker가 프로세스 가상화라는 점을 생각하면 어떻게 한 프로�
 라는 생각이 들 수 있는데요.
 사실은 `exec`이 특정 컨테이너와 동일한 isolation boundary를 가진 새로운 컨테이너를 실행하는 명령어라는 점을 알 수 있습니다.
 
+## [모두의 Github Actions](https://hyperconnect.github.io/2021/11/08/github-actions-for-everyone-1.html)
+
+하이퍼커넥트 DevOps 팀에서 자사 CI 프레임워크를 Jenkins에서 Github Actions로 교체하면서 수행했던 작업들을 정리한 글.
+제목의 링크는 1편이고, [2편](https://hyperconnect.github.io/2021/11/29/github-actions-for-everyone-2.html),
+[3편](https://hyperconnect.github.io/2021/12/21/github-actions-for-everyone-3.html)까지 나와 있습니다.
+
+시크릿 관리나 빌드 캐시 관리처럼 CI를 사용한다면 한번쯤 고민해봤을법한 주제에 대해서 상세히 다루어주고 있어서,
+당장은 도움이 안 되더라도 북마크해놓고 필요할 때 꺼내보기 좋은 글인듯 합니다.
+
 <!-- ## 📌 북마크 -->
 
 ## 📰 기술 뉴스
