@@ -277,18 +277,8 @@ LG Live Photo unpacker/repacker
 <br/>
 
 ---
-
-## 🚀 Contributions (curated)
-
-- Pandas [#29566](https://github.com/pandas-dev/pandas/pull/29566)
-- Pytorch-Lightning [#5835 #7402 #7674](https://github.com/PyTorchLightning/pytorch-lightning/pulls?q=author%3Aryanking13+)
-
-<br/>
-
----
 ## ✏️ Localizations
 
 - [ohshitgit](https://ohshitgit.com/) korean localization
 - [Why Am I Dead At Sea](http://www.whyamideadatsea.com/) unofficial korean localization ([link](https://github.com/ryanking13/WAIDAS))
 - [The Station](http://thestationgame.com/) unofficial korean localization ([link](https://github.com/ryanking13/the-station-kor))
-- [rinthel/rust-lang-book-ko](https://github.com/rinthel/rust-lang-book-ko)
