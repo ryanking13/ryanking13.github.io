@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>월간 기술 스크랩 22/01 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 1월)" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+<script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2022/01/31/monthly-log-2201.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="월간 기술 스크랩 22/01" />
+<meta property="og:description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 1월)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2022/01/31/monthly-log-2201.html/" />
+<meta property="article:published_time" content="2022-01-31T00:01:00+00:00" />
+<meta property="article:modified_time" content="2022-01-31T00:01:00+00:00" />
+<meta itemprop="name" content="월간 기술 스크랩 22/01">
+<meta itemprop="description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 1월)">
+<meta itemprop="datePublished" content="2022-01-31T00:01:00+00:00" />
+<meta itemprop="dateModified" content="2022-01-31T00:01:00+00:00" />
+<meta itemprop="wordCount" content="1735">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="월간 기술 스크랩 22/01"/>
+<meta name="twitter:description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 1월)"/>
+<script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+
+
+
+
+<div class="menu-wrapper">
+  <nav class="site-navbar">
+    <ul id="menu" class="menu">
+      <li class="menu-item">
+          <a class="menu-item-link" href="/">Home</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/post/">Archives</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/categories/">Categories</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/about/">About</a>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="search-wrapper">
+    <div class="show-search">
+        <a class="toggle-search" title="search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="612.056" height="612.057" viewbox="0 0 613 613">
+                <path
+                    d="M595.2 513.908L493.775 412.482c26.707-41.727 42.685-91.041 42.685-144.263C536.459 120.085 416.375 0 268.24 0 120.106 0 .021 120.085.021 268.219c0 148.134 120.085 268.22 268.219 268.22 53.222 0 102.537-15.979 144.225-42.686l101.426 101.463c22.454 22.453 58.854 22.453 81.271 0 22.492-22.491 22.492-58.855.038-81.308zm-326.96-54.103c-105.793 0-191.585-85.793-191.585-191.585 0-105.793 85.792-191.585 191.585-191.585s191.585 85.792 191.585 191.585c.001 105.792-85.791 191.585-191.585 191.585z" />
+            </svg>
+        </a>
+    </div>
+    <div class="input-wrapper">
+        <input type="search" placeholder="검색어 입력" disabled="disabled" />
+    </div>
+</div>
+
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+</div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">월간 기술 스크랩 22/01</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-01-31 </span>
+        <div class="post-category">
+            <a href="/categories/newsletter/"> Newsletter </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-글">✍️ 글</a>
+          <ul>
+            <li><a href="#what-does-a-principal-software-engineer-dohttpsblogdevgeniusiowhat-does-a-principal-engineer-do-2e6af918ff28"><a href="https://blog.devgenius.io/what-does-a-principal-engineer-do-2e6af918ff28">What does a Principal Software Engineer do?</a></a></li>
+            <li><a href="#2022년의-pytorch-vs-tensorflowhttpswwwassemblyaicomblogpytorch-vs-tensorflow-in-2022"><a href="https://www.assemblyai.com/blog/pytorch-vs-tensorflow-in-2022/">2022년의 PyTorch vs Tensorflow</a></a></li>
+            <li><a href="#github-code-search의-역사httpsgithubblog2021-12-15-a-brief-history-of-code-search-at-github"><a href="https://github.blog/2021-12-15-a-brief-history-of-code-search-at-github/">Github Code Search의 역사</a></a></li>
+            <li><a href="#docker-exec-vs-attachhttpsiximiuzcomenpostscontainers-101-attach-vs-exec"><a href="https://iximiuz.com/en/posts/containers-101-attach-vs-exec/">Docker exec vs attach</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#모두의-github-actionshttpshyperconnectgithubio20211108github-actions-for-everyone-1html"><a href="https://hyperconnect.github.io/2021/11/08/github-actions-for-everyone-1.html">모두의 Github Actions</a></a></li>
+        <li><a href="#-기술-뉴스">📰 기술 뉴스</a>
+          <ul>
+            <li><a href="#microsoft-forked-mit-licensed-repo-and-changed-the-copyrighthttpsnewsycombinatorcomitemid29683471"><a href="https://news.ycombinator.com/item?id=29683471">Microsoft forked MIT licensed repo and changed the copyright</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-소프트웨어--프로젝트">⚙️ 소프트웨어 / 프로젝트</a>
+          <ul>
+            <li><a href="#fluent-searchhttpsfluentsearchnet"><a href="https://fluentsearch.net/">Fluent Search</a></a></li>
+            <li><a href="#gituihttpsgithubcomextrawurstgitui"><a href="https://github.com/extrawurst/gitui">GitUI</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-책--강의--영상">📙 책 / 강의 / 영상</a>
+          <ul>
+            <li><a href="#packagingcon-2021httpswwwyoutubecomplaylistlistpll386dcr5qgqu7xhfavtwegod7fltngq7"><a href="https://www.youtube.com/playlist?list=PLl386dCR5QGQu7XhFaVTwEGoD7fLtnGQ7">PackagingCon 2021</a></a></li>
+            <li><a href="#모던-javascript-튜토리얼httpskojavascriptinfo"><a href="https://ko.javascript.info/">모던 JavaScript 튜토리얼</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="-글">✍️ 글</h2>
+<h3 id="what-does-a-principal-software-engineer-dohttpsblogdevgeniusiowhat-does-a-principal-engineer-do-2e6af918ff28"><a href="https://blog.devgenius.io/what-does-a-principal-engineer-do-2e6af918ff28">What does a Principal Software Engineer do?</a></h3>
+<p>한국에서는 이른바 &ldquo;수석&rdquo; 엔지니어라고 부르는,
+엔지니어의 최고 등급에 위치한 사람들은 어떤 역할을 하는 지를 설명한 글.</p>
+<p>글에서 4가지 아키타입에 대해서 설명을 하는데요.</p>
+<ol>
+<li>Generalist: 제품과 서비스 분야의 리더</li>
+<li>Specialist: 특정 도메인의 전문가이자 해당 분야에 영향을 미치는 사람</li>
+<li>Coding Machine: 복잡한 문제를 누구보다 빠르게 풀어내는 사람</li>
+<li>Product Manager Hybrid: 복잡한 비즈니스 문제를 해결하는 사람</li>
+</ol>
+<p>이 글을 소개한 <a href="https://news.hada.io/topic?id=5557">GeekNews 댓글</a>에서 1, 2, 3번의 예시로
+DeepMind의 CEO인 데미스 하사비스, 머신러닝 분야 석학인 제프리 힌튼 교수,
+그리고 구글의 전설적인 개발자인 제프 딘을 들었습니다. (적고보니 다 구글 관련 인물이네요 😮)</p>
+<p>개인적으로 떠오르는 인물로는,
+1번에는 테슬라의 AI 헤드인 안드레아 카파시,
+2번에는 LLVM의 창시자인 크리스 라트너 정도가 있지 않을까 생각합니다.</p>
+<h3 id="2022년의-pytorch-vs-tensorflowhttpswwwassemblyaicomblogpytorch-vs-tensorflow-in-2022"><a href="https://www.assemblyai.com/blog/pytorch-vs-tensorflow-in-2022/">2022년의 PyTorch vs Tensorflow</a></h3>
+<p>2022년이 된 시점에서 대표적인 두 딥러닝 프레임워크인 PyTorch와 Tensorflow를 비교하는 글.</p>
+<p>최근 몇년간 학계를 중심으로 PyTorch가 크게 성장했다는 것이 피부로 체감되는데,
+최신 인기 모델들은 PyTorch 구현체는 거의 100% 존재하지만 Tensorflow 모델들은 없는 경우도 꽤 있다고 하고,
+Tensorflow 구현체만 존재하는 경우는 Top 30 중에서는 아예 없었다고 합니다.</p>
+<p>다만 배포 측면에서 봤을 때는 Tensorflow가 제공하는 다양한 도구들과 에코시스템이 아직까지는 압도적이기에
+PyTorch가 열심히 따라오고는 있지만 아직은 멀었다는 느낌이네요.</p>
+<h3 id="github-code-search의-역사httpsgithubblog2021-12-15-a-brief-history-of-code-search-at-github"><a href="https://github.blog/2021-12-15-a-brief-history-of-code-search-at-github/">Github Code Search의 역사</a></h3>
+<p>Github이 최근 새로운 <a href="https://cs.github.com">코드 서치 기능</a>을 소개했는데요.
+이와 관련하여 Github의 검색 기능 역사를 다룬 블로그 글이 나와서 소개합니다.</p>
+<p>사실 가볍게 읽기에는 꽤나 딥한 내용인데요. 코드 검색이 일반 검색과 어떻게 다르고,
+어떤 문제들이 있어왔고 그것을 Github이 어떻게 해결해왔는지를 알 수 있는 흥미로운 글입니다.</p>
+<h3 id="docker-exec-vs-attachhttpsiximiuzcomenpostscontainers-101-attach-vs-exec"><a href="https://iximiuz.com/en/posts/containers-101-attach-vs-exec/">Docker exec vs attach</a></h3>
+<p>Docker <code>exec</code> 과 <code>attach</code> 명령어의 차이를 설명한 글.</p>
+<p>Docker <code>exec</code>의 설명을 보면 <code>Run a command in a running container</code>라고 적혀있는데,
+Docker가 프로세스 가상화라는 점을 생각하면 어떻게 한 프로세스 안에서 새 프로세스를 실행하는 거지?
+라는 생각이 들 수 있는데요.
+사실은 <code>exec</code>이 특정 컨테이너와 동일한 isolation boundary를 가진 새로운 컨테이너를 실행하는 명령어라는 점을 알 수 있습니다.</p>
+<h2 id="모두의-github-actionshttpshyperconnectgithubio20211108github-actions-for-everyone-1html"><a href="https://hyperconnect.github.io/2021/11/08/github-actions-for-everyone-1.html">모두의 Github Actions</a></h2>
+<p>하이퍼커넥트 DevOps 팀에서 자사 CI 프레임워크를 Jenkins에서 Github Actions로 교체하면서 수행했던 작업들을 정리한 글.
+제목의 링크는 1편이고, <a href="https://hyperconnect.github.io/2021/11/29/github-actions-for-everyone-2.html">2편</a>,
+<a href="https://hyperconnect.github.io/2021/12/21/github-actions-for-everyone-3.html">3편</a>까지 나와 있습니다.</p>
+<p>시크릿 관리나 빌드 캐시 관리처럼 CI를 사용한다면 한번쯤 고민해봤을법한 주제에 대해서 상세히 다루어주고 있어서,
+당장은 도움이 안 되더라도 북마크해놓고 필요할 때 꺼내보기 좋은 글인듯 합니다.</p>
+<!-- ## 📌 북마크 -->
+<h2 id="-기술-뉴스">📰 기술 뉴스</h2>
+<h3 id="microsoft-forked-mit-licensed-repo-and-changed-the-copyrighthttpsnewsycombinatorcomitemid29683471"><a href="https://news.ycombinator.com/item?id=29683471">Microsoft forked MIT licensed repo and changed the copyright</a></h3>
+<p>마이크로소프트가 개인이 개발한 MIT 라이센스로 되어있는 레포지토리를 포크하더니,
+자신들의 라이센스로 바꿨다가 욕을 바가지로 먹은 사건.</p>
+<p>알고보니 자동으로 커밋 템플릿 파일을 업로드하는 봇 때문에 발생한 사건이었다고 합니다.
+마이크로스프트 오픈소스팀에서 빠르게 대응했고, 원 개발자에게도 사과했다고 하니 깔끔하게 결말이 난 듯 합니다.</p>
+<h2 id="-소프트웨어--프로젝트">⚙️ 소프트웨어 / 프로젝트</h2>
+<h3 id="fluent-searchhttpsfluentsearchnet"><a href="https://fluentsearch.net/">Fluent Search</a></h3>
+<p>Windows용 통합 검색 유틸리티.</p>
+<p>검색 유틸리티를 애용하는 편은 아니지만,
+지금껏 Windows에서 사용할 수 있는 몇몇 도구를 써봐도 만족스럽지 못했는데요.
+굉장히 가벼우면서 빨라서 매력적인 검색 유틸리티를 알게 되어서 소개합니다.</p>
+<h3 id="gituihttpsgithubcomextrawurstgitui"><a href="https://github.com/extrawurst/gitui">GitUI</a></h3>
+<p>Rust로 작성된 터미널 기반 Git UI 클라이언트.</p>
+<p>비슷한 프로젝트로 <a href="https://github.com/jonas/tig">tig</a>와 <a href="https://github.com/jesseduffield/lazygit">lazygit</a>
+이 있는데, 두 프로젝트에 비해서 상대적으로 젊습니다.
+프로젝트 README에는 두 프로젝트에 비해서 더 빠르고 안정적이라고 써져있는데, 직접 써봐야 알 수 있을 것 같네요.</p>
+<p>사실 저는 묘하게 써드파티 Git 클라이언트는 손이 잘 안갔었는데,
+이 기회에 여러가지 프로덕트를 프로덕트를 비교해보고 사용해보려고 합니다.</p>
+<h2 id="-책--강의--영상">📙 책 / 강의 / 영상</h2>
+<h3 id="packagingcon-2021httpswwwyoutubecomplaylistlistpll386dcr5qgqu7xhfavtwegod7fltngq7"><a href="https://www.youtube.com/playlist?list=PLl386dCR5QGQu7XhFaVTwEGoD7fLtnGQ7">PackagingCon 2021</a></h3>
+<p>패키징 이슈를 다루는 컨퍼런스,
+주제가 되게 흥미로운데 작년에 처음 열린 것 같습니다.</p>
+<p>여러 가지 언어나 OS에서 있었던 패키징 관련 이슈를 소개하는데요.
+모든 사람들에게 흥미로울만한 주제는 아니지만,
+관심갈만한 발표가 있는지 한번 살펴보시는 것도 좋을 듯 합니다.</p>
+<h3 id="모던-javascript-튜토리얼httpskojavascriptinfo"><a href="https://ko.javascript.info/">모던 JavaScript 튜토리얼</a></h3>
+<p>기초적인 JavaScript 문법에서 다양한 고급 주제들까지 폭 넓게 다루는 튜토리얼.</p>
+<p>필요할 때마다 훑어보는 치트 시트 느낌으로 사용해도 좋고,
+한 번 정독해보는 차원에서 읽어봐도 좋은 내용인 듯 합니다.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2022-01-31
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/2022/01/25/introducing-pyodide-2.html/">
+            <span class="next-text nav-default">Pyodide를 소개합니다 - 2</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="comments" class="comments">
+            
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+        </div>
+
+        <div id="search-results" class="search-results">
+            <template>
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title"><a class="post-link" href="{url}">{title}</a></h1>
+            <div class="post-meta">
+                <span class="post-time"> {date} </span>
+                <div class="post-category">
+                    <a href="{categoryUrl}"> {category} </a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <div class="post-summary">
+                {summary}
+            </div>
+            <div class="read-more">
+                <a href="{url}" class="read-more-link">Read more...</a>
+            </div>
+        </div>
+    </article>
+</template>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+    <a href="https://ryanking13.github.io/feed.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
