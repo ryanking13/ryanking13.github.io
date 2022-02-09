@@ -70,3 +70,15 @@ zx가 좋은 대안이 될 수 있을 지 지켜봐야할 것 같습니다.
 
 
 ## 📙 책 / 강의 / 영상
+
+### [The Birth & Death of JavaScript](https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript)
+
+2035년, 자바스크립트가 죽은(?) 세상에서 회고를 한다는 컨셉으로 발표하는, asm.js를 소개하는 발표 영상.
+
+2013년에 공개된 영상으로, 당시 등장한 asm.js를 소개하면서 asm.js의 발전이 혁신을 가져오고
+결과적으로 자바스크립트가 몰락할 것이라는 내용을 다룬 발표입니다.
+현재는 asm.js를 넘어 WebAssembly가 나온 상태이고, 최근 들어 WebAssembly에 대한 관심이 늘어가고 있는 상황이기에
+다소 오래된 영상이긴 합니다만 이 시점에서 한 번 살펴보는 것도 좋을 듯 합니다.
+
+내용과는 별개로 발표 컨셉이 재밌고 코믹해서 재밌게 볼 수 있습니다.
+
