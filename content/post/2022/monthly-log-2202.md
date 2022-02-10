@@ -35,6 +35,13 @@ draft: true
 제가 블록체인 업계에 발담그고 있는 입장은 아니라,
 이 글에서 제시하는 문제점을 다른 프로젝트들이 어떻게 해결하고자 하는지는 잘 모르겠습니다.
 
+### [JavaScript 번들러로 본 조선시대 붕당의 이해](https://wormwlrm.github.io/2020/08/12/History-of-JavaScript-Modules-and-Bundlers.html)
+
+유명한 조선시대 붕당 짤을 이용해서 JavaScript 도구의 발전 양상을 소개하는 글.
+저처럼 JavaScript를 간간히 쓰면서 수많은 도구들에 압도되었던 적이 있는 분이라면
+까먹을 때마다 보기 좋은 글인 것 같습니다.
+
+
 <!-- ## 📌 북마크 -->
 
 ## 📰 기술 뉴스
