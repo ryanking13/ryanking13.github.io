@@ -41,7 +41,7 @@ draft: true
 저처럼 JavaScript를 간간히 쓰면서 수많은 도구들에 압도되었던 적이 있는 분이라면
 까먹을 때마다 보기 좋은 글인 것 같습니다.
 
-## [CSS 역사로 알아보는 CSS가 어려워진 이유](https://velog.io/@teo/css-history-1)
+### [CSS 역사로 알아보는 CSS가 어려워진 이유](https://velog.io/@teo/css-history-1)
 
 저는 웹 개발을 자주 하는 편이 아니다보니 CSS는 필요할 때마다 주먹구구식으로 사용하고 있는데요.
 매번 찾아 쓸 때마다 대체 무엇이 CSS의 Best Practice인지 알 수가 없어서 고민하고는 합니다.
@@ -91,6 +91,13 @@ HTTP Toolkit을 써보니 더 이상 불편한 앱에 의존하지 않아도 되
 어느 미묘한 지점에 있는 문제를 해결하고자 하는 도구들이 종종 보이는데요.
 
 zx가 좋은 대안이 될 수 있을 지 지켜봐야할 것 같습니다.
+
+### [AlphaCode](https://mobile.twitter.com/DeepMind/status/1488907829276725252)
+
+Deepmind가 자연어 문장을 기반으로 알고리즘 문제를 푸는 AlphaCode를 공개했습니다.
+
+얼마 전 Github Copilot이 등장하면서 이제 충분히 코딩 어시스턴트가 가능한 머신 러닝 모델이 나오나 했는데,
+Deepmind에서 좀 더 발전한 것을 공개했네요.
 
 
 ## 📙 책 / 강의 / 영상
