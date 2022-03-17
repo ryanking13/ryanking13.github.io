@@ -26,6 +26,13 @@ draft: true
 
 ## 📰 기술 뉴스
 
+### [Github Actions 부분 재시작 지원](https://github.blog/2022-03-16-save-time-partial-re-runs-github-actions/)
+
+Github Actions에서 특정한 job만 재시작할 수 있게 해주는 기능을 지원하기 시작했습니다. (원래는 작년 4분기 예정이었는데, 조금 늦어졌네요.)
+
+CI가 확률적으로 실패하는 경우가 잦고, CI 작업이 오래걸리는 경우 이러한 기능이 필수적이다보니,
+다른 CI 서비스에서는 대부분 지원하는 기능이었는데요. Github Actions에서도 드디어 지원하기 시작했습니다.
+
 ## ⚙️ 소프트웨어 / 프로젝트
 
 ## 📙 책 / 강의 / 영상
