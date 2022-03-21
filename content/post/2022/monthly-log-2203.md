@@ -22,7 +22,13 @@ draft: true
 자신의 지식과 경험을 무작정 탑다운으로 주입하기보다는,
 기존의 문제점을 파악하고 천천히 또 신중하게 어떻게 접근해나갔는지를 알 수 있습니다.
 
-<!-- ## 📌 북마크 -->
+## 📌 북마크
+
+### [How To Fit a Bigger Model and Train It Faster](https://mobile.twitter.com/lvwerra/status/1492199297525370887)
+
+Transformer 구현체로 유명한 HuggingFace에서 공개한 거대 모델을 학습하기 위한 팁.
+
+GPU 메모리 크기가 한정적일 때 다양한 방법을 통해서 메모리 사용량을 줄여서 학습을 하는 방법을 알려줍니다.
 
 ## 📰 기술 뉴스
 
