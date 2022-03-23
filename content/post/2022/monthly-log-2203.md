@@ -22,6 +22,20 @@ draft: true
 자신의 지식과 경험을 무작정 탑다운으로 주입하기보다는,
 기존의 문제점을 파악하고 천천히 또 신중하게 어떻게 접근해나갔는지를 알 수 있습니다.
 
+### [Semantic Versioning은 당신을 구하지 못한다](https://hynek.me/articles/semver-will-not-save-you/)
+
+작년 파이썬 암호화 라이브러리인 Cryptography가 C로 작성되어 있던 일부 코드를 Rust로 바꾸었습니다.
+
+이 변화는 두 가지 측면에서 논란이 되었는데,
+첫째는 Rust 컴파일러가 gcc보다 지원하는 플랫폼이 적어서 특정 플랫폼에서 문제가 될 수 있다는 점,
+그리고 둘째는 이 정도의 큰 변화를 메이저 릴리즈가 아닌 마이너 릴리즈 (3.4 -> 3.5)에서 반영했다는 점입니다.
+
+이 글은 글쓴이가 두번째 논란에 대한 자신의 의견을 밝힌 글인데요.
+흔히 Semantic Versioning을 할 때에 Breaking Change는 메이저 릴리즈에서만, 이라는 것이 규칙이지만,
+아무리 작은 변경사항이라도 누군가에게는 Breaking Change일 수 있고, 그렇기에 Semantic Versioning을 신뢰해서는 안된다는 점을 이야기합니다.
+반대로 메인테이너 입장에서도 굳이 Semantic Versioning을 엄격하게 고수하는 것이 큰 의미가 없을 수 있다는 점을 이야기합니다.
+
+
 ## 📌 북마크
 
 ### [How To Fit a Bigger Model and Train It Faster](https://mobile.twitter.com/lvwerra/status/1492199297525370887)
