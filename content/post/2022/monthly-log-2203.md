@@ -35,6 +35,13 @@ draft: true
 아무리 작은 변경사항이라도 누군가에게는 Breaking Change일 수 있고, 그렇기에 Semantic Versioning을 신뢰해서는 안된다는 점을 이야기합니다.
 반대로 메인테이너 입장에서도 굳이 Semantic Versioning을 엄격하게 고수하는 것이 큰 의미가 없을 수 있다는 점을 이야기합니다.
 
+### [Server-Sent Events: the alternative to WebSockets you should be using](https://germano.dev/sse-websockets/)
+
+채팅 서버와 같은 서버와 클라이언트간 실시간 통신 기능이 필요할 때 가장 먼저 떠오르는 것이 웹소켓 기술인데요.
+이 글에서는 웹소켓 대신 서버에서 메세지를 필요에 따라 스트리밍할 수 있는 Server-Sent Events (SSE)가 대안이 될 수 있다고 소개합니다.
+
+웹소켓와 달리 SSE는 HTML위에서 동작하기 때문에 압축, HTML/2 등 HTML의 고급 기능들을 고스란히 이용할 수 있다는 것이 장점인데요.
+두 기술을 비교해보고 필요에 따라 선택하면 될 듯 싶습니다.
 
 ## 📌 북마크
 
