@@ -39,6 +39,12 @@ CodeMirror 6는 아직 베타 버전인만큼 본인들이 회사 차원에서 �
 
 ## 📌 북마크
 
+### [코드 리뷰 피라미드](https://jiyeonseo.github.io/2022/04/03/the-code-review-pyramid/)
+
+코드 리뷰를 할 때에 '덜' 중요한 것과 '더' 중요한 것들.
+
+쉽게 수정할 수 있는 코드 포맷팅이나 테스트 같은 것은 최대한 자동화하고, 구현과 API 등에 집중하는 것이 좋습니다.
+
 ## 📰 기술 뉴스
 
 ### [PEP 594 – Removing dead batteries from the standard library](https://peps.python.org/pep-0594/)
