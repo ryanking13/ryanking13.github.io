@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>월간 기술 스크랩 22/04 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 4월)" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+<script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2022/05/04/monthly-log-2204.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="월간 기술 스크랩 22/04" />
+<meta property="og:description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 4월)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2022/05/04/monthly-log-2204.html/" />
+<meta property="article:published_time" content="2022-05-04T00:01:00+00:00" />
+<meta property="article:modified_time" content="2022-05-04T00:01:00+00:00" />
+<meta itemprop="name" content="월간 기술 스크랩 22/04">
+<meta itemprop="description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 4월)">
+<meta itemprop="datePublished" content="2022-05-04T00:01:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-04T00:01:00+00:00" />
+<meta itemprop="wordCount" content="2031">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="월간 기술 스크랩 22/04"/>
+<meta name="twitter:description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 4월)"/>
+<script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+
+
+
+
+<div class="menu-wrapper">
+  <nav class="site-navbar">
+    <ul id="menu" class="menu">
+      <li class="menu-item">
+          <a class="menu-item-link" href="/">Home</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/post/">Archives</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/categories/">Categories</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/about/">About</a>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="search-wrapper">
+    <div class="show-search">
+        <a class="toggle-search" title="search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="612.056" height="612.057" viewbox="0 0 613 613">
+                <path
+                    d="M595.2 513.908L493.775 412.482c26.707-41.727 42.685-91.041 42.685-144.263C536.459 120.085 416.375 0 268.24 0 120.106 0 .021 120.085.021 268.219c0 148.134 120.085 268.22 268.219 268.22 53.222 0 102.537-15.979 144.225-42.686l101.426 101.463c22.454 22.453 58.854 22.453 81.271 0 22.492-22.491 22.492-58.855.038-81.308zm-326.96-54.103c-105.793 0-191.585-85.793-191.585-191.585 0-105.793 85.792-191.585 191.585-191.585s191.585 85.792 191.585 191.585c.001 105.792-85.791 191.585-191.585 191.585z" />
+            </svg>
+        </a>
+    </div>
+    <div class="input-wrapper">
+        <input type="search" placeholder="검색어 입력" disabled="disabled" />
+    </div>
+</div>
+
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+</div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">월간 기술 스크랩 22/04</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-05-04 </span>
+        <div class="post-category">
+            <a href="/categories/newsletter/"> Newsletter </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-글">✍️ 글</a>
+          <ul>
+            <li><a href="#balancing-safety-and-velocity-in-cicd-at-slackhttpsslackengineeringbalancing-safety-and-velocity-in-ci-cd-at-slack"><a href="https://slack.engineering/balancing-safety-and-velocity-in-ci-cd-at-slack/">Balancing Safety and Velocity in CI/CD at Slack</a></a></li>
+            <li><a href="#브라우저-기반-코드-에디터-비교httpsblogreplitcomcode-editors"><a href="https://blog.replit.com/code-editors">브라우저 기반 코드 에디터 비교</a></a></li>
+            <li><a href="#shell-option-하나가-cloudflare를-느리게-만들다httpsblogcloudflarecompipefail-how-a-missing-shell-option-slowed-cloudflare-down"><a href="https://blog.cloudflare.com/pipefail-how-a-missing-shell-option-slowed-cloudflare-down/">Shell Option 하나가 Cloudflare를 느리게 만들다</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-북마크">📌 북마크</a>
+          <ul>
+            <li><a href="#코드-리뷰-피라미드httpsjiyeonseogithubio20220403the-code-review-pyramid"><a href="https://jiyeonseo.github.io/2022/04/03/the-code-review-pyramid/">코드 리뷰 피라미드</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-기술-뉴스">📰 기술 뉴스</a>
+          <ul>
+            <li><a href="#pep-594--removing-dead-batteries-from-the-standard-libraryhttpspepspythonorgpep-0594"><a href="https://peps.python.org/pep-0594/">PEP 594 – Removing dead batteries from the standard library</a></a></li>
+            <li><a href="#httpie가-5만-개의-star를-잃은-과정httpshttpieioblogstardust"><a href="https://httpie.io/blog/stardust">HTTPie가 5만 개의 Star를 잃은 과정</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-소프트웨어--프로젝트">⚙️ 소프트웨어 / 프로젝트</a>
+          <ul>
+            <li><a href="#erudahttpsgithubcomlirilirieruda"><a href="https://github.com/liriliri/eruda">Eruda</a></a></li>
+            <li><a href="#regex-vishttpsregex-viscom"><a href="https://regex-vis.com/">Regex Vis</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="-글">✍️ 글</h2>
+<h3 id="balancing-safety-and-velocity-in-cicd-at-slackhttpsslackengineeringbalancing-safety-and-velocity-in-ci-cd-at-slack"><a href="https://slack.engineering/balancing-safety-and-velocity-in-ci-cd-at-slack/">Balancing Safety and Velocity in CI/CD at Slack</a></h3>
+<p>Slack에서 PR 머지 전에 수행하는 테스트가 점점 늘어감에 따라 테스트 시간이 너무 길어져서 생산성이 떨어지고,
+다양한 이유로 실패하는 flaky한 테스트 때문에 머지가 지연되는 경우가 많았다고 합니다.</p>
+<p>이를 개선하기 위해서 PR 단계에서는 크리티컬한 테스트만 수행하고, 머지 후에 나머지의 일부를 테스트 한 후에 배포하고,
+그 후에 수시간이 걸리는 나머지 테스트를 수행하게끔 파이프라인을 바꾼 이야기입니다.</p>
+<p>이렇게 바꾸다보면 배포 속도(velocity)는 올라가지만 아무래도 안정성(safety)는 상대적으로 떨어질 수밖에 없는데,
+이를 개선하기 위해서 slack에서 했던 다양한 노력을 알 수 있습니다.</p>
+<h3 id="브라우저-기반-코드-에디터-비교httpsblogreplitcomcode-editors"><a href="https://blog.replit.com/code-editors">브라우저 기반 코드 에디터 비교</a></h3>
+<p>온라인 IDE로 유명한 Replit에서 브라우저용 에디터로 Ace, Monaco, CodeMirror를 도입했던 결과를 설명한 글.</p>
+<p>초기에는 Ace 에디터를 사용했고, 역사가 오래된만큼 안정적이었지만, Ace 에디터의 개발사가 다른 회사에 인수되면서
+추가적인 개발이 많이 이루어지지 않아서 다른 에디터로 마이그레이션을 하기로 결정했다고 합니다.</p>
+<p>그래서 VSCode에 들어가는 Monaco를 사용함으로서 VSCode에서 빠르게 도입되는 기능들을 뽑아먹으려고(?) 했으나,
+Monaco와 VSCode의 코드가 굉장히 복잡하게 얽혀있어 본인들이 원하는 기능만 사용하기 어려웠고 특히 모바일 지원이 거의 불가능했다고 합니다.</p>
+<p>그러던 와중 작년도에 Ace와 마찬가지로 역사가 꽤나 오래된 CodeMirror가 모던한 브라우저 환경에 맞춘 새로운 베타 버전을 공개했고,
+이 새로운 버전이 회사의 요구사항에 딱 들어맞아서 도입하기로 결정했다고 합니다.
+CodeMirror 6는 아직 베타 버전인만큼 본인들이 회사 차원에서 직접 후원하고 개발에 참여하고 있다고 하는데요.
+온라인 에디터가 필요한 프로덕트를 개발하고 있다면 한 번 읽어보면 좋은 글인듯 합니다.</p>
+<h3 id="shell-option-하나가-cloudflare를-느리게-만들다httpsblogcloudflarecompipefail-how-a-missing-shell-option-slowed-cloudflare-down"><a href="https://blog.cloudflare.com/pipefail-how-a-missing-shell-option-slowed-cloudflare-down/">Shell Option 하나가 Cloudflare를 느리게 만들다</a></h3>
+<p>세계적으로 널리 사용되는 CDN 서비스인 Cloudflare는 사고가 발생했을 때 상세한 내용을 블로그에 잘 공유해주기로 유명한데요.</p>
+<p>지난 12월에 일시적으로 Cloudflare의 서비스가 느려지는 사태가 발생했는데, 그것이 어떠한 연유로 발생했는지를 설명해주는 글입니다.
+어떤 패치를 도입했다가 롤백하는 과정에서, 중요한 설정 파일이 제대로 업데이트 되지 않아서 속도 저하가 발생했다고 하는데요.</p>
+<p>원인은 간단하게도, Shell 스크립트를 작성할 때 <code>PIPEFAIL</code> 옵션을 넣어주지 않아서, 앞선 커맨드가 실패했을 때
+에러가 발생하지 않고 계속 진행이 되었기 때문이라고 합니다.</p>
+<p>원인이야 간단했지만, 이를 상세하게 공유하는 Cloudflare의 회사 방침이 긍정적으로 보입니다.</p>
+<h2 id="-북마크">📌 북마크</h2>
+<h3 id="코드-리뷰-피라미드httpsjiyeonseogithubio20220403the-code-review-pyramid"><a href="https://jiyeonseo.github.io/2022/04/03/the-code-review-pyramid/">코드 리뷰 피라미드</a></h3>
+<p>코드 리뷰를 할 때에 &lsquo;덜&rsquo; 중요한 것과 &lsquo;더&rsquo; 중요한 것들.</p>
+<p>쉽게 수정할 수 있는 코드 포맷팅이나 테스트 같은 것은 최대한 자동화하고, 구현과 API 등에 집중하는 것이
+좋다고 이야기합니다.</p>
+<h2 id="-기술-뉴스">📰 기술 뉴스</h2>
+<h3 id="pep-594--removing-dead-batteries-from-the-standard-libraryhttpspepspythonorgpep-0594"><a href="https://peps.python.org/pep-0594/">PEP 594 – Removing dead batteries from the standard library</a></h3>
+<p>파이썬 3.13에서 더 이상 널리 사용되지 않는 오래된 라이브러리들이 스탠다드 라이브러리에서 제거됩니다.
+대표적으로는 80년대에 쓰였고 더 이상은 쓰이지 않는 포맷을 파싱하는 라이브러리(<code>aifc</code>, <code>chunk</code>)라던가,
+이제는 다른 서드파티들이 더 잘 할 수 있는, 이미지 헤더를 파싱하는 라이브러리(<code>imghdr</code>) 등이 있습니다.</p>
+<p>파이썬은 초기부터 &ldquo;batteries included&rdquo; 철학을 가지고 있어서 많은 수의 라이브러리들을 기본 라이브러리로 내장하고 있었는데요.
+이제는 인터넷이 연결되지 않은 것이 더 이상한 세상이 되었기에 얼마든지 좋은 서드파티 라이브러리들을 설치할 수 있는 상황에서,
+더 중요한 요소들에 집중하고자 한 선택이라고 합니다.</p>
+<h3 id="httpie가-5만-개의-star를-잃은-과정httpshttpieioblogstardust"><a href="https://httpie.io/blog/stardust">HTTPie가 5만 개의 Star를 잃은 과정</a></h3>
+<p>유명한 HTTP API 테스팅 도구인 HTTPie가 얼마 전 깃헙 레포지토리를 실수로 Private으로 바꿔서 5만개가 넘는 Star를 잃은 사건이 있었는데요.
+해당 사건이 일어난 이유를 설명하는 글입니다.</p>
+<p>결론부터 얘기하면 단순 &ldquo;실수&quot;인데요. 다른 레포지토리를 Private으로 전환하려 했으나 실수로 HTTPie 레포지토리를 Private으로 바꾸고 말았다고 합니다.</p>
+<p>이 글에서는 두 가지 측면에 대해서 아쉬움을 토로하는데요.
+첫째는 깃헙에서 레포지토리를 Private으로 바꾸는 행위에 대한 경고를 주긴 하지만,
+좀 더 직관적이고 명확한 UI 디자인을 만들어서 실수를 방지했으면 어땠을까 하는 것이고,
+두번째는 HTTPie 측에서 이 사건 후 DB 롤백을 해주길 요청했으나 깃헙에서 거절했다는 부분입니다.
+(사실 두번째는 깃헙 측 입장이 이해되기는 합니다&hellip; 이 글에서는 아쉬움을 다소 격정적으로 토로하는 느낌이네요.)</p>
+<h2 id="-소프트웨어--프로젝트">⚙️ 소프트웨어 / 프로젝트</h2>
+<h3 id="erudahttpsgithubcomlirilirieruda"><a href="https://github.com/liriliri/eruda">Eruda</a></h3>
+<p>모바일 브라우저를 위한 개발자 도구.</p>
+<p>태블릿을 이용해서 웹 개발을 하거나, 스마트폰에서 DeX 등의 장치를 이용해서 개발을 할 경우 유용하게 사용할 수 있을 듯 싶습니다.</p>
+<h3 id="regex-vishttpsregex-viscom"><a href="https://regex-vis.com/">Regex Vis</a></h3>
+<p>정규표현식을 시각화해주고, 웹 UI를 통해서 쉽게 원하는 표현식으로 바꿀 수 있는 사이트.</p>
+<p>유사한 서비스가 꽤나 많은데, UI가 간결하고 사용성도 괜찮아 보입니다.
+아직 많이 사용해보지는 못했는데, 간단한 정규표현식을 작성할 때 참고해보면 도움이 될 듯 합니다.</p>
+<!-- ## 📙 책 / 강의 / 영상 -->
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2022-05-04
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/2022/03/31/monthly-log-2203.html/">
+            <span class="next-text nav-default">월간 기술 스크랩 22/03</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="comments" class="comments">
+            
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+        </div>
+
+        <div id="search-results" class="search-results">
+            <template>
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title"><a class="post-link" href="{url}">{title}</a></h1>
+            <div class="post-meta">
+                <span class="post-time"> {date} </span>
+                <div class="post-category">
+                    <a href="{categoryUrl}"> {category} </a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <div class="post-summary">
+                {summary}
+            </div>
+            <div class="read-more">
+                <a href="{url}" class="read-more-link">Read more...</a>
+            </div>
+        </div>
+    </article>
+</template>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+    <a href="https://ryanking13.github.io/feed.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

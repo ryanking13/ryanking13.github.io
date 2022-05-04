@@ -10,28 +10,35 @@
   
   <url>
     <loc>https://ryanking13.github.io/categories/</loc>
-    <lastmod>2022-03-31T00:01:00+00:00</lastmod>
+    <lastmod>2022-05-04T00:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ryanking13.github.io/</loc>
-    <lastmod>2022-03-31T00:01:00+00:00</lastmod>
+    <lastmod>2022-05-04T00:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ryanking13.github.io/categories/newsletter/</loc>
-    <lastmod>2022-03-31T00:01:00+00:00</lastmod>
+    <lastmod>2022-05-04T00:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ryanking13.github.io/post/</loc>
-    <lastmod>2022-03-31T00:01:00+00:00</lastmod>
+    <lastmod>2022-05-04T00:01:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanking13.github.io/2022/05/04/monthly-log-2204.html/</loc>
+    <lastmod>2022-05-04T00:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
