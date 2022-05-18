@@ -40,14 +40,14 @@ weight: 50
 	</div>
 </div>
 
-## 👋 About me
+<!-- ## About me
 
 > 대한민국 국방과학연구소에서 연구장교로 병역의 의무를 이행하고 있습니다.
 > 
 > 다양한 기술을 배우고 익히는 것을 좋아하고, 지식을 나누는 것을 중요하게 생각합니다.
 > 
 > 종종 알리고 싶은 주제에 대해 글을 씁니다. 또 흥미로운 글을 가끔 번역합니다.
-> 
+>  -->
 
 <!-- ## 👔 Work Experience
 
@@ -82,26 +82,45 @@ weight: 50
 
 <br/> -->
 
-## 👨‍💻 Personal Projects 
+## Open Source Projects 
 
----
+<!-- ---
 
 <div style="text-align: center;">
 	<span><b>Curated Projects</b></span>
 </div>
 
----
+--- -->
+
 
 <div style="display: inline;">
 	<h3 style="display: inline;">
-		<a href="https://github.com/ryanking13/SRT" target="_blank">
-			SRT
-			<i class="iconfont icon-github"></i>
+		<a href="https://github.com/pyodide/pyodide" target="_blank">
+			Pyodide
+			<!-- <i class="iconfont icon-github"></i> -->
 		</a>
 	</h3>
+	<span style="color:grey"><small>core developer (2021 - present)</small></span>
 </div>
 
-SRT(Super Rapid Train) wrapper for Python (+ [Golang](https://github.com/ryanking13/go-SRT))
+Python distribution for the browser and Node.js based on WebAssembly.
+
+<div style="text-align: center;">
+	<div><img src="https://github.com/pyodide/pyodide/raw/main/docs/_static/img/pyodide-logo-readme.png"/></div>
+</div>
+
+<div 
+style="display: inline;">
+	<h3 style="display: inline;">
+		<a href="https://github.com/ryanking13/SRT" target="_blank">
+			SRT
+			<!-- <i class="iconfont icon-github"></i> -->
+		</a>
+	</h3>
+	<span style="color:grey"><small>maintainer (2018 - present)</small></span>
+</div>
+
+SRT(Super Rapid Train) wrapper for Python (and [Golang](https://github.com/ryanking13/go-SRT))
 
 <div style="display: flex;">
 	<!-- <div><img style="border-radius: 30%;" src="/assets/img/about/srt.png" width="250"/></div> -->
@@ -112,12 +131,13 @@ SRT(Super Rapid Train) wrapper for Python (+ [Golang](https://github.com/ryankin
 	<h3 style="display: inline;">
 		<a href="https://github.com/ryanking13/burgerqueen" target="_blank">
 			Burgerqueen
-			<i class="iconfont icon-github"></i>
+			<!-- <i class="iconfont icon-github"></i> -->
 		</a>
 	</h3>
+	<span style="color:grey"><small>maintainer (2018 - present)</small></span>
 </div>
 
-Burgerking App coupon web viewer (+ [Serverless Backend](https://github.com/ryanking13/burgerqueen-webhook))
+Burgerking App coupon web viewer
 
 
 <div style="text-align: center;">
@@ -126,13 +146,15 @@ Burgerking App coupon web viewer (+ [Serverless Backend](https://github.com/ryan
 	<br/>
 </div>
 
----
+<!-- ---
 
 <div style="text-align: center;">
 	<span>Machine Learning</span>
 </div>
 
----
+--- -->
+
+### Toy Projects 
 
 <br/>
 
@@ -160,42 +182,13 @@ Pytorch Lightning implementation of Contrastive Syn-to-Real Generalization (ICLR
 Kcaptcha Classifier with Tensorflow.js (+ [Solver](https://github.com/ryanking13/kcaptcha-solver), [Dataset](https://github.com/ryanking13/kcaptcha-generator))
 <br/><br/>
 
----
+<!-- ---
 
 <div style="text-align: center;">
 	<span>Misc</span>
 </div>
 
----
-
-<br/>
-
-<div style="display: inline;">
-	<h4 style="display: inline;">
-		<a href="https://github.com/ryanking13/cors" target="_blank">
-			cors
-			<i class="iconfont icon-github"></i>
-		</a>
-	</h4>
-</div>
-
-Cloudflare workers based CORS proxy
-<br/><br/>
-
-<div style="display: inline;">
-	<h4 style="display: inline;">
-		<a href="https://github.com/ryanking13/WMC-test" target="_blank">
-			Working Memory Capacity Test
-			<i class="iconfont icon-github"></i>
-		</a>
-	</h4>
-</div>
-
-작업기억용량 검사 테스트 (_Outsourcing_)
-
-_이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 작업기억 특성 분석"](../assets/else/D20153202이새별.pdf), 박사학위논문_
-<br/><br/>
-
+--- -->
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
@@ -211,6 +204,18 @@ Oneshot android SSL-unpinning tool
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
+		<a href="https://github.com/ryanking13/cors" target="_blank">
+			cors
+			<i class="iconfont icon-github"></i>
+		</a>
+	</h4>
+</div>
+
+Cloudflare workers based CORS proxy
+<br/><br/>
+
+<!-- <div style="display: inline;">
+	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/oneshot-cms-deploy" target="_blank">
 			Oneshot-cms-deploy
 			<i class="iconfont icon-github"></i>
@@ -219,7 +224,7 @@ Oneshot android SSL-unpinning tool
 </div>
 
 Oneshot Docker Deployment for [CMS](http://cms-dev.github.io/)
-<br/><br/>
+<br/><br/> -->
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
@@ -257,9 +262,23 @@ PNG Metadata sanity checker
 LG Live Photo unpacker/repacker
 <br/><br/>
 
+<div style="display: inline;">
+	<h4 style="display: inline;">
+		<a href="https://github.com/ryanking13/WMC-test" target="_blank">
+			Working Memory Capacity Test
+			<i class="iconfont icon-github"></i>
+		</a>
+	</h4>
+</div>
+
+작업기억용량 검사 테스트
+
+Used for: _이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 작업기억 특성 분석"](../assets/else/D20153202이새별.pdf), 박사학위논문_
+<br/><br/>
+
 ---
 
-## 🏅 Contests
+## Contests
 
 #### Competitive Programming
 
@@ -277,7 +296,7 @@ LG Live Photo unpacker/repacker
 <br/>
 
 ---
-## ✏️ Localizations
+## Localizations
 
 - [ohshitgit](https://ohshitgit.com/) korean localization
 - [Why Am I Dead At Sea](http://www.whyamideadatsea.com/) unofficial korean localization ([link](https://github.com/ryanking13/WAIDAS))
