@@ -27,6 +27,13 @@ draft: true
 
 ## 📰 기술 뉴스
 
+### [Github: Math support in Markdown](https://github.blog/2022-05-19-math-support-in-markdown/)
+
+깃헙에서 마크다운 파일을 작성할 때 이제 MathJax 라이브러리를 사용하여 수식을 나타낼 수 있습니다.
+
+사실 "왜 안 되지?" 싶은 기능이었는데, 드디어 깃헙에서 공식적으로 지원하게 되었네요.
+
+
 ## ⚙️ 소프트웨어 / 프로젝트
 
 ### [PyScript](https://www.anaconda.com/blog/pyscript-python-in-the-browser)
