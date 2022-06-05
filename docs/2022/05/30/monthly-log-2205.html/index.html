@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>월간 기술 스크랩 22/05 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 5월)" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+<script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2022/05/30/monthly-log-2205.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="월간 기술 스크랩 22/05" />
+<meta property="og:description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 5월)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2022/05/30/monthly-log-2205.html/" />
+<meta property="article:published_time" content="2022-05-30T00:01:00+00:00" />
+<meta property="article:modified_time" content="2022-05-30T00:01:00+00:00" />
+<meta itemprop="name" content="월간 기술 스크랩 22/05">
+<meta itemprop="description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 5월)">
+<meta itemprop="datePublished" content="2022-05-30T00:01:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-30T00:01:00+00:00" />
+<meta itemprop="wordCount" content="957">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="월간 기술 스크랩 22/05"/>
+<meta name="twitter:description" content="흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 5월)"/>
+<script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+
+
+
+
+<div class="menu-wrapper">
+  <nav class="site-navbar">
+    <ul id="menu" class="menu">
+      <li class="menu-item">
+          <a class="menu-item-link" href="/">Home</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/post/">Archives</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/categories/">Categories</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/about/">About</a>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="search-wrapper">
+    <div class="show-search">
+        <a class="toggle-search" title="search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="612.056" height="612.057" viewbox="0 0 613 613">
+                <path
+                    d="M595.2 513.908L493.775 412.482c26.707-41.727 42.685-91.041 42.685-144.263C536.459 120.085 416.375 0 268.24 0 120.106 0 .021 120.085.021 268.219c0 148.134 120.085 268.22 268.219 268.22 53.222 0 102.537-15.979 144.225-42.686l101.426 101.463c22.454 22.453 58.854 22.453 81.271 0 22.492-22.491 22.492-58.855.038-81.308zm-326.96-54.103c-105.793 0-191.585-85.793-191.585-191.585 0-105.793 85.792-191.585 191.585-191.585s191.585 85.792 191.585 191.585c.001 105.792-85.791 191.585-191.585 191.585z" />
+            </svg>
+        </a>
+    </div>
+    <div class="input-wrapper">
+        <input type="search" placeholder="검색어 입력" disabled="disabled" />
+    </div>
+</div>
+
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+</div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">월간 기술 스크랩 22/05</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-05-30 </span>
+        <div class="post-category">
+            <a href="/categories/newsletter/"> Newsletter </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-글">✍️ 글</a>
+          <ul>
+            <li><a href="#mvc-창시자가-말하는-mvc의-본질httpsvelogioeddy_songmvc"><a href="https://velog.io/@eddy_song/mvc">MVC 창시자가 말하는, MVC의 본질</a></a></li>
+            <li><a href="#구글-wasm-팀을-그만-둔-이유httpsmediumcomkatelyngaddwhy-i-quit-googles-webassembly-team-and-how-it-made-me-sick-c50ef562ce1"><a href="https://medium.com/@katelyngadd/why-i-quit-googles-webassembly-team-and-how-it-made-me-sick-c50ef562ce1">구글 WASM 팀을 그만 둔 이유</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-북마크">📌 북마크</a>
+          <ul>
+            <li><a href="#annotated-pytorch-paper-implementationshttpsnnlabmlai"><a href="https://nn.labml.ai/">Annotated PyTorch Paper Implementations</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-기술-뉴스">📰 기술 뉴스</a>
+          <ul>
+            <li><a href="#github-math-support-in-markdownhttpsgithubblog2022-05-19-math-support-in-markdown"><a href="https://github.blog/2022-05-19-math-support-in-markdown/">Github: Math support in Markdown</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-소프트웨어--프로젝트">⚙️ 소프트웨어 / 프로젝트</a>
+          <ul>
+            <li><a href="#pyscripthttpswwwanacondacomblogpyscript-python-in-the-browser"><a href="https://www.anaconda.com/blog/pyscript-python-in-the-browser">PyScript</a></a></li>
+            <li><a href="#memrayhttpsgithubcombloombergmemray"><a href="https://github.com/bloomberg/memray">Memray</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="-글">✍️ 글</h2>
+<h3 id="mvc-창시자가-말하는-mvc의-본질httpsvelogioeddy_songmvc"><a href="https://velog.io/@eddy_song/mvc">MVC 창시자가 말하는, MVC의 본질</a></h3>
+<p>아마도 소프트웨어 개발에서 가장 유명한 패턴 중 하나일 MVC(Model-View-Controller) 패턴에 대해서
+초기에 어떤 아이디어로 해당 패턴이 만들어졌는지를 설명한 글.</p>
+<p>유저의 멘탈 모델과 컴퓨터가 데이터를 가공하고 처리하는 방법이 매우 다르기 때문에 이를 모델과 뷰로 분리하고,
+이를 연결하는 장치로서 컨트롤러를 설계했다는 사실을 알 수 있습니다.</p>
+<h3 id="구글-wasm-팀을-그만-둔-이유httpsmediumcomkatelyngaddwhy-i-quit-googles-webassembly-team-and-how-it-made-me-sick-c50ef562ce1"><a href="https://medium.com/@katelyngadd/why-i-quit-googles-webassembly-team-and-how-it-made-me-sick-c50ef562ce1">구글 WASM 팀을 그만 둔 이유</a></h3>
+<p>구글에서 WebAssembly 스펙을 작성하는 팀에서 일하던 저자가
+어떻게 일을 그만두게 되었는지에 대한 글</p>
+<p>WebAssembly 프로젝트가 너무 복잡하고 여러 이해관계자(Mozilla, Google, &hellip;)가
+얽혀있다보니 의견 조율이 매우 어려웠는데,
+이를 해결해줄 매니저가 없이 엔지니어가 일을 떠맞게 되면서
+지속적인 스트레스를 받았다고 합니다.</p>
+<p><a href="https://ryanking13.github.io/2021/10/31/monthly-log-2110.html#javascript-the-first-20-yearshttpszenodoorgrecord3707008yw5utfph1he">자바스크립트의 역사를 다룬 책</a>
+을 보면 다양한 관계자가 얽힌 언어의 스펙을 만들어간다는 것이 정말 어려운 일이라는 것을 알 수 있는데요.
+거기가 빅테크의 복잡한 체계까지 얽혀 한 명의 엔지니어에게는 굉장히 힘든 일이었지 않나 싶습니다.</p>
+<h2 id="-북마크">📌 북마크</h2>
+<h3 id="annotated-pytorch-paper-implementationshttpsnnlabmlai"><a href="https://nn.labml.ai/">Annotated PyTorch Paper Implementations</a></h3>
+<p>머신러닝 논문의 파이토치 구현체를 코드 단위에서 한 줄 한 줄 논문의 어떤 부분에 해당하는지 어노테이션을 달아놓은 사이트.
+당연하지만 논문의 수가 아주 많지는 않은데, 유명한 논문의 구현체를 뜯어볼 일이 있다면 유용하게 사용할 수 있을 듯 합니다.</p>
+<h2 id="-기술-뉴스">📰 기술 뉴스</h2>
+<h3 id="github-math-support-in-markdownhttpsgithubblog2022-05-19-math-support-in-markdown"><a href="https://github.blog/2022-05-19-math-support-in-markdown/">Github: Math support in Markdown</a></h3>
+<p>깃헙에서 마크다운 파일을 작성할 때 이제 MathJax 라이브러리를 사용하여 수식을 나타낼 수 있습니다.</p>
+<p>사실 &ldquo;왜 안 되지?&rdquo; 싶은 기능이었는데, 드디어 깃헙에서 공식적으로 지원하게 되었네요.</p>
+<h2 id="-소프트웨어--프로젝트">⚙️ 소프트웨어 / 프로젝트</h2>
+<h3 id="pyscripthttpswwwanacondacomblogpyscript-python-in-the-browser"><a href="https://www.anaconda.com/blog/pyscript-python-in-the-browser">PyScript</a></h3>
+<p>PyConUS 2022에서 Anaconda가 공개한 HTML에 파이썬을 임베딩할 수 있는 라이브러리.</p>
+<p>CPython을 WebAssembly로 컴파일해서 브라우저 환경에서 실행하는 것 자체는 Pyodide와 CPython 3.11 (알파) 에서 지원하고 있는데
+PyScript는 좀 더 하이레벨에서 쉽게 프로그램을 작성할 수 있게 돕는 라이브러리입니다.</p>
+<p><img src="https://user-images.githubusercontent.com/24893111/167320943-7d99e98a-6b2b-4561-9e1e-f94e24e0180a.png" alt="image"></p>
+<p>공식 소개글에서 설명하는 위 이미지가 이해하는 데에 도움이 될 듯 합니다.</p>
+<h3 id="memrayhttpsgithubcombloombergmemray"><a href="https://github.com/bloomberg/memray">Memray</a></h3>
+<p>블룸버그에서 공개한 파이썬 메모리 프로파일러.회사 내부적으로 사용하고 있던 도구를 오픈소스로 공개했습니다.
+긴 시간 동안 실행되는 파이썬 애플리케이션에 대해서 코드의 어느 영역에서 메모리를 많이 할당하고 사용하고 있는지 알 수 있습니다.</p>
+<p>한 가지 흥미로운 사실로는 메인테이너 중에 cpython 코어 개발자와 pip 메인테니어가 모두 있네요. 전문성은 확실할 듯합니다.</p>
+<!-- ## 📙 책 / 강의 / 영상 -->
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2022-05-30
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/2022/05/04/monthly-log-2204.html/">
+            <span class="next-text nav-default">월간 기술 스크랩 22/04</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="comments" class="comments">
+            
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+        </div>
+
+        <div id="search-results" class="search-results">
+            <template>
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title"><a class="post-link" href="{url}">{title}</a></h1>
+            <div class="post-meta">
+                <span class="post-time"> {date} </span>
+                <div class="post-category">
+                    <a href="{categoryUrl}"> {category} </a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <div class="post-summary">
+                {summary}
+            </div>
+            <div class="read-more">
+                <a href="{url}" class="read-more-link">Read more...</a>
+            </div>
+        </div>
+    </article>
+</template>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+    <a href="https://ryanking13.github.io/feed.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
