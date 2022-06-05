@@ -5,7 +5,7 @@ categories:
 - Newsletter
 description: 흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 5월)
 summary: 흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 5월)
-draft: true
+draft: false
 ---
 
 ## ✍️ 글
@@ -17,6 +17,21 @@ draft: true
 
 유저의 멘탈 모델과 컴퓨터가 데이터를 가공하고 처리하는 방법이 매우 다르기 때문에 이를 모델과 뷰로 분리하고,
 이를 연결하는 장치로서 컨트롤러를 설계했다는 사실을 알 수 있습니다.
+
+### [구글 WASM 팀을 그만 둔 이유](https://medium.com/@katelyngadd/why-i-quit-googles-webassembly-team-and-how-it-made-me-sick-c50ef562ce1)
+
+구글에서 WebAssembly 스펙을 작성하는 팀에서 일하던 저자가
+어떻게 일을 그만두게 되었는지에 대한 글
+
+WebAssembly 프로젝트가 너무 복잡하고 여러 이해관계자(Mozilla, Google, ...)가
+얽혀있다보니 의견 조율이 매우 어려웠는데,
+이를 해결해줄 매니저가 없이 엔지니어가 일을 떠맞게 되면서
+지속적인 스트레스를 받았다고 합니다.
+
+[자바스크립트의 역사를 다룬 책](https://ryanking13.github.io/2021/10/31/monthly-log-2110.html#javascript-the-first-20-yearshttpszenodoorgrecord3707008yw5utfph1he)
+을 보면 다양한 관계자가 얽힌 언어의 스펙을 만들어간다는 것이 정말 어려운 일이라는 것을 알 수 있는데요.
+거기가 빅테크의 복잡한 체계까지 얽혀 한 명의 엔지니어에게는 굉장히 힘든 일이었지 않나 싶습니다.
+
 
 ## 📌 북마크
 
@@ -54,4 +69,4 @@ PyScript는 좀 더 하이레벨에서 쉽게 프로그램을 작성할 수 있�
 
 한 가지 흥미로운 사실로는 메인테이너 중에 cpython 코어 개발자와 pip 메인테니어가 모두 있네요. 전문성은 확실할 듯합니다.
 
-## 📙 책 / 강의 / 영상
+<!-- ## 📙 책 / 강의 / 영상 -->
