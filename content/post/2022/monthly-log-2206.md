@@ -31,7 +31,11 @@ Microsoft가 Github을 인수하면서부터 Visual Studio Code라는 직접적�
 해당 글을 소개한 [HN 스레드](https://news.ycombinator.com/item?id=31668426)에서는 Atom의 원 개발자가
 자신이 신규로 개발하고 있는 [Zed](https://zed.dev/) 에디터를 소개합니다. 관심이 있으시다면 살펴보시는 것도 좋겠네요.
 
-
 ## ⚙️ 소프트웨어 / 프로젝트
+
+### [NVIDIA Broadcast](https://www.nvidia.com/ko-kr/geforce/broadcasting/broadcast-app/)
+
+NVIDIA가 만든 비디오와 오디오를 보정해주는 소프트웨어.
+주요 사용자로 방송을 하는 스트리머를 대상으로 하는 것 같지만, 일반적인 화상 회의 등에도 사용할 수 있을 것으로 보입니다.
 
 ## 📙 책 / 강의 / 영상
