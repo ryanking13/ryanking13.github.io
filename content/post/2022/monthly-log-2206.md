@@ -44,6 +44,18 @@ V8 엔진 기반의 서버리스 플랫폼을 만들었습니다.
 
 ## 📌 북마크
 
+### [2022 Python Language Summit](https://pyfound.blogspot.com/2022/05/the-2022-python-language-summit_01678898482.html)
+
+2022 PyCon US에서 진행된, 파이썬 코어 개발자들간의 language summit에서 진행된 발표 목록.
+
+다소 로우레벨의 주제들이긴 합니다만, 파이썬이 어떤 방향으로 나아가고자하는 지에 대해서 알 수 있습니다.
+아마도 일반 파이썬 유저가 가장 흥미있어할 부분은 GIL(Global Interpreter Lock)에 대한 부분인데요.
+
+이번 summit에서는 Sam Gross가 제시한, GIL을 완전이 제거하는 nogil과,
+Eric Snow가 제시한 여러 개의 인터프리터가 각각의 GIL을 가지게끔 하는 발표가 뜨거운 감자였던 것 같습니다.
+
+사실 저는 기존에 이 두 가지 발표가 비슷한 주제라고 생각하고 있었는데, 완전히 다른 방식을 제시하는 것이라는 점을 알게되어서 조금 놀랐네요.
+
 ## 📰 기술 뉴스
 
 ### [Sunsetting Atom](https://github.blog/2022-06-08-sunsetting-atom/)
