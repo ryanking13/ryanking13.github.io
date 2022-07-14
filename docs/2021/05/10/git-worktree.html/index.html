@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.79.0 with theme even" />
+<meta name="generator" content="Hugo 0.96.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,26 +40,22 @@
 
 
 
-<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Git worktree 소개" />
 <meta property="og:description" content="Git worktree 명령어를 소개합니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2021/05/10/git-worktree.html/" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/05/10/git-worktree.html/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-05-10T00:00:01+09:00" />
 <meta property="article:modified_time" content="2021-05-10T00:00:01+09:00" />
+
 <meta itemprop="name" content="Git worktree 소개">
-<meta itemprop="description" content="Git worktree 명령어를 소개합니다.">
-<meta itemprop="datePublished" content="2021-05-10T00:00:01+09:00" />
+<meta itemprop="description" content="Git worktree 명령어를 소개합니다."><meta itemprop="datePublished" content="2021-05-10T00:00:01+09:00" />
 <meta itemprop="dateModified" content="2021-05-10T00:00:01+09:00" />
-<meta itemprop="wordCount" content="2740">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="2782">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git worktree 소개"/>
 <meta name="twitter:description" content="Git worktree 명령어를 소개합니다."/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -144,7 +140,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
 </div>
     </header>
 
@@ -232,24 +228,24 @@
 <p>예를 들어 살펴보겠습니다. 현재 작업중인 디렉토리 구조는 아래와 같습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 디렉토리 구조</span>
-📂 project
- ┣ 📂 main
- ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
- ┗ ┗ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 디렉토리 구조</span>
+</span></span><span class="line"><span class="cl">📂 project
+</span></span><span class="line"><span class="cl"> ┣ 📂 main
+</span></span><span class="line"><span class="cl"> ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> ┗ ┗ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>project</code> 디렉토리안에 <code>main</code> 이라는 레포지토리를 clone하여 작업하고 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -267,42 +263,42 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">/project/main$ git status
-On branch master
-Changes not staged <span class="k">for</span> commit:
-        ...
-        modified:   file1
-
-/project/main$ cat file1
-new
-
-/project/main$ git diff file1
-...
--old
-+new
-
-/project/main$ git branch -l
-* master
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/project/main$ git status
+</span></span><span class="line"><span class="cl">On branch master
+</span></span><span class="line"><span class="cl">Changes not staged <span class="k">for</span> commit:
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">        modified:   file1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/project/main$ cat file1
+</span></span><span class="line"><span class="cl">new
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/project/main$ git diff file1
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">-old
+</span></span><span class="line"><span class="cl">+new
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/project/main$ git branch -l
+</span></span><span class="line"><span class="cl">* master
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>현재는 <em>master</em> 브랜치에서 작업중이고, file1이 수정(<code>old --&gt; new</code>)되었지만 아직 커밋은 하지 않은 상태입니다.
 master외에 다른 브랜치는 없습니다.</p>
 <p>이 상태에서 버그 수정을 해야할 일이 생겼다고 합시다. 작업 중인 내용이 있으므로, 지금 작업을 보존한 상태로 버그를 수정하기 위해 새로운 작업트리를 만들어보겠습니다. <code>git worktree add ../bugfix</code> 를 실행하여 상위 디렉토리에 bugfix라는 작업트리를 만들어보겠습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">/project/main$ git worktree add ../bugfix
-Preparing worktree <span class="o">(</span>checking out <span class="s1">&#39;bugfix&#39;</span><span class="o">)</span>
-HEAD is now at <span class="m">6796293</span> Initial commit
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/project/main$ git worktree add ../bugfix
+</span></span><span class="line"><span class="cl">Preparing worktree <span class="o">(</span>checking out <span class="s1">&#39;bugfix&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">HEAD is now at <span class="m">6796293</span> Initial commit
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -311,37 +307,37 @@ HEAD is now at <span class="m">6796293</span> Initial commit
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">📂 project
- ┣ 📂 main
- ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
- ┃ ┗ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
- ┣ 📂 bugfix
- ┃ ┣ 📜 .git <span class="o">(</span>HEAD: bugfix<span class="o">)</span>
- ┗ ┗ 📜 file1 <span class="o">(</span>CONTENT: old<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">📂 project
+</span></span><span class="line"><span class="cl"> ┣ 📂 main
+</span></span><span class="line"><span class="cl"> ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> ┃ ┗ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> ┣ 📂 bugfix
+</span></span><span class="line"><span class="cl"> ┃ ┣ 📜 .git <span class="o">(</span>HEAD: bugfix<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> ┗ ┗ 📜 file1 <span class="o">(</span>CONTENT: old<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>디렉토리 구조를 보시면, 현재 작업 중인 내용은 유지된 채로 상위 디렉토리에 bugfix 폴더가 생성되었습니다.
 bugfix 폴더의 내용물을 살펴봅시다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">/project/bugfix$ ls
-file1
-
-/project/bugfix$ cat file1
-old
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/project/bugfix$ ls
+</span></span><span class="line"><span class="cl">file1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/project/bugfix$ cat file1
+</span></span><span class="line"><span class="cl">old
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>file1이 최근 커밋(<code>old</code>)의 내용을 가지고 있는 것을 확인할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -350,14 +346,14 @@ old
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">/project/bugfix$ git status
-On branch bugfix
-nothing to commit, working tree clean
-
-/project/bugfix$ git branch -l
-* bugfix
-* master
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/project/bugfix$ git status
+</span></span><span class="line"><span class="cl">On branch bugfix
+</span></span><span class="line"><span class="cl">nothing to commit, working tree clean
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/project/bugfix$ git branch -l
+</span></span><span class="line"><span class="cl">* bugfix
+</span></span><span class="line"><span class="cl">* master
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>bugfix 폴더의 HEAD는 <code>bugfix</code> 브랜치를 가리키고 있고, <code>master</code> 와 <code>bugfix</code> 두개의 브랜치가 존재하는 것도 확인할 수 있습니다.
 즉, <code>git worktree add &lt;path&gt;</code> 명령어로 새로 브랜치(작업트리)를 생성하고 path 위치에서 해당 브랜치를 작업할 수 있게 되었습니다.</p>
@@ -365,7 +361,7 @@ nothing to commit, working tree clean
 당연히 각 브랜치에서의 작업이 서로 영향을 주는 일도 없구요.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -378,24 +374,24 @@ nothing to commit, working tree clean
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">/project/bugfix$ <span class="nb">echo</span> aaaa &gt; fix <span class="o">&amp;&amp;</span> git add fix <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;fix&#34;</span>
-<span class="o">[</span>bugfix e35561a<span class="o">]</span> fix
- <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
- create mode <span class="m">100644</span> fix
-
-/project/bugfix$ <span class="nb">cd</span> ../main <span class="o">&amp;&amp;</span> git merge bugfix
-Updating b6b873a..e35561a
-Fast-forward
- fix <span class="p">|</span> <span class="m">1</span> +
- <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
- create mode <span class="m">100644</span> fix
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/project/bugfix$ <span class="nb">echo</span> aaaa &gt; fix <span class="o">&amp;&amp;</span> git add fix <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;fix&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>bugfix e35561a<span class="o">]</span> fix
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> create mode <span class="m">100644</span> fix
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/project/bugfix$ <span class="nb">cd</span> ../main <span class="o">&amp;&amp;</span> git merge bugfix
+</span></span><span class="line"><span class="cl">Updating b6b873a..e35561a
+</span></span><span class="line"><span class="cl">Fast-forward
+</span></span><span class="line"><span class="cl"> fix <span class="p">|</span> <span class="m">1</span> +
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> create mode <span class="m">100644</span> fix
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>bugfix 폴더에서 새로 파일을 생성하여 bugfix 브랜치에 커밋한 뒤,
 bugfix 브랜치를 master 브랜치에 머지하였습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -406,31 +402,31 @@ bugfix 브랜치를 master 브랜치에 머지하였습니다.</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">📂 project
- ┣ 📂 main
- ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
- ┃ ┃ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
- ┃ ┗ 📜 fix <span class="o">(</span>CONTENT: aaaa<span class="o">)</span>
- ┣ 📂 bugfix
- ┃ ┣ 📜 .git <span class="o">(</span>HEAD: bugfix<span class="o">)</span>
- ┃ ┃ 📜 file1 <span class="o">(</span>CONTENT: old<span class="o">)</span>
- ┗ ┗ 📜 fix <span class="o">(</span>CONTENT: aaaa<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">📂 project
+</span></span><span class="line"><span class="cl"> ┣ 📂 main
+</span></span><span class="line"><span class="cl"> ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> ┃ ┃ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> ┃ ┗ 📜 fix <span class="o">(</span>CONTENT: aaaa<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> ┣ 📂 bugfix
+</span></span><span class="line"><span class="cl"> ┃ ┣ 📜 .git <span class="o">(</span>HEAD: bugfix<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> ┃ ┃ 📜 file1 <span class="o">(</span>CONTENT: old<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> ┗ ┗ 📜 fix <span class="o">(</span>CONTENT: aaaa<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>일련의 작업이 끝난 후의 상태는 위와 같습니다. master에서 작업하던 file1의 내용은 건드리지 않은 채로 버그를 수정하고 머지할 수 있었습니다.</p>
 <h3 id="list">list</h3>
 <p><code>git worktree list</code>로 현 레포지토리에 존재하는 작업트리 목록을 볼 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">/project/main$ git worktree list
-<span class="o">[</span>...<span class="o">]</span>/project/main    e35561a <span class="o">[</span>master<span class="o">]</span>
-<span class="o">[</span>...<span class="o">]</span>/project/bugfix  e35561a <span class="o">[</span>bugfix<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/project/main$ git worktree list
+</span></span><span class="line"><span class="cl"><span class="o">[</span>...<span class="o">]</span>/project/main    e35561a <span class="o">[</span>master<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>...<span class="o">]</span>/project/bugfix  e35561a <span class="o">[</span>bugfix<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>각 작업트리가 어떤 커밋과 브랜치를 가리키고 있는지도 나타납니다.
 위의 예에서는 master에 bugfix를 머지한 직후의 상황이라 두 작업트리 모두 같은 커밋을 가리키고 있고, 브랜치는 다른 것을 확인할 수 있습니다.</p>
@@ -438,34 +434,34 @@ bugfix 브랜치를 master 브랜치에 머지하였습니다.</p>
 <p><code>git worktree remove &lt;name&gt;</code>으로 필요없어진 작업트리를 삭제할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">/project/main$ git worktree remove bugfix
-
-/project/main$ ls ..
-main
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/project/main$ git worktree remove bugfix
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/project/main$ ls ..
+</span></span><span class="line"><span class="cl">main
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>이제 필요 없어진 bugfix 브랜치를 삭제했습니다. 생성되었던 bugfix 폴더가 삭제된 것을 확인할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">📂 project
- ┣ 📂 main
- ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
- ┃ ┃ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
- ┗ ┗ 📜 fix <span class="o">(</span>CONTENT: aaaa<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">📂 project
+</span></span><span class="line"><span class="cl"> ┣ 📂 main
+</span></span><span class="line"><span class="cl"> ┃ ┣ 📂 .git <span class="o">(</span>HEAD: master<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> ┃ ┃ 📜 file1 <span class="o">(</span>CONTENT: new<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> ┗ ┗ 📜 fix <span class="o">(</span>CONTENT: aaaa<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="git-worktree-활용-용도">git worktree 활용 용도</h2>
 <p><code>git worktree</code>의 대표적인 활용 용도는 글 초반부에서 언급한 것처럼 여러 개의 작업트리(브랜치)를 병렬로 운용하면서,
@@ -505,19 +501,19 @@ main
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ git checkout -b branch1
-$ git worktree add ../branch2
-$ <span class="nb">cd</span> ../branch2
-$ git checkout branch1
-fatal: <span class="s1">&#39;branch1&#39;</span> is already checked out at <span class="s1">&#39;...&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ git checkout -b branch1
+</span></span><span class="line"><span class="cl">$ git worktree add ../branch2
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> ../branch2
+</span></span><span class="line"><span class="cl">$ git checkout branch1
+</span></span><span class="line"><span class="cl">fatal: <span class="s1">&#39;branch1&#39;</span> is already checked out at <span class="s1">&#39;...&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>다른 작업트리에서 보고 있는 브랜치로는 checkout하는 것이 차단되어 있어서, 여러 작업트리가 같은 브랜치에서 작업하는 실수를 방지할 수 있습니다.</p>
 <ul>
@@ -525,7 +521,7 @@ fatal: <span class="s1">&#39;branch1&#39;</span> is already checked out at <span
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -533,13 +529,13 @@ fatal: <span class="s1">&#39;branch1&#39;</span> is already checked out at <span
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">/project/main$ git worktree add ../bugfix
-/project/main$ cat ../bugfix/.git
-gitdir: <span class="o">[</span>...<span class="o">]</span>/project/main/.git/worktrees/bugfix
-
-/project/main$ ls .git/worktrees/bugfix
-HEAD  ORIG_HEAD  commondir  gitdir  index  logs
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/project/main$ git worktree add ../bugfix
+</span></span><span class="line"><span class="cl">/project/main$ cat ../bugfix/.git
+</span></span><span class="line"><span class="cl">gitdir: <span class="o">[</span>...<span class="o">]</span>/project/main/.git/worktrees/bugfix
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/project/main$ ls .git/worktrees/bugfix
+</span></span><span class="line"><span class="cl">HEAD  ORIG_HEAD  commondir  gitdir  index  logs
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>생성한 작업트리 디렉토리에 있는 <code>.git</code> 파일에는 메인 작업트리 디렉토리를 가리키는 경로가 적혀있습니다.</p>
 <p>메인 작업트리안의 <code>.git/worktrees</code> 폴더에는 작업트리 별로 HEAD 등의 파일이 저장되어 있습니다.</p>
@@ -552,10 +548,10 @@ HEAD  ORIG_HEAD  commondir  gitdir  index  logs
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>이해를 돕기 위한 설명으로 엄밀하게는 worktree != branch 입니다. 자세한 내용은 <a href="https://git-scm.com/docs/git-worktree">git-worktree 공식 문서</a>를 참고하세요. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>이해를 돕기 위한 설명으로 엄밀하게는 worktree != branch 입니다. 자세한 내용은 <a href="https://git-scm.com/docs/git-worktree">git-worktree 공식 문서</a>를 참고하세요.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>작업트리를 네트워크나 usb와 같은 이동식 저장장치를 통해서 공유하는 데에 활용할 수 있는 <code>lock</code>과 같은 서브커맨드가 존재합니다. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>작업트리를 네트워크나 usb와 같은 이동식 저장장치를 통해서 공유하는 데에 활용할 수 있는 <code>lock</code>과 같은 서브커맨드가 존재합니다.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -679,7 +675,7 @@ HEAD  ORIG_HEAD  commondir  gitdir  index  logs
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.79.0 with theme even" />
+<meta name="generator" content="Hugo 0.96.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,26 +40,22 @@
 
 
 
-<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Github Actions를 이용하여 서버 없이 알림 봇 만들기" />
 <meta property="og:description" content="Github Actions를 이용하여 서버 없이 알림 봇 만들기" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2019/12/29/twitter-bot-without-server.html/" />
+<meta property="og:url" content="https://ryanking13.github.io/2019/12/29/twitter-bot-without-server.html/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-12-29T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-12-29T00:00:00+00:00" />
+
 <meta itemprop="name" content="Github Actions를 이용하여 서버 없이 알림 봇 만들기">
-<meta itemprop="description" content="Github Actions를 이용하여 서버 없이 알림 봇 만들기">
-<meta itemprop="datePublished" content="2019-12-29T00:00:00+00:00" />
+<meta itemprop="description" content="Github Actions를 이용하여 서버 없이 알림 봇 만들기"><meta itemprop="datePublished" content="2019-12-29T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-12-29T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2691">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="2712">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Github Actions를 이용하여 서버 없이 알림 봇 만들기"/>
 <meta name="twitter:description" content="Github Actions를 이용하여 서버 없이 알림 봇 만들기"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -144,7 +140,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
 </div>
     </header>
 
@@ -259,7 +255,7 @@ Circle CI의 Cron Job 기능은 이 글을 작성하는 시점 기준으로 Nigh
 <!-- {% raw %} -->
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -291,37 +287,37 @@ Circle CI의 Cron Job 기능은 이 글을 작성하는 시점 기준으로 Nigh
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># https://github.com/ryanking13/twitter-lyric-bot/blob/master/.github/workflows/tweet.yml</span><span class="w">
-</span><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Post tweet</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0 6,13,23 * * *&#34;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
-</span><span class="w">    
-</span><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v1</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up Python 3.7</span><span class="w">
-</span><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/setup-python@v1</span><span class="w">
-</span><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="m">3.7</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install dependencies</span><span class="w">
-</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
-</span><span class="sd">        python -m pip install --upgrade pip
-</span><span class="sd">        pip install -r requirements.txt</span><span class="w">        
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Tweet</span><span class="w">
-</span><span class="w">      </span><span class="nt">env</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">GITHUB_ACCESS_KEY</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.GITHUB_ACCESS_KEY }}</span><span class="w">
-</span><span class="w">        </span><span class="nt">TWITTER_ACCESS_TOKEN_KEY</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.TWITTER_ACCESS_TOKEN_KEY }}</span><span class="w">
-</span><span class="w">        </span><span class="nt">TWITTER_ACCESS_TOKEN_SECRET</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}</span><span class="w">
-</span><span class="w">        </span><span class="nt">TWITTER_CONSUMER_KEY</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.TWITTER_CONSUMER_KEY }}</span><span class="w">
-</span><span class="w">        </span><span class="nt">TWITTER_CONSUMER_SECRET</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.TWITTER_CONSUMER_SECRET }}</span><span class="w">
-</span><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
-</span><span class="sd">        </span><span class="w">        </span><span class="l">python run.py</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># https://github.com/ryanking13/twitter-lyric-bot/blob/master/.github/workflows/tweet.yml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Post tweet</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0 6,13,23 * * *&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up Python 3.7</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/setup-python@v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="m">3.7</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install dependencies</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">        python -m pip install --upgrade pip
+</span></span></span><span class="line"><span class="cl"><span class="sd">        pip install -r requirements.txt</span><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Tweet</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">GITHUB_ACCESS_KEY</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.GITHUB_ACCESS_KEY }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">TWITTER_ACCESS_TOKEN_KEY</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.TWITTER_ACCESS_TOKEN_KEY }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">TWITTER_ACCESS_TOKEN_SECRET</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">TWITTER_CONSUMER_KEY</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.TWITTER_CONSUMER_KEY }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">TWITTER_CONSUMER_SECRET</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.TWITTER_CONSUMER_SECRET }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">        </span><span class="w">        </span><span class="l">python run.py</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><!-- {% endraw %} -->
 <ul>
@@ -334,7 +330,7 @@ Circle CI의 Cron Job 기능은 이 글을 작성하는 시점 기준으로 Nigh
 <p>이제 주기적으로 코드를 실행하는 부분은 완성하였다. 다음으로 Issue에 곡 정보를 업데이트하는 기능을 구현하자.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -351,22 +347,22 @@ Circle CI의 Cron Job 기능은 이 글을 작성하는 시점 기준으로 Nigh
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># https://github.com/ryanking13/twitter-lyric-bot/blob/master/issue.py</span>
-<span class="kn">from</span> <span class="nn">github</span> <span class="kn">import</span> <span class="n">Github</span>
-<span class="kn">import</span> <span class="nn">config</span>
-
-<span class="n">g</span> <span class="o">=</span> <span class="n">Github</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">GITHUB_ACCESS_KEY</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">get_issue</span><span class="p">(</span><span class="n">repo_url</span><span class="p">,</span> <span class="n">issue_no</span><span class="p">):</span>
-    <span class="n">issue</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_repo</span><span class="p">(</span><span class="n">repo_url</span><span class="p">)</span><span class="o">.</span><span class="n">get_issue</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">issue_no</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">issue</span><span class="o">.</span><span class="n">body</span>
-
-
-<span class="k">def</span> <span class="nf">update_issue</span><span class="p">(</span><span class="n">repo_url</span><span class="p">,</span> <span class="n">issue_no</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
-    <span class="n">issue</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_repo</span><span class="p">(</span><span class="n">repo_url</span><span class="p">)</span><span class="o">.</span><span class="n">get_issue</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">issue_no</span><span class="p">)</span>
-    <span class="n">issue</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">issue</span><span class="o">.</span><span class="n">body</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">content</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># https://github.com/ryanking13/twitter-lyric-bot/blob/master/issue.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">github</span> <span class="kn">import</span> <span class="n">Github</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">config</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">g</span> <span class="o">=</span> <span class="n">Github</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">GITHUB_ACCESS_KEY</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_issue</span><span class="p">(</span><span class="n">repo_url</span><span class="p">,</span> <span class="n">issue_no</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">issue</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_repo</span><span class="p">(</span><span class="n">repo_url</span><span class="p">)</span><span class="o">.</span><span class="n">get_issue</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">issue_no</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">issue</span><span class="o">.</span><span class="n">body</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">update_issue</span><span class="p">(</span><span class="n">repo_url</span><span class="p">,</span> <span class="n">issue_no</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">issue</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_repo</span><span class="p">(</span><span class="n">repo_url</span><span class="p">)</span><span class="o">.</span><span class="n">get_issue</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">issue_no</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">issue</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">issue</span><span class="o">.</span><span class="n">body</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">content</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>이 부분의 구현은 아주 간단하다. 이미 만들어져 있는 <a href="https://github.com/PyGithub/PyGithub">PyGithub</a> 패키지를 활용하여,
 곡 리스트가 적힌 이슈를 읽어오고, 곡 포스팅 후 <a href="https://github.com/ryanking13/twitter-lyric-bot/issues/1">이슈</a>를 업데이트한다.</p>
@@ -403,7 +399,7 @@ Circle CI의 Cron Job 기능은 이 글을 작성하는 시점 기준으로 Nigh
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>다른 방법으로 Github Gist에 파일을 만들어 사용하는 것도 가능하다. 이슈의 본래 용도을 생각하면 gist를 사용하는 것이 더 적절이라고 생각될 수도 있는데, 필자는 하나의 레포지토리에서 모든 걸 관리하는 것이 더 편리하다는 생각으로 이슈를 사용하였다. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>다른 방법으로 Github Gist에 파일을 만들어 사용하는 것도 가능하다. 이슈의 본래 용도을 생각하면 gist를 사용하는 것이 더 적절이라고 생각될 수도 있는데, 필자는 하나의 레포지토리에서 모든 걸 관리하는 것이 더 편리하다는 생각으로 이슈를 사용하였다.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -527,7 +523,7 @@ Circle CI의 Cron Job 기능은 이 글을 작성하는 시점 기준으로 Nigh
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

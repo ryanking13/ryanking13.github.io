@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.79.0 with theme even" />
+<meta name="generator" content="Hugo 0.96.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,26 +40,22 @@
 
 
 
-<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="개발자를 위한 좋은 문서 작성법" />
 <meta property="og:description" content="개발자를 위한 좋은 문서 작성법" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2021/08/16/writing-a-good-documentation.html/" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/08/16/writing-a-good-documentation.html/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-08-16T01:01:00+00:00" />
 <meta property="article:modified_time" content="2021-08-16T01:01:00+00:00" />
+
 <meta itemprop="name" content="개발자를 위한 좋은 문서 작성법">
-<meta itemprop="description" content="개발자를 위한 좋은 문서 작성법">
-<meta itemprop="datePublished" content="2021-08-16T01:01:00+00:00" />
+<meta itemprop="description" content="개발자를 위한 좋은 문서 작성법"><meta itemprop="datePublished" content="2021-08-16T01:01:00+00:00" />
 <meta itemprop="dateModified" content="2021-08-16T01:01:00+00:00" />
-<meta itemprop="wordCount" content="5355">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="5356">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="개발자를 위한 좋은 문서 작성법"/>
 <meta name="twitter:description" content="개발자를 위한 좋은 문서 작성법"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -144,7 +140,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
 </div>
     </header>
 
@@ -278,11 +274,11 @@
 <p>위 분류 방법을 소개한 Daniele는 레퍼런스 문서를 다음과 같이 정의합니다.</p>
 <blockquote>
 <p><strong>&ldquo;레퍼런스는 도구가 동작하는 방식에 대한 기술적인 설명이다&rdquo;</strong> <br/>
-<em>&ldquo;Reference guides are technical descriptions of the machinery and how to operate it.&quot;</em></p>
+<em>&ldquo;Reference guides are technical descriptions of the machinery and how to operate it.&rdquo;</em></p>
 </blockquote>
 <p>한편으로 그는 동시에 레퍼런스 문서를 다음과 같은 문장으로 표현하기도 합니다.</p>
 <blockquote>
-<p><strong>&ldquo;레퍼런스는 API, 클래스, 그리고 함수와 같이 소프트웨어를 구성하는 요소들을 사용하는 방법을 설명한다.&quot;</strong> <br/>
+<p><strong>&ldquo;레퍼런스는 API, 클래스, 그리고 함수와 같이 소프트웨어를 구성하는 요소들을 사용하는 방법을 설명한다.&rdquo;</strong> <br/>
 <em>&ldquo;Reference guides describe the software itself - APIs, classes, functions and so on - and how to use them&rdquo;</em></p>
 </blockquote>
 <p>위 두 문장은 닮은 것 같지만 사실 서로 다른 얘기를 하고 있습니다.
@@ -301,7 +297,7 @@
 테스트를 작성해본 분들이라면 언어나 프레임워크에 관계없이 많이 겪어보셨을 과정일 것입니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -312,16 +308,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="nd">@L.setup</span>
-<span class="k">def</span> <span class="nf">set_it_up</span><span class="p">():</span>
-    <span class="c1"># 테스트 전에 수행됩니다.</span>
-<span class="nd">@L.test</span>
-<span class="k">def</span> <span class="nf">test_1</span><span class="p">():</span>
-    <span class="c1"># 테스트 중에 수행됩니다.</span>
-<span class="nd">@L.teardown</span>
-<span class="k">def</span> <span class="nf">tear_it_down</span><span class="p">():</span>
-    <span class="c1"># 테스트 후에 수행됩니다.</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@L</span><span class="o">.</span><span class="n">setup</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">set_it_up</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 테스트 전에 수행됩니다.</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@L</span><span class="o">.</span><span class="n">test</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_1</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 테스트 중에 수행됩니다.</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@L</span><span class="o">.</span><span class="n">teardown</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">tear_it_down</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 테스트 후에 수행됩니다.</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>이 때, 테스트 전, 중, 후에 사용하는 함수는 각각 다르지만,
 일련의 과정은 독립적이지 않습니다.
@@ -347,7 +343,7 @@ API 문서에는 스토리텔링이 등장할 구석이 없습니다.
 javadoc은 다음과 같이 주석을 이용해 문서를 자동으로 생성합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -361,19 +357,19 @@ javadoc은 다음과 같이 주석을 이용해 문서를 자동으로 생성합
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
-</span><span class="cm"> * Frob the foobar.
-</span><span class="cm"> * This method always returns immediately.
-</span><span class="cm"> *
-</span><span class="cm"> * @param fb A foobar object
-</span><span class="cm"> * @param direction The direction in which to frob it.
-</span><span class="cm"> *
-</span><span class="cm"> * @return true if the object was frobbed successfully.
-</span><span class="cm"> */</span>
-<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">frob</span><span class="o">(</span><span class="n">FooBar</span> <span class="n">fb</span><span class="o">,</span> <span class="n">String</span> <span class="n">direction</span><span class="o">)</span> <span class="o">{</span>
- <span class="c1">// ...
-</span><span class="c1"></span><span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Frob the foobar.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * This method always returns immediately.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param fb A foobar object
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param direction The direction in which to frob it.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @return true if the object was frobbed successfully.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">frob</span><span class="o">(</span><span class="n">FooBar</span> <span class="n">fb</span><span class="o">,</span> <span class="n">String</span> <span class="n">direction</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>문서 작성자는 각 함수나 클래스 코드 위에
 해당 코드의 설명과 파라미터, 리턴 값 등을 명시하고,
@@ -612,7 +608,7 @@ javadoc은 다음과 같이 주석을 이용해 문서를 자동으로 생성합
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

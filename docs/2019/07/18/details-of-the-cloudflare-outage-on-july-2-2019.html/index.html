@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.79.0 with theme even" />
+<meta name="generator" content="Hugo 0.96.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,26 +40,22 @@
 
 
 
-<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="(번역) 2019년 7월 2일 Cloudflare 장애 보고서" />
 <meta property="og:description" content="Details of the Cloudflare outage on July 2, 2019" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2019/07/18/details-of-the-cloudflare-outage-on-july-2-2019.html/" />
+<meta property="og:url" content="https://ryanking13.github.io/2019/07/18/details-of-the-cloudflare-outage-on-july-2-2019.html/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-07-18T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-07-18T00:00:00+00:00" />
+
 <meta itemprop="name" content="(번역) 2019년 7월 2일 Cloudflare 장애 보고서">
-<meta itemprop="description" content="Details of the Cloudflare outage on July 2, 2019">
-<meta itemprop="datePublished" content="2019-07-18T00:00:00+00:00" />
+<meta itemprop="description" content="Details of the Cloudflare outage on July 2, 2019"><meta itemprop="datePublished" content="2019-07-18T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-07-18T00:00:00+00:00" />
-<meta itemprop="wordCount" content="6768">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="6766">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="(번역) 2019년 7월 2일 Cloudflare 장애 보고서"/>
 <meta name="twitter:description" content="Details of the Cloudflare outage on July 2, 2019"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -144,7 +140,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
 </div>
     </header>
 
@@ -201,7 +197,7 @@
 <p>그래서 저는 Matthew Prince<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>에게 바로 &ldquo;Where&rsquo;s my dns?&ldquo;라는 제목의 메일을 보냈습니다. 그러자 그는 곧바로 아주 길고 상세한 기술적인 내용이 담긴 답변을 보내왔습니다 (전체 메일 내용은 <a href="https://gist.github.com/jgrahamc/6bb02a6f7c3799a1590b3cdb901f8e08">여기</a>에서 볼 수 있음). 그래서 저는 다음과 같은 답신을 보냈습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -221,30 +217,30 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">From: John Graham-Cumming
-Date: 2010년 10월 7일 9:14 AM
-Subject: Re: Where&#39;s my dns?
-To: Matthew Prince
-
-상세한 답변 감사합니다. 혹시 다음에 또 문제가 발생하면 연락드리겠습니다.
-제 생각에는 앞으로 이러한 문제가 발생할 때마다 블로그 같은 곳에
-상세한 기술적인 내용을 담은 글을 올리면 어떨까 싶습니다.
-사람들은 이런 문제의 내용을 솔직하게 개방적으로 공개하는 것을 좋아할 것이라고 생각합니다.
-그래프를 몇개 넣어서 트래픽 증가량도 같이 보여주면 좋구요.
-
-저는 제 사이트를 모니터링하는 시스템을 만들어놓았고,
-문제가 발생할때마다 SNS 메세지가 오도록 해두었습니다.
-모니터링 결과 13:03:07에서 14:04:12까지 시스템이 다운되었습니다.
-5분마다 테스트를 수행한 결과입니다.
-
-당신에게 굉장히 힘든 한 시간이었을 것 같네요.
-혹시 유럽에서 같이 일할 사람 필요하면 연락주세요 :-)
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">From: John Graham-Cumming
+</span></span><span class="line"><span class="cl">Date: 2010년 10월 7일 9:14 AM
+</span></span><span class="line"><span class="cl">Subject: Re: Where&#39;s my dns?
+</span></span><span class="line"><span class="cl">To: Matthew Prince
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">상세한 답변 감사합니다. 혹시 다음에 또 문제가 발생하면 연락드리겠습니다.
+</span></span><span class="line"><span class="cl">제 생각에는 앞으로 이러한 문제가 발생할 때마다 블로그 같은 곳에
+</span></span><span class="line"><span class="cl">상세한 기술적인 내용을 담은 글을 올리면 어떨까 싶습니다.
+</span></span><span class="line"><span class="cl">사람들은 이런 문제의 내용을 솔직하게 개방적으로 공개하는 것을 좋아할 것이라고 생각합니다.
+</span></span><span class="line"><span class="cl">그래프를 몇개 넣어서 트래픽 증가량도 같이 보여주면 좋구요.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">저는 제 사이트를 모니터링하는 시스템을 만들어놓았고,
+</span></span><span class="line"><span class="cl">문제가 발생할때마다 SNS 메세지가 오도록 해두었습니다.
+</span></span><span class="line"><span class="cl">모니터링 결과 13:03:07에서 14:04:12까지 시스템이 다운되었습니다.
+</span></span><span class="line"><span class="cl">5분마다 테스트를 수행한 결과입니다.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">당신에게 굉장히 힘든 한 시간이었을 것 같네요.
+</span></span><span class="line"><span class="cl">혹시 유럽에서 같이 일할 사람 필요하면 연락주세요 :-)
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>그리고 그는 이렇게 답변했습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -254,15 +250,15 @@ To: Matthew Prince
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">From: Matthew Prince
-Date: 2010년 10월 7일 9:57 AM
-Subject: Re: Where&#39;s my dns?
-To: John Graham-Cumming
-
-고맙습니다. 지금 메일을 보내온 모든 사람들에게 답장을 쓰는 중이에요.
-지금 회사로 가는 중인데, 가서 공식적으로 사람들이 볼 수 있는 곳에 글을 올리도록 하겠습니다.
-당신 말에 100% 동의합니다. 투명성이 가장 중요하죠.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">From: Matthew Prince
+</span></span><span class="line"><span class="cl">Date: 2010년 10월 7일 9:57 AM
+</span></span><span class="line"><span class="cl">Subject: Re: Where&#39;s my dns?
+</span></span><span class="line"><span class="cl">To: John Graham-Cumming
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">고맙습니다. 지금 메일을 보내온 모든 사람들에게 답장을 쓰는 중이에요.
+</span></span><span class="line"><span class="cl">지금 회사로 가는 중인데, 가서 공식적으로 사람들이 볼 수 있는 곳에 글을 올리도록 하겠습니다.
+</span></span><span class="line"><span class="cl">당신 말에 100% 동의합니다. 투명성이 가장 중요하죠.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>그래서 오늘, 그 당시보다 훨씬 커진 Cloudflare의 임원으로서, 얼마 전 발생한 문제에 대해서 우리가 어떠한 실수를 했고, 그것이 어떠한 영향을 주었고, 그래서 우리가 어떻게 대처했는지를 투명하게 말씀드리려고 합니다.</p>
 <h3 id="7월-2일에-발생한-사건">7월 2일에 발생한 사건</h3>
@@ -275,11 +271,11 @@ To: John Graham-Cumming
 <p>CPU 고갈 사태는 단 하나의 WAF 규칙 때문에 발생했습니다. 매우 비효율적으로 작성된 정규표현식이 수많은 백트래킹 과정을 만들어냈기 때문입니다. 문제가 되는 정규표현식은 아래와 같습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">(?:(?:\&#34;|&#39;|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(?:(?:\&#34;|&#39;|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>이 정규표현식 자체에 관심이 있는 분들이 많을 거라고 생각합니다만, 어떻게 Cloudflare의 서비스가 27분 동안 다운되었는가는 단순히 &ldquo;정규표현식을 잘못 썼다&quot;라는 것보다는 더 복잡합니다. 그래서 빠르게 대처하는 글을 올리는 대신, 일련의 사건을 짚어보는 글을 오랜 시간을 들여 작성하였습니다. 만약 정규표현식의 백트래킹에 대해서 궁금하시다면, appendix 부분(번역하지 않음)을 참고하시길 바랍니다.</p>
 <h3 id="무슨-일이-일어났는가">무슨 일이 일어났는가</h3>
@@ -371,10 +367,10 @@ Lua WAF는 내부적으로 <a href="https://www.pcre.org/">PCRE</a>를 사용하
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>Cloudflare의 CEO <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Cloudflare의 CEO&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p><a href="https://blogs.msdn.microsoft.com/willy-peter_schaub/2009/10/22/getting-your-priorities-right-p0-p1-p2/">https://blogs.msdn.microsoft.com/willy-peter_schaub/2009/10/22/getting-your-priorities-right-p0-p1-p2/</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://blogs.msdn.microsoft.com/willy-peter_schaub/2009/10/22/getting-your-priorities-right-p0-p1-p2/">https://blogs.msdn.microsoft.com/willy-peter_schaub/2009/10/22/getting-your-priorities-right-p0-p1-p2/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -498,7 +494,7 @@ Lua WAF는 내부적으로 <a href="https://www.pcre.org/">PCRE</a>를 사용하
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

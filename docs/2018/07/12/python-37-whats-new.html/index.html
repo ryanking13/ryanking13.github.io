@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.79.0 with theme even" />
+<meta name="generator" content="Hugo 0.96.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,26 +40,22 @@
 
 
 
-<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="파이썬 3.7의 새로운 기능들" />
 <meta property="og:description" content="파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2018/07/12/python-37-whats-new.html/" />
+<meta property="og:url" content="https://ryanking13.github.io/2018/07/12/python-37-whats-new.html/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2018-07-12T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-07-12T00:00:00+00:00" />
+
 <meta itemprop="name" content="파이썬 3.7의 새로운 기능들">
-<meta itemprop="description" content="파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니다.">
-<meta itemprop="datePublished" content="2018-07-12T00:00:00+00:00" />
+<meta itemprop="description" content="파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니다."><meta itemprop="datePublished" content="2018-07-12T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2018-07-12T00:00:00+00:00" />
 <meta itemprop="wordCount" content="4237">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="파이썬 3.7의 새로운 기능들"/>
 <meta name="twitter:description" content="파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니다."/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -144,7 +140,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
 </div>
     </header>
 
@@ -205,15 +201,15 @@
 <p>파이썬 3.0의 등장과 함께 <code>Type Annotation</code> 문법이 탄생해 파이썬 코드 상에 타입을 명시할 수 있게 되었지만, 당시에는 실질적인 기능은 없었습니다. PyCharm과 같은 IDE에서는 해당 문법을 파싱해서 정적 타입 검사를 해주었지만, 그러한 IDE를 사용하지 않는 유저들은 혜택을 볼 수 없었습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># type annotation</span>
-<span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="n">name</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># type annotation</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="n">name</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>이후 파이썬 3.5 버전에서 <a href="https://docs.python.org/3/library/typing.html">typing</a> 모듈이 등장하면서 복잡한 타입( Dict, List )을 명시할 수 있게 되었고, 파이썬의 창시자인 <em>Guido van Rossum</em> 이 <a href="https://github.com/python/mypy">mypy</a>를 내놓으면서 IDE 없이도 실질적인 정적 타입 검사가 가능해졌습니다. 파이썬 3.6에서는 typing 모듈이 Dict[int, Tuple] 와 같이 아주 복잡한 타입까지도 지원할 수 있게 되는 발전이 이루어졌습니다.</p>
 <p>그리고 대망의 이번 파이썬 3.7에서 typing 모듈은 그 동안 가지고있던 두 가지 큰 문제를 해결하였습니다.</p>
@@ -236,7 +232,7 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -245,20 +241,20 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">B</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">pass</span>
-
-<span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
-    <span class="k">pass</span>
-<span class="c1"># NameError: name &#39;B&#39; is not defined</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">B</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># NameError: name &#39;B&#39; is not defined</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>기존 typing에서는 forward reference가 불가능하여 코드 순서상 정의되지 않은 클래스 타입을 참조할 수가 없었습니다.</p>
 <p>이는 자기 참조나 순환 참조를 하게 되는 클래스에서는 해결할 수가 없는 문제였고,</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -267,21 +263,21 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">pass</span>
-
-<span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
-    <span class="k">pass</span>
-<span class="c1"># No error</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># No error</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>그래서 위와 같이 문자열을 사용하는 상당히 어색한 방식으로 에러를 피하고 있었습니다.</p>
 <p>이러한 forward referencing 문제를 해결하기 위하여 파이썬 4.0부터는 함수나 변수의 type annotation을 판정(evaluation)을 정의 시점이 아니라 뒤로 미룰 것이라고 합니다. 아마 인터프리터 레벨에서 많은 수준의 변경이 필요한 모양입니다.</p>
 <p>파이썬 3.7에서는 실험적으로 forward referencing을 적용할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -292,16 +288,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
-
-<span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">B</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">pass</span>
-
-<span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
-    <span class="k">pass</span>
-<span class="c1"># No error</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">B</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># No error</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>__future__ 모듈에서 <code>annotations</code>를 import하면 파이썬 3.7에서 forward referencing이 이루어지도록 할 수 있습니다.</p>
 <h2 id="dataclasses">dataclasses</h2>
@@ -319,7 +315,7 @@
 <p>예를 들어 국가를 클래스로 표현한다면 아래와 같이 나타낼 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -355,41 +351,41 @@
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># code adapted from https://realpython.com/python37-new-features</span>
-<span class="k">class</span> <span class="nc">Country</span><span class="p">:</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">population</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="n">coastline</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">population</span> <span class="o">=</span> <span class="n">population</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">area</span> <span class="o">=</span> <span class="n">area</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">coastline</span> <span class="o">=</span> <span class="n">coastline</span>
-
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="n">f</span><span class="s2">&#34;Country(name={self.name!r}, population={self.population!r},&#34;</span>
-            <span class="n">f</span><span class="s2">&#34; coastline={self.coastline!r})&#34;</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="vm">__class__</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">(</span>
-                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coastline</span><span class="p">)</span>
-                <span class="o">==</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">coastline</span><span class="p">)</span>
-            <span class="p">)</span>
-        <span class="k">return</span> <span class="bp">NotImplemented</span>
-
-    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-      <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="vm">__class__</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">:</span>
-          <span class="k">return</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coastline</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span>
-              <span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">coastline</span>
-          <span class="p">))</span>
-      <span class="k">return</span> <span class="bp">NotImplemented</span>
-
-    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="o">...</span><span class="err">생략</span><span class="o">...</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># code adapted from https://realpython.com/python37-new-features</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Country</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">population</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="n">coastline</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">population</span> <span class="o">=</span> <span class="n">population</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">area</span> <span class="o">=</span> <span class="n">area</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">coastline</span> <span class="o">=</span> <span class="n">coastline</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="sa">f</span><span class="s2">&#34;Country(name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">!r}</span><span class="s2">, population=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="si">!r}</span><span class="s2">,&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="sa">f</span><span class="s2">&#34; coastline=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">coastline</span><span class="si">!r}</span><span class="s2">)&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="vm">__class__</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coastline</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="o">==</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">coastline</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">NotImplemented</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="vm">__class__</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coastline</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">              <span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">coastline</span>
+</span></span><span class="line"><span class="cl">          <span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="bp">NotImplemented</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="o">...</span><span class="n">생략</span><span class="o">...</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>간단히 훑어보시면 알겠지만 단순히 국가를 추상화한 데이터들을 묶어놓은 클래스입니다. 그렇지만 상당히 자주 작성하게 되는 형태의 클래스이기도 합니다.</p>
 <p>이런 클래스를 작성하다 보면 반복적으로 나타나는 것이 있는데요. 단순히 setter 역할을 하는 <code>__init__()</code>과, 거의 비슷하게 생긴 <code>__eq__()</code> <code>__gt__()</code>와 같은 메소드들이 있습니다.</p>
@@ -397,7 +393,7 @@
 <p>아래 클래스는 위의 클래스와 동일한 기능을 합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -408,16 +404,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># code adapted from https://realpython.com/python37-new-features</span>
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
-
-<span class="nd">@dataclass</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">Country</span><span class="p">:</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">population</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">area</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="nb">repr</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">compare</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">coastline</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># code adapted from https://realpython.com/python37-new-features</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@dataclass</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Country</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</span></span><span class="line"><span class="cl">    <span class="n">population</span><span class="p">:</span> <span class="nb">int</span>
+</span></span><span class="line"><span class="cl">    <span class="n">area</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">coastline</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>클래스에 type annotation 문법을 이용하여 필드들을 정의해놓고, <code>@dataclass</code> 데코레이터를 붙여주면 자동으로 필요한 속성들이 생성됩니다.</p>
 <ul>
@@ -453,7 +449,7 @@
 <p>저의 경우는 event loop 개념을 asyncio에서 처음 접했는데요. 그런 저에게 있어서 event loop을 생성하고 그것에 task(future)를 등록하는 asyncio의 문법은 바로 직관적으로 다가오지 않았습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -476,28 +472,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">async</span> <span class="k">def</span> <span class="nf">arequest</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">response</span>
-
-<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;https://www.google.com&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;https://www.apple.com&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;https://www.facebook.com&#39;</span><span class="p">,</span>
-<span class="p">]</span>
-
-<span class="c1"># python &lt;= 3.6</span>
-<span class="n">future</span> <span class="o">=</span> <span class="p">[</span><span class="n">arequest</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">]</span>
-<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
-<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">future</span><span class="p">))</span>
-
-<span class="c1"># python 3.7 with asyncio.run()</span>
-<span class="n">future</span> <span class="o">=</span> <span class="p">[</span><span class="n">arequest</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">future</span><span class="p">)))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">asyncio</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">arequest</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">response</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">urls</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;https://www.google.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;https://www.apple.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;https://www.facebook.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># python &lt;= 3.6</span>
+</span></span><span class="line"><span class="cl"><span class="n">future</span> <span class="o">=</span> <span class="p">[</span><span class="n">arequest</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">future</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># python 3.7 with asyncio.run()</span>
+</span></span><span class="line"><span class="cl"><span class="n">future</span> <span class="o">=</span> <span class="p">[</span><span class="n">arequest</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">future</span><span class="p">)))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>asyncio.run()은 event loop에 대한 부분을 신경쓰지 않고도 사용할 수 있다는 점에서 처음 asyncio와 event loop를 접하는 초보 개발자의 접근성을 높여줄 수 있다고 생각합니다.</p>
 <ol start="2">
@@ -509,7 +505,7 @@
 <p><code>contextvars</code> 모듈은 여러 개의 context를 만들고 각 context 마다 변수가 서로 다른 값을 가질 수 있도록 하는 기능을 지원하는 모듈입니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -539,35 +535,35 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">contextvars</span>
-
-<span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;value is&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
-
-<span class="c1"># context variable인 &#39;val&#39;을 생성</span>
-<span class="n">val</span> <span class="o">=</span> <span class="n">contextvars</span><span class="o">.</span><span class="n">ContextVar</span><span class="p">(</span><span class="s2">&#34;val&#34;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">contexts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="c1"># 현재 context의 복사본을 받아서</span>
-    <span class="n">ctx</span> <span class="o">=</span> <span class="n">contextvars</span><span class="o">.</span><span class="n">copy_context</span><span class="p">()</span>
-
-    <span class="c1"># 해당 context에서의 val 값을 업데이트</span>
-    <span class="n">ctx</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">set</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="n">contexts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">ctx</span> <span class="ow">in</span> <span class="n">contexts</span><span class="p">:</span>
-    <span class="n">ctx</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">show</span><span class="p">)</span>
-
-<span class="s1">&#39;&#39;&#39;
-</span><span class="s1">value is 1
-</span><span class="s1">value is 1
-</span><span class="s1">value is 1
-</span><span class="s1">value is 1
-</span><span class="s1">value is 1
-</span><span class="s1">&#39;&#39;&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">contextvars</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;value is&#39;</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># context variable인 &#39;val&#39;을 생성</span>
+</span></span><span class="line"><span class="cl"><span class="n">val</span> <span class="o">=</span> <span class="n">contextvars</span><span class="o">.</span><span class="n">ContextVar</span><span class="p">(</span><span class="s2">&#34;val&#34;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">contexts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 현재 context의 복사본을 받아서</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ctx</span> <span class="o">=</span> <span class="n">contextvars</span><span class="o">.</span><span class="n">copy_context</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 해당 context에서의 val 값을 업데이트</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ctx</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">set</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">contexts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">ctx</span> <span class="ow">in</span> <span class="n">contexts</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ctx</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">show</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">value is 1
+</span></span></span><span class="line"><span class="cl"><span class="s1">value is 1
+</span></span></span><span class="line"><span class="cl"><span class="s1">value is 1
+</span></span></span><span class="line"><span class="cl"><span class="s1">value is 1
+</span></span></span><span class="line"><span class="cl"><span class="s1">value is 1
+</span></span></span><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>context마다 다른 값을 가지는 변수인 <code>val</code>을 생성하고, for-loop을 돌면서 현재 context를 복사해서 새 context를 생성한 뒤 해당 context에서의 val값을 증가시키는 코드입니다.</p>
 <p>언뜻 보면 <code>val</code>의 값이 1, 2, 3, 4, 5가 될 것 같지만, val을 증가시킨 context와 for loop이 실행되는 context는 서로 다르기 때문에 실제 출력값은 1, 1, 1, 1, 1이 됩니다.</p>
@@ -582,19 +578,19 @@
 <p>파이썬 3.6 버전을 주로 쓰는 개발자라면 dict가 입력한 대로 순서를 보장한다고 알고 있을 수도 있는데, 이는 CPython 3.6 버전의 dict의 구현이 그렇게 되어 있을 뿐, 파이썬 스펙 상에는 순서에 대한 부분은 명시되어 있지 않았습니다. 즉 PyPy나 Jython에서도 dict가 동일하게 동작하는 것이 보장되어 있지 않았습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="p">{</span><span class="s2">&#34;one&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;two&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;three&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>  <span class="c1"># Python &lt;= 3.5</span>
-<span class="p">{</span><span class="s1">&#39;three&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="p">{</span><span class="s2">&#34;one&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;two&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;three&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>  <span class="c1"># Python &gt;= 3.6</span>
-<span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="p">{</span><span class="s2">&#34;one&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;two&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;three&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>  <span class="c1"># Python &lt;= 3.5</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="s1">&#39;three&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="p">{</span><span class="s2">&#34;one&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;two&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;three&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>  <span class="c1"># Python &gt;= 3.6</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>파이썬 3.7에서는 이것이 공식 <a href="https://docs.python.org/3.7/library/stdtypes.html#mapping-types-dict">파이썬 스펙</a>에 명시되었습니다. 3.7 이후로는 어떠한 파이썬 구현체를 쓰던 dict가 입력한 순서를 그대로 유지할 것이라는 것을 전제로 개발할 수 있게된 것입니다.</p>
 <h2 id="새로운-time-모듈-함수들">새로운 time 모듈 함수들</h2>
@@ -614,13 +610,13 @@
 <p><code>_ns</code> 함수들을 사용하는 것이 권장되는 이유는 크게 두 가지가 있는데요.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span>
-<span class="mf">0.30000000000000004</span> <span class="c1"># :(</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span>
+</span></span><span class="line"><span class="cl"><span class="mf">0.30000000000000004</span> <span class="c1"># :(</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>먼저 정확성 측면에서, float 타입은 근본적으로 오차가 발생할 수 밖에 없는 반면, int 타입은 오차가 발생하지 않습니다.</p>
 <blockquote>
@@ -639,37 +635,37 @@
 <p>파이썬 코드 디버깅을 위해서 <code>pdb</code> 모듈을 주로 아래와 같이 사용하게 되는데요.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>위의 코드와 동일한 기능을 하는 <code>breakpoint()</code> 함수가 빌트인(built-in)으로 추가되었습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">breakpoint</span><span class="p">()</span> <span class="c1"># == import pdb; pdb.set_trace()</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">breakpoint</span><span class="p">()</span> <span class="c1"># == import pdb; pdb.set_trace()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>또 breakpoint()는 <code>PYTHONBREAKPOINT</code> 환경 변수를 이용해서 더 유연하게 사용할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nv">PYTHONBREAKPOINT</span><span class="o">=</span><span class="m">0</span> python3.7 error_code.py
-<span class="c1"># Error!</span>
-
-$ <span class="nv">PYTHONBREAKPOINT</span><span class="o">=</span>pudb.set_trace python3.7 bugs.py
-<span class="c1"># pudb.set_trace() is called, instead of pdb.set_trace()</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nv">PYTHONBREAKPOINT</span><span class="o">=</span><span class="m">0</span> python3.7 error_code.py
+</span></span><span class="line"><span class="cl"><span class="c1"># Error!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ <span class="nv">PYTHONBREAKPOINT</span><span class="o">=</span>pudb.set_trace python3.7 bugs.py
+</span></span><span class="line"><span class="cl"><span class="c1"># pudb.set_trace() is called, instead of pdb.set_trace()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>해당 환경 변수의 값을 0으로 주면 breakpoint()가 실행되지 않게도 할 수 있고, 디폴트인 pdb가 아닌 다른 디버거를 사용할 수도 있습니다.</p>
 <h2 id="-other-awesome-things-in-python-37">(+) Other Awesome Things in Python 3.7</h2>
@@ -832,7 +828,7 @@ $ <span class="nv">PYTHONBREAKPOINT</span><span class="o">=</span>pudb.set_trace
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

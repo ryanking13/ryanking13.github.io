@@ -6,6 +6,7 @@ categories:
 description: 흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 5월)
 summary: 흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 5월)
 draft: false
+hiddenfromhomepage: true
 ---
 
 ## ✍️ 글

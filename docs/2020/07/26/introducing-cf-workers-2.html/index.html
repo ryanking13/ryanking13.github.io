@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.79.0 with theme even" />
+<meta name="generator" content="Hugo 0.96.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,26 +40,22 @@
 
 
 
-<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Cloudflare Workers로 서버리스 앱 개발하기" />
 <meta property="og:description" content="Cloudflare Workers로 서버리스 앱 개발하기" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2020/07/26/introducing-cf-workers-2.html/" />
+<meta property="og:url" content="https://ryanking13.github.io/2020/07/26/introducing-cf-workers-2.html/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-07-26T01:00:00+00:00" />
 <meta property="article:modified_time" content="2020-07-26T01:00:00+00:00" />
+
 <meta itemprop="name" content="Cloudflare Workers로 서버리스 앱 개발하기">
-<meta itemprop="description" content="Cloudflare Workers로 서버리스 앱 개발하기">
-<meta itemprop="datePublished" content="2020-07-26T01:00:00+00:00" />
+<meta itemprop="description" content="Cloudflare Workers로 서버리스 앱 개발하기"><meta itemprop="datePublished" content="2020-07-26T01:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-07-26T01:00:00+00:00" />
 <meta itemprop="wordCount" content="2676">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cloudflare Workers로 서버리스 앱 개발하기"/>
 <meta name="twitter:description" content="Cloudflare Workers로 서버리스 앱 개발하기"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -144,7 +140,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
 </div>
     </header>
 
@@ -212,15 +208,15 @@
 <p><code>wrangler</code>는 Rust로 작성되어있고, npm이나 cargo로 설치가 가능합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">npm i @cloudflare/wrangler -g
-<span class="c1"># or</span>
-cargo install wrangler
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm i @cloudflare/wrangler -g
+</span></span><span class="line"><span class="cl"><span class="c1"># or</span>
+</span></span><span class="line"><span class="cl">cargo install wrangler
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Workers 프로젝트 생성, 설정, 빌드, 배포 등을 모두 <code>wrangler</code>를 통해서 수행하게 됩니다.</p>
 <blockquote>
@@ -230,11 +226,11 @@ cargo install wrangler
 <p><code>wrangler generate</code> 명령어로 <code>pretty-json</code>이라는 이름의 새로운 프로젝트를 생성하겠습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">wrangler generate pretty-json --type javascript
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wrangler generate pretty-json --type javascript
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>실행 후 생성된 <code>pretty-json</code> 디렉토리를 살펴보면 아래와 같은 보일러플레이트 파일들이 생성된
 것을 확인할 수 있습니다.</p>
@@ -246,7 +242,7 @@ cargo install wrangler
 Rust에서 많이 사용하는 <a href="https://github.com/toml-lang/toml">TOML</a> 문법으로 작성되어 있으며, Workers 프로젝트의 설정 파일입니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -254,13 +250,13 @@ Rust에서 많이 사용하는 <a href="https://github.com/toml-lang/toml">TOML<
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;pretty-json&#34;</span>
-<span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;javascript&#34;</span>
-<span class="nx">account_id</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
-<span class="nx">workers_dev</span> <span class="p">=</span> <span class="kc">true</span>
-<span class="nx">route</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
-<span class="nx">zone_id</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;pretty-json&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;javascript&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">account_id</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">workers_dev</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="nx">route</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">zone_id</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>주요 항목은 다음과 같습니다.</p>
 <ul>
@@ -274,7 +270,7 @@ Rust에서 많이 사용하는 <a href="https://github.com/toml-lang/toml">TOML<
 <p>기본적으로 생성된 <code>index.js</code> 파일을 살펴보면 Workers 함수의 형태를 파악할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -289,20 +285,20 @@ Rust에서 많이 사용하는 <a href="https://github.com/toml-lang/toml">TOML<
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="cm">/* index.js */</span>
-
-<span class="c1">// 1. HTTP 요청이 들어오면 handleRequest를 호출합니다.
-</span><span class="c1"></span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;fetch&#39;</span><span class="p">,</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span><span class="nx">handleRequest</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">))</span>
-<span class="p">})</span>
-
-<span class="c1">// 2. handleRequest에서 요청을 처리하고 Response 객체를 반환합니다.
-</span><span class="c1"></span><span class="kr">async</span> <span class="kd">function</span> <span class="nx">handleRequest</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s1">&#39;Hello worker!&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span> <span class="s1">&#39;content-type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/plain&#39;</span> <span class="p">},</span>
-  <span class="p">})</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="cm">/* index.js */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 1. HTTP 요청이 들어오면 handleRequest를 호출합니다.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;fetch&#39;</span><span class="p">,</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span><span class="nx">handleRequest</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 2. handleRequest에서 요청을 처리하고 Response 객체를 반환합니다.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">async</span> <span class="kd">function</span> <span class="nx">handleRequest</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s1">&#39;Hello worker!&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span> <span class="s1">&#39;content-type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/plain&#39;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="프로젝트-실행">프로젝트 실행</h2>
 <p>주요 파일을 살펴봤으니 일단 기본 템플릿으로 생성된 코드를 실행해봅시다.</p>
@@ -313,17 +309,17 @@ Rust에서 많이 사용하는 <a href="https://github.com/toml-lang/toml">TOML<
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Local</span>
-wrangler dev
-<span class="c1"># Cloudflare Workers Playground</span>
-wrangler preview --watch
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># Local</span>
+</span></span><span class="line"><span class="cl">wrangler dev
+</span></span><span class="line"><span class="cl"><span class="c1"># Cloudflare Workers Playground</span>
+</span></span><span class="line"><span class="cl">wrangler preview --watch
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>둘 중 자신에게 편한 커맨드를 사용하면 됩니다..</p>
 <blockquote>
@@ -332,31 +328,31 @@ wrangler preview --watch
 <p>이 글에서는 <code>wrangler dev</code>로 로컬 환경에서 코드를 실행해보겠습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ wrangler dev
-...
- Running preview without authentication.
- Listening on http://127.0.0.1:8787
- watching <span class="s2">&#34;./&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ wrangler dev
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl"> Running preview without authentication.
+</span></span><span class="line"><span class="cl"> Listening on http://127.0.0.1:8787
+</span></span><span class="line"><span class="cl"> watching <span class="s2">&#34;./&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>실행 시 Cloudflare 계정 설정을 안 했다는 경고 메세지가 나타날 수 있지만 일단 무시하고 진행합니다.</p>
 <p>앱은 <code>http://localhost:8787</code>에서 실행됩니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ curl http://localhost:8787
-Hello worker!
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ curl http://localhost:8787
+</span></span><span class="line"><span class="cl">Hello worker!
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>http://localhost:8787</code>로 리퀘스트를 보내보면, Hello worker! 메세지로 응답하는 것을 확인할 수 있습니다.</p>
 <h2 id="기능-구현">기능 구현</h2>
@@ -369,7 +365,7 @@ Hello worker!
 <p>이러한 기능을 구현한 <code>index.js</code> 파일(일부)은 아래와 같습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -403,39 +399,39 @@ Hello worker!
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// index.js
-</span><span class="c1"></span>
-<span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;fetch&#39;</span><span class="p">,</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span><span class="nx">handleRequest</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">))</span>
-<span class="p">})</span>
-
-<span class="kr">async</span> <span class="kd">function</span> <span class="nx">handleRequest</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">searchParams</span>
-
-  <span class="c1">// `url`, `hl` 파라미터 처리
-</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
-  <span class="kr">const</span> <span class="nx">highlight</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;hl&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="s2">&#34;1&#34;</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="nx">url</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s1">&#39;`url` parameter not given&#39;</span><span class="p">)</span>
-  <span class="p">}</span>
-
-  <span class="c1">// `url` 파라미터에 따른 새로운 리퀘스트 생성
-</span><span class="c1"></span>  <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span>
-  <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;Origin&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">url</span><span class="p">).</span><span class="nx">origin</span><span class="p">)</span>
-
-  <span class="c1">// 리퀘스트 요청 및 처리
-</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">contentTypeJson</span><span class="p">)</span>
-  <span class="kr">const</span> <span class="nx">results</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">gatherResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-
-  <span class="c1">// Response 반환
-</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="nx">highlight</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="nx">wrapJSON</span><span class="p">(</span><span class="nx">highlightJSON</span><span class="p">(</span><span class="nx">results</span><span class="p">)),</span> <span class="nx">contentTypeHTML</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="nx">results</span><span class="p">,</span> <span class="nx">contentTypeJson</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="c1">// index.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;fetch&#39;</span><span class="p">,</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span><span class="nx">handleRequest</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">handleRequest</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">searchParams</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// `url`, `hl` 파라미터 처리
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">highlight</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;hl&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="s2">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">url</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s1">&#39;`url` parameter not given&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// `url` 파라미터에 따른 새로운 리퀘스트 생성
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;Origin&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">url</span><span class="p">).</span><span class="nx">origin</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// 리퀘스트 요청 및 처리
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">contentTypeJson</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">results</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">gatherResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Response 반환
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="nx">highlight</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="nx">wrapJSON</span><span class="p">(</span><span class="nx">highlightJSON</span><span class="p">(</span><span class="nx">results</span><span class="p">)),</span> <span class="nx">contentTypeHTML</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="nx">results</span><span class="p">,</span> <span class="nx">contentTypeJson</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>전체 코드는 <a href="https://github.com/ryanking13/pretty-json/blob/master/index.js">여기</a>를 참고하세요.</p>
@@ -470,17 +466,17 @@ Hello worker!
 <p>화면 우측에 있는 것이 Account ID이고, 이 항목을 <code>wrangler.toml</code>의 <code>account_id</code> 항목에 입력합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;pretty-json&#34;</span>
-<span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;javascript&#34;</span>
-<span class="nx">account_id</span> <span class="p">=</span> <span class="s2">&#34;&lt;Account ID&gt;&#34;</span>
-<span class="p">...</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;pretty-json&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;javascript&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">account_id</span> <span class="p">=</span> <span class="s2">&#34;&lt;Account ID&gt;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>다음으로 API 토큰을 생성하겠습니다.</p>
 <p><img src="/assets/post_images/workers_dashboard_02.jpg" alt=""></p>
@@ -497,7 +493,7 @@ Hello worker!
 이 토큰은 한 번밖에 확인할 수 없으니 안전한 곳에 잘 저장해두어야 합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -515,23 +511,23 @@ Hello worker!
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ wrangler config
-
-╭────────────────────────────────────────────────────────────────────────────────────────╮
-│                                                                                        │
-│      To find your API Token, go to https://dash.cloudflare.com/profile/api-tokens      │
-│              and create it using the <span class="s2">&#34;Edit Cloudflare Workers&#34;</span> template.               │
-│                                                                                        │
-│          If you are trying to use your Global API Key instead of an API Token          │
-│                  <span class="o">(</span>Not Recommended<span class="o">)</span>, run <span class="sb">`</span>wrangler config --api-key<span class="sb">`</span>.                   │
-│                                                                                        │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
-
-Enter API Token:
-<span class="c1">########</span>
- Validating credentials...
- Successfully configured.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ wrangler config
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">╭────────────────────────────────────────────────────────────────────────────────────────╮
+</span></span><span class="line"><span class="cl">│                                                                                        │
+</span></span><span class="line"><span class="cl">│      To find your API Token, go to https://dash.cloudflare.com/profile/api-tokens      │
+</span></span><span class="line"><span class="cl">│              and create it using the <span class="s2">&#34;Edit Cloudflare Workers&#34;</span> template.               │
+</span></span><span class="line"><span class="cl">│                                                                                        │
+</span></span><span class="line"><span class="cl">│          If you are trying to use your Global API Key instead of an API Token          │
+</span></span><span class="line"><span class="cl">│                  <span class="o">(</span>Not Recommended<span class="o">)</span>, run <span class="sb">`</span>wrangler config --api-key<span class="sb">`</span>.                   │
+</span></span><span class="line"><span class="cl">│                                                                                        │
+</span></span><span class="line"><span class="cl">╰────────────────────────────────────────────────────────────────────────────────────────╯
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Enter API Token:
+</span></span><span class="line"><span class="cl"><span class="c1">########</span>
+</span></span><span class="line"><span class="cl"> Validating credentials...
+</span></span><span class="line"><span class="cl"> Successfully configured.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>생성된 API 토큰을 <code>wrangler config</code>로 등록합니다. 이제 배포할 준비가 완료되었습니다.</p>
 <h3 id="3-worker-배포">3. Worker 배포</h3>
@@ -542,15 +538,15 @@ Enter API Token:
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ wrangler publish
- JavaScript project found. Skipping unnecessary build!
- Successfully published your script to https://pretty-json.ryanking13.workers.dev
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ wrangler publish
+</span></span><span class="line"><span class="cl"> JavaScript project found. Skipping unnecessary build!
+</span></span><span class="line"><span class="cl"> Successfully published your script to https://pretty-json.ryanking13.workers.dev
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Worker 배포가 완료되었습니다!</p>
 <p><img src="/assets/post_images/workers_publish.jpg" alt=""></p>
@@ -680,7 +676,7 @@ Enter API Token:
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

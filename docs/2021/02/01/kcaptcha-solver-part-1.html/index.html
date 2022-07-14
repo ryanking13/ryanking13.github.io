@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.79.0 with theme even" />
+<meta name="generator" content="Hugo 0.96.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,26 +40,22 @@
 
 
 
-<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1" />
 <meta property="og:description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-1.html/" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-1.html/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-02-01T19:00:00+09:00" />
 <meta property="article:modified_time" content="2021-02-01T19:00:00+09:00" />
+
 <meta itemprop="name" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1">
-<meta itemprop="description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1">
-<meta itemprop="datePublished" content="2021-02-01T19:00:00+09:00" />
+<meta itemprop="description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1"><meta itemprop="datePublished" content="2021-02-01T19:00:00+09:00" />
 <meta itemprop="dateModified" content="2021-02-01T19:00:00+09:00" />
-<meta itemprop="wordCount" content="4149">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="4191">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1"/>
 <meta name="twitter:description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 1"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -144,7 +140,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
 </div>
     </header>
 
@@ -257,7 +253,7 @@ KCAPTCHA는 상당히 쉬운 캡차라고 할 수 있습니다. 그래서인지 
 또한 그누보드도 오픈소스이므로 <a href="https://github.com/gnuboard/gnuboard5/blob/master/plugin/kcaptcha/kcaptcha_config.php">그누보드에서 KCAPTCHA에 사용하는 디폴트 옵션</a>도 똑같이 적용할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -266,19 +262,19 @@ KCAPTCHA는 상당히 쉬운 캡차라고 할 수 있습니다. 그래서인지 
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">...</span>
-<span class="nv">$captcha</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">KCAPTCHA</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]);</span>
-
-<span class="k">if</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">[</span><span class="nx">session_name</span><span class="p">()]){</span>
-	<span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;captcha_keystring&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$captcha</span><span class="o">-&gt;</span><span class="na">getKeyString</span><span class="p">();</span>
-<span class="p">}</span>
-<span class="o">...</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$captcha</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">KCAPTCHA</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">[</span><span class="nx">session_name</span><span class="p">()]){</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;captcha_keystring&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$captcha</span><span class="o">-&gt;</span><span class="na">getKeyString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>먼저 PHP로 작성된 KCAPTCHA 소스코드를 수정하여, 원하는 캡차 문자열 이미지를 생성할 수 있도록 하고,</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -286,13 +282,13 @@ KCAPTCHA는 상당히 쉬운 캡차라고 할 수 있습니다. 그래서인지 
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">...</span>
-<span class="n">_</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span>
-    <span class="s2">&#34;http://localhost:</span><span class="si">%d</span><span class="s2">?string=</span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">target</span><span class="p">),</span>
-    <span class="n">filename</span><span class="o">=</span><span class="n">save_path</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="o">...</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">_</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;http://localhost:</span><span class="si">%d</span><span class="s2">?string=</span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">target</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">filename</span><span class="o">=</span><span class="n">save_path</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>캡차 이미지 생성을 자동화하는 파이썬 스크립트를 작성하여 수만장의 캡차 이미지를 생성하였습니다.</p>
 <blockquote>
@@ -320,41 +316,41 @@ KCAPTCHA는 상당히 쉬운 캡차라고 할 수 있습니다. 그래서인지 
 <p>예를 들어 숫자 <code>42</code>는 다음과 같이 임베딩됩니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">pred0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span><span class="p">]</span>
-<span class="n">pred1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span><span class="p">]</span>
-<span class="n">total_loss</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred0</span><span class="p">,</span> <span class="n">label0</span><span class="p">)</span> <span class="o">+</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred1</span><span class="p">,</span> <span class="n">label1</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pred0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">pred1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">total_loss</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred0</span><span class="p">,</span> <span class="n">label0</span><span class="p">)</span> <span class="o">+</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred1</span><span class="p">,</span> <span class="n">label1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>한편, 후자는 전자의 출력을 하나의 벡터에 모두 이어붙인 형태입니다.
 출력이 하나이므로 모델의 loss는 해당 출력의 loss만 계산하면 됩니다.</p>
 <p>후자의 경우 숫자 <code>42</code>는 다음과 같이 임베딩됩니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">pred</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
-  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
-<span class="p">]</span>
-<span class="n">total_loss</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pred</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">total_loss</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>둘 중 어느 방식을 사용하느냐는 선택하기 나름이겠습니다만,
 저는 전자의 경우 multi-output이 구현 측면에서 번거로운 점이 있을 것이라고 판단해,
 후자의 방식을 채택했습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -366,35 +362,35 @@ KCAPTCHA는 상당히 쉬운 캡차라고 할 수 있습니다. 그래서인지 
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">one_hot_encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
-    <span class="s2">&#34;&#34;&#34;
-</span><span class="s2">    e.g.) 17 ==&gt; [0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0,
-</span><span class="s2">                  0, 0, 0, 0, 0, 0, 0, 1.0, 0, 0,]
-</span><span class="s2">    &#34;&#34;&#34;</span>
-    <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">available_chars_cnt</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">captcha_length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
-        <span class="n">idx</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_chars_cnt</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-        <span class="n">vector</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
-    <span class="k">return</span> <span class="n">vector</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">one_hot_encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    e.g.) 17 ==&gt; [0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0,
+</span></span></span><span class="line"><span class="cl"><span class="s2">                  0, 0, 0, 0, 0, 0, 0, 1.0, 0, 0,]
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">available_chars_cnt</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">captcha_length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">idx</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_chars_cnt</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">vector</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">vector</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>파이썬으로 구현한 데이터 임베딩 <a href="https://github.com/ryanking13/kcaptcha-solver/blob/d184912e9800abc0b6e6715167d41310d51b9e05/classification/dataset.py#L52-L61">코드</a>는 위와 같습니다.</p>
 <p><strong>loss 함수 정의</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">pred</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
-  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
-<span class="p">]</span>
-<span class="n">total_loss</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pred</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">total_loss</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>데이터 임베딩을 정한 것까지는 좋은데, loss 함수는 어떻게 정의해야 할까요?</p>
 <p>MNIST와 같이 데이터를 C개의 클래스 중 하나의 클래스로 분류하는 <code>Multi-class classfication</code> 문제는
@@ -418,7 +414,7 @@ Keras는 다양한 모델을 지원하지만, 최종 브라우저 배포 환경�
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -435,27 +431,27 @@ Keras는 다양한 모델을 지원하지만, 최종 브라우저 배포 환경�
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">tensorflow.keras.applications</span> <span class="kn">import</span> <span class="n">DenseNet121</span>
-
-<span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">DenseNet121</span><span class="p">(</span>
-    <span class="n">input_shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">,</span>
-    <span class="n">input_tensor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_tensor</span><span class="p">,</span>
-    <span class="n">include_top</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-    <span class="n">weights</span><span class="o">=</span><span class="s2">&#34;imagenet&#34;</span><span class="p">,</span>
-    <span class="n">pooling</span><span class="o">=</span><span class="s2">&#34;max&#34;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">fc1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&#34;relu&#34;</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
-<span class="n">fc2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_length</span><span class="p">)(</span><span class="n">fc1</span><span class="p">)</span>
-
-<span class="n">prediction</span> <span class="o">=</span> <span class="n">activations</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">fc2</span><span class="p">)</span>
-
-<span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">prediction</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">tensorflow.keras.applications</span> <span class="kn">import</span> <span class="n">DenseNet121</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">DenseNet121</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">input_shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">input_tensor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_tensor</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">include_top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">weights</span><span class="o">=</span><span class="s2">&#34;imagenet&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pooling</span><span class="o">=</span><span class="s2">&#34;max&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fc1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&#34;relu&#34;</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fc2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_length</span><span class="p">)(</span><span class="n">fc1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">prediction</span> <span class="o">=</span> <span class="n">activations</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">fc2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">prediction</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>ImageNet으로 사전 학습된 모델을 사용했습니다. 작은 프로젝트에서는 Keras를 쓰면 구현이 참 편리합니다. 😏</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -463,17 +459,17 @@ Keras는 다양한 모델을 지원하지만, 최종 브라우저 배포 환경�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">opt</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-    <span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span>
-    <span class="n">loss</span><span class="o">=</span><span class="s2">&#34;binary_crossentropy&#34;</span><span class="p">,</span>
-    <span class="n">metrics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_captcha_accuracy</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">,</span> <span class="n">char_classes</span><span class="p">)</span>
-<span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">opt</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss</span><span class="o">=</span><span class="s2">&#34;binary_crossentropy&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">metrics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_captcha_accuracy</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">,</span> <span class="n">char_classes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -483,20 +479,20 @@ Keras는 다양한 모델을 지원하지만, 최종 브라우저 배포 환경�
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trainset</span><span class="p">,</span> <span class="n">valset</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
-    <span class="o">...</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-        <span class="n">x</span><span class="o">=</span><span class="n">trainset</span><span class="p">,</span>
-        <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
-        <span class="n">validation_data</span><span class="o">=</span><span class="n">valset</span><span class="p">,</span>
-        <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
-    <span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trainset</span><span class="p">,</span> <span class="n">valset</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span><span class="o">=</span><span class="n">trainset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">validation_data</span><span class="o">=</span><span class="n">valset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>학습 과정도 Keras API를 활용하여 간단히 구현하였습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -508,17 +504,17 @@ Keras는 다양한 모델을 지원하지만, 최종 브라우저 배포 환경�
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">_captcha_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">captcha_length</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">captcha_accuracy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
-        <span class="n">sum_acc</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">):</span>
-            <span class="n">_y_true</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
-            <span class="n">_y_pred</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
-            <span class="n">sum_acc</span> <span class="o">+=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">categorical_accuracy</span><span class="p">(</span><span class="n">_y_true</span><span class="p">,</span> <span class="n">_y_pred</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">sum_acc</span> <span class="o">/</span> <span class="n">captcha_length</span>
-
-    <span class="k">return</span> <span class="n">captcha_accuracy</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">_captcha_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">captcha_length</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">captcha_accuracy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sum_acc</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_y_true</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_y_pred</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="n">sum_acc</span> <span class="o">+=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">categorical_accuracy</span><span class="p">(</span><span class="n">_y_true</span><span class="p">,</span> <span class="n">_y_pred</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">sum_acc</span> <span class="o">/</span> <span class="n">captcha_length</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">captcha_accuracy</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>한 가지 포인트가 되는 부분은,
 모델의 출력이 일반적인 문제와 다르기 때문에,
@@ -613,10 +609,10 @@ EfficientnetB0는 <span style="color:#ee3377">학습 정확도</span>가 천천�
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>최신 그누보드는 구글의 리캡차(reCAPTCHA)를 디폴트로 사용하도록 바뀌었지만, 구글 API 연동의 번거로움 및 리캡차 자체의 불편함으로 인해서인지 여전히 KCAPTCHA를 사용하는 웹사이트가 종종 보입니다. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>최신 그누보드는 구글의 리캡차(reCAPTCHA)를 디폴트로 사용하도록 바뀌었지만, 구글 API 연동의 번거로움 및 리캡차 자체의 불편함으로 인해서인지 여전히 KCAPTCHA를 사용하는 웹사이트가 종종 보입니다.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>대표적으로 구글의 <a href="https://www.google.com/recaptcha/about/">reCAPTCHA</a>나 클라우드플레어가 애용하는 <a href="https://www.hcaptcha.com/">hcaptcha</a>가 있습니다. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>대표적으로 구글의 <a href="https://www.google.com/recaptcha/about/">reCAPTCHA</a>나 클라우드플레어가 애용하는 <a href="https://www.hcaptcha.com/">hcaptcha</a>가 있습니다.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -740,7 +736,7 @@ EfficientnetB0는 <span style="color:#ee3377">학습 정확도</span>가 천천�
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

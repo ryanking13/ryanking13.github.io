@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.79.0 with theme even" />
+<meta name="generator" content="Hugo 0.96.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,26 +40,22 @@
 
 
 
-<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="파이썬 패키징의 과거, 현재, 그리고 미래" />
 <meta property="og:description" content="파이썬 패키징의 과거, 현재, 그리고 미래" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2021/07/11/python-packaging.html/" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/07/11/python-packaging.html/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-07-11T00:00:01+09:00" />
 <meta property="article:modified_time" content="2021-07-11T00:00:01+09:00" />
+
 <meta itemprop="name" content="파이썬 패키징의 과거, 현재, 그리고 미래">
-<meta itemprop="description" content="파이썬 패키징의 과거, 현재, 그리고 미래">
-<meta itemprop="datePublished" content="2021-07-11T00:00:01+09:00" />
+<meta itemprop="description" content="파이썬 패키징의 과거, 현재, 그리고 미래"><meta itemprop="datePublished" content="2021-07-11T00:00:01+09:00" />
 <meta itemprop="dateModified" content="2021-07-11T00:00:01+09:00" />
-<meta itemprop="wordCount" content="6315">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="6400">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="파이썬 패키징의 과거, 현재, 그리고 미래"/>
 <meta name="twitter:description" content="파이썬 패키징의 과거, 현재, 그리고 미래"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -144,7 +140,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
 </div>
     </header>
 
@@ -249,7 +245,7 @@ easy_install이라는 도구를 처음 들어보실 수도 있을 것 같은데�
 <p>그래서 이 당시 파이썬 개발자들은 <a href="https://wiki.python.org/moin/VaultsOfParnassus">파르나소스의 금고(Vaults Of Parnassus)</a>라는
 일종의 커뮤니티 사이트를 통해서 패키지를 공유했습니다.
 문제는 파이썬 패키지를 설치하는 정해진 방법이 없다보니 각자 설치법을 담은 문서를 패키지와 함께 공유하는 수밖에 없었습니다.
-<em>&ldquo;이 패키지를 쓰려면 이 코드를 어디어디에 넣어!&quot;</em> 같은 식으로 말입니다.</p>
+<em>&ldquo;이 패키지를 쓰려면 이 코드를 어디어디에 넣어!&rdquo;</em> 같은 식으로 말입니다.</p>
 <p>이런 상황에 불편함을 느낀 파이썬 개발자들은
 1998년, 파이썬 코드를 패키징하고 빌드할 수 있는 <code>distutils</code>라는 패키지를 만들게 됩니다.
 distutils는 <strong>setup.py</strong>라는,
@@ -258,15 +254,15 @@ distutils는 <strong>setup.py</strong>라는,
 <p>아래는 distutils가 사용하는 setup.py 파일의 예시입니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># distutils setup.py 예시</span>
-<span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
-<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span> <span class="n">py_modules</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">],</span> <span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># distutils setup.py 예시</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+</span></span><span class="line"><span class="cl"><span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span> <span class="n">py_modules</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">],</span> <span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><code>python setup.py sdist</code>: 패키지 소스코드 압축</li>
@@ -318,7 +314,7 @@ setuptools는 PyPI에 패키지를 업로드하거나, 패키지에 대한 테�
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -329,16 +325,16 @@ setuptools는 PyPI에 패키지를 업로드하거나, 패키지에 대한 테�
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># setuptools setup.py 예시</span>
-<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
-<span class="n">setup</span><span class="p">(</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
-    <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;1.0&#39;</span><span class="p">,</span>
-    <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;dependency1&#34;</span><span class="p">,</span> <span class="s2">&#34;dependency2&#34;</span><span class="p">],</span>
-    <span class="n">entry_points</span><span class="o">=</span><span class="p">{},</span>
-    <span class="n">python_requires</span><span class="o">=</span><span class="s2">&#34;&gt;=2.4&#34;</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># setuptools setup.py 예시</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
+</span></span><span class="line"><span class="cl"><span class="n">setup</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;1.0&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;dependency1&#34;</span><span class="p">,</span> <span class="s2">&#34;dependency2&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">entry_points</span><span class="o">=</span><span class="p">{},</span>
+</span></span><span class="line"><span class="cl">    <span class="n">python_requires</span><span class="o">=</span><span class="s2">&#34;&gt;=2.4&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>setuptools는 패키지 빌드를 위해 distutils에서 사용하였던 setup.py의 포맷을 그대로 사용하되,
 문법을 확장하여 패키지의 의존성과 파이썬 버전을 지정할 수 있게 하였고,
@@ -348,11 +344,11 @@ easy_install은 파이썬 패키지를 직접 PyPI에서 다운로드 받지 않
 쉽게 PyPI에 업로드된 패키지를 해당 패키지의 <em>의존성을 포함하여</em> 설치하는 기능을 지원했습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">easy_install &lt;some_pkg&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">easy_install &lt;some_pkg&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>이러한 easy_install의 등장은 단순히 편리한 파이썬 패키지 설치 도구가 생겼다라는 것 말고도,
 파이썬 패키징 프로세스를 개발자의 영역와 사용자의 영역으로 구분하게 되었다는 점에서 의미가 있는데요.</p>
@@ -450,29 +446,29 @@ distutils와는 다르게 사실 setuptools는 파이썬의 표준 라이브러�
 물론 기존에 사용하던 setuptools를 빌드 시스템으로 사용하는 것도 가능합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="c"># pyproject.toml 예시</span>
-<span class="p">[</span><span class="nx">build</span><span class="err">-</span><span class="nx">system</span><span class="p">]</span>
-<span class="nx">requires</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;setuptools&gt;=42&#34;</span><span class="p">,</span> <span class="s2">&#34;wheel&#34;</span><span class="p">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># pyproject.toml 예시</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">build-system</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">requires</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;setuptools&gt;=42&#34;</span><span class="p">,</span> <span class="s2">&#34;wheel&#34;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>위의 예시는 setuptools를 빌드 시스템으로 사용하는 pyproject.toml 파일의 예시입니다.
 패키지를 빌드하기 위해 특정한 setuptools 버전이 필요하다는 점, 그리고 wheel 라이브러리가 함께 필요하다는 점을 명시하고 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">build</span><span class="err">-</span><span class="nx">system</span><span class="p">]</span>
-<span class="nx">requires</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;flit_core &gt;=2,&lt;4&#34;</span><span class="p">]</span>
-<span class="nx">build</span><span class="err">-</span><span class="nx">backend</span> <span class="p">=</span> <span class="s2">&#34;flit_core.buildapi&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">build-system</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">requires</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;flit_core &gt;=2,&lt;4&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">build-backend</span> <span class="p">=</span> <span class="s2">&#34;flit_core.buildapi&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>만약 setuptools가 아닌 다른 빌드 시스템을 사용하고자 한다면 해당 시스템을 setuptools 대신 명시하면 됩니다.
 위의 예시는 setuptools 대신 <a href="https://flit.readthedocs.io/en/latest/index.html">flit</a>을 사용하는 경우입니다.</p>
@@ -492,23 +488,23 @@ pyproject.toml을 유용하게 사용할 수 있음을 발견했습니다.</p>
 대표적으로는 코드 포맷팅 도구인 black, 테스트용 프레임워크인 pytest 등이 pyproject.toml에 설정 값을 저장하고 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="c"># pyproject.toml of black</span>
-<span class="p">[</span><span class="nx">tool</span><span class="p">.</span><span class="nx">black</span><span class="p">]</span>
-<span class="nx">line</span><span class="err">-</span><span class="nx">length</span> <span class="p">=</span> <span class="mi">88</span>
-<span class="nx">target</span><span class="err">-</span><span class="nx">version</span> <span class="p">=</span> <span class="p">[</span><span class="s1">&#39;py36&#39;</span><span class="p">,</span> <span class="s1">&#39;py37&#39;</span><span class="p">,</span> <span class="s1">&#39;py38&#39;</span><span class="p">]</span>
-<span class="nx">include</span> <span class="p">=</span> <span class="s1">&#39;\.pyi?$&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># pyproject.toml of black</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">tool</span><span class="p">.</span><span class="nx">black</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">line-length</span> <span class="p">=</span> <span class="mi">88</span>
+</span></span><span class="line"><span class="cl"><span class="nx">target-version</span> <span class="p">=</span> <span class="p">[</span><span class="s1">&#39;py36&#39;</span><span class="p">,</span> <span class="s1">&#39;py37&#39;</span><span class="p">,</span> <span class="s1">&#39;py38&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">include</span> <span class="p">=</span> <span class="s1">&#39;\.pyi?$&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -518,15 +514,15 @@ pyproject.toml을 유용하게 사용할 수 있음을 발견했습니다.</p>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="c"># pyproject.toml of pytest</span>
-<span class="p">[</span><span class="nx">tool</span><span class="p">.</span><span class="nx">pytest</span><span class="p">.</span><span class="nx">ini_options</span><span class="p">]</span>
-<span class="nx">minversion</span> <span class="p">=</span> <span class="s2">&#34;6.0&#34;</span>
-<span class="nx">addopts</span> <span class="p">=</span> <span class="s2">&#34;-ra -q&#34;</span>
-<span class="nx">testpaths</span> <span class="p">=</span> <span class="p">[</span>
-    <span class="s2">&#34;tests&#34;</span><span class="p">,</span>
-    <span class="s2">&#34;integration&#34;</span><span class="p">,</span>
-<span class="p">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># pyproject.toml of pytest</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">tool</span><span class="p">.</span><span class="nx">pytest</span><span class="p">.</span><span class="nx">ini_options</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">minversion</span> <span class="p">=</span> <span class="s2">&#34;6.0&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">addopts</span> <span class="p">=</span> <span class="s2">&#34;-ra -q&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">testpaths</span> <span class="p">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;tests&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;integration&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>장기적으로는 pyproject.toml이 파이썬 패키지를 개발하는데 필요한 설정 값을
 통합 관리하기 위해서 사용되지 않을까하는 생각이 듭니다. Node.js의 package.json처럼요.</p>
@@ -577,17 +573,17 @@ pyproject.toml을 유용하게 사용할 수 있음을 발견했습니다.</p>
 <ol>
 <li id="fn:1" role="doc-endnote">
 <p>여담으로, 이때의 PyPI는 치즈가게라는 별명으로 불렸는데,
-Python의 어원이 된 Monty Python에 나오는 <a href="https://m.youtube.com/watch?v=Hz1JWzyvv8A">치즈가 없는 치즈가게</a> 에피소드에서 따온 이름이라고 합니다. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+Python의 어원이 된 Monty Python에 나오는 <a href="https://m.youtube.com/watch?v=Hz1JWzyvv8A">치즈가 없는 치즈가게</a> 에피소드에서 따온 이름이라고 합니다.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>pip은 pip installs packages라는 재귀적인 의미를 가지고 있습니다. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>pip은 pip installs packages라는 재귀적인 의미를 가지고 있습니다.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3" role="doc-endnote">
 <p>한편, easy_install은 <code>egg</code>라는 바이너리 포맷으로 된 패키지를 설치하는 방식을 지원했었는데요.
-egg 포맷은 PEP에 명시되지 않은 비공식적인 포맷이었기 때문에 pip는 egg를 사용하지 않았습니다. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+egg 포맷은 PEP에 명시되지 않은 비공식적인 포맷이었기 때문에 pip는 egg를 사용하지 않았습니다.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4" role="doc-endnote">
-<p>setuptools.setup() 함수를 setup.py가 사용하기 때문입니다. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>setuptools.setup() 함수를 setup.py가 사용하기 때문입니다.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -711,7 +707,7 @@ egg 포맷은 PEP에 명시되지 않은 비공식적인 포맷이었기 때문�
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {
