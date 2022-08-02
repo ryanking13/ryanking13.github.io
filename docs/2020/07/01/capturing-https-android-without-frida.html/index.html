@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.96.0 with theme even" />
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,22 +40,26 @@
 
 
 
-<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법" />
 <meta property="og:description" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2020/07/01/capturing-https-android-without-frida.html/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://ryanking13.github.io/2020/07/01/capturing-https-android-without-frida.html/" />
 <meta property="article:published_time" content="2020-07-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-07-01T00:00:00+00:00" />
-
 <meta itemprop="name" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법">
-<meta itemprop="description" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법"><meta itemprop="datePublished" content="2020-07-01T00:00:00+00:00" />
+<meta itemprop="description" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법">
+<meta itemprop="datePublished" content="2020-07-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-07-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1752">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="1731">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법"/>
 <meta name="twitter:description" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -140,7 +144,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
 </div>
     </header>
 
@@ -215,19 +219,19 @@
 <p>SSL-Pinning을 우회하는 다른 방법은, 직접 앱을 언패키징(Unpack)하고 사용자 루트 인증서를 신뢰하도록 설정을 변경한 뒤 다시 리패키징(Repack)해주는 방법입니다. 구체적인 단계는 다음과 같습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. 애플리케이션 언패키징
-</span></span><span class="line"><span class="cl">2. 보안 설정 변경
-</span></span><span class="line"><span class="cl">3. 애플리케이션 리패키징
-</span></span><span class="line"><span class="cl">4. 애플리케이션 서명
-</span></span><span class="line"><span class="cl">5. Profit!
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">1. 애플리케이션 언패키징
+2. 보안 설정 변경
+3. 애플리케이션 리패키징
+4. 애플리케이션 서명
+5. Profit!
+</code></pre></td></tr></table>
 </div>
 </div><p>예시를 통해서 살펴보겠습니다.</p>
 <blockquote>
@@ -246,7 +250,7 @@
 <p><a href="https://ibotpeaches.github.io/Apktool/install/">Apktool</a>을 사용하여 APK 파일을 언패키징합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -261,36 +265,36 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ java -jar apktool.jar d com.fusionmedia.investing.apk
-</span></span><span class="line"><span class="cl">I: Using Apktool 2.4.1 on com.fusionmedia.investing.apk
-</span></span><span class="line"><span class="cl">I: Loading resource table...
-</span></span><span class="line"><span class="cl">I: Decoding AndroidManifest.xml with resources...
-</span></span><span class="line"><span class="cl">I: Loading resource table from file: <span class="o">[</span>...<span class="o">]</span>
-</span></span><span class="line"><span class="cl">I: Regular manifest package...
-</span></span><span class="line"><span class="cl">I: Decoding file-resources...
-</span></span><span class="line"><span class="cl">I: Decoding values */* XMLs...
-</span></span><span class="line"><span class="cl">I: Baksmaling classes.dex...
-</span></span><span class="line"><span class="cl">I: Baksmaling classes2.dex...
-</span></span><span class="line"><span class="cl">I: Copying assets and libs...
-</span></span><span class="line"><span class="cl">I: Copying unknown files...
-</span></span><span class="line"><span class="cl">I: Copying original files...
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ java -jar apktool.jar d com.fusionmedia.investing.apk
+I: Using Apktool 2.4.1 on com.fusionmedia.investing.apk
+I: Loading resource table...
+I: Decoding AndroidManifest.xml with resources...
+I: Loading resource table from file: <span class="o">[</span>...<span class="o">]</span>
+I: Regular manifest package...
+I: Decoding file-resources...
+I: Decoding values */* XMLs...
+I: Baksmaling classes.dex...
+I: Baksmaling classes2.dex...
+I: Copying assets and libs...
+I: Copying unknown files...
+I: Copying original files...
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="2-보안-설정-변경">2. 보안 설정 변경</h4>
 <p>언패키징된 앱의 <code>AndroidManifest.xml</code>파일의 <code>application</code> 항목에 <code>android:networkSecurityConfig=&quot;@xml/network_security_config&quot;</code> 파라미터를 추가합니다. (이미 해당 값이 있다면 그대로 둡니다.)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;application</span> <span class="err">[...]</span> <span class="na">android:networkSecurityConfig=</span><span class="s">&#34;@xml/network_security_config&#34;</span><span class="nt">&gt;</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;application</span> <span class="err">[...]</span> <span class="na">android:networkSecurityConfig=</span><span class="s">&#34;@xml/network_security_config&#34;</span><span class="nt">&gt;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><code>res/xml/network_security_config.xml</code> 파일을 생성하고 (이미 있다면 그대로 사용합니다),
 아래의 내용을 삽입합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -306,36 +310,36 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;network-security-config&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;debug-overrides&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;trust-anchors&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;user&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/trust-anchors&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/debug-overrides&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;base-config</span> <span class="na">cleartextTrafficPermitted=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;trust-anchors&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;system&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;user&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/trust-anchors&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/base-config&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/network-security-config&gt;</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;network-security-config&gt;</span>
+    <span class="nt">&lt;debug-overrides&gt;</span>
+        <span class="nt">&lt;trust-anchors&gt;</span>
+            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;user&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/trust-anchors&gt;</span>
+    <span class="nt">&lt;/debug-overrides&gt;</span>
+    <span class="nt">&lt;base-config</span> <span class="na">cleartextTrafficPermitted=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;trust-anchors&gt;</span>
+            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;system&#34;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;user&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/trust-anchors&gt;</span>
+    <span class="nt">&lt;/base-config&gt;</span>
+<span class="nt">&lt;/network-security-config&gt;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>이중 핵심은 아래 부분입니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">        <span class="nt">&lt;trust-anchors&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;system&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;user&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/trust-anchors&gt;</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-xml" data-lang="xml">        <span class="nt">&lt;trust-anchors&gt;</span>
+            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;system&#34;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;user&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/trust-anchors&gt;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><code>trust-anchors</code> 항목에 사용자(user)가 설치한 루트 인증서를 신뢰하도록 합니다.</p>
 <p>이제 이 설정을 사용하여 앱을 리패키징하면 됩니다. <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
@@ -343,11 +347,11 @@
 <p>다시 Apktool을 사용하여 앱을 리패키징합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ java -jar apktool.jar b com.fusionmedia.investing -o com.fusionmedia.investing.repack.apk
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ java -jar apktool.jar b com.fusionmedia.investing -o com.fusionmedia.investing.repack.apk
+</code></pre></td></tr></table>
 </div>
 </div><p><code>com.fusionmedia.investing.repack.apk</code> 라는 이름으로 리패키징 된 앱이 생성됩니다.</p>
 <h4 id="4-애플리케이션-서명">4. 애플리케이션 서명</h4>
@@ -356,11 +360,11 @@
 테스트용 인증서로 서명을 하는 <a href="https://github.com/ryanking13/android-SSL-unpinning/blob/master/sign.jar">간단한 도구</a>를 사용하기로 합시다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">java -jar sign.jar com.fusionmedia.investing.repack.apk
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">java -jar sign.jar com.fusionmedia.investing.repack.apk
+</code></pre></td></tr></table>
 </div>
 </div><p>실행하면 서명된 <code>com.fusionmedia.investing.repack.s.apk</code> APK 파일이 생성됩니다.</p>
 <p>완성입니다.</p>
@@ -385,7 +389,7 @@ Packet Capture 도구를 사용하여 HTTPS 패킹을 스니핑 해보면,</p>
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>더 간단한 방법으로는 <code>AndroidManifest.xml</code> 파일에서 안드로이드 6 이하를 타겟으로 하도록 빌드 버전을 수정해주는 방법이 있습니다. (<a href="https://blog.netspi.com/four-ways-bypass-android-ssl-verification-certificate-pinning/">참고</a>). 다만 <code>networkSecurityConfig</code> 값이 지정되어 있다면 먹히지 않습니다.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>더 간단한 방법으로는 <code>AndroidManifest.xml</code> 파일에서 안드로이드 6 이하를 타겟으로 하도록 빌드 버전을 수정해주는 방법이 있습니다. (<a href="https://blog.netspi.com/four-ways-bypass-android-ssl-verification-certificate-pinning/">참고</a>). 다만 <code>networkSecurityConfig</code> 값이 지정되어 있다면 먹히지 않습니다. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -509,7 +513,7 @@ Packet Capture 도구를 사용하여 HTTPS 패킹을 스니핑 해보면,</p>
 
 
 
-<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

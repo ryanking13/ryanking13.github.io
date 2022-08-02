@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.96.0 with theme even" />
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,22 +40,26 @@
 
 
 
-<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트" />
 <meta property="og:description" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/" />
 <meta property="article:published_time" content="2021-06-10T00:00:01+09:00" />
 <meta property="article:modified_time" content="2021-06-10T00:00:01+09:00" />
-
 <meta itemprop="name" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트">
-<meta itemprop="description" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트"><meta itemprop="datePublished" content="2021-06-10T00:00:01+09:00" />
+<meta itemprop="description" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트">
+<meta itemprop="datePublished" content="2021-06-10T00:00:01+09:00" />
 <meta itemprop="dateModified" content="2021-06-10T00:00:01+09:00" />
 <meta itemprop="wordCount" content="2037">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트"/>
 <meta name="twitter:description" content="알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -140,7 +144,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
 </div>
     </header>
 
@@ -223,15 +227,15 @@
 일부 모듈은 임포트되지 않고 실행되었을 때만 특정한 기능을 하게끔 코드가 구성되어 있는 경우가 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 아래 부분은 모듈이 import 되었을 때는 실행되지 않습니다.</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;I&#39;m not printed if this module is imported!&#34;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 아래 부분은 모듈이 import 되었을 때는 실행되지 않습니다.</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;I&#39;m not printed if this module is imported!&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>보통은 모듈을 간단히 테스트하기 위해 이런 코드를 삽입하곤 합니다.
 이 글에서 소개하는 도구들은 모두 이처럼 <code>-m</code> 옵션을 이용해 모듈을 실행하는 식으로 사용하는 도구들입니다.</p>
@@ -244,11 +248,11 @@
 <code>-d</code> 옵션으로 디렉토리를 지정할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ python -m http.server <span class="m">8080</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m http.server <span class="m">8080</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="json-포맷팅">JSON 포맷팅</h3>
 <ul>
@@ -257,17 +261,17 @@
 <p>JSON 파일을 검증하고 포맷팅합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="s1">&#39;{&#34;a&#34;: 1}&#39;</span> <span class="p">|</span> python -m json.tool
-</span></span><span class="line"><span class="cl"><span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;a&#34;</span>: <span class="m">1</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ <span class="nb">echo</span> <span class="s1">&#39;{&#34;a&#34;: 1}&#39;</span> <span class="p">|</span> python -m json.tool
+<span class="o">{</span>
+    <span class="s2">&#34;a&#34;</span>: <span class="m">1</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><h2 id="-비상시에-쓸-수-있는-도구">🧯 비상시에 쓸 수 있는 도구</h2>
 <blockquote>
@@ -285,13 +289,13 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>BASE64 인코딩 / 디코딩을 수행합니다. Linux에서는 <code>base64</code> 커맨드로 대체 가능합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="nv">dGVzdAo</span><span class="o">=</span> <span class="p">|</span> python -m base64 -d
-</span></span><span class="line"><span class="cl"><span class="nb">test</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ <span class="nb">echo</span> <span class="nv">dGVzdAo</span><span class="o">=</span> <span class="p">|</span> python -m base64 -d
+<span class="nb">test</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="파일-타입-분석">파일 타입 분석</h3>
 <ul>
@@ -300,13 +304,13 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>이미지 파일의 헤더를 보고 파일 타입을 유추합니다. Linux에서는 <code>file</code> 커맨드로 대체 가능합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ python -m imghdr image.png
-</span></span><span class="line"><span class="cl">image.png: png
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m imghdr image.png
+image.png: png
+</code></pre></td></tr></table>
 </div>
 </div><br/>
 <ul>
@@ -315,13 +319,13 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>음성 파일 헤더를 보고 파일 타입을 유추합니다. Linux에서는 <code>file</code> 커맨드로 대체 가능합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ python -m sndhdr sound.wav
-</span></span><span class="line"><span class="cl">soun.wav: SndHeaders<span class="o">(</span><span class="nv">filetype</span><span class="o">=</span><span class="s1">&#39;wav&#39;</span>, ...<span class="o">)</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m sndhdr sound.wav
+soun.wav: SndHeaders<span class="o">(</span><span class="nv">filetype</span><span class="o">=</span><span class="s1">&#39;wav&#39;</span>, ...<span class="o">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="압축">압축</h3>
 <ul>
@@ -330,13 +334,13 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>TAR 파일을 압축, 압축 해체합니다. Linux에서는 <code>tar</code> 커맨드로 대체 가능합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ python -m tarfile a.tar
-</span></span><span class="line"><span class="cl">...<span class="o">(</span>extract<span class="o">)</span>...
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m tarfile a.tar
+...<span class="o">(</span>extract<span class="o">)</span>...
+</code></pre></td></tr></table>
 </div>
 </div><br/>
 <ul>
@@ -345,13 +349,13 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>GZIP 파일을 압축, 압축 해제합니다. Linux에서는 <code>gzip</code> 커맨드로 대체 가능합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ python -m gzip -d a.tar.gz
-</span></span><span class="line"><span class="cl">...<span class="o">(</span>decompress<span class="o">)</span>...
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m gzip -d a.tar.gz
+...<span class="o">(</span>decompress<span class="o">)</span>...
+</code></pre></td></tr></table>
 </div>
 </div><br/>
 <ul>
@@ -360,13 +364,13 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>ZIP 파일을 압축, 압축 해제합니다. Linux에서는 <code>zip, unzip</code> 커맨드로 대체 가능합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ python -m zipfile -e a.zip dir
-</span></span><span class="line"><span class="cl">...<span class="o">(</span>extracted to dir<span class="o">)</span>...
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m zipfile -e a.zip dir
+...<span class="o">(</span>extracted to dir<span class="o">)</span>...
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="시스템-정보">시스템 정보</h3>
 <ul>
@@ -388,19 +392,19 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>특정 파이썬 모듈의 내용물을 보고싶거나, 모듈의 위치를 확인할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># os 모듈 코드를 볼 수 있습니다</span>
-</span></span><span class="line"><span class="cl">$ python -m inspect os
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># os 모듈의 위치를 볼 수 있습니다.</span>
-</span></span><span class="line"><span class="cl">$ python -m inspect -d json
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># os 모듈 코드를 볼 수 있습니다</span>
+$ python -m inspect os
+
+<span class="c1"># os 모듈의 위치를 볼 수 있습니다.</span>
+$ python -m inspect -d json
+</code></pre></td></tr></table>
 </div>
 </div><br/>
 <ul>
@@ -409,13 +413,13 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>파이썬 파일을 컴파일한 pyc 파일을 생성합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ python -m py_compile a.py &amp;&amp; ls
-</span></span><span class="line"><span class="cl">a.py a.pyc
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python -m py_compile a.py &amp;&amp; ls
+a.py a.pyc
+</code></pre></td></tr></table>
 </div>
 </div><br/>
 <ul>
@@ -424,17 +428,17 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>파이썬을 빌드할 때 사용한 환경 변수 등을 볼 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ python -m sysconfig
-</span></span><span class="line"><span class="cl">Platform: &#34;win-amd64&#34;
-</span></span><span class="line"><span class="cl">Python version: &#34;3.8&#34;
-</span></span><span class="line"><span class="cl">...
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python -m sysconfig
+Platform: &#34;win-amd64&#34;
+Python version: &#34;3.8&#34;
+...
+</code></pre></td></tr></table>
 </div>
 </div><br/>
 <ul>
@@ -444,13 +448,13 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>Jupyter Notebook을 써보신 분이라면 익숙한 커맨드실 것 같네요.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ python -m timeit &#34;str(1)&#34;
-</span></span><span class="line"><span class="cl">2000000 loops, best of 5: 107 nsec per loop
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python -m timeit &#34;str(1)&#34;
+2000000 loops, best of 5: 107 nsec per loop
+</code></pre></td></tr></table>
 </div>
 </div><br/>
 <ul>
@@ -459,13 +463,13 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>가상 환경을 생성합니다. 기존의 <code>virtualenv</code> 가 했던 기능을 대체합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ python -m venv venv &amp;&amp; ls venv
-</span></span><span class="line"><span class="cl">Include  Lib  Scripts  pyvenv.cfg
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python -m venv venv &amp;&amp; ls venv
+Include  Lib  Scripts  pyvenv.cfg
+</code></pre></td></tr></table>
 </div>
 </div><br/>
 <ul>
@@ -474,7 +478,7 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>파이썬 레퍼런스 문서를 생성합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -485,16 +489,16 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 특정 모듈에 대한 레퍼런스를 콘솔에서 보거나</span>
-</span></span><span class="line"><span class="cl">$ python -m pydoc os
-</span></span><span class="line"><span class="cl">Help on module os:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">NAME
-</span></span><span class="line"><span class="cl">    os - OS routines <span class="k">for</span> NT or Posix depending on what system we<span class="err">&#39;</span>re on.
-</span></span><span class="line"><span class="cl">...
-</span></span><span class="line"><span class="cl"><span class="c1"># 전체 레퍼런스 문서를 웹 페이지에서 보는 것도 가능합니다.</span>
-</span></span><span class="line"><span class="cl">$ python -m pydoc -b
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 특정 모듈에 대한 레퍼런스를 콘솔에서 보거나</span>
+$ python -m pydoc os
+Help on module os:
+
+NAME
+    os - OS routines <span class="k">for</span> NT or Posix depending on what system we<span class="err">&#39;</span>re on.
+...
+<span class="c1"># 전체 레퍼런스 문서를 웹 페이지에서 보는 것도 가능합니다.</span>
+$ python -m pydoc -b
+</code></pre></td></tr></table>
 </div>
 </div><br/>
 <ul>
@@ -503,7 +507,7 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>파이썬 코드를 프로파일링합니다. 각 함수가 몇번이나 실행되었고, 얼마나 시간이 걸렸는지를 측정할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -515,17 +519,17 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ python -m profile test.py
-</span></span><span class="line"><span class="cl">         <span class="m">39721</span> <span class="k">function</span> calls <span class="o">(</span><span class="m">38908</span> primitive calls<span class="o">)</span> in 0.141 seconds
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">   Ordered by: standard name
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">   ncalls  tottime  percall  cumtime  percall filename:lineno<span class="o">(</span><span class="k">function</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">  215/214    0.000    0.000    0.047    0.000 :0<span class="o">(</span>__build_class__<span class="o">)</span>
-</span></span><span class="line"><span class="cl">       <span class="m">84</span>    0.000    0.000    0.000    0.000 :0<span class="o">(</span>__contains__<span class="o">)</span>
-</span></span><span class="line"><span class="cl">        <span class="m">1</span>    0.000    0.000    0.000    0.000 :0<span class="o">(</span>__enter__<span class="o">)</span>
-</span></span><span class="line"><span class="cl">...
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python -m profile test.py
+         <span class="m">39721</span> <span class="k">function</span> calls <span class="o">(</span><span class="m">38908</span> primitive calls<span class="o">)</span> in 0.141 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno<span class="o">(</span><span class="k">function</span><span class="o">)</span>
+  215/214    0.000    0.000    0.047    0.000 :0<span class="o">(</span>__build_class__<span class="o">)</span>
+       <span class="m">84</span>    0.000    0.000    0.000    0.000 :0<span class="o">(</span>__contains__<span class="o">)</span>
+        <span class="m">1</span>    0.000    0.000    0.000    0.000 :0<span class="o">(</span>__enter__<span class="o">)</span>
+...
+</code></pre></td></tr></table>
 </div>
 </div><br/>
 <ul>
@@ -534,7 +538,7 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 <p>파이썬 호출 스택을 트레이싱합니다. 코드 실행 경로를 파악할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -542,13 +546,13 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ python -m trace --trace test.py
-</span></span><span class="line"><span class="cl"> --- modulename: test, funcname: &lt;module&gt;
-</span></span><span class="line"><span class="cl">test.py(1): import asyncio
-</span></span><span class="line"><span class="cl"> --- modulename: _bootstrap, funcname: _find_and_load
-</span></span><span class="line"><span class="cl">&lt;frozen importlib._bootstrap&gt;(988):  --- modulename: _bootstrap, funcname: __init__
-</span></span><span class="line"><span class="cl">...
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python -m trace --trace test.py
+ --- modulename: test, funcname: &lt;module&gt;
+test.py(1): import asyncio
+ --- modulename: _bootstrap, funcname: _find_and_load
+&lt;frozen importlib._bootstrap&gt;(988):  --- modulename: _bootstrap, funcname: __init__
+...
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="마무리">마무리</h3>
 <p>이 글에서 소개하는 스크립트들의 기능은 당연히 해당 모듈을 직접 임포트해서 쉽게 구현할 수 있습니다.
@@ -678,7 +682,7 @@ Windows에서는 대체 도구가 없거나 잘 알려지지 않은 경우</p>
 
 
 
-<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.96.0 with theme even" />
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,22 +40,26 @@
 
 
 
-<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="(번역) Javascript - The Curious Case of Null &gt;= 0" />
 <meta property="og:description" content="개발 과정에서 예상치 못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글입니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2018/06/05/javascript-null-0.html/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://ryanking13.github.io/2018/06/05/javascript-null-0.html/" />
 <meta property="article:published_time" content="2018-06-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-06-05T00:00:00+00:00" />
-
 <meta itemprop="name" content="(번역) Javascript - The Curious Case of Null &gt;= 0">
-<meta itemprop="description" content="개발 과정에서 예상치 못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글입니다."><meta itemprop="datePublished" content="2018-06-05T00:00:00+00:00" />
+<meta itemprop="description" content="개발 과정에서 예상치 못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글입니다.">
+<meta itemprop="datePublished" content="2018-06-05T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2018-06-05T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1899">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="(번역) Javascript - The Curious Case of Null &gt;= 0"/>
 <meta name="twitter:description" content="개발 과정에서 예상치 못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글입니다."/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -140,7 +144,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
 </div>
     </header>
 
@@ -188,17 +192,17 @@
 <p>얼마 전 자바스크립트 기초 가이드를 작성하는 도중 <code>null</code>과 관계 연산자 사이에서 흥미로운 사례를 발견했다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kc">null</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// false
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kc">null</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// false
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="kc">null</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// true
-</span></span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kc">null</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// false
+</span><span class="c1"></span><span class="kc">null</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// false
+</span><span class="c1"></span>
+<span class="kc">null</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// true
+</span></code></pre></td></tr></table>
 </div>
 </div><p>엥&hellip;?</p>
 <p>값이 <code>0</code>보다 <strong>크지 않고</strong> <code>0</code>과 <strong>같지 않은데</strong> <code>0</code>보다 <strong>크거나 같다</strong> 라니?</p>
@@ -209,16 +213,16 @@
 <p>우선 첫번째 비교 연산을 살펴보자.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kc">null</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// false
-</span></span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kc">null</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// false
+</span></code></pre></td></tr></table>
 </div>
 </div><p>스펙 문서에 따르면, <code>&gt;</code>, <code>&lt;</code> 비교 연산자는 <a href="http://interglacial.com/javascript_spec/a-11.html#a-11.8.5"><em>Abstract Relational Comparison Algorithm</em></a>이라는 알고리즘을 사용하여 구문의 true/false를 판정한다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -237,24 +241,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. ToPrimitive(x, hint Number)를 호출.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2. ToPrimitive(y, hint Number)를 호출.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">3. Type((1)의 결과)가 String이고 Type((2)의 결과)가 String이면, 16번으로 이동.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">4. ToNumber((1)의 결과)를 호출.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">5. ToNumber((2)의 결과)를 호출.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">6. (4)의 결과가 NaN이면, undefined를 리턴.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">7. (5)의 결과가 NaN이면, undefined를 리턴.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">8. (4)과 (5)의 결과가 동일하면, false를 리턴.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">...(9~21 생략)...
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">1. ToPrimitive(x, hint Number)를 호출.
+
+2. ToPrimitive(y, hint Number)를 호출.
+
+3. Type((1)의 결과)가 String이고 Type((2)의 결과)가 String이면, 16번으로 이동.
+
+4. ToNumber((1)의 결과)를 호출.
+
+5. ToNumber((2)의 결과)를 호출.
+
+6. (4)의 결과가 NaN이면, undefined를 리턴.
+
+7. (5)의 결과가 NaN이면, undefined를 리턴.
+
+8. (4)과 (5)의 결과가 동일하면, false를 리턴.
+
+...(9~21 생략)...
+</code></pre></td></tr></table>
 </div>
 </div><p>이 알고리즘을 토대로 <code>null &gt; 0</code>을 살펴보자.</p>
 <p>1번과 2번에서는 <code>null</code>과 <code>0</code>을 인자로 하여 <code>ToPrimitive()</code>를 호출한다. 이 함수는 인자를 <code>Number</code>, <code>String</code>과 같은 원시 타입(primitive type)에 해당하는 값으로 바꾸는 함수다. 변환되는 값은 아래 표와 같다.</p>
@@ -265,34 +269,34 @@
 <p><code>null</code>은 <code>+0</code>으로 변환되고 <code>0</code>은 당연히 그대로 <code>0</code>이다. 둘 모두 <code>NaN</code>이 아니므로 6, 7번은 넘어갈 수 있고, 8번에 따라 <code>+0</code>과 <code>0</code>은 같으므로 리턴 값은 <strong>false</strong> 다. 따라서,</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kc">null</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="c1">// false
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 같은 방식으로
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="kc">null</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="c1">// false
-</span></span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kc">null</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="c1">// false
+</span><span class="c1"></span>
+<span class="c1">// 같은 방식으로
+</span><span class="c1"></span>
+<span class="kc">null</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="c1">// false
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="the-abstract-equality-comparison-algorithm">The Abstract Equality Comparison Algorithm</h2>
 <p>다음에 살펴볼 것은 이것이다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kc">null</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// false
-</span></span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kc">null</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// false
+</span></code></pre></td></tr></table>
 </div>
 </div><p><code>==</code> 연산자는 <a href="http://interglacial.com/javascript_spec/a-11.html#a-11.8.5"><em>Abstract Equality Comparison Algorithm</em></a>이라는 알고리즘을 사용하여 구문의 true/false를 판정한다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -308,61 +312,61 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. Type(x)과 Type(y)가 다르면, 14번으로 이동.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">...(2~13 생략)...
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">14. x가 null이고 y가 undefined면, true를 리턴.
-</span></span><span class="line"><span class="cl">15. x가 undefined이고 y가 null면, true를 리턴.
-</span></span><span class="line"><span class="cl">16. Type(x)가 Number이고 Type(y)가 String이면, x == ToNumber(y)의 결과를 리턴.
-</span></span><span class="line"><span class="cl">17. Type(x)가 String이고 Type(y)가 Number이면, ToNumber(x) == y의 결과를 리턴
-</span></span><span class="line"><span class="cl">18. Type(x)가 Boolean이면, ToNumber(x) == y의 결과를 리턴.
-</span></span><span class="line"><span class="cl">19. Type(y)가 Boolean이면, x == ToNumber(y)의 결과를 리턴.
-</span></span><span class="line"><span class="cl">20. Type(x)가 String 또는 Number이고, Type(y)가 Object이면, x == ToPrimitive(y)의 결과를 리턴.
-</span></span><span class="line"><span class="cl">21. Type(x)가 Object이고, Type(y)가 String 또는 Number이면, ToPrimitive(x)== y의 결과를 리턴.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">22. false를 리턴.
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">1. Type(x)과 Type(y)가 다르면, 14번으로 이동.
+
+...(2~13 생략)...
+
+14. x가 null이고 y가 undefined면, true를 리턴.
+15. x가 undefined이고 y가 null면, true를 리턴.
+16. Type(x)가 Number이고 Type(y)가 String이면, x == ToNumber(y)의 결과를 리턴.
+17. Type(x)가 String이고 Type(y)가 Number이면, ToNumber(x) == y의 결과를 리턴
+18. Type(x)가 Boolean이면, ToNumber(x) == y의 결과를 리턴.
+19. Type(y)가 Boolean이면, x == ToNumber(y)의 결과를 리턴.
+20. Type(x)가 String 또는 Number이고, Type(y)가 Object이면, x == ToPrimitive(y)의 결과를 리턴.
+21. Type(x)가 Object이고, Type(y)가 String 또는 Number이면, ToPrimitive(x)== y의 결과를 리턴.
+
+22. false를 리턴.
+</code></pre></td></tr></table>
 </div>
 </div><p>1번을 보면 <code>null</code>과 <code>0</code>은 다른 타입이므로 14번으로 이동한다. 14~21번을 살펴보면 모두 해당하지 않고, 따라서 22번에 따라 리턴 값은 디폴트로 <strong>false</strong> 다. 따라서,</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kc">null</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// false
-</span></span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kc">null</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// false
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="the-greater-than-or-equal-operator-">The Greater-than-or-equal Operator (&gt;=)</h2>
 <p>자, 이제 마지막 문제다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kc">null</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// true
-</span></span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kc">null</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// true
+</span></code></pre></td></tr></table>
 </div>
 </div><p>이 연산 결과를 분석하려고 스펙을 살펴본 순간 완전히 당황하고 말았다. <code>&gt;=</code> 연산자는 아주 하이 레벨(high-level)에서 다음과 같이 결과를 계산하고 있었다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kc">null</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="nx">이</span> <span class="nx">false라면</span><span class="p">,</span> <span class="kc">null</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="nx">은</span> <span class="nx">true다</span><span class="p">.</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kc">null</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="nx">이</span> <span class="nx">false라면</span><span class="p">,</span> <span class="kc">null</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="nx">은</span> <span class="nx">true다</span><span class="p">.</span>
+</code></pre></td></tr></table>
 </div>
-</div><br />
+</div><p><br /></p>
 <iframe src="https://giphy.com/embed/oOTTyHRHj0HYY" width="480" height="466" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 <br />
 <p>따라서,</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kc">null</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// true
-</span></span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kc">null</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// true
+</span></code></pre></td></tr></table>
 </div>
 </div><p>잘 생각해보면 합리적이다. 수학적으로, 두 수 <code>x</code>와 <code>y</code>가 있을 때, <code>x</code>가 <code>y</code> 보다 <em>작지 않다</em> 면, <code>x</code>는 <code>y</code> 보다 <strong>반드시</strong> <em>크거나 같다</em> .</p>
 <p>아마 연산을 최적화 하기 위해서 이러한 방식을 사용하는 것이 아닐까 추측된다. <code>x &gt;= y</code>의 결과를 구하기 위해서, <code>x</code>가 <code>y</code>보다 큰지 확인하고, 그렇지 않다면 <code>x</code>와 <code>y</code>가 같은지 확인하는 건 두 번의 연산이 필요하지만 <code>x</code>가 <code>y</code>보다 작은지 확인하는 건 한 번이면 끝나니까 말이다.</p>
@@ -489,7 +493,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

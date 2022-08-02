@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.96.0 with theme even" />
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,22 +40,26 @@
 
 
 
-<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="PNG 파일 구조" />
 <meta property="og:description" content="대표적인 이미지 파일 포맷인 PNG의 구조를 뜯어보는 글입니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2018/03/24/png-structure.html/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://ryanking13.github.io/2018/03/24/png-structure.html/" />
 <meta property="article:published_time" content="2018-03-24T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-03-24T00:00:00+00:00" />
-
 <meta itemprop="name" content="PNG 파일 구조">
-<meta itemprop="description" content="대표적인 이미지 파일 포맷인 PNG의 구조를 뜯어보는 글입니다."><meta itemprop="datePublished" content="2018-03-24T00:00:00+00:00" />
+<meta itemprop="description" content="대표적인 이미지 파일 포맷인 PNG의 구조를 뜯어보는 글입니다.">
+<meta itemprop="datePublished" content="2018-03-24T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2018-03-24T00:00:00+00:00" />
 <meta itemprop="wordCount" content="2381">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PNG 파일 구조"/>
 <meta name="twitter:description" content="대표적인 이미지 파일 포맷인 PNG의 구조를 뜯어보는 글입니다."/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -140,7 +144,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
 </div>
     </header>
 
@@ -191,7 +195,7 @@
 <p>PNG 파일은 N개의 청크(chunk)로 구성된다. 청크의 구조는 아래와 같다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -199,13 +203,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">  Length (4 byte),
-</span></span><span class="line"><span class="cl">  Chunk Type (4 byte),
-</span></span><span class="line"><span class="cl">  Chunk Data (length byte),
-</span></span><span class="line"><span class="cl">  CRC (4byte)
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+  Length (4 byte),
+  Chunk Type (4 byte),
+  Chunk Data (length byte),
+  CRC (4byte)
+}
+</code></pre></td></tr></table>
 </div>
 </div><p>CRC를 계산하는 식은 <a href="https://www.w3.org/TR/PNG/#D-CRCAppendix">이 곳</a>에 정리되어 있다.</p>
 <p>청크 타입에는 여러가지가 있고, 그 중에서 모든 PNG 파일에 반드시 포함되어야 하는 청크로 다음의 세가지 청크가 있다.</p>
@@ -219,7 +223,7 @@
 <p>IHDR 청크는 이름(header)처럼 PNG 파일의 가장 앞에 위치하는 청크로, PNG 이미지의 크기, 필터링 방식, 압축 방식 등을 알려준다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -236,22 +240,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl"> Length : 00 00 00 0D (13 byte),
-</span></span><span class="line"><span class="cl"> Chunk Type : IHDR,
-</span></span><span class="line"><span class="cl"> Chunk Data ( 13 byte ),
-</span></span><span class="line"><span class="cl"> {
-</span></span><span class="line"><span class="cl">   Width (4 byte),
-</span></span><span class="line"><span class="cl">   Height (4 byte),
-</span></span><span class="line"><span class="cl">   Bit depth (1 byte),
-</span></span><span class="line"><span class="cl">   Color Type (1 byte),
-</span></span><span class="line"><span class="cl">   Compression method (1 byte),
-</span></span><span class="line"><span class="cl">   Filter method (1 byte),
-</span></span><span class="line"><span class="cl">   Interlace method (1 byte),
-</span></span><span class="line"><span class="cl"> }
-</span></span><span class="line"><span class="cl"> CRC
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+ Length : 00 00 00 0D (13 byte),
+ Chunk Type : IHDR,
+ Chunk Data ( 13 byte ),
+ {
+   Width (4 byte),
+   Height (4 byte),
+   Bit depth (1 byte),
+   Color Type (1 byte),
+   Compression method (1 byte),
+   Filter method (1 byte),
+   Interlace method (1 byte),
+ }
+ CRC
+}
+</code></pre></td></tr></table>
 </div>
 </div><p>IHDR 청크의 데이터 길이는 언제나 13바이트이다.</p>
 <ul>
@@ -325,15 +329,15 @@
 <p>오리지널 픽셀 데이터는 필터링과 압축을 거쳐서 IDAT 청크에 저장된다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Encoding : Pixel Data(Original data) --&gt; Filter --&gt; Compression --&gt; IDAT chunk data
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Decoding : IDAT chunk data --&gt; Decompression --&gt; Unfilter --&gt; Pixel data
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Encoding : Pixel Data(Original data) --&gt; Filter --&gt; Compression --&gt; IDAT chunk data
+
+Decoding : IDAT chunk data --&gt; Decompression --&gt; Unfilter --&gt; Pixel data
+</code></pre></td></tr></table>
 </div>
 </div><p>한 PNG 파일은 여러 개의 <code>IDAT</code> 청크를 가질 수 있는데, 이는 데이터를 적절한 사이즈로 나누어 전송하기 위한 것으로, 일반적으로 한 IDAT 청크당 65536 바이트의 데이터 크기를 갖는다.</p>
 <p>착각하기 쉬운 것은, 하나의 IDAT 청크가 이미지의 특정 부분을 나타내지는 않는다는 점이다. PNG는 전체 이미지 데이터를 한꺼번에 압축한 뒤, 여러 IDAT 청크에 나누어 담는 방식을 사용한다. 따라서, 모든 IDAT 청크가 있어야만 이미지 디코딩이 가능하다. 반대로 말하면, 하나의 IDAT 청크라도 사라지면 압축된 이미지를 디코딩 할 수 없다.</p>
@@ -371,25 +375,25 @@
 </table>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">c b
-</span></span><span class="line"><span class="cl">a x
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">c b
+a x
+</code></pre></td></tr></table>
 </div>
 </div><p>간단하게 그림으로 나타내면 위와 같다. 이때 <code>대응된다</code>라는 것은 픽셀에서 같은 위치에 있는 값이라는 뜻이다.</p>
 <p>가령 color type: RGB, bit depth: 16인 경우를 생각해보면, 한 픽셀은 6바이트로 구성되는데,</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">A1B2C3 D4E5F6
-</span></span><span class="line"><span class="cl">012345 567890
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">A1B2C3 D4E5F6
+012345 567890
+</code></pre></td></tr></table>
 </div>
 </div><p>필터링 하고자하는 x가 우측 하단의 8이라고 하면, a=3, b=5, c=2가 된다.</p>
 <blockquote>
@@ -446,7 +450,7 @@
 </table>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -466,25 +470,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">R G B R G B R G B R G B R G B     Original image
-</span></span><span class="line"><span class="cl">R G B R G B R G B R G B R G B
-</span></span><span class="line"><span class="cl">R G B R G B R G B R G B R G B
-</span></span><span class="line"><span class="cl">R G B R G B R G B R G B R G B
-</span></span><span class="line"><span class="cl">R G B R G B R G B R G B R G B
-</span></span><span class="line"><span class="cl">R G B R G B R G B R G B R G B
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            |
-</span></span><span class="line"><span class="cl">            | filtering
-</span></span><span class="line"><span class="cl">            |
-</span></span><span class="line"><span class="cl">            |
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">F d d d d d d d d d d d d d d d     Filtered Image Data
-</span></span><span class="line"><span class="cl">F d d d d d d d d d d d d d d d
-</span></span><span class="line"><span class="cl">F d d d d d d d d d d d d d d d
-</span></span><span class="line"><span class="cl">F d d d d d d d d d d d d d d d
-</span></span><span class="line"><span class="cl">F d d d d d d d d d d d d d d d
-</span></span><span class="line"><span class="cl">F d d d d d d d d d d d d d d d
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">R G B R G B R G B R G B R G B     Original image
+R G B R G B R G B R G B R G B
+R G B R G B R G B R G B R G B
+R G B R G B R G B R G B R G B
+R G B R G B R G B R G B R G B
+R G B R G B R G B R G B R G B
+
+            |
+            | filtering
+            |
+            |
+
+F d d d d d d d d d d d d d d d     Filtered Image Data
+F d d d d d d d d d d d d d d d
+F d d d d d d d d d d d d d d d
+F d d d d d d d d d d d d d d d
+F d d d d d d d d d d d d d d d
+F d d d d d d d d d d d d d d d
+</code></pre></td></tr></table>
 </div>
 </div><p>오리지널 이미지 데이터와 필터링 후의 데이터를 시각적으로 나타내면 위와 같다.</p>
 <p>각 행의 맨 앞 1 byte에는 어떠한 필터 타입을 적용했는 지가 기록되어 de-filter시에 사용될 수 있도록 하며, 나머지 바이트는 필터링된 바이트로 바뀐다.</p>
@@ -492,7 +496,7 @@
 <p><strong>IEND</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -500,13 +504,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl"> Length : 00 00 00 00 (0 byte),
-</span></span><span class="line"><span class="cl"> Chunk Type : IEND,
-</span></span><span class="line"><span class="cl"> Chunk Data (0 byte),
-</span></span><span class="line"><span class="cl"> CRC
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+ Length : 00 00 00 00 (0 byte),
+ Chunk Type : IEND,
+ Chunk Data (0 byte),
+ CRC
+}
+</code></pre></td></tr></table>
 </div>
 </div><p><code>IEND</code> 청크는 이미지의 맨 뒤에 위치하는 청크로 PNG 파일의 끝을 나타낸다. 데이터를 담는 목적으로 사용하지 않으므로 않으므로 Length 값은 언제나 0이다.</p>
 <h3 id="reference">Reference</h3>
@@ -635,7 +639,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

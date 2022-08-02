@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.96.0 with theme even" />
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,22 +40,26 @@
 
 
 
-<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="(번역) 드롭박스의 파이썬3 이식 이야기 Part 1" />
 <meta property="og:description" content="Dropbox가 파이썬 코드를 2에서 3으로 이식하는 과정을 담은 글입니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2018/10/02/dropbox-python3-migration.html/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://ryanking13.github.io/2018/10/02/dropbox-python3-migration.html/" />
 <meta property="article:published_time" content="2018-10-02T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-10-02T00:00:00+00:00" />
-
 <meta itemprop="name" content="(번역) 드롭박스의 파이썬3 이식 이야기 Part 1">
-<meta itemprop="description" content="Dropbox가 파이썬 코드를 2에서 3으로 이식하는 과정을 담은 글입니다."><meta itemprop="datePublished" content="2018-10-02T00:00:00+00:00" />
+<meta itemprop="description" content="Dropbox가 파이썬 코드를 2에서 3으로 이식하는 과정을 담은 글입니다.">
+<meta itemprop="datePublished" content="2018-10-02T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2018-10-02T00:00:00+00:00" />
-<meta itemprop="wordCount" content="6149">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="6088">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="(번역) 드롭박스의 파이썬3 이식 이야기 Part 1"/>
 <meta name="twitter:description" content="Dropbox가 파이썬 코드를 2에서 3으로 이식하는 과정을 담은 글입니다."/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -140,7 +144,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
 </div>
     </header>
 
@@ -299,19 +303,19 @@
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>Drew Houston, 드랍박스 공동설립자 겸 CEO&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Drew Houston, 드랍박스 공동설립자 겸 CEO <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>미리 파일을 동기화하는 것이 아니라 파일에 접근할 때 동기화하여 디스크 사용량을 조절하는 드롭박스의 기능&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>미리 파일을 동기화하는 것이 아니라 파일에 접근할 때 동기화하여 디스크 사용량을 조절하는 드롭박스의 기능 <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3" role="doc-endnote">
-<p>pyd: 윈도우즈용 DLL, so: 리눅스용 DLL&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>pyd: 윈도우즈용 DLL, so: 리눅스용 DLL <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4" role="doc-endnote">
-<p><code>py2app</code>과 <code>PyObjC</code>를 만든 Ronald Oussoren이 개발한 모듈&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><code>py2app</code>과 <code>PyObjC</code>를 만든 Ronald Oussoren이 개발한 모듈 <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5" role="doc-endnote">
-<p>윈도우즈의 메모리 보호 기법 중 하나&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>윈도우즈의 메모리 보호 기법 중 하나 <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -435,7 +439,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

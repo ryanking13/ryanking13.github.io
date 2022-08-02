@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.96.0 with theme even" />
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,22 +40,26 @@
 
 
 
-<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="파이썬 pathlib 사용하기 - NO MORE os.path.join()" />
 <meta property="og:description" content="파이썬 3.4에서 등장한 pathlib 모듈을 살펴보는 글입니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2018/05/22/pathlib.html/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://ryanking13.github.io/2018/05/22/pathlib.html/" />
 <meta property="article:published_time" content="2018-05-22T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-05-22T00:00:00+00:00" />
-
 <meta itemprop="name" content="파이썬 pathlib 사용하기 - NO MORE os.path.join()">
-<meta itemprop="description" content="파이썬 3.4에서 등장한 pathlib 모듈을 살펴보는 글입니다."><meta itemprop="datePublished" content="2018-05-22T00:00:00+00:00" />
+<meta itemprop="description" content="파이썬 3.4에서 등장한 pathlib 모듈을 살펴보는 글입니다.">
+<meta itemprop="datePublished" content="2018-05-22T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2018-05-22T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1562">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="파이썬 pathlib 사용하기 - NO MORE os.path.join()"/>
 <meta name="twitter:description" content="파이썬 3.4에서 등장한 pathlib 모듈을 살펴보는 글입니다."/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -140,7 +144,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
 </div>
     </header>
 
@@ -190,11 +194,11 @@
 <p>지난 4월 26일 파이썬 웹 프레임워크인 flask가 1.0 버전 릴리즈를 <a href="https://www.palletsprojects.com/blog/flask-1-0-released/">발표했다</a>. 나는 flask 사용자는 아니지만 발표 내용 중 눈에 띄는 것이 하나 있었는데, 버전 업그레이드를 하면서 파이썬 3.3 버전 지원을 중단한 것이다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- Dropped support for Python 2.6 and 3.3.
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">- Dropped support for Python 2.6 and 3.3.
+</code></pre></td></tr></table>
 </div>
 </div><p>생각해보면 파이썬 3.3.0이 나온것이 <a href="https://www.python.org/download/releases/3.3.0/">2012년 9월</a>이니 이미 <a href="https://devguide.python.org/#status-of-python-branches">lifecycle 5년</a>이 지나긴 했다. 당당하게 3.4를 써도 되는 시기인 것이다.</p>
 <p>따라서 그 기념(?)으로 파이썬 3.4부터 빌트인(built-in) 모듈에 포함된 <strong>pathlib</strong> 을 소개해보려고 한다.</p>
@@ -205,7 +209,7 @@
 <p>pathlib 모듈의 기본 아이디어는 파일시스템 경로를 단순한 문자열이 아니라 객체로 다루자는 것이다. 가령 파일의 존재성 여부를 판단하는 것은 아래와 같이 작성할 수 있다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -220,26 +224,26 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;./path/to/file&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 기존 (os.path)</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">  <span class="c1"># do something</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># pathlib</span>
-</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">  <span class="c1"># do something</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;./path/to/file&#39;</span>
+
+<span class="c1"># 기존 (os.path)</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+  <span class="c1"># do something</span>
+
+<span class="c1"># pathlib</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+  <span class="c1"># do something</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>사람에 따라 다를 수 있지만, pathlib을 사용하는 방식이 코드를 읽는 데에 있어 훨씬 자연스럽다고 느껴진다. 영어 문장으로 생각해도 더 잘 읽힌다.</p>
 <p>파일시스템을 문자열이 아닌 객체로 다루게 되면서 얻게 된 큰 이익 중 하나는 연산자를 새롭게 정의할 수 있게 되었다는 점이다. pathlib은 이것을 아주 아름답게 이용했다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -254,20 +258,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">dir_name</span> <span class="o">=</span> <span class="s1">&#39;dir&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="n">sub_dir_name</span> <span class="o">=</span> <span class="s1">&#39;sub_dir_name&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;file&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 기존 (os.path)</span>
-</span></span><span class="line"><span class="cl"><span class="n">file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_name</span><span class="p">,</span> <span class="n">sub_dir_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># pathlib</span>
-</span></span><span class="line"><span class="cl"><span class="nb">dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">dir_name</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">file</span> <span class="o">=</span> <span class="nb">dir</span> <span class="o">/</span> <span class="n">sub_dir_name</span> <span class="o">/</span> <span class="n">file_name</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">dir_name</span> <span class="o">=</span> <span class="s1">&#39;dir&#39;</span>
+<span class="n">sub_dir_name</span> <span class="o">=</span> <span class="s1">&#39;sub_dir_name&#39;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;file&#39;</span>
+
+<span class="c1"># 기존 (os.path)</span>
+<span class="nb">file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_name</span><span class="p">,</span> <span class="n">sub_dir_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+
+<span class="c1"># pathlib</span>
+<span class="nb">dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">dir_name</span><span class="p">)</span>
+<span class="nb">file</span> <span class="o">=</span> <span class="nb">dir</span> <span class="o">/</span> <span class="n">sub_dir_name</span> <span class="o">/</span> <span class="n">file_name</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>&hellip;no more os.path.join!</strong></p>
 <p>pathlib은 나누기 연산자인 슬래시(<code>/</code>)가 경로 구분 문자로도 사용된다는 점에서 착안하여 나누기 연산자로 path를 연결하게끔 만들었다. 더 이상 보기 싫은 os.path.join()와 마주치지 않아도 되는 것이다!</p>
@@ -279,7 +283,7 @@
 <p>일반적인 용도로 사용할 때에는 그냥 Path를 사용하면 된다. Path 오브젝트를 생성할때에 OS에 맞춘 하위 클래스를 리턴해준다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -287,13 +291,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># windows machine에서 실행한 경우</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">type</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># &lt;class &#39;pathlib.WindowsPath&#39;&gt;</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># windows machine에서 실행한 경우</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="c1"># &lt;class &#39;pathlib.WindowsPath&#39;&gt;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>한편, 다른 OS의 path를 다루고자 하는 경우에는 PurePath를 써야한다. 예를 들어 Windows OS에서 Unix Path를 생성하고자 하는 경우는 PosixPath()를 사용하는 대신 PurePosixPath()를 사용해야만 한다.</p>
 <blockquote>
@@ -307,7 +311,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -319,17 +323,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;text.txt&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># without pathlib</span>
-</span></span><span class="line"><span class="cl"><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># with pathlib</span>
-</span></span><span class="line"><span class="cl"><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">file</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;text.txt&#39;</span>
+
+<span class="c1"># without pathlib</span>
+<span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="c1"># with pathlib</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="nb">file</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="파일-읽고-쓰기">파일 읽고 쓰기</h4>
 <p>단 한 번의 I/O만 하면 된다면, 번거롭게 파일을 열고 닫을 필요 없이 사용할 수 있는 함수들이 있다.</p>
@@ -341,7 +345,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -359,28 +363,28 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;text.txt&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># without pathlib</span>
-</span></span><span class="line"><span class="cl"><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># without pathlib2</span>
-</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">  <span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># with pathlib</span>
-</span></span><span class="line"><span class="cl"><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;text.txt&#39;</span>
+
+<span class="c1"># without pathlib</span>
+<span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># without pathlib2</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># with pathlib</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="경로-분석">경로 분석</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -411,42 +415,42 @@
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/usr/bin/python3&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">path</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># PosixPath(&#39;/usr/bin/python3&#39;)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># &#39;/usr/bin/python3&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">path</span><span class="o">.</span><span class="n">parts</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># (&#39;/&#39;, &#39;usr&#39;, &#39;bin&#39;, &#39;python3&#39;)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">path</span><span class="o">.</span><span class="n">parent</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># PosixPath(&#39;/usr/bin&#39;)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">list</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">parents</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># [PosixPath(&#39;/usr/bin&#39;), PosixPath(&#39;/usr&#39;), PosixPath(&#39;/&#39;)]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># -----</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/usr/bin/python3/../&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 주의!</span>
-</span></span><span class="line"><span class="cl"><span class="n">path</span><span class="o">.</span><span class="n">parent</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># PosixPath(&#39;/usr/bin/python3&#39;)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># PosixPath(&#39;/usr/bin&#39;)</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/usr/bin/python3&#39;</span><span class="p">)</span>
+
+<span class="n">path</span>
+<span class="c1"># PosixPath(&#39;/usr/bin/python3&#39;)</span>
+
+<span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="c1"># &#39;/usr/bin/python3&#39;</span>
+
+<span class="n">path</span><span class="o">.</span><span class="n">parts</span>
+<span class="c1"># (&#39;/&#39;, &#39;usr&#39;, &#39;bin&#39;, &#39;python3&#39;)</span>
+
+<span class="n">path</span><span class="o">.</span><span class="n">parent</span>
+<span class="c1"># PosixPath(&#39;/usr/bin&#39;)</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">parents</span><span class="p">)</span>
+<span class="c1"># [PosixPath(&#39;/usr/bin&#39;), PosixPath(&#39;/usr&#39;), PosixPath(&#39;/&#39;)]</span>
+
+<span class="c1"># -----</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/usr/bin/python3/../&#39;</span><span class="p">)</span>
+
+<span class="c1"># 주의!</span>
+<span class="n">path</span><span class="o">.</span><span class="n">parent</span>
+<span class="c1"># PosixPath(&#39;/usr/bin/python3&#39;)</span>
+
+<span class="n">path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="c1"># PosixPath(&#39;/usr/bin&#39;)</span>
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="리스팅">리스팅</h4>
 <p>glob패턴을 사용하여 파일/디렉토리를 리스팅할 수 있다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -465,24 +469,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">files</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># &lt;generator object Path.glob at 0x7f0ff370a360&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">list</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># [PosixPath(&#39;.git&#39;), PosixPath(&#39;.gitconfig&#39;), PosixPath(&#39;.vimrc&#39;), PosixPath(&#39;.zshrc&#39;), PosixPath(&#39;pre-commit&#39;)]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># path.rglob(*)도 동일하다</span>
-</span></span><span class="line"><span class="cl"><span class="nb">list</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*&#39;</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># [PosixPath(&#39;.git/COMMIT_EDITMSG&#39;), PosixPath(&#39;.git/config&#39;), PosixPath(&#39;.git/description&#39;), PosixPath(&#39;.git/HEAD&#39;), PosixPath(&#39;.git/hooks&#39;), PosixPath(&#39;.git/index&#39;), PosixPath(&#39;.git/info&#39;), PosixPath(&#39;.git/logs&#39;), PosixPath(&#39;.git/objects&#39;), PosixPath(&#39;.git/refs&#39;)]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># path가 가리키는 폴더를 리스팅 할때는 glob(&#39;*&#39;) 대신 iterdir을 사용할 수 있다.</span>
-</span></span><span class="line"><span class="cl"><span class="nb">list</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># [PosixPath(&#39;.git&#39;), PosixPath(&#39;.gitconfig&#39;), PosixPath(&#39;.vimrc&#39;), PosixPath(&#39;.zshrc&#39;), PosixPath(&#39;pre-commit&#39;)]</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+<span class="c1"># &lt;generator object Path.glob at 0x7f0ff370a360&gt;</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+<span class="c1"># [PosixPath(&#39;.git&#39;), PosixPath(&#39;.gitconfig&#39;), PosixPath(&#39;.vimrc&#39;), PosixPath(&#39;.zshrc&#39;), PosixPath(&#39;pre-commit&#39;)]</span>
+
+<span class="c1"># path.rglob(*)도 동일하다</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*&#39;</span><span class="p">))</span>
+<span class="c1"># [PosixPath(&#39;.git/COMMIT_EDITMSG&#39;), PosixPath(&#39;.git/config&#39;), PosixPath(&#39;.git/description&#39;), PosixPath(&#39;.git/HEAD&#39;), PosixPath(&#39;.git/hooks&#39;), PosixPath(&#39;.git/index&#39;), PosixPath(&#39;.git/info&#39;), PosixPath(&#39;.git/logs&#39;), PosixPath(&#39;.git/objects&#39;), PosixPath(&#39;.git/refs&#39;)]</span>
+
+<span class="c1"># path가 가리키는 폴더를 리스팅 할때는 glob(&#39;*&#39;) 대신 iterdir을 사용할 수 있다.</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">())</span>
+<span class="c1"># [PosixPath(&#39;.git&#39;), PosixPath(&#39;.gitconfig&#39;), PosixPath(&#39;.vimrc&#39;), PosixPath(&#39;.zshrc&#39;), PosixPath(&#39;pre-commit&#39;)]</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>이 외에도 다양한 기능을 지원한다. 그동안 os, os.path 모듈을 사용하여 파일시스템을 다뤘던 것을 일반적인 것은 다 pathlib으로 대체할 수 있다.</p>
 <h2 id="conclusion">Conclusion</h2>
@@ -614,7 +618,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

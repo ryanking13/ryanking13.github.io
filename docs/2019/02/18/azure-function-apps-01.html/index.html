@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.96.0 with theme even" />
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,22 +40,26 @@
 
 
 
-<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Azure Functions 시작하기 1" />
 <meta property="og:description" content="Azure Functions 시작하기 1" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2019/02/18/azure-function-apps-01.html/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://ryanking13.github.io/2019/02/18/azure-function-apps-01.html/" />
 <meta property="article:published_time" content="2019-02-18T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-02-18T00:00:00+00:00" />
-
 <meta itemprop="name" content="Azure Functions 시작하기 1">
-<meta itemprop="description" content="Azure Functions 시작하기 1"><meta itemprop="datePublished" content="2019-02-18T00:00:00+00:00" />
+<meta itemprop="description" content="Azure Functions 시작하기 1">
+<meta itemprop="datePublished" content="2019-02-18T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-02-18T00:00:00+00:00" />
-<meta itemprop="wordCount" content="3948">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="3913">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Azure Functions 시작하기 1"/>
 <meta name="twitter:description" content="Azure Functions 시작하기 1"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -140,7 +144,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
 </div>
     </header>
 
@@ -210,15 +214,15 @@
 <p>설치가 성공적으로 완료되면 cmd나 powershell에서 <code>az</code> 명령어를 사용할 수 있게 된다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ az -v
-</span></span><span class="line"><span class="cl">azure-cli <span class="o">(</span>2.0.54<span class="o">)</span>
-</span></span><span class="line"><span class="cl">$ az login
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ az -v
+azure-cli <span class="o">(</span>2.0.54<span class="o">)</span>
+$ az login
+</code></pre></td></tr></table>
 </div>
 </div><p><code>az login</code> 명령어를 통하여 웹 인터페이스를 통하여 Azure에 로그인할 수 있다.</p>
 <h4 id="azure-functions-core-tools">Azure Functions Core Tools</h4>
@@ -228,16 +232,16 @@
 (Node.js가 설치되어 있지 않다면 <a href="https://nodejs.org/">Node.js 홈페이지</a> 에서 설치해주자. Azure에서는 8.5 버전 이상을 요구한다.)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm install -g azure-functions-core-tools
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">npm install -g azure-functions-core-tools
+</code></pre></td></tr></table>
 </div>
 </div><p>정상적으로 설치가 완료되었다면, <code>func</code> 명령어를 사용할 수 있게 된다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -255,23 +259,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ func
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">                  %%%%%%
-</span></span><span class="line"><span class="cl">                 %%%%%%
-</span></span><span class="line"><span class="cl">            @   %%%%%%    @
-</span></span><span class="line"><span class="cl">          @@   %%%%%%      @@
-</span></span><span class="line"><span class="cl">       @@@    %%%%%%%%%%%    @@@
-</span></span><span class="line"><span class="cl">     @@      %%%%%%%%%%        @@
-</span></span><span class="line"><span class="cl">       @@         %%%%       @@
-</span></span><span class="line"><span class="cl">         @@      %%%       @@
-</span></span><span class="line"><span class="cl">           @@    %%      @@
-</span></span><span class="line"><span class="cl">                %%
-</span></span><span class="line"><span class="cl">                %
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Azure Functions Core Tools <span class="o">(</span>2.3.199 Commit hash: fdf734b09806be822e7d946fe17928b419d8a289<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Function Runtime Version: 2.0.12246.0
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ func
+
+                  %%%%%%
+                 %%%%%%
+            @   %%%%%%    @
+          @@   %%%%%%      @@
+       @@@    %%%%%%%%%%%    @@@
+     @@      %%%%%%%%%%        @@
+       @@         %%%%       @@
+         @@      %%%       @@
+           @@    %%      @@
+                %%
+                %
+
+Azure Functions Core Tools <span class="o">(</span>2.3.199 Commit hash: fdf734b09806be822e7d946fe17928b419d8a289<span class="o">)</span>
+Function Runtime Version: 2.0.12246.0
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="function-apps-개발에-사용할-언어-선택">Function Apps 개발에 사용할 언어 선택</h4>
 <p>Azure Functions (2.x 기준)가 지원하는 언어들은 <a href="https://docs.microsoft.com/ko-kr/azure/azure-functions/supported-languages">이 링크</a>에서 확인할 수 있다. 각 언어별로 지원되는 버전이 다르기 때문에 확인하여 개발환경을 구성하여야 한다.</p>
@@ -288,7 +292,7 @@
 <h4 id="dustpy">dust.py</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -335,63 +339,65 @@
 </span><span class="lnt">45
 </span><span class="lnt">46
 </span><span class="lnt">47
+</span><span class="lnt">48
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
-</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="kn">from</span> <span class="nn">.config</span> <span class="kn">import</span> <span class="n">api_key</span>
-</span></span><span class="line"><span class="cl"><span class="k">except</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">api_url</span> <span class="o">=</span> <span class="s1">&#39;http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">grade2str</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;좋음&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;보통&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;나쁨&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;매우나쁨&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_dust_information</span><span class="p">(</span><span class="n">station_name</span><span class="o">=</span><span class="s1">&#39;관악구&#39;</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="c1"># &#39;?stationName=종로구&amp;dataTerm=month&amp;pageNo=1&amp;numOfRows=10&amp;ServiceKey=서비스키&amp;ver=1.3&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;stationName&#39;</span><span class="p">:</span> <span class="n">station_name</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;dataTerm&#39;</span><span class="p">:</span> <span class="s1">&#39;daily&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pageNo&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;numOfRows&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;ServiceKey&#39;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;ver&#39;</span><span class="p">:</span> <span class="s1">&#39;1.3&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;_returnType&#39;</span><span class="p">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1"># pm10: 미세먼지</span>
-</span></span><span class="line"><span class="cl">    <span class="c1"># pm2.5: 초미세먼지</span>
-</span></span><span class="line"><span class="cl">    <span class="n">pm10</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;pm10Value&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">    <span class="n">pm25</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;pm25Value&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">    <span class="n">pm10_grade</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;pm10Grade&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">    <span class="n">pm25_grade</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;pm25Grade&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm10&#39;</span><span class="p">:</span> <span class="n">pm10</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm10_grade&#39;</span><span class="p">:</span> <span class="n">pm10_grade</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm10_grade_str&#39;</span><span class="p">:</span> <span class="n">grade2str</span><span class="p">[</span><span class="n">pm10_grade</span><span class="p">],</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm25&#39;</span><span class="p">:</span> <span class="n">pm25</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm25_grade&#39;</span><span class="p">:</span> <span class="n">pm25_grade</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm25_grade_str&#39;</span><span class="p">:</span> <span class="n">grade2str</span><span class="p">[</span><span class="n">pm25_grade</span><span class="p">],</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.config</span> <span class="kn">import</span> <span class="n">api_key</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="n">api_url</span> <span class="o">=</span> <span class="s1">&#39;http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty&#39;</span>
+
+<span class="n">grade2str</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;좋음&#39;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;보통&#39;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;나쁨&#39;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;매우나쁨&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">get_dust_information</span><span class="p">(</span><span class="n">station_name</span><span class="o">=</span><span class="s1">&#39;관악구&#39;</span><span class="p">):</span>
+    <span class="c1"># &#39;?stationName=종로구&amp;dataTerm=month&amp;pageNo=1&amp;numOfRows=10&amp;ServiceKey=서비스키&amp;ver=1.3&#39;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;stationName&#39;</span><span class="p">:</span> <span class="n">station_name</span><span class="p">,</span>
+        <span class="s1">&#39;dataTerm&#39;</span><span class="p">:</span> <span class="s1">&#39;daily&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pageNo&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;numOfRows&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;ServiceKey&#39;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
+        <span class="s1">&#39;ver&#39;</span><span class="p">:</span> <span class="s1">&#39;1.3&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_returnType&#39;</span><span class="p">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">api_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="c1"># pm10: 미세먼지</span>
+    <span class="c1"># pm2.5: 초미세먼지</span>
+    <span class="n">pm10</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;pm10Value&#39;</span><span class="p">])</span>
+    <span class="n">pm25</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;pm25Value&#39;</span><span class="p">])</span>
+    <span class="n">pm10_grade</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;pm10Grade&#39;</span><span class="p">])</span>
+    <span class="n">pm25_grade</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;pm25Grade&#39;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;pm10&#39;</span><span class="p">:</span> <span class="n">pm10</span><span class="p">,</span>
+        <span class="s1">&#39;pm10_grade&#39;</span><span class="p">:</span> <span class="n">pm10_grade</span><span class="p">,</span>
+        <span class="s1">&#39;pm10_grade_str&#39;</span><span class="p">:</span> <span class="n">grade2str</span><span class="p">[</span><span class="n">pm10_grade</span><span class="p">],</span>
+        <span class="s1">&#39;pm25&#39;</span><span class="p">:</span> <span class="n">pm25</span><span class="p">,</span>
+        <span class="s1">&#39;pm25_grade&#39;</span><span class="p">:</span> <span class="n">pm25_grade</span><span class="p">,</span>
+        <span class="s1">&#39;pm25_grade_str&#39;</span><span class="p">:</span> <span class="n">grade2str</span><span class="p">[</span><span class="n">pm25_grade</span><span class="p">],</span>
+    <span class="p">}</span>
+
+</code></pre></td></tr></table>
 </div>
 </div><p>dust.py 파일에서는 미세먼지 데이터를 읽어온다. 데이터는 <a href="https://www.data.go.kr/">공공데이터포털</a>에서 제공하는 API를 사용하여 구하도록 하였다.
 <code>api_key</code>에 API 키 값을 넣고 <code>get_dust_information()</code> 함수를 실행하면 미세먼지 정보를 반환한다.
 직접 API 키를 발급받아 테스트하기 귀찮다면 아래 dummy 함수를 대신 사용하자.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -402,21 +408,21 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_dust_information_dummy</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm10&#39;</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm10_grade&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm10_grade_str&#39;</span><span class="p">:</span> <span class="n">grade2str</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm25&#39;</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm25_grade&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;pm25_grade_str&#39;</span><span class="p">:</span> <span class="n">grade2str</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">get_dust_information_dummy</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;pm10&#39;</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span>
+        <span class="s1">&#39;pm10_grade&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;pm10_grade_str&#39;</span><span class="p">:</span> <span class="n">grade2str</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+        <span class="s1">&#39;pm25&#39;</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span>
+        <span class="s1">&#39;pm25_grade&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;pm25_grade_str&#39;</span><span class="p">:</span> <span class="n">grade2str</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+    <span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="mailpy">mail.py</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -440,45 +446,45 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># code adapted from: http://pythonstudy.xyz/python/article/508-%EB%A9%94%EC%9D%BC-%EB%B3%B4%EB%82%B4%EA%B8%B0-SMTP</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">smtplib</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
-</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="kn">from</span> <span class="nn">.config</span> <span class="kn">import</span> <span class="n">from_address</span><span class="p">,</span> <span class="n">to_address</span><span class="p">,</span> <span class="n">password</span>
-</span></span><span class="line"><span class="cl"><span class="k">except</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">from_address</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># 미세먼지 알림을 보낼 메일 계정</span>
-</span></span><span class="line"><span class="cl">    <span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># 위 계정의 패스워드</span>
-</span></span><span class="line"><span class="cl">    <span class="n">to_address</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># 미세먼지 알림을 받을 메일 계정</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_mail</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">smtp_server</span><span class="o">=</span><span class="s1">&#39;smtp.gmail.com:587&#39;</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;미세먼지 주의!!!!&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">gmail_smtp_server</span> <span class="o">=</span> <span class="n">smtp_server</span>
-</span></span><span class="line"><span class="cl">    <span class="n">smtp</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="n">gmail_smtp_server</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">smtp</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="n">smtp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">from_address</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">smtp</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">from_address</span><span class="p">,</span> <span class="n">to_address</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">    <span class="n">smtp</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># code adapted from: http://pythonstudy.xyz/python/article/508-%EB%A9%94%EC%9D%BC-%EB%B3%B4%EB%82%B4%EA%B8%B0-SMTP</span>
+
+<span class="kn">import</span> <span class="nn">smtplib</span>
+<span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.config</span> <span class="kn">import</span> <span class="n">from_address</span><span class="p">,</span> <span class="n">to_address</span><span class="p">,</span> <span class="n">password</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">from_address</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># 미세먼지 알림을 보낼 메일 계정</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># 위 계정의 패스워드</span>
+    <span class="n">to_address</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># 미세먼지 알림을 받을 메일 계정</span>
+
+
+<span class="k">def</span> <span class="nf">send_mail</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">smtp_server</span><span class="o">=</span><span class="s1">&#39;smtp.gmail.com:587&#39;</span><span class="p">):</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+    <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;미세먼지 주의!!!!&#39;</span>
+
+    <span class="n">gmail_smtp_server</span> <span class="o">=</span> <span class="n">smtp_server</span>
+    <span class="n">smtp</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="n">gmail_smtp_server</span><span class="p">)</span>
+    <span class="n">smtp</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
+    <span class="n">smtp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">from_address</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="n">smtp</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">from_address</span><span class="p">,</span> <span class="n">to_address</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
+    <span class="n">smtp</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>mail.py 파일에서는 <code>send_mail()</code> 함수를 호출하여 메일을 보낸다.</p>
 <p>두 함수가 잘 작동하는 것을 아래와 같이 확인할 수 있다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">&gt;&gt;&gt; import dust, mail
-</span></span><span class="line"><span class="cl">&gt;&gt;&gt; dust.get_dust_information<span class="o">()</span>
-</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s1">&#39;pm10_grade&#39;</span>: 2, <span class="s1">&#39;pm10_grade_str&#39;</span>: <span class="s1">&#39;보통&#39;</span>, <span class="s1">&#39;pm10&#39;</span>: 72, <span class="s1">&#39;pm25_grade&#39;</span>: 2, <span class="s1">&#39;pm25_grade_str&#39;</span>: <span class="s1">&#39;보통&#39;</span>, <span class="s1">&#39;pm25&#39;</span>: 37<span class="o">}</span>
-</span></span><span class="line"><span class="cl">&gt;&gt;&gt; mail.send_mail<span class="o">(</span><span class="s1">&#39;TEST MAIL&#39;</span><span class="o">)</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">&gt;&gt;&gt; import dust, mail
+&gt;&gt;&gt; dust.get_dust_information<span class="o">()</span>
+<span class="o">{</span><span class="s1">&#39;pm10_grade&#39;</span>: 2, <span class="s1">&#39;pm10_grade_str&#39;</span>: <span class="s1">&#39;보통&#39;</span>, <span class="s1">&#39;pm10&#39;</span>: 72, <span class="s1">&#39;pm25_grade&#39;</span>: 2, <span class="s1">&#39;pm25_grade_str&#39;</span>: <span class="s1">&#39;보통&#39;</span>, <span class="s1">&#39;pm25&#39;</span>: 37<span class="o">}</span>
+&gt;&gt;&gt; mail.send_mail<span class="o">(</span><span class="s1">&#39;TEST MAIL&#39;</span><span class="o">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><br/>
 <p><img src="../../../assets/post_images/dustalert01.PNG" alt=""></p>
@@ -487,22 +493,22 @@
 <p>파이썬으로 Azure Functions 앱을 작성하는 경우 파이썬 3.6 버전 virtualenv 환경에서 작업해야 한다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ python --version
-</span></span><span class="line"><span class="cl">Python 3.6.6
-</span></span><span class="line"><span class="cl">$ virtualenv venv
-</span></span><span class="line"><span class="cl">$ call venv/scripts/activate
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ python --version
+Python 3.6.6
+$ virtualenv venv
+$ call venv/scripts/activate
+</code></pre></td></tr></table>
 </div>
 </div><p>virtualenv 환경 생성하고 실행한 뒤, <code>func init &lt;project_name&gt;</code> 명령어를 통해 앱을 생성하자. 프로젝트 이름을 명시하지 않을 경우 현재 디렉토리를 그대로 사용한다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -511,34 +517,34 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ func init
-</span></span><span class="line"><span class="cl">Select a worker runtime:
-</span></span><span class="line"><span class="cl">dotnet
-</span></span><span class="line"><span class="cl">node
-</span></span><span class="line"><span class="cl">python <span class="o">(</span>preview<span class="o">)</span>
-</span></span><span class="line"><span class="cl">java
-</span></span><span class="line"><span class="cl">powershell
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ func init
+Select a worker runtime:
+dotnet
+node
+python <span class="o">(</span>preview<span class="o">)</span>
+java
+powershell
+</code></pre></td></tr></table>
 </div>
 </div><p>터미널에서 인터랙티브하게 언어를 선택할 수 있다. 우리는 파이썬을 사용할 것이니, 파이썬을 선택해주자.</p>
 <p>파이썬을 선택하면 자동으로 필요한 패키지들이 설치되고, 아래와 같이 기본적인 파일들을 생성해준다. VSCode 사용을 권장하는 마이크로소프트답게 <code>.vscode</code> 폴더도 생성된다. (VScode를 사용하면 본 글에서 콘솔로 실행하는 부분들을 Azure 확장 프로그램을 통해서 작업할 수 있다.)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ ls <span class="c1"># dir</span>
-</span></span><span class="line"><span class="cl">.  ..  .funcignore  .gitignore  .vscode  host.json
-</span></span><span class="line"><span class="cl">local.settings.json  requirements.txt  venv
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ ls <span class="c1"># dir</span>
+.  ..  .funcignore  .gitignore  .vscode  host.json
+local.settings.json  requirements.txt  venv
+</code></pre></td></tr></table>
 </div>
 </div><p>하나의 앱은 여러개의 Function으로 구성되며, 각 Function은 각각 하나의 기능을 담당한다. 예를 들어, Azure Function을 웹훅 용도로 사용한다면 여러개의 API를 서로 다른 Function으로 구성하게 된다. 우리는 정기적으로 미세먼지 알림을 보내는 한 가지 기능만 필요하므로 하나의 Function이면 충분하다.</p>
 <p><code>func new</code> 명령어를 통해 새로운 Function을 만들어주자.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -551,50 +557,50 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ func new
-</span></span><span class="line"><span class="cl">Select a template:
-</span></span><span class="line"><span class="cl">Azure Blob Storage trigger
-</span></span><span class="line"><span class="cl">Azure Cosmos DB trigger
-</span></span><span class="line"><span class="cl">Azure Event Grid trigger
-</span></span><span class="line"><span class="cl">Azure Event Hub trigger
-</span></span><span class="line"><span class="cl">HTTP trigger
-</span></span><span class="line"><span class="cl">Azure Queue Storage trigger
-</span></span><span class="line"><span class="cl">Azure Service Bus Queue trigger
-</span></span><span class="line"><span class="cl">Azure Service Bus Topic trigger
-</span></span><span class="line"><span class="cl">Timer trigger
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ func new
+Select a template:
+Azure Blob Storage trigger
+Azure Cosmos DB trigger
+Azure Event Grid trigger
+Azure Event Hub trigger
+HTTP trigger
+Azure Queue Storage trigger
+Azure Service Bus Queue trigger
+Azure Service Bus Topic trigger
+Timer trigger
+</code></pre></td></tr></table>
 </div>
 </div><p>Function의 용도에 따라 여러가지 트리거를 선택할 수 있는데, 주기적인 작업을 하는 용도에는 Timer trigger가 적합하다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">Select a template: Timer trigger
-</span></span><span class="line"><span class="cl">Function name: <span class="o">[</span>TimerTrigger<span class="o">]</span> DustAlert
-</span></span><span class="line"><span class="cl">...
-</span></span><span class="line"><span class="cl">The <span class="k">function</span> <span class="s2">&#34;DustAlert&#34;</span> was created successfully from the <span class="s2">&#34;Timer trigger&#34;</span> template.
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">Select a template: Timer trigger
+Function name: <span class="o">[</span>TimerTrigger<span class="o">]</span> DustAlert
+...
+The <span class="k">function</span> <span class="s2">&#34;DustAlert&#34;</span> was created successfully from the <span class="s2">&#34;Timer trigger&#34;</span> template.
+</code></pre></td></tr></table>
 </div>
 </div><p>트리거의 이름(DustAlert)을 정해주면 기본적인 Timer trigger 템플릿을 바탕으로 아래와 같이 DustAlert 디렉토리와 뼈대 파일들이 생성된다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ ls
-</span></span><span class="line"><span class="cl">__init__.py  function.json  readme.md  sample.dat
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ ls
+__init__.py  function.json  readme.md  sample.dat
+</code></pre></td></tr></table>
 </div>
 </div><p>자동으로 생성된 <code>function.json</code> 파일과 <code>__init__.py</code> 파일을 살펴보자.</p>
 <p><strong>function.json</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -607,18 +613,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;scriptFile&#34;</span><span class="p">:</span> <span class="s2">&#34;__init__.py&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;bindings&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;mytimer&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;timerTrigger&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;direction&#34;</span><span class="p">:</span> <span class="s2">&#34;in&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;schedule&#34;</span><span class="p">:</span> <span class="s2">&#34;0 */5 * * * *&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;scriptFile&#34;</span><span class="p">:</span> <span class="s2">&#34;__init__.py&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;bindings&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;mytimer&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;timerTrigger&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;direction&#34;</span><span class="p">:</span> <span class="s2">&#34;in&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;schedule&#34;</span><span class="p">:</span> <span class="s2">&#34;0 */5 * * * *&#34;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><code>function.json</code> 파일은 각 Function의 여러가지 설정 정보를 담고있는 파일이다. 예를 들어, 파이썬에서는 <code>scriptFile</code> 값과 <code>entryPoint</code> 값을 통하여 어떤 파일의 어떤 함수가 엔트리포인트가 될 지를 지정할 수 있다. (<code>entryPoint</code> 디폴트 값은 main() 함수)</p>
 <p><code>name</code>은 곧 살펴볼 엔트리포인트 함수에 전달되는 파라미터명이다. <code>type</code>과 <code>direction</code> 값은 Timer Trigger임을 명시하는 값이다.</p>
@@ -627,7 +633,7 @@
 <p><strong>__init__.py</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -643,28 +649,28 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">datetime</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">azure.functions</span> <span class="k">as</span> <span class="nn">func</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">mytimer</span><span class="p">:</span> <span class="n">func</span><span class="o">.</span><span class="n">TimerRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">utc_timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">        <span class="n">tzinfo</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">mytimer</span><span class="o">.</span><span class="n">past_due</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;The timer is past due!&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Python timer trigger function ran at </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">utc_timestamp</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">import</span> <span class="nn">azure.functions</span> <span class="kn">as</span> <span class="nn">func</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">mytimer</span><span class="p">:</span> <span class="n">func</span><span class="o">.</span><span class="n">TimerRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">utc_timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+        <span class="n">tzinfo</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">mytimer</span><span class="o">.</span><span class="n">past_due</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;The timer is past due!&#39;</span><span class="p">)</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Python timer trigger function ran at </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">utc_timestamp</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><code>__init__.py</code> 파일에서는 실행될 때마다 실행된 시간을 로깅하는 main() 함수가 작성되어 있다.</p>
 <p>우선 잘 작동하는 지 확인해보자.</p>
 <p><code>functions.json</code> 파일에서 schedule 값을 */10 * * * * * 로 바꾸어 10초마다 한번씩 Function이 실행되도록 고친 뒤, <code>func host start</code> 명령으로 앱을 실행해보자.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -677,18 +683,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ func host start
-</span></span><span class="line"><span class="cl">...
-</span></span><span class="line"><span class="cl"><span class="o">[</span>2019-01-22 오전 9:17:31<span class="o">]</span> Host started <span class="o">(</span>292ms<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>2019-01-22 오전 9:17:31<span class="o">]</span> Job host started
-</span></span><span class="line"><span class="cl">...
-</span></span><span class="line"><span class="cl"><span class="o">[</span>2019-01-22 오전 9:17:40<span class="o">]</span> Python timer trigger <span class="k">function</span> ran at 2019-01-22T09:17:40.118537+00:00
-</span></span><span class="line"><span class="cl"><span class="o">[</span>2019-01-22 오전 9:17:40<span class="o">]</span> Executed <span class="s1">&#39;Functions.DustAlert&#39;</span> <span class="o">(</span>Succeeded, <span class="nv">Id</span><span class="o">=</span>7c3b41da-ca63-41ed-b05a-1114f5f68f0c<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>2019-01-22 오전 9:17:50<span class="o">]</span> Executing <span class="s1">&#39;Functions.DustAlert&#39;</span> <span class="o">(</span><span class="nv">Reason</span><span class="o">=</span><span class="s1">&#39;Timer fired at 2019-01-22T18:17:50.0116314+09:00&#39;</span>, <span class="nv">Id</span><span class="o">=</span>d555a4a3-8b06-47f4-8e58-a9c8213c9142<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>2019-01-22 오전 9:17:50<span class="o">]</span> Python timer trigger <span class="k">function</span> ran at 2019-01-22T09:17:50.022065+00:00
-</span></span><span class="line"><span class="cl"><span class="o">[</span>2019-01-22 오전 9:17:50<span class="o">]</span> Executed <span class="s1">&#39;Functions.DustAlert&#39;</span> <span class="o">(</span>Succeeded, <span class="nv">Id</span><span class="o">=</span>d555a4a3-8b06-47f4-8e58-a9c8213c9142<span class="o">)</span>
-</span></span><span class="line"><span class="cl">...
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ func host start
+...
+<span class="o">[</span>2019-01-22 오전 9:17:31<span class="o">]</span> Host started <span class="o">(</span>292ms<span class="o">)</span>
+<span class="o">[</span>2019-01-22 오전 9:17:31<span class="o">]</span> Job host started
+...
+<span class="o">[</span>2019-01-22 오전 9:17:40<span class="o">]</span> Python timer trigger <span class="k">function</span> ran at 2019-01-22T09:17:40.118537+00:00
+<span class="o">[</span>2019-01-22 오전 9:17:40<span class="o">]</span> Executed <span class="s1">&#39;Functions.DustAlert&#39;</span> <span class="o">(</span>Succeeded, <span class="nv">Id</span><span class="o">=</span>7c3b41da-ca63-41ed-b05a-1114f5f68f0c<span class="o">)</span>
+<span class="o">[</span>2019-01-22 오전 9:17:50<span class="o">]</span> Executing <span class="s1">&#39;Functions.DustAlert&#39;</span> <span class="o">(</span><span class="nv">Reason</span><span class="o">=</span><span class="s1">&#39;Timer fired at 2019-01-22T18:17:50.0116314+09:00&#39;</span>, <span class="nv">Id</span><span class="o">=</span>d555a4a3-8b06-47f4-8e58-a9c8213c9142<span class="o">)</span>
+<span class="o">[</span>2019-01-22 오전 9:17:50<span class="o">]</span> Python timer trigger <span class="k">function</span> ran at 2019-01-22T09:17:50.022065+00:00
+<span class="o">[</span>2019-01-22 오전 9:17:50<span class="o">]</span> Executed <span class="s1">&#39;Functions.DustAlert&#39;</span> <span class="o">(</span>Succeeded, <span class="nv">Id</span><span class="o">=</span>d555a4a3-8b06-47f4-8e58-a9c8213c9142<span class="o">)</span>
+...
+</code></pre></td></tr></table>
 </div>
 </div><p>10초 단위로 Function이 실행되는 것을 확인할 수 있다.</p>
 <h3 id="기능-붙이기">기능 붙이기</h3>
@@ -696,7 +702,7 @@
 <h4 id="__init__py"><strong>init</strong>.py</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -724,33 +730,33 @@
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">datetime</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">azure.functions</span> <span class="k">as</span> <span class="nn">func</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">.dust</span> <span class="kn">import</span> <span class="n">get_dust_information</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">.mail</span> <span class="kn">import</span> <span class="n">send_mail</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">is_dust_severe</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">True</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;pm25_grade&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span> <span class="ow">or</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;pm10_grade&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">True</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">format_mail_content</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;오늘의 미세먼지 정보입니다.</span><span class="se">\n\n</span><span class="s1">&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;미세먼지 - </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s2">&#34;pm10&#34;</span><span class="p">]</span><span class="si">}</span><span class="s1"> ㎍/㎥ (</span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s2">&#34;pm10_grade_str&#34;</span><span class="p">]</span><span class="si">}</span><span class="s1">)</span><span class="se">\n</span><span class="s1">&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;초미세먼지 - </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s2">&#34;pm25&#34;</span><span class="p">]</span><span class="si">}</span><span class="s1"> ㎍/㎥ (</span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s2">&#34;pm25_grade_str&#34;</span><span class="p">]</span><span class="si">}</span><span class="s1">)</span><span class="se">\n</span><span class="s1">&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">content</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">mytimer</span><span class="p">:</span> <span class="n">func</span><span class="o">.</span><span class="n">TimerRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">d</span> <span class="o">=</span> <span class="n">get_dust_information</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">is_dust_severe</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">send_mail</span><span class="p">(</span><span class="n">format_mail_content</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Mail Sent at &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()))</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">import</span> <span class="nn">azure.functions</span> <span class="kn">as</span> <span class="nn">func</span>
+<span class="kn">from</span> <span class="nn">.dust</span> <span class="kn">import</span> <span class="n">get_dust_information</span>
+<span class="kn">from</span> <span class="nn">.mail</span> <span class="kn">import</span> <span class="n">send_mail</span>
+
+
+<span class="k">def</span> <span class="nf">is_dust_severe</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;pm25_grade&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span> <span class="ow">or</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;pm10_grade&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+
+<span class="k">def</span> <span class="nf">format_mail_content</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;오늘의 미세먼지 정보입니다.</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+    <span class="n">content</span> <span class="o">+=</span> <span class="n">f</span><span class="s1">&#39;미세먼지 - {d[&#34;pm10&#34;]} ㎍/㎥ ({d[&#34;pm10_grade_str&#34;]})</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="n">content</span> <span class="o">+=</span> <span class="n">f</span><span class="s1">&#39;초미세먼지 - {d[&#34;pm25&#34;]} ㎍/㎥ ({d[&#34;pm25_grade_str&#34;]})</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="k">return</span> <span class="n">content</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">mytimer</span><span class="p">:</span> <span class="n">func</span><span class="o">.</span><span class="n">TimerRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">get_dust_information</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">is_dust_severe</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+        <span class="n">send_mail</span><span class="p">(</span><span class="n">format_mail_content</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Mail Sent at &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()))</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>Function이 실행되면, <code>get_dust_information()</code> 함수를 호출하여 미세먼지 정보를 받은 뒤, 기준 치 이상인 경우 <code>send_mail()</code> 함수를 호출하여 메일을 보내도록 만들었다.</p>
 <br/>
@@ -775,13 +781,13 @@
 <p>(혹시 <code>functions.json</code> 파일의 schedule 부분을 테스트를 위해 고쳐놓고 잊어버렸다면 제대로 바꾸어놓자.)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ pip freeze &gt; requirements.txt
-</span></span><span class="line"><span class="cl">$ func azure functionapp publish &lt;APP_NAME&gt;
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ pip freeze &gt; requirements.txt
+$ func azure functionapp publish &lt;APP_NAME&gt;
+</code></pre></td></tr></table>
 </div>
 </div><p><code>func azure functionapp publish</code> 명령어로 앱을 업로드한다. (아직 로그인하지 않았다면 <code>az login</code>을 입력하여 먼저 로그인해주자) <code>&lt;APP_NAME&gt;</code> 부분에는 포털에서 앱 생성 당시에 입력한 앱 명을 적어준다. 업로드 할 때에 모든 파이썬 모듈을 합쳐서 패키징하게 되는데, <code>pip freeze &gt; requirements.txt</code> 명령어로 requirements.txt 파일에 패키지 리스트를 미리 만들어주어야 한다.</p>
 <p>다시 Azure Portal로 돌아가서 Function App 카테고리를 클릭해보면, 업로드가 완료되었다.</p>
@@ -919,7 +925,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

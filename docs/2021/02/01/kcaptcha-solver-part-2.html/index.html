@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.96.0 with theme even" />
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,22 +40,26 @@
 
 
 
-<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2" />
 <meta property="og:description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/" />
 <meta property="article:published_time" content="2021-02-01T20:00:00+09:00" />
 <meta property="article:modified_time" content="2021-02-01T20:00:00+09:00" />
-
 <meta itemprop="name" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2">
-<meta itemprop="description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2"><meta itemprop="datePublished" content="2021-02-01T20:00:00+09:00" />
+<meta itemprop="description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2">
+<meta itemprop="datePublished" content="2021-02-01T20:00:00+09:00" />
 <meta itemprop="dateModified" content="2021-02-01T20:00:00+09:00" />
 <meta itemprop="wordCount" content="1820">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2"/>
 <meta name="twitter:description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -140,7 +144,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
 </div>
     </header>
 
@@ -192,7 +196,7 @@
 다만 저는 학습 과정에서 자동으로 Callback 함수를 사용하여 가장 Loss가 작은 모델이 저장되도록 구현하였습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -210,48 +214,48 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">...</span>
-</span></span><span class="line"><span class="cl"><span class="n">checkpoint_callback</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">monitor</span><span class="o">=</span><span class="s2">&#34;val_loss&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">checkpoint_callback</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="n">x</span><span class="o">=</span><span class="n">trainset</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">validation_data</span><span class="o">=</span><span class="n">valset</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="o">...</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">...</span>
+<span class="n">checkpoint_callback</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span>
+    <span class="n">monitor</span><span class="o">=</span><span class="s2">&#34;val_loss&#34;</span><span class="p">,</span>
+    <span class="n">save_best_only</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">checkpoint_callback</span><span class="p">)</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">trainset</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="o">=</span><span class="n">valset</span><span class="p">,</span>
+    <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="o">...</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>Validation Loss가 가장 작은 모델을 <code>save_path</code>에 저장합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install tensorflowjs
-</span></span><span class="line"><span class="cl">tensorflowjs_converter --input_format keras --output_format<span class="o">=</span>tfjs_graph_model model.h5 model_tfjs/
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">pip install tensorflowjs
+tensorflowjs_converter --input_format keras --output_format<span class="o">=</span>tfjs_graph_model model.h5 model_tfjs/
+</code></pre></td></tr></table>
 </div>
 </div><p>위 커맨드는 <code>model.h5</code>라는 이름으로 저장된 케라스 모델을 Tensorflow.js 레이어로 변환하여 <code>model_tfjs</code> 폴더에 저장합니다.</p>
 <p>커맨드 실행 후 <code>model_tfjs</code> 폴더를 살펴보면 model.json 파일과 weight 파일들이 생성된 것을 확인할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ls model_tfjs
-</span></span><span class="line"><span class="cl">group1-shard1of8.bin  group1-shard3of8.bin  group1-shard5of8.bin  group1-shard7of8.bin  model.json
-</span></span><span class="line"><span class="cl">group1-shard2of8.bin  group1-shard4of8.bin  group1-shard6of8.bin  group1-shard8of8.bin
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ ls model_tfjs
+group1-shard1of8.bin  group1-shard3of8.bin  group1-shard5of8.bin  group1-shard7of8.bin  model.json
+group1-shard2of8.bin  group1-shard4of8.bin  group1-shard6of8.bin  group1-shard8of8.bin
+</code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><strong>🙋‍♀️저는 에러가 나는데요?</strong></li>
@@ -264,7 +268,7 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
 이 부분은 사실 학습 결과에는 영향을 주지 않는 값이었습니다. Loss만 잘 정의되어 있으면 학습에는 문제가 없으니까요.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -277,22 +281,22 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 문제가 된 함수</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">_captcha_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">captcha_length</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">captcha_accuracy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sum_acc</span> <span class="o">=</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">            <span class="n">_y_true</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">            <span class="n">_y_pred</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">            <span class="n">sum_acc</span> <span class="o">+=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">categorical_accuracy</span><span class="p">(</span><span class="n">_y_true</span><span class="p">,</span> <span class="n">_y_pred</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">sum_acc</span> <span class="o">/</span> <span class="n">captcha_length</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">captcha_accuracy</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 문제가 된 함수</span>
+<span class="k">def</span> <span class="nf">_captcha_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">captcha_length</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">captcha_accuracy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+        <span class="n">sum_acc</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">):</span>
+            <span class="n">_y_true</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
+            <span class="n">_y_pred</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">classes</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">classes</span><span class="p">])</span>
+            <span class="n">sum_acc</span> <span class="o">+=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">categorical_accuracy</span><span class="p">(</span><span class="n">_y_true</span><span class="p">,</span> <span class="n">_y_pred</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sum_acc</span> <span class="o">/</span> <span class="n">captcha_length</span>
+
+    <span class="k">return</span> <span class="n">captcha_accuracy</span>
+</code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -303,16 +307,16 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">loss</span><span class="o">=</span><span class="s2">&#34;binary_crossentropy&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span>
-</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_captcha_accuracy</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">,</span> <span class="n">char_classes</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span> <span class="ow">is</span> <span class="kc">None</span>
-</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="s2">&#34;accuracy&#34;</span>  <span class="c1"># if model needs to be saved, do not use custom metric for portability</span>
-</span></span><span class="line"><span class="cl">    <span class="p">],</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span>
+    <span class="n">loss</span><span class="o">=</span><span class="s2">&#34;binary_crossentropy&#34;</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_captcha_accuracy</span><span class="p">(</span><span class="n">captcha_length</span><span class="p">,</span> <span class="n">char_classes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_path</span> <span class="ow">is</span> <span class="bp">None</span>
+        <span class="k">else</span> <span class="s2">&#34;accuracy&#34;</span>  <span class="c1"># if model needs to be saved, do not use custom metric for portability</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>그래서 모델을 저장하는 경우에는 일반 accuracy metric을 사용하게끔 바꾸어서 변환이 가능하도록 바꾸었습니다.</p>
 <h2 id="-js-코드-작성">👩‍💻 JS 코드 작성</h2>
@@ -322,34 +326,34 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install @tensorflow/tfjs
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">npm install @tensorflow/tfjs
+</code></pre></td></tr></table>
 </div>
 </div><p>npm 또는 yarn을 이용하여 <code>@tensorflow/tfjs</code>를 설치합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">tf</span> <span class="nx">from</span> <span class="s2">&#34;@tensorflow/tfjs&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">loadGraphModel</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">+</span> <span class="s2">&#34;/model_tfjs/model.json&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">);</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">tf</span> <span class="nx">from</span> <span class="s2">&#34;@tensorflow/tfjs&#34;</span><span class="p">;</span>
+
+<span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">loadGraphModel</span><span class="p">(</span>
+  <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">+</span> <span class="s2">&#34;/model_tfjs/model.json&#34;</span>
+<span class="p">);</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><code>tf.loadGraphModel()</code> 함수를 이용해서 모델을 읽어옵니다.
 앞서 변환 결과 생성된 <code>model.json</code> 파일의 URL을 인자로 넣어주면 됩니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -357,18 +361,18 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">tfGetImage</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">imageId</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// Get HTMLImageElement from the document
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kr">const</span> <span class="nx">imgElem</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">imageId</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">img</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">fromPixels</span><span class="p">(</span><span class="nx">imgElem</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">tfPreprocessImage</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">},</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">tfGetImage</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">imageId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Get HTMLImageElement from the document
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">imgElem</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">imageId</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">img</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">fromPixels</span><span class="p">(</span><span class="nx">imgElem</span><span class="p">);</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">tfPreprocessImage</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+<span class="p">},</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><code>tf.browser.fromPixels()</code> 함수는 이미지를 모델이 입력으로 받을 수 있는 텐서로 변환합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -376,13 +380,13 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">tfPreprocessImage</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">mean</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">tensor1d</span><span class="p">([</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">std</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">tensor1d</span><span class="p">([</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span> <span class="c1">// [height, width, channel]
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">return</span> <span class="nx">img</span><span class="p">.</span><span class="nx">reshape</span><span class="p">(</span><span class="nx">size</span><span class="p">).</span><span class="nx">toFloat</span><span class="p">().</span><span class="nx">div</span><span class="p">(</span><span class="nx">tf</span><span class="p">.</span><span class="nx">scalar</span><span class="p">(</span><span class="mi">255</span><span class="p">)).</span><span class="nx">sub</span><span class="p">(</span><span class="nx">mean</span><span class="p">).</span><span class="nx">div</span><span class="p">(</span><span class="nx">std</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">},</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">tfPreprocessImage</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">mean</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">tensor1d</span><span class="p">([</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">]);</span>
+  <span class="kr">const</span> <span class="nx">std</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">tensor1d</span><span class="p">([</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">]);</span>
+  <span class="kr">const</span> <span class="nx">size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span> <span class="c1">// [height, width, channel]
+</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">img</span><span class="p">.</span><span class="nx">reshape</span><span class="p">(</span><span class="nx">size</span><span class="p">).</span><span class="nx">toFloat</span><span class="p">().</span><span class="nx">div</span><span class="p">(</span><span class="nx">tf</span><span class="p">.</span><span class="nx">scalar</span><span class="p">(</span><span class="mi">255</span><span class="p">)).</span><span class="nx">sub</span><span class="p">(</span><span class="nx">mean</span><span class="p">).</span><span class="nx">div</span><span class="p">(</span><span class="nx">std</span><span class="p">);</span>
+<span class="p">},</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>놓치기 쉬운 부분으로,
 데이터 전처리 과정은 (당연하게도) 변환된 모델에 포함되어 있지 않으므로 별도로 자바스크립트 코드를 작성해주어야 합니다.</p>
@@ -390,7 +394,7 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
 기존 <a href="https://github.com/keras-team/keras-applications/blob/bc89834ed36935ab4a4994446e34ff81c0d8e1b7/keras_applications/imagenet_utils.py#L121-L149">파이썬 코드와 똑같은 동작</a>을 하는 전처리 코드를 작성해주어야 합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -398,19 +402,19 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">tfPredictCaptcha</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">img</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tfGetImage</span><span class="p">(</span><span class="s2">&#34;captcha&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">imgBatch</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">expandDims</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">predict</span><span class="p">(</span><span class="nx">imgBatch</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="nx">captchaVal</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tfDecodePrediction</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">},</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">tfPredictCaptcha</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">img</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tfGetImage</span><span class="p">(</span><span class="s2">&#34;captcha&#34;</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">imgBatch</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">expandDims</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">predict</span><span class="p">(</span><span class="nx">imgBatch</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">captchaVal</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tfDecodePrediction</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">},</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>전처리까지 마친 데이터를 batch 단위로 변환해준 뒤 모델의 <code>predict()</code> 메소드에 입력으로 넣어주면,
 모델의 예측 결과를 얻을 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -432,27 +436,27 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">  [
-</span></span></span><span class="line"><span class="cl"><span class="cm">    0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-</span></span></span><span class="line"><span class="cl"><span class="cm">    1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-</span></span></span><span class="line"><span class="cl"><span class="cm">  ] ==&gt; &#34;20&#34;
-</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
-</span></span><span class="line"><span class="cl"><span class="nx">tfDecodePrediction</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tensor</span><span class="p">,</span> <span class="nx">numCharSet</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">sliced</span> <span class="o">=</span> <span class="nx">tensor</span><span class="p">.</span><span class="nx">dataSync</span><span class="p">().</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">resultArray</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">chunkIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">index</span> <span class="o">/</span> <span class="nx">numCharSet</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">resultArray</span><span class="p">[</span><span class="nx">chunkIndex</span><span class="p">])</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">resultArray</span><span class="p">[</span><span class="nx">chunkIndex</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">resultArray</span><span class="p">[</span><span class="nx">chunkIndex</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">resultArray</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="p">[]);</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">argMax</span> <span class="o">=</span> <span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">=&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">array</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">x</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">i</span><span class="p">]).</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">r</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">?</span> <span class="nx">a</span> <span class="o">:</span> <span class="nx">r</span><span class="p">))[</span><span class="mi">1</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">predicted</span> <span class="o">=</span> <span class="nx">sliced</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">argMax</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">predicted</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">},</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="cm">/*
+</span><span class="cm">  [
+</span><span class="cm">    0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+</span><span class="cm">    1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+</span><span class="cm">  ] ==&gt; &#34;20&#34;
+</span><span class="cm">*/</span>
+<span class="nx">tfDecodePrediction</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">tensor</span><span class="p">,</span> <span class="nx">numCharSet</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">sliced</span> <span class="o">=</span> <span class="nx">tensor</span><span class="p">.</span><span class="nx">dataSync</span><span class="p">().</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">resultArray</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">chunkIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">index</span> <span class="o">/</span> <span class="nx">numCharSet</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">resultArray</span><span class="p">[</span><span class="nx">chunkIndex</span><span class="p">])</span> <span class="p">{</span>
+      <span class="nx">resultArray</span><span class="p">[</span><span class="nx">chunkIndex</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="p">}</span>
+    <span class="nx">resultArray</span><span class="p">[</span><span class="nx">chunkIndex</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">resultArray</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+  <span class="kr">const</span> <span class="nx">argMax</span> <span class="o">=</span> <span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">=&gt;</span>
+    <span class="nx">array</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">x</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">i</span><span class="p">]).</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">r</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">?</span> <span class="nx">a</span> <span class="o">:</span> <span class="nx">r</span><span class="p">))[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="kr">const</span> <span class="nx">predicted</span> <span class="o">=</span> <span class="nx">sliced</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">argMax</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">predicted</span><span class="p">;</span>
+<span class="p">},</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>모델의 출력을 원하는 포맷으로 변환하는 코드도 자바스크립트로 따로 작성해주면 됩니다.
 위의 코드는 인코딩된 모델 출력 결과를 숫자로 변환하는 함수입니다.</p>
@@ -591,7 +595,7 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
 
 
 
-<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {

@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.96.0 with theme even" />
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
 
 <script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -40,22 +40,26 @@
 
 
 
-<link href="/sass/main.min.1044c34a9692ad57ae3686175de4f6f4c3215b52b9c8a4f3cb680f6cc30a0f32.css" rel="stylesheet">
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="크롬 데이터 세이버를 크롬 없이 사용하기" />
 <meta property="og:description" content="크롬 데이터 세이버의 동작을 뜯어보는 글입니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ryanking13.github.io/2018/04/26/google-data-saver-proxy.html/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://ryanking13.github.io/2018/04/26/google-data-saver-proxy.html/" />
 <meta property="article:published_time" content="2018-04-26T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-04-26T00:00:00+00:00" />
-
 <meta itemprop="name" content="크롬 데이터 세이버를 크롬 없이 사용하기">
-<meta itemprop="description" content="크롬 데이터 세이버의 동작을 뜯어보는 글입니다."><meta itemprop="datePublished" content="2018-04-26T00:00:00+00:00" />
+<meta itemprop="description" content="크롬 데이터 세이버의 동작을 뜯어보는 글입니다.">
+<meta itemprop="datePublished" content="2018-04-26T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2018-04-26T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1479">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="크롬 데이터 세이버를 크롬 없이 사용하기"/>
 <meta name="twitter:description" content="크롬 데이터 세이버의 동작을 뜯어보는 글입니다."/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
@@ -140,7 +144,7 @@
     </div>
 </div>
 
-<script src="/js/search.min.f17f0274f48049dd3f170edc80846012a50206855a42f7aa140555bb0c625dd8.js"></script>
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
 </div>
     </header>
 
@@ -205,19 +209,19 @@
 <p>그렇다면 우리도 직접 연결을 해보자.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ ping compress.googlezip.net
-</span></span><span class="line"><span class="cl">PING compress.googlezip.net (172.217.161.44) 56(84) bytes of data.
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ ping compress.googlezip.net
+PING compress.googlezip.net (172.217.161.44) 56(84) bytes of data.
+</code></pre></td></tr></table>
 </div>
 </div><p>데이터 세이버를 켰을 때의 Remote Address인 172.217.161.44는 compress.googlezip.net이라는 도메인을 가진다.</p>
 <p>해당 도메인을 프록시로 사용하여 리퀘스트를 보내보자.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -233,21 +237,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">proxies</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;http&#39;</span><span class="p">:</span> <span class="s1">&#39;compress.googlezip.net&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;https&#39;</span><span class="p">:</span> <span class="s1">&#39;compress.googlezip.net&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.bbc.com/&#39;</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 502</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># ...(omitted)...This page cannot be loaded using Chrome Data Saver. Try reloading the page...(omitted)...</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">proxies</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;http&#39;</span><span class="p">:</span> <span class="s1">&#39;compress.googlezip.net&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https&#39;</span><span class="p">:</span> <span class="s1">&#39;compress.googlezip.net&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.bbc.com/&#39;</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># 502</span>
+<span class="c1"># ...(omitted)...This page cannot be loaded using Chrome Data Saver. Try reloading the page...(omitted)...</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>단순히 프록시로 달기만 하는 것으로는 안되는 것 같다. 어떻게 동작하는 지 알아낼 필요가 있다.</p>
 <p>구글 코드 아카이브를 찾아보면 <a href="https://code.google.com/archive/p/datacompressionproxy/">datacompressionproxy</a>라는 것을 찾을 수 있다. compress.googlezip.net 서버가 이것을 사용할 것이라고 추정할 수 있다.</p>
@@ -256,7 +260,7 @@
 <p>위 레포에서 코드를 살펴보면, <code>Chrome-Proxy</code>라는 헤더에 고정된 <code>authvalue</code>의 해시값을 포함한 특정 값을 심어서 보내야 한다는 것을 알 수 있다. 아래 코드는 위 레포에서 가져왔다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -274,28 +278,28 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">md5</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># code from https://github.com/cnbeining/Chrome-Data-Compression-Proxy-Standalone-Python/blob/master/google.py</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_long_int</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100000000</span><span class="p">,</span> <span class="mi">999999999</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># code from https://github.com/cnbeining/Chrome-Data-Compression-Proxy-Standalone-Python/blob/master/google.py</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_google_header</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="n">authValue</span> <span class="o">=</span> <span class="s1">&#39;ac4500dd3b7579186c1b0620614fdb1f7d61f944&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">timestamp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;ps=&#39;</span> <span class="o">+</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">get_long_int</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">get_long_int</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">get_long_int</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;, sid=&#39;</span> <span class="o">+</span> <span class="n">md5</span><span class="p">((</span><span class="n">timestamp</span> <span class="o">+</span> <span class="n">authValue</span> <span class="o">+</span> <span class="n">timestamp</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;, b=2403, p=61, c=win&#39;</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">md5</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="c1"># code from https://github.com/cnbeining/Chrome-Data-Compression-Proxy-Standalone-Python/blob/master/google.py</span>
+<span class="k">def</span> <span class="nf">get_long_int</span><span class="p">():</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100000000</span><span class="p">,</span> <span class="mi">999999999</span><span class="p">))</span>
+
+
+<span class="c1"># code from https://github.com/cnbeining/Chrome-Data-Compression-Proxy-Standalone-Python/blob/master/google.py</span>
+<span class="k">def</span> <span class="nf">get_google_header</span><span class="p">():</span>
+    <span class="n">authValue</span> <span class="o">=</span> <span class="s1">&#39;ac4500dd3b7579186c1b0620614fdb1f7d61f944&#39;</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="s1">&#39;ps=&#39;</span> <span class="o">+</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">get_long_int</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">get_long_int</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">get_long_int</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;, sid=&#39;</span> <span class="o">+</span> <span class="n">md5</span><span class="p">((</span><span class="n">timestamp</span> <span class="o">+</span> <span class="n">authValue</span> <span class="o">+</span> <span class="n">timestamp</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;, b=2403, p=61, c=win&#39;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>이제 다시 리퀘스트를 보내보자.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -315,30 +319,30 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">proxy_headers</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;Chrome-Proxy&#39;</span><span class="p">:</span> <span class="n">get_google_header</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1"># ...omitted...</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">path_idx</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="n">host</span> <span class="o">=</span> <span class="n">url</span><span class="p">[:</span><span class="n">path_idx</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">      <span class="n">path</span> <span class="o">=</span> <span class="n">url</span><span class="p">[</span><span class="n">path_idx</span><span class="p">:]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">proxy_headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;Host&#39;</span><span class="p">:</span> <span class="n">host</span><span class="p">})</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1"># ...omitted...</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://compress.googlezip.net:80</span><span class="si">{path}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">                        <span class="n">headers</span><span class="o">=</span><span class="n">proxy_headers</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="n">proxy_headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Chrome-Proxy&#39;</span><span class="p">:</span> <span class="n">get_google_header</span><span class="p">(),</span>
+    <span class="p">}</span>
+
+    <span class="c1"># ...omitted...</span>
+
+    <span class="n">path_idx</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+      <span class="n">host</span> <span class="o">=</span> <span class="n">url</span><span class="p">[:</span><span class="n">path_idx</span><span class="p">]</span>
+      <span class="n">path</span> <span class="o">=</span> <span class="n">url</span><span class="p">[</span><span class="n">path_idx</span><span class="p">:]</span>
+
+    <span class="n">proxy_headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;Host&#39;</span><span class="p">:</span> <span class="n">host</span><span class="p">})</span>
+
+    <span class="c1"># ...omitted...</span>
+
+    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://compress.googlezip.net:80{path}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">),</span>
+                        <span class="n">headers</span><span class="o">=</span><span class="n">proxy_headers</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>요청을 보내고자 하는 url의 Host부분을 헤더의 <code>Host</code> 값으로 적어주었다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -361,28 +365,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">google_compression_proxy</span> <span class="kn">import</span> <span class="n">get</span> <span class="k">as</span> <span class="n">compress_get</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">http_image_url</span> <span class="o">=</span> <span class="s1">&#39;http://ichef.bbci.co.uk/wwfeatures/wm/live/624_351/images/live/p0/4v/jy/p04vjy8l.jpg&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="n">https_image_url</span> <span class="o">=</span> <span class="s1">&#39;https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Siberian_Tiger_by_Malene_Th.jpg/450px-Siberian_Tiger_by_Malene_Th.jpg&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">r1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">http_image_url</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">r2</span> <span class="o">=</span> <span class="n">compress_get</span><span class="p">(</span><span class="n">http_image_url</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r1</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Compressed image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r2</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Original image size: 63816</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Compressed image size: 33361</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">r1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">https_image_url</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">r2</span> <span class="o">=</span> <span class="n">compress_get</span><span class="p">(</span><span class="n">https_image_url</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r1</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Compressed image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r2</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Original image size: 93198</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Compressed image size: 93198</span>
-</span></span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">google_compression_proxy</span> <span class="kn">import</span> <span class="n">get</span> <span class="k">as</span> <span class="n">compress_get</span>
+
+<span class="n">http_image_url</span> <span class="o">=</span> <span class="s1">&#39;http://ichef.bbci.co.uk/wwfeatures/wm/live/624_351/images/live/p0/4v/jy/p04vjy8l.jpg&#39;</span>
+<span class="n">https_image_url</span> <span class="o">=</span> <span class="s1">&#39;https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Siberian_Tiger_by_Malene_Th.jpg/450px-Siberian_Tiger_by_Malene_Th.jpg&#39;</span>
+
+<span class="n">r1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">http_image_url</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">compress_get</span><span class="p">(</span><span class="n">http_image_url</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Original image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r1</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Compressed image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r2</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="c1"># Original image size: 63816</span>
+<span class="c1"># Compressed image size: 33361</span>
+
+<span class="n">r1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">https_image_url</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">compress_get</span><span class="p">(</span><span class="n">https_image_url</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Original image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r1</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Compressed image size:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">r2</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="c1"># Original image size: 93198</span>
+<span class="c1"># Compressed image size: 93198</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>이미지 url에 대해서 리퀘스트를 보내본 결과다.</p>
 <p>http 요청에 대해서는 확실하게 이미지의 용량이 줄어든 것을 확인할 수 있다.</p>
@@ -523,7 +527,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js"></script>
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
   <script type="text/javascript">
     window.MathJax = {
       tex: {
