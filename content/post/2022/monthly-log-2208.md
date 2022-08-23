@@ -41,5 +41,10 @@ hiddenfromhomepage: true
 
 간혹 관공서등에서 "직접" 스캔한 파일을 요구할 때 유용하게 사용할 수 있을 듯 합니다.
 
+### [weave](https://github.com/evmar/weave#demo)
+
+WebAssembly 모듈 내부 구조를 보여주는 시각화 도구.
+
+간단한 디버깅 용도로 사용하기에 편리합니다.
 
 ## 📙 책 / 강의 / 영상
