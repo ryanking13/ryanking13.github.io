@@ -151,14 +151,14 @@ Pyodide를 사용했을 때는 다음과 같은 장점이 있습니다.
 프로그래밍 교육 분야에서 Pyodide를 활용하려는 시도가 많이 이루어지고 있습니다.
 이 글에서는 대표적인 프로젝트 두 가지를 소개합니다.
 
-### Baston
+### Basthon
 
 <br />
 <div style="text-align: center;">
 <img src="https://basthon.fr/theme/assets/img/basthon.svg" width="70%">
 </div>
 
-[Baston](https://basthon.fr/)은 Pyodide를 이용한 파이썬 Notebook 환경입니다.
+[Basthon](https://basthon.fr/)은 Pyodide를 이용한 파이썬 Notebook 환경입니다.
 현재 프랑스에서 10만명 이상의 중학교 학생들이 프로그래밍을 배우기 위해 매달 사용하는 것으로 알려져 있습니다.
 
 ### Jupyterlite
@@ -185,4 +185,4 @@ Pyodide 프로젝트에 기여해보시는 것은 어떨까요? Pyodide는 모�
 
 이어지는 글에서는 Pyodide를 구성하는 기술과 한계점, 앞으로의 로드맵 등을 소개합니다.
 
-> 다음 글: [Pyodide를 소개합니다 - 2]({{< ref "introducing-pyodide-2.md" >}}
+> 다음 글: [Pyodide를 소개합니다 - 2]({{< ref "introducing-pyodide-2.md" >}})
