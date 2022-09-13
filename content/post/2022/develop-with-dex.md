@@ -1,10 +1,10 @@
 ---
-date: "2022-08-25T00:01:00"
+date: "2022-09-05T00:01:00"
 title: Dex와 Github Codespaces를 이용한 모바일 원격 개발 후기
 categories:
 - Development
 description: Dex와 Github Codespaces를 이용한 모바일 원격 개발 후기
-summary: ...
+summary: 삼성 스마트폰에서 제공하는 Dex와 Github의 Codespaces를 이용한 모바일 개발 후기
 draft: true
 ---
 
