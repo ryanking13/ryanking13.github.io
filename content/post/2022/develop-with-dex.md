@@ -83,6 +83,7 @@ Dex 연결 시 FHD 화질로 모니터에 화면이 출력되며, 휴대전화�
 저는 S22+로 기종 변경을 하기 전, LG G7 휴대전화로 잠깐 데스크톱 모드를 사용해본 적이 있는데요.
 
 당시에는 굉장히 자주 연결이 끊기고, 불안정했던 경험이 있습니다.
+배터리 소모도 말도 안 될 정도로 높았구요.
 최근에는 개선이 되었을지는 모르겠지만, 삼성 Dex 모드 수준의 완성도를
 기대하기는 어려운 것 같습니다.
 
@@ -90,14 +91,29 @@ Dex 연결 시 FHD 화질로 모니터에 화면이 출력되며, 휴대전화�
 
 ### 3. 개발 환경 구축
 
-휴대전화에서 개발을 하기 위해서 선택할 수 있는 몇 가지 방법들이 있습니다.
+장비가 준비되었다면, 이제 개발 환경을 구축해야 합니다.
+휴대전화에서 개발을 하기 위해서 생각해볼 수 있는 몇 가지 방법들이 있습니다.
 
 1. 휴대전화에 직접 개발 환경을 구축하는 방법
 2. 서버에 개발 환경을 구축하고 원격 접속하는 방법
 3. 온라인 IDE를 이용하는 방법
 
-1번의 경우, 안드로이드에서만 사용할 수 있는 터미널 에뮬레이터인
-[Termux](https://termux.com/)와 같은 도구를 활용하는 방법입니다.
+가장 먼저 떠올릴 수 있는 방법은 휴대전화를 개발 머신(?)으로 사용하는 방법입니다.
+안드로이드에서 사용할 수 있는 [Termux](https://termux.com/)와 같은 도구를 사용하면,
+유사 리눅스 터미널 환경을 구축할 수 있습니다.
+
+<div style="text-align: center;">
+	<div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Termux-nano.jpg/394px-Termux-nano.jpg" style="width: 400px; max-width: 100%" /></div>
+	<div>
+		<span style="color:grey"><small><i>Termux</i></small></span>
+	</div>
+</div>
+
+이 방법의 장점은 별도의 개발 서버를 준비할 필요가 없이 앱만 설치하면 된다는 점인데요.
+그러나 이 방법은 간단한 스크립트 작성 정도는 가능하지만,
+그 이상의 작업에는 적합하지 않습니다.
+휴대전화를 루팅하지 않은 권한 측면에서 제한이 있어 기능적인 제약이 아주 많으며,
+휴대전화의 성능이 PC 대비 떨어진다는 점도 문제점입니다.
 
 <div style="text-align: center;">
 	<div><img src="https://github.com/coder/code-server/raw/main/docs/assets/screenshot.png" style="width: 500px; max-width: 100%" /></div>
@@ -106,12 +122,13 @@ Dex 연결 시 FHD 화질로 모니터에 화면이 출력되며, 휴대전화�
 	</div>
 </div>
 
-2번의 경우, 흔히 사용하는 방법으로는 [TeamViewer](https://www.teamviewer.com/ko/)나,
+다음으로 생각할 수 있는 방법은 외부 서버에 개발 환경을 구축하고 원격 접속하는 방법입니다.
+흔히 사용하는 방법으로는 [TeamViewer](https://www.teamviewer.com/ko/)나,
 [Chrome Remote Desktop](https://remotedesktop.google.com/) 등을 이용해서
-GUI 상에서 원격 접속하는 방법이 있습니다.
-조금 더 나아가서, 굳이 GUI가 필요하지 않은 경우에는
+원격으로 다른 PC를 제어하거나,
+혹은 조금 더 나아가서, 굳이 GUI가 필요하지 않은 경우에는
 [vscode-server](https://code.visualstudio.com/docs/remote/vscode-server)와 같이,
-VSCode를 원격으로 실행하는 방법이 있습니다.
+웹 기반 에디터를 원격으로 실행하는 방법이 있습니다.
 
 마지막으로 3번은 직접 서버를 구축하는 대신 [Github Codespaces](https://github.com/features/codespaces),
 [Gitpod](https://www.gitpod.io/), [repl.it](https://replit.com/) 과 같은 온라인 IDE를 사용하는 방식입니다.
@@ -123,8 +140,7 @@ VSCode를 원격으로 실행하는 방법이 있습니다.
 
 - Termux
   - 장점: 설치가 간편...?
-  - 단점: 간단한 스크립트 작성을 벗어난 수준의 개발이 사실상 불가능, 유사 리눅스 환경을
-제공하는 터미널 에뮬레이터로, 기능적으로 제약이 아주 많음. 휴대전화의 성능이 PC 대비 떨어짐.
+  - 단점: 
 
 - code-server
   - 장점: 기본적인 지식만 있다면 세팅이 크게 어렵지 않음
