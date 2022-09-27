@@ -26,6 +26,14 @@ pdqsort로 변경된다는 소식](https://github.com/golang/go/issues/50154)을
 > - https://arxiv.org/abs/2106.05123
 > - https://arxiv.org/pdf/1604.06697.pdf
 
+{{% admonition type="note" title="note" %}}
+
+pdqsort는 unstable sort로, 동일한 원소에 대해서 정렬 후의 순서가 정렬 전과 동일함을 보장하지 않습니다.
+stable sort 중에서 일반적으로 효율적이라고 알려진 정렬 알고리즘은 Python에서 표준 정렬 알고리즘으로 사용되는
+[TimSort](https://en.wikipedia.org/wiki/Timsort)입니다.
+
+{{% /admonition %}}
+
 ## 정렬 알고리즘 기본 지식
 
 정렬 알고리즘을 공부했다면, 다음과 같은 내용을 이미 알고 있을 것입니다.
@@ -94,7 +102,7 @@ worst case 시간 복잡도가 `O(NlogN)`으로 보장된 힙 정렬로 전환�
 
 ### BlockQuicksort - Branchless Prediction
 
-가장 먼저 소개할 것은 퀵 정렬의 Partitioning 과정을 최적화하는 기법입니다.
+가장 먼저 소개할 것은 퀵 정렬의 파티셔닝(partitioning) 과정을 최적화하는 기법입니다.
 이는 pdqsort에서 사용되었지만, 2016년에 발표된
 [BlockQuicksort](https://arxiv.org/pdf/2106.05123.pdf) 논문에서 처음 소개된 기법입니다.
 
@@ -107,7 +115,7 @@ worst case 시간 복잡도가 `O(NlogN)`으로 보장된 힙 정렬로 전환�
 <!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=seti&wt=none&l=text%2Fx-c%2B%2Bsrc&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=false&wa=true&pv=6px&ph=7px&ln=false&fl=1&fm=JetBrains+Mono&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=void%2520partition%28A%255B%255D%252C%2520pivot%252C%2520l%252C%2520r%29%2520%257B%2520%2520%250A%2520%2520while%28l%2520%253C%2520r%29%2520%257B%250A%2520%2520%2520%2520while%2520%28A%255Bl%255D%2520%253C%2520pivot%29%2520l%252B%252B%253B%250A%2520%2520%2520%2520while%2520%28A%255Br%255D%2520%253E%2520pivot%29%2520r--%253B%250A%2520%2520%2520%2520if%2520%28l%2520%253C%2520r%29%2520%257B%250A%2520%2520%2520%2520%2520%2520swap%28A%255Bl%255D%252C%2520A%255Br%255D%29%253B%250A%2520%2520%2520%2520%2520%2520l%252B%252B%253B%2520r--%253B%250A%2520%2520%2520%2520%257D%250A%2520%2520%257D%250A%257D -->
 </div>
 
-위 그림은 일반적인 퀵 정렬의 partitioning 과정을 보여주는데요.
+위 그림은 일반적인 퀵 정렬의 파티셔닝 과정을 보여주는데요.
 swap할 대상을 찾기 위해 `l`, `r` 포인터를 이동시키는 과정에서
 많은 branch prediction이 발생합니다.
 
@@ -125,7 +133,7 @@ branch prediction을 없애는 방법을 제안했습니다.
 <!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=seti&wt=none&l=text%2Fx-c%2B%2Bsrc&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=false&wa=true&pv=6px&ph=7px&ln=false&fl=1&fm=JetBrains+Mono&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=num_l%2520%253D%25200%253B%250Afor%2520%28i%2520%253D%25200%253B%2520i%2520%253C%2520block_size%253B%2520i%252B%252B%29%2520%257B%250A%2520%2520offsets_l%255Bnum_l%255D%2520%253D%2520i%253B%250A%2520%2520num_l%2520%252B%253D%2520*%28l%2520%252B%2520i%29%2520%253E%253D%2520pivot%253B%250A%257D%250A%250A%252F%252F%2520do%2520same%2520for%2520offsets_r%250A%250Afor%2520%28int%2520i%2520%253D%25200%253B%2520i%2520%253C%2520min%28num_l%252C%2520num_r%29%253B%2520i%252B%252B%29%2520%257B%250A%2520%2520swap%28l%2520%252B%2520offsets_l%255Bi%255D%252C%2520r%2520-%2520offsets_r%255Bi%255D%29%253B%250A%257D -->
 </div>
 
-위 그림은 블록 단위로 partitioning을 수행하는 과정을 보여주는데요.
+위 그림은 블록 단위로 파티셔닝을 수행하는 과정을 보여주는데요.
 주목해야 할 부분은, `num_l`을 업데이트하는 부분으로,
 컴파일 시에 contional branch (`Jcc`)가 생성되는 if 문을 사용하지 않고,
 `CMOVcc`나 `SETcc`와 같은 conditional move / set instruction 명령어가 생성되게끔 구현된 모습을 볼 수 있습니다. [^comparision]
@@ -146,9 +154,53 @@ BlockQuicksort를 이용한 Branchless Prediction은 원 논문 기준으로 80%
 그리고 Block size와 L1 캐시 크기를 맞추는 것에 따른 캐싱 효과 최적화 등을 포함하고 있으니
 관심이 있으시다면 원 논문을 읽어보시는 것을 추천드립니다.
 
-### Quicksort pivot selection
+### Quicksort Pivot selection
 
+다음으로는 Quick Sort에서 피벗을 선택하는 방법에 적용된 기법을 살펴보겠습니다.
+앞서 Quick Sort에서 피벗을 잘못 선택하여 partitioning이 제대로 이루어지지 않으면
+worst case에 빠질 수 있다는 점을 얘기했었는데요.
+반대로 얘기하면, 늘 좋은 피벗을 선택할 수 있다면, 예를 들어 피벗을 항상 중간값으로 선택할 수 있다면
+worse case를 예방하는 것이 가능합니다.
+문제는 당연하게도 정렬되지 않은 배열에서 중간값을 찾는 것이 상수 시간에 불가능하다는 점인데요.
+따라서 우리는 간단하면서도 효과적으로 피벗을 선택하는 방법이 필요합니다.
 
+<div style="text-align: center;">
+<image src="/assets/post_images/pdqsort/quicksort-factor.png" />
+<div>
+    <span style="color:grey"><small><i>Quick Sort의 partition 비율에 따른 slowdown 효과</i></small></span>
+    <br/>
+    <span style="color:grey"><small><i>(출처: https://arxiv.org/pdf/2106.05123.pdf)</i></small></span>
+</div>
+</div>
+
+여기서 아주 흥미로운 사실은, Quick Sort에서 피벗을 "적당히" 잘못 고르더라도
+성능에 큰 영향을 미치지 않는다는 점입니다.
+위의 그래프는 파티셔닝 비율에 따른 Quick Sort의 성능을 나타낸 것인데요.
+흥미롭게도 정확하게 파티셔닝을 50:50으로 나눈 경우에 비해서 10:90으로
+아주 치우진 파티셔닝을 "매번" 반복한 경우라도
+약 2배 정도의 시간이 소요되는 것을 볼 수 있습니다.
+즉, "적당히" 괜찮은 피벗만 고르더라도 Quick Sort는 충분히 좋은 성능을 낼 수 있다는 점을 의미합니다.
+
+이러한 사실을 숙지한 상태에서, Quick Sort에서 피벗을 선택하는 방법을 살펴보겠습니다.
+일반적으로 잘 알려진 피벗 선택 방법은
+median-of-three인데요. 이는 피벗을 선택하기 위해 배열의 첫 원소, 중간 원소, 마지막 원소를
+비교하여 중간값을 피벗으로 선택하는 방법입니다.
+이 방법은 피벗을 선택하는 데 드는 오버헤드가 적고,
+이미 정렬된 배열이나 역순으로 정렬된 배열처럼, 특정한 패턴을 갖고 있는 경우에도
+적절한 피벗을 선택할 수 있다는 장점이 있습니다.
+
+여기서 조금 더 나아간 방법은 tukey's ninther라고 알려진 방법인데요.
+이는 median-of-three를 세 번 수행한 후, 그 결과를 다시 median-of-three로 선택하는 방법입니다.
+이 방법은 피벗을 선택하는 데 드는 오버헤드가 조금 더 크지만,
+median-of-three보다 더 좋은 피벗을 선택할 수 있다는 장점이 있습니다.
+
+pdqsort에서는 이 두 방법을 혼합한 방법을 사용하는데요.
+배열의 크기가 작은 경우는 median-of-three를 세번 수행하는 tukey's ninther의 오버헤드를 줄이기 위해,
+단순히 median-of-three를 사용하고,
+배열의 크기가 특정 크기 이상인 경우(논문에서는 128)에는 tukey's ninther를 사용합니다.
+
+재귀적으로 호출되는 함수의 특성상 배열의 크기가 작은 경우 (leaf)가 많이 호출되기 때문에,
+이러한 leave를 최적화하는 것이 아주 중요하다고 저자는 얘기합니다.
 
 ### bounds check elimination
 
