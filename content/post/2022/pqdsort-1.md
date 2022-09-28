@@ -202,9 +202,42 @@ pdqsort에서는 이 두 방법을 혼합한 방법을 사용하는데요.
 재귀적으로 호출되는 함수의 특성상 배열의 크기가 작은 경우 (leaf)가 많이 호출되기 때문에,
 이러한 leave를 최적화하는 것이 아주 중요하다고 저자는 얘기합니다.
 
-### bounds check elimination
-
 ### Cache
+
+
+### 기타
+
+그 외에 pqdsort에 적용된 몇 가지 최적화 기법을 간단히 언급하겠습니다.
+
+- insertion sort 관련
+
+Quick Sort의 정렬 대상이 충분히 작아졌을 때에 Insertion Sort로 전환해서 수행을 하는데,
+이 "충분히 작은 값"을 어떻게 정하는 지를 생각해볼 수 있습니다.
+pdqsort에서는 12 일때가 가장 적은 수의 "comparision"을 수행했다고 하는데요,
+그러나 integer sort를 기준으로 24 또는 32가 더 좋은 수행 시간을 보였다고 합니다. 대신 비교 횟수는 증가.
+따라서 element를 비교하는 행위가 얼마나 overhead가 큰지에 따라서 동적으로 적절한 값을 선택할 필요가 있으며,
+실제로 libc의 구현체에서도 비교의 오버헤드가 작은 integer의 경우는 작은 값을, string과 같이 비교의 오버헤드가 큰 경우는 큰 값을 사용하고 있다고 합니다.
+
+또한 insertion sort를 최적화하는 방법으로 pdqsort는 unguared_insertion_sort라는 방법을 사용하는데요.
+이는, insertion sort에서의 bound check를 제거하는 방법으로, 현재 insertion sort를 수행하고자하는 chunk가
+전체 배열의 leftmost chunk가 아니라면, leftmost chunk에는 현재 chunk보다 작은 원소들로만 구성되어있는 것이 보장되기 때문에
+insertion을 수행할 때 bound check를 하지 않는 것.
+
+insertion 에서 sift가 일어나는 부분을 일반적으로는 아래와 같이 작성하게 되는데,
+
+<div style="text-align: center;">
+<image src="/assets/post_images/pdqsort/insertion-bound-check.png" />
+</div>
+
+index를 줄여나가면서 bound를 넘어가지 않도록 체크하고 있는 한편
+
+<div style="text-align: center;">
+<image src="/assets/post_images/pdqsort/insertion-no-bound-check.png" />
+<!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=seti&wt=none&l=text%2Fx-c%2B%2Bsrc&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=false&wa=true&pv=6px&ph=7px&ln=false&fl=1&fm=JetBrains+Mono&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=while%28comp%28*idx%252C%2520val%29%29%2520%257B%2520%250A%2520%2520sift%28idx%29%253B%250A%2520%2520idx--%253B%250A%257D -->
+</div>
+
+~ 이미 왼쪽에 더 작은 element가 있다는 것이 보장되어있으므로 bound check를 하지 않아도 된다.
+
 
 
 {{% youtube "gjSfhGdgVc0" %}}
