@@ -202,8 +202,82 @@ pdqsort에서는 이 두 방법을 혼합한 방법을 사용하는데요.
 재귀적으로 호출되는 함수의 특성상 배열의 크기가 작은 경우 (leaf)가 많이 호출되기 때문에,
 이러한 leave를 최적화하는 것이 아주 중요하다고 저자는 얘기합니다.
 
-### Cache
+### Patterns
 
+앞서 언급한 내용들은 사실 pdqsort의 독창적인 아이디어가 아닌, 기존의 최신 연구들의 기법을 적용한 것
+그리고 이를 바탕으로 최적화를 한 것인데요.
+
+이번 문단에서는 pdqsort (Pattern-Defeating) 의 이름에 맞는,
+데이터의 패턴을 분석하고 이를 격파(?) 하는 pdqsort의 기법들을 소개하겠습니다.
+
+#### Low cardinality
+
+첫번째 기법이자 pdqsort의 유니크한 기법은 정렬 대상의 데이터가 low cardinality인 경우,
+즉 데이터의 종류가 적은 경우를 분석하고 이를 최적화하는 것입니다.
+
+이는 현실 세계에서 생각보다 많이 발생하는 경우인데요.
+데이터 자체가 가진 정보는 다양하지만, 정렬의 기준이 되는 키는 적은 경우가 많습니다.
+대표적으로는 SQL 에서 쿼리를 작성 할 때, order by 키워드를 사용하여 데이터를 정렬할 때,
+
+```
+SELECT * FROM cars ORDER BY maker;
+SELECT * FROM songs ORDER BY duration;
+SELECT * FROM users ORDER BY age;
+```
+
+이러한 경우는 정렬 대상이 되는 데이터 중 같은 값이 많이 발생하고 해당 케이스의 불필요한 비교 과정을
+최소화 하는 것이 정렬 효율을 높일 수 있는데요.
+
+pdqsort는 이를 다음과 같이 해결합니다.
+
+1. Quick Sort의 Partition 과정에서 정해진 피벗을 현재의 subarray 바로 왼쪽(앞) 값과 비교합니다.
+2. 만약 피벗이 왼쪽 값과 같다면, partition 과정에서 피벗과 같은 값을 피벗 왼쪽으로 보냅니다. (partition-left)
+3. 피벗이 왼쪽 값보다 크다면, partition 과정에서 피벗과 같은 값을 피벗 오른쪽으로 보냅니다. (partition-right)
+
+<div style="text-align: center;">
+<image src="/assets/post_images/pdqsort/low-cardinality.png" />
+<div>
+    <span style="color:grey"><small><i>출처: https://www.youtube.com/watch?v=jz-PBiWwNjc</i></small></span>
+</div>
+</div>
+
+굳이 경우를 나누는 연산을 추가해가면서까지 이런 과정을 하는 이유가 뭘까요?
+
+<div style="text-align: center;">
+<image src="/assets/post_images/pdqsort/low-cardinality-step.png" />
+<div>
+    <span style="color:grey"><small><i>출처: https://www.youtube.com/watch?v=jz-PBiWwNjc</i></small></span>
+</div>
+</div>
+
+그림으로 과정을 뜯어보면 이해하기 쉬운데요. partition-left가 수행될 때를 보면,
+피벗이 왼쪽 값과 같다면, 이미 피벗 왼쪽 subarray는
+현재 정렬하고자 하는 subarray보다 작거나 같은 값들로만 이루어져 있음이 보장되므로,
+partition 과정에서 피벗 왼쪽으로 간 데이터는 모두 피벗과 같은 값이라는 것을 알 수 있습니다.
+즉, 이미 partition의 왼쪽은 정렬이 완료된 데이터임이 보장되므로, right recursion만 수행하면 되는 것입니다.
+
+저자는 이와 같은 최적화를 한 경우에, 데이터의 cardinality가 k일 때, 시간 복잡도가 O(nk)임을 보였습니다.
+
+#### Pre-sorted / mostly sorted
+
+저자는 이미 대부분의 데이터가 정렬되어 있는 경우에 정렬을 수행하는 경우도 매우 흔하다고 말합니다.
+특히 평소에 데이터를 정렬한 상태로 보관하고 있지만, 새로운 데이터가 동적으로 추가되는 경우에는
+이미 정렬된 데이터에 새로운 데이터를 추가하고, 정렬을 수행하는 경우가 많습니다.
+
+이러한 경우의 최적화에 대해서도 ...
+
+이에 대한 휴리스틱으로 pdqsort에서는 llvm의 libc++에서 도입되었던 optimistic insertion sorting 이라는
+아이디어를 사용하는데요. 저자의 말로는 llvm에서는 사용되고 있었지만, 공식적으로 문헌에 기록되어 있지는 않다고 합니다.
+
+이 아이디어는 간단한데요. 이미 전부, 혹은 대부분이 정렬된 케이스를 탐지하기 위해서,
+Quick Sort의 partition 과정에서 아무런 swap이 일어나지 않은 경우를 탐지하고,
+이 경우 이미 대부분 정렬되어있을 가능성을 고려해, 우선적으로 insertion sort를 수행해보는 것입니다.
+이 과정에서 insertion이 특정 횟수를 초과하면 그 순간 중단하고 quick sort를 수행합니다.
+여기서 "특정 횟수"는 물론 하이퍼 파라미터인데요, 논문에서 저자는 8을 사용했다고 합니다.
+
+swap이 일어나지 않을 때마다 insertion 을 수행하는 것이 overhead가 되지 않을까하는 의문이 들 수 있는데요.
+저자는 실험적으로 swap이 일어나지 않는 경우는 앞서 언급한 이미 데이터가 대부분 정렬된 특수한 경우를 제외하면
+거의 발생하지 않는 경우로 오버헤드가 작다고 주장합니다.
 
 ### 기타
 
