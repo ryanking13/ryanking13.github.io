@@ -11,6 +11,18 @@ hiddenfromhomepage: true
 
 ## ✍️ 글
 
+### [good-taste](https://felipec.github.io/good-taste/parts/1.html)
+
+리누스 토르발즈의 유명한 TED 영상인 [The mind behind Linux](https://www.youtube.com/watch?v=o8NPllzkFhE&t=858s)에서
+언급된 코드의 "Good Taste"에 관해서,
+링크드 리스트의 삭제 함수를 예시로 설명하는 글입니다.
+
+TED 영상에서는 간단하게 두 코드를 비교하고 넘어가는데요.
+이 글에서는 한쪽 코드를 다른 쪽으로 변환하는 과정을 포함해서,
+실제로 유명한 오픈 소스 라이브러리의 링크드 리스트 구현체에서는 어떤 식으로 유사 함수가 구현되어 있는지를 살피고,
+나아가서 LLVM의 코드에서는 C의 내부 동작을 활용해서 어떤 식으로 자료 구조를 최적화했는지를 보여줍니다.
+
+
 ## 📌 북마크
 
 
