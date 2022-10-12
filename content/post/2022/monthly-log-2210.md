@@ -22,6 +22,24 @@ TED 영상에서는 간단하게 두 코드를 비교하고 넘어가는데요.
 실제로 유명한 오픈 소스 라이브러리의 링크드 리스트 구현체에서는 어떤 식으로 유사 함수가 구현되어 있는지를 살피고,
 나아가서 LLVM의 코드에서는 C의 내부 동작을 활용해서 어떤 식으로 자료 구조를 최적화했는지를 보여줍니다.
 
+### [BLAS 라이브러리 비교](https://kaldi-asr.org/doc/matrixwrap.html)
+
+[kaldi](https://github.com/kaldi-asr/kaldi) 프로젝트 문서에서
+여러 선형대수 BLAS, LAPACK 구현체를 비교하고 설명한 글.
+
+선형대수 관련 연산을 하드웨어에 맞추어 최적화 해주는 여러 라이브러리가 존재합니다.
+일반 유저는 사실 잘 알지 못하고 알 필요도 없는 경우가 많은데요.
+혹시 특정한 라이브러리를 사용해야 하는 상황이라면 이 글을 참고하면 좋을 것 같습니다.
+
+### [그림으로 설명하는 Stable Diffusion](https://jalammar.github.io/illustrated-stable-diffusion/)
+
+최근 [Mid Journey](http://midjourney.ai/), [Novel AI](https://novelai.net/) 등
+다양한 프로젝트에 적용되면서 어마어마한 결과물을 보이고 있는 생성 모델인 Stable Diffusion에 대하여
+전체적인 구조를 그림으로 설명한 글입니다.
+
+딥러닝에 대한 기본적인 지식은 있지만, Generative Model에 대한 지식이 없는 사람들이
+읽으면 적당한 정도의 내용을 담고 있습니다.
+
 
 ## 📌 북마크
 
