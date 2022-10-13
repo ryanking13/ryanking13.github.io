@@ -8,6 +8,8 @@ summary: " "
 draft: true
 ---
 
+[[[맞춤법검사]]]
+
 알고리즘을 배웠다면 누구나 가장 처음 배우는 것이 정렬 알고리즘입니다.
 보통은 버블 정렬(Bubble Sort)에서 시작해서 최종적으로 퀵 정렬(Quick Sort)과
 병합 정렬(Merge Sort)까지 배우게 되고,
@@ -212,51 +214,97 @@ swap 과정에서 data movement를 최적화하는 방법,
 </div>
 </div>
 
-여기서 아주 흥미로운 사실은, 퀵 정렬에서 피벗을 "적당히" 잘못 고르더라도
+여기서 아주 흥미로운 사실은, 퀵 정렬에서 피벗을 어느정도 잘못 고르더라도
 성능에 큰 영향을 미치지 않는다는 점입니다.
 위 그래프는 파티셔닝 비율에 따른 퀵 정렬의 성능을 나타낸 것인데요.
-흥미롭게도 매번 50:50으로 이상적인 파티셔닝이 이루어진 경우와 비교했을 때
-10:90으로 아주 치우진 파티셔닝을 "매번" 반복한 경우라도
-약 2배 정도의 시간이 소요되는 것을 볼 수 있습니다.
-즉, "적당히" 괜찮은 피벗만 고르더라도 Quick Sort는 충분히 좋은 성능을 낼 수 있다는 점을 의미합니다.
+90:10으로 아주 치우진 파티셔닝을 매번 반복한 경우에도
+50:50으로 이상적인 파티셔닝이 이루어진 경우와 비교해서,
+약 2배 정도의 시간이 소요되는 것을 확인할 수 있습니다.
+즉, 이는 **적당히** 괜찮은 피벗만 고르더라도 퀵 정렬은
+충분히 좋은 성능을 낼 수 있다는 것을 의미합니다.
 
-이러한 사실을 숙지한 상태에서, Quick Sort에서 피벗을 선택하는 방법을 살펴보겠습니다.
+이러한 특징을 바탕으로, 피벗을 선택하는 방법을 살펴보겠습니다.
 일반적으로 잘 알려진 피벗 선택 방법은
-median-of-three인데요. 이는 피벗을 선택하기 위해 배열의 첫 원소, 중간 원소, 마지막 원소를
+**median-of-three**인데요.
+이는 피벗을 선택하기 위해 배열의 첫 원소, 중간 원소, 마지막 원소를
 비교하여 중간값을 피벗으로 선택하는 방법입니다.
-이 방법은 피벗을 선택하는 데 드는 오버헤드가 적고,
-이미 정렬된 배열이나 역순으로 정렬된 배열처럼, 특정한 패턴을 갖고 있는 경우에도
+이 방법은 피벗을 선택하는 데 드는 오버헤드가 아주 적고,
+이미 정렬된 배열이나 역순으로 정렬된 배열과 같이
+특정한 패턴을 갖고 있는 경우에도
 적절한 피벗을 선택할 수 있다는 장점이 있습니다.
 
-여기서 조금 더 나아간 방법은 tukey's ninther라고 알려진 방법인데요.
+여기서 조금 더 나아간 방법은 **tukey's ninther**라고 알려진 방법인데요.
 이는 median-of-three를 세 번 수행한 후, 그 결과를 다시 median-of-three로 선택하는 방법입니다.
 이 방법은 피벗을 선택하는 데 드는 오버헤드가 조금 더 크지만,
 median-of-three보다 더 좋은 피벗을 선택할 수 있다는 장점이 있습니다.
 
-pdqsort에서는 이 두 방법을 혼합한 방법을 사용하는데요.
-배열의 크기가 작은 경우는 median-of-three를 세번 수행하는 tukey's ninther의 오버헤드를 줄이기 위해,
+pdqsort에서는 이 두 방법을 혼합한 방법을 제시하는데요.
+배열의 크기가 작은 경우는 tukey's ninther의 오버헤드를 줄이기 위해,
 단순히 median-of-three를 사용하고,
-배열의 크기가 특정 크기 이상인 경우(논문에서는 128)에는 tukey's ninther를 사용합니다.
+배열의 크기가 특정 크기 이상인 경우(구현체에서는 *128*)에는
+tukey's ninther를 사용합니다.
+코드로 표현하면 다음과 같습니다.
 
-재귀적으로 호출되는 함수의 특성상 배열의 크기가 작은 경우 (leaf)가 많이 호출되기 때문에,
-이러한 leave를 최적화하는 것이 아주 중요하다고 저자는 얘기합니다.
+<div style="text-align: center;">
+<image src="/assets/post_images/pdqsort/ninther.png" />
+<!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=seti&wt=none&l=text%2Fx-c%2B%2Bsrc&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=false&wa=true&pv=6px&ph=7px&ln=false&fl=1&fm=JetBrains+Mono&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=mid%2520%253D%2520size%2520%252F%25202%253B%250Aif%2520%28size%2520%253E%2520ninther_threshold%29%2520%257B%250A%2520%2520sort3%28st%252C%2520st%2520%252B%2520mid%252C%2520ed%2520-%25201%29%253B%250A%2520%2520sort3%28st%2520%252B%25201%252C%2520st%2520%252B%2520%28mid%2520-%25201%29%252C%2520ed%2520-%25202%29%253B%250A%2520%2520sort3%28st%2520%252B%25202%252C%2520st%2520%252B%2520%28mid%2520%252B%25201%29%252C%2520ed%2520-%25203%29%253B%250A%2520%2520%250A%2520%2520sort3%28st%2520%252B%2520%28mid%2520-%25201%29%252C%2520st%2520%252B%2520mid%252C%2520st%2520%252B%2520%28mid%2520%252B%25201%29%29%253B%250A%2520%2520swap%28st%252C%2520st%2520%252B%2520s2%29%253B%250A%257D%2520else%2520%257B%250A%2520%2520sort3%28st%252C%2520st%2520%252B%2520mid%252C%2520ed%2520-%25201%29%253B%250A%257D -->
+</div>
 
-## Patterns
+별 것 아닌 휴리스틱이라고 생각할 수 있지만,
+저자는 재귀적으로 호출되는 함수의 특성상 배열의 크기가 작은 경우의
+호출이 아주 많이 발생하고,
+이러한 케이스를 최적화하는 것이 중요하다고 얘기합니다.
+결과적으로 이러한 최적화를 통해서 단순히 tukey's ninther를 사용하는 것보다
+1.7% 정도의 성능 향상을 얻을 수 있었다고 합니다.
 
-앞서 언급한 내용들은 사실 pdqsort의 독창적인 아이디어가 아닌, 기존의 최신 연구들의 기법을 적용한 것
-그리고 이를 바탕으로 최적화를 한 것인데요.
+## Unguarded Insertion Sort
 
-이번 문단에서는 pdqsort (Pattern-Defeating) 의 이름에 맞는,
-데이터의 패턴을 분석하고 이를 격파(?) 하는 pdqsort의 기법들을 소개하겠습니다.
+pdqsort에서 삽입 정렬을 최적화하는 방법으로는
+Unguarded Insertion Sort라는 기법을 사용합니다. [^unguarded-insertion-sort]
 
-#### Low cardinality
+[^unguarded-insertion-sort]: 해당 기법에 대한 공식적인 명칭이 있는 것 같지는 않고,
+저자는 "전통적으로" 이런 이름으로 불린다고 논문에서 언급합니다.
 
-첫번째 기법이자 pdqsort의 유니크한 기법은 정렬 대상의 데이터가 low cardinality인 경우,
-즉 데이터의 종류가 적은 경우를 분석하고 이를 최적화하는 것입니다.
+이는 삽입 정렬에서 배열 끝 부분에 대한 검사(bound check)를 제거하는 방법인데요.
+삽입 정렬이 수행되는 배열이 전체 배열이 아니라,
+재귀 호출 과정에서의 부분 배열이라는 점을 이용합니다.
 
-이는 현실 세계에서 생각보다 많이 발생하는 경우인데요.
-데이터 자체가 가진 정보는 다양하지만, 정렬의 기준이 되는 키는 적은 경우가 많습니다.
-대표적으로는 SQL 에서 쿼리를 작성 할 때, order by 키워드를 사용하여 데이터를 정렬할 때,
+현재 삽입 정렬이 수행되는 부분 배열(chunk)이
+전체 배열의 가장 왼쪽에 위치한 배열(leftmost chunk)가 아니라면,
+현재 정렬하고자 하는 배열의 **왼쪽**에는 퀵 정렬의 파티셔닝 과정을 통해
+현재 배열의 원소들보다는 작거나 같은 원소들로만 이루어진 배열이 존재함이 보장됩니다.
+
+<div style="text-align: center;">
+<image src="/assets/post_images/pdqsort/insertion-bound-check.png" />
+</div>
+
+코드로 살펴보면, 일반적인 삽입 정렬의 삽입 과정은 위와 같은데요.
+인덱스를 왼쪽으로 이동시켜가면서 값을 삽입할 수 있는 위치를 찾는 과정에서,
+인덱스가 배열 범위를 넘어가지 않도록 검사하는 부분이 존재합니다.
+
+<div style="text-align: center;">
+<image src="/assets/post_images/pdqsort/insertion-no-bound-check.png" />
+<!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=seti&wt=none&l=text%2Fx-c%2B%2Bsrc&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=false&wa=true&pv=6px&ph=7px&ln=false&fl=1&fm=JetBrains+Mono&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=while%28comp%28*idx%252C%2520val%29%29%2520%257B%2520%250A%2520%2520sift%28idx%29%253B%250A%2520%2520idx--%253B%250A%257D -->
+</div>
+
+그러나 Unguarded Insertion Sort에서는 인덱스 값이 배열 범위를 벗어나서
+더 왼쪽으로 이동하더라도, 해당 위치이 더 작은 원소가 있다는 것이
+보장되어 있으므로 해당 검사를 제거할 수 있습니다.
+
+
+## Defeating Patterns
+
+마지막으로는 이 정렬 기법에 pdqsort라는 이름이 붙은 이유에 해당하는,
+특수한 **패턴**을 가진 데이터를 격파(?)하기 위해
+적용된 최적화 기법에 대해서 살펴보겠습니다.
+
+### Low cardinality
+
+데이터의 유니크한 값의 종류(cardinality)가 적은 경우, 즉 많은 데이터가 중복된 값을 가지는 경우는
+현실 세계에서 흔히 볼 수 있는 패턴입니다.
+
+대표적인 예시로는 SQL에서 특정한 키를 기준으로 데이터를 정렬할 때가 있습니다.
+이 경우, 데이터 자체는 매우 다양하더라도 정렬에 사용되는 키의 값의 종류는 한정적인 경우가 많습니다.
 
 ```
 SELECT * FROM cars ORDER BY maker;
@@ -264,92 +312,101 @@ SELECT * FROM songs ORDER BY duration;
 SELECT * FROM users ORDER BY age;
 ```
 
-이러한 경우는 정렬 대상이 되는 데이터 중 같은 값이 많이 발생하고 해당 케이스의 불필요한 비교 과정을
-최소화 하는 것이 정렬 효율을 높일 수 있는데요.
+pdqsort는 이러한 특성을 갖는 데이터에 대해,
+같은 값에 대한 불필요한 비교 과정을
+최소화 하기 위해 다음과 같은 방법을 제시합니다.
 
-pdqsort는 이를 다음과 같이 해결합니다.
-
-1. Quick Sort의 Partition 과정에서 정해진 피벗을 현재의 subarray 바로 왼쪽(앞) 값과 비교합니다.
-2. 만약 피벗이 왼쪽 값과 같다면, partition 과정에서 피벗과 같은 값을 피벗 왼쪽으로 보냅니다. (partition-left)
-3. 피벗이 왼쪽 값보다 크다면, partition 과정에서 피벗과 같은 값을 피벗 오른쪽으로 보냅니다. (partition-right)
+1. 퀵 정렬의 파티셔닝 과정에서 정해진 피벗을 현재 배열의 바로 왼쪽에 위치한 값과 비교합니다.
+2. [partition-left] **피벗이 현 배열의 왼쪽 값과 같다면,** 파티셔닝 과정에서 피벗과 같은 값을 피벗 왼쪽으로 보냅니다.
+3. [partition-right] **피벗이 현 배열의 왼쪽 값보다 크다면**, 파티셔닝 과정에서 피벗과 같은 값을 피벗 오른쪽으로 보냅니다.
+4. partition-left 가 이루어졌다면, 피벗 오른쪽에 대해서만 재귀를 수행합니다.
+5. partition-right 가 이루어졌다면, 피벗 양쪽에 대해서 모두 재귀를 수행합니다.
 
 <div style="text-align: center;">
-<image src="/assets/post_images/pdqsort/low-cardinality.png" />
+<image src="/assets/post_images/pdqsort/low-cardinality-partition.png" />
 <div>
     <span style="color:grey"><small><i>출처: https://www.youtube.com/watch?v=jz-PBiWwNjc</i></small></span>
 </div>
 </div>
 
-굳이 경우를 나누는 연산을 추가해가면서까지 이런 과정을 하는 이유가 뭘까요?
+앞서 Unguarded Insertion Sort를 설명하면서, 현재 정렬 대상이 되는 부분 배열의 왼쪽에는
+더 작거나 같은 값만이 존재한다는 것을 설명했습니다.
+
+따라서, 피벗과 현 배열의 왼쪽에 있는 값이 같다면 (partition-left)
+피벗이 현 배열에서 가장 작은 값이라는 것을 알 수 있습니다.
+나아가서 파티셔닝 과정에서 피벗 왼쪽으로 보내지는 값들도 모두 피벗과 같은 값이라는 것을 알 수 있습니다.
+즉, 파티셔닝 후에 피벗 왼쪽은 이미 정렬된 상태이므로 재귀를 수행할 필요가 없습니다.
+
+글로 보면 이해하기 어려우니, 그림으로 살펴보겠습니다.
 
 <div style="text-align: center;">
-<image src="/assets/post_images/pdqsort/low-cardinality-step.png" />
+<image src="/assets/post_images/pdqsort/low-cardinality-partition-step.png" />
 <div>
     <span style="color:grey"><small><i>출처: https://www.youtube.com/watch?v=jz-PBiWwNjc</i></small></span>
 </div>
 </div>
 
-그림으로 과정을 뜯어보면 이해하기 쉬운데요. partition-left가 수행될 때를 보면,
-피벗이 왼쪽 값과 같다면, 이미 피벗 왼쪽 subarray는
-현재 정렬하고자 하는 subarray보다 작거나 같은 값들로만 이루어져 있음이 보장되므로,
-partition 과정에서 피벗 왼쪽으로 간 데이터는 모두 피벗과 같은 값이라는 것을 알 수 있습니다.
-즉, 이미 partition의 왼쪽은 정렬이 완료된 데이터임이 보장되므로, right recursion만 수행하면 되는 것입니다.
+위 그림은 두번의 파티셔닝을 수행하는 모습을 보여주고 있습니다.
+핵심적인 부분은 아래 두 줄인데요.
+partition-left가 수행된 후에,
+피벗 왼쪽에는 피벗과 같은 값들만이 존재하고,
+정렬이 완료된 상태임을 확인할 수 있습니다.
+따라서 피벗 왼쪽 영역에 대해서는 재귀를 수행할 필요가 없다는 것을 알 수 있습니다.
 
-저자는 이와 같은 최적화를 한 경우에, 데이터의 cardinality가 k일 때, 시간 복잡도가 O(nk)임을 보였습니다.
+이 방법은 얼마나 효과적일까요?
 
-#### Pre-sorted / mostly sorted
+잘 생각해보면, 이 방법을 사용한 경우, 같은 값이 피벗이 되는 경우는 **최대 2번**이라는 것을 알 수 있습니다.
+위 그림에서 살펴보면, 처음 7이 피벗으로 선택되면 partition-right을 통해 배열에 존재하는 남은 7들은
+모두 피벗의 오른쪽으로 이동하게 됩니다. 이후에 오른쪽 부분 배열에서 다시 7이 피벗으로 선택되면
+해당 부분 배열의 왼쪽에는 앞서 피벗으로 선택했던 7이 존재하고, partition-left를 통해 남은 모든 7들이
+피벗의 왼쪽으로 이동하고 정렬이 완료되기 때문에 다시 피벗으로 선택되지 않습니다.
 
-저자는 이미 대부분의 데이터가 정렬되어 있는 경우에 정렬을 수행하는 경우도 매우 흔하다고 말합니다.
-특히 평소에 데이터를 정렬한 상태로 보관하고 있지만, 새로운 데이터가 동적으로 추가되는 경우에는
-이미 정렬된 데이터에 새로운 데이터를 추가하고, 정렬을 수행하는 경우가 많습니다.
+따라서, 데이터의 서로 다른 값의 개수가 K일 때 최대 2K번의 재귀가 수행되므로,
+수행 시간의 upper bound는 `O(NK)`가 됩니다.
 
-이러한 경우의 최적화에 대해서도 ...
+### Pre-sorted / Mostly sorted
 
-이에 대한 휴리스틱으로 pdqsort에서는 llvm의 libc++에서 도입되었던 optimistic insertion sorting 이라는
-아이디어를 사용하는데요. 저자의 말로는 llvm에서는 사용되고 있었지만, 공식적으로 문헌에 기록되어 있지는 않다고 합니다.
+또 다른 흔한 케이스로, 이미 대부분 정렬되어 있는 데이터를 다시 정렬하는 경우가 있습니다.
+대표적으로는 이미 정렬된 데이터에 새로운 데이터가 추가되는 경우가 있습니다.
 
-이 아이디어는 간단한데요. 이미 전부, 혹은 대부분이 정렬된 케이스를 탐지하기 위해서,
-Quick Sort의 partition 과정에서 아무런 swap이 일어나지 않은 경우를 탐지하고,
-이 경우 이미 대부분 정렬되어있을 가능성을 고려해, 우선적으로 insertion sort를 수행해보는 것입니다.
-이 과정에서 insertion이 특정 횟수를 초과하면 그 순간 중단하고 quick sort를 수행합니다.
-여기서 "특정 횟수"는 물론 하이퍼 파라미터인데요, 논문에서 저자는 8을 사용했다고 합니다.
+이러한 데이터 패턴에 대한 휴리스틱적인 해결책으로,
+pdqsort에서는 llvm의 libc++에서 도입되었던
+낙관적인 삽입 정렬(Optimistic Insertion Sort)이라는
+아이디어를 사용합니다. [^optimistic-insertion-sort]
 
-swap이 일어나지 않을 때마다 insertion 을 수행하는 것이 overhead가 되지 않을까하는 의문이 들 수 있는데요.
-저자는 실험적으로 swap이 일어나지 않는 경우는 앞서 언급한 이미 데이터가 대부분 정렬된 특수한 경우를 제외하면
-거의 발생하지 않는 경우로 오버헤드가 작다고 주장합니다.
+[^optimistic-insertion-sort]: 저자의 말로는 llvm에서는 사용되고 있었지만,
+공식적으로 논문 등에 기록되어 있지는 않았다고 합니다.
 
-### 기타
+이 아이디어는 굉장히 간단한데요.
+이미 모든 원소 또는 대부분의 원소가 정렬된 케이스를 탐지하기 위해서,
+퀵 정렬의 파티셔닝 과정에서 아무런 swap이 일어나지 않은 경우를 탐지하고,
+이 경우, 이미 대부분의 데이터가 정렬되어있을 가능성을 고려해,
+재귀적으로 퀵 정렬을 수행하기 전에 우선적으로 삽입 정렬을 수행해보는 것입니다.
+이 과정에서 특정 횟수 이상 삽입이 이루어지면,
+그 순간 중단하고 다시 퀵 정렬을 수행합니다.
+논문에서는 *특정 횟수*로 8을 사용했다고 합니다.
 
-그 외에 pqdsort에 적용된 몇 가지 최적화 기법을 간단히 언급하겠습니다.
+굉장히 간단한 아이디어이지만, 한편으로는
+삽입 정렬을 수행하다 다시 퀵 정렬로 돌아가는 것이
+추가적인 오버헤드가 되지 않을까 하는 의문이 들 수 있는데요.
+저자는 swap이 일어나지 않는 경우는
+이미 데이터가 대부분 정렬된 특수한 경우를 제외하면
+거의 발생하지 않는 경우이기 때문에 오버헤드가 매우 작다고 주장합니다.
 
-- insertion sort 관련
+## 결론
 
-Quick Sort의 정렬 대상이 충분히 작아졌을 때에 Insertion Sort로 전환해서 수행을 하는데,
-이 "충분히 작은 값"을 어떻게 정하는 지를 생각해볼 수 있습니다.
-pdqsort에서는 12 일때가 가장 적은 수의 "comparision"을 수행했다고 하는데요,
-그러나 integer sort를 기준으로 24 또는 32가 더 좋은 수행 시간을 보였다고 합니다. 대신 비교 횟수는 증가.
-따라서 element를 비교하는 행위가 얼마나 overhead가 큰지에 따라서 동적으로 적절한 값을 선택할 필요가 있으며,
-실제로 libc의 구현체에서도 비교의 오버헤드가 작은 integer의 경우는 작은 값을, string과 같이 비교의 오버헤드가 큰 경우는 큰 값을 사용하고 있다고 합니다.
+본 글에서는 Golang과 Rust에서 표준 정렬 알고리즘으로
+채택된 pdqsort에 대해서 살펴보면서,
+현대 정렬 알고리즘에 적용된 다양한 최적화 기법에 대해서 알아보았습니다.
 
-또한 insertion sort를 최적화하는 방법으로 pdqsort는 unguared_insertion_sort라는 방법을 사용하는데요.
-이는, insertion sort에서의 bound check를 제거하는 방법으로, 현재 insertion sort를 수행하고자하는 chunk가
-전체 배열의 leftmost chunk가 아니라면, leftmost chunk에는 현재 chunk보다 작은 원소들로만 구성되어있는 것이 보장되기 때문에
-insertion을 수행할 때 bound check를 하지 않는 것.
+참고로 pdqsort에는 본문에서는 따로 언급하지 않았지만,
+퀵 정렬에서 삽입 정렬 또는 힙 정렬로 전환하는 기준 등
+기타 몇 가지 최적화 기법들이 더 포함되어 있습니다.
 
-insertion 에서 sift가 일어나는 부분을 일반적으로는 아래와 같이 작성하게 되는데,
-
-<div style="text-align: center;">
-<image src="/assets/post_images/pdqsort/insertion-bound-check.png" />
-</div>
-
-index를 줄여나가면서 bound를 넘어가지 않도록 체크하고 있는 한편
-
-<div style="text-align: center;">
-<image src="/assets/post_images/pdqsort/insertion-no-bound-check.png" />
-<!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=seti&wt=none&l=text%2Fx-c%2B%2Bsrc&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=false&wa=true&pv=6px&ph=7px&ln=false&fl=1&fm=JetBrains+Mono&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=while%28comp%28*idx%252C%2520val%29%29%2520%257B%2520%250A%2520%2520sift%28idx%29%253B%250A%2520%2520idx--%253B%250A%257D -->
-</div>
-
-~ 이미 왼쪽에 더 작은 element가 있다는 것이 보장되어있으므로 bound check를 하지 않아도 된다.
+어떻게 보면 굉장히 사소하다고 할 수 있는 많은 부분에서
+많은 최적화가 이루어지고 있음을 알 수 있는데요.
+앞으로 어떤 기법들이 추가되고 언어와 알고리즘이 발전해 나가는지
+꾸준히 살펴보는 것도 흥미로울 것 같 습니다.
 
 
 
