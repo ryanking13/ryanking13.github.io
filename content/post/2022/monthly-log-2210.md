@@ -40,6 +40,10 @@ TED 영상에서는 간단하게 두 코드를 비교하고 넘어가는데요.
 딥러닝에 대한 기본적인 지식은 있지만, Generative Model에 대한 지식이 없는 사람들이
 읽으면 적당한 정도의 내용을 담고 있습니다.
 
+### [The State of AI & Art 2022](https://velog.io/@laeyoung/The-State-of-AI-Art-2022)
+
+2022년의 핫한 토픽인 Text-to-Image AI에서
+지난 1년간의 주요한 프로젝트를 시간 순으로 정리한 글
 
 ## 📌 북마크
 
