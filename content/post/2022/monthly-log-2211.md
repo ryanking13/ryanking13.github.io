@@ -1,6 +1,6 @@
 ---
 date: "2022-11-30T00:01:00"
-title: 월간 기술 스크랩 22/10
+title: 월간 기술 스크랩 22/11
 categories:
 - Newsletter
 description: 흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 11월)
@@ -24,6 +24,20 @@ hiddenfromhomepage: true
 
 ## 📰 기술 뉴스
 
+### [Kite is saying farewell](https://www.kite.com/blog/product/kite-is-saying-farewell/)
+
+2014년부터 개발되었던 코드 자동 완성 및 추천 도구인 Kite가 개발을 중단한다는 소식.
+
+최근에는 Github Copliot과 같이 비슷한 기능을 제공하는 도구들이 나오고 빛을 보기 시작했지만,
+Kite는 기술이 충분히 성숙하지 못한 이른 시기에 런칭했기에 사용자에게 충분히 어필하지 못했다고 얘기합니다.
+
+흥미로운 점은 Kite 개발 중단과 함께 회사 내부에사 사용하던 많은 코드를 오픈소스로 깃헙에 공개했는데요.
+Kite 엔진과 더불어 다양한 도구들이 있으니 살펴보는 것도 좋을 듯 합니다.
+
 ## ⚙️ 소프트웨어 / 프로젝트
 
 ## 📙 책 / 강의 / 영상
+
+### [웹팩 핸드북](https://joshua1988.github.io/webpack-guide/)
+
+웹팩의 개념과 기본적인 사용법을 설명하는 튜토리얼 사이트.
