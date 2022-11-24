@@ -20,7 +20,13 @@ hiddenfromhomepage: true
 별도의 광고 수입이나 투자를 받는 것은 없다고 하며, 이를 통해 더 많은 돈을 벌 수도 있지만
 자유롭게 오픈 소스를 개발하는 것으로부터 얻는 자유와 평화가 더 가치있다고 느낀다고 합니다.
 
-<!-- ## 📌 북마크 -->
+## 📌 북마크
+
+### [Stable Diffusion Prompt Book](https://openart.ai/promptbook)
+
+Stable Diffusion을 더 잘 사용하기 위한 기본적인 가이드와,
+어떠한 프롬프트가 어떤 효과를 내는 지를 정리한 온라인 가이드북
+
 
 ## 📰 기술 뉴스
 
