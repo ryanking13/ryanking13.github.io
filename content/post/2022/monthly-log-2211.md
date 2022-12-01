@@ -20,6 +20,18 @@ hiddenfromhomepage: true
 별도의 광고 수입이나 투자를 받는 것은 없다고 하며, 이를 통해 더 많은 돈을 벌 수도 있지만
 자유롭게 오픈 소스를 개발하는 것으로부터 얻는 자유와 평화가 더 가치있다고 느낀다고 합니다.
 
+### [Migrating From Python to Kotlin for Our Backend Services](https://doordash.engineering/2021/05/04/migrating-from-python-to-kotlin-for-our-backend-services/)
+
+도어 대시에서 Python에서 Kotlin으로 백엔드 서비스를 마이그레이션하기 위해 어떤 과정을 거쳤는지 소개하는 글입니다.
+
+기존에는 Python 2와 Django를 이용해서 서비스 하고 있었지만, Python 2의 수명이 끝나면서
+마이그레이션이 필요해졌고, 다양한 언어를 고려하다가 Kotlin을 선택했다고 합니다.
+
+도어대시 서비스에 필요한 기능들을 정리하면서, 여러 언어들이 이러한 요구사항을 갖추고 있는지,
+각 언어의 장단점을 비교한 후 Kotlin을 선택하였고,
+Kotlin으로 언어를 변경하면서 얻게 된 이점과,
+한편으로 마이그레이션 과정에서 직원들이 새로운 언어를 학습하고 사용할 수 있도록 어떤 프로세스를 만들었는지를 소개합니다.
+
 ## 📌 북마크
 
 ### [Stable Diffusion Prompt Book](https://openart.ai/promptbook)
@@ -41,6 +53,13 @@ Kite는 기술이 충분히 성숙하지 못한 이른 시기에 런칭했기에
 Kite 엔진과 더불어 다양한 도구들이 있으니 살펴보는 것도 좋을 듯 합니다.
 
 ## ⚙️ 소프트웨어 / 프로젝트
+
+### [Muse](https://lightning.ai/muse/view/null)
+
+pytorch-lightning을 만든 Lighting-AI에서 공개한 stable diffusion 서빙 도구.
+
+사실 워낙 많이 쏟아져나오는 stable diffusion 기반 도구들이 있어 특별할 것이 있나 싶기도 합니다.
+기본적으로는 자사의 앱 서빙 프레임워크를 홍보하는 도구에 가까워보이네요.
 
 ## 📙 책 / 강의 / 영상
 
