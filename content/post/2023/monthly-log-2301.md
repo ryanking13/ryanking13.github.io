@@ -20,6 +20,21 @@ hiddenfromhomepage: true
 최근 생성 모델 관련해서 개인적으로는 기술적으로 깊게 따라가지는 못하고 있고 이런 저런 뉴스만
 겉핥기식으로 살펴보고 있는데, 상당히 흥미로운 내용들이 많은 것 같습니다.
 
+### [The Inside Story On Shared Libraries and Dynamic Loading (2001)](https://www.scribd.com/document/68234210/The-Inside-Story-on-Shared-Libraries-and-Dynamic-Loading#)
+
+리눅스 공유 라이브러리와 동적 로딩에 대해 전반적으로 설명하는 글.
+
+2001년에 나온 오래된 글인데, 교과서와 블로그 아티클의 중간 정도되는 수준의 내용으로
+공유 라이브러리에 관한 전반적인 내용을 요약한 좋은 글입니다.
+
+### [The GPT-3 Architecture, on a Napkin](https://dugas.ch/artificial_curiosity/GPT_architecture.html)
+
+GPT-3의 구조... 라기 보다는 트랜스포머 아키텍처를 설명하는 글.
+
+이런 글을 읽다보면 참 트랜스포머가 간결하고 좋은 아키텍쳐라는 것이 느껴집니다.
+물론 악마는 디테일에 있는 법이고, 실제 학습이 잘 되게 하기 위한 여러가지 트릭들이 거대 모델에서는
+중요해지겠지만요.
+
 ## 📌 북마크
 
 ## 📰 기술 뉴스
