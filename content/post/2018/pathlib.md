@@ -2,19 +2,23 @@
 date: "2018-05-22T00:00:00Z"
 categories:
 - Python
-title: 파이썬 pathlib 사용하기 - NO MORE os.path.join()
-summary: 파이썬 3.4에서 등장한 pathlib 모듈을 살펴보는 글입니다.
+title: os.path 대신 pathlib 
+summary: " "
+draft: true
 ---
 
- - 서론이 좀 기니 조각 코드만을 보러 온거라면 [여기](#usage)를 클릭
-
-지난 4월 26일 파이썬 웹 프레임워크인 flask가 1.0 버전 릴리즈를 [발표했다](https://www.palletsprojects.com/blog/flask-1-0-released/). 나는 flask 사용자는 아니지만 발표 내용 중 눈에 띄는 것이 하나 있었는데, 버전 업그레이드를 하면서 파이썬 3.3 버전 지원을 중단한 것이다.
+지난 4월 26일 파이썬 웹 프레임워크인 flask가 1.0 버전 릴리즈를 [발표했습니다](https://www.palletsprojects.com/blog/flask-1-0-released/).
+저는 flask 사용자는 아니지만 발표 내용 중 눈에 띄는 것이 하나 있었는데,
+버전 업그레이드를 하면서 파이썬 3.3 버전 지원을 중단한 것입니다.
 
 ```
 - Dropped support for Python 2.6 and 3.3.
 ```
 
-생각해보면 파이썬 3.3.0이 나온것이 [2012년 9월](https://www.python.org/download/releases/3.3.0/)이니 이미 [lifecycle 5년](https://devguide.python.org/#status-of-python-branches)이 지나긴 했다. 당당하게 3.4를 써도 되는 시기인 것이다.
+파이썬 3.3.0이 나온것이 [2012년 9월](https://www.python.org/download/releases/3.3.0/)이니
+이미 [lifecycle 5년](https://devguide.python.org/#status-of-python-branches)이 지났습니다.
+프로젝트에 따라 다르겠지만, 과감하게 3.3 버전 지
+당당하게 3.4를 써도 되는 시기인 것이다.
 
 따라서 그 기념(?)으로 파이썬 3.4부터 빌트인(built-in) 모듈에 포함된 __pathlib__ 을 소개해보려고 한다.
 

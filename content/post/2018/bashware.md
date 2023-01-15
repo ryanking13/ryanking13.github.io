@@ -3,7 +3,7 @@ date: "2018-05-17T00:00:00Z"
 categories:
 - Security
 title: (번역) Beware of the Bashware
-summary: WSL에서 발생하는 새로운 보안 위협인 bashware를 소개하는 글입니다.
+summary: " "
 ---
 
 [원문 링크 : Gal Elbaz and Dvir Atiasl : Beware of the Bashware: A New Method for Any Malware to Bypass Security Solutions](https://research.checkpoint.com/beware-bashware-new-method-malware-bypass-security-solutions/)
