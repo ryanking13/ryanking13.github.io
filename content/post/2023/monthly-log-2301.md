@@ -4,7 +4,7 @@ title: 월간 기술 스크랩 23/01
 categories:
 - Newsletter
 description: 흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2023년 1월)
-summary: 흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 1월)
+summary: 흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2023년 1월)
 draft: false
 hiddenfromhomepage: true
 ---
@@ -36,6 +36,13 @@ GPT-3의 구조... 라기 보다는 트랜스포머 아키텍처를 설명하는
 중요해지겠지만요.
 
 ## 📌 북마크
+
+### [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts)
+
+ChatGPT를 유용하게 사용하기 위한 여러가지 프롬프트 작성 방법들.
+주로 "~ 처럼 행동하라 (Act as)"라는 프롬프트를 주고서 하는 방법들을 설명하고 있습니다.
+
+자비스의 시대가 멀지 않은 것 같기도 하네요.
 
 ## 📰 기술 뉴스
 
