@@ -15,10 +15,7 @@ hiddenfromhomepage: true
 
 얼마 전 Stable Diffusion 2.0이 공개되었는데,
 텍스트 인코더를 OpenCLIP으로 바꾸면서 네거티브 프롬프트를 잘 입력해주는 것이
-생성 결과물 품질에 크게 영향을 미친다는 글.
-
-최근 생성 모델 관련해서 개인적으로는 기술적으로 깊게 따라가지는 못하고 있고 이런 저런 뉴스만
-겉핥기식으로 살펴보고 있는데, 상당히 흥미로운 내용들이 많은 것 같습니다.
+생성 결과물 품질에 크게 영향을 미치게 되었다는 글.
 
 ### [The Inside Story On Shared Libraries and Dynamic Loading (2001)](https://www.scribd.com/document/68234210/The-Inside-Story-on-Shared-Libraries-and-Dynamic-Loading#)
 
@@ -42,11 +39,16 @@ GPT-3의 구조... 라기 보다는 트랜스포머 아키텍처를 설명하는
 ChatGPT를 유용하게 사용하기 위한 여러가지 프롬프트 작성 방법들.
 주로 "~ 처럼 행동하라 (Act as)"라는 프롬프트를 주고서 하는 방법들을 설명하고 있습니다.
 
-자비스의 시대가 멀지 않은 것 같기도 하네요.
-
-## 📰 기술 뉴스
+<!-- ## 📰 기술 뉴스 -->
 
 ## ⚙️ 소프트웨어 / 프로젝트
+
+### [Ruff](https://github.com/charliermarsh/ruff)
+
+Rust로 구현된 파이썬 린터.
+
+속도가 가장 큰 장점이고, 기존 파이썬 생태계에 있는 다양한 도구들 (flake8, isort, pyupgrade) 등을
+하나의 도구로 통합해서 사용할 수 있다는 것도 큰 장점입니다.
 
 ## 📙 책 / 강의 / 영상
 
