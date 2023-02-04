@@ -2,8 +2,8 @@
 date: "2018-10-02T00:00:00Z"
 categories:
 - Python
-title: (번역) 드롭박스의 파이썬3 이식 이야기 Part 1
-summary: Dropbox가 파이썬 코드를 2에서 3으로 이식하는 과정을 담은 글입니다.
+title: (번역) 드롭박스의 파이썬3 이식 이야기
+summary: " "
 ---
 
 > [원문 링크: Dropbox Tech Blog - How we rolled out one of the largest Python 3 migrations ever](https://blogs.dropbox.com/tech/2018/09/how-we-rolled-out-one-of-the-largest-python-3-migrations-ever/amp/?__twitter_impression=true)

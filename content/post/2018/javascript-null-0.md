@@ -10,8 +10,6 @@ summary: " "
 
 > Why it’s important to read the Javascript Spec
 
-예상치못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글이다.
-
 ---
 
 ![](https://cdn-images-1.medium.com/max/1600/1*F-EDLK-OugJ_4KOgtJqnPA.png)
@@ -29,11 +27,13 @@ null >= 0; // true
 
 값이 `0`보다 __크지 않고__ `0`과 __같지 않은데__ `0`보다 __크거나 같다__ 라니?
 
-처음에는 그냥 자바스크립트가 자바스크립트했구나 하고 넘어가려고 했지만, 워낙 동작이 이상해서 도리어 흥미가 생겼다. `null` 타입이 특수하게 다뤄져서 이런 결과가 나온 걸까? 아니면 비교 연산이 이루어지는 방식이랑 관계가 있는 것일까?
-
-그래서 이 문제의 원인을 알기 위해서 뿌리까지 파고들어가보기로 했다. 자바스크립트의 유일한 진리가 담긴 것! 그렇다 자바스크립트 스펙 문서다.
-
-자 토끼를 잡으러 토끼굴에 들어가보자.
+처음에는 그냥 자바스크립트가 자바스크립트했구나 하고 넘어가려고 했지만,
+워낙 동작이 이상해서 도리어 흥미가 생겼다.
+`null` 타입이 특수하게 다뤄져서 이런 결과가 나온 걸까?
+아니면 비교 연산이 이루어지는 방식이랑 관계가 있는 것일까?
+그래서 이 문제의 원인을 알기 위해서 뿌리까지 파고들어가보기로 했다.
+자바스크립트의 유일한 진리가 담긴 것! 그렇다 자바스크립트 스펙 문서다.
+자, 토끼를 잡으러 토끼굴에 들어가보자.
 
 ## The Abstract Relational Comparison Algorithm
 
@@ -43,7 +43,10 @@ null >= 0; // true
 null > 0; // false
 ```
 
-스펙 문서에 따르면, `>`, `<` 비교 연산자는 [_Abstract Relational Comparison Algorithm_](http://interglacial.com/javascript_spec/a-11.html#a-11.8.5)이라는 알고리즘을 사용하여 구문의 true/false를 판정한다.
+스펙 문서에 따르면, `>`, `<` 비교 연산자는
+[_Abstract Relational Comparison Algorithm_](http://interglacial.com/javascript_spec/a-11.html#a-11.8.5)
+이라는 알고리즘을 사용하여
+구문의 참거짓을 판정한다.
 
 ```
 1. ToPrimitive(x, hint Number)를 호출.

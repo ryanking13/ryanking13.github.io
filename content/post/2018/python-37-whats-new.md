@@ -3,7 +3,8 @@ date: "2018-07-12T00:00:00Z"
 categories:
 - Python
 title: 파이썬 3.7의 새로운 기능들
-summary: 파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니다.
+summary: " "
+draft: true
 ---
 <div style="width: 100%; display: flex; justify-content: center;">
 <blockquote class="twitter-tweet" data-lang="ko"><p lang="en" dir="ltr">Python 3.7.0 is released! Bring out the celebratory libations. Thanks <a href="https://twitter.com/baybryj?ref_src=twsrc%5Etfw">@baybryj</a> and a cast of thousands on python-dev and GitHub. <a href="https://t.co/wEG4vO76Rd">https://t.co/wEG4vO76Rd</a></p>&mdash; Guido van Rossum (@gvanrossum) <a href="https://twitter.com/gvanrossum/status/1012144089452535809?ref_src=twsrc%5Etfw">2018년 6월 28일</a></blockquote>
@@ -11,9 +12,9 @@ summary: 파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니�
 </div>
 
 
-파이썬 3.7이 2018년 6월 27일에 [정식 릴리즈](https://www.python.org/downloads/release/python-370/) 되었습니다. 여러가지 흥미로운 기능이 추가되어서 이 글에서 간략하게 살펴보겠습니다.
-
-파이썬 3.7 버전에서 바뀐 기능 전체를 보려면 [이곳](https://docs.python.org/3.7/whatsnew/3.7.html)을 참고해주세요.
+파이썬 3.7이 2018년 6월 27일에 [정식 릴리즈](https://www.python.org/downloads/release/python-370/) 되었습니다.
+이 글은 그 중 몇 가지 흥미로운 변경사항을 소개합니다.
+전체 changelog를 보려면 [이곳](https://docs.python.org/3.7/whatsnew/3.7.html)을 참고해주세요.
 
 순서는 주관적인 흥미도 순입니다 :)
 
@@ -24,8 +25,9 @@ summary: 파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니�
 > PEP 563: Postponed Evaluation of Annotations
 
 파이썬에서 정적 타입 검사를 하려는 노력은 꽤나 오래 전부터 있었습니다.
-
-파이썬 3.0의 등장과 함께 `Type Annotation` 문법이 탄생해 파이썬 코드 상에 타입을 명시할 수 있게 되었지만, 당시에는 실질적인 기능은 없었습니다. PyCharm과 같은 IDE에서는 해당 문법을 파싱해서 정적 타입 검사를 해주었지만, 그러한 IDE를 사용하지 않는 유저들은 혜택을 볼 수 없었습니다.
+파이썬 3.0의 등장과 함께 `Type Annotation` 문법이 탄생해 파이썬 코드 상에 타입을 명시할 수 있게 되었지만,
+당시에는 실질적인 기능은 없었습니다. PyCharm과 같은 IDE에서는 해당 문법을 파싱해서 정적 타입 검사를 해주었지만,
+그러한 IDE를 사용하지 않는 유저들은 혜택을 볼 수 없었습니다.
 
 ```python
 # type annotation
@@ -33,7 +35,11 @@ def greeting(name: str) -> str:
     return 'Hello ' + name
 ```
 
- 이후 파이썬 3.5 버전에서 [typing](https://docs.python.org/3/library/typing.html) 모듈이 등장하면서 복잡한 타입( Dict, List )을 명시할 수 있게 되었고, 파이썬의 창시자인 _Guido van Rossum_ 이 [mypy](https://github.com/python/mypy)를 내놓으면서 IDE 없이도 실질적인 정적 타입 검사가 가능해졌습니다. 파이썬 3.6에서는 typing 모듈이 Dict[int, Tuple] 와 같이 아주 복잡한 타입까지도 지원할 수 있게 되는 발전이 이루어졌습니다.
+ 이후 파이썬 3.5 버전에서 [typing](https://docs.python.org/3/library/typing.html) 모듈이 등장하면서
+ 복잡한 타입( Dict, List )을 명시할 수 있게 되었고,
+ 파이썬의 창시자인 Guido van Rossum이 [mypy](https://github.com/python/mypy)를
+ 내놓으면서 IDE 없이도 실질적인 정적 타입 검사가 가능해졌습니다.
+ 파이썬 3.6에서는 typing 모듈이 Dict[int, Tuple] 와 같이 아주 복잡한 타입까지도 지원할 수 있게 되는 발전이 이루어졌습니다.
 
  그리고 대망의 이번 파이썬 3.7에서 typing 모듈은 그 동안 가지고있던 두 가지 큰 문제를 해결하였습니다.
 
@@ -41,7 +47,10 @@ def greeting(name: str) -> str:
 
 > "The typing module is one of the heaviest and slowest modules in the standard library even with all the optimizations made." - PEP560
 
-typing 모듈은 원래 import가 아주 오래 걸리는 모듈이었습니다. 이는 typing이 각 타입을 클래스로 표현하는 것과 관련이 깊었는데, 특히 generic class를 생성할 때에 아주 오랜 시간이 걸렸다고 합니다. ([관련 Github issue](https://github.com/python/typing/issues/432), [Generic class](https://docs.python.org/3/library/typing.html#user-defined-generic-types))
+typing 모듈은 원래 import가 아주 오래 걸리는 모듈이었습니다.
+이는 typing이 각 타입을 클래스로 표현하는 것과 관련이 깊었는데,
+특히 generic class를 생성할 때에 아주 오랜 시간이 걸렸다고 합니다.
+([관련 Github issue](https://github.com/python/typing/issues/432), [Generic class](https://docs.python.org/3/library/typing.html#user-defined-generic-types))
 
 이번 파이썬 3.7에서는 typing 모듈이 속도 부분에서 괄목할만한 발전을 이루었습니다.
 
@@ -49,7 +58,8 @@ typing 모듈은 원래 import가 아주 오래 걸리는 모듈이었습니다.
 - user-defined generic class creation 4x faster
 - generic class instantiation 5x faster
 
-generic class와 관련하여 많은 발전을 이루었다고 하는데, 기술적인 부분에 대해 더 자세히 알고 싶으신 분은 [PEP560](https://www.python.org/dev/peps/pep-0560/)을 읽어보시면 도움이 될 것 같습니다.
+generic class와 관련하여 많은 발전을 이루었다고 하는데,
+기술적인 부분에 대해 더 자세히 알고 싶으신 분은 [PEP560](https://www.python.org/dev/peps/pep-0560/)을 읽어보시면 도움이 될 것 같습니다.
 
 
 2. __forward reference 불가능__
@@ -65,7 +75,6 @@ class B:
 ```
 
 기존 typing에서는 forward reference가 불가능하여 코드 순서상 정의되지 않은 클래스 타입을 참조할 수가 없었습니다.
-
 이는 자기 참조나 순환 참조를 하게 되는 클래스에서는 해결할 수가 없는 문제였고,
 
 ```python
@@ -80,7 +89,9 @@ class B:
 
 그래서 위와 같이 문자열을 사용하는 상당히 어색한 방식으로 에러를 피하고 있었습니다.
 
-이러한 forward referencing 문제를 해결하기 위하여 파이썬 4.0부터는 함수나 변수의 type annotation을 판정(evaluation)을 정의 시점이 아니라 뒤로 미룰 것이라고 합니다. 아마 인터프리터 레벨에서 많은 수준의 변경이 필요한 모양입니다.
+이러한 forward referencing 문제를 해결하기 위하여 파이썬 4.0부터는 함수나 변수의
+type annotation을 판정(evaluation)을 정의 시점이 아니라 뒤로 미룰 것이라고 합니다.
+아마 인터프리터 레벨에서 많은 수준의 변경이 필요한 모양입니다.
 
 파이썬 3.7에서는 실험적으로 forward referencing을 적용할 수 있습니다.
 
@@ -102,9 +113,11 @@ class B:
 
 > PEP 557: Data classes
 
-파이썬의 특징 중 하나는 [duck typing](https://nesoy.github.io/articles/2018-02/Duck-Typing)을 적극적으로 활용하여 클래스에 필요한 속성을 정의해주기만 하면 클래스를 원하는 대로 set, dictionary, iterable인 것처럼 쓸 수 있다는 점입니다.
-
-이번 파이썬 3.7에서 추가된 [dataclasses](https://docs.python.org/3/library/dataclasses.html) 모듈은 클래스를 데이터로서 다루기 위해 필요한 속성들을 쉽게 추가할 수 있도록 해주는 모듈입니다.
+파이썬의 특징 중 하나는 [duck typing](https://nesoy.github.io/articles/2018-02/Duck-Typing)을
+적극적으로 활용하여 클래스에 필요한 속성을 정의해주기만 하면 클래스를 원하는 대로
+set, dictionary, iterable인 것처럼 쓸 수 있다는 점입니다.
+이번 파이썬 3.7에서 추가된 [dataclasses](https://docs.python.org/3/library/dataclasses.html)
+모듈은 클래스를 데이터로서 다루기 위해 필요한 속성들을 쉽게 추가할 수 있도록 해주는 모듈입니다.
 
 클래스를 데이터로 다루기 위해서 필요한 속성에는 아래와 같은 것이 있습니다.
 
@@ -151,9 +164,11 @@ class Country:
         ...생략...
 ```
 
-간단히 훑어보시면 알겠지만 단순히 국가를 추상화한 데이터들을 묶어놓은 클래스입니다. 그렇지만 상당히 자주 작성하게 되는 형태의 클래스이기도 합니다.
-
-이런 클래스를 작성하다 보면 반복적으로 나타나는 것이 있는데요. 단순히 setter 역할을 하는 `__init__()`과, 거의 비슷하게 생긴 `__eq__()` `__gt__()`와 같은 메소드들이 있습니다.
+국가를 추상화한 데이터들을 묶어놓은 클래스인데,
+상당히 자주 작성하게 되는 형태의 클래스이기도 합니다.
+이런 클래스를 작성하다 보면 반복적으로 나타나는 것이 있는데요.
+단순히 setter 역할을 하는 `__init__()`과,
+거의 비슷하게 생긴 `__eq__()` `__gt__()`와 같은 메소드들이 있습니다.
 
 dataclasses는 이러한 반복 작업을 아주 간단하게 만들어 줍니다.
 
@@ -171,7 +186,8 @@ class Country:
     coastline: float = 0
 ```
 
-클래스에 type annotation 문법을 이용하여 필드들을 정의해놓고, `@dataclass` 데코레이터를 붙여주면 자동으로 필요한 속성들이 생성됩니다.
+클래스에 type annotation 문법을 이용하여 필드들을 정의해놓고,
+`@dataclass` 데코레이터를 붙여주면 자동으로 필요한 속성들이 생성됩니다.
 
 - dataclass 파라미터와 추가되는 속성
   - init: `__init__()`
@@ -183,17 +199,18 @@ class Country:
 
 ## asyncio / contextvars
 
-아주 주관적인 의견으로 현재 파이썬에서 가장 핫한(?) 모듈이 `asyncio`가 아닐까 싶습니다.
+파이썬에서 효율적인 비동기 연산을 수행하기 위해서
+`threading`, `multiprocessing`부터 `concurrent.futures` 까지 여러 시도와 발전이 있었습니다.
+그러나 GIL을 사용하는 파이썬의 근본적인 한계 때문에 스레딩이 제 힘을 발휘하기가 힘들었습니다.
 
-파이썬에서 효율적인 비동기 연산을 수행하기 위해서 `threading`, `multiprocessing`부터 `concurrent.futures` 까지 여러 시도와 발전이 있었습니다. 그러나 GIL을 사용하는 파이썬의 근본적인 한계 때문에 스레딩이 제 힘을 발휘하기가 힘들었습니다.
-
-그러한 상황에서 파이썬 3.4에서 등장한 coroutine 기반의 asyncio가 새롭고 강력한 대안이 되었고, 매 버전마다 상당한 발전을 이루었습니다.
-
+그러한 상황에서 파이썬 3.4에서 등장한 coroutine 기반의 asyncio가 새롭고 강력한 대안이 되었고,
+매 버전마다 상당한 발전을 이루었습니다.
 이번 파이썬 3.7에서 asyncio와 관련된 주목할만한 변화는 크게 두 가지 입니다.
 
 1. __asyncio.run() 의 추가__
 
-사실 asyncio와 관련한 수많은 메소드들이 파이썬 3.7에서 추가되었는데요. 그 중에서도 눈에 띄는것이 `asyncio.run()` 함수 입니다.
+사실 asyncio와 관련한 수많은 메소드들이 파이썬 3.7에서 추가되었는데요.
+그 중에서도 눈에 띄는것이 `asyncio.run()` 함수 입니다.
 
 이 함수는 단순히 coroutine 실행시키고, 완료될 때까지 대기하는 함수입니다.
 
@@ -206,7 +223,10 @@ class Country:
 
 일을 수행하는 함수입니다.
 
-새롭게 추가된 다른 많은 함수를 놔두고 이 함수만을 따로 언급하는 이유는, 이 함수가 asyncio의 접근성을 높여줄 것이라고 생각하기 때문입니다. asyncio가 사용하는 event loop 개념은 Node.js 등을 접해보지 않은 초보 개발자에게 있어서는 대체로 낯선 개념일 것이라고 생각합니다. (_아주 주관적인 생각입니다_)
+새롭게 추가된 다른 많은 함수를 놔두고 이 함수만을 따로 언급하는 이유는,
+이 함수가 asyncio의 접근성을 높여줄 것이라고 생각하기 때문입니다.
+
+asyncio가 사용하는 event loop 개념은 Node.js 등을 접해보지 않은 초보 개발자에게 있어서는 대체로 낯선 개념일 것이라고 생각합니다. (_아주 주관적인 생각입니다_)
 
 저의 경우는 event loop 개념을 asyncio에서 처음 접했는데요. 그런 저에게 있어서 event loop을 생성하고 그것에 task(future)를 등록하는 asyncio의 문법은 바로 직관적으로 다가오지 않았습니다.
 

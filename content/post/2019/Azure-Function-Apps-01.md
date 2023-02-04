@@ -4,7 +4,8 @@ description: Azure Functions 시작하기 1
 categories:
 - Cloud
 title: Azure Functions 시작하기 1
-summary: Azure의 서버리스 프레임워크인 Functions를 소개하는 글입니다.
+summary: " "
+draft: true
 ---
 
 그간 AWS나 Azure를 단순히 원격 서버용으로만 써오다가 최근 간단한 웹훅(Webhook)을 만들거나 주기적 작업을 해야 하는 일이 생겼다. 이 참에 Azure에서 제공하는 Functions 기능을 사용해보고 있는데, 공식 문서 이외에는 한글로 된 튜토리얼을 찾아보기 힘들어 처음 Functions 기능을 써보면서 고생한 내용을 정리해보고자 한다.

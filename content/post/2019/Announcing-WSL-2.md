@@ -4,7 +4,7 @@ description: (번역) WSL 2를 공개하며
 categories:
 - Windows
 title: (번역) WSL 2를 공개하며
-summary: 마이크로소프트가 Build 2019에서 공개한 Windows Subsystem for Linux (WSL)의 새버전 WSL 2을 소개하는 글입니다.
+summary: " "
 ---
 
 > 원문 : [Announcing WSL 2](https://devblogs.microsoft.com/commandline/announcing-wsl-2/)
