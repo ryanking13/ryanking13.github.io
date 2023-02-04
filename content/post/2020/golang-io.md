@@ -4,28 +4,32 @@ description: Go 프로그래밍 I/O 미세 팁
 categories:
 - Go
 title: Go 프로그래밍 I/O 미세 팁
-summary: Golang에서 I/O 연산을 할 때에 참고할만한 사소한 팁을 소개합니다.
+summary: " "
 ---
 
 __TL;DR__
 
 > `fmt.Scanf` 보다는 `fmt.Scan` 보다는 `fmt.Fscan` <br>
-`fmt.Fprintf`는 `fmt.Printf`보다 느릴수도
+`fmt.Fprintf`는 `fmt.Printf`보다 느릴 수 있다
 
-C 프로그래밍을 하다가 Golang을 하게 되면 `fmt.Printf`와 `fmt.Scanf`를 보고
+Go의 문법은 C와 많이 닮아있기 때문에,
+C 프로그래밍을 하다가 Go를 쓰다보면 `fmt.Printf`와 `fmt.Scanf`를 보고
 아무 생각 없이 C-like한 I/O 문법으로 코드를 작성하고는 합니다.
 
-Golang의 I/O는 분명 C와 닮아있지만, 아무 생각없이 C처럼 쓰다가는
+Go의 I/O는 분명 C와 닮아있지만, 아무 생각없이 C처럼 쓰다가는
 원하는 결과가 나오지 않거나 성능이 떨어지는 경우가 종종 있습니다.
+이 글에서는 해당 내용을 정리해보려고 합니다.
 
 ## Input
 
-
-#### Golang의 `Scanf` 계열은 newline(`\n`)을 whitespace로 취급하지 않는다
+#### Go의 `Scanf` 계열은 newline(`\n`)을 whitespace로 취급하지 않는다
 
 > The handling of spaces and newlines differs from that of C's scanf family: in C, newlines are treated as any other space, and it is never an error when a run of spaces in the format string finds no spaces to consume in the input. [^1]
 
-따라서 `fmt.Scanf`를 사용하여 여러 줄을 읽어들인다면 예상과 다른 동작을 할 가능성이 높습니다.
+newline을 포함한 여타 whitespace 문자를 알아서 무시해주는 C의 scanf와 다르게 
+Go의 scanf는 newline 문자를 무시하지 않습니다.
+따라서 `fmt.Scanf`를 사용하여 여러 줄을 읽어들인다면,
+예상과 다른 동작을 할 가능성이 높습니다.
 
 ```go
 package main
@@ -137,7 +141,8 @@ fmt.Scan: 502.6522ms
 fmt.Fscan: 28.924ms
 ```
 
-10만 줄을 읽을 때, 버퍼링 하지 않은 `fmt.Scan`과 버퍼링한 `fmt.Fscan` 사이에 15배가 넘는 속도 차이를 확인할 수 있습니다.
+10만 줄을 읽을 때, 버퍼링 하지 않은 `fmt.Scan`과 버퍼링한
+`fmt.Fscan` 사이에 15배가 넘는 속도 차이를 확인할 수 있습니다.
 
 #### (+) 한 줄 읽기
 
@@ -161,12 +166,11 @@ func main() {
 
 ## Output
 
-출력도 입력과 같이 버퍼링을 이용하면 빠를까요?
+그렇다면 출력도 입력과 같이 버퍼링을 이용하면 빠를까요?
 
 답은, _언제나 그렇지는 않다_ 입니다.
 
 출력도 입력과 마찬가지로 `bufio`를 활용하여 출력을 버퍼링할 수 있습니다. (`fmt.Printf` 대신 `fmt.Fprintf`)
-
 그러나 newline(`\n`)이 많을 경우 flush 횟수가 많아져 오히려 `fmt.Fprintf`가 더 느릴 수 있습니다.
 
 ```go
@@ -221,7 +225,8 @@ func main() {
 3. `fmt.Printf` 사용, 10만 줄
 4. `fmt.Fprintf` 사용, 10만 줄
 
-1, 2번은 한 줄에 10만 자를 모두 출력한 경우이고, 3, 4번은 한 글자를 출력할 때마다 `\n`을 넣어주었습니다.
+1, 2번은 한 줄에 10만 자를 모두 출력한 경우이고,
+3, 4번은 한 글자를 출력할 때마다 `\n`을 넣어주었습니다.
 
 ```
 1. fmt.Printf: 2.1709647s
@@ -235,9 +240,9 @@ func main() {
 
 ## 결론
 
-Golang으로 다량의 파일 I/O를 한 번에 처리하는 경우가 아주 흔하지는 않겠습니다만,
+Go으로 다량의 파일 I/O를 한 번에 처리하는 경우가 아주 흔하지는 않겠습니다만,
 간단하면서도 성능에 큰 영향을 주는 부분이니 머리 한 구석에 기억해두면 좋을 것으로 생각됩니다.
 
-일상생활에서 알고리즘 문제를 풀 때에도 (Golang으로 문제를 푸는 사람이 얼마나 되겠습니까만은...) 생각해볼 수 있는 부분입니다.
+일상생활에서 알고리즘 문제를 풀 때에도 (Go로 문제를 푸는 사람이 얼마나 되겠습니까만은...) 생각해볼 수 있는 부분입니다.
 
 [^1]: https://golang.org/pkg/fmt/#hdr-Scanning
