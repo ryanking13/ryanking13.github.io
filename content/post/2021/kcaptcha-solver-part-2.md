@@ -1,8 +1,8 @@
 ---
 date: "2021-02-01T20:00:00+09:00"
-title: 그누보드 캡차 인식 프로젝트 개발기 - Part 2
-description: 그누보드 캡차 인식 프로젝트 개발기 - Part 2
-summary: 그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.
+title: 그누보드 캡차 인식 프로젝트 - Part 2
+description: 그누보드 캡차 인식 프로젝트 - Part 2
+summary: " "
 draft: false
 categories:
 - Machine Learning
@@ -56,7 +56,6 @@ tensorflowjs_converter --input_format keras --output_format=tfjs_graph_model mod
 ```
 
 위 커맨드는 `model.h5`라는 이름으로 저장된 케라스 모델을 Tensorflow.js 레이어로 변환하여 `model_tfjs` 폴더에 저장합니다.
-
 커맨드 실행 후 `model_tfjs` 폴더를 살펴보면 model.json 파일과 weight 파일들이 생성된 것을 확인할 수 있습니다.
 
 ```bash

@@ -4,7 +4,7 @@ title: 개발자를 위한 좋은 문서 작성법
 categories:
 - Development
 description: 개발자를 위한 좋은 문서 작성법
-summary: 개발자를 대상으로 한 문서를 작성할 때 알아야 할 것들을 정리합니다.
+summary: " "
 draft: False
 ---
 

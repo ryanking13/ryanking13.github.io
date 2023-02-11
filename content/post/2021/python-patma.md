@@ -4,7 +4,7 @@ title: 파이썬의 패턴 매칭 도입에 얽힌 이야기
 categories:
 - Python
 description: 파이썬의 패턴 매칭 도입에 얽힌 이야기
-summary: 파이썬에 새로 추가되는 패턴 매칭에 대한 이야기입니다.
+summary: " "
 draft: false
 ---
 

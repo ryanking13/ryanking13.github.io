@@ -2,7 +2,7 @@
 date: "2021-07-11T00:00:01+09:00"
 title: 파이썬 패키징의 과거, 현재, 그리고 미래 
 description: 파이썬 패키징의 과거, 현재, 그리고 미래 
-summary: 파이썬 패키징의 역사 및 최근 동향을 소개합니다.
+summary: " "
 draft: false
 categories:
 - Python

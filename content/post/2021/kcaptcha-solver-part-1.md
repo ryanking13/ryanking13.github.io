@@ -1,14 +1,14 @@
 ---
 date: "2021-02-01T19:00:00+09:00"
-title: 그누보드 캡차 인식 프로젝트 개발기 - Part 1
-description: 그누보드 캡차 인식 프로젝트 개발기 - Part 1
-summary: 그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.
+title: 그누보드 캡차 인식 프로젝트 - Part 1
+description: 그누보드 캡차 인식 프로젝트 - Part 1
+summary: " "
 draft: false
 categories:
 - Machine Learning
 ---
 
-그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.
+그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 인식하는 머신러닝 토이 프로젝트 개발 내용에 대한 글입니다.
 
 **이런 내용에 대해 다룹니다**
 
@@ -81,7 +81,8 @@ KCAPTCHA는 상당히 쉬운 캡차라고 할 수 있습니다. 그래서인지 
 머신러닝 모델의 자바스크립트 변환을 지원하는 라이브러리는 Tensorflow.js밖에 없으므로,
 개발 도구는 Tensorflow로 자연스럽게 정해졌습니다.
 
-> **Note**: 시도해보지는 않았지만 PyTorch --> ONNX --> Tensorflow --> Tensorflow.js로의 변환도 [가능](https://drsleep.github.io/tutorial/Tutorial-PyTorch-to-TensorFlow-JS/)하다고 합니다.
+> **Note**: 사실 Pytorch 모델을 ONNX로 변환한 뒤 onnx.js를 사용해서 자바스크립트로 변환하는 방법도 있습니다.
+프로젝트를 진행할 당시에는 이 방법을 알지 못했습니다.
 
 ## 💾 데이터 수집
 
@@ -136,8 +137,7 @@ _, headers = urllib.request.urlretrieve(
 **데이터 임베딩**
 
 다음으로는 이 문제에 맞게끔 데이터(label)를 어떻게 임베딩할지 정합니다.
-
-제가 고려해본 분류기의 출력은 크게 다음의 두 가지입니다.
+일반적으로 생각할 수 있는 분류기의 출력은 크게 다음의 두 가지입니다.
 
 1. __C 길이의 1차원 벡터 L개__
 2. __C * L 길이의 1차원 벡터 1개__
@@ -354,8 +354,6 @@ KCAPTCHA 캡차 이미지 생성 시에,
 
 - Classfication 모델이 아닌 Object Detection 모델 활용
 - Two Stage Classfication: 캡차 길이를 탐지 모델 + 정해진 길이의 캡차를 푸는 모델
-
-이 글을 읽고 흥미로우셨다면 이러한 문제를 같이 풀어보시는 것도 재밌을 것이라고 생각합니다😁
 
 __Links__
 
