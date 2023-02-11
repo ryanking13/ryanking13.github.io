@@ -2,7 +2,7 @@
 date: "2021-10-17T00:00:01+09:00"
 title: 왜 git pull은 망가졌는가? (번역)
 description: 왜 git pull은 망가졌는가? (번역)
-summary: git pull의 동작과 오해에 대해 설명합니다.
+summary: " "
 draft: false
 categories:
 - Miscellaneous

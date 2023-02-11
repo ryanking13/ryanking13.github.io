@@ -2,7 +2,7 @@
 date: "2022-01-25T00:00:01+09:00"
 title: Pyodide를 소개합니다 - 2
 description: Pyodide를 소개합니다 - 2
-summary: 브라우저에서 파이썬을 구동하고자 하는 프로젝트인 Pyodide를 소개합니다.
+summary: " "
 draft: false
 categories:
 - Pyodide
