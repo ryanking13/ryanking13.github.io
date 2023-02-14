@@ -20,11 +20,21 @@ hiddenfromhomepage: true
 음성 인식과 번역, 얼굴 탐지까지 모든 것을 구현하는데요.
 이제는 머신 러닝이 도구화되었다라는 것을 느낄 수 있는 글이었습니다.
 
+### [mtime comparison considered harmful](https://apenwarr.ca/log/20181113)
+
+대표적인 빌드 도구인 Make는 파일의 수정 시간(modification time, mtime)을
+기준으로 파일이 최신 상태인지를 판단하는데요. 이 글에서는 mtime이 다양한 상황에서
+잘못된 기준이 될 수 있다는 것을 설명합니다.
+
 
 ## 📌 북마크
 
 <!-- ## 📰 기술 뉴스 -->
 
 ## ⚙️ 소프트웨어 / 프로젝트
+
+### [carbonyl](https://github.com/fathyb/carbonyl)
+
+터미널에서 동작하는 크로미움 브라우저.
 
 ## 📙 책 / 강의 / 영상
