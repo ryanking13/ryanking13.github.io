@@ -127,24 +127,12 @@ SRT(Super Rapid Train) wrapper for Python (and [Golang](https://github.com/ryank
 	<div><img src="https://github.com/ryanking13/go-SRT/raw/master/srt-reserve.gif"/></div>
 </div>
 
-<div style="display: inline;">
-	<h3 style="display: inline;">
-		<a href="https://github.com/ryanking13/burgerqueen" target="_blank">
-			Burgerqueen
-			<!-- <i class="iconfont icon-github"></i> -->
-		</a>
-	</h3>
-	<span style="color:grey"><small>maintainer (2018 - present)</small></span>
-</div>
 
-Burgerking App coupon web viewer
-
-
-<div style="text-align: center;">
+<!-- <div style="text-align: center;">
 	<br/>
 	<div><img src="https://github.com/ryanking13/burgerqueen/raw/master/preview.gif" width="50%"/></div>
 	<br/>
-</div>
+</div> -->
 
 <!-- ---
 
@@ -155,8 +143,6 @@ Burgerking App coupon web viewer
 --- -->
 
 ### Toy Projects 
-
-<br/>
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
@@ -182,6 +168,18 @@ Pytorch Lightning implementation of Contrastive Syn-to-Real Generalization (ICLR
 Kcaptcha Classifier with Tensorflow.js (+ [Solver](https://github.com/ryanking13/kcaptcha-solver), [Dataset](https://github.com/ryanking13/kcaptcha-generator))
 <br/><br/>
 
+<div style="display: inline;">
+	<h4 style="display: inline;">
+		<a href="https://github.com/ryanking13/burgerqueen" target="_blank">
+			Burgerqueen
+			<i class="iconfont icon-github"></i>
+		</a>
+	</h4>
+</div>
+
+Burgerking App coupon web viewer
+<br/><br/>
+
 <!-- ---
 
 <div style="text-align: center;">
@@ -202,7 +200,7 @@ Kcaptcha Classifier with Tensorflow.js (+ [Solver](https://github.com/ryanking13
 Oneshot android SSL-unpinning tool
 <br/><br/>
 
-<div style="display: inline;">
+<!-- <div style="display: inline;">
 	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/cors" target="_blank">
 			cors
@@ -212,7 +210,7 @@ Oneshot android SSL-unpinning tool
 </div>
 
 Cloudflare workers based CORS proxy
-<br/><br/>
+<br/><br/> -->
 
 <!-- <div style="display: inline;">
 	<h4 style="display: inline;">
@@ -226,7 +224,7 @@ Cloudflare workers based CORS proxy
 Oneshot Docker Deployment for [CMS](http://cms-dev.github.io/)
 <br/><br/> -->
 
-<div style="display: inline;">
+<!-- <div style="display: inline;">
 	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/twitter-lyric-bot" target="_blank">
 			Random Lyric Bot
@@ -236,7 +234,7 @@ Oneshot Docker Deployment for [CMS](http://cms-dev.github.io/)
 </div>
 
 Twitter Bot which posts random lyrics
-<br/><br/>
+<br/><br/> -->
 
 <div style="display: inline;">
 	<h4 style="display: inline;">
@@ -262,7 +260,7 @@ PNG Metadata sanity checker
 LG Live Photo unpacker/repacker
 <br/><br/>
 
-<div style="display: inline;">
+<!-- <div style="display: inline;">
 	<h4 style="display: inline;">
 		<a href="https://github.com/ryanking13/WMC-test" target="_blank">
 			Working Memory Capacity Test
@@ -274,7 +272,7 @@ LG Live Photo unpacker/repacker
 작업기억용량 검사 테스트
 
 Used for: _이새별, ["작업기억 검사의 타당화와 경계선급 지능 아동의 작업기억 특성 분석"](../assets/else/D20153202이새별.pdf), 박사학위논문_
-<br/><br/>
+<br/><br/> -->
 
 ---
 
@@ -282,7 +280,7 @@ Used for: _이새별, ["작업기억 검사의 타당화와 경계선급 지능 
 
 #### Competitive Programming
 
-- 2013 KOI Silver Medal (Busan), Participation Prize (Korea)
+<!-- - 2013 KOI Silver Medal (Busan), Participation Prize (Korea) -->
 - 2016 ACM-ICPC Daejeon regional 11th Place (Team Flareon)
 - 2018 Internet Problem Solving Contest(IPSC) 24th Place (Team JambalayaSeasoning)
 - 2019 UCPC 5th Place (Team 대충 재미있는 팀명)

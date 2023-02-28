@@ -26,8 +26,18 @@ hiddenfromhomepage: true
 기준으로 파일이 최신 상태인지를 판단하는데요. 이 글에서는 mtime이 다양한 상황에서
 잘못된 기준이 될 수 있다는 것을 설명합니다.
 
+### [Introducing the WebAssembly JavaScript Promise Integration API](https://v8.dev/blog/jspi)
 
-## 📌 북마크
+많은 네이티브 애플리케이션이 동기적으로 작동하는 반면,
+브라우저 생태계는 모두 비동기적으로 동작합니다.
+
+이 때문에 네이티브 애플리케이션을 웹어셈블리를 통해 브라우저 환경에 포팅하더라도,
+브라우저의 웹 API를 사용하는데에 제약이 있었는데요. 크로미움 V8 엔진에서 실험적으로
+도입되고 있는 JSPI(WebAssembly JavaScript Promise Integration API)는 자바스크립트 Promise가
+resolve되기 전까지 동작을 중단시킴으로서 이러한 제약을 해결하는 방법을 제안합니다.
+
+
+<!-- ## 📌 북마크 -->
 
 <!-- ## 📰 기술 뉴스 -->
 
@@ -37,4 +47,4 @@ hiddenfromhomepage: true
 
 터미널에서 동작하는 크로미움 브라우저.
 
-## 📙 책 / 강의 / 영상
+<!-- ## 📙 책 / 강의 / 영상 -->
