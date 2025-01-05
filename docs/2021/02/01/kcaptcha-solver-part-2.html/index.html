@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>그누보드 캡차 인식 프로젝트 개발기 - Part 2 - Morgenrøde</title>
+  <title>그누보드 캡차 인식 프로젝트 - Part 2 - Morgenrøde</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ryanking13" /><meta name="description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+<meta name="author" content="ryanking13" /><meta name="description" content="그누보드 캡차 인식 프로젝트 - Part 2" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
 
 
 
@@ -44,14 +44,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2" />
-<meta property="og:description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2" />
+<meta property="og:title" content="그누보드 캡차 인식 프로젝트 - Part 2" />
+<meta property="og:description" content="그누보드 캡차 인식 프로젝트 - Part 2" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/" />
 <meta property="article:published_time" content="2021-02-01T20:00:00+09:00" />
 <meta property="article:modified_time" content="2021-02-01T20:00:00+09:00" />
-<meta itemprop="name" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2">
-<meta itemprop="description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2">
+<meta itemprop="name" content="그누보드 캡차 인식 프로젝트 - Part 2">
+<meta itemprop="description" content="그누보드 캡차 인식 프로젝트 - Part 2">
 <meta itemprop="datePublished" content="2021-02-01T20:00:00+09:00" />
 <meta itemprop="dateModified" content="2021-02-01T20:00:00+09:00" />
 <meta itemprop="wordCount" content="1820">
@@ -60,8 +60,8 @@
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2"/>
-<meta name="twitter:description" content="그누보드 캡차 인식 프로젝트 개발기 - Part 2"/>
+<meta name="twitter:title" content="그누보드 캡차 인식 프로젝트 - Part 2"/>
+<meta name="twitter:description" content="그누보드 캡차 인식 프로젝트 - Part 2"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
 
@@ -93,8 +93,6 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a><a href="/about/">
         <li class="mobile-menu-item">About</li>
       </a>
@@ -122,8 +120,6 @@
           <a class="menu-item-link" href="/">Home</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/post/">Archives</a>
-        </li><li class="menu-item">
-          <a class="menu-item-link" href="/categories/">Categories</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/about/">About</a>
         </li>
@@ -154,7 +150,7 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">그누보드 캡차 인식 프로젝트 개발기 - Part 2</h1>
+      <h1 class="post-title">그누보드 캡차 인식 프로젝트 - Part 2</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2021-02-01 </span>
@@ -243,8 +239,8 @@
 tensorflowjs_converter --input_format keras --output_format<span class="o">=</span>tfjs_graph_model model.h5 model_tfjs/
 </code></pre></td></tr></table>
 </div>
-</div><p>위 커맨드는 <code>model.h5</code>라는 이름으로 저장된 케라스 모델을 Tensorflow.js 레이어로 변환하여 <code>model_tfjs</code> 폴더에 저장합니다.</p>
-<p>커맨드 실행 후 <code>model_tfjs</code> 폴더를 살펴보면 model.json 파일과 weight 파일들이 생성된 것을 확인할 수 있습니다.</p>
+</div><p>위 커맨드는 <code>model.h5</code>라는 이름으로 저장된 케라스 모델을 Tensorflow.js 레이어로 변환하여 <code>model_tfjs</code> 폴더에 저장합니다.
+커맨드 실행 후 <code>model_tfjs</code> 폴더를 살펴보면 model.json 파일과 weight 파일들이 생성된 것을 확인할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -504,7 +500,7 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         <a class="next" href="/2021/02/01/kcaptcha-solver-part-1.html/">
-            <span class="next-text nav-default">그누보드 캡차 인식 프로젝트 개발기 - Part 1</span>
+            <span class="next-text nav-default">그누보드 캡차 인식 프로젝트 - Part 1</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -578,7 +574,7 @@ weight만 옮겨서 사용하는 것일텐데요.</p>
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
   </span>
 </div>
 

@@ -6,14 +6,32 @@
     <description>Recent content in Pyodide on Morgenrøde</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 25 Jan 2022 00:00:01 +0900</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/pyodide/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Dec 2022 00:01:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/categories/pyodide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>오픈 소스 프로젝트 Pyodide 1년 회고</title>
+      <link>https://ryanking13.github.io/2022/12/30/pyodide-1year.html/</link>
+      <pubDate>Fri, 30 Dec 2022 00:01:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2022/12/30/pyodide-1year.html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jupyter Community Workshop 2022 참가 후기</title>
+      <link>https://ryanking13.github.io/2022/12/10/jupyterlite-workshop.html/</link>
+      <pubDate>Sat, 10 Dec 2022 00:01:00 +0000</pubDate>
+      
+      <guid>https://ryanking13.github.io/2022/12/10/jupyterlite-workshop.html/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Pyodide를 소개합니다 - 2</title>
       <link>https://ryanking13.github.io/2022/01/25/introducing-pyodide-2.html/</link>
       <pubDate>Tue, 25 Jan 2022 00:00:01 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2022/01/25/introducing-pyodide-2.html/</guid>
-      <description>브라우저에서 파이썬을 구동하고자 하는 프로젝트인 Pyodide를 소개합니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -22,7 +40,7 @@
       <pubDate>Mon, 17 Jan 2022 00:00:01 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2022/01/17/introducing-pyodide-1.html/</guid>
-      <description>브라우저에서 파이썬을 구동하고자 하는 프로젝트인 Pyodide를 소개합니다.</description>
+      <description></description>
     </item>
     
   </channel>

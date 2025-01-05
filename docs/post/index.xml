@@ -6,86 +6,32 @@
     <description>Recent content in Posts on Morgenrøde</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 30 Sep 2022 00:01:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Dec 2022 00:01:00 +0000</lastBuildDate><atom:link href="https://ryanking13.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>월간 기술 스크랩 22/09</title>
-      <link>https://ryanking13.github.io/2022/09/30/monthly-log-2209.html/</link>
-      <pubDate>Fri, 30 Sep 2022 00:01:00 +0000</pubDate>
+      <title>오픈 소스 프로젝트 Pyodide 1년 회고</title>
+      <link>https://ryanking13.github.io/2022/12/30/pyodide-1year.html/</link>
+      <pubDate>Fri, 30 Dec 2022 00:01:00 +0000</pubDate>
       
-      <guid>https://ryanking13.github.io/2022/09/30/monthly-log-2209.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 9월)</description>
+      <guid>https://ryanking13.github.io/2022/12/30/pyodide-1year.html/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>월간 기술 스크랩 22/08</title>
-      <link>https://ryanking13.github.io/2022/08/31/monthly-log-2208.html/</link>
-      <pubDate>Wed, 31 Aug 2022 00:01:00 +0000</pubDate>
+      <title>Jupyter Community Workshop 2022 참가 후기</title>
+      <link>https://ryanking13.github.io/2022/12/10/jupyterlite-workshop.html/</link>
+      <pubDate>Sat, 10 Dec 2022 00:01:00 +0000</pubDate>
       
-      <guid>https://ryanking13.github.io/2022/08/31/monthly-log-2208.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 8월)</description>
+      <guid>https://ryanking13.github.io/2022/12/10/jupyterlite-workshop.html/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>월간 기술 스크랩 22/07</title>
-      <link>https://ryanking13.github.io/2022/07/31/monthly-log-2207.html/</link>
-      <pubDate>Sun, 31 Jul 2022 00:01:00 +0000</pubDate>
+      <title>pdqsort - Pattern-defeating Quicksort</title>
+      <link>https://ryanking13.github.io/2022/10/18/pdqsort.html/</link>
+      <pubDate>Tue, 18 Oct 2022 00:01:00 +0000</pubDate>
       
-      <guid>https://ryanking13.github.io/2022/07/31/monthly-log-2207.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 7월)</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 22/06</title>
-      <link>https://ryanking13.github.io/2022/07/04/monthly-log-2206.html/</link>
-      <pubDate>Mon, 04 Jul 2022 00:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2022/07/04/monthly-log-2206.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 6월)</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 22/05</title>
-      <link>https://ryanking13.github.io/2022/05/30/monthly-log-2205.html/</link>
-      <pubDate>Mon, 30 May 2022 00:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2022/05/30/monthly-log-2205.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 5월)</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 22/04</title>
-      <link>https://ryanking13.github.io/2022/05/04/monthly-log-2204.html/</link>
-      <pubDate>Wed, 04 May 2022 00:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2022/05/04/monthly-log-2204.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 4월)</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 22/03</title>
-      <link>https://ryanking13.github.io/2022/03/31/monthly-log-2203.html/</link>
-      <pubDate>Thu, 31 Mar 2022 00:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2022/03/31/monthly-log-2203.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 3월)</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 22/02</title>
-      <link>https://ryanking13.github.io/2022/02/28/monthly-log-2202.html/</link>
-      <pubDate>Mon, 28 Feb 2022 00:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2022/02/28/monthly-log-2202.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 2월)</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 22/01</title>
-      <link>https://ryanking13.github.io/2022/01/31/monthly-log-2201.html/</link>
-      <pubDate>Mon, 31 Jan 2022 00:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2022/01/31/monthly-log-2201.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2022년 1월)</description>
+      <guid>https://ryanking13.github.io/2022/10/18/pdqsort.html/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -94,7 +40,7 @@
       <pubDate>Tue, 25 Jan 2022 00:00:01 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2022/01/25/introducing-pyodide-2.html/</guid>
-      <description>브라우저에서 파이썬을 구동하고자 하는 프로젝트인 Pyodide를 소개합니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -103,34 +49,7 @@
       <pubDate>Mon, 17 Jan 2022 00:00:01 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2022/01/17/introducing-pyodide-1.html/</guid>
-      <description>브라우저에서 파이썬을 구동하고자 하는 프로젝트인 Pyodide를 소개합니다.</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 21/12</title>
-      <link>https://ryanking13.github.io/2021/12/31/monthly-log-2112.html/</link>
-      <pubDate>Fri, 31 Dec 2021 00:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2021/12/31/monthly-log-2112.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 12월)</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 21/11</title>
-      <link>https://ryanking13.github.io/2021/11/30/monthly-log-2111.html/</link>
-      <pubDate>Tue, 30 Nov 2021 00:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2021/11/30/monthly-log-2111.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 11월)</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 21/10</title>
-      <link>https://ryanking13.github.io/2021/10/31/monthly-log-2110.html/</link>
-      <pubDate>Sun, 31 Oct 2021 00:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2021/10/31/monthly-log-2110.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 10월)</description>
+      <description></description>
     </item>
     
     <item>
@@ -139,16 +58,7 @@
       <pubDate>Sun, 17 Oct 2021 00:00:01 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/10/17/why-git-pull-is-broken.html/</guid>
-      <description>git pull의 동작과 오해에 대해 설명합니다.</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 21/09</title>
-      <link>https://ryanking13.github.io/2021/09/30/monthly-log-2109.html/</link>
-      <pubDate>Thu, 30 Sep 2021 01:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2021/09/30/monthly-log-2109.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 9월)</description>
+      <description></description>
     </item>
     
     <item>
@@ -157,16 +67,7 @@
       <pubDate>Sat, 11 Sep 2021 01:01:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2021/09/11/how-to-avoid-ml-pitfalls.html/</guid>
-      <description>머신러닝 연구를 시작하려는 연구자들이 알아야하는 팁을 소개합니다.</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 21/08</title>
-      <link>https://ryanking13.github.io/2021/08/30/monthly-log-2108.html/</link>
-      <pubDate>Mon, 30 Aug 2021 01:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2021/08/30/monthly-log-2108.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 8월)</description>
+      <description></description>
     </item>
     
     <item>
@@ -175,16 +76,7 @@
       <pubDate>Mon, 16 Aug 2021 01:01:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2021/08/16/writing-a-good-documentation.html/</guid>
-      <description>개발자를 대상으로 한 문서를 작성할 때 알아야 할 것들을 정리합니다.</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 21/07</title>
-      <link>https://ryanking13.github.io/2021/08/01/monthly-log-2107.html/</link>
-      <pubDate>Sun, 01 Aug 2021 01:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2021/08/01/monthly-log-2107.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 7월)</description>
+      <description></description>
     </item>
     
     <item>
@@ -193,34 +85,7 @@
       <pubDate>Sun, 11 Jul 2021 00:00:01 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/07/11/python-packaging.html/</guid>
-      <description>파이썬 패키징의 역사 및 최근 동향을 소개합니다.</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 21/06</title>
-      <link>https://ryanking13.github.io/2021/06/30/monthly-log-2106.html/</link>
-      <pubDate>Wed, 30 Jun 2021 01:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2021/06/30/monthly-log-2106.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 6월)</description>
-    </item>
-    
-    <item>
-      <title>알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트</title>
-      <link>https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/</link>
-      <pubDate>Thu, 10 Jun 2021 00:00:01 +0900</pubDate>
-      
-      <guid>https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/</guid>
-      <description>파이썬 기본 모듈에 내장된 스크립트를 소개합니다.</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 21/05</title>
-      <link>https://ryanking13.github.io/2021/05/31/monthly-log-2105.html/</link>
-      <pubDate>Mon, 31 May 2021 01:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2021/05/31/monthly-log-2105.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 5월)</description>
+      <description></description>
     </item>
     
     <item>
@@ -229,16 +94,7 @@
       <pubDate>Mon, 10 May 2021 00:00:01 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/05/10/git-worktree.html/</guid>
-      <description>Git worktree 명령어를 소개합니다.</description>
-    </item>
-    
-    <item>
-      <title>월간 기술 스크랩 21/04</title>
-      <link>https://ryanking13.github.io/2021/04/30/monthly-log-2104.html/</link>
-      <pubDate>Fri, 30 Apr 2021 01:01:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2021/04/30/monthly-log-2104.html/</guid>
-      <description>흥미롭게 읽은 글이나 새로 알게 된 기술 등을 소개합니다. (2021년 4월)</description>
+      <description></description>
     </item>
     
     <item>
@@ -247,25 +103,25 @@
       <pubDate>Thu, 04 Mar 2021 20:00:00 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/03/04/python-patma.html/</guid>
-      <description>파이썬에 새로 추가되는 패턴 매칭에 대한 이야기입니다.</description>
+      <description></description>
     </item>
     
     <item>
-      <title>그누보드 캡차 인식 프로젝트 개발기 - Part 2</title>
+      <title>그누보드 캡차 인식 프로젝트 - Part 2</title>
       <link>https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/</link>
       <pubDate>Mon, 01 Feb 2021 20:00:00 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-2.html/</guid>
-      <description>그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.</description>
+      <description></description>
     </item>
     
     <item>
-      <title>그누보드 캡차 인식 프로젝트 개발기 - Part 1</title>
+      <title>그누보드 캡차 인식 프로젝트 - Part 1</title>
       <link>https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-1.html/</link>
       <pubDate>Mon, 01 Feb 2021 19:00:00 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/02/01/kcaptcha-solver-part-1.html/</guid>
-      <description>그누보드에서 사용하는 오픈소스 캡차 프로그램인 KCAPTCHA를 깨는 머신러닝 토이 프로젝트 개발기입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -274,7 +130,7 @@
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2020/12/29/migrating-jekyll-to-hugo.html/</guid>
-      <description>개발 블로그 프레임워크를 Jekyll에서 Hugo로 변경하는 과정을 담은 글입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -283,7 +139,7 @@
       <pubDate>Sun, 26 Jul 2020 01:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2020/07/26/introducing-cf-workers-2.html/</guid>
-      <description>Cloudflare Workers로 간단한 JSON 포매터를 만들어봅시다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -292,7 +148,7 @@
       <pubDate>Sun, 26 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2020/07/26/introducing-cf-workers-1.html/</guid>
-      <description>Cloudflare에서 새로 나온 서버리스 플랫폼인 Workers를 소개합니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -301,16 +157,7 @@
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2020/07/01/capturing-https-android-without-frida.html/</guid>
-      <description>HTTPS로 통신하는 안드로이드 앱의 패킷 스니핑 방법을 탐구해봅니다.</description>
-    </item>
-    
-    <item>
-      <title>HITS!를 이용하여 Jekyll 블로그에 조회수 배지 달기</title>
-      <link>https://ryanking13.github.io/2020/03/09/jekyll-views-count-badge.html/</link>
-      <pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2020/03/09/jekyll-views-count-badge.html/</guid>
-      <description>Jekyll기반 static site에 방문 횟수를 셀 수 있는 서드파티 앱을 설치해봅니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -319,16 +166,16 @@
       <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2020/02/06/golang-io.html/</guid>
-      <description>Golang에서 I/O 연산을 할 때에 참고할만한 사소한 팁을 소개합니다.</description>
+      <description></description>
     </item>
     
     <item>
-      <title>오픈소스 버그 고치다가 CPython까지 뜯어본 후기</title>
+      <title>오픈 소스 버그 파고들기</title>
       <link>https://ryanking13.github.io/2020/01/12/contributing-pandas.html/</link>
       <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2020/01/12/contributing-pandas.html/</guid>
-      <description>파이썬 Pandas 라이브러리에서 발견한 버그를 수정하는 과정을 담은 글입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -337,7 +184,7 @@
       <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2019/12/29/twitter-bot-without-server.html/</guid>
-      <description>Github의 Issue와 Actions를 활용하여, 주기적 알림 트위터 봇을 개인 서버 없이 구축해봅니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -346,7 +193,7 @@
       <pubDate>Thu, 03 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2019/10/03/4-million-lines-of-python.html/</guid>
-      <description>Dropbox의 거대한 파이썬 코드베이스에 타이핑 도입했던 과정을 담은 글의 번역입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -355,7 +202,7 @@
       <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2019/07/18/details-of-the-cloudflare-outage-on-july-2-2019.html/</guid>
-      <description>Cloudflare에서 대규모로 발생한 장애의 발생 원인과 해결 과정을 상세히 담은 글입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -364,25 +211,7 @@
       <pubDate>Tue, 07 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2019/05/07/announcing-wsl-2.html/</guid>
-      <description>마이크로소프트가 Build 2019에서 공개한 Windows Subsystem for Linux (WSL)의 새버전 WSL 2을 소개하는 글입니다.</description>
-    </item>
-    
-    <item>
-      <title>Azure Functions 시작하기 1</title>
-      <link>https://ryanking13.github.io/2019/02/18/azure-function-apps-01.html/</link>
-      <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2019/02/18/azure-function-apps-01.html/</guid>
-      <description>Azure의 서버리스 프레임워크인 Functions를 소개하는 글입니다.</description>
-    </item>
-    
-    <item>
-      <title>IDN Homograph attack 정리</title>
-      <link>https://ryanking13.github.io/2018/12/03/idn-homograph-attack.html/</link>
-      <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2018/12/03/idn-homograph-attack.html/</guid>
-      <description>IDN Homograph attack 간단 정리 글입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -391,16 +220,16 @@
       <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2018/11/05/a-whirlwind-tutorial-on-creating-really-teensy-elf-executables-for-linux.html/</guid>
-      <description>컴파일러가 ELF 바이너리를 생성할때 붙이는 불필요한 부분을 최대한 제거하면서 ELF의 구조를 뜯어보는 글입니다.</description>
+      <description></description>
     </item>
     
     <item>
-      <title>(번역) 드롭박스의 파이썬3 이식 이야기 Part 1</title>
+      <title>(번역) 드롭박스의 파이썬3 이식 이야기</title>
       <link>https://ryanking13.github.io/2018/10/02/dropbox-python3-migration.html/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2018/10/02/dropbox-python3-migration.html/</guid>
-      <description>Dropbox가 파이썬 코드를 2에서 3으로 이식하는 과정을 담은 글입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -409,16 +238,7 @@
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2018/09/03/cmd-deafult-command.html/</guid>
-      <description>한국어 윈도우를 사용할 때 종종 발생하는 인코딩 관련 문제를 미연에 방지하지 위해 cmd 실행시에 인코딩이 자동으로 바뀌게 하는 방법에 대해서 설명하는 글입니다.</description>
-    </item>
-    
-    <item>
-      <title>파이썬 3.7의 새로운 기능들</title>
-      <link>https://ryanking13.github.io/2018/07/12/python-37-whats-new.html/</link>
-      <pubDate>Thu, 12 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2018/07/12/python-37-whats-new.html/</guid>
-      <description>파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -427,16 +247,7 @@
       <pubDate>Tue, 05 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2018/06/05/javascript-null-0.html/</guid>
-      <description>개발 과정에서 예상치 못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글입니다.</description>
-    </item>
-    
-    <item>
-      <title>파이썬 pathlib 사용하기 - NO MORE os.path.join()</title>
-      <link>https://ryanking13.github.io/2018/05/22/pathlib.html/</link>
-      <pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2018/05/22/pathlib.html/</guid>
-      <description>파이썬 3.4에서 등장한 pathlib 모듈을 살펴보는 글입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -445,7 +256,7 @@
       <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2018/05/17/bashware.html/</guid>
-      <description>WSL에서 발생하는 새로운 보안 위협인 bashware를 소개하는 글입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -454,16 +265,7 @@
       <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2018/04/26/google-data-saver-proxy.html/</guid>
-      <description>크롬 데이터 세이버의 동작을 뜯어보는 글입니다.</description>
-    </item>
-    
-    <item>
-      <title>파이썬에서의 Truthy Falsy</title>
-      <link>https://ryanking13.github.io/2018/04/05/python-truthy-falsey.html/</link>
-      <pubDate>Thu, 05 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2018/04/05/python-truthy-falsey.html/</guid>
-      <description>파이썬의 Truthy와 Falsy 개념을 소개하는 글입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -472,7 +274,7 @@
       <pubDate>Sat, 24 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2018/03/24/png-structure.html/</guid>
-      <description>대표적인 이미지 파일 포맷인 PNG의 구조를 뜯어보는 글입니다.</description>
+      <description></description>
     </item>
     
   </channel>

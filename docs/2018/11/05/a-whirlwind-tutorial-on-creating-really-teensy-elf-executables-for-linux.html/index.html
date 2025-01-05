@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ryanking13" /><meta name="description" content="컴파일러가 ELF 바이너리를 생성할때 붙이는 불필요한 부분을 최대한 제거하면서 ELF의 구조를 뜯어보는 글입니다." /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+<meta name="author" content="ryanking13" /><meta name="description" content="" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
 
 
 
@@ -45,13 +45,13 @@
 
 
 <meta property="og:title" content="(번역) 초소형 ELF 바이너리 만들기" />
-<meta property="og:description" content="컴파일러가 ELF 바이너리를 생성할때 붙이는 불필요한 부분을 최대한 제거하면서 ELF의 구조를 뜯어보는 글입니다." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ryanking13.github.io/2018/11/05/a-whirlwind-tutorial-on-creating-really-teensy-elf-executables-for-linux.html/" />
 <meta property="article:published_time" content="2018-11-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-11-05T00:00:00+00:00" />
 <meta itemprop="name" content="(번역) 초소형 ELF 바이너리 만들기">
-<meta itemprop="description" content="컴파일러가 ELF 바이너리를 생성할때 붙이는 불필요한 부분을 최대한 제거하면서 ELF의 구조를 뜯어보는 글입니다.">
+<meta itemprop="description" content="">
 <meta itemprop="datePublished" content="2018-11-05T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2018-11-05T00:00:00+00:00" />
 <meta itemprop="wordCount" content="6015">
@@ -61,7 +61,7 @@
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="(번역) 초소형 ELF 바이너리 만들기"/>
-<meta name="twitter:description" content="컴파일러가 ELF 바이너리를 생성할때 붙이는 불필요한 부분을 최대한 제거하면서 ELF의 구조를 뜯어보는 글입니다."/>
+<meta name="twitter:description" content=""/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
 
@@ -93,8 +93,6 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a><a href="/about/">
         <li class="mobile-menu-item">About</li>
       </a>
@@ -122,8 +120,6 @@
           <a class="menu-item-link" href="/">Home</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/post/">Archives</a>
-        </li><li class="menu-item">
-          <a class="menu-item-link" href="/categories/">Categories</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/about/">About</a>
         </li>
@@ -876,13 +872,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
 
       
       <nav class="post-nav">
-        <a class="prev" href="/2018/12/03/idn-homograph-attack.html/">
+        <a class="prev" href="/2019/05/07/announcing-wsl-2.html/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">IDN Homograph attack 정리</span>
+            <span class="prev-text nav-default">(번역) WSL 2를 공개하며</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         <a class="next" href="/2018/10/02/dropbox-python3-migration.html/">
-            <span class="next-text nav-default">(번역) 드롭박스의 파이썬3 이식 이야기 Part 1</span>
+            <span class="next-text nav-default">(번역) 드롭박스의 파이썬3 이식 이야기</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -956,7 +952,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
   </span>
 </div>
 

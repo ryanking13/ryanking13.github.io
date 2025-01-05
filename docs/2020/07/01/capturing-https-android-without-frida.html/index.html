@@ -54,7 +54,7 @@
 <meta itemprop="description" content="안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법">
 <meta itemprop="datePublished" content="2020-07-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-07-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1731">
+<meta itemprop="wordCount" content="1724">
 
 
 
@@ -93,8 +93,6 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a><a href="/about/">
         <li class="mobile-menu-item">About</li>
       </a>
@@ -122,8 +120,6 @@
           <a class="menu-item-link" href="/">Home</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/post/">Archives</a>
-        </li><li class="menu-item">
-          <a class="menu-item-link" href="/categories/">Categories</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/about/">About</a>
         </li>
@@ -190,14 +186,19 @@
   </div>
 </div>
     <div class="post-content">
-      <p>CTF나 버그 바운티 등을 하다보면 안드로이드 앱의 패킷을 뜯어봐야 하는 경우가 종종 있습니다.</p>
-<p>이 때 앱이 HTTPS를 사용하여 패킷을 암호화하고 있다면 가짜 루트 인증서를 설치해서 암호화된 패킷을 중간에서 <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM</a> 방식으로 가로채서 복호화하여야 합니다.</p>
-<p>문제는, 안드로이드 7.0인 Nougat부터는 시스템적으로 사용자가 설치한 루트 인증서를 신뢰하지 않도록 하는 옵션(SSL-Pinning)이 <a href="https://developer.android.com/training/articles/security-config#base-config">디폴트로 설정</a>되어 있습니다.</p>
+      <p>CTF나 버그 바운티 등을 하다보면 안드로이드 앱의 패킷을 뜯어봐야 하는 경우가 종종 있습니다.
+이 때, 앱이 HTTPS를 사용하여 패킷을 암호화하고 있다면
+가짜 루트 인증서를 설치해서 암호화된 패킷을 중간에서 <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM</a>
+방식으로 가로채서 복호화하여야 합니다.</p>
+<p>문제는, 안드로이드 7.0인 Nougat부터는 시스템적으로 사용자가 설치한 루트 인증서를 신뢰하지 않도록 하는
+옵션(SSL-Pinning)이 <a href="https://developer.android.com/training/articles/security-config#base-config">디폴트로 설정</a>되어 있습니다.</p>
 <p><img src="../../../assets/post_images/android_https01.PNG" alt="android_trust_anchors"></p>
-<p>이 때문에 안드로이드 7.0 이상에서 가짜 루트 인증서를 디바이스에 설치하고 패킷 스니핑을 시도하면,
+<p>이 때문에 안드로이드 7.0 이상에서
+가짜 루트 인증서를 디바이스에 설치하고 패킷 스니핑을 시도하면,
 인증서 검증에 문제가 생겨서 앱이 제대로 동작하지 않습니다.</p>
 <h2 id="-frida를-이용한-우회">✔️ Frida를 이용한 우회</h2>
-<p>이러한 SSL-Pinning 옵션을 우회하는 방법으로 잘 알려진 것은 <a href="https://github.com/frida/frida">Frida</a>를 이용해서,
+<p>이러한 SSL-Pinning 옵션을 우회하는 방법으로 잘 알려진 것은
+<a href="https://github.com/frida/frida">Frida</a>를 이용해서,
 앱의 인증서 검증 과정을 후킹하는 방법입니다.</p>
 <p>해당 방법에 대해서는 아래 포스트에 자세히 설명되어 있습니다.</p>
 <ul>
@@ -216,7 +217,10 @@
 </ul>
 <p>그래서 이 글에서는 다른 방법을 소개하려고 합니다.</p>
 <h2 id="-애플리케이션-리패키징을-통한-우회법">💡 애플리케이션 리패키징을 통한 우회법</h2>
-<p>SSL-Pinning을 우회하는 다른 방법은, 직접 앱을 언패키징(Unpack)하고 사용자 루트 인증서를 신뢰하도록 설정을 변경한 뒤 다시 리패키징(Repack)해주는 방법입니다. 구체적인 단계는 다음과 같습니다.</p>
+<p>SSL-Pinning을 우회하는 다른 방법은,
+직접 앱을 언패키징(Unpack)하고 사용자 루트 인증서를 신뢰하도록
+설정을 변경한 뒤 다시 리패키징(Repack)해주는 방법입니다.
+구체적인 단계는 다음과 같습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -240,7 +244,8 @@
 <p><small>(아래 예시는 <a href="https://play.google.com/store/apps/details?id=com.fusionmedia.investing&amp;hl=en_US">investing.com</a> 앱을 사용하였고, Android 10 및 Windows 환경에서 작업하였습니다.)</small></p>
 <hr>
 <p><img src="../../../assets/post_images/android_https02.jpg" alt="ssl-pinning"></p>
-<p>구글 플레이에서 설치한 investing.com 앱에 대해, <a href="https://play.google.com/store/apps/details?id=app.greyshirts.sslcapture&amp;hl=ko">Packet Capture</a>
+<p>구글 플레이에서 설치한 investing.com 앱에 대해,
+<a href="https://play.google.com/store/apps/details?id=app.greyshirts.sslcapture&amp;hl=ko">Packet Capture</a>
 도구를 사용하여 앱의 패킹 스니핑을 시도해보면, SSL 암호화된 패킷이 복호화되지 않는 상태입니다.</p>
 <p>이 앱을 패킷 스니핑이 가능하도록 리패키징해봅시다.</p>
 <blockquote>
@@ -356,7 +361,8 @@ I: Copying original files...
 </div><p><code>com.fusionmedia.investing.repack.apk</code> 라는 이름으로 리패키징 된 앱이 생성됩니다.</p>
 <h4 id="4-애플리케이션-서명">4. 애플리케이션 서명</h4>
 <p>안드로이드 앱은 패키징 후에 서명을 해야만 설치가 가능합니다.</p>
-<p><a href="https://developer.android.com/studio/command-line/apksigner">Android SDK에서 서명을 위한 툴을 제공</a>하지만, 우리는 안드로이드 개발자가 아니니까 번거롭게 SDK 전체를 설치하는 대신,
+<p><a href="https://developer.android.com/studio/command-line/apksigner">Android SDK에서 서명을 위한 툴을 제공</a>하지만,
+우리는 안드로이드 개발자가 아니니까 번거롭게 SDK 전체를 설치하는 대신,
 테스트용 인증서로 서명을 하는 <a href="https://github.com/ryanking13/android-SSL-unpinning/blob/master/sign.jar">간단한 도구</a>를 사용하기로 합시다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -372,12 +378,13 @@ I: Copying original files...
 <p>리패키징하고 서명까지 완료된 APK 파일을 다시 디바이스에 설치하고,
 Packet Capture 도구를 사용하여 HTTPS 패킹을 스니핑 해보면,</p>
 <p><img src="../../../assets/post_images/android_https03.jpg" alt="ssl-unpinning"></p>
-<p>HTTPS 패킷이 복호화 된 것을 확인할 수 있습니다. 이제 분석만 하면 되겠네요 :)</p>
+<p>HTTPS 패킷이 복호화 된 것을 확인할 수 있습니다. 이제 분석을 시작하면 됩니다.</p>
 <h2 id="결론">결론</h2>
 <p>앱을 언패키징/리패키징하는 과정이 언뜻 보기에는 Frida를 쓰는 것보다 복잡할 수 있지만,
-이렇게 한 번 패치해둔 애플리케이션은 심심할 때(?) 언제든 사용할 수 있다는 장점이 있습니다.</p>
+이렇게 한 번 패치해둔 애플리케이션은 언제든 사용할 수 있다는 장점이 있습니다.</p>
 <blockquote>
-<p>앱을 언패키징/리패키징하는 일련의 과정을 자동화하는 파이썬 스크립트를 <a href="https://github.com/ryanking13/android-SSL-unpinning">여기</a>에 작성해두었습니다.</p>
+<p>앱을 언패키징/리패키징하는 일련의 과정을 자동화하는 파이썬 스크립트를
+<a href="https://github.com/ryanking13/android-SSL-unpinning">여기</a>에 작성해두었습니다.</p>
 </blockquote>
 <h3 id="references">References</h3>
 <ul>
@@ -389,7 +396,7 @@ Packet Capture 도구를 사용하여 HTTPS 패킹을 스니핑 해보면,</p>
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>더 간단한 방법으로는 <code>AndroidManifest.xml</code> 파일에서 안드로이드 6 이하를 타겟으로 하도록 빌드 버전을 수정해주는 방법이 있습니다. (<a href="https://blog.netspi.com/four-ways-bypass-android-ssl-verification-certificate-pinning/">참고</a>). 다만 <code>networkSecurityConfig</code> 값이 지정되어 있다면 먹히지 않습니다. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>다른 방법으로는 <code>AndroidManifest.xml</code> 파일에서 안드로이드 6 이하를 타겟으로 하도록 빌드 버전을 수정해주는 방법이 있습니다. (<a href="https://blog.netspi.com/four-ways-bypass-android-ssl-verification-certificate-pinning/">참고</a>). 다만 <code>networkSecurityConfig</code> 값이 지정되어 있다면 먹히지 않습니다. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -421,8 +428,8 @@ Packet Capture 도구를 사용하여 HTTPS 패킹을 스니핑 해보면,</p>
             <span class="prev-text nav-default">Cloudflare Workers 소개</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        <a class="next" href="/2020/03/09/jekyll-views-count-badge.html/">
-            <span class="next-text nav-default">HITS!를 이용하여 Jekyll 블로그에 조회수 배지 달기</span>
+        <a class="next" href="/2020/02/06/golang-io.html/">
+            <span class="next-text nav-default">Go 프로그래밍 I/O 미세 팁</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -496,7 +503,7 @@ Packet Capture 도구를 사용하여 HTTPS 패킹을 스니핑 해보면,</p>
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
   </span>
 </div>
 

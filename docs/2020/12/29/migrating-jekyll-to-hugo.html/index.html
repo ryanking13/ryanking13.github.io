@@ -54,7 +54,7 @@
 <meta itemprop="description" content="블로그 Jekyll to Hugo 마이그레이션 후기">
 <meta itemprop="datePublished" content="2020-12-29T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-12-29T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2248">
+<meta itemprop="wordCount" content="2234">
 
 
 
@@ -93,8 +93,6 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a><a href="/about/">
         <li class="mobile-menu-item">About</li>
       </a>
@@ -122,8 +120,6 @@
           <a class="menu-item-link" href="/">Home</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/post/">Archives</a>
-        </li><li class="menu-item">
-          <a class="menu-item-link" href="/categories/">Categories</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/about/">About</a>
         </li>
@@ -181,7 +177,7 @@
             <li><a href="#4-ruby의-불편함">4. Ruby의 불편함</a></li>
           </ul>
         </li>
-        <li><a href="#jekyll--hugo-migration">Jekyll ✈️ Hugo migration</a>
+        <li><a href="#jekyll-to-hugo-migration">Jekyll to Hugo migration</a>
           <ul>
             <li><a href="#0-hugo-import-jekyll">0. hugo import jekyll</a></li>
             <li><a href="#1-url-consistency">1. URL Consistency</a></li>
@@ -200,30 +196,30 @@
   </div>
 </div>
     <div class="post-content">
-      <p>연말을 맞아 (여러분이 지금 보고 있는) 개발 블로그의 프레임워크를 <a href="https://jekyllrb.com/">Jekyll</a>에서 <a href="https://gohugo.io/">Hugo</a>로 교체했습니다.</p>
-<p>이 글에서는 프레임워크를 바꾸는 결정을 하게 되기까지의 과정과 블로그 마이그레이션 과정에서 발생한 소소한 이슈에 대해서 얘기해보려 합니다.</p>
-<blockquote>
+      <p>연말을 맞아 (지금 보고 있는) 개발 블로그의 프레임워크를 <a href="https://jekyllrb.com/">Jekyll</a>에서 <a href="https://gohugo.io/">Hugo</a>로 교체했습니다.
+이 글에서는 프레임워크를 바꾸는 결정을 하게 되기까지의 과정과 블로그 마이그레이션 과정에서 발생한 소소한 이슈에 대해서 얘기해보려 합니다.</p>
+<div class="admonition note"><p class="admonition-title">Note</p>
 <p>Hugo를 처음 들어봤거나, 이 글을 읽고 Hugo에 관심이 생겼다면 <a href="https://ialy1595.github.io/post/blog-construct-1/">이 글</a>을 추천합니다.</p>
-</blockquote>
+</div>
 <h2 id="jekyll-블로그의-시작">Jekyll 블로그의 시작</h2>
 <p>이 블로그가 처음 만들어진 2018년 초, Jekyll 프레임워크를 사용하게된 이유는 아주 단순했습니다.</p>
 <ol>
-<li>남들 다 한다는 github.io 블로그 하나 만들어보고 싶었고</li>
-<li>당시에는 정적 사이트에 대해 아는 게 하나도 없었고</li>
+<li>남들 따라서 github.io 블로그 하나 만들어보고 싶었고</li>
+<li>당시에는 정적 사이트에 대해 아는 게 없었고</li>
 <li>Github Pages를 만들려고 보니 Github에서 Jekyll을 추천했고 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
-<li>Jekyll은 잘 모르겠지만 레포에 푸시만 하면 알아서 사이트를 만들어준다고 하니까 좋아보인다!</li>
+<li>Jekyll은 잘 모르겠지만 레포에 푸시를 하면 알아서 사이트를 만들어준다고 하니까 좋아보인다.</li>
 </ol>
 <p>아마 많은 분들이 Github의 접근성 덕에 저와 비슷한 이유로 Jekyll을 사용하셨을 거라고 생각됩니다.</p>
 <p>그렇지만 3년 가까이 Jekyll을 써오면서 느낀 소소한 불편함 때문에, 결국은 Jekyll에서 졸업하게 되었습니다.</p>
 <h2 id="안녕-jekyll-안녕-hugo">안녕 Jekyll, 안녕 Hugo</h2>
-<p>제가 사용하면서 느낀 (주관적인) Jekyll의 단점, 그리고 그와 대비되는 Hugo의 장점은 다음과 같습니다.</p>
+<p>제가 사용하면서 느낀 Jekyll의 단점, 그리고 그와 대비되는 Hugo의 장점은 다음과 같습니다.</p>
 <h3 id="1-빌드-시간">1. 빌드 시간</h3>
-<p>Jekyll은 처음 웹페이지를 빌드하는 데에 십여 초가 걸리고, 변경 사항을 반영하여 화면에 업데이트에도 수 초가 걸리는 반면,</p>
-<p>Hugo는 순식간이라고 해도 좋을만큼 빠르게 웹페이지가 빌드됩니다.</p>
+<p>Jekyll은 처음 웹페이지를 빌드하는 데에 십여 초가 걸리고, 변경 사항을 반영하여 화면에 업데이트에도 수 초가 걸리는 반면,
+Hugo는 순식간이라고 해도 좋을만큼 빠르게 웹페이지가 빌드됩니다.</p>
 <h3 id="2-테마-수정의-어려움">2. 테마 수정의 어려움</h3>
-<p>Jekyll은 테마 전체를 <code>git clone</code> 해오는 방식인 반면,</p>
-<p>Hugo는 <code>git submodule</code>을 이용해서 submodule 형태로 테마를 관리합니다.</p>
-<p>그래서 테마를 바꾸는 것도 쉽고, 원 테마 소스코드를 건드리지 않으면서 테마의 세부 항목을 수정하는 것도 간단합니다.</p>
+<p>Jekyll은 테마 전체를 <code>git clone</code> 해오는 방식인 반면,
+Hugo는 <code>git submodule</code>을 이용해서 submodule 형태로 테마를 관리합니다.
+그래서 테마를 바꾸는 것도 쉽고, 원 테마 소스코드를 건드리지 않으면서 테마의 세부 항목을 수정하는 것도 간단합니다.</p>
 <h3 id="3-템플릿-문법의-제약">3. 템플릿 문법의 제약</h3>
 <p>Jekyll은 <a href="https://shopify.github.io/liquid/">Liquid</a>라는 Shopify에서 개발한 템플릿 문법을 사용합니다.
 그러나 Liquid가 지원하는 함수(filter)가 그리 다양하지 않아 복잡한 기능을 구현하는 데에 제약을 느끼는 경우가 종종 있었습니다.</p>
@@ -233,21 +229,21 @@
 가끔 초기 세팅 시에 발생하는 디펜던시 문제 등을 해결하기 위해서 Ruby에 대한 지식(Bundler, Gemfile)이 필요한 경우가 있었습니다.</p>
 <p>그에 비해 Hugo는 Go로 작성되어 있지만,
 Go에 대한 지식이 없어도 프리컴파일된 바이너리를 다운로드받아 사용하기만 하면 되고, 이 과정에서 불편함을 겪은 적이 없었습니다.</p>
-<h2 id="jekyll--hugo-migration">Jekyll ✈️ Hugo migration</h2>
-<p>위와 같은 소소한 불편함이 쌓이고 쌓여 Jekyll에서 떠나기로 마음을 먹었습니다.</p>
-<p>마침 기존에 쓰던 블로그 테마의 한계도 느끼고 있던 상황에서,
+<h2 id="jekyll-to-hugo-migration">Jekyll to Hugo migration</h2>
+<p>위와 같은 소소한 불편함이 쌓이고 쌓여 Jekyll에서 떠나기로 마음을 먹었습니다.
+마침 기존에 쓰던 블로그 테마를 교체하려고 생각하고 있던 상황에서,
 새 술은 새 부대에 라는 마음으로 테마와 함께 프레임워크도 교체를 하기로 결정했습니다.</p>
 <p>이제부터는 마이그레이션 과정에서 있었던 이슈들에 대해서 간단히 적어보려 합니다.</p>
 <h3 id="0-hugo-import-jekyll">0. hugo import jekyll</h3>
-<p>가장 먼저 소개할 것은, Hugo에는 Jekyll로 만들어진 사이트를 Hugo에 맞게 import 해오는 <a href="https://gohugo.io/commands/hugo_import_jekyll/"><code>hugo import jekyll</code></a> 커맨드가 존재합니다.</p>
-<p>이 커맨드는 단순히 원래 있던 파일을 Hugo 디렉토리 구조에 맞춰서 이동시켜 주는 정도가 아니라, 원래 파일에 있던 메타데이터를 Hugo가 요구하는 형태로 변경해주기도 하고, 이미지나 폰트 같은 정적 애셋들도 그대로 가지고 와줍니다.</p>
-<p>저의 경우는 <code>hugo import jekyll</code>을 실행하고 바로 Hugo로 페이지를 빌드했을 때도 일부 링크가 깨지는 것을 제외하면, 대부분의 페이지가 기존의 형태 그대로 빌드되는 것을 확인할 수 있었습니다.</p>
-<p>사실 저는 초기 마이그레이션 과정에 난항을 겪을 것이라고 예상하고 있었어서,
-<em>이렇게 쉽게 된다고?</em> 하고 굉장히 놀랐던 부분입니다.</p>
-<p>물론 <code>hugo import jekyll</code>이 만능은 아닙니다. 다음은 수작업으로 해결해야 했던 부분을 몇 가지 얘기해보려 합니다.</p>
+<p>가장 먼저 소개할 것은, Hugo에는 Jekyll로 만들어진 사이트를 Hugo에 맞게 import 해오는 <a href="https://gohugo.io/commands/hugo_import_jekyll/"><code>hugo import jekyll</code></a> 커맨드가 존재합니다.
+이 커맨드는 단순히 원래 있던 파일을 Hugo 디렉토리 구조에 맞춰서 이동시켜 주는 정도가 아니라, 원래 파일에 있던 메타데이터를 Hugo가 요구하는 형태로 변경해주기도 하고, 이미지나 폰트 같은 정적 애셋들도 그대로 가지고 와줍니다.</p>
+<p>저의 경우는 <code>hugo import jekyll</code>을 실행하고 바로 Hugo로 페이지를 빌드했을 때도 일부 링크가 깨지는 것을 제외하면, 대부분의 페이지가 기존의 형태 그대로 빌드되는 것을 확인할 수 있었습니다.
+사실 저는 초기 마이그레이션 과정에 난항을 겪을 것이라고 예상하고 있었어서,
+<em>이렇게 쉽게 된다고?</em> 하고 굉장히 놀랐습니다.</p>
+<p>물론 <code>hugo import jekyll</code>이 만능은 아닙니다. 다음은 수작업으로 해결해야 했던 부분을 간단히 얘기해보려 합니다.</p>
 <h3 id="1-url-consistency">1. URL Consistency</h3>
-<p>블로그 마이그레이션에 있어 가장 먼저 고려했던 부분은 모든 포스트가 기존과 똑같은 URL을 유지하는 것이었습니다.</p>
-<p>이미 다른 사이트에서 하이퍼링크 형태로 이 블로그의 포스트에 접근하고 있는 사람이 많기 때문에, 기존 포스트의 URL을 바뀌지 않게 하는 것이 중요했습니다.</p>
+<p>블로그 마이그레이션에 있어 가장 먼저 고려했던 부분은 모든 포스트가 기존과 똑같은 URL을 유지하는 것이었습니다.
+이미 다른 사이트에서 하이퍼링크 형태로 이 블로그의 포스트에 접근하고 있는 사람이 많기 때문에, 기존 포스트의 URL을 바뀌지 않게 하는 것이 중요했습니다.</p>
 <p>Hugo는 <a href="https://gohugo.io/content-management/urls/#permalinks-configuration-example"><code>permalink</code></a> 설정을 통해 각 포스트의 빌드 결과물이 어떤 URL로 갈지 설정하는 것이 가능하고<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, 이를 기존 Jekyll 블로그 포맷과 동일하게 맞춰주었습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -298,7 +294,7 @@ Hugo의 매력이 많은 사람들에게 어필하고 있는 부분이라고 볼
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>Jekyll의 개발자가 Github의 Co-Founder인 <a href="https://github.com/mojombo">mojombo</a>니까요 😂 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Jekyll의 개발자가 Github의 Co-Founder인 <a href="https://github.com/mojombo">mojombo</a>니까요. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
 <p>물론 <a href="https://jekyllrb.com/docs/permalinks/">Jekyll도 permalink 설정이 가능합니다.</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
@@ -333,7 +329,7 @@ Hugo의 매력이 많은 사람들에게 어필하고 있는 부분이라고 볼
       <nav class="post-nav">
         <a class="prev" href="/2021/02/01/kcaptcha-solver-part-1.html/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">그누보드 캡차 인식 프로젝트 개발기 - Part 1</span>
+            <span class="prev-text nav-default">그누보드 캡차 인식 프로젝트 - Part 1</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         <a class="next" href="/2020/07/26/introducing-cf-workers-2.html/">
@@ -411,7 +407,7 @@ Hugo의 매력이 많은 사람들에게 어필하고 있는 부분이라고 볼
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
   </span>
 </div>
 

@@ -10,98 +10,56 @@
   
   <url>
     <loc>https://ryanking13.github.io/categories/</loc>
-    <lastmod>2022-09-30T00:01:00+00:00</lastmod>
+    <lastmod>2022-12-30T00:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ryanking13.github.io/</loc>
-    <lastmod>2022-09-30T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/categories/newsletter/</loc>
-    <lastmod>2022-09-30T00:01:00+00:00</lastmod>
+    <lastmod>2022-12-30T00:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ryanking13.github.io/post/</loc>
-    <lastmod>2022-09-30T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2022/09/30/monthly-log-2209.html/</loc>
-    <lastmod>2022-09-30T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2022/08/31/monthly-log-2208.html/</loc>
-    <lastmod>2022-08-31T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2022/07/31/monthly-log-2207.html/</loc>
-    <lastmod>2022-07-31T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2022/07/04/monthly-log-2206.html/</loc>
-    <lastmod>2022-07-04T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2022/05/30/monthly-log-2205.html/</loc>
-    <lastmod>2022-05-30T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2022/05/04/monthly-log-2204.html/</loc>
-    <lastmod>2022-05-04T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2022/03/31/monthly-log-2203.html/</loc>
-    <lastmod>2022-03-31T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2022/02/28/monthly-log-2202.html/</loc>
-    <lastmod>2022-02-28T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2022/01/31/monthly-log-2201.html/</loc>
-    <lastmod>2022-01-31T00:01:00+00:00</lastmod>
+    <lastmod>2022-12-30T00:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ryanking13.github.io/categories/pyodide/</loc>
-    <lastmod>2022-01-25T00:00:01+09:00</lastmod>
+    <lastmod>2022-12-30T00:01:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanking13.github.io/2022/12/30/pyodide-1year.html/</loc>
+    <lastmod>2022-12-30T00:01:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanking13.github.io/2022/12/10/jupyterlite-workshop.html/</loc>
+    <lastmod>2022-12-10T00:01:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanking13.github.io/categories/algorithm/</loc>
+    <lastmod>2022-10-18T00:01:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanking13.github.io/2022/10/18/pdqsort.html/</loc>
+    <lastmod>2022-10-18T00:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -121,27 +79,6 @@
   </url>
   
   <url>
-    <loc>https://ryanking13.github.io/2021/12/31/monthly-log-2112.html/</loc>
-    <lastmod>2021-12-31T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2021/11/30/monthly-log-2111.html/</loc>
-    <lastmod>2021-11-30T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2021/10/31/monthly-log-2110.html/</loc>
-    <lastmod>2021-10-31T00:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://ryanking13.github.io/categories/miscellaneous/</loc>
     <lastmod>2021-10-17T00:00:01+09:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -151,13 +88,6 @@
   <url>
     <loc>https://ryanking13.github.io/2021/10/17/why-git-pull-is-broken.html/</loc>
     <lastmod>2021-10-17T00:00:01+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2021/09/30/monthly-log-2109.html/</loc>
-    <lastmod>2021-09-30T01:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -177,13 +107,6 @@
   </url>
   
   <url>
-    <loc>https://ryanking13.github.io/2021/08/30/monthly-log-2108.html/</loc>
-    <lastmod>2021-08-30T01:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://ryanking13.github.io/categories/development/</loc>
     <lastmod>2021-08-16T01:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -193,13 +116,6 @@
   <url>
     <loc>https://ryanking13.github.io/2021/08/16/writing-a-good-documentation.html/</loc>
     <lastmod>2021-08-16T01:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2021/08/01/monthly-log-2107.html/</loc>
-    <lastmod>2021-08-01T01:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -219,36 +135,8 @@
   </url>
   
   <url>
-    <loc>https://ryanking13.github.io/2021/06/30/monthly-log-2106.html/</loc>
-    <lastmod>2021-06-30T01:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/</loc>
-    <lastmod>2021-06-10T00:00:01+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2021/05/31/monthly-log-2105.html/</loc>
-    <lastmod>2021-05-31T01:01:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://ryanking13.github.io/2021/05/10/git-worktree.html/</loc>
     <lastmod>2021-05-10T00:00:01+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2021/04/30/monthly-log-2104.html/</loc>
-    <lastmod>2021-04-30T01:01:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -317,13 +205,6 @@
   </url>
   
   <url>
-    <loc>https://ryanking13.github.io/2020/03/09/jekyll-views-count-badge.html/</loc>
-    <lastmod>2020-03-09T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://ryanking13.github.io/categories/go/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -380,27 +261,6 @@
   </url>
   
   <url>
-    <loc>https://ryanking13.github.io/2019/02/18/azure-function-apps-01.html/</loc>
-    <lastmod>2019-02-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2018/12/03/idn-homograph-attack.html/</loc>
-    <lastmod>2018-12-03T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/categories/security/</loc>
-    <lastmod>2018-12-03T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://ryanking13.github.io/2018/11/05/a-whirlwind-tutorial-on-creating-really-teensy-elf-executables-for-linux.html/</loc>
     <lastmod>2018-11-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -429,13 +289,6 @@
   </url>
   
   <url>
-    <loc>https://ryanking13.github.io/2018/07/12/python-37-whats-new.html/</loc>
-    <lastmod>2018-07-12T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://ryanking13.github.io/2018/06/05/javascript-null-0.html/</loc>
     <lastmod>2018-06-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -450,14 +303,14 @@
   </url>
   
   <url>
-    <loc>https://ryanking13.github.io/2018/05/22/pathlib.html/</loc>
-    <lastmod>2018-05-22T00:00:00+00:00</lastmod>
+    <loc>https://ryanking13.github.io/2018/05/17/bashware.html/</loc>
+    <lastmod>2018-05-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://ryanking13.github.io/2018/05/17/bashware.html/</loc>
+    <loc>https://ryanking13.github.io/categories/security/</loc>
     <lastmod>2018-05-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -466,13 +319,6 @@
   <url>
     <loc>https://ryanking13.github.io/2018/04/26/google-data-saver-proxy.html/</loc>
     <lastmod>2018-04-26T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanking13.github.io/2018/04/05/python-truthy-falsey.html/</loc>
-    <lastmod>2018-04-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

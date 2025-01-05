@@ -13,16 +13,7 @@
       <pubDate>Sun, 11 Jul 2021 00:00:01 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/07/11/python-packaging.html/</guid>
-      <description>파이썬 패키징의 역사 및 최근 동향을 소개합니다.</description>
-    </item>
-    
-    <item>
-      <title>알아두면 쓸데없는 파이썬 내장 커맨드라인 스크립트</title>
-      <link>https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/</link>
-      <pubDate>Thu, 10 Jun 2021 00:00:01 +0900</pubDate>
-      
-      <guid>https://ryanking13.github.io/2021/06/10/python-commandline-scripts.html/</guid>
-      <description>파이썬 기본 모듈에 내장된 스크립트를 소개합니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -31,16 +22,16 @@
       <pubDate>Thu, 04 Mar 2021 20:00:00 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/03/04/python-patma.html/</guid>
-      <description>파이썬에 새로 추가되는 패턴 매칭에 대한 이야기입니다.</description>
+      <description></description>
     </item>
     
     <item>
-      <title>오픈소스 버그 고치다가 CPython까지 뜯어본 후기</title>
+      <title>오픈 소스 버그 파고들기</title>
       <link>https://ryanking13.github.io/2020/01/12/contributing-pandas.html/</link>
       <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2020/01/12/contributing-pandas.html/</guid>
-      <description>파이썬 Pandas 라이브러리에서 발견한 버그를 수정하는 과정을 담은 글입니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -49,43 +40,16 @@
       <pubDate>Thu, 03 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2019/10/03/4-million-lines-of-python.html/</guid>
-      <description>Dropbox의 거대한 파이썬 코드베이스에 타이핑 도입했던 과정을 담은 글의 번역입니다.</description>
+      <description></description>
     </item>
     
     <item>
-      <title>(번역) 드롭박스의 파이썬3 이식 이야기 Part 1</title>
+      <title>(번역) 드롭박스의 파이썬3 이식 이야기</title>
       <link>https://ryanking13.github.io/2018/10/02/dropbox-python3-migration.html/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2018/10/02/dropbox-python3-migration.html/</guid>
-      <description>Dropbox가 파이썬 코드를 2에서 3으로 이식하는 과정을 담은 글입니다.</description>
-    </item>
-    
-    <item>
-      <title>파이썬 3.7의 새로운 기능들</title>
-      <link>https://ryanking13.github.io/2018/07/12/python-37-whats-new.html/</link>
-      <pubDate>Thu, 12 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2018/07/12/python-37-whats-new.html/</guid>
-      <description>파이썬 3.7에 새로 등장한 기능들을 소개하는 글입니다.</description>
-    </item>
-    
-    <item>
-      <title>파이썬 pathlib 사용하기 - NO MORE os.path.join()</title>
-      <link>https://ryanking13.github.io/2018/05/22/pathlib.html/</link>
-      <pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2018/05/22/pathlib.html/</guid>
-      <description>파이썬 3.4에서 등장한 pathlib 모듈을 살펴보는 글입니다.</description>
-    </item>
-    
-    <item>
-      <title>파이썬에서의 Truthy Falsy</title>
-      <link>https://ryanking13.github.io/2018/04/05/python-truthy-falsey.html/</link>
-      <pubDate>Thu, 05 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2018/04/05/python-truthy-falsey.html/</guid>
-      <description>파이썬의 Truthy와 Falsy 개념을 소개하는 글입니다.</description>
+      <description></description>
     </item>
     
   </channel>

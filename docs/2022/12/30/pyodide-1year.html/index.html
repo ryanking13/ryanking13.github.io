@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>오픈 소스 프로젝트 Pyodide 1년 회고 - Morgenrøde</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ryanking13" /><meta name="description" content="오픈 소스 프로젝트 Pyodide 1년 회고" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+<script data-ad-client="ca-pub-8626332657479130" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+<link rel="canonical" href="https://ryanking13.github.io/2022/12/30/pyodide-1year.html/" />
+<script>window.history.replaceState("", "", window.location.href.replace(new RegExp("/(?!.*/)"), ""));</script>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f85ddf8927b7322dd643197c9680283f1fc5f26a043c1f23a00792dda9dfad8a.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="오픈 소스 프로젝트 Pyodide 1년 회고" />
+<meta property="og:description" content="오픈 소스 프로젝트 Pyodide 1년 회고" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ryanking13.github.io/2022/12/30/pyodide-1year.html/" />
+<meta property="article:published_time" content="2022-12-30T00:01:00+00:00" />
+<meta property="article:modified_time" content="2022-12-30T00:01:00+00:00" />
+<meta itemprop="name" content="오픈 소스 프로젝트 Pyodide 1년 회고">
+<meta itemprop="description" content="오픈 소스 프로젝트 Pyodide 1년 회고">
+<meta itemprop="datePublished" content="2022-12-30T00:01:00+00:00" />
+<meta itemprop="dateModified" content="2022-12-30T00:01:00+00:00" />
+<meta itemprop="wordCount" content="6319">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="오픈 소스 프로젝트 Pyodide 1년 회고"/>
+<meta name="twitter:description" content="오픈 소스 프로젝트 Pyodide 1년 회고"/>
+<script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgenrøde</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Morgenrøde</a>
+</div>
+
+
+
+
+
+<div class="menu-wrapper">
+  <nav class="site-navbar">
+    <ul id="menu" class="menu">
+      <li class="menu-item">
+          <a class="menu-item-link" href="/">Home</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/post/">Archives</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/about/">About</a>
+        </li>
+    </ul>
+  </nav>
+
+  <div class="search-wrapper">
+    <div class="show-search">
+        <a class="toggle-search" title="search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="612.056" height="612.057" viewbox="0 0 613 613">
+                <path
+                    d="M595.2 513.908L493.775 412.482c26.707-41.727 42.685-91.041 42.685-144.263C536.459 120.085 416.375 0 268.24 0 120.106 0 .021 120.085.021 268.219c0 148.134 120.085 268.22 268.219 268.22 53.222 0 102.537-15.979 144.225-42.686l101.426 101.463c22.454 22.453 58.854 22.453 81.271 0 22.492-22.491 22.492-58.855.038-81.308zm-326.96-54.103c-105.793 0-191.585-85.793-191.585-191.585 0-105.793 85.792-191.585 191.585-191.585s191.585 85.792 191.585 191.585c.001 105.792-85.791 191.585-191.585 191.585z" />
+            </svg>
+        </a>
+    </div>
+    <div class="input-wrapper">
+        <input type="search" placeholder="검색어 입력" disabled="disabled" />
+    </div>
+</div>
+
+<script src="/js/search.min.dd1731a02d5cd690576e337d0942c9f59f9d2e8c34f00f789184ebffd210512d.js"></script>
+</div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">오픈 소스 프로젝트 Pyodide 1년 회고</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-12-30 </span>
+        <div class="post-category">
+            <a href="/categories/pyodide/"> Pyodide </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-사용자에서-메인테이너로">1. 사용자에서 메인테이너로</a></li>
+        <li><a href="#2-메인테이너의-자격">2. 메인테이너의 자격?</a></li>
+        <li><a href="#3-메인테이너의-일">3. 메인테이너의 일</a>
+          <ul>
+            <li><a href="#31-리뷰-그리고-리뷰">3.1. 리뷰 그리고 리뷰</a></li>
+            <li><a href="#32-할-것과-하지-않을-것을-정하기">3.2. 할 것과 하지 않을 것을 정하기</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-오픈-소스-생태계-개발자들과의-교류">4. 오픈 소스 생태계 개발자들과의 교류</a></li>
+        <li><a href="#5-힘든-점">5. 힘든 점</a>
+          <ul>
+            <li><a href="#51-개발-라이프-밸런스">5.1. 개발-라이프-밸런스</a></li>
+            <li><a href="#52-영어로-소통하기">5.2. 영어로 소통하기</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-마치며">6. 마치며</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <div style="text-align: center;">
+<img src="https://pyodide.org/en/stable/_static/pyodide-logo.png" style="height:auto; width: 100%; max-width: 600px">
+</div>
+<p>해마다 연말이 되면 여러 개발자 회고 글을 볼 수 있다.
+여러 사람의 회고를 읽다 보면 세상에 정말로 열심히 사는 사람들이
+많다는 것에 감탄하기도 하고, 동기부여가 되기도 하는데,
+나 역시도 종종 회고 글을 써볼까 생각했지만, 돌이켜보면 뚜렷한 목표 의식을 가지고
+한 해를 보낸 적이 마땅치 않아 두서없는 글이 될까 글을 완성한 적이 없었다.</p>
+<p>그러다 올해는 무엇을 하였나 하고 생각해 보니,
+마침 <a href="https://pyodide.org/">Pyodide 프로젝트</a>의 메인테이너가
+된 지 딱 1년이 다 되어가는 시점이다.
+그래서 올해는 오픈 소스 프로젝트에 참여하면서 1년간 경험하고 느낀 것들에
+대해서 이야기해보고자 한다.</p>
+<div class="admonition note"><p class="admonition-title">Pyodide?</p>
+<p>Pyodide 프로젝트에 대해서는
+<a href="https://ryanking13.github.io/2022/01/17/introducing-pyodide-1.html">이전 블로그 글</a>에서 소개하였다.</p>
+</div>
+<div style="text-align: center;">
+<img src="/assets/post_images/pyodide-1year/commits-2022.png" style="height:auto; width: 100%; max-width: 600px">
+<div>
+    <span style="color:grey"><small><i>
+    2022년 한해동안 Pyodide에 약 180개의 커밋을 했으니,
+    대략 이틀에 한번 꼴로 커밋을 했다.
+    </i></small></span>
+</div>
+</div>
+<h2 id="1-사용자에서-메인테이너로">1. 사용자에서 메인테이너로</h2>
+<p>Pyodide 프로젝트를 처음 알게 된 것은 2021년 중순 무렵이었다.
+파이썬을 브라우저에서 실행한다는 프로젝트의 목표가 흥미로웠고,
+평소에 관심(만) 가지고 있던 WebAssembly 기술을
+적극적으로 활용하고 있다는 점에서도 매력을 느꼈다.</p>
+<p>처음에는 간단한 토이 프로젝트를 만들어 볼 목적으로
+Pyodide를 살펴보기 시작했었는데,
+그 과정에서 빌드 문제를 해결하는
+<a href="https://github.com/pyodide/pyodide/pull/1711">PR</a>을
+올린 것이 이 Pyodide 에의 첫 기여였다.</p>
+<div style="text-align: center;">
+<img src="/assets/post_images/pyodide-1year/first-pr.png" style="height:auto; width: 100%; max-width: 600px">
+<div>
+    <span style="color:grey"><small><i>
+    Pyodide 프로젝트에 올린 한 줄짜리 첫 번째 PR
+    </i></small></span>
+</div>
+</div>
+<p>그 후로 Pyodide를 사용하면서 발생하는 문제들이나
+오래되어 업데이트되지 않은 문서에 관련된 부분들을
+간간이 리포팅하고 수정했었다.
+사실 프로젝트에 기여하겠다는 마음보다는,
+내가 쓰면서 불편했던 점들을 (아무도 안 고쳐주니) 직접 고친다는
+마음에 가까웠던 것 같다.
+그러다 Pyodide를 사용한 지 약 3개월 정도가 지난
+2021년 11월 무렵 리드 메인테이너로 부터 이슈를 닫을 수 있는
+권한에 관심이 있냐는 메일을 받았는데,
+이를 수락하여 Pyodide GitHub Organization에 합류하게 되었다.</p>
+<div style="text-align: center;">
+<img src="/assets/post_images/pyodide-1year/pyodide-org.png" style="height:auto; width: 100%; max-width: 800px">
+</div>
+<p>이는 Pyodide 프로젝트에 대한 그동안의 기여에 대한
+인정을 해주는 것에 가까웠고, 크게 실질적인 권한이 있지는 않았다.
+그럼에도 나에게 있어서는 기존에는 Pyodide를 사용하는
+개인 사용자라는 입장이었다면, 이제는 <strong>내가 프로젝트의 일부</strong>가
+되었다고 느꼈다.</p>
+<p>그렇다 보니 이 시점부터 프로젝트에 대한 관심이 커졌고,
+한편으로는 약간의 자신감도 생겼다.
+Pyodide 코드베이스는 꽤나 복잡도가 높은 편인데,
+그래서 이전에는 예상치 못한 부작용이 발생할까봐
+코어 로직을 건드리는 것에 부담감을 느껴서,
+당장 내가 필요한 부분이 아니면 코드를 건드리지 않았다면,
+이 시점부터는 새로운 기능을 추가하거나 오래된 이슈를
+해결하는 등의 작업량을 늘려가기 시작했다.</p>
+<p>그리고 약 2개월 정도가 더 지난 2022년 1월에
+그간의 기여에 대한 인정을 받아
+<strong>PR을 머지할 수 있는 권한이 있는 메인테이너로 합류</strong>하게 되었다. <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<h2 id="2-메인테이너의-자격">2. 메인테이너의 자격?</h2>
+<p>지금에서야 하는 얘기지만 사실 처음 메인테이너로 초대받았을 당시에는
+<strong>아직 몇 달 참여하지 않은 사람에게 이렇게 쉽게 위험한(?) 권한을 줘도 되는가</strong>라는
+일종의 임포스터 신드롬을 느꼈었다.
+아무래도 기존부터 작업을 해온 다른 메인테이너들과
+코드 이해도 측면에서 차이가 있다 보니,
+코드 리뷰에 대한 부담감도 있었다.</p>
+<p>그러나 시간이 지나고 지금 내부자의 입장에서 생각해 보면,
+당시에 메인테이너를 늘리는 것은 두 가지 이유에서 합리적인 결정이었다고 생각한다.</p>
+<p><strong>첫째로</strong>, 많은 오픈 소스 프로젝트는 만성 인력 부족 문제를 겪고 있다.</p>
+<p>대형 회사가 운영하는 오픈 소스를 제외한
+대부분의 커뮤니티 기반 오픈 소스 프로젝트들은
+풀타임 개발자 없이
+자원봉사자들이 파트타임으로 개발하고 있다.
+Pyodide의 경우도 원래는 Mozilla에서 개발했었던 프로젝트였지만,
+현재는 개발 주체가 커뮤니티로 이관된 상태고,
+초기 메인테이너는 개발을 하지 않고 있다.</p>
+<p>Pyodide는 아직 실험적인 프로젝트라 수많은 버그와 이슈가 존재하고,
+매일 같이 이슈가 올라오지만, 이를 해결할 인력은 부족한 상황이다.
+그렇다 보니 프로젝트 기여에 관심을 가지는
+한 사람 한 사람이 굉장히 소중할 수밖에 없다.</p>
+<div style="text-align: center;">
+<img src="https://www.commitstrip.com/wp-content/uploads/2014/05/Strip-Vision-Open-source-650-finalenglish.jpg" style="height:auto; width: 100%; max-width: 600px">
+<div>
+    <span style="color:grey"><small><i>오픈 소스 개발의 이상과 현실</i></small></span>
+</div>
+</div>
+<p><strong>둘째로</strong>, 대부분의 사람들은 지속적으로 오픈 소스에 기여하지 않는다.</p>
+<p>아무리 인기 있고 매력적인 오픈 소스 프로젝트라도, 대부분의 개발자는
+여러 현실적인 이유로 지속적으로 오픈 소스에 기여하지 않는다.
+기본적으로 오픈 소스 개발은 자기만족에 가까운데,
+자신의 시간과 노력을 들여 뚜렷한 금전적인 보상이 없는
+활동을 지속적으로 할 수 있는 사람은 드물다.</p>
+<p>그렇다 보니 짧은 기간이나마 프로젝트에 관심을 가지고 소통을 하는 사람들은
+프로젝트 개발자들에게 굉장히 소중하고 고마운 사람이 된다.
+이는 Pyodide에 한정한 내 경험이지만,
+대부분의 오픈소스에 적용되는 이야기라고 생각한다.</p>
+<h2 id="3-메인테이너의-일">3. 메인테이너의 일</h2>
+<div style="text-align: center;">
+<img src="/assets/post_images/pyodide-1year/dalle-dev.png" style="height:auto; width: 100%; max-width: 400px">
+<div>
+    <span style="color:grey"><small><i>DALL-E: A software engineer writing code</i></small></span>
+</div>
+</div>
+<p>메인테이너가 되기 전과 후에는 어떤 부분이 달라졌을까?</p>
+<h3 id="31-리뷰-그리고-리뷰">3.1. 리뷰 그리고 리뷰</h3>
+<p>사실 프로젝트의 메인테이너라고 해서 특정한 의무가 생기지는 않는다.
+나를 포함해서 Pyodide를 개발하는 모든 개발자는 여가 시간을 이용해서
+Pyodide에 기여하는 개발자들이고, 그렇기 때문에 정기적으로 미팅에 참여해야 한다거나,
+특정한 이슈에 할당이 되어서 문제를 해결해야 한다던가 하는 의무는 없다.
+그렇지만, 본인이 프로젝트에 애정을 가지고 스스로 메인테이너가 된 만큼,
+<strong>의무는 없지만 의무감은 자연스럽게 생긴다.</strong></p>
+<p>기본적으로 Pyodide는 메인테이너 1인 이상의 승인을 받아야
+PR을 머지할 수 있도록 되어있다.
+Pyodide에 정기적으로 기여하는 메인테이너는 나를 포함해 셋이고,
+그렇기에 내가 아닌 다른 메인테이너가 PR을 올렸다면
+나 또는 다른 한 사람이 리뷰해야 머지 가능한 구조다.</p>
+<p>그렇다 보니 단순 기여자였을 때는 관심 없는 이슈에는 참여할 필요가 없었다면,
+메인테이너가 된 후에는 리뷰를 하기 위해서 레포지토리에 올라오는
+모든 이슈와 PR을 살펴봐야 한다.
+물론 모든 것을 다 이해하고 있을 필요는 없지만
+최소한 <strong>무슨 일이 일어나고 있는지, 어떤 방향으로 흘러가고 있는지는</strong>
+알고 있어야 한다.</p>
+<p>그렇다 보니 메인테이너가 된 후에는 직접 코드를 작성하는 부분보다는,
+남의 코드를 읽거나 이슈를 쓰고 답글을 다는 일이 크게 늘었다.
+물론 리뷰가 늦어진다고 해서 닦달을 하는 것은 아니고,
+또 다른 메인테이너가 리드하고 있는 작업에 대해서는
+어느 정도 리스펙을 해주고 가벼운 리뷰로 넘어가기도 한다.
+그럼에도 불구하고, 메인테이너가 되고서 가장 많은 시간을 쓰는 부분은 코드 리뷰임은 분명하다.</p>
+<div style="text-align: center;">
+<img src="/assets/post_images/pyodide-1year/2022-activity-stats.png" style="height:auto; width: 100%; max-width: 400px">
+<div>
+    <span style="color:grey"><small><i>2022년 전체 활동의 30%가량이 코드 리뷰다</i></small></span>
+</div>
+</div>
+<h3 id="32-할-것과-하지-않을-것을-정하기">3.2. 할 것과 하지 않을 것을 정하기</h3>
+<p>메인테이너의 다른 역할은 Pyodide 프로젝트가 어떻게 나아가야 할지를 정하는 것이다.
+거창하게 얘기했지만, 결국에는 특정한 기능을 추가할지, 하지 않을지에 대한 결정을 내리는 것이다.</p>
+<p>Pyodide는 모두 자원봉사자로 이루어진 프로젝트이고,
+그래서 기본적으로는 모든 메인테이너가 <strong>자기가 하고 싶은 일을 하고 싶은 때에 하는</strong> 구조다.
+그러나 그 일이 프로젝트에 필요한가에 대해서는 논의를 거쳐야 하고,
+다른 메인테이너들의 동의를 얻기 위해서는
+이슈로 자신의 의견을 정리해서 올려야 한다.</p>
+<div style="text-align: center;">
+<img src="/assets/post_images/pyodide-1year/issue-rfc.png" style="height:auto; width: 100%; max-width: 600px">
+<div>
+    <span style="color:grey"><small><i>정해진 양식은 없고, 자유롭게 생각을 글로 쓴다.</i></small></span>
+</div>
+</div>
+<p>Pyodide 프로젝트의 기본 방침은 &ldquo;<strong>프로젝트를 발전시키는 것이라면 좋다</strong>&ldquo;이다.
+그러나 개발 인력이 충분치 않은 만큼,
+유지 보수에 대한 부채가 발생하는 일에 대해서는
+신중하게 결정한다.
+그렇다 보니 좋은 기능이라고 해서 모든 것을 추가하지는 않고,
+가능하면 DRY(Don&rsquo;t Repeat Yourself) 원칙을 지키면서
+불필요한 복잡성을 늘리지 않기 위해 노력하는 편이다.</p>
+<p>일반적으로 사용자들은 대체로 자신이 원하는 기능을 더하기를 원한다.
+&ldquo;이게 있었으면 좋겠다&rdquo;, 혹은 &ldquo;이게 왜 안 되요?&rdquo; 같은 요청을 흔히
+보았을 것이다. 처음에 나는 메인테이너의 가장 중요한 역할이
+그러한 요청들에 부응해 프로젝트를 발전시킬 수 있는 기능들을
+최대한 추가해가는 것이라고 생각했는데, 지금은 생각이 좀 바뀌어
+그보다 더 중요한 것이 다양한 요청 중에서 <strong>더하지 않을 것</strong>을
+결정하는 것이 아닐까 싶다.</p>
+<p>각각의 프로젝트는 추구하고자 하는 목표와 그에 따른 방향이 있다.
+유저들이 요청하는 다양한 기능 중 일부는 프로젝트의 목표와 맞지 않는다.
+혹은 때로는 더 좋은 도구들을 재발명하는 형태가 되는 경우도 많다.
+따라서 메인테이너는 이러한 요청들 중 더하지 않을 것을 정함으로써
+프로젝트의 올바른 방향성을 결정하고,
+불필요한 복잡성이 증가하는 것을 막을 수 있다.
+이를 통해 장기적으로 프로젝트를 <strong>지속가능하게</strong> 만드는 것이
+메인테이너의 역할이라고 생각한다.</p>
+<blockquote>
+<p>같이 읽어보면 좋은 글: <a href="https://connortumbleson.com/2022/11/28/open-source-saying-no/">Open Source &amp; Saying &ldquo;No&rdquo;</a></p>
+</blockquote>
+<div style="text-align: center;">
+<img src="/assets/post_images/pyodide-1year/menus.jpg" style="height:auto; width: 100%; max-width: 400px">
+<div>
+    <span style="color:grey"><small><i>
+    메뉴가 너무 많으면 가장 맛있는 음식을 찾기 어렵고,
+    <br/>
+    너무 기능이 많으면 핵심적인 기능에 집중하기 어렵다.
+    </i></small></span>
+</div>
+</div>
+<h2 id="4-오픈-소스-생태계-개발자들과의-교류">4. 오픈 소스 생태계 개발자들과의 교류</h2>
+<p>개인적으로 Pyodide를 개발하면서 가장 흥미로웠던 경험은
+다른 개발자들과 교류하는 것이었다.
+Pyodide는 일종의 파이썬 배포판이라는 특성상
+파이썬 생태계 전체를 포괄하는 프로젝트이고,
+그렇다 보니 파이썬 생태계 내의 굉장히 다양한
+개발자들과 교류할 수 있는 기회가 많았다.</p>
+<p>예를 들어,</p>
+<ul>
+<li>CPython의 WebAssembly 지원을 위해서 CPython 코어 개발자들과 논의를 해야 하고</li>
+<li>브라우저 환경에서의 파이썬 패키징을 표준화하기 위해 Python Packaging Authority(PyPA)와 대화를 나누고</li>
+<li>다양한 패키지들을 브라우저 환경에 포팅하기 위해서 Numpy, Scipy, scikit-learn의 개발자들과도 교류해야한다.</li>
+</ul>
+<p>이와 같이 파이썬 그리고 오픈 소스 생태계 내의
+여러 개발자들과 서로 소통하는 과정에서
+잘 몰랐던 타 프로젝트의 구조나 내부 사정을 알게 되기도 하고,
+서로 도움을 주고받기도 한다.</p>
+<p>아무래도 Pyodide는 Python, Javascript, WebAssembly, C, Rust 등
+여러 언어와 기술들이 혼합된 복잡한 프로젝트이기 때문에,
+모든 기술에 대해서 메인테이너가 잘 알기는 어렵다.
+(대표적으로 현재 메인테이너 중에는 JavaScript 전문가가 없고, 그래서 Node.js 관련 문제가 터질 때면
+늘 고통받는다&hellip;)
+그런데 가끔 문제가 되는 분야의 전문가나,
+혹은 에러가 발생한 패키지의 메인테이너가
+직접 찾아와 문제를 개선하는 데에 도움을 줄 때면,
+새로운 지식을 배우게 됨과 더불어 오픈 소스 커뮤니티의 힘을 느끼곤 한다.</p>
+<p>또한 얼마 전에는 <a href="https://jupyter.org/">Jupyter 프로젝트</a>의 주요 기여자인
+QuantStack에서 워크샵을 주최하여, 브라우저 위의 파이썬이라는 주제에 관해서
+같은 관심사를 가진 개발자들과 교류할 수 있는 자리가 있었다.
+Jupyterlite를 만드는 QuantStack, PyScript를 만드는 Anaconda의 개발자들을 포함해
+다양한 오픈 소스 개발자들을 만날 수 있는 자리였고,
+나는 Pyodide 메인테이너로 초청을 받아서 5일간 프랑스 파리에 다녀왔다.</p>
+<p>만약 작년에 내가 코로나 이후의 첫 해외여행을 오픈 소스 개발자 자격으로
+프랑스 파리에 초청받아 가게 될 것이라는 얘기를 들었다면 웃긴 농담처럼
+생각하지 않았을까. 오픈 소스를 함으로써 얻을 수 있는 아주 흥미로운 경험이었다.</p>
+<blockquote>
+<p>Jupyterlite Community Workshop의 내용과 관련해서는 <a href="https://ryanking13.github.io/2022/12/10/jupyterlite-workshop.html">별도의 후기</a>를 작성하였다.</p>
+</blockquote>
+<div style="text-align: center;">
+<img src="/assets/post_images/jupyterlite/members.jfif" style="height:auto; width: 100%; max-width: 600px">
+<div>
+    <span style="color:grey"><small><i>워크샵 참가 인원들의 모습</i></small></span>
+</div>
+</div>
+<h2 id="5-힘든-점">5. 힘든 점</h2>
+<p>끝내기 전에 오픈 소스 개발의 힘든 점 또한 얘기해보고자 한다.</p>
+<h3 id="51-개발-라이프-밸런스">5.1. 개발-라이프-밸런스</h3>
+<p>사람들이 뚜렷한 물질적 보상이 없는 오픈 소스에 기여하는 이유는
+그 자체로 보람과 즐거움을 느끼기 때문이다.
+그러나 별도의 풀타임 직업을 가진 채로 오픈 소스 활동을 하는 것은
+어쩔 수 없이 많은 <strong>개인 시간을 잡아먹는다.</strong>
+물론 거대한 다른 프로젝트에 비하면 Pyodide는
+하루에 두세개 꼴로 이슈나 PR이 올라오는 정도에 불과하지만,
+그럼에도 전 세계 모든 곳에서 밤낮을 가리지 않고 올라오는
+이슈들은 개발자를 피곤하게 한다.</p>
+<p>처음 내가 메인테이너가 되었을 때는 흘러가는 모든 일들을
+샅샅이 알아야 한다고 생각해서, GitHub에서 발생하는 모든 액티비티에
+알림을 켜놓고, 조금이라도 빠르게 이슈에 대응하고자
+매시간마다 알림을 확인하고는 했다.
+그러나 평일 새벽이나 주말에도 언제나 이슈가 올라오다 보니
+빠르게 이슈에 대응하고자 하는 열정은 금방 족쇄가 되었다.
+분명 좋아서 시작한 일이고 더 잘하고 싶은 마음에 하는 것이었지만,
+그것이 의무가 되고 반복되는 일이 되자, 조금씩 지쳐가는 것을 느꼈고,
+이대로면 금방 번아웃에 빠질 것 같다는 느낌을 받았다.</p>
+<p>그러다 우연히 오픈 소스 활동과
+개인의 삶에 대한 심리적인 균형을 맞출 수 있게 되었는데,
+계기는 다소 웃기게도 몸이 아프기 시작했기 때문이다.
+평소 앉은 자세가 안 좋았는지 허리에서 어느 순간부터 통증이
+느껴지더니, 그것이 점차 심해져서 한동안 고생을 했었는데,
+그 과정을 겪으면서 &ldquo;몸이 건강한 것이 제일이지!&rdquo; 란 마음으로
+삶과 일상의 우선순위를 재평가하게 되었다.</p>
+<p>그래서 현재는 나를 멘션한 경우에만 앱으로 알림을 받고,
+나머지 활동에 대해서는 이메일로만 알림이 오도록 해두어,
+여유 시간이 있고 또 내가 내킬 때만 메일을 확인하고 있다.
+그리고 주말에는 가급적 알림을 확인하지 않으려고 노력하고 있다.</p>
+<h3 id="52-영어로-소통하기">5.2. 영어로 소통하기</h3>
+<p>개인적으로 영어를 아주 못한다거나 불편하다고 느끼는 편은 아니다.
+그럼에도 불구하고 복잡한 주제에 관한 논의에 참여하거나,
+내 생각을 긴 글로 논리정연하게 영어로 설명하는 것은 여전히 쉽지 않다고 느낀다.</p>
+<p>사실 Pyodide 오픈 소스 활동은
+GitHub을 통한 비동기적인 소통이 대부분이다.
+따라서 실시간으로 논의를 해야 하는 것이 아니기에,
+충분한 시간을 들인다면 상대방의 모든 말을 이해하고
+내 생각도 영어로 잘 정리할 수는 있겠지만,
+어디까지나 남는 시간을 이용해 오픈 소스 활동을 하는 것이니만큼,
+그렇게 시간을 쏟기에는 현실적인 어려움이 있고, 무엇보다도 그냥 힘들다.</p>
+<p>그래서 기술적으로 매우 복잡한 이슈나, 오래전부터 이어져 온 긴 논의에 참여할 때면
+상당한 피로감을 느낀다. 해당 이슈에 이미 다른 메인테이너가 관심을 가지고 리드하고 있다면
+나는 슬쩍 빠지기도 한다 (마법의 언어 <em>LGTM!</em>).
+다행히 Pyodide에 참여한 기간이 점점 늘어나면서,
+전반적인 이슈에 대한 이해도가 높아졌고,
+현재는 대부분의 이슈를 이해하는 데에는 큰 문제가 없다.
+그러나 여전히 아주 깊은 기술적 논의에 참여할 때면 언어적인 문제로 피로감을 느낀다.</p>
+<h2 id="6-마치며">6. 마치며</h2>
+<p>오픈 소스 활동을 통해서 얻을 수 있는 경험들이
+학교나 직장에서 얻을 수 있는 경험들에 비해
+우월하다고 생각하지는 않는다.
+그렇지만 그곳에서는 얻을 수 없는 색다른 경험들을 할 수 있었던 것만은 분명하다.
+그렇기에 개인적으로는 여러 가지 어렵고 힘든 점들이 있었음에도
+메인테이너가 된 것은 아주 잘한 결정이라고 생각한다.</p>
+<p>아쉬운 점을 하나 꼽자면, 올해는 아무래도
+처음 경험하는 다양한 이슈들을 처리하느라
+굉장히 얕고 넓은 지식을 쌓았던 것 같다.
+그래서 기술적인 깊이가 있는 문제를 충분히 파헤치고 해결하는
+경험을 많이 갖지 못했다.
+Pyodide에는 몇 년째 해결되지 못하고 있는 어려운 문제들이 많이 남아있는데,
+내년에는 이러한 문제들을 깊게 접근해볼 수 있는 기회를 많이 만들고자 한다.</p>
+<p>개인적인 감상 말고 프로젝트 차원에서 보면,
+올해는 WebAssembly의 해라고 말할 수 있을 정도로 WebAssembly 기술을 활용한
+흥미로운 도구들이 많이 나왔다.
+아직 다양한 도구들에 대한 교통정리가 되지 않은 느낌이 들기는 하지만,
+점점 WebAssembly 기술이 메인 스트림으로 발전하는 듯한 느낌은 분명히 받고 있다.</p>
+<p>브라우저 위의 파이썬과 Pyodide를 둘러싼 환경도 내년에는 더 많은 변화가 있을 것이다.
+당장 올해 초에 Pyodide를 기반으로 한 Anaconda의 PyScript가 공개되면서,
+일반 개발자들에게도 브라우저에서 파이썬을 실행한다는 개념이 많이 알려졌다.
+작년까지만 해도 Pyodide를 검색하면 한국어로 된 글은 전무했을 정도였는데,
+이제는 한국어로 된 PyScript 소개 글을 찾기 어렵지 않다
+(한 번은 어떤 대학교에서 Pyodide 관련 소개를 해달라는 연락을 받기도 했었다.).</p>
+<p>다른 한편으로, 최근 Python의 발전에는 마이크로소프트가 많은 기여를 하고 있는데
+(다수의 CPython 코어 개발자들이 마이크로소프트에 소속되어 있다),
+마이크로소프트가 VSCode나 Github Codespaces등과 같이 웹 기반 개발 환경에
+꽤나 진심인 것으로 보여서 이 부분에서 WebAssembly와 브라우저 위의 파이썬 기술이
+큰 변화를 가져올 수도 있을 것 같다는 생각이 든다.</p>
+<p>마지막으로 한 영상을 소개하면서 글을 마무리 짓고자 한다.
+JsConf 2019에서 <a href="https://blog.outsider.ne.kr/">변정훈(Outsider)님</a>이
+자신의 오픈 소스 메인테이너 경험에 대해 발표한 영상이다.
+이 영상을 처음 봤던 2019년에는 예능을 보는 것처럼 재밌게 봤는데,
+지금 다시 보니 다큐멘터리처럼 느껴지는 것이 세상 사는 것이
+다 비슷하다는 생각이 든다 😂</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/Mbdl9OS7E3o" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Pyodide에서는 코어 개발자와 메인테이너를 따로 구분하지 않고 혼용해서 사용한다. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ryanking13</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2022-12-30
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/2022/12/10/jupyterlite-workshop.html/">
+            <span class="next-text nav-default">Jupyter Community Workshop 2022 참가 후기</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="comments" class="comments">
+            
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ryanking13/ryanking13.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+        </div>
+
+        <div id="search-results" class="search-results">
+            <template>
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title"><a class="post-link" href="{url}">{title}</a></h1>
+            <div class="post-meta">
+                <span class="post-time"> {date} </span>
+                <div class="post-category">
+                    <a href="{categoryUrl}"> {category} </a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <div class="post-summary">
+                {summary}
+            </div>
+            <div class="read-more">
+                <a href="{url}" class="read-more-link">Read more...</a>
+            </div>
+        </div>
+    </article>
+</template>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="def6488@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://github.com/ryanking13" class="iconfont icon-github" title="github"></a>
+    <a href="https://ryanking13.github.io/feed.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-117186743-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
