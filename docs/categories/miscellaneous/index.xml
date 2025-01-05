@@ -13,7 +13,7 @@
       <pubDate>Sun, 17 Oct 2021 00:00:01 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/10/17/why-git-pull-is-broken.html/</guid>
-      <description>git pull의 동작과 오해에 대해 설명합니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Mon, 10 May 2021 00:00:01 +0900</pubDate>
       
       <guid>https://ryanking13.github.io/2021/05/10/git-worktree.html/</guid>
-      <description>Git worktree 명령어를 소개합니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -31,16 +31,7 @@
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2020/12/29/migrating-jekyll-to-hugo.html/</guid>
-      <description>개발 블로그 프레임워크를 Jekyll에서 Hugo로 변경하는 과정을 담은 글입니다.</description>
-    </item>
-    
-    <item>
-      <title>HITS!를 이용하여 Jekyll 블로그에 조회수 배지 달기</title>
-      <link>https://ryanking13.github.io/2020/03/09/jekyll-views-count-badge.html/</link>
-      <pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2020/03/09/jekyll-views-count-badge.html/</guid>
-      <description>Jekyll기반 static site에 방문 횟수를 셀 수 있는 서드파티 앱을 설치해봅니다.</description>
+      <description></description>
     </item>
     
   </channel>

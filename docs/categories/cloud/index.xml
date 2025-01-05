@@ -13,7 +13,7 @@
       <pubDate>Sun, 26 Jul 2020 01:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2020/07/26/introducing-cf-workers-2.html/</guid>
-      <description>Cloudflare Workers로 간단한 JSON 포매터를 만들어봅시다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Sun, 26 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2020/07/26/introducing-cf-workers-1.html/</guid>
-      <description>Cloudflare에서 새로 나온 서버리스 플랫폼인 Workers를 소개합니다.</description>
+      <description></description>
     </item>
     
     <item>
@@ -31,16 +31,7 @@
       <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://ryanking13.github.io/2019/12/29/twitter-bot-without-server.html/</guid>
-      <description>Github의 Issue와 Actions를 활용하여, 주기적 알림 트위터 봇을 개인 서버 없이 구축해봅니다.</description>
-    </item>
-    
-    <item>
-      <title>Azure Functions 시작하기 1</title>
-      <link>https://ryanking13.github.io/2019/02/18/azure-function-apps-01.html/</link>
-      <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ryanking13.github.io/2019/02/18/azure-function-apps-01.html/</guid>
-      <description>Azure의 서버리스 프레임워크인 Functions를 소개하는 글입니다.</description>
+      <description></description>
     </item>
     
   </channel>

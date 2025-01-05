@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ryanking13" /><meta name="description" content="개발 과정에서 예상치 못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글입니다." /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+<meta name="author" content="ryanking13" /><meta name="description" content="" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
 
 
 
@@ -45,23 +45,23 @@
 
 
 <meta property="og:title" content="(번역) Javascript - The Curious Case of Null &gt;= 0" />
-<meta property="og:description" content="개발 과정에서 예상치 못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글입니다." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ryanking13.github.io/2018/06/05/javascript-null-0.html/" />
 <meta property="article:published_time" content="2018-06-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-06-05T00:00:00+00:00" />
 <meta itemprop="name" content="(번역) Javascript - The Curious Case of Null &gt;= 0">
-<meta itemprop="description" content="개발 과정에서 예상치 못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글입니다.">
+<meta itemprop="description" content="">
 <meta itemprop="datePublished" content="2018-06-05T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2018-06-05T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1899">
+<meta itemprop="wordCount" content="1850">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="(번역) Javascript - The Curious Case of Null &gt;= 0"/>
-<meta name="twitter:description" content="개발 과정에서 예상치 못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글입니다."/>
+<meta name="twitter:description" content=""/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
 
@@ -93,8 +93,6 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a><a href="/about/">
         <li class="mobile-menu-item">About</li>
       </a>
@@ -122,8 +120,6 @@
           <a class="menu-item-link" href="/">Home</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/post/">Archives</a>
-        </li><li class="menu-item">
-          <a class="menu-item-link" href="/categories/">Categories</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/about/">About</a>
         </li>
@@ -186,7 +182,6 @@
 <blockquote>
 <p>Why it’s important to read the Javascript Spec</p>
 </blockquote>
-<p>예상치못한 상황을 만났을 때 언어 스펙에서부터 차근차근 문제를 풀어가는 글이다.</p>
 <hr>
 <p><img src="https://cdn-images-1.medium.com/max/1600/1*F-EDLK-OugJ_4KOgtJqnPA.png" alt=""></p>
 <p>얼마 전 자바스크립트 기초 가이드를 작성하는 도중 <code>null</code>과 관계 연산자 사이에서 흥미로운 사례를 발견했다.</p>
@@ -206,9 +201,13 @@
 </div>
 </div><p>엥&hellip;?</p>
 <p>값이 <code>0</code>보다 <strong>크지 않고</strong> <code>0</code>과 <strong>같지 않은데</strong> <code>0</code>보다 <strong>크거나 같다</strong> 라니?</p>
-<p>처음에는 그냥 자바스크립트가 자바스크립트했구나 하고 넘어가려고 했지만, 워낙 동작이 이상해서 도리어 흥미가 생겼다. <code>null</code> 타입이 특수하게 다뤄져서 이런 결과가 나온 걸까? 아니면 비교 연산이 이루어지는 방식이랑 관계가 있는 것일까?</p>
-<p>그래서 이 문제의 원인을 알기 위해서 뿌리까지 파고들어가보기로 했다. 자바스크립트의 유일한 진리가 담긴 것! 그렇다 자바스크립트 스펙 문서다.</p>
-<p>자 토끼를 잡으러 토끼굴에 들어가보자.</p>
+<p>처음에는 그냥 자바스크립트가 자바스크립트했구나 하고 넘어가려고 했지만,
+워낙 동작이 이상해서 도리어 흥미가 생겼다.
+<code>null</code> 타입이 특수하게 다뤄져서 이런 결과가 나온 걸까?
+아니면 비교 연산이 이루어지는 방식이랑 관계가 있는 것일까?
+그래서 이 문제의 원인을 알기 위해서 뿌리까지 파고들어가보기로 했다.
+자바스크립트의 유일한 진리가 담긴 것! 그렇다 자바스크립트 스펙 문서다.
+자, 토끼를 잡으러 토끼굴에 들어가보자.</p>
 <h2 id="the-abstract-relational-comparison-algorithm">The Abstract Relational Comparison Algorithm</h2>
 <p>우선 첫번째 비교 연산을 살펴보자.</p>
 <div class="highlight"><div class="chroma">
@@ -219,7 +218,10 @@
 <pre class="chroma"><code class="language-js" data-lang="js"><span class="kc">null</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// false
 </span></code></pre></td></tr></table>
 </div>
-</div><p>스펙 문서에 따르면, <code>&gt;</code>, <code>&lt;</code> 비교 연산자는 <a href="http://interglacial.com/javascript_spec/a-11.html#a-11.8.5"><em>Abstract Relational Comparison Algorithm</em></a>이라는 알고리즘을 사용하여 구문의 true/false를 판정한다.</p>
+</div><p>스펙 문서에 따르면, <code>&gt;</code>, <code>&lt;</code> 비교 연산자는
+<a href="http://interglacial.com/javascript_spec/a-11.html#a-11.8.5"><em>Abstract Relational Comparison Algorithm</em></a>
+이라는 알고리즘을 사용하여
+구문의 참거짓을 판정한다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -396,13 +398,13 @@
 
       
       <nav class="post-nav">
-        <a class="prev" href="/2018/07/12/python-37-whats-new.html/">
+        <a class="prev" href="/2018/09/03/cmd-deafult-command.html/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">파이썬 3.7의 새로운 기능들</span>
+            <span class="prev-text nav-default">Windows cp949 인코딩 자동 변경하기</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        <a class="next" href="/2018/05/22/pathlib.html/">
-            <span class="next-text nav-default">파이썬 pathlib 사용하기 - NO MORE os.path.join()</span>
+        <a class="next" href="/2018/05/17/bashware.html/">
+            <span class="next-text nav-default">(번역) Beware of the Bashware</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -476,7 +478,7 @@
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
   </span>
 </div>
 

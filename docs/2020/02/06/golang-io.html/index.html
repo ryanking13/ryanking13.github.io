@@ -54,7 +54,7 @@
 <meta itemprop="description" content="Go 프로그래밍 I/O 미세 팁">
 <meta itemprop="datePublished" content="2020-02-06T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-02-06T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1584">
+<meta itemprop="wordCount" content="1665">
 
 
 
@@ -93,8 +93,6 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a><a href="/about/">
         <li class="mobile-menu-item">About</li>
       </a>
@@ -122,8 +120,6 @@
           <a class="menu-item-link" href="/">Home</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/post/">Archives</a>
-        </li><li class="menu-item">
-          <a class="menu-item-link" href="/categories/">Categories</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/about/">About</a>
         </li>
@@ -189,18 +185,23 @@
       <p><strong>TL;DR</strong></p>
 <blockquote>
 <p><code>fmt.Scanf</code> 보다는 <code>fmt.Scan</code> 보다는 <code>fmt.Fscan</code> <br>
-<code>fmt.Fprintf</code>는 <code>fmt.Printf</code>보다 느릴수도</p>
+<code>fmt.Fprintf</code>는 <code>fmt.Printf</code>보다 느릴 수 있다</p>
 </blockquote>
-<p>C 프로그래밍을 하다가 Golang을 하게 되면 <code>fmt.Printf</code>와 <code>fmt.Scanf</code>를 보고
+<p>Go의 문법은 C와 많이 닮아있기 때문에,
+C 프로그래밍을 하다가 Go를 쓰다보면 <code>fmt.Printf</code>와 <code>fmt.Scanf</code>를 보고
 아무 생각 없이 C-like한 I/O 문법으로 코드를 작성하고는 합니다.</p>
-<p>Golang의 I/O는 분명 C와 닮아있지만, 아무 생각없이 C처럼 쓰다가는
-원하는 결과가 나오지 않거나 성능이 떨어지는 경우가 종종 있습니다.</p>
+<p>Go의 I/O는 분명 C와 닮아있지만, 아무 생각없이 C처럼 쓰다가는
+원하는 결과가 나오지 않거나 성능이 떨어지는 경우가 종종 있습니다.
+이 글에서는 해당 내용을 정리해보려고 합니다.</p>
 <h2 id="input">Input</h2>
-<h4 id="golang의-scanf-계열은-newlinen을-whitespace로-취급하지-않는다">Golang의 <code>Scanf</code> 계열은 newline(<code>\n</code>)을 whitespace로 취급하지 않는다</h4>
+<h4 id="go의-scanf-계열은-newlinen을-whitespace로-취급하지-않는다">Go의 <code>Scanf</code> 계열은 newline(<code>\n</code>)을 whitespace로 취급하지 않는다</h4>
 <blockquote>
 <p>The handling of spaces and newlines differs from that of C&rsquo;s scanf family: in C, newlines are treated as any other space, and it is never an error when a run of spaces in the format string finds no spaces to consume in the input. <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 </blockquote>
-<p>따라서 <code>fmt.Scanf</code>를 사용하여 여러 줄을 읽어들인다면 예상과 다른 동작을 할 가능성이 높습니다.</p>
+<p>newline을 포함한 여타 whitespace 문자를 알아서 무시해주는 C의 scanf와 다르게
+Go의 scanf는 newline 문자를 무시하지 않습니다.
+따라서 <code>fmt.Scanf</code>를 사용하여 여러 줄을 읽어들인다면,
+예상과 다른 동작을 할 가능성이 높습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -392,7 +393,8 @@
 fmt.Fscan: 28.924ms
 </code></pre></td></tr></table>
 </div>
-</div><p>10만 줄을 읽을 때, 버퍼링 하지 않은 <code>fmt.Scan</code>과 버퍼링한 <code>fmt.Fscan</code> 사이에 15배가 넘는 속도 차이를 확인할 수 있습니다.</p>
+</div><p>10만 줄을 읽을 때, 버퍼링 하지 않은 <code>fmt.Scan</code>과 버퍼링한
+<code>fmt.Fscan</code> 사이에 15배가 넘는 속도 차이를 확인할 수 있습니다.</p>
 <h4 id="-한-줄-읽기">(+) 한 줄 읽기</h4>
 <p>스페이스를 구분자로 사용하지 않는 한 줄 읽기는 아래와 같이 할 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
@@ -428,10 +430,10 @@ fmt.Fscan: 28.924ms
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="output">Output</h2>
-<p>출력도 입력과 같이 버퍼링을 이용하면 빠를까요?</p>
+<p>그렇다면 출력도 입력과 같이 버퍼링을 이용하면 빠를까요?</p>
 <p>답은, <em>언제나 그렇지는 않다</em> 입니다.</p>
-<p>출력도 입력과 마찬가지로 <code>bufio</code>를 활용하여 출력을 버퍼링할 수 있습니다. (<code>fmt.Printf</code> 대신 <code>fmt.Fprintf</code>)</p>
-<p>그러나 newline(<code>\n</code>)이 많을 경우 flush 횟수가 많아져 오히려 <code>fmt.Fprintf</code>가 더 느릴 수 있습니다.</p>
+<p>출력도 입력과 마찬가지로 <code>bufio</code>를 활용하여 출력을 버퍼링할 수 있습니다. (<code>fmt.Printf</code> 대신 <code>fmt.Fprintf</code>)
+그러나 newline(<code>\n</code>)이 많을 경우 flush 횟수가 많아져 오히려 <code>fmt.Fprintf</code>가 더 느릴 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -529,7 +531,8 @@ fmt.Fscan: 28.924ms
 <li><code>fmt.Printf</code> 사용, 10만 줄</li>
 <li><code>fmt.Fprintf</code> 사용, 10만 줄</li>
 </ol>
-<p>1, 2번은 한 줄에 10만 자를 모두 출력한 경우이고, 3, 4번은 한 글자를 출력할 때마다 <code>\n</code>을 넣어주었습니다.</p>
+<p>1, 2번은 한 줄에 10만 자를 모두 출력한 경우이고,
+3, 4번은 한 글자를 출력할 때마다 <code>\n</code>을 넣어주었습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -547,9 +550,9 @@ fmt.Fscan: 28.924ms
 </div><p>한 줄에 모두 출력한 경우는 버퍼링을 활용한 <code>fmt.Fprintf</code>가 월등히 빠른 것을 확인할 수 있지만,
 줄 수가 늘어나는 경우는 오히려 <code>fmt.Printf</code>가 더 빠른 것을 확인할 수 있습니다.</p>
 <h2 id="결론">결론</h2>
-<p>Golang으로 다량의 파일 I/O를 한 번에 처리하는 경우가 아주 흔하지는 않겠습니다만,
+<p>Go으로 다량의 파일 I/O를 한 번에 처리하는 경우가 아주 흔하지는 않겠습니다만,
 간단하면서도 성능에 큰 영향을 주는 부분이니 머리 한 구석에 기억해두면 좋을 것으로 생각됩니다.</p>
-<p>일상생활에서 알고리즘 문제를 풀 때에도 (Golang으로 문제를 푸는 사람이 얼마나 되겠습니까만은&hellip;) 생각해볼 수 있는 부분입니다.</p>
+<p>일상생활에서 알고리즘 문제를 풀 때에도 (Go로 문제를 푸는 사람이 얼마나 되겠습니까만은&hellip;) 생각해볼 수 있는 부분입니다.</p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -581,13 +584,13 @@ fmt.Fscan: 28.924ms
 
       
       <nav class="post-nav">
-        <a class="prev" href="/2020/03/09/jekyll-views-count-badge.html/">
+        <a class="prev" href="/2020/07/01/capturing-https-android-without-frida.html/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">HITS!를 이용하여 Jekyll 블로그에 조회수 배지 달기</span>
+            <span class="prev-text nav-default">안드로이드 앱 리패키징을 통한 SSL-Pinning 우회법</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         <a class="next" href="/2020/01/12/contributing-pandas.html/">
-            <span class="next-text nav-default">오픈소스 버그 고치다가 CPython까지 뜯어본 후기</span>
+            <span class="next-text nav-default">오픈 소스 버그 파고들기</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -661,7 +664,7 @@ fmt.Fscan: 28.924ms
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
   </span>
 </div>
 

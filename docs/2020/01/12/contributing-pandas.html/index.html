@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>오픈소스 버그 고치다가 CPython까지 뜯어본 후기 - Morgenrøde</title>
+  <title>오픈 소스 버그 파고들기 - Morgenrøde</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ryanking13" /><meta name="description" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
+<meta name="author" content="ryanking13" /><meta name="description" content="오픈 소스 버그 파고들기" /><meta name="keywords" content="Computer Science, Developer, Python, Machine Learning" />
 
 
 
@@ -44,24 +44,24 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기" />
-<meta property="og:description" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기" />
+<meta property="og:title" content="오픈 소스 버그 파고들기" />
+<meta property="og:description" content="오픈 소스 버그 파고들기" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ryanking13.github.io/2020/01/12/contributing-pandas.html/" />
 <meta property="article:published_time" content="2020-01-12T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-01-12T00:00:00+00:00" />
-<meta itemprop="name" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기">
-<meta itemprop="description" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기">
+<meta itemprop="name" content="오픈 소스 버그 파고들기">
+<meta itemprop="description" content="오픈 소스 버그 파고들기">
 <meta itemprop="datePublished" content="2020-01-12T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-01-12T00:00:00+00:00" />
-<meta itemprop="wordCount" content="4303">
+<meta itemprop="wordCount" content="4356">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기"/>
-<meta name="twitter:description" content="오픈소스 버그 고치다가 CPython까지 뜯어본 후기"/>
+<meta name="twitter:title" content="오픈 소스 버그 파고들기"/>
+<meta name="twitter:description" content="오픈 소스 버그 파고들기"/>
 <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
 
@@ -93,8 +93,6 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a><a href="/about/">
         <li class="mobile-menu-item">About</li>
       </a>
@@ -122,8 +120,6 @@
           <a class="menu-item-link" href="/">Home</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/post/">Archives</a>
-        </li><li class="menu-item">
-          <a class="menu-item-link" href="/categories/">Categories</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/about/">About</a>
         </li>
@@ -154,7 +150,7 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">오픈소스 버그 고치다가 CPython까지 뜯어본 후기</h1>
+      <h1 class="post-title">오픈 소스 버그 파고들기</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2020-01-12 </span>
@@ -172,17 +168,14 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#도입">도입</a></li>
-        <li><a href="#-버그-원인-분석">🤔 버그 원인 분석</a></li>
-      </ul>
-    </li>
-    <li><a href="#-코드-톺아보기">🔎 코드 톺아보기</a>
-      <ul>
-        <li><a href="#-문제-해결">👨‍💻 문제 해결&hellip;?</a></li>
-        <li><a href="#-테스트를-짜자-절망편">💀 테스트를 짜자 (절망편)</a></li>
-        <li><a href="#-안녕-cpython">🖐 안녕 CPython</a></li>
-        <li><a href="#-테스트를-짜자-희망편">✨ 테스트를 짜자 (희망편)</a></li>
-        <li><a href="#-pr-보내기">🚀 PR 보내기</a></li>
+        <li><a href="#0-도입">0. 도입</a></li>
+        <li><a href="#1-버그-원인-분석">1. 버그 원인 분석</a></li>
+        <li><a href="#2-코드-톺아보기">2. 코드 톺아보기</a></li>
+        <li><a href="#3-문제-해결">3. 문제 해결?</a></li>
+        <li><a href="#4-테스트-짜기">4. 테스트 짜기</a></li>
+        <li><a href="#5-안녕-cpython">5. 안녕 CPython</a></li>
+        <li><a href="#6-다시-테스트-짜기">6. 다시 테스트 짜기</a></li>
+        <li><a href="#7-pr">7. PR</a></li>
         <li><a href="#결론">결론</a>
           <ul>
             <li><a href="#reference">Reference</a></li>
@@ -196,13 +189,14 @@
 </div>
     <div class="post-content">
       <p><strong>TL;DR</strong></p>
-<p>파이썬 Pandas 라이브러리에서 발견한 버그를 수정하는 과정에서,
-cpython의 코드베이스까지 뜯어보게 된 이야기입니다.</p>
-<blockquote>
+<p>파이썬 Pandas 라이브러리에서 발견한 버그를 수정하기 위해서,
+버그의 원인을 찾기 위해 CPython 코드베이스까지 내려가 살펴본 과정을 담은 글입니다.</p>
+<div class="admonition note"><p class="admonition-title">Note</p>
 <p>이 글은 오픈 소스 컨트리뷰션 가이드가 아닙니다.</p>
-</blockquote>
-<h2 id="도입">도입</h2>
-<p>얼마 전, 파이썬 데이터 과학 라이브러리인 <a href="https://pandas.pydata.org/">Pandas</a>를 사용하다가 json 데이터를 읽어오는 <code>read_json</code> 함수가 의아한 동작을 하는 것을 발견했습니다.</p>
+</div>
+<h2 id="0-도입">0. 도입</h2>
+<p>얼마 전, 파이썬 데이터 과학 라이브러리인 <a href="https://pandas.pydata.org/">Pandas</a>를 사용하다가
+json 데이터를 읽어오는 <code>read_json</code> 함수가 의아한 동작을 하는 것을 발견했습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -237,9 +231,12 @@ cpython의 코드베이스까지 뜯어보게 된 이야기입니다.</p>
 0  媛��굹�떎�씪留덈컮�궗
 </code></pre></td></tr></table>
 </div>
-</div><p><code>read_json</code> 함수는 json 파일을 읽어서 파싱해주는 역할을 하는데, utf-8로 저장한 파일을 읽어왔을 때 결과물이 깨지는 것입니다.</p>
-<p>파이썬의 인코딩 문제에 지긋지긋하게 당해본 분들이라면, 파이썬에서 인코딩이 깨지는 건 흔히 있는 일 아닌가? 라고 생각하실 수도 있지만,
-<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_json.html">공식 다큐먼트</a>에 따르면 <code>read_json</code>은 기본적으로 파일의 인코딩을 utf-8로 취급합니다.</p>
+</div><p><code>read_json</code> 함수는 json 파일을 읽어서 파싱해주는 역할을 하는데,
+utf-8로 저장한 파일을 읽어왔을 때 결과물이 깨지는 것입니다.</p>
+<p>파이썬의 인코딩 문제에 지긋지긋하게 당해본 분들이라면,
+파이썬에서 인코딩이 깨지는 건 흔히 있는 일 아닌가? 라고 생각하실 수도 있지만,
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_json.html">공식 다큐먼트</a>에 따르면
+<code>read_json</code>은 기본적으로 파일의 인코딩을 utf-8로 취급합니다.</p>
 <p><img src="../../../assets/post_images/pandas_read_json_encoding.PNG" alt="read_json_docs"></p>
 <p>그럼 파일의 인코딩을 utf-8로 명시해주면 어떨까요?</p>
 <div class="highlight"><div class="chroma">
@@ -270,11 +267,12 @@ cpython의 코드베이스까지 뜯어보게 된 이야기입니다.</p>
 0  가나다라마바사
 </code></pre></td></tr></table>
 </div>
-</div><p>제대로 깨지지 않고 파일을 읽어오는 것을 확인할 수 있습니다.</p>
-<p>즉, 코드가 공식 문서대로 동작하고 있지 않습니다. 버그입니다.</p>
-<h2 id="-버그-원인-분석">🤔 버그 원인 분석</h2>
+</div><p>제대로 깨지지 않고 파일을 읽어오는 것을 확인할 수 있습니다.
+즉, 코드가 공식 문서대로 동작하고 있지 않습니다. 버그입니다.</p>
+<h2 id="1-버그-원인-분석">1. 버그 원인 분석</h2>
 <p>버그를 발견했으니 먼저 이유를 분석해야 합니다.</p>
-<p>인코딩이 깨지는 것은 분명 제 개발환경이 한국어 윈도우즈라 cp949 인코딩을 사용하고 있기 때문일 것입니다. 확인해볼까요?</p>
+<p>인코딩이 깨지는 것은 분명 제 개발환경이 한국어 윈도우즈라
+cp949 인코딩을 사용하고 있기 때문일 것입니다. 확인해볼까요?</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -305,11 +303,14 @@ cpython의 코드베이스까지 뜯어보게 된 이야기입니다.</p>
 0  가나다라마바사
 </code></pre></td></tr></table>
 </div>
-</div><p>예상대로 json 파일을 cp949 인코딩으로 저장하면 제대로 내용을 읽어오는 것을 확인할 수 있습니다.</p>
-<p>이제 Pandas 개발팀에 버그 리포트를 하고 끝내겠습니다. 수고하셨습니다.</p>
-<p>&hellip;라고 하고 싶지만 직접 문제의 원인을 파악하고 고쳐보기로 했습니다 (답답하니 내가 뛴다!).</p>
-<p>먼저 Pandas가 어디서 인코딩을 잘못 읽어오고 있는지 확인하여야 합니다. <a href="https://github.com/pandas-dev/pandas">Pandas 코드베이스</a>를 뜯어볼 시간입니다.</p>
-<h1 id="-코드-톺아보기">🔎 코드 톺아보기</h1>
+</div><p>예상대로 json 파일을 cp949 인코딩으로 저장하면
+제대로 내용을 읽어오는 것을 확인할 수 있습니다.</p>
+<p>시간이 없거나 귀찮다면 여기서 Pandas 팀에 버그 리포팅을 하고
+문제가 해결될 때까지 기다리면 됩니다&hellip;
+만 직접 문제의 원인을 파악하고 고쳐보기로 했습니다 (답답하니 내가 뛴다!).</p>
+<p>먼저 Pandas가 어디서 인코딩을 잘못 읽어오고 있는지 확인하여야 합니다.
+<a href="https://github.com/pandas-dev/pandas">Pandas 코드</a>를 뜯어볼 시간입니다.</p>
+<h2 id="2-코드-톺아보기">2. 코드 톺아보기</h2>
 <p>먼저 <code>read_json</code> 함수를 찾아봅시다.</p>
 <p><code>read_json</code> 함수는 <a href="https://github.com/pandas-dev/pandas/blob/794a1c21cfcbadd7a36653d9c8184868442be35b/pandas/io/json/_json.py#L352">io/json/_json.py</a> 파일에 정의되어 있습니다.</p>
 <div class="highlight"><div class="chroma">
@@ -410,9 +411,11 @@ cpython의 코드베이스까지 뜯어보게 된 이야기입니다.</p>
         <span class="k">return</span> <span class="n">data</span>
 </code></pre></td></tr></table>
 </div>
-</div><p><code>JsonReader</code>는 <code>__init__ --&gt; _get_data_from_filepath</code>을 거쳐 <code>_get_handle</code> 메소드를 호출합니다.</p>
-<p>메소드의 이름으로 보건대 파일 포인터를 생성하는 것으로 보입니다.</p>
-<p><code>_get_handle</code>함수는 <a href="https://github.com/pandas-dev/pandas/blob/794a1c21cfcbadd7a36653d9c8184868442be35b/pandas/io/common.py#L367">io/common.py</a> 파일에 정의되어 있습니다.</p>
+</div><p><code>JsonReader</code>는 <code>__init__ --&gt; _get_data_from_filepath</code>을 거쳐 <code>_get_handle</code> 메소드를 호출합니다.
+메소드의 이름으로 보건대 파일 포인터를 생성하는 것으로 보입니다.</p>
+<p><code>_get_handle</code>함수는
+<a href="https://github.com/pandas-dev/pandas/blob/794a1c21cfcbadd7a36653d9c8184868442be35b/pandas/io/common.py#L367">io/common.py</a>
+파일에 정의되어 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -433,7 +436,9 @@ cpython의 코드베이스까지 뜯어보게 된 이야기입니다.</p>
     <span class="k">return</span> <span class="n">f</span><span class="p">,</span> <span class="n">handles</span>
 </code></pre></td></tr></table>
 </div>
-</div><p><code>_get_handle</code> 함수에서 파일을 여는데, 인코딩이 명시되어 있지 않을 경우, <code>open</code> 함수의 인코딩 파라미터를 지정하지 않고 사용하네요.</p>
+</div><p><code>_get_handle</code> 함수에서 파일을 여는데,
+인코딩이 명시되어 있지 않을 경우,
+파이썬 빌트인 <code>open</code> 함수의 인코딩 파라미터를 지정하지 않고 사용하네요.</p>
 <p>이 부분이 문제인 걸까요? 확인해봅시다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -461,8 +466,8 @@ cpython의 코드베이스까지 뜯어보게 된 이야기입니다.</p>
 </div>
 </div><p><code>_get_handle</code> 함수와 동일한 파라미터를 줘서 파일을 열고 읽어 출력해보니,
 앞서 <code>read_json</code>으로 읽었을 때와 동일하게 깨진 결과를 확인할 수 있습니다.</p>
-<p>그렇습니다. 문제는 <code>open</code>에서 시작되었습니다.</p>
-<p><code>open</code>의 동작이 문제라면 문제는 Pandas가 아니라 파이썬의 영역입니다.</p>
+<p>흠, 아무래도 문제는 파이썬 빌트인 <code>open</code> 함수에 있는 것 같네요.
+<code>open</code>의 동작이 문제라면 문제는 Pandas가 아니라 CPython의 영역입니다.</p>
 <p><a href="https://docs.python.org/3.8/library/functions.html#open">파이썬 공식 문서</a>에서 <code>open</code> 함수에 대한 내용을 찾아보면,</p>
 <blockquote>
 <p>In text mode, if encoding is not specified the encoding used is platform dependent: <strong>locale.getpreferredencoding(False)</strong> is called to get the current locale encoding.</p>
@@ -481,8 +486,8 @@ cpython의 코드베이스까지 뜯어보게 된 이야기입니다.</p>
 </code></pre></td></tr></table>
 </div>
 </div><p>제 한국어 Windows10 환경에서 <code>locale.getpreferredencoding(False)</code>의 결과는 cp949인 것을 확인할 수 있습니다.</p>
-<h2 id="-문제-해결">👨‍💻 문제 해결&hellip;?</h2>
-<p>코드베이스를 깊이 들어가서야 발견한 문제의 원인에 비해서, 해결책은 아주 간단합니다.</p>
+<h2 id="3-문제-해결">3. 문제 해결?</h2>
+<p>문제의 원인을 찾기는 어려웠지만, 해결책은 아주 간단합니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -495,16 +500,20 @@ cpython의 코드베이스까지 뜯어보게 된 이야기입니다.</p>
         <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&#34;utf-8&#34;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>인코딩이 지정되어 있지 않으면 utf-8로 강제해주는 것이죠.</p>
-<p>기존 Pandas 코드베이스에서도 명시되지 않은 인코딩을 강제한 케이스를 찾아볼 수 있었고 (<a href="https://github.com/pandas-dev/pandas/blob/fd7db9819b8c7dba86b2887bee33f670b2715afc/pandas/io/formats/format.py#L489-L490">예시1</a>, <a href="https://github.com/pandas-dev/pandas/blob/fd7db9819b8c7dba86b2887bee33f670b2715afc/pandas/io/formats/csvs.py#L77-L78">예시2</a>),
+</div><p>인코딩이 지정되어 있지 않으면 utf-8로 강제해주는 것이죠.
+이러한 수정이 적절한지 확인하기 위해서, Pandas 코드를 조금 더 살펴보니,
+기존 코드베이스에서도 명시되지 않은 인코딩을 강제한 케이스를 찾아볼 수 있었고
+(<a href="https://github.com/pandas-dev/pandas/blob/fd7db9819b8c7dba86b2887bee33f670b2715afc/pandas/io/formats/format.py#L489-L490">예시1</a>,
+<a href="https://github.com/pandas-dev/pandas/blob/fd7db9819b8c7dba86b2887bee33f670b2715afc/pandas/io/formats/csvs.py#L77-L78">예시2</a>),
 동일한 방식을 적용했습니다.</p>
-<p>이것으로 끝일까요? 아닙니다. 테스트가 남았습니다.</p>
-<h2 id="-테스트를-짜자-절망편">💀 테스트를 짜자 (절망편)</h2>
+<p>이것으로 끝일까요? 아니죠, 테스트를 작성해야 합니다.</p>
+<h2 id="4-테스트-짜기">4. 테스트 짜기</h2>
 <p>Pandas는 코드 품질을 유지하기 위하여 코드 수정 PR에 테스트를 강제합니다.</p>
 <p>우리가 수정한 버그는, <code>read_json</code>이 utf-8이 아닌 잘못된 인코딩을 기본값으로 사용할 수 있다는 것이었으니,
 기존 코드에서는 에러가 발생하고, 수정한 코드에서는 에러가 발생하지 않는 테스트를 작성하여야 합니다.</p>
 <p>그런데 <code>locale.getpreferredencoding(False)</code>은 시스템에 따라 다른 값을 리턴합니다.
-윈도우즈라도 국가에 따라 다르고, 우분투나 맥에서는 utf-8로 고정되어 있습니다.
+윈도우즈라도 국가에 따라 다르고,
+우분투나 맥에서는 utf-8로 고정되어 있습니다.
 즉, 제대로 테스트를 작성하려면 기본 인코딩이 utf-8이 아닌 환경을 시뮬레이션 해주어야 합니다.
 안 그러면 우분투에서는 성공하고 윈도우즈에서는 실패하는 테스트가 되어버릴 수도 있으니까요.</p>
 <p>파이썬 빌트인 모듈인 <code>unittest</code>의 <code>mock</code> 모듈을 이용해서 <code>locale.getpreferredencoding</code> 함수의 리턴 값을 패치해봅시다.</p>
@@ -565,15 +574,18 @@ Patched locale: cp949
 </code></pre></td></tr></table>
 </div>
 </div><p>테스트는 기본 locale이 utf-8인 우분투 환경에서 진행했습니다.</p>
-<p>그런데 어라? <code>mock.patch</code>를 이용해서 <code>locale.getpreferredencoding</code>함수의 리턴값이 cp949로 바뀐 것을 확인했음에도,
+<p>그런데 어라? <code>mock.patch</code>를 이용해서
+<code>locale.getpreferredencoding</code>함수의 리턴값이 cp949로 바뀐 것을 확인했음에도,
 <code>read_json</code>은 정상적으로 utf-8 인코딩 파일을 읽어오고 있습니다.</p>
-<h2 id="-안녕-cpython">🖐 안녕 CPython</h2>
-<p>여기서 꽤 오랜 시간 제자리걸음을 했습니다. 대체 어디가 문제인 것일까요.</p>
-<p>그러다 문득 한 가지 가능성을 떠올렸습니다. 과연 파이썬 공식 문서는 100% 정확할까?</p>
-<blockquote>
-<p>정말로 <code>open</code> 함수가 <code>locale.getpreferredencoding(False)</code>의 결과를 사용하는 것일까?</p>
-</blockquote>
-<p>이 질문의 답은 문서에서는 확인할 수 없습니다. 직접 파이썬 코드베이스를 읽어봐야 합니다.</p>
+<h2 id="5-안녕-cpython">5. 안녕 CPython</h2>
+<p>여기서 꽤 오랜 시간 원인을 찾지 못했습니다.
+여러 가지 가능성, 예를 들어 pandas가 일부 표준 함수들을 패치해서 사용하고 있다거나,
+혹은 mock 모듈을 올바르지 않게 사용하고 있지 않다거나 하는 경우를 탐색해보던 중,
+문득 한 가지 가능성을 떠올렸습니다.</p>
+<p><em>&ldquo;과연 파이썬 공식 문서는 100% 정확할까?&quot;</em></p>
+<p><em>&ldquo;정말로 <code>open</code> 함수가 <code>locale.getpreferredencoding(False)</code>의 결과를 사용하는 것일까?&quot;</em></p>
+<p>이 질문에 대한 답은 문서에서는 확인할 수 없으니,
+직접 파이썬 코드베이스를 읽어봐야 합니다.</p>
 <p>cpython 레포지토리에서 <code>open</code> 함수를 확인해볼 수 있습니다. <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -690,8 +702,8 @@ Patched locale: cp949
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p><code>_PyIO_get_locale_module</code>은 <code>_bootlocale</code>이라는 이름의 파이썬 모듈을 가지고 오네요.</p>
-<p>대체 <code>_bootlocale</code> 이녀석은 뭘까요? 사실 답은 파이썬 <code>locale</code> 모듈에서 찾을 수 있습니다.</p>
+</div><p><code>_PyIO_get_locale_module</code>은 <code>_bootlocale</code>이라는 이름의 파이썬 모듈을 가지고 오네요.
+대체 <code>_bootlocale</code> 이녀석은 뭘까요? 답은 파이썬 <code>locale</code> 모듈에서 찾을 수 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -714,8 +726,9 @@ Patched locale: cp949
         <span class="k">return</span> <span class="n">_bootlocale</span><span class="o">.</span><span class="n">getpreferredencoding</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>사실 <code>locale.getpreferredencoding</code>은 <code>_bootlocale.getpreferredencoding</code>을 그대로 가져와 쓰고 있었을 뿐입니다! <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
-<p>그리고 <code>_bootlocale</code> 모듈에는 진짜 <code>getpreferredencoding</code>이 구현되어 있습니다.</p>
+</div><p>사실 <code>locale.getpreferredencoding</code>은
+<code>_bootlocale.getpreferredencoding</code>을 그대로 가져와 쓰고 있었네요. <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>
+그리고 <code>_bootlocale</code> 모듈에는 진짜 <code>getpreferredencoding</code>이 구현되어 있습니다.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -742,9 +755,10 @@ Patched locale: cp949
 <li>그렇다면 <strong>_bootlocale</strong> 모듈을 바로 패치하면 <code>open</code>의 동작에 영향을 줄 수 있다!</li>
 </ol>
 <blockquote>
-<p>나중에 확인하기로, <a href="https://bugs.python.org/issue31565">파이썬 이슈 트래커에도 2017년에 해당 내용이 등록</a>된 바 있습니다. <br> 그렇지만 개발자들이 반응해주지 않았네요. 🙁</p>
+<p>나중에 확인해보니,
+<a href="https://bugs.python.org/issue31565">파이썬 이슈 트래커에도 2017년에 해당 내용이 등록</a>된 바 있습니다. <br> 그렇지만 개발자들이 반응해주지 않았네요. 🙁</p>
 </blockquote>
-<h2 id="-테스트를-짜자-희망편">✨ 테스트를 짜자 (희망편)</h2>
+<h2 id="6-다시-테스트-짜기">6. 다시 테스트 짜기</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -804,20 +818,22 @@ Patched locale: cp949
 </code></pre></td></tr></table>
 </div>
 </div><p>원하던 결과대로 파일의 내용이 깨지는 것을 확인할 수 있습니다!</p>
-<h2 id="-pr-보내기">🚀 PR 보내기</h2>
+<h2 id="7-pr">7. PR</h2>
 <p>이제 문제 원인, 해결책, 테스트까지 모두 완성했으니 PR을 보내봅시다.</p>
 <p><img src="../../../assets/post_images/pandas_issue.PNG" alt="issue"></p>
 <p>먼저 <a href="https://github.com/pandas-dev/pandas/issues/29565">이슈</a>를 작성해서 버그를 발견했음을 알리고,</p>
 <p><img src="../../../assets/post_images/pandas_pr.PNG" alt="PR"></p>
-<p>이슈를 수정하는 <a href="https://github.com/pandas-dev/pandas/pull/29566">PR</a>를 곧바로 날렸습니다.</p>
-<p>Pandas는 테스트로 <code>unittest</code> 대신 <code>pytest</code> 사용을 권장해서 테스트 코드를 약간 수정해주었구요.</p>
-<p>PR은 다음 날에 곧바로 머지되었습니다 :)</p>
+<p>이슈를 수정하는 <a href="https://github.com/pandas-dev/pandas/pull/29566">PR</a>를 곧바로 날렸습니다.
+Pandas는 테스트로 <code>unittest</code> 대신 <code>pytest</code> 사용을 권장해서 테스트 코드를 약간 수정해주었구요.
+PR은 다음 날에 곧바로 머지되었습니다 :)</p>
 <p><img src="../../../assets/post_images/pandas_merge.PNG" alt="PR_merged"></p>
 <h2 id="결론">결론</h2>
-<p>처음 Pandas에서 버그를 발견했을 때만 해도 아주 간단하게 끝날 줄 알았던 문제가 꼬리에 꼬리를 물어 Cpython까지 가게 되었습니다.</p>
-<p>지금까지 몇 차례의 오픈소스 컨트리뷰션 경험은 있지만, Pandas 정도의 대형 레포지토리에 컨트리뷰션을 한 적은 처음이었는데요.</p>
-<p>많은 사람들이 사용하는 패키지인만큼 더 신중하게 정확한 원인을 찾기 위해 접근해야 했고,
-그 과정에서 Pandas를 넘어 CPython 코드까지 읽어보고 분석해볼 수 있는 기회가 되었습니다.</p>
+<p>처음 Pandas에서 버그를 발견했을 때만 해도 아주 간단하게 끝날 줄 알았던
+문제가 꼬리에 꼬리를 물어 CPython 내부 구현까지 가게 되었습니다.</p>
+<p>Pandas는 많은 사람들이 사용하는 패키지인만큼
+버그 해결책을 찾는 과정에서
+더 신중하게 정확한 원인을 찾기 위해 접근해야 했고,
+그 과정에서 언어 구현체까지 분석해볼 수 있는 기회가 되었습니다.</p>
 <hr>
 <h3 id="reference">Reference</h3>
 <blockquote>
@@ -839,7 +855,7 @@ Patched locale: cp949
 <p>cpython은 2.x 까지는 파이썬으로 구현한 I/O 함수를 사용하다가 이후부터 c 기반으로 새로 구현했습니다. 기존의 파이썬 구현은 <a href="https://github.com/python/cpython/blob/master/Lib/_pyio.py">_pyio</a> 모듈로 사용할 수 있습니다. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3" role="doc-endnote">
-<p>사실 OS마다 조금씩 다르게 동작하도록 구현되어있지만, 기본적으로는 거의 동일합니다. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>정확히는 OS마다 조금씩 다르게 동작하도록 구현되어 있지만, 기본적으로는 거의 동일합니다. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -946,7 +962,7 @@ Patched locale: cp949
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
   </span>
 </div>
 

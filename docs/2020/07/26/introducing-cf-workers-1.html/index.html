@@ -54,7 +54,7 @@
 <meta itemprop="description" content="Cloudflare Workers 소개">
 <meta itemprop="datePublished" content="2020-07-26T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-07-26T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2021">
+<meta itemprop="wordCount" content="2018">
 
 
 
@@ -93,8 +93,6 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a><a href="/about/">
         <li class="mobile-menu-item">About</li>
       </a>
@@ -122,8 +120,6 @@
           <a class="menu-item-link" href="/">Home</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/post/">Archives</a>
-        </li><li class="menu-item">
-          <a class="menu-item-link" href="/categories/">Categories</a>
         </li><li class="menu-item">
           <a class="menu-item-link" href="/about/">About</a>
         </li>
@@ -172,12 +168,12 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-workers의-특징">🏷️ Workers의 특징</a>
+        <li><a href="#workers의-특징">Workers의 특징</a>
           <ul>
             <li></li>
           </ul>
         </li>
-        <li><a href="#-단점">👎 단점</a>
+        <li><a href="#단점">단점</a>
           <ul>
             <li></li>
           </ul>
@@ -203,12 +199,12 @@ Google Cloud의 경우는 <a href="https://cloud.google.com/run?hl=ko">Cloud Run
 <p>아마 FaaS 방식의 서비스를 프로젝트에 도입하고자 한다면 대부분 위의 플랫폼들을 고려하실텐데요.
 이 글에서는 기존의 플랫폼 대신, 다소 낯선 플랫폼을 소개하려 합니다.
 바로 CDN(Content delivery network) 서비스로 유명한 Cloudflare의 <a href="https://workers.cloudflare.com/">workers</a> 입니다.</p>
-<h2 id="-workers의-특징">🏷️ Workers의 특징</h2>
+<h2 id="workers의-특징">Workers의 특징</h2>
 <p>FaaS 클라우드 플랫폼이 제공하는게 다 고만고만하지 않나,
 하는 생각이 들 수 있는데 Workers 이 녀석은 꽤나 독특합니다.</p>
 <h4 id="1-v8-엔진-기반-런타임">1. V8 엔진 기반 런타임</h4>
 <p>Cloudflare Workers의 가장 큰 특징은 <a href="https://developers.cloudflare.com/workers/about/how-it-works/">V8 엔진을 기반으로 한 Workers 런타임을 이용하여 각 함수 별로 독립된 샌드박스 환경을 제공한다는 것</a>입니다. 타 서비스가 각 함수를 VM 또는 컨테이너를 이용해서 격리된 환경을 구성하는 것과 대비되는 부분입니다.</p>
-<p><img src="https://developers.cloudflare.com/workers/about/media/isolates.png" alt="VM vs V8"></p>
+<p><img src="https://blog.cloudflare.com/content/images/2018/10/Artboard-42@3x.png" alt="VM vs V8"></p>
 <p>이러한 방식이 사용자 입장에서 어떤 차이를 가져오나 살펴보면, 각 함수가 각각의 VM/컨테이너에서 실행되는 타 서비스에 비해서, Workers는 <strong>가벼운 V8 엔진 기반 Workers 런타임 + 하나의 런타임이 수많은 함수를 실행할 수 있다</strong> 는 점 덕분에 초기 실행속도가 어마어마하게 빨라집니다.</p>
 <blockquote>
 <p><em>Workers processes are able to run essentially limitless scripts with almost no individual overhead by creating an isolate for each Workers function call.</em></p>
@@ -223,8 +219,8 @@ Google Cloud의 경우는 <a href="https://cloud.google.com/run?hl=ko">Cloud Run
 <h4 id="2-리전-지구-">2. 리전: 지구 🌎</h4>
 <p><img src="/assets/post_images/cloudflare_workers_region.PNG" alt="Workers Region"></p>
 <p>Cloudflare Workers는 타 클라우드 플랫폼처럼 특정 리전을 정해서 앱을 배포하지 않습니다.
-대신 Cloudflare의 방대한 CDN 네트워크를 활용하여 전 세계에 앱이 배포됩니다.</p>
-<p>즉, 세계 어디에서나 적은 레이턴시로 서비스를 사용하는 것이 가능합니다.</p>
+대신 Cloudflare의 방대한 CDN 네트워크를 활용하여 전 세계에 앱이 배포됩니다.
+즉, 세계 어디에서나 적은 레이턴시로 서비스를 사용하는 것이 가능합니다.</p>
 <blockquote>
 <p><strong>Note</strong>: AWS lambda에서도 자체 CDN 서비스인 <a href="https://aws.amazon.com/ko/cloudfront/">Cloudfront</a>를 활용하여,
 전 세계의 리전에 앱을 배포하는
@@ -236,18 +232,18 @@ Google Cloud의 경우는 <a href="https://cloud.google.com/run?hl=ko">Cloud Run
 <h4 id="3-무료">3. &ldquo;무료&rdquo;</h4>
 <p><img src="/assets/post_images/cloudflare_workers_pricing.PNG" alt="Workers Logo"></p>
 <p>Cloudflare Workers는 이 글을 작성하는 2020년 7월 기준, 일간 십만 회의 리퀘스트가 가능한 무료 플랜을 제공합니다.</p>
-<p>AWS Lambda나 Azure Functions의 가격표를 보신 분이라면, <em>&ldquo;다른 곳도 한 달에 리퀘스트 백만번까지 무료던데?&quot;</em> 라고 생각하실 수도 있는데요.</p>
-<p>타 플랫폼은 리퀘스트 비용과는 별도로 스토리지, 네트워크 비용이 부과되기 때문에,
+<p>AWS Lambda나 Azure Functions의 가격표를 보신 분이라면, <em>&ldquo;다른 곳도 한 달에 리퀘스트 백만번까지 무료던데?&quot;</em> 라고 생각하실 수도 있는데요.
+타 플랫폼은 리퀘스트 비용과는 별도로 스토리지, 네트워크 비용이 부과되기 때문에,
 무료겠지? 하고서 간단한 프로젝트를 만들었다가 소소한 비용 청구를 당하는 경우가 있습니다.</p>
 <p>그에 비해 Workers는 무료 플랜에서는 청구되는 비용이 아예 없어서 (신용카드 정보를 입력하지도 않습니다),
 간단한 토이 프로젝트를 만들 때 부담 없이 사용할 수 있습니다.</p>
-<h2 id="-단점">👎 단점</h2>
+<h2 id="단점">단점</h2>
 <p>물론 장점이 있는만큼 Workers의 단점도 있습니다.</p>
 <h4 id="1-제한된-언어-지원">1. 제한된 언어 지원</h4>
-<p>Workers는 자바스크립트 엔진인 V8을 기반으로 하는 특성상 근본적으로 개발 언어가 제한됩니다.</p>
-<p>자바스크립트나 자바스크립트로 변환이 가능한 타입스크립트 정도만 쉽게 사용이 가능하며,
-<a href="https://webassembly.org/">WebAssembly</a>로 컴파일이 가능한 C, C++, Rust를 불완전하게 지원합니다.</p>
-<p>따라서 파이썬, C#, 자바 등 다양한 언어를 지원하는 타 FaaS 플랫폼에 비해 개발 및 포팅에 애로사항이 있습니다.</p>
+<p>Workers는 자바스크립트 엔진인 V8을 기반으로 하는 특성상 근본적으로 개발 언어가 제한됩니다.
+자바스크립트나 자바스크립트로 변환이 가능한 타입스크립트 정도만 쉽게 사용이 가능하며,
+<a href="https://webassembly.org/">WebAssembly</a>로 컴파일이 가능한 C, C++, Rust를 불완전하게 지원합니다.
+따라서 파이썬, C#, 자바 등 다양한 언어를 지원하는 타 FaaS 플랫폼에 비해 개발 및 포팅에 애로사항이 있습니다.</p>
 <p>나는 자바스크립트가 너무 싫어! 같은 생각을 가진 분들이라면 WebAssembly의 발전에 희망을 걸어봐야 할 것 같네요.</p>
 <blockquote>
 <p><strong>Update(20/07/29)</strong>: Cloudflare에서 <a href="https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support/">Python, Scala, Kotlin 등 타 언어에 대한 Workers 지원을 발표</a>했습니다.
@@ -259,11 +255,11 @@ Google Cloud의 경우는 <a href="https://cloud.google.com/run?hl=ko">Cloud Run
 <p>그러나 Cloudflare에서 제공하는 클라우드 서비스는 Workers와 글로벌 스토리지인 KV 정도로,
 다른 서비스와 Workers를 연계하여 앱을 개발하고자 한다면 결국 타 클라우드 플랫폼을 함께 사용해야 합니다.</p>
 <h2 id="결론">결론</h2>
-<p>Cloudflare Workers는 타 클라우드 플랫폼의 FaaS 플랫폼과는 차별화되는 상당히 독특한 물건입니다.</p>
-<p>Cloudflare에서 이번에 런칭한 <a href="https://cloudflare.tv/live">Cloudflare TV</a>에서도 Workers를 도그푸딩하고 있다고 밝힌만큼,
+<p>Cloudflare Workers는 타 클라우드 플랫폼의 FaaS 플랫폼과는 차별화되는 상당히 독특한 물건입니다.
+Cloudflare에서 이번에 런칭한 <a href="https://cloudflare.tv/live">Cloudflare TV</a>에서도 Workers를 도그푸딩하고 있다고 밝힌만큼,
 Cloudflare 측에서도 지속적으로 Workers를 발전시킬 야심찬 계획을 가지고 있지 않을까 싶습니다.</p>
-<p>새로운 서버리스 앱을 개발하고자 하는 계획이 있다면 한번쯤 Workers 사용을 고려해보시는 것도 좋을 듯 합니다.</p>
-<p>이어지는 글에서는 Workers를 이용하여 간단한 서비스를 개발해보도록 하겠습니다.</p>
+<p>새로운 서버리스 앱을 개발하고자 하는 계획이 있다면 한번쯤 Workers 사용을 고려해보시는 것도 좋을 듯 합니다.
+이어지는 글에서는 Workers를 이용하여 간단한 서비스를 개발해보도록 하겠습니다.</p>
 <blockquote>
 <p>다음 글 - <a href="https://ryanking13.github.io/2020/07/26/introducing-cf-workers-2.html/">Cloudflare Workers로 서버리스 앱 개발하기</a></p>
 </blockquote>
@@ -380,7 +376,7 @@ Cloudflare 측에서도 지속적으로 Workers를 발전시킬 야심찬 계획
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ryanking13</span>
   </span>
 </div>
 
