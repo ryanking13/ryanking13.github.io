@@ -4,6 +4,7 @@ categories:
 - Network
 title: 크롬 데이터 세이버를 크롬 없이 사용하기
 summary: " "
+draft: true
 ---
 
 {{% admonition type="warning" title="Update" %}}

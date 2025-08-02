@@ -3,7 +3,7 @@ date: "2021-02-01T19:00:00+09:00"
 title: 그누보드 캡차 인식 프로젝트 - Part 1
 description: 그누보드 캡차 인식 프로젝트 - Part 1
 summary: " "
-draft: false
+draft: true
 categories:
 - Machine Learning
 ---

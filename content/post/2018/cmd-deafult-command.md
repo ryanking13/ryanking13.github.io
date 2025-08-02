@@ -4,6 +4,7 @@ categories:
 - Windows
 title: Windows cp949 인코딩 자동 변경하기
 summary: " "
+draft: true
 ---
 
 한글 Windows를 사용하다보면 종종 불편한 것이 기본 시스템 인코딩이 `cp949`로 설정되어 있다는 것입니다.
@@ -44,5 +45,5 @@ HKEY_CURRENT_USER\SOFTWARE\Microsoft\Command Processor
 
 실행과 동시에 인코딩이 UTF-8로 바뀐 것을 확인할 수 있습니다.
 
-이를 응용하면, 명령 프롬프트의 홈 디렉토리(?)를 바꾸거나
+이를 응용하면, 명령 프롬프트의 홈 디렉토리를 바꾸거나
 .bashrc와 유사한 세팅이 자동으로 수행되게 할 수 있습니다.
